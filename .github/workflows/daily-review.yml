@@ -2,7 +2,8 @@ name: Daily Parameter Review
 
 on:
   schedule:
-    - cron: '0 8 * * *'
+    - cron: '0 1 * * *'   # 09:00 HKT (01:00 UTC)
+    - cron: '0 5 * * *'   # 13:00 HKT (05:00 UTC)
   workflow_dispatch:
 
 permissions:
