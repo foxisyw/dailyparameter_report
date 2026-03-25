@@ -2,8 +2,11 @@ name: Daily Parameter Review
 
 on:
   schedule:
-    - cron: '0 8 * * *'  # 08:00 UTC daily
-  workflow_dispatch:       # manual trigger
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 concurrency:
   group: daily-review
@@ -26,7 +29,7 @@ jobs:
 
       - name: Collect EMA data (10-15 min)
         run: python -m runner.ema_collector --timeout 900
-        continue-on-error: true  # EMA is optional; reviews still work without it
+        continue-on-error: true
 
       - name: Run daily review and upload to Blob
         run: python -m runner.main

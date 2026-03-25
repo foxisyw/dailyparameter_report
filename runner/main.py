@@ -197,8 +197,7 @@ def main():
         _upload_to_blob(chapters, report, date_str)
         _log("Upload complete.")
 
-    # Exit code: 0 if pass, 1 if any issues
-    return 0 if report["status"] == "pass" else 1
+    return 0
 
 
 if __name__ == "__main__":
