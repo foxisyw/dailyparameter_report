@@ -1,0 +1,2 @@
+Task Object,timeType,Effective Time,openUpperLimit,openLowerLimit,afterOpenUpperLimit,afterOpenLowerLimit,afterOpenIndexUpperLimit,afterOpenIndexLowerLimit,preQuoteMaxJ1UpperLimit,preQuoteMinJ2LowerLimit,preQuoteC1,preQuoteC2
+BTC-USD_UM-SWAP,IMMEDIATE,,1.1,0.9,1.05,0.95,1.3,0.7,1.1,0.9,1.1,0.9

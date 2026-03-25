@@ -1,0 +1,113 @@
+{
+  "tags": [
+    {
+      "name": "stablecoin_pair",
+      "description": "Both base and quote are stablecoins",
+      "match": "all",
+      "conditions": [
+        { "field": "baseCcy", "op": "in", "value": ["USDT", "USDC", "DAI", "TUSD", "BUSD", "FDUSD", "PYUSD", "EURT"] },
+        { "field": "quoteCcy", "op": "in", "value": ["USDT", "USDC", "DAI", "TUSD", "BUSD", "FDUSD", "PYUSD", "EURT"] }
+      ]
+    },
+    {
+      "name": "um_perp",
+      "description": "USDT/USDC-margined perpetual swap",
+      "match": "all",
+      "conditions": [
+        { "field": "instType", "op": "eq", "value": "SWAP" },
+        { "field": "settleCcy", "op": "in", "value": ["USDT", "USDC"] }
+      ]
+    },
+    {
+      "name": "cm_perp",
+      "description": "Coin-margined perpetual swap",
+      "match": "all",
+      "conditions": [
+        { "field": "instType", "op": "eq", "value": "SWAP" },
+        { "field": "settleCcy", "op": "not_in", "value": ["USDT", "USDC"] }
+      ]
+    },
+    {
+      "name": "um_futures",
+      "description": "USDT/USDC-margined expiry futures",
+      "match": "all",
+      "conditions": [
+        { "field": "instType", "op": "eq", "value": "FUTURES" },
+        { "field": "settleCcy", "op": "in", "value": ["USDT", "USDC"] }
+      ]
+    },
+    {
+      "name": "cm_futures",
+      "description": "Coin-margined expiry futures",
+      "match": "all",
+      "conditions": [
+        { "field": "instType", "op": "eq", "value": "FUTURES" },
+        { "field": "settleCcy", "op": "not_in", "value": ["USDT", "USDC"] }
+      ]
+    },
+    {
+      "name": "btc_base",
+      "description": "Instruments with BTC as base currency",
+      "match": "all",
+      "conditions": [
+        { "field": "baseCcy", "op": "eq", "value": "BTC" }
+      ]
+    },
+    {
+      "name": "eth_base",
+      "description": "Instruments with ETH as base currency",
+      "match": "all",
+      "conditions": [
+        { "field": "baseCcy", "op": "eq", "value": "ETH" }
+      ]
+    },
+    {
+      "name": "usdt_quoted",
+      "description": "Instruments quoted in USDT",
+      "match": "all",
+      "conditions": [
+        { "field": "quoteCcy", "op": "eq", "value": "USDT" }
+      ]
+    },
+    {
+      "name": "usdc_quoted",
+      "description": "Instruments quoted in USDC",
+      "match": "all",
+      "conditions": [
+        { "field": "quoteCcy", "op": "eq", "value": "USDC" }
+      ]
+    },
+    {
+      "name": "spot",
+      "description": "Spot trading pair",
+      "match": "all",
+      "conditions": [
+        { "field": "instType", "op": "eq", "value": "SPOT" }
+      ]
+    },
+    {
+      "name": "perp",
+      "description": "Perpetual swap (any margin type)",
+      "match": "all",
+      "conditions": [
+        { "field": "instType", "op": "eq", "value": "SWAP" }
+      ]
+    },
+    {
+      "name": "futures",
+      "description": "Expiry futures (any margin type)",
+      "match": "all",
+      "conditions": [
+        { "field": "instType", "op": "eq", "value": "FUTURES" }
+      ]
+    },
+    {
+      "name": "not_live",
+      "description": "Instruments not in live state (suspended, pre-open, etc.)",
+      "match": "all",
+      "conditions": [
+        { "field": "state", "op": "neq", "value": "live" }
+      ]
+    }
+  ]
+}

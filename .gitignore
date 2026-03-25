@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.DS_Store
+__pycache__/
+*.pyc
+*.pyo
+.env
+.env.local
+
+# params_cli caches and generated output
+params_cli/**/cache/
+params_cli/**/output/
+params_cli/**/review/
+params_cli/**/.claude/
+params_cli/**/deprecated_index/
+params_cli/**/conversations/
+params_cli/**/*.pid
