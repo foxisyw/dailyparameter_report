@@ -122,6 +122,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   margin-top: 2px;
 }
 
+.masthead-team {
+  font-size: 11px;
+  color: var(--gray-400);
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
 .masthead-right {
   display: flex;
   align-items: center;
@@ -270,10 +277,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .summary-grid {
   display: grid;
-  grid-template-columns: 1fr 200px 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 32px;
   align-items: start;
 }
+.summary-chart-donut:empty { display: none; }
 
 /* KPI Cards */
 .summary-kpis {

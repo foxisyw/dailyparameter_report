@@ -1188,15 +1188,6 @@ function renderRiskIntelSummary(data, chapter) {
   const users = chapter.suspicious_users || []
   const blocks = chapter.rule_blocks || []
 
-  let critCount = 0, warnCount = 0, passCount = 0
-  blocks.forEach(b => {
-    if (b.status === 'critical' || b.status === 'missing') critCount++
-    else if (b.status === 'warning' || b.status === 'watch') warnCount++
-    else passCount++
-  })
-  const totalRules = passCount + warnCount + critCount || 1
-  const circumference = 2 * Math.PI * 50
-
   document.getElementById('summary-kpis').innerHTML = `
     <div class="kpi-card kpi-card--status">${statusPill(chapter.status, true)}<div><div class="kpi-label">${T('overallVerdict')}</div></div></div>
     <div class="kpi-card"><div class="kpi-value">${events.length}</div><div class="kpi-label">${T('eventAnalysis') || 'EVENTS'}</div></div>
@@ -1204,29 +1195,8 @@ function renderRiskIntelSummary(data, chapter) {
     <div class="kpi-card"><div class="kpi-value">${esc(fmtFreshness(data.report.generated_at))}</div><div class="kpi-label">${T('reportFreshness')}</div></div>
   `
 
-  const passArc = (passCount / totalRules) * circumference
-  const warnArc = (warnCount / totalRules) * circumference
-  const critArc = (critCount / totalRules) * circumference
-
-  document.getElementById('summary-donut').innerHTML = `
-    <div class="donut-ring">
-      <svg viewBox="0 0 140 140">
-        <circle stroke="#e5e7eb" stroke-dasharray="${circumference}" stroke-dashoffset="0" />
-        <circle stroke="#16a34a" stroke-dasharray="${passArc} ${circumference - passArc}" stroke-dashoffset="0" />
-        <circle stroke="#d97706" stroke-dasharray="${warnArc} ${circumference - warnArc}" stroke-dashoffset="${-passArc}" />
-        <circle stroke="#dc2626" stroke-dasharray="${critArc} ${circumference - critArc}" stroke-dashoffset="${-(passArc + warnArc)}" />
-      </svg>
-      <div class="donut-center">
-        <div class="donut-center-value">${blocks.length}</div>
-        <div class="donut-center-label">${T('alertTypes') || 'ALERTS'}</div>
-      </div>
-    </div>
-    <div class="donut-legend">
-      <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#16a34a"></span><span class="donut-legend-label">${T('pass')}</span><span class="donut-legend-count">${passCount}</span></div>
-      <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#d97706"></span><span class="donut-legend-label">${T('warning')}</span><span class="donut-legend-count">${warnCount}</span></div>
-      <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#dc2626"></span><span class="donut-legend-label">${T('critical')}</span><span class="donut-legend-count">${critCount}</span></div>
-    </div>
-  `
+  // No pie chart — replaced with empty space or hidden
+  document.getElementById('summary-donut').innerHTML = ''
 
   const bars = blocks.map(b => ({
     label: b.title,
@@ -1236,7 +1206,7 @@ function renderRiskIntelSummary(data, chapter) {
   const maxCount = Math.max(...bars.map(b => b.count), 1)
 
   document.getElementById('summary-bars').innerHTML = `
-    <div class="bar-chart-title">${T('findingsByRule')}</div>
+    <div class="bar-chart-title">${T('parameterAlarmFindings') || 'Parameter Alarm Findings'}</div>
     ${bars.map(b => `<div class="bar-row">
       <div class="bar-label">${esc(b.label)}</div>
       <div class="bar-track"><div class="bar-fill bar-fill--${b.color}" style="width:${Math.max((b.count / maxCount) * 100, b.count > 0 ? 4 : 0)}%"></div></div>
