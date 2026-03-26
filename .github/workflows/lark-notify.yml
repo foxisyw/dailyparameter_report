@@ -31,8 +31,8 @@ jobs:
         run: python -m runner.ema_collector --timeout 900
         continue-on-error: true
 
-      - name: Generate daily report + send Lark
-        run: python -m runner.main
+      - name: Generate daily report (no Lark yet)
+        run: python -m runner.main --no-lark
 
       - name: Commit and push report data
         run: |
@@ -41,3 +41,11 @@ jobs:
           git add public/data/
           git diff --cached --quiet || git commit -m "Daily review $(date -u +%Y-%m-%d)"
           git push
+
+      - name: Wait for Vercel deploy
+        run: |
+          echo "Waiting 90 seconds for Vercel to deploy..."
+          sleep 90
+
+      - name: Send Lark notification
+        run: python -m runner.notify_lark

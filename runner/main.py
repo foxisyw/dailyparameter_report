@@ -173,14 +173,7 @@ def main():
         _save_report(chapters, report, date_str)
         _log("Report saved.")
 
-        # Send Lark notification (unless --no-lark)
-        if not args.no_lark:
-            from . import lark
-            try:
-                lark.send(report, chapters, date_str)
-            except Exception as exc:
-                _log(f"Lark notification failed (non-fatal): {exc}")
-        else:
+        if args.no_lark:
             _log("Lark notification skipped (--no-lark)")
 
     return 0
