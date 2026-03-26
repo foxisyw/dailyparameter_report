@@ -472,6 +472,55 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* Chapter */
 .chapter { scroll-margin-top: 80px; }
 
+/* Collapsible chapter wrapper (non-risk-intel sections) */
+.chapter-collapsible {
+  scroll-margin-top: 80px;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.chapter-collapse-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+  gap: 12px;
+}
+.chapter-collapse-header:hover { background: var(--gray-50); }
+
+.chapter-collapse-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.chapter-collapse-chevron {
+  color: var(--gray-400);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+.chapter-collapsible[open] .chapter-collapse-chevron {
+  transform: rotate(180deg);
+}
+
+.chapter-collapse-body {
+  padding: 0 20px 20px;
+  border-top: 1px solid var(--gray-100);
+}
+
+.chapter-collapse-body .chapter {
+  scroll-margin-top: 0;
+}
+
+.chapter-collapse-body .chapter-summary {
+  margin-top: 16px;
+}
+
 .chapter-header {
   display: flex;
   align-items: center;

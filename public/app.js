@@ -802,9 +802,12 @@ function renderDownloads(chapter) {
   `).join('')
 }
 
-function renderChapterShell(chapter, innerHtml) {
+function renderChapterShell(chapter, innerHtml, includeHeader = true) {
+  const header = includeHeader
+    ? `<div class="chapter-header"><h2 class="chapter-title">${esc(chapter.title)}</h2>${statusPill(chapter.status)}</div>`
+    : ''
   return `<section class="chapter" id="chapter-${esc(chapter.slug)}">
-    <div class="chapter-header"><h2 class="chapter-title">${esc(chapter.title)}</h2>${statusPill(chapter.status)}</div>
+    ${header}
     <p class="chapter-summary">${esc(chapter.summary)}</p>
     ${renderMetricCards(chapter)}
     ${innerHtml}
@@ -813,7 +816,8 @@ function renderChapterShell(chapter, innerHtml) {
 
 function renderRulesChapter(chapter) {
   const rulesHtml = (chapter.rule_blocks || []).map(renderRuleBlock).join('')
-  return renderChapterShell(chapter, `${rulesHtml}${renderRecommendations(chapter)}${renderDownloads(chapter)}`)
+  // No header — the collapsible wrapper provides it
+  return renderChapterShell(chapter, `${rulesHtml}${renderRecommendations(chapter)}${renderDownloads(chapter)}`, false)
 }
 
 function renderSuspiciousUsers(chapter) {
@@ -921,8 +925,8 @@ function renderRiskIntelChapter(chapter) {
 }
 
 function renderPending(chapter) {
+  // No header — the collapsible wrapper provides it
   return `<section class="chapter chapter--pending" id="chapter-${esc(chapter.slug)}">
-    <div class="chapter-header"><h2 class="chapter-title">${esc(chapter.title)}</h2>${statusPill('pending')}</div>
     <div class="pending-content">
       <span class="pending-icon">${ICONS.clockLg}</span>
       <div class="pending-text"><strong>${T('pendingIntegration')}</strong><br>${esc(chapter.summary)}</div>
@@ -930,11 +934,27 @@ function renderPending(chapter) {
   </section>`
 }
 
+function wrapCollapsible(chapter, html) {
+  // Risk Intelligence is always expanded. All other sections are collapsed by default.
+  const variant = normalizeRenderVariant(chapter)
+  if (variant === 'risk-intel') return html
+  return `<details class="chapter-collapsible" id="collapsible-${esc(chapter.slug)}">
+    <summary class="chapter-collapse-header">
+      <div class="chapter-collapse-left">
+        <h2 class="chapter-title">${esc(chapter.title)}</h2>
+        ${statusPill(chapter.status)}
+      </div>
+      <span class="chapter-collapse-chevron" aria-hidden="true">${ICONS.chevron}</span>
+    </summary>
+    <div class="chapter-collapse-body">${html}</div>
+  </details>`
+}
+
 function renderChapter(chapter) {
   const variant = normalizeRenderVariant(chapter)
-  if (chapter.status === 'pending') return renderPending(chapter)
+  if (chapter.status === 'pending') return wrapCollapsible(chapter, renderPending(chapter))
   if (variant === 'risk-intel') return renderRiskIntelChapter(chapter)
-  return renderRulesChapter(chapter)
+  return wrapCollapsible(chapter, renderRulesChapter(chapter))
 }
 
 function attachDownloads(data) {
