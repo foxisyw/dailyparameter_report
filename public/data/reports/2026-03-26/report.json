@@ -1,21 +1,21 @@
 {
   "report": {
     "date": "2026-03-26",
-    "generated_at": "2026-03-26T03:54:33.033838+00:00",
+    "generated_at": "2026-03-26T06:17:24.931922+00:00",
     "status": "critical",
-    "total_issues": 43,
+    "total_issues": 14,
     "chapters": [
       {
         "slug": "price-limit",
         "title": "Price Limit Review",
         "status": "critical",
-        "summary": "Scanned 1472 instruments. Found 43 issue(s) across 4 rules.",
+        "summary": "Scanned 1498 instruments. Found 14 issue(s) across 4 rules.",
         "metrics": {
-          "instruments_scanned": 1472,
-          "ema_coverage": 1472,
-          "issues_found": 43,
+          "instruments_scanned": 1498,
+          "ema_coverage": 1498,
+          "issues_found": 14,
           "source": "OKX API (live)",
-          "generated_at": "2026-03-26T03:54:18.625017+00:00"
+          "generated_at": "2026-03-26T06:17:15.368886+00:00"
         }
       },
       {
@@ -28,7 +28,7 @@
           "ema_coverage": 0,
           "issues_found": 0,
           "source": "n/a",
-          "generated_at": "2026-03-26T03:54:33.033786+00:00"
+          "generated_at": "2026-03-26T06:17:24.931895+00:00"
         }
       },
       {
@@ -41,7 +41,7 @@
           "ema_coverage": 0,
           "issues_found": 0,
           "source": "n/a",
-          "generated_at": "2026-03-26T03:54:33.033826+00:00"
+          "generated_at": "2026-03-26T06:17:24.931912+00:00"
         }
       }
     ]
@@ -51,13 +51,13 @@
       "slug": "price-limit",
       "title": "Price Limit Review",
       "status": "critical",
-      "summary": "Scanned 1472 instruments. Found 43 issue(s) across 4 rules.",
+      "summary": "Scanned 1498 instruments. Found 14 issue(s) across 4 rules.",
       "metrics": {
-        "instruments_scanned": 1472,
-        "ema_coverage": 1472,
-        "issues_found": 43,
+        "instruments_scanned": 1498,
+        "ema_coverage": 1498,
+        "issues_found": 14,
         "source": "OKX API (live)",
-        "generated_at": "2026-03-26T03:54:18.625017+00:00"
+        "generated_at": "2026-03-26T06:17:15.368886+00:00"
       },
       "rule_blocks": [
         {
@@ -74,201 +74,27 @@
             ],
             "rows": [
               [
-                "ADA-EUR",
-                "1.06%",
-                "-0.05%",
-                "warning"
-              ],
-              [
-                "AERGO-EUR",
-                "1.89%",
-                "-8.10%",
-                "warning"
-              ],
-              [
-                "BICO-EUR",
-                "1.19%",
-                "-7.70%",
-                "warning"
-              ],
-              [
-                "HUMA-EUR",
-                "4.27%",
-                "-0.36%",
-                "warning"
-              ],
-              [
-                "ILV-EUR",
-                "1.95%",
-                "-5.60%",
-                "warning"
-              ],
-              [
-                "JTO-EUR",
-                "2.25%",
-                "-0.29%",
-                "warning"
-              ],
-              [
-                "METIS-EUR",
-                "1.98%",
-                "-4.25%",
-                "warning"
-              ],
-              [
-                "XLM-EUR",
-                "2.66%",
-                "-0.57%",
-                "warning"
-              ],
-              [
-                "ALLO-TRY",
-                "3.75%",
-                "-0.16%",
-                "warning"
-              ],
-              [
-                "FET-TRY",
-                "3.52%",
-                "-0.05%",
-                "warning"
-              ],
-              [
-                "XAUT-TRY",
-                "1.28%",
-                "-0.27%",
+                "ALLO-EUR",
+                "n/a",
+                "-2.92%",
                 "warning"
               ],
               [
                 "DGB-USD",
-                "1.67%",
-                "-0.51%",
+                "-1.31%",
+                "0.02%",
                 "warning"
               ],
               [
-                "FET-USD",
-                "3.48%",
-                "-0.04%",
+                "SLP-USD",
+                "-1.32%",
+                "-1.41%",
                 "warning"
               ],
               [
-                "HUMA-USD",
-                "4.42%",
-                "-0.38%",
-                "warning"
-              ],
-              [
-                "PAXG-USD",
-                "1.28%",
-                "-0.30%",
-                "warning"
-              ],
-              [
-                "STORJ-USD",
-                "-0.03%",
-                "0.61%",
-                "warning"
-              ],
-              [
-                "ZENT-USD",
-                "1.34%",
-                "-0.31%",
-                "warning"
-              ],
-              [
-                "ADA-USDT",
-                "1.11%",
-                "-0.09%",
-                "warning"
-              ],
-              [
-                "DGB-USDT",
-                "1.84%",
-                "-0.28%",
-                "warning"
-              ],
-              [
-                "HUMA-USDT",
-                "4.54%",
-                "-0.29%",
-                "warning"
-              ],
-              [
-                "JOE-USDT",
-                "1.95%",
-                "-0.36%",
-                "warning"
-              ],
-              [
-                "LRC-USDT",
-                "-0.41%",
-                "2.40%",
-                "warning"
-              ],
-              [
-                "MON-USDT",
-                "1.19%",
-                "-4.77%",
-                "warning"
-              ],
-              [
-                "ONT-USDT",
-                "2.71%",
-                "-0.70%",
-                "warning"
-              ],
-              [
-                "PAXG-USDT",
-                "1.33%",
-                "-0.30%",
-                "warning"
-              ],
-              [
-                "XAUT-USDT",
-                "1.31%",
-                "-0.28%",
-                "warning"
-              ],
-              [
-                "XLM-USDT",
-                "2.70%",
-                "-0.56%",
-                "warning"
-              ],
-              [
-                "HUMA-USDC",
-                "4.39%",
-                "-0.44%",
-                "warning"
-              ],
-              [
-                "XAU-USD_UM-SWAP",
-                "1.31%",
-                "-0.29%",
-                "warning"
-              ],
-              [
-                "HUMA-USDT-SWAP",
-                "4.47%",
-                "-0.17%",
-                "warning"
-              ],
-              [
-                "LIGHT-USDT-SWAP",
-                "-0.33%",
-                "4.68%",
-                "warning"
-              ],
-              [
-                "TAO-USDT-SWAP",
-                "3.71%",
-                "-0.47%",
-                "warning"
-              ],
-              [
-                "XAU-USDT-SWAP",
-                "1.31%",
-                "-0.27%",
+                "SLP-USD",
+                "-1.32%",
+                "-1.41%",
                 "warning"
               ]
             ]
@@ -449,169 +275,19 @@
             "Z_upper(10.0%) out of range for Topcoins (typical ~2%)"
           ],
           [
-            "ADA-EUR",
+            "ALLO-EUR",
             "Widen Y caps",
-            "limitDn_buffer=-0.05%"
-          ],
-          [
-            "AERGO-EUR",
-            "Widen Y caps",
-            "limitDn_buffer=-8.10%"
-          ],
-          [
-            "BICO-EUR",
-            "Widen Y caps",
-            "limitDn_buffer=-7.70%"
-          ],
-          [
-            "HUMA-EUR",
-            "Widen Y caps",
-            "limitDn_buffer=-0.36%"
-          ],
-          [
-            "ILV-EUR",
-            "Widen Y caps",
-            "limitDn_buffer=-5.60%"
-          ],
-          [
-            "JTO-EUR",
-            "Widen Y caps",
-            "limitDn_buffer=-0.29%"
-          ],
-          [
-            "METIS-EUR",
-            "Widen Y caps",
-            "limitDn_buffer=-4.25%"
-          ],
-          [
-            "XLM-EUR",
-            "Widen Y caps",
-            "limitDn_buffer=-0.57%"
-          ],
-          [
-            "ALLO-TRY",
-            "Widen Y caps",
-            "limitDn_buffer=-0.16%"
-          ],
-          [
-            "FET-TRY",
-            "Widen Y caps",
-            "limitDn_buffer=-0.05%"
-          ],
-          [
-            "XAUT-TRY",
-            "Widen Y caps",
-            "limitDn_buffer=-0.27%"
+            "limitDn_buffer=-2.92%"
           ],
           [
             "DGB-USD",
             "Widen Y caps",
-            "limitDn_buffer=-0.51%, B/A spread(2.91%) vs Y spread(4.0%)"
+            "limitUp_buffer=-1.31%, B/A spread(5.28%) vs Y spread(4.0%)"
           ],
           [
-            "FET-USD",
+            "SLP-USD",
             "Widen Y caps",
-            "limitDn_buffer=-0.04%"
-          ],
-          [
-            "HUMA-USD",
-            "Widen Y caps",
-            "limitDn_buffer=-0.38%"
-          ],
-          [
-            "PAXG-USD",
-            "Widen Y caps",
-            "limitDn_buffer=-0.30%"
-          ],
-          [
-            "STORJ-USD",
-            "Widen Y caps",
-            "limitUp_buffer=-0.03%, B/A spread(3.59%) vs Y spread(4.0%)"
-          ],
-          [
-            "ZENT-USD",
-            "Widen Y caps",
-            "limitDn_buffer=-0.31%, B/A spread(3.05%) vs Y spread(4.0%)"
-          ],
-          [
-            "ADA-USDT",
-            "Widen Y caps",
-            "limitDn_buffer=-0.09%"
-          ],
-          [
-            "DGB-USDT",
-            "Widen Y caps",
-            "limitDn_buffer=-0.28%"
-          ],
-          [
-            "HUMA-USDT",
-            "Widen Y caps",
-            "limitDn_buffer=-0.29%"
-          ],
-          [
-            "JOE-USDT",
-            "Widen Y caps",
-            "limitDn_buffer=-0.36%"
-          ],
-          [
-            "LRC-USDT",
-            "Widen Y caps",
-            "limitUp_buffer=-0.41%"
-          ],
-          [
-            "MON-USDT",
-            "Widen Y caps",
-            "limitDn_buffer=-4.77%, B/A spread(8.51%) vs Y spread(4.0%)"
-          ],
-          [
-            "ONT-USDT",
-            "Widen Y caps",
-            "limitDn_buffer=-0.70%"
-          ],
-          [
-            "PAXG-USDT",
-            "Widen Y caps",
-            "limitDn_buffer=-0.30%"
-          ],
-          [
-            "XAUT-USDT",
-            "Widen Y caps",
-            "limitDn_buffer=-0.28%"
-          ],
-          [
-            "XLM-USDT",
-            "Widen Y caps",
-            "limitDn_buffer=-0.56%"
-          ],
-          [
-            "HUMA-USDC",
-            "Widen Y caps",
-            "limitDn_buffer=-0.44%"
-          ],
-          [
-            "XAU-USD_UM-SWAP",
-            "Widen Y caps",
-            "limitDn_buffer=-0.29%"
-          ],
-          [
-            "HUMA-USDT-SWAP",
-            "Widen Y caps",
-            "limitDn_buffer=-0.17%"
-          ],
-          [
-            "LIGHT-USDT-SWAP",
-            "Widen Y caps",
-            "limitUp_buffer=-0.33%"
-          ],
-          [
-            "TAO-USDT-SWAP",
-            "Widen Y caps",
-            "limitDn_buffer=-0.47%"
-          ],
-          [
-            "XAU-USDT-SWAP",
-            "Widen Y caps",
-            "limitDn_buffer=-0.27%"
+            "limitUp_buffer=-1.32%, B/A spread(6.70%) vs Y spread(4.0%)"
           ]
         ]
       },
@@ -622,7 +298,7 @@
           "content": "Task Object,timeType,Effective Time,openUpperLimit,openLowerLimit,afterOpenUpperLimit,afterOpenLowerLimit,afterOpenIndexUpperLimit,afterOpenIndexLowerLimit,preQuoteMaxJ1UpperLimit,preQuoteMinJ2LowerLimit,preQuoteC1,preQuoteC2\r\nBTC-USD_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260327,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260403,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USD_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USD_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USDT_UM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USDT_UM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\n"
         }
       ],
-      "markdown": "# Price Limit Review\n\n**Generated:** 2026-03-26T03:54:18.625017+00:00  \n**Status:** critical  \n**Instruments scanned:** 1472  \n**EMA coverage:** 1472  \n\n**Total issues found:** 43\n\n## Rule 1: Buffer Too Tight\n33 issue(s) found.\n\n| INSTRUMENT | LIMITUP_BUFFER | LIMITDN_BUFFER | STATUS |\n|---|---|---|---|\n| ADA-EUR | 1.06% | -0.05% | warning |\n| AERGO-EUR | 1.89% | -8.10% | warning |\n| BICO-EUR | 1.19% | -7.70% | warning |\n| HUMA-EUR | 4.27% | -0.36% | warning |\n| ILV-EUR | 1.95% | -5.60% | warning |\n| JTO-EUR | 2.25% | -0.29% | warning |\n| METIS-EUR | 1.98% | -4.25% | warning |\n| XLM-EUR | 2.66% | -0.57% | warning |\n| ALLO-TRY | 3.75% | -0.16% | warning |\n| FET-TRY | 3.52% | -0.05% | warning |\n| XAUT-TRY | 1.28% | -0.27% | warning |\n| DGB-USD | 1.67% | -0.51% | warning |\n| FET-USD | 3.48% | -0.04% | warning |\n| HUMA-USD | 4.42% | -0.38% | warning |\n| PAXG-USD | 1.28% | -0.30% | warning |\n| STORJ-USD | -0.03% | 0.61% | warning |\n| ZENT-USD | 1.34% | -0.31% | warning |\n| ADA-USDT | 1.11% | -0.09% | warning |\n| DGB-USDT | 1.84% | -0.28% | warning |\n| HUMA-USDT | 4.54% | -0.29% | warning |\n| JOE-USDT | 1.95% | -0.36% | warning |\n| LRC-USDT | -0.41% | 2.40% | warning |\n| MON-USDT | 1.19% | -4.77% | warning |\n| ONT-USDT | 2.71% | -0.70% | warning |\n| PAXG-USDT | 1.33% | -0.30% | warning |\n| XAUT-USDT | 1.31% | -0.28% | warning |\n| XLM-USDT | 2.70% | -0.56% | warning |\n| HUMA-USDC | 4.39% | -0.44% | warning |\n| XAU-USD_UM-SWAP | 1.31% | -0.29% | warning |\n| HUMA-USDT-SWAP | 4.47% | -0.17% | warning |\n| LIGHT-USDT-SWAP | -0.33% | 4.68% | warning |\n| TAO-USDT-SWAP | 3.71% | -0.47% | warning |\n| XAU-USDT-SWAP | 1.31% | -0.27% | warning |\n\n## Rule 2: Asymmetric Basis\nAll instruments passed.\n\n## Rule 3: Asset-Type Consistency\n10 issue(s) found.\n\n| INSTRUMENT | CURRENT Y | CURRENT Z | EXPECTED Y | EXPECTED Z | STATUS |\n|---|---|---|---|---|---|\n| BTC-USD-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD-260925 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260327 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260403 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USDT-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USDT-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n\n## Rule 4: Z Cap <= Y Cap\nAll instruments passed.\n",
+      "markdown": "# Price Limit Review\n\n**Generated:** 2026-03-26T06:17:15.368886+00:00  \n**Status:** critical  \n**Instruments scanned:** 1498  \n**EMA coverage:** 1498  \n\n**Total issues found:** 14\n\n## Rule 1: Buffer Too Tight\n4 issue(s) found.\n\n| INSTRUMENT | LIMITUP_BUFFER | LIMITDN_BUFFER | STATUS |\n|---|---|---|---|\n| ALLO-EUR | n/a | -2.92% | warning |\n| DGB-USD | -1.31% | 0.02% | warning |\n| SLP-USD | -1.32% | -1.41% | warning |\n| SLP-USD | -1.32% | -1.41% | warning |\n\n## Rule 2: Asymmetric Basis\nAll instruments passed.\n\n## Rule 3: Asset-Type Consistency\n10 issue(s) found.\n\n| INSTRUMENT | CURRENT Y | CURRENT Z | EXPECTED Y | EXPECTED Z | STATUS |\n|---|---|---|---|---|---|\n| BTC-USD-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD-260925 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260327 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260403 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USDT-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USDT-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n\n## Rule 4: Z Cap <= Y Cap\nAll instruments passed.\n",
       "error": null
     },
     {
@@ -635,7 +311,7 @@
         "ema_coverage": 0,
         "issues_found": 0,
         "source": "n/a",
-        "generated_at": "2026-03-26T03:54:33.033786+00:00"
+        "generated_at": "2026-03-26T06:17:24.931895+00:00"
       },
       "rule_blocks": [],
       "recommended_changes": null,
@@ -653,7 +329,7 @@
         "ema_coverage": 0,
         "issues_found": 0,
         "source": "n/a",
-        "generated_at": "2026-03-26T03:54:33.033826+00:00"
+        "generated_at": "2026-03-26T06:17:24.931912+00:00"
       },
       "rule_blocks": [],
       "recommended_changes": null,
