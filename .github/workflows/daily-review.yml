@@ -2,8 +2,7 @@ name: Daily Parameter Review
 
 on:
   schedule:
-    - cron: '0 1 * * *'    # 09:00 HKT — morning review (no Lark)
-    - cron: '30 8 * * *'   # 16:30 HKT — afternoon review + Lark summary
+    - cron: '0 1 * * *'    # 09:00 HKT — morning review (best-effort EMA)
   workflow_dispatch:
 
 permissions:
@@ -32,8 +31,8 @@ jobs:
         run: python -m runner.ema_collector --timeout 900
         continue-on-error: true
 
-      - name: Generate daily report
-        run: python -m runner.main ${{ github.event.schedule == '0 1 * * *' && '--no-lark' || '' }}
+      - name: Generate daily report (no Lark)
+        run: python -m runner.main --no-lark
 
       - name: Commit and push report data
         run: |

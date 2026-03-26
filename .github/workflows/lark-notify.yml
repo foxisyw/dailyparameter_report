@@ -1,0 +1,21 @@
+name: Lark Daily Summary
+
+on:
+  schedule:
+    - cron: '30 8 * * *'   # 16:30 HKT — send Lark summary of latest report
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Send Lark notification from latest report
+        run: python -m runner.notify_lark
