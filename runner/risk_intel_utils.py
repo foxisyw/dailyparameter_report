@@ -546,12 +546,16 @@ def build_risk_intel_chapter(input_data: dict[str, Any], date_str: str) -> dict[
         f"{len(suspicious_users)} suspicious user(s) highlighted."
     )
 
+    # Event analyses (from OKX Trade MCP market data + alert narrative)
+    event_analyses = input_data.get("event_analyses", [])
+
     return {
         "slug": "risk-intel",
         "title": "Risk Intelligence",
         "render_variant": "risk-intel",
         "status": status,
         "summary": summary,
+        "event_analyses": event_analyses,
         "metrics": {
             "instruments_scanned": flagged_alerts,
             "ema_coverage": len(rule_blocks),

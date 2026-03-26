@@ -919,9 +919,63 @@ function renderUserProfiles(chapter) {
   </div>`
 }
 
+function renderEventAnalyses(chapter) {
+  const events = chapter.event_analyses || []
+  if (!events.length) return ''
+
+  return events.map(event => {
+    const chainHtml = (event.causal_chain || []).map(link => {
+      const typeColors = {
+        '远因': 'var(--gray-500)', '近因': '#2563eb', '触发条件': '#d97706',
+        '触发事件': '#dc2626', '一阶效应': '#ea580c', '二阶效应': '#ea580c', '三阶效应': '#ea580c',
+      }
+      const color = typeColors[link.type] || 'var(--gray-500)'
+      const stars = '★'.repeat(link.evidence_strength) + '☆'.repeat(5 - link.evidence_strength)
+      return `<tr>
+        <td class="chain-step">${link.step}</td>
+        <td><span class="chain-type" style="color:${color};border-color:${color}">${esc(link.type)}</span></td>
+        <td class="chain-name">${esc(link.name)}</td>
+        <td>${esc(link.description)}</td>
+        <td class="chain-evidence"><span class="chain-stars">${stars}</span><br><span class="chain-label">${esc(link.evidence_label)}</span></td>
+      </tr>`
+    }).join('')
+
+    const snap = event.market_snapshot || {}
+    const snapHtml = snap.price ? `
+      <div class="event-market-snapshot">
+        <div class="event-snap-card"><div class="event-snap-value">\$${esc(snap.price)}</div><div class="event-snap-label">${T('currentPrice') || 'PRICE'}</div></div>
+        <div class="event-snap-card"><div class="event-snap-value">${esc(snap.change_24h)}</div><div class="event-snap-label">24H</div></div>
+        <div class="event-snap-card"><div class="event-snap-value">${parseFloat(snap.funding_rate) ? (parseFloat(snap.funding_rate) * 100).toFixed(3) + '%' : '—'}</div><div class="event-snap-label">FUNDING</div></div>
+        <div class="event-snap-card"><div class="event-snap-value">${parseFloat(snap.open_interest) ? (parseFloat(snap.open_interest)/1000).toFixed(0) + 'K' : '—'}</div><div class="event-snap-label">OI</div></div>
+      </div>` : ''
+
+    return `<div class="event-analysis event-analysis--${event.severity}">
+      <div class="event-header">
+        <h3 class="event-asset">${esc(event.asset)}</h3>
+        ${statusPill(event.severity)}
+      </div>
+      ${snapHtml}
+      <div class="event-summary-box">
+        <p>${esc(event.executive_summary)}</p>
+      </div>
+      ${chainHtml ? `<div class="event-chain-wrap">
+        <table class="event-chain-table">
+          <thead><tr>
+            <th>#</th><th>${T('chainType') || 'TYPE'}</th><th>${T('chainName') || 'NAME'}</th>
+            <th>${T('chainDescription') || 'WHAT HAPPENED'}</th><th>${T('chainEvidence') || 'EVIDENCE'}</th>
+          </tr></thead>
+          <tbody>${chainHtml}</tbody>
+        </table>
+      </div>` : ''}
+      ${event.forward_looking ? `<div class="event-forward">${esc(event.forward_looking)}</div>` : ''}
+    </div>`
+  }).join('')
+}
+
 function renderRiskIntelChapter(chapter) {
+  const eventsHtml = renderEventAnalyses(chapter)
   const rulesHtml = (chapter.rule_blocks || []).map(renderRuleBlock).join('')
-  return renderChapterShell(chapter, `${renderSourceDocument(chapter)}${rulesHtml}${renderSuspiciousUsers(chapter)}${renderUserProfiles(chapter)}`)
+  return renderChapterShell(chapter, `${renderSourceDocument(chapter)}${eventsHtml}${rulesHtml}${renderSuspiciousUsers(chapter)}${renderUserProfiles(chapter)}`)
 }
 
 function renderPending(chapter) {

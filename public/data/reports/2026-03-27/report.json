@@ -1,7 +1,7 @@
 {
   "report": {
     "date": "2026-03-27",
-    "generated_at": "2026-03-26T17:07:31.050571+00:00",
+    "generated_at": "2026-03-26T17:26:14.892375+00:00",
     "status": "critical",
     "total_issues": 56,
     "chapters": [
@@ -15,7 +15,7 @@
           "ema_coverage": 4,
           "issues_found": 13,
           "source": "每日风控总结 - 2026-03-26 (00:00 - 23:59)",
-          "generated_at": "2026-03-26T17:07:08.275595+00:00"
+          "generated_at": "2026-03-26T17:25:54.687538+00:00"
         }
       },
       {
@@ -28,7 +28,7 @@
           "ema_coverage": 1472,
           "issues_found": 43,
           "source": "OKX API (live)",
-          "generated_at": "2026-03-26T17:07:18.663678+00:00"
+          "generated_at": "2026-03-26T17:25:54.791666+00:00"
         }
       },
       {
@@ -41,7 +41,7 @@
           "ema_coverage": 0,
           "issues_found": 0,
           "source": "n/a",
-          "generated_at": "2026-03-26T17:07:31.050550+00:00"
+          "generated_at": "2026-03-26T17:26:14.892346+00:00"
         }
       },
       {
@@ -54,7 +54,7 @@
           "ema_coverage": 0,
           "issues_found": 0,
           "source": "n/a",
-          "generated_at": "2026-03-26T17:07:31.050562+00:00"
+          "generated_at": "2026-03-26T17:26:14.892359+00:00"
         }
       }
     ]
@@ -66,12 +66,166 @@
       "render_variant": "risk-intel",
       "status": "critical",
       "summary": "4 alert types analyzed. 8 flagged alert(s) parsed. 5 suspicious user(s) highlighted.",
+      "event_analyses": [
+        {
+          "asset": "PROVE-USDT-SWAP",
+          "severity": "critical",
+          "executive_summary": "PROVE永续合约出现严重OI异常：平台限额占比达101.34%（阈值80%），OI较24H均值偏离327.12%。当前价格$0.2668（24h +8.4%），OI 3,904,521张，资金费率-0.278%。多个用户在OI飙升期间持有大额仓位，需密切关注后续操作。",
+          "forward_looking": "OI仍高于平台限额，资金费率为-0.278%（负值，空头支付多头）。若价格继续波动，持仓集中的用户可能面临爆仓风险。建议限制新增高杠杆开仓并监控大户操作。",
+          "causal_chain": [
+            {
+              "step": 1,
+              "type": "远因",
+              "name": "结构性弱点",
+              "description": "PROVE流通量低，OI相对市值偏高，少数用户可显著影响市场",
+              "evidence_strength": 5,
+              "evidence_label": "铁证"
+            },
+            {
+              "step": 2,
+              "type": "近因",
+              "name": "OI异常堆积",
+              "description": "OI从基准水平飙升至3,904,521张，较24H均值偏离327.12%",
+              "evidence_strength": 5,
+              "evidence_label": "铁证"
+            },
+            {
+              "step": 3,
+              "type": "触发事件",
+              "name": "平台限额突破",
+              "description": "OI/平台限额占比达101.34%（阈值80%），触发风控报警",
+              "evidence_strength": 5,
+              "evidence_label": "铁证"
+            },
+            {
+              "step": 4,
+              "type": "一阶效应",
+              "name": "价格剧烈波动",
+              "description": "24h价格范围$0.2207~$0.3875，波幅巨大",
+              "evidence_strength": 4,
+              "evidence_label": "强证据"
+            },
+            {
+              "step": 5,
+              "type": "二阶效应",
+              "name": "资金费率异常",
+              "description": "资金费率达-0.278%，偏离正常水平",
+              "evidence_strength": 4,
+              "evidence_label": "强证据"
+            }
+          ],
+          "market_snapshot": {
+            "instId": "PROVE-USDT-SWAP",
+            "price": "0.2668",
+            "change_24h": "+8.4%",
+            "high_24h": "0.3875",
+            "low_24h": "0.2207",
+            "volume_24h": "440333543",
+            "open_interest": "3904521",
+            "oi_currency": "3904521",
+            "funding_rate": "-0.0027824332058978",
+            "next_funding_rate": ""
+          },
+          "key_users": [
+            "6561979",
+            "7180900",
+            "4335832"
+          ]
+        },
+        {
+          "asset": "XAU-USDT-SWAP",
+          "severity": "critical",
+          "executive_summary": "XAU-USD合约出现Z cap硬顶触发，Limitup频率达55%，用户可能面临无法正常交易/平仓风险。当前价格$4395.8（24h -3.5%）。需检查限价参数与指数有效性。",
+          "forward_looking": "建议立即检查XAU-USD的限价参数与指数成分源可用性，必要时临时限制新增高杠杆开仓。",
+          "causal_chain": [
+            {
+              "step": 1,
+              "type": "远因",
+              "name": "参数配置",
+              "description": "XAU-USD的Z cap参数可能未适应近期黄金价格波动",
+              "evidence_strength": 3,
+              "evidence_label": "中等"
+            },
+            {
+              "step": 2,
+              "type": "触发事件",
+              "name": "Z cap硬顶触发",
+              "description": "Limitup由Z cap硬顶触发，触发频率55%",
+              "evidence_strength": 5,
+              "evidence_label": "铁证"
+            },
+            {
+              "step": 3,
+              "type": "一阶效应",
+              "name": "交易受限",
+              "description": "用户可能面临无法正常交易或平仓的风险",
+              "evidence_strength": 4,
+              "evidence_label": "强证据"
+            }
+          ],
+          "market_snapshot": {
+            "instId": "XAU-USDT-SWAP",
+            "price": "4395.8",
+            "change_24h": "-3.5%",
+            "high_24h": "4567.6",
+            "low_24h": "4374.4",
+            "volume_24h": "108604.275",
+            "open_interest": "23099904",
+            "oi_currency": "23099.904",
+            "funding_rate": "0.0000000000000000",
+            "next_funding_rate": ""
+          },
+          "key_users": [
+            "3337970"
+          ]
+        },
+        {
+          "asset": "PIPPIN-USDT-SWAP",
+          "severity": "warning",
+          "executive_summary": "PIPPIN的OI较24H均值偏离52.01%（阈值20%），为中风险短期异动。当前价格$0.05687（24h -9.2%）。需关注OI与价格联动趋势。",
+          "forward_looking": "关注PIPPIN的OI、资金费率与价格联动是否继续放大，必要时对高风险账户提高保证金要求。",
+          "causal_chain": [
+            {
+              "step": 1,
+              "type": "触发事件",
+              "name": "OI异常偏离",
+              "description": "OI较24H均值偏离52.01%，超过20%阈值",
+              "evidence_strength": 4,
+              "evidence_label": "强证据"
+            },
+            {
+              "step": 2,
+              "type": "一阶效应",
+              "name": "市场关注度上升",
+              "description": "当前OI 13,299,458张，资金费率0.0062%",
+              "evidence_strength": 3,
+              "evidence_label": "中等"
+            }
+          ],
+          "market_snapshot": {
+            "instId": "PIPPIN-USDT-SWAP",
+            "price": "0.05687",
+            "change_24h": "-9.2%",
+            "high_24h": "0.06314",
+            "low_24h": "0.042",
+            "volume_24h": "5704251570",
+            "open_interest": "13299458",
+            "oi_currency": "132994580",
+            "funding_rate": "0.0000623232103139",
+            "next_funding_rate": ""
+          },
+          "key_users": [
+            "2084295",
+            "2034129"
+          ]
+        }
+      ],
       "metrics": {
         "instruments_scanned": 8,
         "ema_coverage": 4,
         "issues_found": 13,
         "source": "每日风控总结 - 2026-03-26 (00:00 - 23:59)",
-        "generated_at": "2026-03-26T17:07:08.275595+00:00"
+        "generated_at": "2026-03-26T17:25:54.687538+00:00"
       },
       "metric_cards": [
         {
@@ -696,7 +850,7 @@
         "ema_coverage": 1472,
         "issues_found": 43,
         "source": "OKX API (live)",
-        "generated_at": "2026-03-26T17:07:18.663678+00:00"
+        "generated_at": "2026-03-26T17:25:54.791666+00:00"
       },
       "metric_cards": [
         {
@@ -1279,7 +1433,7 @@
           "content": "Task Object,timeType,Effective Time,openUpperLimit,openLowerLimit,afterOpenUpperLimit,afterOpenLowerLimit,afterOpenIndexUpperLimit,afterOpenIndexLowerLimit,preQuoteMaxJ1UpperLimit,preQuoteMinJ2LowerLimit,preQuoteC1,preQuoteC2\r\nBTC-USD_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260327,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260403,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USD_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USD_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USDT_UM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USDT_UM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\n"
         }
       ],
-      "markdown": "# Price Limit Review\n\n**Generated:** 2026-03-26T17:07:18.663678+00:00  \n**Status:** critical  \n**Instruments scanned:** 1498  \n**EMA coverage:** 1472  \n\n**Total issues found:** 43\n\n## Rule 1: Buffer Too Tight\n33 issue(s) found.\n\n| INSTRUMENT | LIMITUP_BUFFER | LIMITDN_BUFFER | STATUS |\n|---|---|---|---|\n| ADA-EUR | 1.06% | -0.05% | warning |\n| AERGO-EUR | 1.89% | -8.10% | warning |\n| BICO-EUR | 1.19% | -7.70% | warning |\n| HUMA-EUR | 4.27% | -0.36% | warning |\n| ILV-EUR | 1.95% | -5.60% | warning |\n| JTO-EUR | 2.25% | -0.29% | warning |\n| METIS-EUR | 1.98% | -4.25% | warning |\n| XLM-EUR | 2.66% | -0.57% | warning |\n| ALLO-TRY | 3.75% | -0.16% | warning |\n| FET-TRY | 3.52% | -0.05% | warning |\n| XAUT-TRY | 1.28% | -0.27% | warning |\n| DGB-USD | 1.67% | -0.51% | warning |\n| FET-USD | 3.48% | -0.04% | warning |\n| HUMA-USD | 4.42% | -0.38% | warning |\n| PAXG-USD | 1.28% | -0.30% | warning |\n| STORJ-USD | -0.03% | 0.61% | warning |\n| ZENT-USD | 1.34% | -0.31% | warning |\n| ADA-USDT | 1.11% | -0.09% | warning |\n| DGB-USDT | 1.84% | -0.28% | warning |\n| HUMA-USDT | 4.54% | -0.29% | warning |\n| JOE-USDT | 1.95% | -0.36% | warning |\n| LRC-USDT | -0.41% | 2.40% | warning |\n| MON-USDT | 1.19% | -4.77% | warning |\n| ONT-USDT | 2.71% | -0.70% | warning |\n| PAXG-USDT | 1.33% | -0.30% | warning |\n| XAUT-USDT | 1.31% | -0.28% | warning |\n| XLM-USDT | 2.70% | -0.56% | warning |\n| HUMA-USDC | 4.39% | -0.44% | warning |\n| XAU-USD_UM-SWAP | 1.31% | -0.29% | warning |\n| HUMA-USDT-SWAP | 4.47% | -0.17% | warning |\n| LIGHT-USDT-SWAP | -0.33% | 4.68% | warning |\n| TAO-USDT-SWAP | 3.71% | -0.47% | warning |\n| XAU-USDT-SWAP | 1.31% | -0.27% | warning |\n\n## Rule 2: Asymmetric Basis\nAll instruments passed.\n\n## Rule 3: Asset-Type Consistency\n10 issue(s) found.\n\n| INSTRUMENT | CURRENT Y | CURRENT Z | EXPECTED Y | EXPECTED Z | STATUS |\n|---|---|---|---|---|---|\n| BTC-USD-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD-260925 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260327 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260403 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USDT-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USDT-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n\n## Rule 4: Z Cap <= Y Cap\nAll instruments passed.\n",
+      "markdown": "# Price Limit Review\n\n**Generated:** 2026-03-26T17:25:54.791666+00:00  \n**Status:** critical  \n**Instruments scanned:** 1498  \n**EMA coverage:** 1472  \n\n**Total issues found:** 43\n\n## Rule 1: Buffer Too Tight\n33 issue(s) found.\n\n| INSTRUMENT | LIMITUP_BUFFER | LIMITDN_BUFFER | STATUS |\n|---|---|---|---|\n| ADA-EUR | 1.06% | -0.05% | warning |\n| AERGO-EUR | 1.89% | -8.10% | warning |\n| BICO-EUR | 1.19% | -7.70% | warning |\n| HUMA-EUR | 4.27% | -0.36% | warning |\n| ILV-EUR | 1.95% | -5.60% | warning |\n| JTO-EUR | 2.25% | -0.29% | warning |\n| METIS-EUR | 1.98% | -4.25% | warning |\n| XLM-EUR | 2.66% | -0.57% | warning |\n| ALLO-TRY | 3.75% | -0.16% | warning |\n| FET-TRY | 3.52% | -0.05% | warning |\n| XAUT-TRY | 1.28% | -0.27% | warning |\n| DGB-USD | 1.67% | -0.51% | warning |\n| FET-USD | 3.48% | -0.04% | warning |\n| HUMA-USD | 4.42% | -0.38% | warning |\n| PAXG-USD | 1.28% | -0.30% | warning |\n| STORJ-USD | -0.03% | 0.61% | warning |\n| ZENT-USD | 1.34% | -0.31% | warning |\n| ADA-USDT | 1.11% | -0.09% | warning |\n| DGB-USDT | 1.84% | -0.28% | warning |\n| HUMA-USDT | 4.54% | -0.29% | warning |\n| JOE-USDT | 1.95% | -0.36% | warning |\n| LRC-USDT | -0.41% | 2.40% | warning |\n| MON-USDT | 1.19% | -4.77% | warning |\n| ONT-USDT | 2.71% | -0.70% | warning |\n| PAXG-USDT | 1.33% | -0.30% | warning |\n| XAUT-USDT | 1.31% | -0.28% | warning |\n| XLM-USDT | 2.70% | -0.56% | warning |\n| HUMA-USDC | 4.39% | -0.44% | warning |\n| XAU-USD_UM-SWAP | 1.31% | -0.29% | warning |\n| HUMA-USDT-SWAP | 4.47% | -0.17% | warning |\n| LIGHT-USDT-SWAP | -0.33% | 4.68% | warning |\n| TAO-USDT-SWAP | 3.71% | -0.47% | warning |\n| XAU-USDT-SWAP | 1.31% | -0.27% | warning |\n\n## Rule 2: Asymmetric Basis\nAll instruments passed.\n\n## Rule 3: Asset-Type Consistency\n10 issue(s) found.\n\n| INSTRUMENT | CURRENT Y | CURRENT Z | EXPECTED Y | EXPECTED Z | STATUS |\n|---|---|---|---|---|---|\n| BTC-USD-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD-260925 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260327 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260403 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USDT-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USDT-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n\n## Rule 4: Z Cap <= Y Cap\nAll instruments passed.\n",
       "error": null,
       "source_document": null,
       "suspicious_users": [],
@@ -1296,7 +1450,7 @@
         "ema_coverage": 0,
         "issues_found": 0,
         "source": "n/a",
-        "generated_at": "2026-03-26T17:07:31.050550+00:00"
+        "generated_at": "2026-03-26T17:26:14.892346+00:00"
       },
       "metric_cards": [
         {
@@ -1336,7 +1490,7 @@
         "ema_coverage": 0,
         "issues_found": 0,
         "source": "n/a",
-        "generated_at": "2026-03-26T17:07:31.050562+00:00"
+        "generated_at": "2026-03-26T17:26:14.892359+00:00"
       },
       "metric_cards": [
         {
