@@ -2,7 +2,7 @@ name: Daily Parameter Review
 
 on:
   schedule:
-    - cron: '0 1 * * *'    # 09:00 HKT — morning review (best-effort EMA)
+    - cron: '0 1 * * *'    # 09:00 HKT — morning review (no Lark)
   workflow_dispatch:
 
 permissions:

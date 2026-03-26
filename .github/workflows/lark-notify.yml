@@ -1,14 +1,21 @@
-name: Lark Daily Summary
+name: Afternoon Review + Lark
 
 on:
   schedule:
-    - cron: '30 8 * * *'   # 16:30 HKT — send Lark summary of latest report
+    - cron: '30 8 * * *'   # 16:30 HKT — full review + deploy + Lark
   workflow_dispatch:
 
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-review
+  cancel-in-progress: true
+
 jobs:
-  notify:
+  review:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 30
 
     steps:
       - uses: actions/checkout@v4
@@ -17,5 +24,20 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Send Lark notification from latest report
-        run: python -m runner.notify_lark
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Collect EMA data (15 min)
+        run: python -m runner.ema_collector --timeout 900
+        continue-on-error: true
+
+      - name: Generate daily report + send Lark
+        run: python -m runner.main
+
+      - name: Commit and push report data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/data/
+          git diff --cached --quiet || git commit -m "Daily review $(date -u +%Y-%m-%d)"
+          git push
