@@ -976,45 +976,38 @@ function renderUserProfiles(chapter) {
   </div>`
 }
 
-function renderChainLink(link, index) {
-  const typeColors = {
-    '远因': '#6b7280', '近因': '#2563eb', '触发条件': '#d97706',
-    '触发事件': '#dc2626', '一阶效应': '#ea580c', '二阶效应': '#c2410c', '三阶效应': '#9a3412',
-  }
-  const color = typeColors[link.type] || '#6b7280'
+function renderChainLink(link) {
   const stars = '\u2605'.repeat(link.evidence_strength) + '\u2606'.repeat(5 - link.evidence_strength)
 
-  // Detailed expansion for each chain link
   let detailHtml = ''
   if (link.detail) {
-    detailHtml += `<div class="chain-detail-text">${esc(link.detail)}</div>`
+    detailHtml += `<div class="cl-detail">${esc(link.detail)}</div>`
   }
   if (link.evidence_table) {
     const et = link.evidence_table
-    detailHtml += `<div class="chain-evidence-block">
-      <div class="chain-evidence-title">${esc(et.title || 'P0 Evidence')}</div>
+    detailHtml += `<div class="cl-evidence">
+      <div class="cl-evidence-label">${esc(et.title || 'Evidence')}</div>
       <div class="table-wrap"><table class="data-table">
         <thead><tr>${et.headers.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead>
         <tbody>${(et.rows || []).map(row => `<tr>${row.map(c => `<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody>
       </table></div>
-      ${et.source ? `<div class="chain-evidence-source">${esc(et.source)}</div>` : ''}
+      ${et.source ? `<div class="cl-source">${esc(et.source)}</div>` : ''}
     </div>`
   }
   if (link.risk_assessment) {
-    detailHtml += `<div class="chain-risk-assessment">${esc(link.risk_assessment)}</div>`
+    detailHtml += `<div class="cl-assessment">${esc(link.risk_assessment)}</div>`
   }
 
-  return `<div class="chain-link chain-link--${link.type === '\u89e6\u53d1\u4e8b\u4ef6' ? 'trigger' : 'default'}">
-    <div class="chain-link-header">
-      <span class="chain-link-num" style="background:${color}">${link.step}</span>
-      <span class="chain-link-name">${esc(link.name)}</span>
-      <span class="chain-type-pill" style="color:${color};border-color:${color}">${esc(link.type)}</span>
-      <span class="chain-stars-inline">${stars}</span>
-      <span class="chain-evidence-label">${esc(link.evidence_label)}</span>
-    </div>
-    <div class="chain-link-desc">${esc(link.description)}</div>
-    ${detailHtml}
-  </div>`
+  return `<tr class="cl-row">
+    <td class="cl-step">${link.step}</td>
+    <td class="cl-type">${esc(link.type)}</td>
+    <td>
+      <div class="cl-name">${esc(link.name)}</div>
+      <div class="cl-desc">${esc(link.description)}</div>
+      ${detailHtml}
+    </td>
+    <td class="cl-stars">${stars}<br><span class="cl-stars-label">${esc(link.evidence_label)}</span></td>
+  </tr>`
 }
 
 function renderEventAnalyses(chapter) {
@@ -1025,34 +1018,36 @@ function renderEventAnalyses(chapter) {
     <div class="section-block-title">${T('eventAnalysis') || 'Event Analysis'}</div>
     ${events.map(event => {
       const snap = event.market_snapshot || {}
-      const snapHtml = snap.price ? `
-        <div class="event-market-snapshot">
-          <div class="event-snap-card"><div class="event-snap-value">\$${esc(snap.price)}</div><div class="event-snap-label">PRICE</div></div>
-          <div class="event-snap-card"><div class="event-snap-value">${esc(snap.change_24h)}</div><div class="event-snap-label">24H</div></div>
-          <div class="event-snap-card"><div class="event-snap-value">${parseFloat(snap.funding_rate) ? (parseFloat(snap.funding_rate) * 100).toFixed(3) + '%' : '\u2014'}</div><div class="event-snap-label">FUNDING</div></div>
-          <div class="event-snap-card"><div class="event-snap-value">${parseFloat(snap.open_interest) ? (parseFloat(snap.open_interest)/1000).toFixed(0) + 'K' : '\u2014'}</div><div class="event-snap-label">OI</div></div>
+      const snapCards = snap.price ? `
+        <div class="ev-metrics">
+          <div class="ev-metric"><span class="ev-metric-val">\$${esc(snap.price)}</span><span class="ev-metric-lbl">PRICE</span></div>
+          <div class="ev-metric"><span class="ev-metric-val">${esc(snap.change_24h)}</span><span class="ev-metric-lbl">24H</span></div>
+          <div class="ev-metric"><span class="ev-metric-val">${parseFloat(snap.funding_rate) ? (parseFloat(snap.funding_rate) * 100).toFixed(3) + '%' : '\u2014'}</span><span class="ev-metric-lbl">FUNDING</span></div>
+          <div class="ev-metric"><span class="ev-metric-val">${parseFloat(snap.open_interest) ? (parseFloat(snap.open_interest)/1000).toFixed(0) + 'K' : '\u2014'}</span><span class="ev-metric-lbl">OI</span></div>
         </div>` : ''
 
-      const chainHtml = (event.causal_chain || []).map((link, i) => renderChainLink(link, i)).join('')
+      const chainRows = (event.causal_chain || []).map(link => renderChainLink(link)).join('')
 
-      return `<details class="event-analysis event-analysis--${event.severity}" id="event-${esc(event.asset)}" open>
-        <summary class="event-collapse-header">
-          <div class="event-header-left">
-            <h3 class="event-asset">${esc(event.asset)}</h3>
+      return `<details class="ev-card" id="event-${esc(event.asset)}" open>
+        <summary class="ev-header">
+          <div class="ev-header-left">
+            <span class="ev-asset">${esc(event.asset)}</span>
             ${statusPill(event.severity)}
           </div>
           <span class="chapter-collapse-chevron" aria-hidden="true">${ICONS.chevron}</span>
         </summary>
-        <div class="event-collapse-body">
-          ${snapHtml}
-          <div class="event-summary-box">
-            <p>${esc(event.executive_summary)}</p>
-          </div>
-          ${event.forward_looking ? `<div class="event-forward">${esc(event.forward_looking)}</div>` : ''}
-          ${chainHtml ? `<div class="event-chain-section">
-            <div class="event-chain-title">${T('causalChainDetail') || '\u56e0\u679c\u94fe\u6761\u8be6\u6790'}</div>
-            ${chainHtml}
-          </div>` : ''}
+        <div class="ev-body">
+          ${snapCards}
+          <div class="ev-summary">${esc(event.executive_summary)}</div>
+          ${event.forward_looking ? `<div class="ev-outlook"><strong>${T('forwardLooking') || 'Outlook'}:</strong> ${esc(event.forward_looking)}</div>` : ''}
+          ${chainRows ? `
+            <div class="ev-chain-header">${T('causalChain') || 'Causal Chain'}</div>
+            <div class="table-wrap">
+              <table class="data-table ev-chain-table">
+                <thead><tr><th>#</th><th>${T('chainType') || 'TYPE'}</th><th>${T('chainDetail') || 'DETAIL'}</th><th>${T('chainEvidence') || 'EVIDENCE'}</th></tr></thead>
+                <tbody>${chainRows}</tbody>
+              </table>
+            </div>` : ''}
         </div>
       </details>`
     }).join('')}
