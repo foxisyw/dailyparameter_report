@@ -19,6 +19,7 @@ from .risk_intel_utils import (
     hkt_date_str,
     parse_json_file,
     risk_intel_payload,
+    validate_profiles_complete,
 )
 
 
@@ -57,6 +58,21 @@ def main() -> int:
         return 0
 
     chapter = build_risk_intel_chapter(snapshot, date_str)
+
+    # Validate that all user profiles are complete
+    suspicious = chapter.get("suspicious_users", [])
+    profiles = snapshot.get("profiles", {})
+    errors = validate_profiles_complete(profiles, suspicious)
+    if errors:
+        _log("=" * 60)
+        _log("WARNING: INCOMPLETE USER PROFILES DETECTED")
+        _log("You MUST query these users via Data Query MCP before proceeding.")
+        _log("See DAILY_REPORT_RUNBOOK.md for the complete steps.")
+        _log("-" * 60)
+        for err in errors:
+            _log(f"  !! {err}")
+        _log("=" * 60)
+
     payload = risk_intel_payload(chapter, date_str)
     if args.dry_run:
         print(json.dumps(payload, indent=2, ensure_ascii=False))
@@ -67,6 +83,8 @@ def main() -> int:
     out_path = out_dir / "risk-intel.json"
     out_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False))
     _log(f"Saved {out_path} ({source_kind})")
+    users_ok = len(suspicious) - len(errors)
+    _log(f"Profile validation: {users_ok}/{len(suspicious)} users complete")
     return 0
 
 

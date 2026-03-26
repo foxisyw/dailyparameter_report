@@ -421,6 +421,27 @@ def fallback_profile(user: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def validate_profiles_complete(profiles: dict[str, Any], suspicious_users: list[dict[str, Any]]) -> list[str]:
+    """Check that all top-5 suspicious users have real profile data.
+    Returns list of error messages. Empty list = all good."""
+    errors: list[str] = []
+    for user in suspicious_users[:5]:
+        uid = user.get("uid", "")
+        mid = user.get("master_user_id", "")
+        lookup = profiles.get(uid) or profiles.get(mid)
+        label = uid or mid or "unknown"
+        if lookup is None:
+            errors.append(f"User {label}: NO profile data at all. Must query via Data Query MCP.")
+            continue
+        dims = lookup.get("dimensions", [])
+        filled = sum(1 for d in dims if d.get("severity") not in ("pending", None, ""))
+        if filled < 4:
+            errors.append(f"User {label}: Only {filled}/8 dimensions filled. Need at least 4 real dimensions.")
+        if not lookup.get("executive_summary") or "pending" in lookup.get("executive_summary", "").lower():
+            errors.append(f"User {label}: executive_summary is missing or pending.")
+    return errors
+
+
 def build_user_profiles(
     suspicious_users: list[dict[str, Any]],
     profiles: dict[str, Any],
