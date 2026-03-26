@@ -128,51 +128,6 @@ def build_card(report: dict, chapters: list[dict], date_str: str) -> dict:
             "text": {"tag": "lark_md", "content": f"{_emoji('pending')} **{ch['title']}** \u2014 Pending integration"},
         })
 
-    # ── Recommended Changes table ──
-    for ch in active:
-        rec = ch.get("recommended_changes")
-        if rec and rec.get("rows"):
-            elements.append({"tag": "hr"})
-
-            rec_rows = []
-            for row in rec["rows"][:10]:
-                rec_rows.append({
-                    "instrument": row[0] if len(row) > 0 else "",
-                    "change": row[1] if len(row) > 1 else "",
-                    "reason": row[2] if len(row) > 2 else "",
-                })
-
-            elements.append({
-                "tag": "div",
-                "text": {"tag": "lark_md", "content": "**Recommended Changes**"},
-            })
-
-            elements.append({
-                "tag": "table",
-                "page_size": 10,
-                "row_height": "low",
-                "header_style": {
-                    "text_align": "left",
-                    "text_size": "normal",
-                    "background_style": "grey",
-                    "text_color": "grey",
-                    "bold": True,
-                    "lines": 1,
-                },
-                "columns": [
-                    {"name": "instrument", "display_name": "Instrument", "data_type": "text", "width": "auto"},
-                    {"name": "change", "display_name": "Change", "data_type": "text", "width": "auto"},
-                    {"name": "reason", "display_name": "Reason", "data_type": "text", "width": "auto"},
-                ],
-                "rows": rec_rows,
-            })
-
-            if len(rec["rows"]) > 10:
-                elements.append({
-                    "tag": "div",
-                    "text": {"tag": "lark_md", "content": f"... and {len(rec['rows']) - 10} more"},
-                })
-
     elements.append({"tag": "hr"})
 
     # ── Buttons ──
