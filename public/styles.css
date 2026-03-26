@@ -44,7 +44,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -102,16 +102,16 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   margin: 0 auto;
   padding: 16px 32px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   gap: 16px;
 }
 
 .masthead-brand {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
-  letter-spacing: 3px;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
   color: var(--black);
 }
@@ -122,7 +122,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   margin-top: 2px;
 }
 
-.masthead-right { text-align: right; }
+.masthead-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.masthead-info { text-align: right; }
 
 .masthead-date {
   font-family: var(--font-mono);
@@ -138,23 +144,23 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .lang-toggle {
-  font-family: var(--mono);
+  font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 500;
-  padding: 4px 10px;
-  border: 1px solid var(--gray-300);
+  padding: 6px 12px;
+  border: 1.5px solid var(--gray-300);
   border-radius: var(--radius);
-  color: var(--gray-600);
-  background: var(--gray-100);
+  color: var(--gray-700);
+  background: var(--white);
   cursor: pointer;
   transition: all 0.15s;
-  float: right;
-  margin-bottom: 4px;
+  min-height: 32px;
+  white-space: nowrap;
 }
 .lang-toggle:hover {
-  background: var(--black);
-  color: #fff;
-  border-color: var(--black);
+  background: var(--gray-900);
+  color: var(--white);
+  border-color: var(--gray-900);
 }
 
 /* ==========================================================================
@@ -478,6 +484,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-weight: 700;
   letter-spacing: -0.3px;
   color: var(--black);
+  text-wrap: balance;
 }
 
 .chapter-summary {
@@ -742,10 +749,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-size: 11px;
   font-weight: 600;
   border-radius: var(--radius);
-  min-height: 32px;
-  transition: opacity 0.15s;
+  min-height: 36px;
+  transition: background 0.15s, opacity 0.15s;
 }
-.btn-download:hover { opacity: 0.8; }
+.btn-download:hover { background: var(--gray-800); }
 .btn-download svg { flex-shrink: 0; }
 
 /* ==========================================================================
@@ -822,10 +829,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .masthead-inner {
     flex-direction: column;
     align-items: flex-start;
-    gap: 4px;
+    gap: 8px;
     padding: 12px 16px;
   }
-  .masthead-right { text-align: left; }
+  .masthead-right { width: 100%; justify-content: space-between; }
+  .masthead-info { text-align: left; }
 
   .summary-overview { padding: 20px 16px; }
 
