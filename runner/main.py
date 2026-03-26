@@ -170,7 +170,14 @@ def main():
         _log("Dry run — skipping save")
     else:
         _save_report(chapters, report, date_str)
-        _log("Done.")
+        _log("Report saved.")
+
+        # Send Lark notification
+        from . import lark
+        try:
+            lark.send(report, chapters, date_str)
+        except Exception as exc:
+            _log(f"Lark notification failed (non-fatal): {exc}")
 
     return 0
 
