@@ -1,18 +1,18 @@
 {
   "date": "2026-03-27",
-  "generated_at": "2026-03-26T16:30:30.286072+00:00",
+  "generated_at": "2026-03-26T16:42:55.661129+00:00",
   "chapter": {
     "slug": "risk-intel",
     "title": "Risk Intelligence",
     "render_variant": "risk-intel",
     "status": "critical",
-    "summary": "4 alert types analyzed. 8 flagged alert(s) parsed. 0 suspicious user(s) highlighted.",
+    "summary": "4 alert types analyzed. 8 flagged alert(s) parsed. 5 suspicious user(s) highlighted.",
     "metrics": {
       "instruments_scanned": 8,
       "ema_coverage": 4,
-      "issues_found": 8,
+      "issues_found": 13,
       "source": "每日风控总结 - 2026-03-26 (00:00 - 23:59)",
-      "generated_at": "2026-03-26T16:30:30.286072+00:00"
+      "generated_at": "2026-03-26T16:42:55.661129+00:00"
     },
     "metric_cards": [
       {
@@ -25,11 +25,11 @@
       },
       {
         "label": "Suspicious Users",
-        "value": "0"
+        "value": "5"
       },
       {
         "label": "Highest Risk",
-        "value": "T1"
+        "value": "T3"
       }
     ],
     "rule_blocks": [
@@ -152,7 +152,7 @@
     ],
     "recommended_changes": null,
     "downloads": [],
-    "markdown": "# Risk Intelligence\n\n**Summary:** 4 alert types analyzed. 8 flagged alert(s) parsed. 0 suspicious user(s) highlighted.\n**Source document:** 每日风控总结 - 2026-03-26 (00:00 - 23:59)\n\n## Suspicious Users\nNo suspicious users highlighted.\n\n## Deep Profiles\nNo user profiles generated.",
+    "markdown": "# Risk Intelligence\n\n**Summary:** 4 alert types analyzed. 8 flagged alert(s) parsed. 5 suspicious user(s) highlighted.\n**Source document:** 每日风控总结 - 2026-03-26 (00:00 - 23:59)\n\n## Suspicious Users\n- 567363952641225083 — T3 — Short position on PROVE-USDT-SWAP during OI limit breach (101.34%). Equity 2.78 USDT vs 583K trade volume.\n- 55313534 — T2 — Long position on PROVE-USDT-SWAP during 327% OI deviation event.\n- 55313824 — T2 — Long position on PROVE-USDT-SWAP opened during OI spike. Recent account (Mar 24).\n- 56099401 — T2 — Long position on PROVE-USDT-SWAP during OI limit breach.\n- 57074168 — T1 — Long-term PROVE position holder since Jan 2026. Lower risk but monitoring recommended.\n\n## Deep Profiles\n- 567363952641225083 — T3 — Tanzania-registered user with PROVE-USDT-SWAP short position. Account age ~2 years. KYC level 2. Trade volume 583K USDT but current equity only 2.78 USDT — significant drawdown or withdrawal pattern. First deposit 2 months after registration.\n- 55313534 — T2 — Profile data not generated in this environment.\n- 55313824 — T2 — Profile data not generated in this environment.\n- 56099401 — T2 — Profile data not generated in this environment.\n- 57074168 — T1 — Profile data not generated in this environment.",
     "error": null,
     "source_document": {
       "title": "每日风控总结 - 2026-03-26 (00:00 - 23:59)",
@@ -160,7 +160,403 @@
       "modified_at": "2026-03-26T20:23:00+08:00",
       "selected_by": "latest_modified_desc"
     },
-    "suspicious_users": [],
-    "user_profiles": []
+    "suspicious_users": [
+      {
+        "uid": "567363952641225083",
+        "master_user_id": "55121114",
+        "risk_tier": "T3",
+        "source_alert": "platform_oi",
+        "reason": "Short position on PROVE-USDT-SWAP during OI limit breach (101.34%). Equity 2.78 USDT vs 583K trade volume.",
+        "mentions": 1,
+        "first_seen": 0
+      },
+      {
+        "uid": "",
+        "master_user_id": "55313534",
+        "risk_tier": "T2",
+        "source_alert": "platform_oi",
+        "reason": "Long position on PROVE-USDT-SWAP during 327% OI deviation event.",
+        "mentions": 1,
+        "first_seen": 1
+      },
+      {
+        "uid": "",
+        "master_user_id": "55313824",
+        "risk_tier": "T2",
+        "source_alert": "platform_oi",
+        "reason": "Long position on PROVE-USDT-SWAP opened during OI spike. Recent account (Mar 24).",
+        "mentions": 1,
+        "first_seen": 2
+      },
+      {
+        "uid": "",
+        "master_user_id": "56099401",
+        "risk_tier": "T2",
+        "source_alert": "platform_oi",
+        "reason": "Long position on PROVE-USDT-SWAP during OI limit breach.",
+        "mentions": 1,
+        "first_seen": 3
+      },
+      {
+        "uid": "",
+        "master_user_id": "57074168",
+        "risk_tier": "T1",
+        "source_alert": "platform_oi",
+        "reason": "Long-term PROVE position holder since Jan 2026. Lower risk but monitoring recommended.",
+        "mentions": 1,
+        "first_seen": 4
+      }
+    ],
+    "user_profiles": [
+      {
+        "uid": "567363952641225083",
+        "master_user_id": "55121114",
+        "overall_risk_tier": "T3",
+        "executive_summary": "Tanzania-registered user with PROVE-USDT-SWAP short position. Account age ~2 years. KYC level 2. Trade volume 583K USDT but current equity only 2.78 USDT — significant drawdown or withdrawal pattern. First deposit 2 months after registration.",
+        "dimensions": [
+          {
+            "name": "Registration Profile",
+            "severity": "warning",
+            "signals": [
+              "Registration to first deposit: 61 days — unusual delay",
+              "KYC nationality: Tanzania — not a common trading jurisdiction"
+            ]
+          },
+          {
+            "name": "Trading Behavior",
+            "severity": "critical",
+            "signals": [
+              "Concentrated on PROVE-USDT-SWAP (high-risk OI asset)",
+              "Short position during 327% OI deviation event",
+              "Trade volume 583K vs equity 2.78 — extreme leverage or drawdown"
+            ]
+          },
+          {
+            "name": "Associated Accounts",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "IP & Geolocation",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "Identity Signals",
+            "severity": "warning",
+            "signals": [
+              "KYC level 2 from Tanzania",
+              "Regular user account (non-market-maker)"
+            ]
+          },
+          {
+            "name": "Profit & Loss",
+            "severity": "critical",
+            "signals": [
+              "Trade volume 583K USDT but current equity only 2.78 USDT",
+              "Near-total equity depletion suggests liquidation or withdrawal"
+            ]
+          },
+          {
+            "name": "Withdrawal Behavior",
+            "severity": "pending",
+            "signals": [
+              "Pending deposit/withdrawal data query."
+            ]
+          },
+          {
+            "name": "Comprehensive Judgment",
+            "severity": "critical",
+            "signals": [
+              "High-risk position on PROVE during OI limit breach",
+              "Extreme equity vs volume mismatch",
+              "Non-standard jurisdiction + delayed KYC pattern"
+            ]
+          }
+        ],
+        "key_evidence": [
+          "PROVE OI at 101.34% of platform limit (breach)",
+          "User holds short position on PROVE-USDT-SWAP",
+          "Current equity 2.78 USDT vs 583K trade volume"
+        ],
+        "local_artifact_ref": ""
+      },
+      {
+        "uid": "",
+        "master_user_id": "55313534",
+        "overall_risk_tier": "T2",
+        "executive_summary": "Profile data not generated in this environment.",
+        "dimensions": [
+          {
+            "name": "Registration Profile",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "Trading Behavior",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "Associated Accounts",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "IP & Geolocation",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "Identity Signals",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "Profit & Loss",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "Withdrawal Behavior",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "Comprehensive Judgment",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          }
+        ],
+        "key_evidence": [
+          "Long position on PROVE-USDT-SWAP during 327% OI deviation event."
+        ],
+        "local_artifact_ref": ""
+      },
+      {
+        "uid": "",
+        "master_user_id": "55313824",
+        "overall_risk_tier": "T2",
+        "executive_summary": "Profile data not generated in this environment.",
+        "dimensions": [
+          {
+            "name": "Registration Profile",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "Trading Behavior",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "Associated Accounts",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "IP & Geolocation",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "Identity Signals",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "Profit & Loss",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "Withdrawal Behavior",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "Comprehensive Judgment",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          }
+        ],
+        "key_evidence": [
+          "Long position on PROVE-USDT-SWAP opened during OI spike. Recent account (Mar 24)."
+        ],
+        "local_artifact_ref": ""
+      },
+      {
+        "uid": "",
+        "master_user_id": "56099401",
+        "overall_risk_tier": "T2",
+        "executive_summary": "Profile data not generated in this environment.",
+        "dimensions": [
+          {
+            "name": "Registration Profile",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "Trading Behavior",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "Associated Accounts",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "IP & Geolocation",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "Identity Signals",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "Profit & Loss",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "Withdrawal Behavior",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "Comprehensive Judgment",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          }
+        ],
+        "key_evidence": [
+          "Long position on PROVE-USDT-SWAP during OI limit breach."
+        ],
+        "local_artifact_ref": ""
+      },
+      {
+        "uid": "",
+        "master_user_id": "57074168",
+        "overall_risk_tier": "T1",
+        "executive_summary": "Profile data not generated in this environment.",
+        "dimensions": [
+          {
+            "name": "Registration Profile",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "Trading Behavior",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "Associated Accounts",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "IP & Geolocation",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "Identity Signals",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "Profit & Loss",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "Withdrawal Behavior",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          },
+          {
+            "name": "Comprehensive Judgment",
+            "severity": "pending",
+            "signals": [
+              "Pending local Claude Code risk profiling output."
+            ]
+          }
+        ],
+        "key_evidence": [
+          "Long-term PROVE position holder since Jan 2026. Lower risk but monitoring recommended."
+        ],
+        "local_artifact_ref": ""
+      }
+    ]
   }
 }

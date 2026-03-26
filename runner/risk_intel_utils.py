@@ -493,6 +493,10 @@ def build_risk_intel_chapter(input_data: dict[str, Any], date_str: str) -> dict[
         rule_blocks.append(block)
         candidates.extend(extracted)
 
+    # Merge candidates from document parsing with explicit overrides from MCP queries
+    override_users = input_data.get("suspicious_users_override", [])
+    candidates.extend(override_users)
+
     suspicious_users = aggregate_suspicious_users(candidates, profiles)
     user_profiles = build_user_profiles(suspicious_users, profiles)
 
