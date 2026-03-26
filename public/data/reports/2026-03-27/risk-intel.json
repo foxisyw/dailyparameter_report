@@ -1,0 +1,166 @@
+{
+  "date": "2026-03-27",
+  "generated_at": "2026-03-26T16:30:30.286072+00:00",
+  "chapter": {
+    "slug": "risk-intel",
+    "title": "Risk Intelligence",
+    "render_variant": "risk-intel",
+    "status": "critical",
+    "summary": "4 alert types analyzed. 8 flagged alert(s) parsed. 0 suspicious user(s) highlighted.",
+    "metrics": {
+      "instruments_scanned": 8,
+      "ema_coverage": 4,
+      "issues_found": 8,
+      "source": "每日风控总结 - 2026-03-26 (00:00 - 23:59)",
+      "generated_at": "2026-03-26T16:30:30.286072+00:00"
+    },
+    "metric_cards": [
+      {
+        "label": "Alert Types",
+        "value": "4"
+      },
+      {
+        "label": "Flagged Alerts",
+        "value": "8"
+      },
+      {
+        "label": "Suspicious Users",
+        "value": "0"
+      },
+      {
+        "label": "Highest Risk",
+        "value": "T1"
+      }
+    ],
+    "rule_blocks": [
+      {
+        "ruleId": "index_alarm",
+        "title": "Index Alarm",
+        "status": "warning",
+        "description": "主要集中在两类问题：多指数成分不足（XPT-USDT、XAG-USDT、XPD-USDT、XCU-USDT、CL-USDT、YFI-USDT、TRUST-USDT、GLM-USDT、UMA-USDT、ORCL-USDT、NFLX-USDT、AZTEC-USDT、WET-USDT、AMD-USDT、EWJ-USDT等）以及 OKX mid price 获取失败（涉及 EUR、TRY 报价的多交易对，含 CRO-TRY、CC-TRY、PROVE-EUR 等）。成分不足部分与非交易时段/数据源离线特征相符，mid price 失败为短时集中且未见大规模爆发，整体为🟠中风险但需避免指数缺失扩散。",
+        "table": {
+          "headers": [
+            "ASSET",
+            "DETAILS",
+            "USERS",
+            "STATUS"
+          ],
+          "rows": [
+            [
+              "XPT-USDT",
+              "主要集中在两类问题：多指数成分不足（XPT-USDT、XAG-USDT、XPD-USDT、XCU-USDT、CL-USDT、YFI-USDT、TRUST-USDT、GLM-USDT、UMA-USDT、ORCL-USDT、NFLX-USDT、AZTEC-USDT、WET-USDT、AMD-USDT、EWJ-USDT等）以及 OKX mid price 获取失败（涉及 EUR、TRY 报价的多交易对，含 CRO-TRY、CC-TRY、PROVE-EUR 等）。成分不足部分与非交易时段/数据源离线特征相符，mid price 失败为短时集中且未见大规模爆发，整体为🟠中风险但需避免指数缺失扩散。",
+              "—",
+              "warning"
+            ]
+          ]
+        },
+        "note": null
+      },
+      {
+        "ruleId": "price_limit_p4",
+        "title": "Price Limit P4",
+        "status": "critical",
+        "description": "🔴 XAU-USD_UM-SWAP 出现 price up restricted，Limitup 由 Z cap 硬顶触发且触发频率 55%，用户可能面临无法正常交易/平仓风险。 🟠 TEST11-USDT-SWAP 出现双边流动性不足（Y cap 触发），Best Ask 偏离指数 +2.27%、Best Bid 偏离 -8.18%。",
+        "table": {
+          "headers": [
+            "ASSET",
+            "DETAILS",
+            "USERS",
+            "STATUS"
+          ],
+          "rows": [
+            [
+              "XAU-USD_UM-SWAP",
+              "🔴 XAU-USD_UM-SWAP 出现 price up restricted，Limitup 由 Z cap 硬顶触发且触发频率 55%，用户可能面临无法正常交易/平仓风险。",
+              "—",
+              "critical"
+            ],
+            [
+              "TEST11-USDT-SWAP",
+              "🟠 TEST11-USDT-SWAP 出现双边流动性不足（Y cap 触发），Best Ask 偏离指数 +2.27%、Best Bid 偏离 -8.18%。",
+              "—",
+              "warning"
+            ]
+          ]
+        },
+        "note": null
+      },
+      {
+        "ruleId": "collateral_coin",
+        "title": "Collateral Coin Risk",
+        "status": "warning",
+        "description": "Summarizes borrow-limit pressure and collateral restrictions.",
+        "table": {
+          "headers": [
+            "ASSET",
+            "DETAILS",
+            "USERS",
+            "STATUS"
+          ],
+          "rows": [
+            [
+              "Collateral Coin Risk",
+              "✅ 本日无异常，建议定期review相关参数",
+              "—",
+              "pass"
+            ]
+          ]
+        },
+        "note": null
+      },
+      {
+        "ruleId": "platform_oi",
+        "title": "Platform OI",
+        "status": "critical",
+        "description": "🔴 PROVE 同时出现两类高风险：OI/平台限额占比 101.34%（阈值80%）已超限，且 OI较24H均值偏离 327.12%（阈值20%）为剧烈变化。 🟠 PIPPIN 的 OI较24H均值偏离 52.01%（阈值20%），为中风险短期异动。",
+        "table": {
+          "headers": [
+            "ASSET",
+            "DETAILS",
+            "USERS",
+            "STATUS"
+          ],
+          "rows": [
+            [
+              "PROVE",
+              "🔴 PROVE 同时出现两类高风险：OI/平台限额占比 101.34%（阈值80%）已超限，且 OI较24H均值偏离 327.12%（阈值20%）为剧烈变化。",
+              "—",
+              "critical"
+            ],
+            [
+              "PIPPIN",
+              "🟠 PIPPIN 的 OI较24H均值偏离 52.01%（阈值20%），为中风险短期异动。",
+              "—",
+              "warning"
+            ],
+            [
+              "Platform OI",
+              "① 【紧急】建议对 PROVE 立即评估临时下调合约限额/限制新增开仓。",
+              "—",
+              "warning"
+            ],
+            [
+              "Platform OI",
+              "② 关注 PIPPIN 的 OI、资金费率与价格联动是否继续放大。",
+              "—",
+              "warning"
+            ]
+          ]
+        },
+        "note": null
+      }
+    ],
+    "recommended_changes": null,
+    "downloads": [],
+    "markdown": "# Risk Intelligence\n\n**Summary:** 4 alert types analyzed. 8 flagged alert(s) parsed. 0 suspicious user(s) highlighted.\n**Source document:** 每日风控总结 - 2026-03-26 (00:00 - 23:59)\n\n## Suspicious Users\nNo suspicious users highlighted.\n\n## Deep Profiles\nNo user profiles generated.",
+    "error": null,
+    "source_document": {
+      "title": "每日风控总结 - 2026-03-26 (00:00 - 23:59)",
+      "url": "https://okg-block.sg.larksuite.com/docx/PUokdsz43ot8lHxxQGLlZnEEgLV",
+      "modified_at": "2026-03-26T20:23:00+08:00",
+      "selected_by": "latest_modified_desc"
+    },
+    "suspicious_users": [],
+    "user_profiles": []
+  }
+}
