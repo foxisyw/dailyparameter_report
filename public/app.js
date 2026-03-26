@@ -1440,7 +1440,8 @@ function renderAll(data) {
 
 async function init() {
   availableDates = await loadDates()
-  if (!availableDates.includes(currentDate)) currentDate = availableDates[0]
+  // Always default to the latest (most recent) date
+  currentDate = availableDates[0] || currentDate
   currentReport = await loadReport(currentDate)
   renderAll(currentReport)
 }
