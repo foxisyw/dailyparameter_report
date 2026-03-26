@@ -1,18 +1,18 @@
 {
   "date": "2026-03-27",
-  "generated_at": "2026-03-26T16:58:02.057781+00:00",
+  "generated_at": "2026-03-26T17:07:08.275595+00:00",
   "chapter": {
     "slug": "risk-intel",
     "title": "Risk Intelligence",
     "render_variant": "risk-intel",
     "status": "critical",
-    "summary": "4 alert types analyzed. 8 flagged alert(s) parsed. 4 suspicious user(s) highlighted.",
+    "summary": "4 alert types analyzed. 8 flagged alert(s) parsed. 5 suspicious user(s) highlighted.",
     "metrics": {
       "instruments_scanned": 8,
       "ema_coverage": 4,
-      "issues_found": 12,
+      "issues_found": 13,
       "source": "每日风控总结 - 2026-03-26 (00:00 - 23:59)",
-      "generated_at": "2026-03-26T16:58:02.057781+00:00"
+      "generated_at": "2026-03-26T17:07:08.275595+00:00"
     },
     "metric_cards": [
       {
@@ -25,7 +25,7 @@
       },
       {
         "label": "Suspicious Users",
-        "value": "4"
+        "value": "5"
       },
       {
         "label": "Highest Risk",
@@ -152,7 +152,7 @@
     ],
     "recommended_changes": null,
     "downloads": [],
-    "markdown": "# Risk Intelligence\n\n**Summary:** 4 alert types analyzed. 8 flagged alert(s) parsed. 4 suspicious user(s) highlighted.\n**Source document:** 每日风控总结 - 2026-03-26 (00:00 - 23:59)\n\n## Suspicious Users\n- 567363952641225083 — T3 — Tanzania KYC, equity 2.78 vs 583K volume. PROVE short during OI breach.\n- 587896714854817518 — T2 — China KYC3, 1.39M trade volume, equity 12K. PROVE position during OI spike.\n- 592628629130274485 — T2 — China KYC3, 933K volume, equity 310. PROVE position during OI deviation.\n- 603349609385427608 — T2 — China KYC2, 139K volume, equity 207. First trade 14 months after registration.\n\n## Deep Profiles\n- 567363952641225083 — T3 — High-risk user with PROVE position during OI breach. Equity 2.78 USDT vs 583,173 trade volume. KYC 2 from Tanzania.\n- 587896714854817518 — T3 — High-risk user with PROVE position during OI breach. Equity 12,007.96 USDT vs 1,393,650 trade volume. KYC 3 from China.\n- 592628629130274485 — T3 — High-risk user with PROVE position during OI breach. Equity 310.58 USDT vs 933,478 trade volume. KYC 3 from China.\n- 603349609385427608 — T3 — High-risk user with PROVE position during OI breach. Equity 207.56 USDT vs 138,980 trade volume. KYC 2 from China.",
+    "markdown": "# Risk Intelligence\n\n**Summary:** 4 alert types analyzed. 8 flagged alert(s) parsed. 5 suspicious user(s) highlighted.\n**Source document:** 每日风控总结 - 2026-03-26 (00:00 - 23:59)\n\n## Suspicious Users\n- 613832447893504 — T3 — High-risk: China KYC3, equity 11.29 vs 40,658,176 volume. PROVE short, 2 positions (cross+isolated) same day.\n- 43607852442591232 — T3 — High-risk: China KYC3, equity 19.37 vs 56,412,593 volume. PROVE short, opened Mar 26 during OI breach.\n- 214913582327009280 — T3 — High-risk: China KYC3, equity 8.19 vs 10,416,130 volume. PROVE short, opened Mar 26.\n- 4235030822006784 — T3 — High-risk: China KYC3, equity 52.11 vs 62,651,132 volume. Multi-asset: PIPPIN short + XAU short, OG account since 2013.\n- 123317305596850176 — T3 — High-risk: Philippines KYC2, equity 82.97 vs 890,272 volume. PROVE short, 2 positions (Mar 10 + Mar 26), Philippines KYC2.\n\n## Deep Profiles\n- 613832447893504 — T3 — High-risk: China KYC3, equity 11.29 vs 40,658,176 volume. PROVE short, 2 positions (cross+isolated) same day.\n- 43607852442591232 — T3 — High-risk: China KYC3, equity 19.37 vs 56,412,593 volume. PROVE short, opened Mar 26 during OI breach.\n- 214913582327009280 — T3 — High-risk: China KYC3, equity 8.19 vs 10,416,130 volume. PROVE short, opened Mar 26.\n- 4235030822006784 — T3 — High-risk: China KYC3, equity 52.11 vs 62,651,132 volume. Multi-asset: PIPPIN short + XAU short, OG account since 2013.\n- 123317305596850176 — T3 — High-risk: Philippines KYC2, equity 82.97 vs 890,272 volume. PROVE short, 2 positions (Mar 10 + Mar 26), Philippines KYC2.",
     "error": null,
     "source_document": {
       "title": "每日风控总结 - 2026-03-26 (00:00 - 23:59)",
@@ -162,362 +162,465 @@
     },
     "suspicious_users": [
       {
-        "uid": "567363952641225083",
-        "master_user_id": "55121114",
+        "uid": "613832447893504",
+        "master_user_id": "6561979",
         "risk_tier": "T3",
         "source_alert": "platform_oi",
-        "reason": "Tanzania KYC, equity 2.78 vs 583K volume. PROVE short during OI breach.",
+        "reason": "High-risk: China KYC3, equity 11.29 vs 40,658,176 volume. PROVE short, 2 positions (cross+isolated) same day.",
         "mentions": 1,
         "first_seen": 0
       },
       {
-        "uid": "587896714854817518",
-        "master_user_id": "58118002",
-        "risk_tier": "T2",
+        "uid": "43607852442591232",
+        "master_user_id": "7180900",
+        "risk_tier": "T3",
         "source_alert": "platform_oi",
-        "reason": "China KYC3, 1.39M trade volume, equity 12K. PROVE position during OI spike.",
+        "reason": "High-risk: China KYC3, equity 19.37 vs 56,412,593 volume. PROVE short, opened Mar 26 during OI breach.",
         "mentions": 1,
         "first_seen": 1
       },
       {
-        "uid": "592628629130274485",
-        "master_user_id": "59371329",
-        "risk_tier": "T2",
+        "uid": "214913582327009280",
+        "master_user_id": "4335832",
+        "risk_tier": "T3",
         "source_alert": "platform_oi",
-        "reason": "China KYC3, 933K volume, equity 310. PROVE position during OI deviation.",
+        "reason": "High-risk: China KYC3, equity 8.19 vs 10,416,130 volume. PROVE short, opened Mar 26.",
         "mentions": 1,
         "first_seen": 2
       },
       {
-        "uid": "603349609385427608",
-        "master_user_id": "60874759",
-        "risk_tier": "T2",
-        "source_alert": "platform_oi",
-        "reason": "China KYC2, 139K volume, equity 207. First trade 14 months after registration.",
+        "uid": "4235030822006784",
+        "master_user_id": "3337970",
+        "risk_tier": "T3",
+        "source_alert": "price_limit_p4",
+        "reason": "High-risk: China KYC3, equity 52.11 vs 62,651,132 volume. Multi-asset: PIPPIN short + XAU short, OG account since 2013.",
         "mentions": 1,
         "first_seen": 3
+      },
+      {
+        "uid": "123317305596850176",
+        "master_user_id": "10639724",
+        "risk_tier": "T3",
+        "source_alert": "platform_oi",
+        "reason": "High-risk: Philippines KYC2, equity 82.97 vs 890,272 volume. PROVE short, 2 positions (Mar 10 + Mar 26), Philippines KYC2.",
+        "mentions": 1,
+        "first_seen": 4
       }
     ],
     "user_profiles": [
       {
-        "uid": "567363952641225083",
-        "master_user_id": "55121114",
+        "uid": "613832447893504",
+        "master_user_id": "6561979",
         "overall_risk_tier": "T3",
-        "executive_summary": "High-risk user with PROVE position during OI breach. Equity 2.78 USDT vs 583,173 trade volume. KYC 2 from Tanzania.",
+        "executive_summary": "High-risk: China KYC3, equity 11.29 vs 40,658,176 volume. PROVE short, 2 positions (cross+isolated) same day.",
         "dimensions": [
           {
             "name": "Registration Profile",
-            "severity": "warning",
+            "severity": "pass",
             "signals": [
-              "KYC nationality: Tanzania — non-major jurisdiction",
-              "Account registered 2024-04-19, KYC level 2",
-              "Phone area code: +255, region: okx_CIS_MEA_LA",
-              "First deposit on 2024-06-19 (delayed from registration)"
+              "Registered 2017-11-29 via PC, region: okx_CN",
+              "KYC level 3, nationality: China"
             ]
           },
           {
             "name": "Trading Behavior",
             "severity": "critical",
             "signals": [
-              "Total trade volume: 583,173 USDT",
-              "Concentrated on PROVE-USDT-SWAP (flagged OI breach asset)",
-              "Extreme equity/volume ratio: 0.000005 — near-total drawdown or withdrawal"
+              "Total volume: 40,658,176 USDT",
+              "Position: PROVE short, 2 positions (cross+isolated) same day",
+              "CRITICAL equity/volume ratio: 0.000000 — near-total capital loss"
             ]
           },
           {
             "name": "Associated Accounts",
             "severity": "pending",
             "signals": [
-              "Login table access denied (403) — cannot verify device/IP sharing"
+              "Login table (dwd_okx_user_secure_login_df) returned 403 — cannot check device/IP sharing"
             ]
           },
           {
             "name": "IP & Geolocation",
-            "severity": "pending",
-            "signals": [
-              "Registration region: okx_CIS_MEA_LA",
-              "Login history unavailable (table 403)"
-            ]
-          },
-          {
-            "name": "Identity Signals",
-            "severity": "warning",
-            "signals": [
-              "KYC level 2, nationality: Tanzania",
-              "Account type: 普通用户, 普通账户"
-            ]
-          },
-          {
-            "name": "Profit & Loss",
-            "severity": "critical",
-            "signals": [
-              "Current equity: 2.78 USDT",
-              "Total trade volume: 583,173 USDT",
-              "Near-total equity depletion — possible liquidation cascade or complete withdrawal"
-            ]
-          },
-          {
-            "name": "Withdrawal Behavior",
-            "severity": "pending",
-            "signals": [
-              "Last deposit: 2026-03-13",
-              "On-chain deposit/withdrawal data unavailable (table access limitation)"
-            ]
-          },
-          {
-            "name": "Comprehensive Judgment",
-            "severity": "critical",
-            "signals": [
-              "Position on PROVE-USDT-SWAP during OI limit breach (101.34%)",
-              "Extreme equity vs volume mismatch — high priority for investigation",
-              "Fee level: LV1, regular user account"
-            ]
-          }
-        ],
-        "key_evidence": [
-          "PROVE OI at 101.34% of platform limit (breach)",
-          "User holds position on PROVE-USDT-SWAP",
-          "Current equity 2.78 USDT vs 583,173 trade volume"
-        ],
-        "local_artifact_ref": ""
-      },
-      {
-        "uid": "587896714854817518",
-        "master_user_id": "58118002",
-        "overall_risk_tier": "T3",
-        "executive_summary": "High-risk user with PROVE position during OI breach. Equity 12,007.96 USDT vs 1,393,650 trade volume. KYC 3 from China.",
-        "dimensions": [
-          {
-            "name": "Registration Profile",
             "severity": "pass",
-            "signals": [
-              "Account registered 2024-06-15, KYC level 3",
-              "Phone area code: +86, region: okx_Asia"
-            ]
-          },
-          {
-            "name": "Trading Behavior",
-            "severity": "critical",
-            "signals": [
-              "Total trade volume: 1,393,650 USDT",
-              "Concentrated on PROVE-USDT-SWAP (flagged OI breach asset)",
-              "Extreme equity/volume ratio: 0.008616 — near-total drawdown or withdrawal"
-            ]
-          },
-          {
-            "name": "Associated Accounts",
-            "severity": "pending",
-            "signals": [
-              "Login table access denied (403) — cannot verify device/IP sharing"
-            ]
-          },
-          {
-            "name": "IP & Geolocation",
-            "severity": "pending",
-            "signals": [
-              "Registration region: okx_Asia",
-              "Login history unavailable (table 403)"
-            ]
-          },
-          {
-            "name": "Identity Signals",
-            "severity": "pass",
-            "signals": [
-              "KYC level 3, nationality: China",
-              "Account type: 普通用户, 普通账户"
-            ]
-          },
-          {
-            "name": "Profit & Loss",
-            "severity": "critical",
-            "signals": [
-              "Current equity: 12,007.96 USDT",
-              "Total trade volume: 1,393,650 USDT",
-              "Near-total equity depletion — possible liquidation cascade or complete withdrawal"
-            ]
-          },
-          {
-            "name": "Withdrawal Behavior",
-            "severity": "pending",
-            "signals": [
-              "Last deposit: 2026-03-13",
-              "On-chain deposit/withdrawal data unavailable (table access limitation)"
-            ]
-          },
-          {
-            "name": "Comprehensive Judgment",
-            "severity": "critical",
-            "signals": [
-              "Position on PROVE-USDT-SWAP during OI limit breach (101.34%)",
-              "Extreme equity vs volume mismatch — high priority for investigation",
-              "Fee level: LV1, regular user account"
-            ]
-          }
-        ],
-        "key_evidence": [
-          "PROVE OI at 101.34% of platform limit (breach)",
-          "User holds position on PROVE-USDT-SWAP",
-          "Current equity 12,007.96 USDT vs 1,393,650 trade volume"
-        ],
-        "local_artifact_ref": ""
-      },
-      {
-        "uid": "592628629130274485",
-        "master_user_id": "59371329",
-        "overall_risk_tier": "T3",
-        "executive_summary": "High-risk user with PROVE position during OI breach. Equity 310.58 USDT vs 933,478 trade volume. KYC 3 from China.",
-        "dimensions": [
-          {
-            "name": "Registration Profile",
-            "severity": "pass",
-            "signals": [
-              "Account registered 2024-06-28, KYC level 3",
-              "Phone area code: +86, region: Others"
-            ]
-          },
-          {
-            "name": "Trading Behavior",
-            "severity": "critical",
-            "signals": [
-              "Total trade volume: 933,478 USDT",
-              "Concentrated on PROVE-USDT-SWAP (flagged OI breach asset)",
-              "Extreme equity/volume ratio: 0.000333 — near-total drawdown or withdrawal"
-            ]
-          },
-          {
-            "name": "Associated Accounts",
-            "severity": "pending",
-            "signals": [
-              "Login table access denied (403) — cannot verify device/IP sharing"
-            ]
-          },
-          {
-            "name": "IP & Geolocation",
-            "severity": "pending",
-            "signals": [
-              "Registration region: Others",
-              "Login history unavailable (table 403)"
-            ]
-          },
-          {
-            "name": "Identity Signals",
-            "severity": "pass",
-            "signals": [
-              "KYC level 3, nationality: China",
-              "Account type: 普通用户, 普通账户"
-            ]
-          },
-          {
-            "name": "Profit & Loss",
-            "severity": "critical",
-            "signals": [
-              "Current equity: 310.58 USDT",
-              "Total trade volume: 933,478 USDT",
-              "Near-total equity depletion — possible liquidation cascade or complete withdrawal"
-            ]
-          },
-          {
-            "name": "Withdrawal Behavior",
-            "severity": "pending",
-            "signals": [
-              "Last deposit: 2026-02-28",
-              "On-chain deposit/withdrawal data unavailable (table access limitation)"
-            ]
-          },
-          {
-            "name": "Comprehensive Judgment",
-            "severity": "critical",
-            "signals": [
-              "Position on PROVE-USDT-SWAP during OI limit breach (101.34%)",
-              "Extreme equity vs volume mismatch — high priority for investigation",
-              "Fee level: LV1, regular user account"
-            ]
-          }
-        ],
-        "key_evidence": [
-          "PROVE OI at 101.34% of platform limit (breach)",
-          "User holds position on PROVE-USDT-SWAP",
-          "Current equity 310.58 USDT vs 933,478 trade volume"
-        ],
-        "local_artifact_ref": ""
-      },
-      {
-        "uid": "603349609385427608",
-        "master_user_id": "60874759",
-        "overall_risk_tier": "T3",
-        "executive_summary": "High-risk user with PROVE position during OI breach. Equity 207.56 USDT vs 138,980 trade volume. KYC 2 from China.",
-        "dimensions": [
-          {
-            "name": "Registration Profile",
-            "severity": "pass",
-            "signals": [
-              "Account registered 2024-07-28, KYC level 2",
-              "Phone area code: +86, region: okx_CN"
-            ]
-          },
-          {
-            "name": "Trading Behavior",
-            "severity": "critical",
-            "signals": [
-              "Total trade volume: 138,980 USDT",
-              "Concentrated on PROVE-USDT-SWAP (flagged OI breach asset)",
-              "Extreme equity/volume ratio: 0.001493 — near-total drawdown or withdrawal"
-            ]
-          },
-          {
-            "name": "Associated Accounts",
-            "severity": "pending",
-            "signals": [
-              "Login table access denied (403) — cannot verify device/IP sharing"
-            ]
-          },
-          {
-            "name": "IP & Geolocation",
-            "severity": "pending",
             "signals": [
               "Registration region: okx_CN",
-              "Login history unavailable (table 403)"
+              "Phone: +86, KYC nationality: China"
             ]
           },
           {
             "name": "Identity Signals",
             "severity": "pass",
             "signals": [
-              "KYC level 2, nationality: China",
-              "Account type: 普通用户, 普通账户"
+              "KYC level 3, nationality: China",
+              "Account: 普通用户, 普通账户"
             ]
           },
           {
             "name": "Profit & Loss",
             "severity": "critical",
             "signals": [
-              "Current equity: 207.56 USDT",
-              "Total trade volume: 138,980 USDT",
-              "Near-total equity depletion — possible liquidation cascade or complete withdrawal"
+              "Current equity: 11.29 USDT",
+              "Trade volume: 40,658,176 USDT",
+              "First deposit: 76.8 USDT",
+              "Near-total equity depletion — liquidation or complete withdrawal"
             ]
           },
           {
             "name": "Withdrawal Behavior",
-            "severity": "pending",
+            "severity": "warning",
             "signals": [
-              "Last deposit: 2026-02-07",
-              "On-chain deposit/withdrawal data unavailable (table access limitation)"
+              "Last deposit: 2026-03-20",
+              "On-chain data limited (table access restriction)",
+              "Equity depletion suggests possible large withdrawals or liquidation cascade"
             ]
           },
           {
             "name": "Comprehensive Judgment",
             "severity": "critical",
             "signals": [
-              "Position on PROVE-USDT-SWAP during OI limit breach (101.34%)",
-              "Extreme equity vs volume mismatch — high priority for investigation",
-              "Fee level: LV1, regular user account"
+              "Position on PROVE-USDT-SWAP during OI limit breach / Z cap trigger",
+              "CRITICAL: Equity 11.29 vs 40,658,176 volume — investigate for potential manipulation or liquidation cascade",
+              "Fee level: LV1"
             ]
           }
         ],
         "key_evidence": [
-          "PROVE OI at 101.34% of platform limit (breach)",
-          "User holds position on PROVE-USDT-SWAP",
-          "Current equity 207.56 USDT vs 138,980 trade volume"
+          "Position on PROVE-USDT-SWAP during risk event",
+          "Equity 11.29 vs 40,658,176 volume",
+          "KYC: China level 3"
+        ],
+        "local_artifact_ref": ""
+      },
+      {
+        "uid": "43607852442591232",
+        "master_user_id": "7180900",
+        "overall_risk_tier": "T3",
+        "executive_summary": "High-risk: China KYC3, equity 19.37 vs 56,412,593 volume. PROVE short, opened Mar 26 during OI breach.",
+        "dimensions": [
+          {
+            "name": "Registration Profile",
+            "severity": "pass",
+            "signals": [
+              "Registered 2018-01-09 via H5, region: okx_CN",
+              "KYC level 3, nationality: China"
+            ]
+          },
+          {
+            "name": "Trading Behavior",
+            "severity": "critical",
+            "signals": [
+              "Total volume: 56,412,593 USDT",
+              "Position: PROVE short, opened Mar 26 during OI breach",
+              "CRITICAL equity/volume ratio: 0.000000 — near-total capital loss"
+            ]
+          },
+          {
+            "name": "Associated Accounts",
+            "severity": "pending",
+            "signals": [
+              "Login table (dwd_okx_user_secure_login_df) returned 403 — cannot check device/IP sharing"
+            ]
+          },
+          {
+            "name": "IP & Geolocation",
+            "severity": "pass",
+            "signals": [
+              "Registration region: okx_CN",
+              "Phone: +86, KYC nationality: China"
+            ]
+          },
+          {
+            "name": "Identity Signals",
+            "severity": "pass",
+            "signals": [
+              "KYC level 3, nationality: China",
+              "Account: 普通用户, 普通账户"
+            ]
+          },
+          {
+            "name": "Profit & Loss",
+            "severity": "critical",
+            "signals": [
+              "Current equity: 19.37 USDT",
+              "Trade volume: 56,412,593 USDT",
+              "First deposit: 199 USDT",
+              "Near-total equity depletion — liquidation or complete withdrawal"
+            ]
+          },
+          {
+            "name": "Withdrawal Behavior",
+            "severity": "warning",
+            "signals": [
+              "Last deposit: 2026-03-16",
+              "On-chain data limited (table access restriction)",
+              "Equity depletion suggests possible large withdrawals or liquidation cascade"
+            ]
+          },
+          {
+            "name": "Comprehensive Judgment",
+            "severity": "critical",
+            "signals": [
+              "Position on PROVE-USDT-SWAP during OI limit breach / Z cap trigger",
+              "CRITICAL: Equity 19.37 vs 56,412,593 volume — investigate for potential manipulation or liquidation cascade",
+              "Fee level: LV1"
+            ]
+          }
+        ],
+        "key_evidence": [
+          "Position on PROVE-USDT-SWAP during risk event",
+          "Equity 19.37 vs 56,412,593 volume",
+          "KYC: China level 3"
+        ],
+        "local_artifact_ref": ""
+      },
+      {
+        "uid": "214913582327009280",
+        "master_user_id": "4335832",
+        "overall_risk_tier": "T3",
+        "executive_summary": "High-risk: China KYC3, equity 8.19 vs 10,416,130 volume. PROVE short, opened Mar 26.",
+        "dimensions": [
+          {
+            "name": "Registration Profile",
+            "severity": "warning",
+            "signals": [
+              "Registered 2017-03-21 via APP, region: okx_CN",
+              "KYC level 3, nationality: China",
+              "KYC completed recently: 2025-05-04",
+              "Old account but very late KYC — suspicious pattern"
+            ]
+          },
+          {
+            "name": "Trading Behavior",
+            "severity": "critical",
+            "signals": [
+              "Total volume: 10,416,130 USDT",
+              "Position: PROVE short, opened Mar 26",
+              "CRITICAL equity/volume ratio: 0.000001 — near-total capital loss"
+            ]
+          },
+          {
+            "name": "Associated Accounts",
+            "severity": "pending",
+            "signals": [
+              "Login table (dwd_okx_user_secure_login_df) returned 403 — cannot check device/IP sharing"
+            ]
+          },
+          {
+            "name": "IP & Geolocation",
+            "severity": "pass",
+            "signals": [
+              "Registration region: okx_CN",
+              "Phone: +86, KYC nationality: China"
+            ]
+          },
+          {
+            "name": "Identity Signals",
+            "severity": "pass",
+            "signals": [
+              "KYC level 3, nationality: China",
+              "Account: 普通用户, 普通账户"
+            ]
+          },
+          {
+            "name": "Profit & Loss",
+            "severity": "critical",
+            "signals": [
+              "Current equity: 8.19 USDT",
+              "Trade volume: 10,416,130 USDT",
+              "First deposit: 14.49 USDT",
+              "Near-total equity depletion — liquidation or complete withdrawal"
+            ]
+          },
+          {
+            "name": "Withdrawal Behavior",
+            "severity": "warning",
+            "signals": [
+              "Last deposit: 2026-03-25",
+              "On-chain data limited (table access restriction)",
+              "Equity depletion suggests possible large withdrawals or liquidation cascade"
+            ]
+          },
+          {
+            "name": "Comprehensive Judgment",
+            "severity": "critical",
+            "signals": [
+              "Position on PROVE-USDT-SWAP during OI limit breach / Z cap trigger",
+              "CRITICAL: Equity 8.19 vs 10,416,130 volume — investigate for potential manipulation or liquidation cascade",
+              "Fee level: LV1"
+            ]
+          }
+        ],
+        "key_evidence": [
+          "Position on PROVE-USDT-SWAP during risk event",
+          "Equity 8.19 vs 10,416,130 volume",
+          "KYC: China level 3"
+        ],
+        "local_artifact_ref": ""
+      },
+      {
+        "uid": "4235030822006784",
+        "master_user_id": "3337970",
+        "overall_risk_tier": "T3",
+        "executive_summary": "High-risk: China KYC3, equity 52.11 vs 62,651,132 volume. Multi-asset: PIPPIN short + XAU short, OG account since 2013.",
+        "dimensions": [
+          {
+            "name": "Registration Profile",
+            "severity": "pass",
+            "signals": [
+              "Registered 2013-11-22 via PC, region: okx_CN",
+              "KYC level 3, nationality: China"
+            ]
+          },
+          {
+            "name": "Trading Behavior",
+            "severity": "critical",
+            "signals": [
+              "Total volume: 62,651,132 USDT",
+              "Position: Multi-asset: PIPPIN short + XAU short, OG account since 2013",
+              "CRITICAL equity/volume ratio: 0.000001 — near-total capital loss"
+            ]
+          },
+          {
+            "name": "Associated Accounts",
+            "severity": "pending",
+            "signals": [
+              "Login table (dwd_okx_user_secure_login_df) returned 403 — cannot check device/IP sharing"
+            ]
+          },
+          {
+            "name": "IP & Geolocation",
+            "severity": "pass",
+            "signals": [
+              "Registration region: okx_CN",
+              "Phone: +86, KYC nationality: China"
+            ]
+          },
+          {
+            "name": "Identity Signals",
+            "severity": "pass",
+            "signals": [
+              "KYC level 3, nationality: China",
+              "Account: 普通用户, 普通账户"
+            ]
+          },
+          {
+            "name": "Profit & Loss",
+            "severity": "critical",
+            "signals": [
+              "Current equity: 52.11 USDT",
+              "Trade volume: 62,651,132 USDT",
+              "First deposit: 682.09 USDT",
+              "Near-total equity depletion — liquidation or complete withdrawal"
+            ]
+          },
+          {
+            "name": "Withdrawal Behavior",
+            "severity": "warning",
+            "signals": [
+              "Last deposit: 2026-03-25",
+              "On-chain data limited (table access restriction)",
+              "Equity depletion suggests possible large withdrawals or liquidation cascade"
+            ]
+          },
+          {
+            "name": "Comprehensive Judgment",
+            "severity": "critical",
+            "signals": [
+              "Position on PIPPIN+XAU during OI limit breach / Z cap trigger",
+              "CRITICAL: Equity 52.11 vs 62,651,132 volume — investigate for potential manipulation or liquidation cascade",
+              "Multi-asset short exposure across correlated risk events",
+              "Fee level: LV1"
+            ]
+          }
+        ],
+        "key_evidence": [
+          "Position on PIPPIN+XAU during risk event",
+          "Equity 52.11 vs 62,651,132 volume",
+          "KYC: China level 3"
+        ],
+        "local_artifact_ref": ""
+      },
+      {
+        "uid": "123317305596850176",
+        "master_user_id": "10639724",
+        "overall_risk_tier": "T3",
+        "executive_summary": "High-risk: Philippines KYC2, equity 82.97 vs 890,272 volume. PROVE short, 2 positions (Mar 10 + Mar 26), Philippines KYC2.",
+        "dimensions": [
+          {
+            "name": "Registration Profile",
+            "severity": "warning",
+            "signals": [
+              "Registered 2019-09-16 via PC, region: okx_English",
+              "KYC level 2, nationality: Philippines",
+              "Non-China jurisdiction: Philippines (phone +63)",
+              "KYC completed recently: 2024-02-02",
+              "Old account but very late KYC — suspicious pattern"
+            ]
+          },
+          {
+            "name": "Trading Behavior",
+            "severity": "critical",
+            "signals": [
+              "Total volume: 890,272 USDT",
+              "Position: PROVE short, 2 positions (Mar 10 + Mar 26), Philippines KYC2",
+              "CRITICAL equity/volume ratio: 0.000093 — near-total capital loss"
+            ]
+          },
+          {
+            "name": "Associated Accounts",
+            "severity": "pending",
+            "signals": [
+              "Login table (dwd_okx_user_secure_login_df) returned 403 — cannot check device/IP sharing"
+            ]
+          },
+          {
+            "name": "IP & Geolocation",
+            "severity": "warning",
+            "signals": [
+              "Registration region: okx_English",
+              "Phone: +63, KYC nationality: Philippines"
+            ]
+          },
+          {
+            "name": "Identity Signals",
+            "severity": "warning",
+            "signals": [
+              "KYC level 2, nationality: Philippines",
+              "Account: 普通用户, 普通账户"
+            ]
+          },
+          {
+            "name": "Profit & Loss",
+            "severity": "critical",
+            "signals": [
+              "Current equity: 82.97 USDT",
+              "Trade volume: 890,272 USDT",
+              "First deposit: 13.64 USDT",
+              "Near-total equity depletion — liquidation or complete withdrawal"
+            ]
+          },
+          {
+            "name": "Withdrawal Behavior",
+            "severity": "warning",
+            "signals": [
+              "Last deposit: 2026-03-25",
+              "On-chain data limited (table access restriction)",
+              "Equity depletion suggests possible large withdrawals or liquidation cascade"
+            ]
+          },
+          {
+            "name": "Comprehensive Judgment",
+            "severity": "critical",
+            "signals": [
+              "Position on PROVE-USDT-SWAP during OI limit breach / Z cap trigger",
+              "CRITICAL: Equity 82.97 vs 890,272 volume — investigate for potential manipulation or liquidation cascade",
+              "Fee level: LV1"
+            ]
+          }
+        ],
+        "key_evidence": [
+          "Position on PROVE-USDT-SWAP during risk event",
+          "Equity 82.97 vs 890,272 volume",
+          "KYC: Philippines level 2"
         ],
         "local_artifact_ref": ""
       }
