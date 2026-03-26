@@ -186,7 +186,6 @@ def main():
 
     # 4. Output or upload
     if args.dry_run:
-        # In dry-run mode, output the full report + chapters to stdout
         output = {
             "report": report,
             "chapters": chapters,
@@ -194,8 +193,29 @@ def main():
         print(json.dumps(output, indent=2, ensure_ascii=False))
         _log("Dry run — skipping upload")
     else:
-        _upload_to_blob(chapters, report, date_str)
-        _log("Upload complete.")
+        import os
+        token = os.environ.get("BLOB_READ_WRITE_TOKEN", "")
+        if not token:
+            _log("WARNING: BLOB_READ_WRITE_TOKEN not set — saving report locally instead")
+            out_dir = PROJECT_ROOT / "public" / "data" / "reports" / date_str
+            out_dir.mkdir(parents=True, exist_ok=True)
+            (out_dir / "report.json").write_text(
+                json.dumps({"report": report, "chapters": chapters}, indent=2, ensure_ascii=False)
+            )
+            _log(f"Saved to {out_dir / 'report.json'}")
+        else:
+            try:
+                _upload_to_blob(chapters, report, date_str)
+                _log("Upload complete.")
+            except Exception as exc:
+                _log(f"ERROR uploading to Blob: {exc}")
+                _log("Saving report locally as fallback...")
+                out_dir = PROJECT_ROOT / "public" / "data" / "reports" / date_str
+                out_dir.mkdir(parents=True, exist_ok=True)
+                (out_dir / "report.json").write_text(
+                    json.dumps({"report": report, "chapters": chapters}, indent=2, ensure_ascii=False)
+                )
+                _log(f"Saved to {out_dir / 'report.json'}")
 
     return 0
 
