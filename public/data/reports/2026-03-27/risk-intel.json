@@ -1,6 +1,6 @@
 {
   "date": "2026-03-27",
-  "generated_at": "2026-03-26T17:40:28.436192+00:00",
+  "generated_at": "2026-03-26T17:54:41.273790+00:00",
   "chapter": {
     "slug": "risk-intel",
     "title": "Risk Intelligence",
@@ -11,217 +11,349 @@
       {
         "asset": "PROVE-USDT-SWAP",
         "severity": "critical",
-        "executive_summary": "PROVE永续合约出现严重OI异常：平台限额占比达101.34%（阈值80%），OI较24H均值偏离327.12%。当前价格$0.2668（24h +8.4%），OI 3,904,521张，资金费率-0.278%。多个用户在OI飙升期间持有大额仓位，需密切关注后续操作。",
-        "forward_looking": "OI仍高于平台限额，资金费率为-0.278%（负值，空头支付多头）。若价格继续波动，持仓集中的用户可能面临爆仓风险。建议限制新增高杠杆开仓并监控大户操作。",
+        "executive_summary": "PROVE永续合约在2026-03-26全天经历持续的持仓用户涌入。从00:00的1913用户增长至12:00的5109用户（+167%）。核心飙升窗口在04:00-08:00，4小时内新增1372用户（+71%）。空头持仓在06:00后急速增加（879→1,771），反映市场分歧加剧。OI突破平台限额（101.34%），资金费率异常为-0.278%。",
+        "forward_looking": "当前OI仍处于3890017张的高水平。多空持仓比接近1:1，市场处于高度博弈状态。若价格出现方向性突破，持仓集中的一方可能面临连锁清算。建议限制新增高杠杆开仓，并密切监控大户操作。",
         "causal_chain": [
           {
             "step": 1,
             "type": "远因",
             "name": "结构性弱点",
-            "description": "PROVE流通量低，OI相对市值偏高，少数用户可显著影响市场均衡",
-            "detail": "PROVE作为小市值代币，流通盘薄、深度弱，极少数大户的仓位变动即可造成显著OI偏移和价格波动。",
+            "description": "PROVE为小市值代币，流通盘薄，少数大户的仓位变动即可显著影响OI和价格",
             "evidence_strength": 5,
             "evidence_label": "铁证",
+            "detail": null,
             "evidence_table": null,
             "risk_assessment": null
           },
           {
             "step": 2,
             "type": "近因",
-            "name": "OI异常堆积",
-            "description": "OI从基准水平飙升，较24H均值偏离327.12%，多个用户同时增仓",
-            "detail": "持仓快照显示多个用户在短时间内集中建仓，推动全市场OI急剧上升。",
+            "name": "用户数持续涌入",
+            "description": "24小时内持仓用户从1913增至5109（+167%），核心加速期在04:00-08:00",
             "evidence_strength": 5,
-            "evidence_label": "铁证",
+            "evidence_label": "铁证 · 数仓验证",
+            "detail": "持仓快照显示04:00-08:00的4小时窗口内，用户数从1929暴增至3301。多头从1185增至1787，空头从894增至1771（空头增速更快）。",
             "evidence_table": {
-              "title": "P0 关键证据 — 持仓快照",
+              "title": "P0 关键证据 — 逐小时持仓用户变化（数仓实查）",
               "headers": [
-                "USER_ID",
-                "INSTRUMENT",
-                "SIDE",
-                "MARGIN",
-                "OPEN TIME"
+                "时间",
+                "总用户",
+                "多头",
+                "空头",
+                "变化"
               ],
               "rows": [
                 [
-                  "6561979",
-                  "PROVE-USDT-SWAP",
-                  "SHORT",
-                  "cross+isolated",
-                  "Mar 26 06:52-16:31"
+                  "00:00",
+                  "1913",
+                  "1180",
+                  "879",
+                  "—"
                 ],
                 [
-                  "7180900",
-                  "PROVE-USDT-SWAP",
-                  "SHORT",
-                  "cross",
-                  "Mar 26 17:50"
+                  "01:00",
+                  "1914",
+                  "1181",
+                  "879",
+                  "+1"
                 ],
                 [
-                  "4335832",
-                  "PROVE-USDT-SWAP",
-                  "SHORT",
-                  "cross",
-                  "Mar 26 12:00"
+                  "02:00",
+                  "1922",
+                  "1182",
+                  "887",
+                  "+8"
                 ],
                 [
-                  "10639724",
-                  "PROVE-USDT-SWAP",
-                  "SHORT",
-                  "cross",
-                  "Mar 10 + Mar 26"
+                  "03:00",
+                  "1928",
+                  "1184",
+                  "894",
+                  "+6"
                 ],
                 [
-                  "6837242",
-                  "PROVE-USDT-SWAP",
-                  "LONG",
-                  "isolated",
-                  "Mar 26 08:14"
+                  "04:00",
+                  "1929",
+                  "1185",
+                  "894",
+                  "+1"
+                ],
+                [
+                  "05:00",
+                  "2056",
+                  "1260",
+                  "953",
+                  "+127"
+                ],
+                [
+                  "06:00",
+                  "2526",
+                  "1439",
+                  "1290",
+                  "+470"
+                ],
+                [
+                  "07:00",
+                  "2574",
+                  "1468",
+                  "1312",
+                  "+48"
+                ],
+                [
+                  "08:00",
+                  "3301",
+                  "1787",
+                  "1771",
+                  "+727"
+                ],
+                [
+                  "09:00",
+                  "3849",
+                  "2070",
+                  "2096",
+                  "+548"
+                ],
+                [
+                  "10:00",
+                  "4264",
+                  "2259",
+                  "2343",
+                  "+415"
+                ],
+                [
+                  "11:00",
+                  "4668",
+                  "2432",
+                  "2609",
+                  "+404"
+                ],
+                [
+                  "12:00",
+                  "5109",
+                  "2638",
+                  "2912",
+                  "+441"
                 ]
               ],
-              "source": "ex_offline.dwd_okx_asset_user_position_hf · pt=2026032623"
+              "source": "ex_offline.dwd_okx_asset_user_position_hf · pt IN (2026032600~12) · instrument_name='PROVE-USDT-SWAP'"
             },
             "risk_assessment": null
           },
           {
             "step": 3,
             "type": "触发事件",
-            "name": "平台OI限额突破",
-            "description": "OI/平台限额占比达101.34%（阈值80%），触发风控报警系统",
-            "detail": "当前OI 3,905K张，突破平台设定的限额阈值。这意味着PROVE合约的系统性风险已超出预设安全边界。",
+            "name": "OI突破平台限额",
+            "description": "OI/平台限额占比达101.34%（阈值80%），触发风控报警",
             "evidence_strength": 5,
             "evidence_label": "铁证",
+            "detail": "平台OI监控系统在OI突破80%阈值后触发报警。实际占比已超过100%，意味着合约的系统性风险敞口已超出预设安全边界。",
             "evidence_table": null,
-            "risk_assessment": "OI超限意味着若发生极端行情，平台的风险敞口可能超出保险基金覆盖能力。建议立即评估限额参数是否需要调整。"
+            "risk_assessment": "OI超过平台限额100%是严重的风控信号。建议立即评估是否需要临时下调限额或限制新增开仓，防止风险敞口进一步扩大。"
           },
           {
             "step": 4,
             "type": "一阶效应",
             "name": "价格剧烈波动",
             "description": "24h价格范围$0.2207~$0.3875，波幅超过75%",
-            "detail": "OI堆积伴随价格大幅波动，多空双方在极端杠杆下博弈，导致价格在短时间内出现异常偏移。",
             "evidence_strength": 4,
-            "evidence_label": "强证据",
+            "evidence_label": "强证据 · API验证",
+            "detail": null,
             "evidence_table": null,
             "risk_assessment": null
           },
           {
             "step": 5,
             "type": "二阶效应",
-            "name": "资金费率异常 + 空头承压",
-            "description": "资金费率达-0.277%（正常值的数十倍），空头支付巨额费用",
-            "detail": "异常资金费率反映市场极度失衡。空头在此环境下面临持续的费用压力，可能被迫平仓。",
+            "name": "资金费率异常 + 空头急增",
+            "description": "资金费率达-0.301%，空头在06:00后从879急增至2,912（+231%）",
             "evidence_strength": 4,
-            "evidence_label": "强证据",
+            "evidence_label": "强证据 · 数仓验证",
+            "detail": "空头持仓在06:00-12:00从879急增至2,912，增幅231%，远超同期多头增幅。这反映了大量用户在价格上涨后做空博弈回落，形成多空激烈对峙。",
             "evidence_table": {
-              "title": "P0 关键证据 — 高风险用户画像",
+              "title": "P0 关键证据 — 08:00快照期间新增用户（数仓实查）",
               "headers": [
                 "USER_ID",
-                "NATIONALITY",
-                "KYC",
-                "VOLUME",
-                "EQUITY",
-                "RATIO"
+                "SIDE",
+                "MARGIN",
+                "OPEN TIME"
               ],
               "rows": [
                 [
-                  "6561979",
-                  "China",
-                  "KYC3",
-                  "40.6M",
-                  "$11.29",
-                  "0.000028%"
+                  "84576274",
+                  "LONG",
+                  "isolated",
+                  "08:59:59"
                 ],
                 [
-                  "7180900",
-                  "China",
-                  "KYC3",
-                  "56.4M",
-                  "$19.37",
-                  "0.000034%"
+                  "84576298",
+                  "LONG",
+                  "isolated",
+                  "08:59:59"
                 ],
                 [
-                  "4335832",
-                  "China",
-                  "KYC3",
-                  "10.4M",
-                  "$8.19",
-                  "0.000079%"
+                  "79440879",
+                  "LONG",
+                  "cross",
+                  "08:59:59"
                 ],
                 [
-                  "10639724",
-                  "Philippines",
-                  "KYC2",
-                  "890K",
-                  "$82.97",
-                  "0.0093%"
+                  "84576360",
+                  "LONG",
+                  "isolated",
+                  "08:59:59"
+                ],
+                [
+                  "81857641",
+                  "LONG",
+                  "cross",
+                  "08:59:58"
+                ],
+                [
+                  "25932211",
+                  "SHORT",
+                  "cross",
+                  "08:59:55"
                 ]
               ],
-              "source": "ex_offline.dws_okx_user_master_info_df · pt=20260325"
+              "source": "ex_offline.dwd_okx_asset_user_position_hf · pt=2026032608 · ORDER BY create_time DESC LIMIT 20"
             },
-            "risk_assessment": "多个用户的权益/交易量比率极低（<0.01%），表明要么经历了巨额亏损，要么已大量提现。这些账户在PROVE异常期间持有空头仓位，需重点关注其后续操作。"
+            "risk_assessment": "多空持仓比接近1:1且均在高位，形成高度不稳定均衡。任何方向性催化事件（如大户平仓、消息面变化）都可能触发连锁清算。"
           }
         ],
         "market_snapshot": {
           "instId": "PROVE-USDT-SWAP",
-          "price": "0.2668",
-          "change_24h": "+8.4%",
+          "price": "0.267",
+          "change_24h": "+8.5%",
           "high_24h": "0.3875",
           "low_24h": "0.2207",
-          "volume_24h": "440333543",
-          "open_interest": "3904521",
-          "oi_currency": "3904521",
-          "funding_rate": "-0.0027824332058978",
-          "next_funding_rate": ""
+          "volume_24h": "441005589",
+          "open_interest": "3890017",
+          "oi_currency": "3890017",
+          "funding_rate": "-0.0030075162886971"
         },
         "key_users": [
           "6561979",
           "7180900",
-          "4335832"
+          "4335832",
+          "84576274",
+          "25932211"
         ]
       },
       {
         "asset": "XAU-USDT-SWAP",
         "severity": "critical",
-        "executive_summary": "XAU-USD合约出现Z cap硬顶触发，Limitup频率达55%，用户可能面临无法正常交易/平仓风险。当前价格$4395.8（24h -3.5%）。需检查限价参数与指数有效性。",
-        "forward_looking": "建议立即检查XAU-USD的限价参数与指数成分源可用性，必要时临时限制新增高杠杆开仓。",
+        "executive_summary": "XAU-USD合约触发Z cap硬顶限价保护，Limitup频率达55%。当日持仓用户稳定在77K-78K，无异常涌入。当前价格$4393.9（24h -3.5%）。问题主要在于限价参数未适应近期黄金价格快速上涨，而非市场操控。",
+        "forward_looking": "黄金价格若继续上涨趋势，Z cap可能持续被触发。建议检查XAU-USD的限价参数设置，评估是否需要上调Z cap以适应当前市场波动率。",
         "causal_chain": [
           {
             "step": 1,
             "type": "远因",
-            "name": "参数配置",
-            "description": "XAU-USD的Z cap参数可能未适应近期黄金价格波动",
+            "name": "参数配置滞后",
+            "description": "XAU-USD的Z cap参数设置可能基于历史波动率，未适应近期黄金价格的快速上涨周期",
             "evidence_strength": 3,
-            "evidence_label": "中等"
+            "evidence_label": "中等",
+            "detail": null,
+            "evidence_table": null,
+            "risk_assessment": null
           },
           {
             "step": 2,
             "type": "触发事件",
             "name": "Z cap硬顶触发",
-            "description": "Limitup由Z cap硬顶触发，触发频率55%",
+            "description": "Limitup由Z cap硬顶触发，触发频率55%，用户面临无法正常交易/平仓的风险",
             "evidence_strength": 5,
-            "evidence_label": "铁证"
+            "evidence_label": "铁证 · 报警验证",
+            "detail": "风控报警群记录显示XAU-USD在10分钟窗口内触发3次price up restricted，合并为1个事件。",
+            "evidence_table": null,
+            "risk_assessment": "55%的触发频率意味着超过一半的时间内用户无法正常进行上方向的价格发现。这可能导致真实需求无法被满足，积累更大的价格偏移压力。"
           },
           {
             "step": 3,
             "type": "一阶效应",
-            "name": "交易受限",
-            "description": "用户可能面临无法正常交易或平仓的风险",
+            "name": "持仓结构稳定但受限",
+            "description": "全天持仓用户稳定在77,240~78,373，无异常涌入，但多头受限于限价保护无法有效建仓",
             "evidence_strength": 4,
-            "evidence_label": "强证据"
+            "evidence_label": "强证据 · 数仓验证",
+            "detail": null,
+            "evidence_table": {
+              "title": "P0 关键证据 — XAU持仓用户变化（数仓实查）",
+              "headers": [
+                "时间",
+                "总用户",
+                "多头",
+                "空头"
+              ],
+              "rows": [
+                [
+                  "00:00",
+                  "77240",
+                  "32946",
+                  "74248"
+                ],
+                [
+                  "03:00",
+                  "77352",
+                  "32981",
+                  "74381"
+                ],
+                [
+                  "06:00",
+                  "77397",
+                  "33003",
+                  "74437"
+                ],
+                [
+                  "09:00",
+                  "77525",
+                  "33074",
+                  "74570"
+                ],
+                [
+                  "12:00",
+                  "77622",
+                  "33127",
+                  "74694"
+                ],
+                [
+                  "15:00",
+                  "77925",
+                  "33266",
+                  "75064"
+                ],
+                [
+                  "18:00",
+                  "78083",
+                  "33344",
+                  "75262"
+                ],
+                [
+                  "21:00",
+                  "78246",
+                  "33422",
+                  "75431"
+                ],
+                [
+                  "23:00",
+                  "78373",
+                  "33484",
+                  "75550"
+                ]
+              ],
+              "source": "ex_offline.dwd_okx_asset_user_position_hf · instrument_name='XAU-USDT-SWAP'"
+            },
+            "risk_assessment": null
           }
         ],
         "market_snapshot": {
           "instId": "XAU-USDT-SWAP",
-          "price": "4395.8",
+          "price": "4393.9",
           "change_24h": "-3.5%",
           "high_24h": "4567.6",
           "low_24h": "4374.4",
-          "volume_24h": "108604.275",
-          "open_interest": "23099904",
-          "oi_currency": "23099.904",
-          "funding_rate": "0.0000000000000000",
-          "next_funding_rate": ""
+          "volume_24h": "107539.237",
+          "open_interest": "23065504",
+          "oi_currency": "23065.504",
+          "funding_rate": "0.0000000000000000"
         },
         "key_users": [
           "3337970"
@@ -230,37 +362,107 @@
       {
         "asset": "PIPPIN-USDT-SWAP",
         "severity": "warning",
-        "executive_summary": "PIPPIN的OI较24H均值偏离52.01%（阈值20%），为中风险短期异动。当前价格$0.05687（24h -9.2%）。需关注OI与价格联动趋势。",
-        "forward_looking": "关注PIPPIN的OI、资金费率与价格联动是否继续放大，必要时对高风险账户提高保证金要求。",
+        "executive_summary": "PIPPIN的OI较24H均值偏离52.01%（阈值20%），属中风险短期异动。全天持仓用户从86,280小幅增至88,917（+2637），增速平缓。空头持仓始终大于总用户数（存在多仓位用户），市场偏空。当前价格$0.05593。",
+        "forward_looking": "PIPPIN的OI偏离虽超阈值但增速平缓，未出现PROVE类的急剧飙升。建议持续监控是否出现加速迹象，必要时提高高风险账户保证金要求。",
         "causal_chain": [
           {
             "step": 1,
             "type": "触发事件",
-            "name": "OI异常偏离",
-            "description": "OI较24H均值偏离52.01%，超过20%阈值",
+            "name": "OI持续偏离均值",
+            "description": "OI较24H均值偏离52.01%，超过20%阈值，但增长曲线较为平缓",
             "evidence_strength": 4,
-            "evidence_label": "强证据"
+            "evidence_label": "强证据 · 报警验证",
+            "detail": null,
+            "evidence_table": {
+              "title": "P0 关键证据 — PIPPIN持仓用户变化（数仓实查）",
+              "headers": [
+                "时间",
+                "总用户",
+                "多头",
+                "空头"
+              ],
+              "rows": [
+                [
+                  "00:00",
+                  "86280",
+                  "38510",
+                  "86568"
+                ],
+                [
+                  "03:00",
+                  "86902",
+                  "38779",
+                  "87347"
+                ],
+                [
+                  "06:00",
+                  "87236",
+                  "38955",
+                  "87778"
+                ],
+                [
+                  "09:00",
+                  "87554",
+                  "39153",
+                  "88166"
+                ],
+                [
+                  "12:00",
+                  "87860",
+                  "39326",
+                  "88498"
+                ],
+                [
+                  "15:00",
+                  "88281",
+                  "39486",
+                  "89049"
+                ],
+                [
+                  "18:00",
+                  "88503",
+                  "39562",
+                  "89311"
+                ],
+                [
+                  "21:00",
+                  "88753",
+                  "39681",
+                  "89556"
+                ],
+                [
+                  "23:00",
+                  "88917",
+                  "39766",
+                  "89756"
+                ]
+              ],
+              "source": "ex_offline.dwd_okx_asset_user_position_hf · instrument_name='PIPPIN-USDT-SWAP'"
+            },
+            "risk_assessment": null
           },
           {
             "step": 2,
             "type": "一阶效应",
-            "name": "市场关注度上升",
-            "description": "当前OI 13,299,458张，资金费率0.0062%",
+            "name": "市场偏空但无急剧恶化",
+            "description": "空头持仓（89,756）始终大于多头（39,766），差距稳定扩大",
             "evidence_strength": 3,
-            "evidence_label": "中等"
+            "evidence_label": "中等",
+            "detail": "空头占优反映市场对PIPPIN中短期看跌，但增速未出现PROVE类的急剧加速，风险可控。",
+            "evidence_table": null,
+            "risk_assessment": "短期风险中等。若OI偏离持续扩大至100%以上，或出现大户集中建仓行为，风险将显著升级。"
           }
         ],
         "market_snapshot": {
           "instId": "PIPPIN-USDT-SWAP",
-          "price": "0.05687",
-          "change_24h": "-9.2%",
-          "high_24h": "0.06314",
+          "price": "0.05593",
+          "change_24h": "-3.6%",
+          "high_24h": "0.06165",
           "low_24h": "0.042",
-          "volume_24h": "5704251570",
-          "open_interest": "13299458",
-          "oi_currency": "132994580",
-          "funding_rate": "0.0000623232103139",
-          "next_funding_rate": ""
+          "volume_24h": "5544206970",
+          "open_interest": "13268579",
+          "oi_currency": "132685790",
+          "funding_rate": "0.0000705023281253"
         },
         "key_users": [
           "2084295",
@@ -273,7 +475,7 @@
       "ema_coverage": 4,
       "issues_found": 13,
       "source": "每日风控总结 - 2026-03-26 (00:00 - 23:59)",
-      "generated_at": "2026-03-26T17:40:28.436192+00:00"
+      "generated_at": "2026-03-26T17:54:41.273790+00:00"
     },
     "metric_cards": [
       {
@@ -413,7 +615,7 @@
     ],
     "recommended_changes": null,
     "downloads": [],
-    "markdown": "# Risk Intelligence\n\n**Summary:** 4 alert types analyzed. 8 flagged alert(s) parsed. 5 suspicious user(s) highlighted.\n**Source document:** 每日风控总结 - 2026-03-26 (00:00 - 23:59)\n\n## Suspicious Users\n- 613832447893504 — T3 — High-risk: China KYC3, equity 11.29 vs 40,658,176 volume. PROVE short, 2 positions (cross+isolated) same day.\n- 43607852442591232 — T3 — High-risk: China KYC3, equity 19.37 vs 56,412,593 volume. PROVE short, opened Mar 26 during OI breach.\n- 214913582327009280 — T3 — High-risk: China KYC3, equity 8.19 vs 10,416,130 volume. PROVE short, opened Mar 26.\n- 4235030822006784 — T3 — High-risk: China KYC3, equity 52.11 vs 62,651,132 volume. Multi-asset: PIPPIN short + XAU short, OG account since 2013.\n- 123317305596850176 — T3 — High-risk: Philippines KYC2, equity 82.97 vs 890,272 volume. PROVE short, 2 positions (Mar 10 + Mar 26), Philippines KYC2.\n\n## Deep Profiles\n- 613832447893504 — T3 — High-risk: China KYC3, equity 11.29 vs 40,658,176 volume. PROVE short, 2 positions (cross+isolated) same day.\n- 43607852442591232 — T3 — High-risk: China KYC3, equity 19.37 vs 56,412,593 volume. PROVE short, opened Mar 26 during OI breach.\n- 214913582327009280 — T3 — High-risk: China KYC3, equity 8.19 vs 10,416,130 volume. PROVE short, opened Mar 26.\n- 4235030822006784 — T3 — High-risk: China KYC3, equity 52.11 vs 62,651,132 volume. Multi-asset: PIPPIN short + XAU short, OG account since 2013.\n- 123317305596850176 — T3 — High-risk: Philippines KYC2, equity 82.97 vs 890,272 volume. PROVE short, 2 positions (Mar 10 + Mar 26), Philippines KYC2.",
+    "markdown": "# Risk Intelligence\n\n**Summary:** 4 alert types analyzed. 8 flagged alert(s) parsed. 5 suspicious user(s) highlighted.\n**Source document:** 每日风控总结 - 2026-03-26 (00:00 - 23:59)\n\n## Suspicious Users\n- 613832447893504 — T3 — PROVE SHORT · equity $11.29 vs 40.6M volume · KYC3 China · 2 positions (cross+isolated) during OI breach\n- 43607852442591232 — T3 — PROVE SHORT · equity $19.37 vs 56.4M volume · KYC3 China · registered 2018, near-zero equity\n- 214913582327009280 — T3 — PROVE SHORT · equity $8.19 vs 10.4M volume · KYC3 China · late KYC (2025 on 2017 account)\n- 4235030822006784 — T3 — PIPPIN SHORT + XAU SHORT · equity $52 vs 62.6M volume · multi-asset short exposure · OG since 2013\n- 123317305596850176 — T3 — PROVE SHORT · equity $82.97 vs 890K volume · KYC2 Philippines · 2 positions (Mar 10 + Mar 26)\n\n## Deep Profiles\n- 613832447893504 — T3 — High-risk: China KYC3, equity 11.29 vs 40,658,176 volume. PROVE short, 2 positions (cross+isolated) same day.\n- 43607852442591232 — T3 — High-risk: China KYC3, equity 19.37 vs 56,412,593 volume. PROVE short, opened Mar 26 during OI breach.\n- 214913582327009280 — T3 — High-risk: China KYC3, equity 8.19 vs 10,416,130 volume. PROVE short, opened Mar 26.\n- 4235030822006784 — T3 — High-risk: China KYC3, equity 52.11 vs 62,651,132 volume. Multi-asset: PIPPIN short + XAU short, OG account since 2013.\n- 123317305596850176 — T3 — High-risk: Philippines KYC2, equity 82.97 vs 890,272 volume. PROVE short, 2 positions (Mar 10 + Mar 26), Philippines KYC2.",
     "error": null,
     "source_document": {
       "title": "每日风控总结 - 2026-03-26 (00:00 - 23:59)",
@@ -427,7 +629,7 @@
         "master_user_id": "6561979",
         "risk_tier": "T3",
         "source_alert": "platform_oi",
-        "reason": "High-risk: China KYC3, equity 11.29 vs 40,658,176 volume. PROVE short, 2 positions (cross+isolated) same day.",
+        "reason": "PROVE SHORT · equity $11.29 vs 40.6M volume · KYC3 China · 2 positions (cross+isolated) during OI breach",
         "mentions": 1,
         "first_seen": 0
       },
@@ -436,7 +638,7 @@
         "master_user_id": "7180900",
         "risk_tier": "T3",
         "source_alert": "platform_oi",
-        "reason": "High-risk: China KYC3, equity 19.37 vs 56,412,593 volume. PROVE short, opened Mar 26 during OI breach.",
+        "reason": "PROVE SHORT · equity $19.37 vs 56.4M volume · KYC3 China · registered 2018, near-zero equity",
         "mentions": 1,
         "first_seen": 1
       },
@@ -445,7 +647,7 @@
         "master_user_id": "4335832",
         "risk_tier": "T3",
         "source_alert": "platform_oi",
-        "reason": "High-risk: China KYC3, equity 8.19 vs 10,416,130 volume. PROVE short, opened Mar 26.",
+        "reason": "PROVE SHORT · equity $8.19 vs 10.4M volume · KYC3 China · late KYC (2025 on 2017 account)",
         "mentions": 1,
         "first_seen": 2
       },
@@ -454,7 +656,7 @@
         "master_user_id": "3337970",
         "risk_tier": "T3",
         "source_alert": "price_limit_p4",
-        "reason": "High-risk: China KYC3, equity 52.11 vs 62,651,132 volume. Multi-asset: PIPPIN short + XAU short, OG account since 2013.",
+        "reason": "PIPPIN SHORT + XAU SHORT · equity $52 vs 62.6M volume · multi-asset short exposure · OG since 2013",
         "mentions": 1,
         "first_seen": 3
       },
@@ -463,7 +665,7 @@
         "master_user_id": "10639724",
         "risk_tier": "T3",
         "source_alert": "platform_oi",
-        "reason": "High-risk: Philippines KYC2, equity 82.97 vs 890,272 volume. PROVE short, 2 positions (Mar 10 + Mar 26), Philippines KYC2.",
+        "reason": "PROVE SHORT · equity $82.97 vs 890K volume · KYC2 Philippines · 2 positions (Mar 10 + Mar 26)",
         "mentions": 1,
         "first_seen": 4
       }

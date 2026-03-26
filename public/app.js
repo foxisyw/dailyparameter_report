@@ -833,10 +833,9 @@ function renderSuspiciousUsers(chapter) {
       <table class="data-table risk-table" aria-label="Suspicious users">
         <thead>
           <tr>
-            <th>${T('uid')}</th>
             <th>${T('masterUserId')}</th>
+            <th>${T('relatedPair') || 'PAIR'}</th>
             <th>${T('riskLevel')}</th>
-            <th>${T('sourceAlert')}</th>
             <th>${T('reason')}</th>
             <th>${T('action')}</th>
           </tr>
@@ -846,11 +845,10 @@ function renderSuspiciousUsers(chapter) {
             const profileKey = user.uid || user.master_user_id
             const hasProfile = profiles.has(profileKey)
             return `<tr>
-              <td>${esc(user.uid || '—')}</td>
-              <td>${esc(user.master_user_id || '—')}</td>
+              <td><span class="inst-tag">${esc(user.master_user_id || user.uid || '—')}</span></td>
+              <td><span class="inst-tag" style="font-size:11px">${esc(user.related_pair || sourceAlertLabel(user.source_alert))}</span></td>
               <td>${statusPill(riskTierToStatus(user.risk_tier))} <span class="risk-tier-label">${esc(riskTierText(user.risk_tier))}</span></td>
-              <td>${esc(sourceAlertLabel(user.source_alert))}</td>
-              <td>${esc(user.reason || '—')}</td>
+              <td style="white-space:normal;max-width:300px">${esc(user.reason || '—')}</td>
               <td>${hasProfile ? `<button class="btn-profile-link" data-profile-target="${esc(chapterProfileId(chapter.slug, profileKey))}">${T('viewProfile')}</button>` : `<span class="profile-unavailable">${T('profileUnavailable')}</span>`}</td>
             </tr>`
           }).join('')}
