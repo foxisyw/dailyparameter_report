@@ -19,6 +19,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -39,13 +41,17 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add public/data/
-          git diff --cached --quiet || git commit -m "Daily review $(date -u +%Y-%m-%d)"
-          git push
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "Daily review $(date -u +%Y-%m-%d)"
+          git pull --rebase origin main || true
+          git push || echo "Push failed — report still generated locally in CI"
 
       - name: Wait for Vercel deploy
         run: |
           echo "Waiting 90 seconds for Vercel to deploy..."
           sleep 90
 
-      - name: Send Lark notification
-        run: python -m runner.notify_lark
+      - name: Pull latest and send Lark notification
+        run: |
+          git pull --rebase origin main || true
+          python -m runner.notify_lark
