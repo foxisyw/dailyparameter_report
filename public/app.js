@@ -247,9 +247,11 @@ function fmtDate(iso) {
 
 function fmtTime(iso) {
   const d = new Date(iso);
-  const hh = String(d.getUTCHours()).padStart(2,'0');
-  const mm = String(d.getUTCMinutes()).padStart(2,'0');
-  return `${hh}:${mm} UTC`;
+  // Convert to HKT (UTC+8)
+  const hkt = new Date(d.getTime() + 8 * 60 * 60 * 1000);
+  const hh = String(hkt.getUTCHours()).padStart(2,'0');
+  const mm = String(hkt.getUTCMinutes()).padStart(2,'0');
+  return `${hh}:${mm} HKT`;
 }
 
 // ---------------------------------------------------------------------------

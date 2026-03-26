@@ -130,7 +130,10 @@ def main():
     parser.add_argument("--dry-run", action="store_true", help="Print JSON, skip saving")
     args = parser.parse_args()
 
-    date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    # Use HKT (UTC+8) for the report date — both daily cron runs land on same HKT day
+    from zoneinfo import ZoneInfo
+    hkt_now = datetime.now(ZoneInfo("Asia/Hong_Kong"))
+    date_str = hkt_now.strftime("%Y-%m-%d")
     _log(f"=== Daily Parameter Review — {date_str} ===")
 
     ema_data = _load_ema_data()
