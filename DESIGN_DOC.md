@@ -1095,4 +1095,132 @@ npm run build  # 輸出到 dist/
 
 ---
 
-*本文檔由 OKX 參數管理團隊維護。最後更新 2026-03-26。*
+---
+
+## 13. Risk Intelligence 模組 (2026-03-27 新增)
+
+### 13.1 概述
+
+Risk Intelligence 是報告的核心模組，從原本的「參數看板」升級為「風控情報中心」。整個頁面的設計路徑是：
+
+```
+Risk Intelligence（默認展示）
+  ├── PROVE-USDT-SWAP（Event Analysis + 相關可疑用戶 + 用戶深描）
+  ├── XAU-USDT-SWAP（Event Analysis + 相關可疑用戶 + 用戶深描）
+  ├── PIPPIN-USDT-SWAP（Event Analysis + 相關可疑用戶 + 用戶深描）
+  └── Parameter Alarm（Index Alarm + Price Limit P4 + Collateral Coin + Platform OI 合併）
+```
+
+### 13.2 數據來源
+
+| 數據 | 來源 | MCP 工具 |
+|------|------|---------|
+| 風控日報文檔 | Lark 文件夾 | `lark_docs_search` + `lark_docx_raw_content` |
+| 標的市場數據 | OKX REST API | `market/ticker`, `open-interest`, `funding-rate` |
+| 逐小時持倉快照 | 數倉 ODPS | `dwd_okx_asset_user_position_hf` |
+| 用戶畫像 | 數倉 ODPS | `dws_okx_user_master_info_df` |
+
+### 13.3 自動提取邏輯
+
+`extract_critical_assets()` 函數從 Lark 文檔自動提取需要做 Event Analysis 的標的：
+- 只掃描 **Price Limit P4** 和 **Platform OI** 章節（Index Alarm 是成分問題，不需要事件分析）
+- 識別 🔴 和 🟠 標記的幣種名稱
+- 去重，保留最高嚴重等級
+
+### 13.4 Event Analysis 結構
+
+每個 Event Analysis 包含：
+1. **市場快照**（PRICE / 24H / FUNDING / OI）
+2. **Executive Summary**（事件概述）
+3. **Forward-Looking**（前瞻性判斷）
+4. **因果鏈條表**（# / TYPE / DETAIL / EVIDENCE ★★★★★）
+5. **相關可疑用戶表**（與該標的相關的用戶）
+6. **用戶深描**（8 維度風險分析）
+
+### 13.5 用戶分析流程
+
+```
+Step 1: 從持倉表查詢標的持倉者（PROVE, XAU, PIPPIN）
+Step 2: 批量查詢用戶主信息（master_info 表）
+Step 3: 按 equity/volume 比率排序，取 Top 5
+Step 4: 為每個用戶構建 8 維度風險分析：
+  - Registration Profile
+  - Trading Behavior
+  - Associated Accounts（login 表 403，暫無數據）
+  - IP & Geolocation（同上）
+  - Identity Signals
+  - Profit & Loss
+  - Withdrawal Behavior
+  - Comprehensive Judgment
+Step 5: 驗證：所有 5 個用戶必須至少 4/8 維度有真實數據
+```
+
+---
+
+## 14. 前端架構重構 (2026-03-27)
+
+### 14.1 Tab 導航系統
+
+從單頁滾動報告重構為**分頁系統**：
+- 頂部 Tab Bar：Risk Intelligence | Price Limit | MMR Futures | Index
+- 每個 Tab 有**獨立的 Summary Overview**（KPI + 甜甜圈圖 + 柱狀圖）
+- 切換 Tab 時，Summary 和內容區域都更新
+
+### 14.2 Section 導航（左側面板）
+
+左側面板從「日期選擇器」改為「Section 快速跳轉」：
+- 點擊 Section **替換內容區域**（非滾動跳轉）
+- 同一時間只顯示一個 Section
+- Risk Intelligence 的 Sections：
+  - PROVE-USDT-SWAP（事件分析 + 相關用戶）
+  - XAU-USDT-SWAP
+  - PIPPIN-USDT-SWAP
+  - Parameter Alarm（4 種報警合併）
+- 報告日期改為頂部下拉選單
+
+### 14.3 Event Analysis UI 設計
+
+遵循整體設計語言：
+- 灰色邊框 + 最小化顏色（與 Swiss Report 風格一致）
+- 因果鏈條使用標準數據表格（不是彩色卡片）
+- 證據強度：★★★★★ 淡棕色
+- 風險評估：灰色背景 + 灰色左邊框（非紅色）
+- 內嵌證據表格在表格單元格內
+
+---
+
+## 15. 新增問題與解決方案 (2026-03-27)
+
+### ISSUE-011: OKX Trade MCP Demo Mode
+
+**問題**：OKX Trade MCP CLI 在 demo mode 下運行，只有 BTC 等主流幣種可用，PROVE/PIPPIN 等小幣 404。
+
+**解決方案**：繞過 MCP，直接用 Python urllib 調用 OKX 公開 REST API。Demo mode 限制不影響 REST API。
+
+### ISSUE-012: Data Query MCP 欄位名稱錯誤
+
+**問題**：Position 表使用 `position_type`（不是 `position_volume`/`position_side`），查詢報錯 `column cannot be resolved`。
+
+**解決方案**：更新 Skill 文件增加 "Lessons Learned" 章節，記錄正確欄位名。同時更新 Memory 以便未來避免。
+
+### ISSUE-013: Lark Markdown 表格不渲染
+
+**問題**：Lark Webhook 的 `lark_md` 不渲染 markdown 表格語法（`| --- |`），顯示為原始文本。
+
+**解決方案**：使用 Lark 原生 `table` 組件。`data_type: "options"` 可渲染帶顏色的狀態標籤。
+
+### ISSUE-014: 持仓表 user_id 非 master_user_id
+
+**問題**：`dwd_okx_asset_user_position_hf` 的 `user_id` 可能是子帳戶 ID，在 `dws_okx_user_master_info_df` 中查不到。
+
+**解決方案**：擴大查詢範圍（查 20 個 user_id），然後只保留在 master_info 表中有數據的 Top 5。
+
+### ISSUE-015: Vercel 緩存問題
+
+**問題**：更新報告後用戶看到的是舊數據。
+
+**解決方案**：更新 `vercel.json` 添加 Cache-Control headers：`/data/` 路徑設為 `max-age=0, must-revalidate`。
+
+---
+
+*本文檔由 OKX 參數管理團隊維護。最後更新 2026-03-27。*
