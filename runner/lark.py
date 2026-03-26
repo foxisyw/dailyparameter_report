@@ -20,6 +20,7 @@ TIMEOUT = 15
 
 DEFAULT_WEBHOOKS = [
     "https://open.larksuite.com/open-apis/bot/v2/hook/f6726392-3780-407b-94c9-bf2ca1ec6774",
+    "https://open.larksuite.com/open-apis/bot/v2/hook/af916a3f-d8d2-4629-a4a9-3d69d5408899",
 ]
 
 
