@@ -1,7 +1,7 @@
 """Daily Parameter Review — orchestrator.
 
 Runs all adapters, builds report.json, and saves to public/data/.
-GitHub Actions then commits and pushes, Vercel auto-deploys.
+The local Claude Code workflow commits and pushes afterwards, and Vercel auto-deploys.
 
 Usage:
     python -m runner.main              # run and save to public/data/
@@ -15,6 +15,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from .adapters.price_limit import PriceLimitAdapter
+from .adapters.risk_intel import RiskIntelAdapter
 from .adapters.mmr_futures import MMRFuturesAdapter
 from .adapters.index_review import IndexReviewAdapter
 
@@ -141,6 +142,7 @@ def main():
 
     adapters = [
         PriceLimitAdapter(),
+        RiskIntelAdapter(),
         MMRFuturesAdapter(),
         IndexReviewAdapter(),
     ]
@@ -153,12 +155,19 @@ def main():
         except Exception as exc:
             _log(f"  ERROR: {exc}")
             chapter = {
-                "slug": adapter.slug, "title": adapter.title, "status": "critical",
+                "slug": adapter.slug, "title": adapter.title, "render_variant": "rules", "status": "critical",
                 "summary": f"Adapter failed: {exc}",
                 "metrics": {"instruments_scanned": 0, "ema_coverage": 0, "issues_found": 0,
                             "source": "error", "generated_at": datetime.now(timezone.utc).isoformat()},
+                "metric_cards": [
+                    {"label": "Instruments", "value": "0"},
+                    {"label": "EMA Coverage", "value": "0"},
+                    {"label": "Issues", "value": "0"},
+                    {"label": "Source", "value": "error"},
+                ],
                 "rule_blocks": [], "recommended_changes": None, "downloads": [],
-                "markdown": "", "error": str(exc),
+                "markdown": "", "error": str(exc), "source_document": None,
+                "suspicious_users": [], "user_profiles": [],
             }
         chapters.append(chapter)
         _log(f"  -> {chapter['status']} | {chapter['metrics']['issues_found']} issues")

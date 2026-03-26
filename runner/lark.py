@@ -47,6 +47,17 @@ def _status_text(status: str) -> str:
     return {"pass": "PASS", "warning": "WARNING", "critical": "CRITICAL"}.get(status, status.upper())
 
 
+def _highest_risk_tier(chapter: dict) -> str:
+    tiers = [str(user.get("risk_tier", "T1")).upper() for user in chapter.get("suspicious_users", [])]
+    if "T4" in tiers:
+        return "T4"
+    if "T3" in tiers:
+        return "T3"
+    if "T2" in tiers:
+        return "T2"
+    return "T1"
+
+
 def build_card(report: dict, chapters: list[dict], date_str: str) -> dict:
     """Build a Lark Interactive Card with native table component."""
     status = report["status"]
@@ -79,14 +90,26 @@ def build_card(report: dict, chapters: list[dict], date_str: str) -> dict:
 
     # ── Per active chapter: header + native table ──
     for ch in active:
-        instruments = ch.get("metrics", {}).get("instruments_scanned", 0)
-        ema = ch.get("metrics", {}).get("ema_coverage", 0)
-        issues = ch.get("metrics", {}).get("issues_found", 0)
+        if ch.get("render_variant") == "risk-intel":
+            alert_types = len(ch.get("rule_blocks", []))
+            flagged_users = len(ch.get("suspicious_users", []))
+            highest_tier = _highest_risk_tier(ch)
+            header = (
+                f"**{ch['title']}**  |  {alert_types} alert types  |  "
+                f"{flagged_users} suspicious users  |  Highest {highest_tier}"
+            )
+        else:
+            instruments = ch.get("metrics", {}).get("instruments_scanned", 0)
+            ema = ch.get("metrics", {}).get("ema_coverage", 0)
+            issues = ch.get("metrics", {}).get("issues_found", 0)
+            header = (
+                f"**{ch['title']}**  |  {instruments:,} instruments  |  "
+                f"EMA: {ema:,}  |  {issues} issues"
+            )
 
         elements.append({
             "tag": "div",
-            "text": {"tag": "lark_md",
-                     "content": f"**{ch['title']}**  |  {instruments:,} instruments  |  EMA: {ema:,}  |  {issues} issues"},
+            "text": {"tag": "lark_md", "content": header},
         })
 
         # Native table for rule results
@@ -126,7 +149,7 @@ def build_card(report: dict, chapters: list[dict], date_str: str) -> dict:
     for ch in pending:
         elements.append({
             "tag": "div",
-            "text": {"tag": "lark_md", "content": f"{_emoji('pending')} **{ch['title']}** \u2014 Pending integration"},
+            "text": {"tag": "lark_md", "content": f"{_emoji('pending')} **{ch['title']}** \u2014 {ch.get('summary', 'Pending integration')}"},
         })
 
     elements.append({"tag": "hr"})

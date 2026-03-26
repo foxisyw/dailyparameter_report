@@ -42,6 +42,7 @@ class BaseAdapter(ABC):
                 {
                     "slug": str,
                     "title": str,
+                    "render_variant": "rules" | "risk-intel",
                     "status": "pass" | "warning" | "critical" | "pending",
                     "summary": str,
                     "metrics": {
@@ -64,6 +65,12 @@ class BaseAdapter(ABC):
                             "note": str | None,
                         },
                     ],
+                    "metric_cards": [
+                        {
+                            "label": str,
+                            "value": str,
+                        }
+                    ],
                     "recommended_changes": {
                         "headers": list[str],
                         "rows": list[list[str]],
@@ -74,6 +81,32 @@ class BaseAdapter(ABC):
                             "filename": str,
                             "content": str,
                         },
+                    ],
+                    "source_document": {
+                        "title": str,
+                        "url": str,
+                        "modified_at": str,
+                        "selected_by": str,
+                    } | None,
+                    "suspicious_users": [
+                        {
+                            "uid": str,
+                            "master_user_id": str,
+                            "risk_tier": str,
+                            "source_alert": str,
+                            "reason": str,
+                        }
+                    ],
+                    "user_profiles": [
+                        {
+                            "uid": str,
+                            "master_user_id": str,
+                            "overall_risk_tier": str,
+                            "executive_summary": str,
+                            "dimensions": list[dict],
+                            "key_evidence": list[str],
+                            "local_artifact_ref": str,
+                        }
                     ],
                     "markdown": str,
                     "error": str | None,

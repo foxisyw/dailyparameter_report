@@ -20,6 +20,7 @@ class IndexReviewAdapter(BaseAdapter):
         return {
             "slug": self.slug,
             "title": self.title,
+            "render_variant": "rules",
             "status": "pending",
             "summary": "Integration pending — ETA March 28, 2026.",
             "metrics": {
@@ -29,6 +30,12 @@ class IndexReviewAdapter(BaseAdapter):
                 "source": "n/a",
                 "generated_at": now,
             },
+            "metric_cards": [
+                {"label": "Instruments", "value": "0"},
+                {"label": "EMA Coverage", "value": "0"},
+                {"label": "Issues", "value": "0"},
+                {"label": "Source", "value": "n/a"},
+            ],
             "rule_blocks": [],
             "recommended_changes": None,
             "downloads": [],
@@ -38,4 +45,7 @@ class IndexReviewAdapter(BaseAdapter):
                 "Integration ETA: **March 28, 2026**.\n"
             ),
             "error": None,
+            "source_document": None,
+            "suspicious_users": [],
+            "user_profiles": [],
         }

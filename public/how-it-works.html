@@ -333,7 +333,7 @@ body { font-family: var(--sans); color: var(--black); background: #fff; line-hei
 <div class="header">
   <div class="header-brand">OKX Parameter Management</div>
   <h1>Daily Parameter Review — How It Works</h1>
-  <p>Automated daily audit of OKX price limit parameters. Fetches live market data, runs 4 compliance rules, generates adjustment recommendations, deploys a report website, and sends a Lark summary card.</p>
+  <p>Local-first daily audit of OKX price-limit and risk-intelligence signals. Claude Code generates a same-day risk snapshot, the Python runner assembles the static report, Vercel serves it, and Lark receives a condensed operational summary.</p>
 </div>
 
 <!-- High-level flow -->
@@ -342,8 +342,13 @@ body { font-family: var(--sans); color: var(--black); background: #fff; line-hei
   <div class="flow">
     <div class="flow-step">
       <div class="flow-icon flow-icon--cron">&#9200;</div>
-      <div class="flow-label">Cron Trigger</div>
-      <div class="flow-sub">9AM + 4:30PM HKT</div>
+      <div class="flow-label">Local Cron</div>
+      <div class="flow-sub">Claude Code host</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-icon" style="background:var(--amber-light);">&#128209;</div>
+      <div class="flow-label">Risk Intel</div>
+      <div class="flow-sub">Lark + user profiling</div>
     </div>
     <div class="flow-step">
       <div class="flow-icon flow-icon--ema">&#9889;</div>
@@ -357,8 +362,8 @@ body { font-family: var(--sans); color: var(--black); background: #fff; line-hei
     </div>
     <div class="flow-step">
       <div class="flow-icon flow-icon--review">&#9989;</div>
-      <div class="flow-label">4 Rules Review</div>
-      <div class="flow-sub">Automated audit</div>
+      <div class="flow-label">Review Chapters</div>
+      <div class="flow-sub">Price + risk intel</div>
     </div>
     <div class="flow-step">
       <div class="flow-icon flow-icon--save">&#128196;</div>
@@ -367,8 +372,8 @@ body { font-family: var(--sans); color: var(--black); background: #fff; line-hei
     </div>
     <div class="flow-step">
       <div class="flow-icon flow-icon--git">Git</div>
-      <div class="flow-label">Commit &amp; Push</div>
-      <div class="flow-sub">Auto-commit</div>
+      <div class="flow-label">Push Report</div>
+      <div class="flow-sub">Local source of truth</div>
     </div>
     <div class="flow-step">
       <div class="flow-icon flow-icon--deploy">&#9650;</div>
@@ -378,7 +383,7 @@ body { font-family: var(--sans); color: var(--black); background: #fff; line-hei
     <div class="flow-step" style="border-left:2px solid var(--amber);padding-left:8px;">
       <div class="flow-icon" style="background:var(--amber-light);">&#128276;</div>
       <div class="flow-label">Lark Notify</div>
-      <div class="flow-sub">4:30PM only</div>
+      <div class="flow-sub">After deploy</div>
     </div>
     <div class="flow-step">
       <div class="flow-icon flow-icon--web">&#127760;</div>
@@ -391,9 +396,9 @@ body { font-family: var(--sans); color: var(--black); background: #fff; line-hei
 <!-- Key metrics -->
 <div class="overview-grid">
   <div class="overview-card"><div class="val">1,498</div><div class="label">Instruments Scanned</div></div>
-  <div class="overview-card"><div class="val">4</div><div class="label">Review Rules</div></div>
-  <div class="overview-card"><div class="val">2x daily</div><div class="label">9AM + 4:30PM HKT</div></div>
-  <div class="overview-card"><div class="val">~20 min</div><div class="label">End-to-End Time</div></div>
+  <div class="overview-card"><div class="val">+1</div><div class="label">Risk Intelligence Chapter</div></div>
+  <div class="overview-card"><div class="val">3 tiers</div><div class="label">Asset → User → Deep Dive</div></div>
+  <div class="overview-card"><div class="val">local-first</div><div class="label">Claude Code Source of Truth</div></div>
 </div>
 
 <!-- Detailed sequence -->
@@ -403,17 +408,27 @@ body { font-family: var(--sans); color: var(--black); background: #fff; line-hei
   <!-- Phase 1 -->
   <div class="phase">
     <span class="phase-num">Phase 1</span>
-    <span class="phase-title">Cron Trigger &amp; EMA Data Collection</span>
+    <span class="phase-title">Local Cron Trigger &amp; Risk Data Collection</span>
     <span class="phase-time">~15 min</span>
   </div>
 
   <div class="step">
-    <div class="step-from">GitHub Actions</div>
+    <div class="step-from">Local Cron</div>
     <div class="step-arrow"><svg width="20" height="12"><path d="M0 6h16m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
     <div class="step-content step--purple">
       <div class="step-label">Cron Job Triggered <span class="step-badge badge-purple">Automated</span></div>
-      <div class="step-detail">GitHub Actions fires on schedule (09:00 HKT morning review, 16:30 HKT afternoon review + Lark) or manual dispatch</div>
-      <div class="step-code">schedule: '0 1 * * *' (9AM HKT) &amp; '30 8 * * *' (4:30PM HKT)</div>
+      <div class="step-detail">A local Claude Code cron starts the daily flow, generates same-day risk intelligence if available, then runs the report builder and deployment sequence.</div>
+      <div class="step-code">risk-intel generation → runner.main → git push → notify_lark</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-from">Claude Code</div>
+    <div class="step-arrow"><svg width="20" height="12"><path d="M0 6h16m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+    <div class="step-content step--amber">
+      <div class="step-label">Generate Risk Intelligence Snapshot</div>
+      <div class="step-detail">Reads the latest modified Lark document in the shared folder, parses the four alert types, highlights suspicious users, and condenses the top user profiles into a local JSON snapshot.</div>
+      <div class="step-code">public/data/reports/YYYY-MM-DD/risk-intel.json</div>
     </div>
   </div>
 
@@ -455,7 +470,7 @@ body { font-family: var(--sans); color: var(--black); background: #fff; line-hei
   <!-- Phase 2 -->
   <div class="phase">
     <span class="phase-num">Phase 2</span>
-    <span class="phase-title">OKX API Data Fetch (Parallel)</span>
+    <span class="phase-title">EMA Collection &amp; OKX API Data Fetch</span>
     <span class="phase-time">~2 min</span>
   </div>
 
@@ -493,7 +508,7 @@ body { font-family: var(--sans); color: var(--black); background: #fff; line-hei
   <!-- Phase 3 -->
   <div class="phase">
     <span class="phase-num">Phase 3</span>
-    <span class="phase-title">Review Rules Engine (4 Rules)</span>
+    <span class="phase-title">Review Chapters Assembly</span>
     <span class="phase-time">< 1 min</span>
   </div>
 
@@ -520,6 +535,16 @@ body { font-family: var(--sans); color: var(--black); background: #fff; line-hei
           <div class="rule-desc">Z cap (outer band) must always be wider than Y cap (inner band). If not → misconfiguration, needs immediate fix.</div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-from">Risk Intel Adapter</div>
+    <div class="step-arrow"><svg width="20" height="12"><path d="M0 6h16m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+    <div class="step-content step--amber">
+      <div class="step-label">Load Same-Day Risk Intelligence</div>
+      <div class="step-detail">Reads the local risk-intel snapshot for the exact report date. If it is missing, the chapter remains pending instead of silently reusing older data.</div>
+      <div class="step-code">No stale carry-forward by design</div>
     </div>
   </div>
 
@@ -553,11 +578,11 @@ body { font-family: var(--sans); color: var(--black); background: #fff; line-hei
   </div>
 
   <div class="step">
-    <div class="step-from">GitHub Actions</div>
+    <div class="step-from">Local Workflow</div>
     <div class="step-arrow"><svg width="20" height="12"><path d="M0 6h16m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
     <div class="step-content">
       <div class="step-label">Git Commit &amp; Push</div>
-      <div class="step-detail">Auto-commits the new report data and pushes to GitHub repository.</div>
+      <div class="step-detail">The local workflow commits the newly generated report data and pushes it to the repository for Vercel deployment.</div>
       <div class="step-code">git add public/data/ → git commit → git push</div>
     </div>
   </div>
@@ -584,7 +609,7 @@ body { font-family: var(--sans); color: var(--black); background: #fff; line-hei
   <!-- Phase 5 -->
   <div class="phase">
     <span class="phase-num">Phase 5</span>
-    <span class="phase-title">Lark Notification (4:30 PM HKT only)</span>
+    <span class="phase-title">Lark Notification</span>
     <span class="phase-time">< 5 sec</span>
   </div>
 
@@ -593,7 +618,7 @@ body { font-family: var(--sans); color: var(--black); background: #fff; line-hei
     <div class="step-arrow"><svg width="20" height="12"><path d="M0 6h16m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
     <div class="step-content step--amber">
       <div class="step-label">Send Lark Interactive Card</div>
-      <div class="step-detail">Reads the latest committed report.json and sends a summary card to configured Lark webhook groups. Card includes: overall status, instrument count, issues, rule results table (with colored status tags), and a "View Full Report" button linking to the live Vercel site.</div>
+      <div class="step-detail">Reads the latest committed report.json and sends a summary card to configured Lark webhook groups. The card includes Price Limit and Risk Intelligence summaries, but keeps user-level detail condensed.</div>
       <div class="step-api">POST /open-apis/bot/v2/hook/{webhook_id}</div>
       <div class="step-code">Sent to 2 Lark groups simultaneously</div>
     </div>
@@ -643,20 +668,20 @@ body { font-family: var(--sans); color: var(--black); background: #fff; line-hei
     <tbody>
       <tr style="border-bottom:1px solid var(--gray-100);">
         <td style="padding:8px 12px;font-family:var(--mono);font-weight:500;">09:00</td>
-        <td style="padding:8px 12px;">GitHub Actions cron</td>
-        <td style="padding:8px 12px;">EMA collection + OKX API fetch + 4 rules + deploy</td>
+        <td style="padding:8px 12px;">Claude Code local cron</td>
+        <td style="padding:8px 12px;">Risk-intel generation + EMA collection + API fetch + report build + deploy</td>
         <td style="padding:8px 12px;color:var(--gray-400);">No</td>
       </tr>
       <tr style="border-bottom:1px solid var(--gray-100);">
         <td style="padding:8px 12px;font-family:var(--mono);font-weight:500;">16:30</td>
-        <td style="padding:8px 12px;">GitHub Actions cron</td>
-        <td style="padding:8px 12px;">EMA collection + OKX API fetch + 4 rules + deploy</td>
+        <td style="padding:8px 12px;">Claude Code local cron</td>
+        <td style="padding:8px 12px;">Risk-intel generation + EMA collection + API fetch + report build + deploy</td>
         <td style="padding:8px 12px;color:var(--green);font-weight:600;">Yes</td>
       </tr>
       <tr>
         <td style="padding:8px 12px;font-family:var(--mono);font-weight:500;">Anytime</td>
-        <td style="padding:8px 12px;">Manual (local or GH dispatch)</td>
-        <td style="padding:8px 12px;">Full review with local EMA cache + deploy</td>
+        <td style="padding:8px 12px;">Manual local run</td>
+        <td style="padding:8px 12px;">Generate risk-intel snapshot + full review + deploy</td>
         <td style="padding:8px 12px;color:var(--green);font-weight:600;">Yes</td>
       </tr>
     </tbody>
@@ -668,7 +693,7 @@ body { font-family: var(--sans); color: var(--black); background: #fff; line-hei
   <div class="section-title">Technology Stack</div>
   <div class="overview-grid" style="grid-template-columns: repeat(4, 1fr);">
     <div class="overview-card"><div class="val" style="font-size:16px;">Python 3.12</div><div class="label">Review Runner</div></div>
-    <div class="overview-card"><div class="val" style="font-size:16px;">GitHub Actions</div><div class="label">Cron + CI/CD</div></div>
+    <div class="overview-card"><div class="val" style="font-size:16px;">Claude Code + MCP</div><div class="label">Local Risk Intel Generation</div></div>
     <div class="overview-card"><div class="val" style="font-size:16px;">Vercel</div><div class="label">Static Hosting (HKG)</div></div>
     <div class="overview-card"><div class="val" style="font-size:16px;">Lark Webhook</div><div class="label">Team Notifications</div></div>
   </div>

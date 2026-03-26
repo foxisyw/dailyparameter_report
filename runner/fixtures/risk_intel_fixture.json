@@ -1,0 +1,234 @@
+{
+  "folder_documents": [
+    {
+      "title": "[PROD]Index Alarm - 2026-03-25 (00:00 - 23:59)",
+      "url": "https://okg-block.sg.larksuite.com/drive/folder/Wu2Pfktq6lq4t8dWL52lB97pgQb?doc=index-20260325",
+      "modified_at": "2026-03-25T12:23:00+08:00",
+      "content": "📊 **每日风控总结**\n\n**1️⃣ Index Alarm** ｜ 1条→1事件\n🟡 ALGO 指数报价短时缺失，已自愈。\n"
+    },
+    {
+      "title": "[PROD]Index Alarm - 2026-03-26 (00:00 - 23:59)",
+      "url": "https://okg-block.sg.larksuite.com/drive/folder/Wu2Pfktq6lq4t8dWL52lB97pgQb?doc=index-20260326",
+      "modified_at": "2026-03-26T20:32:00+08:00",
+      "content": "📊 **每日风控总结**\n\n**1️⃣ Index Alarm** ｜ 2条→2事件\n🟠 CRCL 指数成分报价偏离 3.8%，短时集中在欧洲时段。\n🟡 ONT 指数报价缺失后 12 分钟恢复。\n"
+    },
+    {
+      "title": "每日风控总结 - 2026-03-26 (00:00 - 23:59)",
+      "url": "https://okg-block.sg.larksuite.com/drive/folder/Wu2Pfktq6lq4t8dWL52lB97pgQb?doc=daily-20260326",
+      "modified_at": "2026-03-26T20:37:00+08:00",
+      "content": "📊 **每日风控总结**\n📅 统计周期：2026-03-26 00:00 ~ 2026-03-26 23:59\n\n**1️⃣ Index Alarm** ｜ 3条→2事件\n🔴 CRCL 指数成分报价偏离 4.2%，多个来源在 15:00-16:00 HKT 同时抖动。\n🟠 ONT 指数成分短时缺失 12 分钟后恢复。\n💡 建议：\n① 复核 CRCL 指数源权重与降级逻辑\n\n**2️⃣ Price Limit — P4** ｜ 4条（去重3条，2个合约）\n🔴 CRCL-USDT-SWAP Z cap 硬顶触发 2 次，涉及 UID 612133499092760604，master_user_id 62247621。\n🟠 ONT-USDT-SWAP 内带多次触发，涉及 UID 612133499092760605，master_user_id 62247622。\n🟡 CRCL-USDT 现货限价接近下边界，涉及 UID 612133499092760604。\n💡 建议：\n① 优先复核 CRCL 相关参数与盘口行为\n\n**3️⃣ Collateral Coin Risk** ｜ 2条\n🟠 BANANA borrow/limit 96.2%，已触发下单限制，关联 UID 612133499092760604。\n🟡 ZENT borrow/limit 84.1%，尚未触发 FRP，关联 UID 612133499092760606，master_user_id 62247623。\n\n**4️⃣ Platform OI** ｜ 3条\n🔴 CRCL OI 较24H均值偏离 56.15%，涉及 UID 612133499092760604，master_user_id 62247621。\n🔴 CRCL OI/平台限额占比 82%，涉及 UID 612133499092760606，master_user_id 62247623。\n🟠 ONT OI/流通市值占比 13.4%，涉及 UID 612133499092760605，master_user_id 62247622。\n⚠️ AI汇总，关键数据请以原始报警为准\n"
+    }
+  ],
+  "profiles": {
+    "612133499092760604": {
+      "uid": "612133499092760604",
+      "master_user_id": "62247621",
+      "overall_risk_tier": "T4",
+      "executive_summary": "Newer account with fast trading activation, concentrated CRCL exposure, and repeated appearance across price-limit, collateral, and OI alerts.",
+      "local_artifact_ref": "local://user-risk/612133499092760604.html",
+      "key_evidence": [
+        "Registration-to-first-trade latency under 24 hours.",
+        "CRCL exposure appears across multiple alert types in the same day.",
+        "Collateral pressure and OI concentration line up with the observed market stress window."
+      ],
+      "dimensions": [
+        {
+          "name": "Registration Profile",
+          "severity": "warning",
+          "signals": [
+            "Account age under 30 days.",
+            "First trade occurred on the registration day."
+          ]
+        },
+        {
+          "name": "Trading Behavior",
+          "severity": "critical",
+          "signals": [
+            "CRCL concentration exceeded 80% of visible activity.",
+            "Repeated price-limit and OI-linked behavior on the same asset."
+          ]
+        },
+        {
+          "name": "Associated Accounts",
+          "severity": "warning",
+          "signals": [
+            "Shared alert timing with another CRCL-linked account requires relationship review."
+          ]
+        },
+        {
+          "name": "IP & Geolocation",
+          "severity": "warning",
+          "signals": [
+            "Login region changed twice within the recent review window."
+          ]
+        },
+        {
+          "name": "Identity Signals",
+          "severity": "warning",
+          "signals": [
+            "Declared profile information needs consistency review against activity pattern."
+          ]
+        },
+        {
+          "name": "Profit & Loss",
+          "severity": "warning",
+          "signals": [
+            "Profit concentration is skewed toward the same stressed instrument."
+          ]
+        },
+        {
+          "name": "Withdrawal Behavior",
+          "severity": "warning",
+          "signals": [
+            "Recent withdrawal timing clusters after volatile CRCL windows."
+          ]
+        },
+        {
+          "name": "Comprehensive Judgment",
+          "severity": "critical",
+          "signals": [
+            "Combined pattern is consistent with a high-priority manipulation review candidate."
+          ]
+        }
+      ]
+    },
+    "612133499092760605": {
+      "uid": "612133499092760605",
+      "master_user_id": "62247622",
+      "overall_risk_tier": "T3",
+      "executive_summary": "ONT-linked alerts are narrower in scope but still show concentrated OI and repeated price-limit proximity.",
+      "local_artifact_ref": "local://user-risk/612133499092760605.html",
+      "key_evidence": [
+        "Appears in both Price Limit P4 and Platform OI sections.",
+        "Current evidence points to concentration rather than a fully matched attack pattern."
+      ],
+      "dimensions": [
+        {
+          "name": "Registration Profile",
+          "severity": "pass",
+          "signals": [
+            "Account age and onboarding speed are within normal historical bounds."
+          ]
+        },
+        {
+          "name": "Trading Behavior",
+          "severity": "warning",
+          "signals": [
+            "ONT exposure dominates recent activity.",
+            "Repeated taker-heavy execution around alert windows."
+          ]
+        },
+        {
+          "name": "Associated Accounts",
+          "severity": "warning",
+          "signals": [
+            "Needs related-account screening due to concurrent ONT alert timing."
+          ]
+        },
+        {
+          "name": "IP & Geolocation",
+          "severity": "pass",
+          "signals": [
+            "No material geo anomaly surfaced in the latest snapshot."
+          ]
+        },
+        {
+          "name": "Identity Signals",
+          "severity": "pass",
+          "signals": [
+            "No strong identity inconsistency was surfaced from available fields."
+          ]
+        },
+        {
+          "name": "Profit & Loss",
+          "severity": "warning",
+          "signals": [
+            "PnL is concentrated in a single stressed asset."
+          ]
+        },
+        {
+          "name": "Withdrawal Behavior",
+          "severity": "pass",
+          "signals": [
+            "No acute withdrawal stress signal was captured."
+          ]
+        },
+        {
+          "name": "Comprehensive Judgment",
+          "severity": "warning",
+          "signals": [
+            "Escalate if ONT concentration persists across multiple days."
+          ]
+        }
+      ]
+    },
+    "612133499092760606": {
+      "uid": "612133499092760606",
+      "master_user_id": "62247623",
+      "overall_risk_tier": "T2",
+      "executive_summary": "Cross-appears in collateral and OI alerts, but evidence strength is still moderate.",
+      "local_artifact_ref": "local://user-risk/612133499092760606.html",
+      "key_evidence": [
+        "Shows up in a secondary CRCL OI alert and one collateral pressure alert."
+      ],
+      "dimensions": [
+        {
+          "name": "Registration Profile",
+          "severity": "pass",
+          "signals": [
+            "No abnormal onboarding timing detected."
+          ]
+        },
+        {
+          "name": "Trading Behavior",
+          "severity": "warning",
+          "signals": [
+            "Activity clusters around CRCL event windows."
+          ]
+        },
+        {
+          "name": "Associated Accounts",
+          "severity": "pass",
+          "signals": [
+            "No direct related-account signal in the current fixture."
+          ]
+        },
+        {
+          "name": "IP & Geolocation",
+          "severity": "pass",
+          "signals": [
+            "No high-risk region indicator in the current fixture."
+          ]
+        },
+        {
+          "name": "Identity Signals",
+          "severity": "pass",
+          "signals": [
+            "Identity fields do not show a strong inconsistency signal."
+          ]
+        },
+        {
+          "name": "Profit & Loss",
+          "severity": "warning",
+          "signals": [
+            "Profit appears concentrated in a small number of risk events."
+          ]
+        },
+        {
+          "name": "Withdrawal Behavior",
+          "severity": "pass",
+          "signals": [
+            "No suspicious withdrawal pattern was attached to this user."
+          ]
+        },
+        {
+          "name": "Comprehensive Judgment",
+          "severity": "warning",
+          "signals": [
+            "Keep on watch but current evidence does not justify T3/T4 escalation."
+          ]
+        }
+      ]
+    }
+  }
+}

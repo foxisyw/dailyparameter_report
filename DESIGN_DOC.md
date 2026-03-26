@@ -26,17 +26,23 @@
 
 ### 1.1 是什麼？
 
-**Daily Parameter Review** 是一個每日自動運行的參數審計報告系統。它會自動掃描 OKX 交易所上 **1,498+ 個交易幣對**的 Price Limit 參數（X/Y/Z Cap），運行 4 條合規規則，生成結構化報告，部署為靜態網站，並透過 Lark 推送摘要通知。
+**Daily Parameter Review** 是一個每日自動運行的風控與參數審計報告系統。它目前有兩個活躍章節：
+- **Price Limit Review**：掃描 OKX 上 **1,498+ 個交易幣對**的 X/Y/Z Cap，運行 4 條規則
+- **Risk Intelligence**：讀取 Claude Code 本地生成的同日風控快照，整理 4 類 alert、可疑用戶 highlight、以及最多 5 位用戶的深度畫像
+
+系統會把這些輸出統一整理成結構化報告，部署為靜態網站，並透過 Lark 推送精簡摘要通知。
 
 ### 1.2 為什麼需要它？
 
-OKX 的 Price Limit 參數（Y Cap = 內帶限制, Z Cap = 外硬限制）需要定期審查以確保：
+OKX 的 Price Limit 參數（Y Cap = 內帶限制, Z Cap = 外硬限制）與日常 Trading Risk alert 都需要定期審查，以確保：
 - 緩衝區不會太窄（價格持續觸及限價）
 - 基差不會超過 Z Cap（造成不必要的限價觸發）
 - 各資產類型的參數符合預期範圍（如 Topcoins 的 Y 應為 0.5-1%，不應設為 2%）
 - Z Cap 始終大於 Y Cap（基本結構性要求）
+- 高風險標的會被快速匯總，不再分散在 Lark 原始文檔中
+- 可疑用戶可以在同一份日報中被標出，並提供精簡的單用戶深描入口
 
-手動審查 1,498 個幣對的參數是不可行的。這個系統將審查自動化，每日生成報告，讓團隊只需要關注有問題的幣對。
+手動審查 1,498 個幣對的參數，再另外翻 Lark 風控文檔和逐個做用戶分析，是不可持續的。這個系統把參數審查與風險情報匯總放進同一份日報，讓團隊只需要關注真正需要處理的標的與用戶。
 
 ### 1.3 誰在用？
 
@@ -49,9 +55,11 @@ OKX 的 Price Limit 參數（Y Cap = 內帶限制, Z Cap = 外硬限制）需要
 | 指標 | 數值 |
 |------|------|
 | 掃描幣對數 | 1,498+ |
-| Review 規則數 | 4 條 |
+| Price Limit 規則數 | 4 條 |
+| Risk Alert 類型 | 4 類 |
+| 單日深描用戶上限 | 5 位 |
 | 每日運行次數 | 2 次（9AM + 4:30PM HKT） |
-| 端到端耗時 | ~20 分鐘 |
+| 端到端耗時 | ~20-25 分鐘 |
 | 報告部署時間 | ~90 秒（Vercel 自動部署） |
 
 ---
@@ -83,7 +91,9 @@ OKX 的 Price Limit 參數（Y Cap = 內帶限制, Z Cap = 外硬限制）需要
 2. **靜態部署**：報告生成後部署為靜態網站，任何人隨時可以查看
 3. **Lark 通知**：自動推送摘要到 Lark 群組，主管一眼就能看到狀態
 4. **歷史記錄**：保留每日報告，可以通過日期選擇器查看歷史
-5. **可擴展**：框架支持新增更多參數類型（如 MMR Futures、Index）
+5. **本地 Claude Code 邊界**：所有需要 MCP 的能力必須在本地先生成標準化快照，再交給報告系統消費
+6. **不可跨日回填**：若當日 risk-intel 快照不存在，章節應顯示 pending，而不是冒用舊資料
+7. **可擴展**：框架支持新增更多參數類型（如 MMR Futures、Index）
 
 ---
 
@@ -92,23 +102,24 @@ OKX 的 Price Limit 參數（Y Cap = 內帶限制, Z Cap = 外硬限制）需要
 ### 3.1 高層架構
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    GitHub Actions (Cron)                     │
-│                                                             │
-│  ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌────────┐  │
-│  │ EMA      │──▶│ OKX API  │──▶│ 4 Rules  │──▶│ Report │  │
-│  │ Collector│   │ Fetch    │   │ Engine   │   │ JSON   │  │
-│  │ (15 min) │   │ (2 min)  │   │ (<1 min) │   │        │  │
-│  └──────────┘   └──────────┘   └──────────┘   └───┬────┘  │
-│                                                    │        │
-│  ┌──────────────────────────────────────────────┐  │        │
-│  │ git commit + push ──▶ Vercel auto-deploy     │◀─┘        │
-│  └──────────────────────────────────────────────┘           │
-│                                                             │
-│  ┌──────────────────────────────────────────────┐           │
-│  │ Wait 90s ──▶ Send Lark Card (4:30PM only)    │           │
-│  └──────────────────────────────────────────────┘           │
-└─────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────┐
+│                   Claude Code Local Cron / Manual Run               │
+│                                                                      │
+│  ┌──────────────┐   ┌──────────────┐   ┌──────────────────────────┐  │
+│  │ Lark MCP +   │──▶│ risk-intel   │──▶│ public/data/reports/     │  │
+│  │ Data Query   │   │ generator    │   │ YYYY-MM-DD/risk-intel    │  │
+│  │ (local only) │   │ (same-day)   │   │ .json                    │  │
+│  └──────────────┘   └──────────────┘   └─────────────┬────────────┘  │
+│                                                       │               │
+│  ┌──────────┐   ┌──────────┐   ┌──────────────┐       │               │
+│  │ EMA      │──▶│ OKX API  │──▶│ runner.main  │───────┘               │
+│  │ Collector│   │ Fetch    │   │ chapter merge│                       │
+│  └──────────┘   └──────────┘   └──────┬───────┘                       │
+│                                       │                                │
+│  ┌────────────────────────────────────▼──────────────────────────────┐ │
+│  │ git push ──▶ Vercel auto-deploy ──▶ wait 90s ──▶ notify_lark.py  │ │
+│  └───────────────────────────────────────────────────────────────────┘ │
+└──────────────────────────────────────────────────────────────────────┘
 
 ┌──────────────┐        ┌──────────────┐
 │ Vercel (HKG) │        │ Lark Groups  │
@@ -116,25 +127,32 @@ OKX 的 Price Limit 參數（Y Cap = 內帶限制, Z Cap = 外硬限制）需要
 │              │        │              │
 │ index.html   │        │ Interactive  │
 │ /data/       │        │ Card with    │
-│ reports/     │        │ Rule Table   │
+│ reports/     │        │ chapter summary│
 └──────────────┘        └──────────────┘
 ```
+
+**主流程已改為 local-first。** `.github/workflows/` 仍保留作為歷史參考與 legacy automation，但不再是 Risk Intelligence 的真實執行環境。
 
 ### 3.2 項目結構
 
 ```
 /Daily Parameter Dashboard/Claude Code/
 ├── .github/workflows/
-│   ├── daily-review.yml        # 9AM HKT cron（review only, no Lark）
-│   └── lark-notify.yml         # 4:30PM HKT cron（review + deploy + Lark）
+│   ├── daily-review.yml        # Legacy cron workflow（保留參考）
+│   └── lark-notify.yml         # Legacy notification workflow（保留參考）
 ├── runner/                     # Python 數據管道
 │   ├── main.py                 # 主控器：運行所有 adapters，保存報告
+│   ├── generate_risk_intel.py  # 本地生成同日 risk-intel.json
 │   ├── notify_lark.py          # 從已保存的報告發送 Lark 通知
 │   ├── lark.py                 # Lark webhook client + card builder
+│   ├── risk_intel_utils.py     # Risk Intelligence 解析/聚合 helpers
 │   ├── ema_collector.py        # EMA 數據收集器
+│   ├── fixtures/               # 本地 fixture（無 MCP 時用於測試）
+│   ├── local/                  # 本地 MCP 快照輸入（git ignore）
 │   └── adapters/
 │       ├── base.py             # Adapter 抽象基類
 │       ├── price_limit.py      # Price Limit Review（4 rules）
+│       ├── risk_intel.py       # 讀取 same-day risk-intel.json
 │       ├── mmr_futures.py      # Stub（pending integration）
 │       └── index_review.py     # Stub（pending integration）
 ├── params_cli/                 # 從原有項目複製的 CLI 工具
@@ -145,10 +163,11 @@ OKX 的 Price Limit 參數（Y Cap = 內帶限制, Z Cap = 外硬限制）需要
 ├── public/                     # 前端靜態網站
 │   ├── index.html              # 報告頁面
 │   ├── styles.css              # 設計系統
-│   ├── app.js                  # 數據加載 + 渲染邏輯
+│   ├── app.js                  # 共用 chapter shell + variant renderer
 │   ├── how-it-works.html       # 系統架構說明頁
 │   └── data/reports/           # 每日報告 JSON（git tracked）
 ├── run-and-deploy.sh           # 一鍵本地運行 + 部署腳本
+├── tasks/                      # 任務拆解與 lessons
 ├── package.json                # Vite 構建配置
 ├── vite.config.js              # Vite 配置
 ├── vercel.json                 # Vercel 部署配置
@@ -158,25 +177,33 @@ OKX 的 Price Limit 參數（Y Cap = 內帶限制, Z Cap = 外硬限制）需要
 ### 3.3 數據流
 
 ```
-OKX WebSocket API ──▶ EMA Collector ──▶ ema_state.json (cache)
-                                              │
-OKX REST API ──▶ instruments + XYZ params ────┤
-                                              │
-assets_types.md ──▶ asset classification ─────┤
-                                              ▼
-                                    Price Limit Adapter
-                                    (runs 4 review rules)
-                                              │
-                                              ▼
-                               public/data/reports/YYYY-MM-DD/
-                                    ├── report.json
-                                    ├── price-limit.md
-                                    └── assets/perp_adjustment.csv
-                                              │
-                                    ┌─────────┴─────────┐
-                                    ▼                   ▼
-                               Vercel Site         Lark Card
-                           (reads /data/)     (reads report.json)
+Lark folder + Data Query MCP ──▶ Claude Code local snapshot
+                                          │
+                                          ▼
+                               generate_risk_intel.py
+                                          │
+                                          ▼
+                         public/data/reports/YYYY-MM-DD/risk-intel.json
+                                          │
+OKX WebSocket API ──▶ EMA Collector ──────┼──────────────┐
+                                          │              │
+OKX REST API ──▶ instruments + XYZ params ┤              │
+                                          │              │
+assets_types.md ──▶ asset classification ─┘              │
+                                                         ▼
+                                                 runner/main.py
+                                           ┌─────────┬─────────┐
+                                           ▼         ▼         ▼
+                                     Price Limit   Risk Intel  Pending stubs
+                                           │         │
+                                           └────┬────┘
+                                                ▼
+                              public/data/reports/YYYY-MM-DD/report.json
+                                                │
+                                      ┌─────────┴─────────┐
+                                      ▼                   ▼
+                                 Vercel Site         Lark Card
+                             (reads /data/)     (reads report.json)
 ```
 
 ---
@@ -191,19 +218,19 @@ assets_types.md ──▶ asset classification ─────┤
 
 **遇到的問題：**
 - Blob API 上傳需要 `BLOB_READ_WRITE_TOKEN`，增加了配置複雜度
-- GitHub Actions 中的 Blob 上傳偶爾失敗，導致報告丟失
+- Blob 上傳失敗時很難補救，而且與本地 Claude Code 流程割裂
 - 需要額外管理 Blob 存儲和權限
 
 **最終方案：Git Commit 方式**
 - Runner 將報告保存到 `public/data/` 目錄
-- GitHub Actions `git commit + push`
+- 本地流程 `git commit + push`
 - Vercel 自動檢測到 push 並重新部署
 
 **優勢：**
 - 零額外依賴（不需要 Blob token）
 - 報告歷史自動保存在 Git 中
 - 可靠性更高——Git 操作比 API 調用更穩定
-- 本地和 CI 使用完全相同的流程
+- 本地生成與網站發布使用同一份數據源
 
 ### 4.2 為什麼選擇靜態站點而非 SSR？
 
@@ -219,11 +246,12 @@ assets_types.md ──▶ asset classification ─────┤
 - 構建時間 < 1 秒
 - 任何人都可以閱讀和修改
 
-### 4.3 為什麼 Python Runner 不用 httpx？
+### 4.3 為什麼 Python Runner 保持輕依賴？
 
 原有的 `daily_review.py` 使用 Python stdlib 的 `urllib`。我們保持一致，避免引入不必要的依賴：
 - `urllib.request` 足夠處理 OKX REST API 調用
-- 在 GitHub Actions 中，更少的依賴 = 更快的安裝 = 更少的失敗點
+- `risk-intel` adapter 不直接依賴 MCP，只讀本地已生成的 JSON
+- 真正需要 Claude Code MCP 的步驟，被隔離在 `generate_risk_intel.py` 的輸入邊界之外
 - SSL 問題通過自定義 `ssl.SSLContext` 解決（見第 11 節）
 
 ### 4.4 時區選擇：HKT
@@ -347,20 +375,23 @@ function fmtTime(iso) {
 │  MASTHEAD（固定頂部，2px 黑色下邊框）          │
 │  品牌標識 | 日期 | 語言切換                    │
 ├──────────────────────────────────────────────┤
-│  SUMMARY OVERVIEW（KPI 卡片 + 甜甜圈圖 + 柱狀圖）│
+│  SUMMARY OVERVIEW（中性 KPI + 甜甜圈圖 + 柱狀圖）│
 ├──────────┬───────────────────────────────────┤
 │  LEFT    │  MAIN CONTENT                     │
 │  RAIL    │                                   │
 │  (220px) │  Chapter: Price Limit             │
 │          │    ├─ Metrics                     │
-│  Date    │    ├─ Rule 1 (collapsible)        │
-│  Picker  │    ├─ Rule 2                      │
-│          │    ├─ Rule 3                      │
-│  Chapter │    ├─ Rule 4                      │
-│  Nav     │    ├─ Recommended Changes          │
-│          │    └─ Download CSV                 │
+│  Date    │    ├─ Rule blocks                 │
+│  Picker  │    ├─ Recommended Changes         │
 │          │                                   │
-│          │  Chapter: MMR Futures (pending)    │
+│  Chapter │  Chapter: Risk Intelligence       │
+│  Nav     │    ├─ Source document             │
+│          │    ├─ Alert overview metrics      │
+│          │    ├─ 4 alert blocks              │
+│          │    ├─ Suspicious users table      │
+│          │    └─ User deep dive (<details>)  │
+│          │                                   │
+│          │  Chapter: MMR Futures (pending)   │
 │          │  Chapter: Index (pending)         │
 └──────────┴───────────────────────────────────┘
 ```
@@ -371,17 +402,17 @@ function fmtTime(iso) {
 
 1. **KPI 卡片**（左側 2x2 網格）：
    - Overall Status（含狀態標籤）
-   - Instruments（1,498）
-   - Issues Found（43）
-   - Sections（3）
+   - Total Findings
+   - Active Chapters
+   - Report Freshness
 
 2. **甜甜圈圖**（中央，純 CSS/SVG）：
-   - 規則狀態分布：Pass / Warning / Critical
+   - 活躍章節中所有 rule block 的狀態分布：Pass / Warning / Critical
    - 中心顯示規則總數
    - 下方圖例
 
 3. **水平柱狀圖**（右側）：
-   - 每條規則的 flagged 數量
+   - 每條規則或 alert block 的 flagged 數量
    - 柱體顏色對應狀態
 
 **所有圖表都是純 CSS + SVG，沒有使用任何圖表庫。** 這保持了零依賴的原則。
@@ -469,9 +500,14 @@ class BaseAdapter:
             "status": "pass" | "warning" | "critical" | "pending",
             "summary": str,
             "metrics": { ... },
+            "render_variant": "rules" | "risk-intel",
+            "metric_cards": [ ... ],
             "rule_blocks": [ ... ],
             "recommended_changes": { ... },
             "downloads": [ ... ],
+            "source_document": { ... } | None,
+            "suspicious_users": [ ... ],
+            "user_profiles": [ ... ],
             "markdown": str,
             "error": str | None
         }
@@ -480,6 +516,7 @@ class BaseAdapter:
 **為什麼用 Adapter 模式？**
 - 新的參數類型只需實現 `execute()` 方法
 - 主控器（`main.py`）不需要了解每種參數的細節
+- 前端根據 `render_variant` 分流渲染器，而不是把所有章節都當成 Price Limit
 - MMR Futures 和 Index 目前是 stub（返回 `status: "pending"`），同事的代碼就緒後直接替換
 
 ### 6.2 四條 Review 規則
@@ -539,6 +576,29 @@ EMA Collector（`ema_collector.py`）：
 - Perp 模板：不同的列名格式
 - CSV 可直接在報告頁面下載
 
+### 6.5 Risk Intelligence 章節設計
+
+`Risk Intelligence` 是一個新的 chapter variant，目的不是重做風控系統，而是把本地 Claude Code 已生成的風險情報，壓縮進同一份日報。
+
+**固定三層結構：**
+1. **標的問題分析**：4 個固定 alert blocks
+   - Index Alarm
+   - Price Limit P4
+   - Collateral Coin Risk
+   - Platform OI
+2. **可疑用戶 Highlight**：從 alert 內容抽取 UID / `master_user_id`，合併重複提及，按風險與提及次數排序
+3. **單用戶深度畫像**：只對最高優先的 5 位唯一用戶輸出深描卡片，每位卡片固定展示 8 個 dimension
+
+**狀態規則：**
+- 任一 alert block 為 `critical`，或任一用戶為 `T4` → chapter `critical`
+- 有 `warning` alert block，或任一用戶為 `T2/T3` → chapter `warning`
+- 4 類 alert 都無發現，且沒有可疑用戶 → chapter `pass`
+- 當日沒有 `risk-intel.json` → chapter `pending`
+
+**公開數據邊界：**
+- 會公開：精簡摘要、alert tables、可疑用戶、8 維度畫像摘要
+- 不會公開：原始 Lark 全文、完整 SQL 結果、長版 HTML user report
+
 ---
 
 ## 7. 數據管道
@@ -546,7 +606,10 @@ EMA Collector（`ema_collector.py`）：
 ### 7.1 runner/main.py — 主控流程
 
 ```python
-def main():
+def local_daily_flow():
+    # 0. Claude Code 本地先生成 risk-intel.json（獨立命令）
+    #    python3 -m runner.generate_risk_intel
+
     # 1. 確定報告日期（HKT）
     hkt_now = datetime.now(ZoneInfo("Asia/Hong_Kong"))
     date_str = hkt_now.strftime("%Y-%m-%d")
@@ -555,7 +618,12 @@ def main():
     ema_data = _load_ema_data()
 
     # 3. 運行所有 adapters
-    for adapter in [PriceLimitAdapter(), MMRFuturesAdapter(), IndexReviewAdapter()]:
+    for adapter in [
+        PriceLimitAdapter(),
+        RiskIntelAdapter(),
+        MMRFuturesAdapter(),
+        IndexReviewAdapter(),
+    ]:
         chapter = adapter.execute(ema_data)
         chapters.append(chapter)
 
@@ -566,6 +634,8 @@ def main():
     _save_report(chapters, report, date_str)
 ```
 
+`runner.main` 不直接做 MCP 調用。它只消費當日已存在的 `risk-intel.json`，如果沒有就讓章節維持 pending。
+
 ### 7.2 報告數據結構
 
 ```
@@ -575,7 +645,9 @@ public/data/
 │   ├── index.json           # 所有報告日期列表
 │   └── 2026-03-26/
 │       ├── report.json      # 完整報告（report + chapters）
+│       ├── risk-intel.json  # 本地生成的風險情報快照
 │       ├── price-limit.md   # 章節 Markdown
+│       ├── risk-intel.md    # 章節 Markdown
 │       └── assets/
 │           └── perp_adjustment.csv
 ```
@@ -593,11 +665,39 @@ public/data/
   "chapters": [
     {
       "slug": "price-limit",
+      "render_variant": "rules",
+      "metric_cards": [{ "label": "Instruments", "value": "1498" }],
       "rule_blocks": [{ "ruleId": "...", "title": "...", "status": "...", "table": {...} }],
       "recommended_changes": { "headers": [...], "rows": [...] },
-      "downloads": [{ "label": "...", "filename": "...", "content": "..." }]
+      "downloads": [{ "label": "...", "filename": "...", "content": "..." }],
+      "source_document": null,
+      "suspicious_users": [],
+      "user_profiles": []
+    },
+    {
+      "slug": "risk-intel",
+      "render_variant": "risk-intel",
+      "metric_cards": [{ "label": "Alert Types", "value": "4" }],
+      "source_document": {
+        "title": "每日风控总结 - 2026-03-26 (00:00 - 23:59)",
+        "url": "https://okg-block.sg.larksuite.com/drive/folder/Wu2Pfktq6lq4t8dWL52lB97pgQb",
+        "modified_at": "2026-03-26T12:30:00Z",
+        "selected_by": "latest_modified_desc"
+      },
+      "rule_blocks": [{ "ruleId": "index_alarm", "title": "Index Alarm", "status": "warning", "table": {...} }],
+      "suspicious_users": [{ "uid": "...", "master_user_id": "...", "risk_tier": "T4", "source_alert": "platform_oi", "reason": "..." }],
+      "user_profiles": [{ "uid": "...", "overall_risk_tier": "T4", "executive_summary": "...", "dimensions": [...] }]
     }
   ]
+}
+```
+
+**risk-intel.json 結構：**
+```json
+{
+  "date": "2026-03-26",
+  "generated_at": "2026-03-26T09:15:00Z",
+  "chapter": { "...same chapter payload..." }
 }
 ```
 
@@ -610,30 +710,46 @@ async function loadReport(date) {
     const res = await fetch(`/data/reports/${date}/report.json`);
     if (res.ok) return await res.json();
   } catch (e) {}
-  return buildMockReport(date);  // fallback
+  return buildMockReport(date);
 }
+
+// 前端根據 render_variant 分流
+if (chapter.render_variant === 'risk-intel') {
+  return renderRiskIntelChapter(chapter);
+}
+return renderRulesChapter(chapter);
 ```
 
 ---
 
 ## 8. 部署與 CI/CD 流程
 
-### 8.1 兩條 GitHub Actions 工作流
+### 8.1 本地主流程
 
-#### daily-review.yml（9AM HKT）
-```
-觸發 → checkout → install Python → collect EMA → run review (--no-lark)
-→ git add public/data/ → git pull --rebase → git push
-```
+正式運行順序如下：
 
-#### lark-notify.yml（4:30PM HKT）
 ```
-觸發 → checkout → install Python → collect EMA → run review (--no-lark)
-→ git add public/data/ → git pull --rebase → git push
-→ wait 90s → send Lark notification
+python3 -m runner.generate_risk_intel
+→ python3 -m runner.main --no-lark
+→ git add public/data/ && git commit && git push
+→ wait 90s
+→ python3 -m runner.notify_lark
 ```
 
-### 8.2 Vite 構建
+這條流程的重點是：
+- `generate_risk_intel` 必須先跑，因為只有 Claude Code 本地環境能提供 MCP 前置能力
+- `runner.main` 只負責合併章節與保存報告，不負責直接讀 Lark / SQL
+- Lark 通知一定在 `git push` 與 Vercel 部署之後發送
+
+### 8.2 Legacy GitHub Actions
+
+`.github/workflows/` 仍保留，原因有兩個：
+- 保留最初的自動化歷史與 fallback 參考
+- Price Limit / 靜態報告流程仍可在無 MCP 的情況下被重放
+
+但它們**不是 Risk Intelligence 的 source of truth**。如果某次運行發生在沒有同日 `risk-intel.json` 的環境，`risk-intel` chapter 應顯示 `pending`。
+
+### 8.3 Vite 構建
 
 ```json
 // package.json
@@ -642,7 +758,7 @@ async function loadReport(date) {
 
 **重要**：Vite 的 `root: 'public'` 配置意味著 `public/data/` 不會自動被複製到 `dist/`。我們通過 post-build `cp` 命令解決（見第 11 節 ISSUE-006）。
 
-### 8.3 Vercel 配置
+### 8.4 Vercel 配置
 
 ```json
 {
@@ -653,12 +769,13 @@ async function loadReport(date) {
 }
 ```
 
-### 8.4 本地運行
+### 8.5 本地運行
 
 ```bash
 ./run-and-deploy.sh
 # 或手動：
-python3 -m runner.main --no-lark   # 生成報告
+python3 -m runner.generate_risk_intel   # 生成同日 risk-intel snapshot
+python3 -m runner.main --no-lark        # 生成完整報告
 git add public/data/ && git commit && git push   # 部署
 python3 -m runner.notify_lark      # 發送 Lark（可選）
 ```
@@ -681,10 +798,11 @@ Lark Interactive Card 使用原生的 `table` 組件（不是 markdown 表格，
 1. **Header**：橙色/綠色/紅色（根據狀態），標題「Daily Parameter Review — 2026-03-26」
 2. **Overview（column_set）**：Status | Instruments | Issues | Sections
 3. **章節標題**：「Price Limit Review | 1,498 instruments | EMA: 1,472 | 43 issues」
-4. **規則表格（native table）**：Rule | Status (colored tag) | Flagged
-5. **Pending 章節**：⏳ MMR Futures — Pending integration
-6. **按鈕（action）**：[View Full Report] [How It Works]
-7. **Footer（note）**：Generated date | OKX Parameter Management
+4. **Risk Intelligence 章節標題**：「Risk Intelligence | 4 alert types | 3 suspicious users | Highest T4」
+5. **規則表格（native table）**：Rule | Status (colored tag) | Flagged
+6. **Pending 章節**：⏳ MMR Futures — Pending integration
+7. **按鈕（action）**：[View Full Report] [How It Works]
+8. **Footer（note）**：Generated date | OKX Parameter Management
 
 ### 9.3 Lark Table 組件
 
@@ -713,6 +831,8 @@ Lark Interactive Card 使用原生的 `table` 組件（不是 markdown 表格，
 
 **解決方案**：
 ```
+generate_risk_intel.py → 生成同日 risk-intel.json
+                         ↓
 runner.main → 生成報告 → 保存到 public/data/
                 ↓
 git push → Vercel 開始部署
@@ -770,15 +890,15 @@ function T(key) { return I18N[currentLang]?.[key] || I18N.en[key]; }
 
 **問題**：原有看板使用 Express + WebSocket 進行即時數據傳輸。Vercel 是 Serverless 架構，不支持 WebSocket。
 
-**解決方案**：重新設計為靜態報告模式。數據由 Cron Job（GitHub Actions 或本地）預先生成，保存為 JSON 文件，部署為靜態網站。Vercel 只負責託管靜態文件。
+**解決方案**：重新設計為靜態報告模式。數據由本地 Claude Code Cron Job 預先生成，保存為 JSON 文件，部署為靜態網站。Vercel 只負責託管靜態文件。
 
 **影響**：系統從「即時看板」變為「定期報告」。這實際上更符合用戶需求——參數審查本質上是定期任務，不需要即時性。
 
 ---
 
-### ISSUE-002: GitHub Actions Runner Exit Code 1
+### ISSUE-002: Runner Exit Code 1 不等於業務失敗
 
-**問題**：`runner/main.py` 原本在發現任何 issue 時返回 `exit code 1`（`return 0 if report["status"] == "pass" else 1`）。由於 Review 幾乎總是會發現 issue（這是它的工作），GitHub Actions 幾乎每次都標記為 failure。
+**問題**：`runner/main.py` 原本在發現任何 issue 時返回 `exit code 1`（`return 0 if report["status"] == "pass" else 1`）。由於 Review 幾乎總是會發現 issue（這是它的工作），自動化流程幾乎每次都會被標記為 failure。
 
 **解決方案**：Runner 永遠返回 `exit code 0`，除非遇到真正的程序錯誤。發現 issue 是正常行為，不是錯誤。
 
@@ -808,7 +928,7 @@ except Exception:
     _SSL_CTX.verify_mode = ssl.CERT_NONE
 ```
 
-**注意**：在 GitHub Actions 的 Ubuntu 環境中不需要此 workaround，但保留它不會造成問題。
+**注意**：在某些 Linux 環境中不需要此 workaround，但保留它不會造成問題。
 
 ---
 
@@ -879,7 +999,17 @@ except Exception:
 
 **問題**：Runner 在 `main.py` 中保存報告後立即發送 Lark 通知。但此時 git push 尚未執行，Vercel 上還是舊報告。用戶點擊「View Full Report」看到的是過期數據。
 
-**解決方案**：將 Lark 通知移到 GitHub Actions workflow 的最後一步，在 git push 之後等待 90 秒（Vercel 部署時間）再發送。
+**解決方案**：將 Lark 通知移到本地工作流的最後一步，在 git push 之後等待 90 秒（Vercel 部署時間）再發送。
+
+---
+
+### ISSUE-011: Risk Intelligence 不能跨日回填
+
+**問題**：如果某天沒有生成同日 `risk-intel.json`，最偷懶的做法是直接沿用前一天的資料，表面上看起來章節沒有空缺，但這會讓風控用戶與 alert 失去日期對應性。
+
+**解決方案**：`runner/adapters/risk_intel.py` 只讀當日 `public/data/reports/YYYY-MM-DD/risk-intel.json`。沒有同日文件時，直接返回 `pending` chapter，摘要明確寫出「當日本地 risk intel 尚未生成」。
+
+**教訓**：風控日報的完整性比表面上的「每天都有內容」更重要。錯日期的風險情報，等於錯報。
 
 ---
 
@@ -902,11 +1032,13 @@ except Exception:
 
 - **MMR Futures adapter**：同事的 review 功能就緒後，替換 stub
 - **Index adapter**：同上
-- **EMA 收集穩定性**：GitHub Actions 上的 EMA 收集有時候超時，考慮增加超時限制或改進收集策略
+- **真實 MCP 接入**：將 Claude Code 產出的 Lark/Data Query 結果穩定落到 `runner/local/risk_intel_input.json`
+- **EMA 收集穩定性**：本地 Cron 上的 EMA 收集超時策略再優化
 
 ### 12.2 中期
 
 - **歷史趨勢圖**：在 Summary Overview 中添加每日 issue 數量的趨勢圖
+- **Risk Intelligence 對比**：支持比較兩天之間 alert 與可疑用戶的變化
 - **更多 Lark webhook**：支持不同團隊的群組
 - **報告對比**：允許對比兩天的報告，突出變化
 
@@ -915,6 +1047,7 @@ except Exception:
 - **審批流程**：在 Lark 卡片中加入「Approve」按鈕，操作員批准後系統自動逐步調整參數（每 10 秒一步）
 - **BOSS API 集成**：自動將調整推送到 OKX 的 BOSS 後台
 - **即時監控**：恢復 WebSocket 監控，但部署到支持長期運行的平台（如 Railway/Fly.io）
+- **用戶畫像 artifact 中心**：將本地長版 user reports 管理成可追溯的內部資產，而不是散落在臨時文件中
 
 ---
 
@@ -933,6 +1066,9 @@ except Exception:
 # 本地運行完整流程
 ./run-and-deploy.sh
 
+# 只生成同日 risk intelligence
+python3 -m runner.generate_risk_intel
+
 # 只生成報告（不部署不通知）
 python3 -m runner.main --dry-run
 
@@ -950,7 +1086,9 @@ npm run build  # 輸出到 dist/
 
 | 配置項 | 位置 | 說明 |
 |--------|------|------|
-| Cron 時間 | `.github/workflows/*.yml` | 9AM + 4:30PM HKT |
+| 本地 Cron 時間 | 本地排程器 / Claude Code automation | 9AM + 4:30PM HKT |
+| Risk Intel 輸入 | `runner/local/risk_intel_input.json` | 本地 MCP 標準化快照（git ignore） |
+| Legacy workflows | `.github/workflows/*.yml` | 保留參考，不作為 risk-intel 主流程 |
 | Lark Webhooks | `runner/lark.py` DEFAULT_WEBHOOKS | 可通過 `LARK_WEBHOOKS` 環境變量覆蓋 |
 | Vercel 區域 | `vercel.json` regions | `hkg1`（香港） |
 | 報告 URL | `runner/lark.py` VERCEL_URL | `https://dailyparameter-report.vercel.app` |

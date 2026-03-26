@@ -5,6 +5,10 @@
 set -e
 cd "$(dirname "$0")"
 
+echo "=== Generating local risk intelligence ==="
+python3 -m runner.generate_risk_intel
+
+echo ""
 echo "=== Running daily parameter review ==="
 python3 -m runner.main --no-lark
 

@@ -6,6 +6,7 @@ __pycache__/
 *.pyo
 .env
 .env.local
+runner/local/
 
 # params_cli caches and generated output
 params_cli/**/cache/

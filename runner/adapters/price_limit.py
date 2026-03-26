@@ -565,6 +565,7 @@ class PriceLimitAdapter(BaseAdapter):
             return {
                 "slug": self.slug,
                 "title": self.title,
+                "render_variant": "rules",
                 "status": status,
                 "summary": (
                     f"Scanned {len(xyz_list)} instruments. "
@@ -577,11 +578,20 @@ class PriceLimitAdapter(BaseAdapter):
                     "source": "OKX API (live)",
                     "generated_at": now,
                 },
+                "metric_cards": [
+                    {"label": "Instruments", "value": str(len(xyz_list))},
+                    {"label": "EMA Coverage", "value": str(ema_coverage)},
+                    {"label": "Issues", "value": str(total_issues)},
+                    {"label": "Source", "value": "OKX API"},
+                ],
                 "rule_blocks": rule_blocks,
                 "recommended_changes": rec_changes,
                 "downloads": downloads,
                 "markdown": markdown,
                 "error": None,
+                "source_document": None,
+                "suspicious_users": [],
+                "user_profiles": [],
             }
 
         except Exception as exc:
@@ -589,6 +599,7 @@ class PriceLimitAdapter(BaseAdapter):
             return {
                 "slug": self.slug,
                 "title": self.title,
+                "render_variant": "rules",
                 "status": "critical",
                 "summary": f"Adapter failed: {exc}",
                 "metrics": {
@@ -598,11 +609,20 @@ class PriceLimitAdapter(BaseAdapter):
                     "source": "OKX API (live)",
                     "generated_at": now,
                 },
+                "metric_cards": [
+                    {"label": "Instruments", "value": "0"},
+                    {"label": "EMA Coverage", "value": "0"},
+                    {"label": "Issues", "value": "0"},
+                    {"label": "Source", "value": "OKX API"},
+                ],
                 "rule_blocks": [],
                 "recommended_changes": None,
                 "downloads": [],
                 "markdown": f"# Price Limit Review\n\n**Error:** {exc}\n",
                 "error": str(exc),
+                "source_document": None,
+                "suspicious_users": [],
+                "user_profiles": [],
             }
 
     # ── Rule block builders ─────────────────────────────────────────────
