@@ -1,6 +1,6 @@
 {
   "date": "2026-03-27",
-  "generated_at": "2026-03-26T17:25:54.687538+00:00",
+  "generated_at": "2026-03-26T17:33:34.238194+00:00",
   "chapter": {
     "slug": "risk-intel",
     "title": "Risk Intelligence",
@@ -166,7 +166,7 @@
       "ema_coverage": 4,
       "issues_found": 13,
       "source": "每日风控总结 - 2026-03-26 (00:00 - 23:59)",
-      "generated_at": "2026-03-26T17:25:54.687538+00:00"
+      "generated_at": "2026-03-26T17:33:34.238194+00:00"
     },
     "metric_cards": [
       {

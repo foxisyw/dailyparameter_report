@@ -211,6 +211,70 @@ def extract_user_refs(text: str) -> list[dict[str, str]]:
     return refs
 
 
+def extract_critical_assets(text: str) -> list[dict[str, Any]]:
+    """Extract assets flagged as 🔴 critical or 🟠 medium risk from the risk document.
+
+    Returns a list of dicts: {asset, severity, context, source_section}
+    These are the assets that need event analysis + user profiling.
+    """
+    all_candidates: list[dict[str, Any]] = []
+    lines = text.splitlines()
+    current_section = ""
+    noise_words = {"AI", "IN", "AT", "OR", "IF", "OF", "ON", "TO", "BY", "IS", "IT",
+                   "OK", "HK", "US", "EU", "OI", "API", "USD", "USDT", "USDC", "VIP2",
+                   "VIP6", "UTC", "P4", "OKX", "EUR", "TRY", "CC", "BZ", "MU", "OL",
+                   "CRCL", "ATH", "ETF", "APP", "ABS", "MAX", "CAP", "FRP", "ASK", "BID"}
+
+    for line in lines:
+        stripped = line.strip()
+        for sd in SECTION_DEFS:
+            lowered = stripped.lower()
+            if any(kw in lowered for kw in sd["keywords"]) and any(m in stripped for m in ("**", "##", "1️⃣", "2️⃣", "3️⃣", "4️⃣")):
+                current_section = sd["id"]
+
+        if "🔴" not in stripped and "🟠" not in stripped:
+            continue
+
+        # Only actionable sections
+        if current_section not in ("price_limit_p4", "platform_oi", "collateral_coin"):
+            continue
+
+        severity = "critical" if "🔴" in stripped else "warning"
+        asset_patterns = [
+            r"\b([A-Z][A-Z0-9]{1,10}(?:-(?:USDT|USD|USDC))?(?:[-_](?:UM-)?SWAP)?)\b",
+            r"(?:^|[\s（(,、])([A-Z][A-Z0-9]{2,10})\b",
+        ]
+        for pattern in asset_patterns:
+            for match in re.findall(pattern, stripped):
+                asset = match.strip().upper()
+                if len(asset) < 3 or asset in noise_words:
+                    continue
+                inst_id = asset
+                if not any(suffix in asset for suffix in ("-SWAP", "-USDT", "-USD")):
+                    inst_id = f"{asset}-USDT-SWAP"
+                elif asset.endswith("-USDT") or asset.endswith("-USD"):
+                    inst_id = f"{asset}-SWAP"
+
+                all_candidates.append({
+                    "asset": asset,
+                    "instId": inst_id,
+                    "severity": severity,
+                    "context": stripped[:200],
+                    "source_section": current_section,
+                })
+
+    # Deduplicate by instId, keeping the highest severity
+    best: dict[str, dict[str, Any]] = {}
+    for c in all_candidates:
+        key = c["instId"]
+        if key not in best or (c["severity"] == "critical" and best[key]["severity"] != "critical"):
+            best[key] = c
+    results = list(best.values())
+
+    results.sort(key=lambda x: (0 if x["severity"] == "critical" else 1))
+    return results
+
+
 def extract_assets(text: str) -> list[str]:
     assets: list[str] = []
     seen: set[str] = set()
