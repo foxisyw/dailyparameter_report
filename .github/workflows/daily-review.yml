@@ -2,8 +2,9 @@ name: Daily Parameter Review
 
 on:
   schedule:
-    - cron: '0 1 * * *'   # 09:00 HKT
-    - cron: '0 5 * * *'   # 13:00 HKT
+    - cron: '0 1 * * *'    # 09:00 HKT — morning review
+    - cron: '0 5 * * *'    # 13:00 HKT — afternoon review
+    - cron: '30 8 * * *'   # 16:30 HKT — Lark summary (after Vercel deployed)
   workflow_dispatch:
 
 permissions:
@@ -32,7 +33,7 @@ jobs:
         run: python -m runner.ema_collector --timeout 900
         continue-on-error: true
 
-      - name: Generate daily report
+      - name: Generate daily report and send Lark notification
         run: python -m runner.main
 
       - name: Commit and push report data

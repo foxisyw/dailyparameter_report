@@ -18,7 +18,6 @@ except Exception:
 VERCEL_URL = "https://dailyparameter-report.vercel.app"
 TIMEOUT = 15
 
-# Webhook URLs — can be overridden via env var LARK_WEBHOOKS (comma-separated)
 DEFAULT_WEBHOOKS = [
     "https://open.larksuite.com/open-apis/bot/v2/hook/f6726392-3780-407b-94c9-bf2ca1ec6774",
 ]
@@ -35,96 +34,99 @@ def _get_webhooks() -> list[str]:
     return DEFAULT_WEBHOOKS
 
 
-def _status_emoji(status: str) -> str:
+def _emoji(status: str) -> str:
     return {"pass": "\u2705", "warning": "\u26a0\ufe0f", "critical": "\u274c", "pending": "\u23f3"}.get(status, "\u2753")
 
 
-def _status_color(status: str) -> str:
+def _color(status: str) -> str:
     return {"pass": "green", "warning": "orange", "critical": "red"}.get(status, "grey")
 
 
 def build_card(report: dict, chapters: list[dict], date_str: str) -> dict:
-    """Build a Lark Interactive Card for the daily review summary."""
+    """Build a Lark Interactive Card with table-formatted summary."""
     status = report["status"]
     total_issues = report["total_issues"]
-    total_instruments = sum(ch.get("metrics", {}).get("instruments_scanned", 0) for ch in report["chapters"])
-
-    # Header
+    total_instruments = sum(
+        ch.get("metrics", {}).get("instruments_scanned", 0)
+        for ch in report["chapters"]
+    )
     status_text = {"pass": "All Clear", "warning": "Needs Attention", "critical": "Action Required"}.get(status, status.title())
-    header_template = _status_color(status)
 
-    # Summary line
-    active_chapters = [ch for ch in chapters if ch["status"] != "pending"]
-    pending_chapters = [ch for ch in chapters if ch["status"] == "pending"]
+    active = [ch for ch in chapters if ch["status"] != "pending"]
+    pending = [ch for ch in chapters if ch["status"] == "pending"]
 
     elements = []
 
-    # Key metrics row
+    # ── Overview metrics as column_set ──
     elements.append({
         "tag": "column_set",
         "flex_mode": "none",
-        "background_style": "default",
+        "background_style": "grey",
         "columns": [
-            {"tag": "column", "width": "weighted", "weight": 1, "vertical_align": "top", "elements": [
-                {"tag": "div", "text": {"tag": "lark_md", "content": f"**{_status_emoji(status)} Status**\n{status_text}"}},
-            ]},
-            {"tag": "column", "width": "weighted", "weight": 1, "vertical_align": "top", "elements": [
-                {"tag": "div", "text": {"tag": "lark_md", "content": f"**Instruments**\n{total_instruments:,}"}},
-            ]},
-            {"tag": "column", "width": "weighted", "weight": 1, "vertical_align": "top", "elements": [
-                {"tag": "div", "text": {"tag": "lark_md", "content": f"**Issues Found**\n{total_issues}"}},
-            ]},
-            {"tag": "column", "width": "weighted", "weight": 1, "vertical_align": "top", "elements": [
-                {"tag": "div", "text": {"tag": "lark_md", "content": f"**Sections**\n{len(active_chapters)} active / {len(pending_chapters)} pending"}},
-            ]},
+            _col(f"**{_emoji(status)} Status**\n{status_text}"),
+            _col(f"**Instruments**\n{total_instruments:,}"),
+            _col(f"**Issues**\n{total_issues}"),
+            _col(f"**Sections**\n{len(active)} active / {len(pending)} pending"),
         ],
     })
 
     elements.append({"tag": "hr"})
 
-    # Per-chapter breakdown
-    for ch in chapters:
-        ch_status = ch["status"]
-        emoji = _status_emoji(ch_status)
-        issues = ch.get("metrics", {}).get("issues_found", 0)
+    # ── Rule Results Table per active chapter ──
+    for ch in active:
         instruments = ch.get("metrics", {}).get("instruments_scanned", 0)
+        issues = ch.get("metrics", {}).get("issues_found", 0)
+        ema = ch.get("metrics", {}).get("ema_coverage", 0)
 
-        if ch_status == "pending":
-            elements.append({
-                "tag": "div",
-                "text": {"tag": "lark_md", "content": f"{emoji} **{ch['title']}** — Pending integration"},
-            })
-        else:
-            # Build rule summary
-            rule_lines = []
-            for rb in ch.get("rule_blocks", []):
-                rb_emoji = _status_emoji(rb["status"])
+        elements.append({
+            "tag": "div",
+            "text": {"tag": "lark_md", "content": f"**{_emoji(ch['status'])} {ch['title']}**  |  {instruments:,} instruments  |  EMA: {ema:,}  |  {issues} issues"},
+        })
+
+        # Rule table
+        rules = ch.get("rule_blocks", [])
+        if rules:
+            # Build markdown table
+            table_md = "| Rule | Status | Flagged |\n| --- | --- | --- |\n"
+            for rb in rules:
                 count = len(rb.get("table", {}).get("rows", [])) if rb.get("table") else 0
-                rule_lines.append(f"  {rb_emoji} {rb['title']}: {count} flagged")
-
-            rule_text = "\n".join(rule_lines) if rule_lines else "  No rules executed"
+                table_md += f"| {rb['title']} | {_emoji(rb['status'])} {rb['status'].upper()} | {count} |\n"
 
             elements.append({
                 "tag": "div",
-                "text": {"tag": "lark_md", "content": f"{emoji} **{ch['title']}**\n{instruments:,} instruments scanned, {issues} issues\n{rule_text}"},
+                "text": {"tag": "lark_md", "content": table_md},
             })
 
-    # Recommended changes summary
-    for ch in active_chapters:
+    # ── Pending chapters ──
+    for ch in pending:
+        elements.append({
+            "tag": "div",
+            "text": {"tag": "lark_md", "content": f"{_emoji('pending')} **{ch['title']}** \u2014 Pending integration"},
+        })
+
+    # ── Recommended Changes Table ──
+    for ch in active:
         rec = ch.get("recommended_changes")
         if rec and rec.get("rows"):
             elements.append({"tag": "hr"})
-            rec_lines = [f"  \u2022 **{row[0]}**: {row[1]}" for row in rec["rows"][:5]]
-            if len(rec["rows"]) > 5:
-                rec_lines.append(f"  ... and {len(rec['rows']) - 5} more")
+
+            rec_md = "**Recommended Changes**\n\n| Instrument | Change | Reason |\n| --- | --- | --- |\n"
+            for row in rec["rows"][:8]:
+                inst = row[0] if len(row) > 0 else ""
+                change = row[1] if len(row) > 1 else ""
+                reason = row[2] if len(row) > 2 else ""
+                rec_md += f"| {inst} | {change} | {reason} |\n"
+            if len(rec["rows"]) > 8:
+                rec_md += f"\n... and {len(rec['rows']) - 8} more\n"
+
             elements.append({
                 "tag": "div",
-                "text": {"tag": "lark_md", "content": "**Recommended Changes**\n" + "\n".join(rec_lines)},
+                "text": {"tag": "lark_md", "content": rec_md},
             })
 
     elements.append({"tag": "hr"})
 
-    # Link to full report
+    # ── Buttons ──
     elements.append({
         "tag": "action",
         "actions": [
@@ -136,40 +138,49 @@ def build_card(report: dict, chapters: list[dict], date_str: str) -> dict:
             },
             {
                 "tag": "button",
-                "text": {"tag": "plain_text", "content": "System Architecture"},
+                "text": {"tag": "plain_text", "content": "How It Works"},
                 "type": "default",
                 "url": f"{VERCEL_URL}/how-it-works.html",
             },
         ],
     })
 
-    # Note
+    # ── Footer note ──
     elements.append({
         "tag": "note",
         "elements": [
-            {"tag": "plain_text", "content": f"Generated {date_str} \u2022 OKX Parameter Management \u2022 Automated Daily Review"},
+            {"tag": "plain_text", "content": f"Generated {date_str} | OKX Parameter Management | Automated Daily Review"},
         ],
     })
 
-    card = {
+    return {
         "msg_type": "interactive",
         "card": {
             "header": {
                 "title": {"tag": "plain_text", "content": f"Daily Parameter Review \u2014 {date_str}"},
-                "template": header_template,
+                "template": _color(status),
             },
             "elements": elements,
         },
     }
 
-    return card
+
+def _col(content: str) -> dict:
+    """Helper to build a column for column_set."""
+    return {
+        "tag": "column",
+        "width": "weighted",
+        "weight": 1,
+        "vertical_align": "top",
+        "elements": [{"tag": "div", "text": {"tag": "lark_md", "content": content}}],
+    }
 
 
 def send(report: dict, chapters: list[dict], date_str: str):
     """Build card and send to all configured Lark webhooks."""
     webhooks = _get_webhooks()
     if not webhooks:
-        _log("No Lark webhooks configured — skipping notification")
+        _log("No Lark webhooks configured")
         return
 
     card = build_card(report, chapters, date_str)
@@ -181,8 +192,8 @@ def send(report: dict, chapters: list[dict], date_str: str):
             with urlopen(req, timeout=TIMEOUT, context=_SSL_CTX) as resp:
                 body = json.loads(resp.read())
             if body.get("code") == 0 or body.get("StatusCode") == 0:
-                _log(f"Sent to Lark webhook: ...{url[-8:]}")
+                _log(f"Sent to Lark: ...{url[-8:]}")
             else:
-                _log(f"Lark responded with: {body}")
+                _log(f"Lark response: {body}")
         except (HTTPError, URLError, OSError) as exc:
             _log(f"Failed to send to Lark: {exc}")
