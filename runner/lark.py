@@ -67,7 +67,7 @@ def build_card(report: dict, chapters: list[dict], date_str: str) -> dict:
         "flex_mode": "none",
         "background_style": "grey",
         "columns": [
-            _col(f"**{_emoji(status)} Status**\n{verdict}"),
+            _col(f"**Status**\n{verdict}"),
             _col(f"**Instruments**\n{total_instruments:,}"),
             _col(f"**Issues**\n{total_issues}"),
             _col(f"**Sections**\n{len(active)} active / {len(pending)} pending"),
@@ -85,7 +85,7 @@ def build_card(report: dict, chapters: list[dict], date_str: str) -> dict:
         elements.append({
             "tag": "div",
             "text": {"tag": "lark_md",
-                     "content": f"**{_emoji(ch['status'])} {ch['title']}**  |  {instruments:,} instruments  |  EMA: {ema:,}  |  {issues} issues"},
+                     "content": f"**{ch['title']}**  |  {instruments:,} instruments  |  EMA: {ema:,}  |  {issues} issues"},
         })
 
         # Native table for rule results
@@ -115,8 +115,8 @@ def build_card(report: dict, chapters: list[dict], date_str: str) -> dict:
                 },
                 "columns": [
                     {"name": "rule", "display_name": "Rule", "data_type": "text", "width": "auto"},
-                    {"name": "status", "display_name": "Status", "data_type": "options", "width": "auto"},
-                    {"name": "flagged", "display_name": "Flagged", "data_type": "number", "width": "80px"},
+                    {"name": "status", "display_name": "Status", "data_type": "options", "width": "120px"},
+                    {"name": "flagged", "display_name": "Flagged", "data_type": "number", "width": "120px"},
                 ],
                 "rows": table_rows,
             })
