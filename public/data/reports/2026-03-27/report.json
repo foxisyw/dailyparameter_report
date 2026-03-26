@@ -1,21 +1,21 @@
 {
   "report": {
     "date": "2026-03-27",
-    "generated_at": "2026-03-26T17:54:53.426740+00:00",
+    "generated_at": "2026-03-26T18:32:37.660884+00:00",
     "status": "critical",
-    "total_issues": 56,
+    "total_issues": 55,
     "chapters": [
       {
         "slug": "risk-intel",
         "title": "Risk Intelligence",
         "status": "critical",
-        "summary": "4 alert types analyzed. 8 flagged alert(s) parsed. 5 suspicious user(s) highlighted.",
+        "summary": "4 alert types analyzed. 7 flagged alert(s) parsed. 5 suspicious user(s) highlighted.",
         "metrics": {
-          "instruments_scanned": 8,
+          "instruments_scanned": 7,
           "ema_coverage": 4,
-          "issues_found": 13,
+          "issues_found": 12,
           "source": "每日风控总结 - 2026-03-26 (00:00 - 23:59)",
-          "generated_at": "2026-03-26T17:54:41.273790+00:00"
+          "generated_at": "2026-03-26T18:32:25.077757+00:00"
         }
       },
       {
@@ -28,7 +28,7 @@
           "ema_coverage": 1472,
           "issues_found": 43,
           "source": "OKX API (live)",
-          "generated_at": "2026-03-26T17:54:41.377141+00:00"
+          "generated_at": "2026-03-26T18:32:25.187946+00:00"
         }
       },
       {
@@ -41,7 +41,7 @@
           "ema_coverage": 0,
           "issues_found": 0,
           "source": "n/a",
-          "generated_at": "2026-03-26T17:54:53.426703+00:00"
+          "generated_at": "2026-03-26T18:32:37.660792+00:00"
         }
       },
       {
@@ -54,7 +54,7 @@
           "ema_coverage": 0,
           "issues_found": 0,
           "source": "n/a",
-          "generated_at": "2026-03-26T17:54:53.426725+00:00"
+          "generated_at": "2026-03-26T18:32:37.660845+00:00"
         }
       }
     ]
@@ -65,19 +65,19 @@
       "title": "Risk Intelligence",
       "render_variant": "risk-intel",
       "status": "critical",
-      "summary": "4 alert types analyzed. 8 flagged alert(s) parsed. 5 suspicious user(s) highlighted.",
+      "summary": "4 alert types analyzed. 7 flagged alert(s) parsed. 5 suspicious user(s) highlighted.",
       "event_analyses": [
         {
           "asset": "PROVE-USDT-SWAP",
           "severity": "critical",
-          "executive_summary": "PROVE永续合约在2026-03-26全天经历持续的持仓用户涌入。从00:00的1913用户增长至12:00的5109用户（+167%）。核心飙升窗口在04:00-08:00，4小时内新增1372用户（+71%）。空头持仓在06:00后急速增加（879→1,771），反映市场分歧加剧。OI突破平台限额（101.34%），资金费率异常为-0.278%。",
-          "forward_looking": "当前OI仍处于3890017张的高水平。多空持仓比接近1:1，市场处于高度博弈状态。若价格出现方向性突破，持仓集中的一方可能面临连锁清算。建议限制新增高杠杆开仓，并密切监控大户操作。",
+          "executive_summary": "PROVE永续合约持仓用户从Mar 26 02:00的1,922人增至Mar 27 00:00的6,813人（+254%）。空头从887增至4,124（+365%），多头从1,182增至3,384（+186%）。OI突破平台限额（101.34%）。当前价格$0.2618（24h +5.0%），OI 3,777,535张，资金费率-0.315%。",
+          "forward_looking": "OI仍处于3,777,535张高位。空头持仓（4,124）已超过多头（3,384），市场偏空。资金费率-0.315%为负值，空头支付多头。建议限制新增高杠杆开仓。",
           "causal_chain": [
             {
               "step": 1,
               "type": "远因",
               "name": "结构性弱点",
-              "description": "PROVE为小市值代币，流通盘薄，少数大户的仓位变动即可显著影响OI和价格",
+              "description": "PROVE为小市值代币，流通盘薄，少数大户可显著影响OI",
               "evidence_strength": 5,
               "evidence_label": "铁证",
               "detail": null,
@@ -88,12 +88,12 @@
               "step": 2,
               "type": "近因",
               "name": "用户数持续涌入",
-              "description": "24小时内持仓用户从1913增至5109（+167%），核心加速期在04:00-08:00",
+              "description": "22小时内用户从1,922增至6,813（+254%），核心加速期08:00-14:00（+74%）",
               "evidence_strength": 5,
-              "evidence_label": "铁证 · 数仓验证",
-              "detail": "持仓快照显示04:00-08:00的4小时窗口内，用户数从1929暴增至3301。多头从1185增至1787，空头从894增至1771（空头增速更快）。",
+              "evidence_label": "铁证 · 数仓实查",
+              "detail": "空头增速（+365%）远超多头（+186%），反映大量用户在价格上涨后做空博弈。",
               "evidence_table": {
-                "title": "P0 关键证据 — 逐小时持仓用户变化（数仓实查）",
+                "title": "P0 关键证据 — 逐3小时持仓变化（数仓实查 2026-03-27 02:26 HKT）",
                 "headers": [
                   "时间",
                   "总用户",
@@ -103,98 +103,70 @@
                 ],
                 "rows": [
                   [
-                    "00:00",
-                    "1913",
-                    "1180",
-                    "879",
-                    "—"
-                  ],
-                  [
-                    "01:00",
-                    "1914",
-                    "1181",
-                    "879",
-                    "+1"
-                  ],
-                  [
-                    "02:00",
+                    "02:00 Mar26",
                     "1922",
                     "1182",
                     "887",
-                    "+8"
-                  ],
-                  [
-                    "03:00",
-                    "1928",
-                    "1184",
-                    "894",
-                    "+6"
-                  ],
-                  [
-                    "04:00",
-                    "1929",
-                    "1185",
-                    "894",
-                    "+1"
+                    "—"
                   ],
                   [
                     "05:00",
                     "2056",
                     "1260",
                     "953",
-                    "+127"
-                  ],
-                  [
-                    "06:00",
-                    "2526",
-                    "1439",
-                    "1290",
-                    "+470"
-                  ],
-                  [
-                    "07:00",
-                    "2574",
-                    "1468",
-                    "1312",
-                    "+48"
+                    "+134"
                   ],
                   [
                     "08:00",
                     "3301",
                     "1787",
                     "1771",
-                    "+727"
-                  ],
-                  [
-                    "09:00",
-                    "3849",
-                    "2070",
-                    "2096",
-                    "+548"
-                  ],
-                  [
-                    "10:00",
-                    "4264",
-                    "2259",
-                    "2343",
-                    "+415"
+                    "+1245"
                   ],
                   [
                     "11:00",
                     "4668",
                     "2432",
                     "2609",
-                    "+404"
+                    "+1367"
                   ],
                   [
-                    "12:00",
-                    "5109",
-                    "2638",
-                    "2912",
-                    "+441"
+                    "14:00",
+                    "5760",
+                    "2925",
+                    "3385",
+                    "+1092"
+                  ],
+                  [
+                    "17:00",
+                    "6296",
+                    "3187",
+                    "3757",
+                    "+536"
+                  ],
+                  [
+                    "20:00",
+                    "6632",
+                    "3331",
+                    "3988",
+                    "+336"
+                  ],
+                  [
+                    "23:00",
+                    "6791",
+                    "3382",
+                    "4099",
+                    "+159"
+                  ],
+                  [
+                    "00:00 Mar27",
+                    "6813",
+                    "3384",
+                    "4124",
+                    "+22"
                   ]
                 ],
-                "source": "ex_offline.dwd_okx_asset_user_position_hf · pt IN (2026032600~12) · instrument_name='PROVE-USDT-SWAP'"
+                "source": "ex_offline.dwd_okx_asset_user_position_hf · pt IN (2026032602~2026032700)"
               },
               "risk_assessment": null
             },
@@ -205,17 +177,17 @@
               "description": "OI/平台限额占比达101.34%（阈值80%），触发风控报警",
               "evidence_strength": 5,
               "evidence_label": "铁证",
-              "detail": "平台OI监控系统在OI突破80%阈值后触发报警。实际占比已超过100%，意味着合约的系统性风险敞口已超出预设安全边界。",
+              "detail": null,
               "evidence_table": null,
-              "risk_assessment": "OI超过平台限额100%是严重的风控信号。建议立即评估是否需要临时下调限额或限制新增开仓，防止风险敞口进一步扩大。"
+              "risk_assessment": "OI超限是严重风控信号。建议立即评估是否临时下调限额或限制新增开仓。"
             },
             {
               "step": 4,
               "type": "一阶效应",
               "name": "价格剧烈波动",
-              "description": "24h价格范围$0.2207~$0.3875，波幅超过75%",
+              "description": "24h范围$0.2207~$0.3875，当前$0.2618",
               "evidence_strength": 4,
-              "evidence_label": "强证据 · API验证",
+              "evidence_label": "强证据 · API实查",
               "detail": null,
               "evidence_table": null,
               "risk_assessment": null
@@ -223,92 +195,96 @@
             {
               "step": 5,
               "type": "二阶效应",
-              "name": "资金费率异常 + 空头急增",
-              "description": "资金费率达-0.301%，空头在06:00后从879急增至2,912（+231%）",
+              "name": "资金费率异常+空头主导",
+              "description": "资金费率-0.315%，空头4,124 > 多头3,384",
               "evidence_strength": 4,
-              "evidence_label": "强证据 · 数仓验证",
-              "detail": "空头持仓在06:00-12:00从879急增至2,912，增幅231%，远超同期多头增幅。这反映了大量用户在价格上涨后做空博弈回落，形成多空激烈对峙。",
+              "evidence_label": "强证据 · 数仓+API",
+              "detail": "空头主导格局下，资金费率持续为负。任何方向性催化可能触发连锁清算。",
               "evidence_table": {
-                "title": "P0 关键证据 — 08:00快照期间新增用户（数仓实查）",
+                "title": "P0 关键证据 — Top 5高风险用户（数仓实查）",
                 "headers": [
                   "USER_ID",
+                  "ASSET",
                   "SIDE",
-                  "MARGIN",
-                  "OPEN TIME"
+                  "VOLUME",
+                  "EQUITY",
+                  "RATIO"
                 ],
                 "rows": [
                   [
-                    "84576274",
-                    "LONG",
-                    "isolated",
-                    "08:59:59"
-                  ],
-                  [
-                    "84576298",
-                    "LONG",
-                    "isolated",
-                    "08:59:59"
-                  ],
-                  [
-                    "79440879",
-                    "LONG",
-                    "cross",
-                    "08:59:59"
-                  ],
-                  [
-                    "84576360",
-                    "LONG",
-                    "isolated",
-                    "08:59:59"
-                  ],
-                  [
-                    "81857641",
-                    "LONG",
-                    "cross",
-                    "08:59:58"
-                  ],
-                  [
-                    "25932211",
+                    "6841987",
+                    "PROVE-USDT-SWAP",
                     "SHORT",
-                    "cross",
-                    "08:59:55"
+                    "348928342",
+                    "$12.20",
+                    "0.000000"
+                  ],
+                  [
+                    "8583364",
+                    "PROVE-USDT-SWAP",
+                    "SHORT",
+                    "110282609",
+                    "$254.73",
+                    "0.000002"
+                  ],
+                  [
+                    "7156607",
+                    "PROVE-USDT-SWAP",
+                    "SHORT",
+                    "43460979",
+                    "$47.70",
+                    "0.000001"
+                  ],
+                  [
+                    "3337970",
+                    "PIPPIN+XAU",
+                    "SHORT both",
+                    "62651131",
+                    "$52.11",
+                    "0.000001"
+                  ],
+                  [
+                    "9322809",
+                    "PROVE-USDT-SWAP",
+                    "SHORT",
+                    "18425913",
+                    "$48.84",
+                    "0.000003"
                   ]
                 ],
-                "source": "ex_offline.dwd_okx_asset_user_position_hf · pt=2026032608 · ORDER BY create_time DESC LIMIT 20"
+                "source": "ex_offline.dws_okx_user_master_info_df · pt=20260325"
               },
-              "risk_assessment": "多空持仓比接近1:1且均在高位，形成高度不稳定均衡。任何方向性催化事件（如大户平仓、消息面变化）都可能触发连锁清算。"
+              "risk_assessment": "多个用户权益/交易量比率极低（<0.001%），需重点调查。"
             }
           ],
           "market_snapshot": {
             "instId": "PROVE-USDT-SWAP",
-            "price": "0.267",
-            "change_24h": "+8.5%",
+            "price": "0.2618",
+            "change_24h": "+5.0%",
             "high_24h": "0.3875",
             "low_24h": "0.2207",
-            "volume_24h": "441005589",
-            "open_interest": "3890017",
-            "oi_currency": "3890017",
-            "funding_rate": "-0.0030075162886971"
+            "volume_24h": "442123369",
+            "open_interest": "3777535",
+            "funding_rate": "-0.0031531289796865"
           },
           "key_users": [
-            "6561979",
-            "7180900",
-            "4335832",
-            "84576274",
-            "25932211"
+            "6841987",
+            "8583364",
+            "7156607",
+            "9322809"
           ]
         },
         {
           "asset": "XAU-USDT-SWAP",
           "severity": "critical",
-          "executive_summary": "XAU-USD合约触发Z cap硬顶限价保护，Limitup频率达55%。当日持仓用户稳定在77K-78K，无异常涌入。当前价格$4393.9（24h -3.5%）。问题主要在于限价参数未适应近期黄金价格快速上涨，而非市场操控。",
-          "forward_looking": "黄金价格若继续上涨趋势，Z cap可能持续被触发。建议检查XAU-USD的限价参数设置，评估是否需要上调Z cap以适应当前市场波动率。",
+          "executive_summary": "XAU-USD合约触发Z cap硬顶限价保护，Limitup频率达55%。当前价格$4382.2（24h -3.8%），OI 22,983,950张。问题在于限价参数未适应黄金价格变动。",
+          "forward_looking": "建议检查XAU-USD的Z cap参数设置，评估是否需要上调以适应当前波动率。",
           "causal_chain": [
             {
               "step": 1,
               "type": "远因",
               "name": "参数配置滞后",
-              "description": "XAU-USD的Z cap参数设置可能基于历史波动率，未适应近期黄金价格的快速上涨周期",
+              "description": "Z cap参数可能基于历史波动率，未适应近期变动",
               "evidence_strength": 3,
               "evidence_label": "中等",
               "detail": null,
@@ -319,99 +295,22 @@
               "step": 2,
               "type": "触发事件",
               "name": "Z cap硬顶触发",
-              "description": "Limitup由Z cap硬顶触发，触发频率55%，用户面临无法正常交易/平仓的风险",
+              "description": "Limitup由Z cap触发，频率55%，用户面临交易受限",
               "evidence_strength": 5,
               "evidence_label": "铁证 · 报警验证",
-              "detail": "风控报警群记录显示XAU-USD在10分钟窗口内触发3次price up restricted，合并为1个事件。",
-              "evidence_table": null,
-              "risk_assessment": "55%的触发频率意味着超过一半的时间内用户无法正常进行上方向的价格发现。这可能导致真实需求无法被满足，积累更大的价格偏移压力。"
-            },
-            {
-              "step": 3,
-              "type": "一阶效应",
-              "name": "持仓结构稳定但受限",
-              "description": "全天持仓用户稳定在77,240~78,373，无异常涌入，但多头受限于限价保护无法有效建仓",
-              "evidence_strength": 4,
-              "evidence_label": "强证据 · 数仓验证",
               "detail": null,
-              "evidence_table": {
-                "title": "P0 关键证据 — XAU持仓用户变化（数仓实查）",
-                "headers": [
-                  "时间",
-                  "总用户",
-                  "多头",
-                  "空头"
-                ],
-                "rows": [
-                  [
-                    "00:00",
-                    "77240",
-                    "32946",
-                    "74248"
-                  ],
-                  [
-                    "03:00",
-                    "77352",
-                    "32981",
-                    "74381"
-                  ],
-                  [
-                    "06:00",
-                    "77397",
-                    "33003",
-                    "74437"
-                  ],
-                  [
-                    "09:00",
-                    "77525",
-                    "33074",
-                    "74570"
-                  ],
-                  [
-                    "12:00",
-                    "77622",
-                    "33127",
-                    "74694"
-                  ],
-                  [
-                    "15:00",
-                    "77925",
-                    "33266",
-                    "75064"
-                  ],
-                  [
-                    "18:00",
-                    "78083",
-                    "33344",
-                    "75262"
-                  ],
-                  [
-                    "21:00",
-                    "78246",
-                    "33422",
-                    "75431"
-                  ],
-                  [
-                    "23:00",
-                    "78373",
-                    "33484",
-                    "75550"
-                  ]
-                ],
-                "source": "ex_offline.dwd_okx_asset_user_position_hf · instrument_name='XAU-USDT-SWAP'"
-              },
-              "risk_assessment": null
+              "evidence_table": null,
+              "risk_assessment": "55%触发频率意味着超过一半时间用户无法正常价格发现。"
             }
           ],
           "market_snapshot": {
             "instId": "XAU-USDT-SWAP",
-            "price": "4393.9",
-            "change_24h": "-3.5%",
-            "high_24h": "4567.6",
+            "price": "4382.2",
+            "change_24h": "-3.8%",
+            "high_24h": "4558.4",
             "low_24h": "4374.4",
-            "volume_24h": "107539.237",
-            "open_interest": "23065504",
-            "oi_currency": "23065.504",
+            "volume_24h": "107188.117",
+            "open_interest": "22983950",
             "funding_rate": "0.0000000000000000"
           },
           "key_users": [
@@ -421,120 +320,42 @@
         {
           "asset": "PIPPIN-USDT-SWAP",
           "severity": "warning",
-          "executive_summary": "PIPPIN的OI较24H均值偏离52.01%（阈值20%），属中风险短期异动。全天持仓用户从86,280小幅增至88,917（+2637），增速平缓。空头持仓始终大于总用户数（存在多仓位用户），市场偏空。当前价格$0.05593。",
-          "forward_looking": "PIPPIN的OI偏离虽超阈值但增速平缓，未出现PROVE类的急剧飙升。建议持续监控是否出现加速迹象，必要时提高高风险账户保证金要求。",
+          "executive_summary": "PIPPIN OI较24H均值偏离52.01%（阈值20%），属中风险短期异动。当前价格$0.05567（24h +3.9%），OI 13,345,564张。增速平缓，未出现PROVE类急剧飙升。",
+          "forward_looking": "持续监控OI是否加速。必要时对高风险账户提高保证金要求。",
           "causal_chain": [
             {
               "step": 1,
               "type": "触发事件",
               "name": "OI持续偏离均值",
-              "description": "OI较24H均值偏离52.01%，超过20%阈值，但增长曲线较为平缓",
+              "description": "OI偏离52.01%，超过20%阈值，但增长平缓",
               "evidence_strength": 4,
-              "evidence_label": "强证据 · 报警验证",
+              "evidence_label": "强证据",
               "detail": null,
-              "evidence_table": {
-                "title": "P0 关键证据 — PIPPIN持仓用户变化（数仓实查）",
-                "headers": [
-                  "时间",
-                  "总用户",
-                  "多头",
-                  "空头"
-                ],
-                "rows": [
-                  [
-                    "00:00",
-                    "86280",
-                    "38510",
-                    "86568"
-                  ],
-                  [
-                    "03:00",
-                    "86902",
-                    "38779",
-                    "87347"
-                  ],
-                  [
-                    "06:00",
-                    "87236",
-                    "38955",
-                    "87778"
-                  ],
-                  [
-                    "09:00",
-                    "87554",
-                    "39153",
-                    "88166"
-                  ],
-                  [
-                    "12:00",
-                    "87860",
-                    "39326",
-                    "88498"
-                  ],
-                  [
-                    "15:00",
-                    "88281",
-                    "39486",
-                    "89049"
-                  ],
-                  [
-                    "18:00",
-                    "88503",
-                    "39562",
-                    "89311"
-                  ],
-                  [
-                    "21:00",
-                    "88753",
-                    "39681",
-                    "89556"
-                  ],
-                  [
-                    "23:00",
-                    "88917",
-                    "39766",
-                    "89756"
-                  ]
-                ],
-                "source": "ex_offline.dwd_okx_asset_user_position_hf · instrument_name='PIPPIN-USDT-SWAP'"
-              },
-              "risk_assessment": null
-            },
-            {
-              "step": 2,
-              "type": "一阶效应",
-              "name": "市场偏空但无急剧恶化",
-              "description": "空头持仓（89,756）始终大于多头（39,766），差距稳定扩大",
-              "evidence_strength": 3,
-              "evidence_label": "中等",
-              "detail": "空头占优反映市场对PIPPIN中短期看跌，但增速未出现PROVE类的急剧加速，风险可控。",
               "evidence_table": null,
-              "risk_assessment": "短期风险中等。若OI偏离持续扩大至100%以上，或出现大户集中建仓行为，风险将显著升级。"
+              "risk_assessment": null
             }
           ],
           "market_snapshot": {
             "instId": "PIPPIN-USDT-SWAP",
-            "price": "0.05593",
-            "change_24h": "-3.6%",
+            "price": "0.05567",
+            "change_24h": "+3.9%",
             "high_24h": "0.06165",
             "low_24h": "0.042",
-            "volume_24h": "5544206970",
-            "open_interest": "13268579",
-            "oi_currency": "132685790",
-            "funding_rate": "0.0000705023281253"
+            "volume_24h": "5356494450",
+            "open_interest": "13345564",
+            "funding_rate": "0.0003722953406148"
           },
           "key_users": [
-            "2084295",
-            "2034129"
+            "2084295"
           ]
         }
       ],
       "metrics": {
-        "instruments_scanned": 8,
+        "instruments_scanned": 7,
         "ema_coverage": 4,
-        "issues_found": 13,
+        "issues_found": 12,
         "source": "每日风控总结 - 2026-03-26 (00:00 - 23:59)",
-        "generated_at": "2026-03-26T17:54:41.273790+00:00"
+        "generated_at": "2026-03-26T18:32:25.077757+00:00"
       },
       "metric_cards": [
         {
@@ -543,7 +364,7 @@
         },
         {
           "label": "Flagged Alerts",
-          "value": "8"
+          "value": "7"
         },
         {
           "label": "Suspicious Users",
@@ -558,25 +379,10 @@
         {
           "ruleId": "index_alarm",
           "title": "Index Alarm",
-          "status": "warning",
-          "description": "主要集中在两类问题：多指数成分不足（XPT-USDT、XAG-USDT、XPD-USDT、XCU-USDT、CL-USDT、YFI-USDT、TRUST-USDT、GLM-USDT、UMA-USDT、ORCL-USDT、NFLX-USDT、AZTEC-USDT、WET-USDT、AMD-USDT、EWJ-USDT等）以及 OKX mid price 获取失败（涉及 EUR、TRY 报价的多交易对，含 CRO-TRY、CC-TRY、PROVE-EUR 等）。成分不足部分与非交易时段/数据源离线特征相符，mid price 失败为短时集中且未见大规模爆发，整体为🟠中风险但需避免指数缺失扩散。",
-          "table": {
-            "headers": [
-              "ASSET",
-              "DETAILS",
-              "USERS",
-              "STATUS"
-            ],
-            "rows": [
-              [
-                "XPT-USDT",
-                "主要集中在两类问题：多指数成分不足（XPT-USDT、XAG-USDT、XPD-USDT、XCU-USDT、CL-USDT、YFI-USDT、TRUST-USDT、GLM-USDT、UMA-USDT、ORCL-USDT、NFLX-USDT、AZTEC-USDT、WET-USDT、AMD-USDT、EWJ-USDT等）以及 OKX mid price 获取失败（涉及 EUR、TRY 报价的多交易对，含 CRO-TRY、CC-TRY、PROVE-EUR 等）。成分不足部分与非交易时段/数据源离线特征相符，mid price 失败为短时集中且未见大规模爆发，整体为🟠中风险但需避免指数缺失扩散。",
-                "—",
-                "warning"
-              ]
-            ]
-          },
-          "note": null
+          "status": "pass",
+          "description": "主要集中在两类问题：多指数成分不足（XPT-USDT、XAG-USDT、XPD-USDT、XCU-USDT、CL-USDT、YFI-USDT、TRUST-USDT、GLM-USDT、UMA-USDT、ORCL-USDT、NFLX-USDT、AZTEC-USDT、WET-USDT、AMD-USDT、EWJ-USDT等）以及 OKX mid price 获取失败。",
+          "table": null,
+          "note": "No flagged entries parsed from the selected document."
         },
         {
           "ruleId": "price_limit_p4",
@@ -674,7 +480,7 @@
       ],
       "recommended_changes": null,
       "downloads": [],
-      "markdown": "# Risk Intelligence\n\n**Summary:** 4 alert types analyzed. 8 flagged alert(s) parsed. 5 suspicious user(s) highlighted.\n**Source document:** 每日风控总结 - 2026-03-26 (00:00 - 23:59)\n\n## Suspicious Users\n- 613832447893504 — T3 — PROVE SHORT · equity $11.29 vs 40.6M volume · KYC3 China · 2 positions (cross+isolated) during OI breach\n- 43607852442591232 — T3 — PROVE SHORT · equity $19.37 vs 56.4M volume · KYC3 China · registered 2018, near-zero equity\n- 214913582327009280 — T3 — PROVE SHORT · equity $8.19 vs 10.4M volume · KYC3 China · late KYC (2025 on 2017 account)\n- 4235030822006784 — T3 — PIPPIN SHORT + XAU SHORT · equity $52 vs 62.6M volume · multi-asset short exposure · OG since 2013\n- 123317305596850176 — T3 — PROVE SHORT · equity $82.97 vs 890K volume · KYC2 Philippines · 2 positions (Mar 10 + Mar 26)\n\n## Deep Profiles\n- 613832447893504 — T3 — High-risk: China KYC3, equity 11.29 vs 40,658,176 volume. PROVE short, 2 positions (cross+isolated) same day.\n- 43607852442591232 — T3 — High-risk: China KYC3, equity 19.37 vs 56,412,593 volume. PROVE short, opened Mar 26 during OI breach.\n- 214913582327009280 — T3 — High-risk: China KYC3, equity 8.19 vs 10,416,130 volume. PROVE short, opened Mar 26.\n- 4235030822006784 — T3 — High-risk: China KYC3, equity 52.11 vs 62,651,132 volume. Multi-asset: PIPPIN short + XAU short, OG account since 2013.\n- 123317305596850176 — T3 — High-risk: Philippines KYC2, equity 82.97 vs 890,272 volume. PROVE short, 2 positions (Mar 10 + Mar 26), Philippines KYC2.",
+      "markdown": "# Risk Intelligence\n\n**Summary:** 4 alert types analyzed. 7 flagged alert(s) parsed. 5 suspicious user(s) highlighted.\n**Source document:** 每日风控总结 - 2026-03-26 (00:00 - 23:59)\n\n## Suspicious Users\n- 567264575365120 — T3 — High-risk: China KYC3, equity $12.20 vs 348,928,342 volume. PROVE-USDT-SWAP SHORT.\n- 215133113058201600 — T3 — High-risk: China KYC3, equity $254.73 vs 110,282,609 volume. PROVE-USDT-SWAP SHORT.\n- 143730510437425152 — T3 — High-risk: China KYC3, equity $47.70 vs 43,460,979 volume. PROVE-USDT-SWAP SHORT.\n- 4235030822006784 — T3 — High-risk: China KYC3, equity $52.11 vs 62,651,131 volume. PIPPIN+XAU SHORT both.\n- 170822645405884416 — T3 — High-risk: China KYC3, equity $48.84 vs 18,425,913 volume. PROVE-USDT-SWAP SHORT.\n\n## Deep Profiles\n- 567264575365120 — T3 — High-risk: China KYC3, equity $12.20 vs 348,928,342 volume. PROVE-USDT-SWAP SHORT.\n- 215133113058201600 — T3 — High-risk: China KYC3, equity $254.73 vs 110,282,609 volume. PROVE-USDT-SWAP SHORT.\n- 143730510437425152 — T3 — High-risk: China KYC3, equity $47.70 vs 43,460,979 volume. PROVE-USDT-SWAP SHORT.\n- 4235030822006784 — T3 — High-risk: China KYC3, equity $52.11 vs 62,651,131 volume. PIPPIN+XAU SHORT both.\n- 170822645405884416 — T3 — High-risk: China KYC3, equity $48.84 vs 18,425,913 volume. PROVE-USDT-SWAP SHORT.",
       "error": null,
       "source_document": {
         "title": "每日风控总结 - 2026-03-26 (00:00 - 23:59)",
@@ -684,29 +490,29 @@
       },
       "suspicious_users": [
         {
-          "uid": "613832447893504",
-          "master_user_id": "6561979",
+          "uid": "567264575365120",
+          "master_user_id": "6841987",
           "risk_tier": "T3",
           "source_alert": "platform_oi",
-          "reason": "PROVE SHORT · equity $11.29 vs 40.6M volume · KYC3 China · 2 positions (cross+isolated) during OI breach",
+          "reason": "High-risk: China KYC3, equity $12.20 vs 348,928,342 volume. PROVE-USDT-SWAP SHORT.",
           "mentions": 1,
           "first_seen": 0
         },
         {
-          "uid": "43607852442591232",
-          "master_user_id": "7180900",
+          "uid": "215133113058201600",
+          "master_user_id": "8583364",
           "risk_tier": "T3",
           "source_alert": "platform_oi",
-          "reason": "PROVE SHORT · equity $19.37 vs 56.4M volume · KYC3 China · registered 2018, near-zero equity",
+          "reason": "High-risk: China KYC3, equity $254.73 vs 110,282,609 volume. PROVE-USDT-SWAP SHORT.",
           "mentions": 1,
           "first_seen": 1
         },
         {
-          "uid": "214913582327009280",
-          "master_user_id": "4335832",
+          "uid": "143730510437425152",
+          "master_user_id": "7156607",
           "risk_tier": "T3",
           "source_alert": "platform_oi",
-          "reason": "PROVE SHORT · equity $8.19 vs 10.4M volume · KYC3 China · late KYC (2025 on 2017 account)",
+          "reason": "High-risk: China KYC3, equity $47.70 vs 43,460,979 volume. PROVE-USDT-SWAP SHORT.",
           "mentions": 1,
           "first_seen": 2
         },
@@ -714,267 +520,241 @@
           "uid": "4235030822006784",
           "master_user_id": "3337970",
           "risk_tier": "T3",
-          "source_alert": "price_limit_p4",
-          "reason": "PIPPIN SHORT + XAU SHORT · equity $52 vs 62.6M volume · multi-asset short exposure · OG since 2013",
+          "source_alert": "platform_oi",
+          "reason": "High-risk: China KYC3, equity $52.11 vs 62,651,131 volume. PIPPIN+XAU SHORT both.",
           "mentions": 1,
           "first_seen": 3
         },
         {
-          "uid": "123317305596850176",
-          "master_user_id": "10639724",
+          "uid": "170822645405884416",
+          "master_user_id": "9322809",
           "risk_tier": "T3",
           "source_alert": "platform_oi",
-          "reason": "PROVE SHORT · equity $82.97 vs 890K volume · KYC2 Philippines · 2 positions (Mar 10 + Mar 26)",
+          "reason": "High-risk: China KYC3, equity $48.84 vs 18,425,913 volume. PROVE-USDT-SWAP SHORT.",
           "mentions": 1,
           "first_seen": 4
         }
       ],
       "user_profiles": [
         {
-          "uid": "613832447893504",
-          "master_user_id": "6561979",
+          "uid": "567264575365120",
+          "master_user_id": "6841987",
           "overall_risk_tier": "T3",
-          "executive_summary": "High-risk: China KYC3, equity 11.29 vs 40,658,176 volume. PROVE short, 2 positions (cross+isolated) same day.",
+          "executive_summary": "High-risk: China KYC3, equity $12.20 vs 348,928,342 volume. PROVE-USDT-SWAP SHORT.",
           "dimensions": [
             {
               "name": "Registration Profile",
               "severity": "pass",
               "signals": [
-                "Registered 2017-11-29 via PC, region: okx_CN",
-                "KYC level 3, nationality: China"
+                "Registered 2017-12-17, KYC 3, China, phone +86"
               ]
             },
             {
               "name": "Trading Behavior",
               "severity": "critical",
               "signals": [
-                "Total volume: 40,658,176 USDT",
-                "Position: PROVE short, 2 positions (cross+isolated) same day",
-                "CRITICAL equity/volume ratio: 0.000000 — near-total capital loss"
+                "Volume: 348,928,342 USDT",
+                "Position: PROVE-USDT-SWAP SHORT",
+                "Equity/volume: 0.000000"
               ]
             },
             {
               "name": "Associated Accounts",
               "severity": "pending",
               "signals": [
-                "Login table (dwd_okx_user_secure_login_df) returned 403 — cannot check device/IP sharing"
+                "Login table 403"
               ]
             },
             {
               "name": "IP & Geolocation",
               "severity": "pass",
               "signals": [
-                "Registration region: okx_CN",
-                "Phone: +86, KYC nationality: China"
+                "Region: okx_CN"
               ]
             },
             {
               "name": "Identity Signals",
               "severity": "pass",
               "signals": [
-                "KYC level 3, nationality: China",
-                "Account: 普通用户, 普通账户"
+                "KYC 3, China, LV1"
               ]
             },
             {
               "name": "Profit & Loss",
               "severity": "critical",
               "signals": [
-                "Current equity: 11.29 USDT",
-                "Trade volume: 40,658,176 USDT",
-                "First deposit: 76.8 USDT",
-                "Near-total equity depletion — liquidation or complete withdrawal"
+                "Equity: $12.20",
+                "Volume: 348,928,342",
+                "Ratio: 0.000000"
               ]
             },
             {
               "name": "Withdrawal Behavior",
-              "severity": "warning",
+              "severity": "pending",
               "signals": [
-                "Last deposit: 2026-03-20",
-                "On-chain data limited (table access restriction)",
-                "Equity depletion suggests possible large withdrawals or liquidation cascade"
+                "Data limited"
               ]
             },
             {
               "name": "Comprehensive Judgment",
               "severity": "critical",
               "signals": [
-                "Position on PROVE-USDT-SWAP during OI limit breach / Z cap trigger",
-                "CRITICAL: Equity 11.29 vs 40,658,176 volume — investigate for potential manipulation or liquidation cascade",
-                "Fee level: LV1"
+                "Position on PROVE-USDT-SWAP during risk event",
+                "Equity $12.20 vs 348,928,342 volume"
               ]
             }
           ],
           "key_evidence": [
-            "Position on PROVE-USDT-SWAP during risk event",
-            "Equity 11.29 vs 40,658,176 volume",
-            "KYC: China level 3"
+            "Position on PROVE-USDT-SWAP",
+            "Equity $12.20 vs 348,928,342 volume"
           ],
           "local_artifact_ref": ""
         },
         {
-          "uid": "43607852442591232",
-          "master_user_id": "7180900",
+          "uid": "215133113058201600",
+          "master_user_id": "8583364",
           "overall_risk_tier": "T3",
-          "executive_summary": "High-risk: China KYC3, equity 19.37 vs 56,412,593 volume. PROVE short, opened Mar 26 during OI breach.",
+          "executive_summary": "High-risk: China KYC3, equity $254.73 vs 110,282,609 volume. PROVE-USDT-SWAP SHORT.",
           "dimensions": [
             {
               "name": "Registration Profile",
               "severity": "pass",
               "signals": [
-                "Registered 2018-01-09 via H5, region: okx_CN",
-                "KYC level 3, nationality: China"
+                "Registered 2018-07-10, KYC 3, China, phone +86"
               ]
             },
             {
               "name": "Trading Behavior",
               "severity": "critical",
               "signals": [
-                "Total volume: 56,412,593 USDT",
-                "Position: PROVE short, opened Mar 26 during OI breach",
-                "CRITICAL equity/volume ratio: 0.000000 — near-total capital loss"
+                "Volume: 110,282,609 USDT",
+                "Position: PROVE-USDT-SWAP SHORT",
+                "Equity/volume: 0.000002"
               ]
             },
             {
               "name": "Associated Accounts",
               "severity": "pending",
               "signals": [
-                "Login table (dwd_okx_user_secure_login_df) returned 403 — cannot check device/IP sharing"
+                "Login table 403"
               ]
             },
             {
               "name": "IP & Geolocation",
               "severity": "pass",
               "signals": [
-                "Registration region: okx_CN",
-                "Phone: +86, KYC nationality: China"
+                "Region: okx_CN"
               ]
             },
             {
               "name": "Identity Signals",
               "severity": "pass",
               "signals": [
-                "KYC level 3, nationality: China",
-                "Account: 普通用户, 普通账户"
+                "KYC 3, China, LV1"
               ]
             },
             {
               "name": "Profit & Loss",
-              "severity": "critical",
+              "severity": "warning",
               "signals": [
-                "Current equity: 19.37 USDT",
-                "Trade volume: 56,412,593 USDT",
-                "First deposit: 199 USDT",
-                "Near-total equity depletion — liquidation or complete withdrawal"
+                "Equity: $254.73",
+                "Volume: 110,282,609",
+                "Ratio: 0.000002"
               ]
             },
             {
               "name": "Withdrawal Behavior",
-              "severity": "warning",
+              "severity": "pending",
               "signals": [
-                "Last deposit: 2026-03-16",
-                "On-chain data limited (table access restriction)",
-                "Equity depletion suggests possible large withdrawals or liquidation cascade"
+                "Data limited"
               ]
             },
             {
               "name": "Comprehensive Judgment",
               "severity": "critical",
               "signals": [
-                "Position on PROVE-USDT-SWAP during OI limit breach / Z cap trigger",
-                "CRITICAL: Equity 19.37 vs 56,412,593 volume — investigate for potential manipulation or liquidation cascade",
-                "Fee level: LV1"
+                "Position on PROVE-USDT-SWAP during risk event",
+                "Equity $254.73 vs 110,282,609 volume"
               ]
             }
           ],
           "key_evidence": [
-            "Position on PROVE-USDT-SWAP during risk event",
-            "Equity 19.37 vs 56,412,593 volume",
-            "KYC: China level 3"
+            "Position on PROVE-USDT-SWAP",
+            "Equity $254.73 vs 110,282,609 volume"
           ],
           "local_artifact_ref": ""
         },
         {
-          "uid": "214913582327009280",
-          "master_user_id": "4335832",
+          "uid": "143730510437425152",
+          "master_user_id": "7156607",
           "overall_risk_tier": "T3",
-          "executive_summary": "High-risk: China KYC3, equity 8.19 vs 10,416,130 volume. PROVE short, opened Mar 26.",
+          "executive_summary": "High-risk: China KYC3, equity $47.70 vs 43,460,979 volume. PROVE-USDT-SWAP SHORT.",
           "dimensions": [
             {
               "name": "Registration Profile",
-              "severity": "warning",
+              "severity": "pass",
               "signals": [
-                "Registered 2017-03-21 via APP, region: okx_CN",
-                "KYC level 3, nationality: China",
-                "KYC completed recently: 2025-05-04",
-                "Old account but very late KYC — suspicious pattern"
+                "Registered 2018-01-07, KYC 3, China, phone +86"
               ]
             },
             {
               "name": "Trading Behavior",
               "severity": "critical",
               "signals": [
-                "Total volume: 10,416,130 USDT",
-                "Position: PROVE short, opened Mar 26",
-                "CRITICAL equity/volume ratio: 0.000001 — near-total capital loss"
+                "Volume: 43,460,979 USDT",
+                "Position: PROVE-USDT-SWAP SHORT",
+                "Equity/volume: 0.000001"
               ]
             },
             {
               "name": "Associated Accounts",
               "severity": "pending",
               "signals": [
-                "Login table (dwd_okx_user_secure_login_df) returned 403 — cannot check device/IP sharing"
+                "Login table 403"
               ]
             },
             {
               "name": "IP & Geolocation",
               "severity": "pass",
               "signals": [
-                "Registration region: okx_CN",
-                "Phone: +86, KYC nationality: China"
+                "Region: okx_CN"
               ]
             },
             {
               "name": "Identity Signals",
               "severity": "pass",
               "signals": [
-                "KYC level 3, nationality: China",
-                "Account: 普通用户, 普通账户"
+                "KYC 3, China, LV1"
               ]
             },
             {
               "name": "Profit & Loss",
               "severity": "critical",
               "signals": [
-                "Current equity: 8.19 USDT",
-                "Trade volume: 10,416,130 USDT",
-                "First deposit: 14.49 USDT",
-                "Near-total equity depletion — liquidation or complete withdrawal"
+                "Equity: $47.70",
+                "Volume: 43,460,979",
+                "Ratio: 0.000001"
               ]
             },
             {
               "name": "Withdrawal Behavior",
-              "severity": "warning",
+              "severity": "pending",
               "signals": [
-                "Last deposit: 2026-03-25",
-                "On-chain data limited (table access restriction)",
-                "Equity depletion suggests possible large withdrawals or liquidation cascade"
+                "Data limited"
               ]
             },
             {
               "name": "Comprehensive Judgment",
               "severity": "critical",
               "signals": [
-                "Position on PROVE-USDT-SWAP during OI limit breach / Z cap trigger",
-                "CRITICAL: Equity 8.19 vs 10,416,130 volume — investigate for potential manipulation or liquidation cascade",
-                "Fee level: LV1"
+                "Position on PROVE-USDT-SWAP during risk event",
+                "Equity $47.70 vs 43,460,979 volume"
               ]
             }
           ],
           "key_evidence": [
-            "Position on PROVE-USDT-SWAP during risk event",
-            "Equity 8.19 vs 10,416,130 volume",
-            "KYC: China level 3"
+            "Position on PROVE-USDT-SWAP",
+            "Equity $47.70 vs 43,460,979 volume"
           ],
           "local_artifact_ref": ""
         },
@@ -982,167 +762,147 @@
           "uid": "4235030822006784",
           "master_user_id": "3337970",
           "overall_risk_tier": "T3",
-          "executive_summary": "High-risk: China KYC3, equity 52.11 vs 62,651,132 volume. Multi-asset: PIPPIN short + XAU short, OG account since 2013.",
+          "executive_summary": "High-risk: China KYC3, equity $52.11 vs 62,651,131 volume. PIPPIN+XAU SHORT both.",
           "dimensions": [
             {
               "name": "Registration Profile",
               "severity": "pass",
               "signals": [
-                "Registered 2013-11-22 via PC, region: okx_CN",
-                "KYC level 3, nationality: China"
+                "Registered 2013-11-22, KYC 3, China, phone +86"
               ]
             },
             {
               "name": "Trading Behavior",
               "severity": "critical",
               "signals": [
-                "Total volume: 62,651,132 USDT",
-                "Position: Multi-asset: PIPPIN short + XAU short, OG account since 2013",
-                "CRITICAL equity/volume ratio: 0.000001 — near-total capital loss"
+                "Volume: 62,651,131 USDT",
+                "Position: PIPPIN+XAU SHORT both",
+                "Equity/volume: 0.000001"
               ]
             },
             {
               "name": "Associated Accounts",
               "severity": "pending",
               "signals": [
-                "Login table (dwd_okx_user_secure_login_df) returned 403 — cannot check device/IP sharing"
+                "Login table 403"
               ]
             },
             {
               "name": "IP & Geolocation",
               "severity": "pass",
               "signals": [
-                "Registration region: okx_CN",
-                "Phone: +86, KYC nationality: China"
+                "Region: okx_CN"
               ]
             },
             {
               "name": "Identity Signals",
               "severity": "pass",
               "signals": [
-                "KYC level 3, nationality: China",
-                "Account: 普通用户, 普通账户"
+                "KYC 3, China, LV1"
               ]
             },
             {
               "name": "Profit & Loss",
               "severity": "critical",
               "signals": [
-                "Current equity: 52.11 USDT",
-                "Trade volume: 62,651,132 USDT",
-                "First deposit: 682.09 USDT",
-                "Near-total equity depletion — liquidation or complete withdrawal"
+                "Equity: $52.11",
+                "Volume: 62,651,131",
+                "Ratio: 0.000001"
               ]
             },
             {
               "name": "Withdrawal Behavior",
-              "severity": "warning",
+              "severity": "pending",
               "signals": [
-                "Last deposit: 2026-03-25",
-                "On-chain data limited (table access restriction)",
-                "Equity depletion suggests possible large withdrawals or liquidation cascade"
+                "Data limited"
               ]
             },
             {
               "name": "Comprehensive Judgment",
               "severity": "critical",
               "signals": [
-                "Position on PIPPIN+XAU during OI limit breach / Z cap trigger",
-                "CRITICAL: Equity 52.11 vs 62,651,132 volume — investigate for potential manipulation or liquidation cascade",
-                "Multi-asset short exposure across correlated risk events",
-                "Fee level: LV1"
+                "Position on PIPPIN+XAU during risk event",
+                "Equity $52.11 vs 62,651,131 volume"
               ]
             }
           ],
           "key_evidence": [
-            "Position on PIPPIN+XAU during risk event",
-            "Equity 52.11 vs 62,651,132 volume",
-            "KYC: China level 3"
+            "Position on PIPPIN+XAU",
+            "Equity $52.11 vs 62,651,131 volume"
           ],
           "local_artifact_ref": ""
         },
         {
-          "uid": "123317305596850176",
-          "master_user_id": "10639724",
+          "uid": "170822645405884416",
+          "master_user_id": "9322809",
           "overall_risk_tier": "T3",
-          "executive_summary": "High-risk: Philippines KYC2, equity 82.97 vs 890,272 volume. PROVE short, 2 positions (Mar 10 + Mar 26), Philippines KYC2.",
+          "executive_summary": "High-risk: China KYC3, equity $48.84 vs 18,425,913 volume. PROVE-USDT-SWAP SHORT.",
           "dimensions": [
             {
               "name": "Registration Profile",
-              "severity": "warning",
+              "severity": "pass",
               "signals": [
-                "Registered 2019-09-16 via PC, region: okx_English",
-                "KYC level 2, nationality: Philippines",
-                "Non-China jurisdiction: Philippines (phone +63)",
-                "KYC completed recently: 2024-02-02",
-                "Old account but very late KYC — suspicious pattern"
+                "Registered 2019-04-04, KYC 3, China, phone +86"
               ]
             },
             {
               "name": "Trading Behavior",
               "severity": "critical",
               "signals": [
-                "Total volume: 890,272 USDT",
-                "Position: PROVE short, 2 positions (Mar 10 + Mar 26), Philippines KYC2",
-                "CRITICAL equity/volume ratio: 0.000093 — near-total capital loss"
+                "Volume: 18,425,913 USDT",
+                "Position: PROVE-USDT-SWAP SHORT",
+                "Equity/volume: 0.000003"
               ]
             },
             {
               "name": "Associated Accounts",
               "severity": "pending",
               "signals": [
-                "Login table (dwd_okx_user_secure_login_df) returned 403 — cannot check device/IP sharing"
+                "Login table 403"
               ]
             },
             {
               "name": "IP & Geolocation",
-              "severity": "warning",
+              "severity": "pass",
               "signals": [
-                "Registration region: okx_English",
-                "Phone: +63, KYC nationality: Philippines"
+                "Region: okx_CN"
               ]
             },
             {
               "name": "Identity Signals",
-              "severity": "warning",
+              "severity": "pass",
               "signals": [
-                "KYC level 2, nationality: Philippines",
-                "Account: 普通用户, 普通账户"
+                "KYC 3, China, LV1"
               ]
             },
             {
               "name": "Profit & Loss",
               "severity": "critical",
               "signals": [
-                "Current equity: 82.97 USDT",
-                "Trade volume: 890,272 USDT",
-                "First deposit: 13.64 USDT",
-                "Near-total equity depletion — liquidation or complete withdrawal"
+                "Equity: $48.84",
+                "Volume: 18,425,913",
+                "Ratio: 0.000003"
               ]
             },
             {
               "name": "Withdrawal Behavior",
-              "severity": "warning",
+              "severity": "pending",
               "signals": [
-                "Last deposit: 2026-03-25",
-                "On-chain data limited (table access restriction)",
-                "Equity depletion suggests possible large withdrawals or liquidation cascade"
+                "Data limited"
               ]
             },
             {
               "name": "Comprehensive Judgment",
               "severity": "critical",
               "signals": [
-                "Position on PROVE-USDT-SWAP during OI limit breach / Z cap trigger",
-                "CRITICAL: Equity 82.97 vs 890,272 volume — investigate for potential manipulation or liquidation cascade",
-                "Fee level: LV1"
+                "Position on PROVE-USDT-SWAP during risk event",
+                "Equity $48.84 vs 18,425,913 volume"
               ]
             }
           ],
           "key_evidence": [
-            "Position on PROVE-USDT-SWAP during risk event",
-            "Equity 82.97 vs 890,272 volume",
-            "KYC: Philippines level 2"
+            "Position on PROVE-USDT-SWAP",
+            "Equity $48.84 vs 18,425,913 volume"
           ],
           "local_artifact_ref": ""
         }
@@ -1159,7 +919,7 @@
         "ema_coverage": 1472,
         "issues_found": 43,
         "source": "OKX API (live)",
-        "generated_at": "2026-03-26T17:54:41.377141+00:00"
+        "generated_at": "2026-03-26T18:32:25.187946+00:00"
       },
       "metric_cards": [
         {
@@ -1742,7 +1502,7 @@
           "content": "Task Object,timeType,Effective Time,openUpperLimit,openLowerLimit,afterOpenUpperLimit,afterOpenLowerLimit,afterOpenIndexUpperLimit,afterOpenIndexLowerLimit,preQuoteMaxJ1UpperLimit,preQuoteMinJ2LowerLimit,preQuoteC1,preQuoteC2\r\nBTC-USD_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260327,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260403,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USD_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USD_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USDT_UM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USDT_UM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\n"
         }
       ],
-      "markdown": "# Price Limit Review\n\n**Generated:** 2026-03-26T17:54:41.377141+00:00  \n**Status:** critical  \n**Instruments scanned:** 1498  \n**EMA coverage:** 1472  \n\n**Total issues found:** 43\n\n## Rule 1: Buffer Too Tight\n33 issue(s) found.\n\n| INSTRUMENT | LIMITUP_BUFFER | LIMITDN_BUFFER | STATUS |\n|---|---|---|---|\n| ADA-EUR | 1.06% | -0.05% | warning |\n| AERGO-EUR | 1.89% | -8.10% | warning |\n| BICO-EUR | 1.19% | -7.70% | warning |\n| HUMA-EUR | 4.27% | -0.36% | warning |\n| ILV-EUR | 1.95% | -5.60% | warning |\n| JTO-EUR | 2.25% | -0.29% | warning |\n| METIS-EUR | 1.98% | -4.25% | warning |\n| XLM-EUR | 2.66% | -0.57% | warning |\n| ALLO-TRY | 3.75% | -0.16% | warning |\n| FET-TRY | 3.52% | -0.05% | warning |\n| XAUT-TRY | 1.28% | -0.27% | warning |\n| DGB-USD | 1.67% | -0.51% | warning |\n| FET-USD | 3.48% | -0.04% | warning |\n| HUMA-USD | 4.42% | -0.38% | warning |\n| PAXG-USD | 1.28% | -0.30% | warning |\n| STORJ-USD | -0.03% | 0.61% | warning |\n| ZENT-USD | 1.34% | -0.31% | warning |\n| ADA-USDT | 1.11% | -0.09% | warning |\n| DGB-USDT | 1.84% | -0.28% | warning |\n| HUMA-USDT | 4.54% | -0.29% | warning |\n| JOE-USDT | 1.95% | -0.36% | warning |\n| LRC-USDT | -0.41% | 2.40% | warning |\n| MON-USDT | 1.19% | -4.77% | warning |\n| ONT-USDT | 2.71% | -0.70% | warning |\n| PAXG-USDT | 1.33% | -0.30% | warning |\n| XAUT-USDT | 1.31% | -0.28% | warning |\n| XLM-USDT | 2.70% | -0.56% | warning |\n| HUMA-USDC | 4.39% | -0.44% | warning |\n| XAU-USD_UM-SWAP | 1.31% | -0.29% | warning |\n| HUMA-USDT-SWAP | 4.47% | -0.17% | warning |\n| LIGHT-USDT-SWAP | -0.33% | 4.68% | warning |\n| TAO-USDT-SWAP | 3.71% | -0.47% | warning |\n| XAU-USDT-SWAP | 1.31% | -0.27% | warning |\n\n## Rule 2: Asymmetric Basis\nAll instruments passed.\n\n## Rule 3: Asset-Type Consistency\n10 issue(s) found.\n\n| INSTRUMENT | CURRENT Y | CURRENT Z | EXPECTED Y | EXPECTED Z | STATUS |\n|---|---|---|---|---|---|\n| BTC-USD-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD-260925 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260327 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260403 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USDT-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USDT-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n\n## Rule 4: Z Cap <= Y Cap\nAll instruments passed.\n",
+      "markdown": "# Price Limit Review\n\n**Generated:** 2026-03-26T18:32:25.187946+00:00  \n**Status:** critical  \n**Instruments scanned:** 1498  \n**EMA coverage:** 1472  \n\n**Total issues found:** 43\n\n## Rule 1: Buffer Too Tight\n33 issue(s) found.\n\n| INSTRUMENT | LIMITUP_BUFFER | LIMITDN_BUFFER | STATUS |\n|---|---|---|---|\n| ADA-EUR | 1.06% | -0.05% | warning |\n| AERGO-EUR | 1.89% | -8.10% | warning |\n| BICO-EUR | 1.19% | -7.70% | warning |\n| HUMA-EUR | 4.27% | -0.36% | warning |\n| ILV-EUR | 1.95% | -5.60% | warning |\n| JTO-EUR | 2.25% | -0.29% | warning |\n| METIS-EUR | 1.98% | -4.25% | warning |\n| XLM-EUR | 2.66% | -0.57% | warning |\n| ALLO-TRY | 3.75% | -0.16% | warning |\n| FET-TRY | 3.52% | -0.05% | warning |\n| XAUT-TRY | 1.28% | -0.27% | warning |\n| DGB-USD | 1.67% | -0.51% | warning |\n| FET-USD | 3.48% | -0.04% | warning |\n| HUMA-USD | 4.42% | -0.38% | warning |\n| PAXG-USD | 1.28% | -0.30% | warning |\n| STORJ-USD | -0.03% | 0.61% | warning |\n| ZENT-USD | 1.34% | -0.31% | warning |\n| ADA-USDT | 1.11% | -0.09% | warning |\n| DGB-USDT | 1.84% | -0.28% | warning |\n| HUMA-USDT | 4.54% | -0.29% | warning |\n| JOE-USDT | 1.95% | -0.36% | warning |\n| LRC-USDT | -0.41% | 2.40% | warning |\n| MON-USDT | 1.19% | -4.77% | warning |\n| ONT-USDT | 2.71% | -0.70% | warning |\n| PAXG-USDT | 1.33% | -0.30% | warning |\n| XAUT-USDT | 1.31% | -0.28% | warning |\n| XLM-USDT | 2.70% | -0.56% | warning |\n| HUMA-USDC | 4.39% | -0.44% | warning |\n| XAU-USD_UM-SWAP | 1.31% | -0.29% | warning |\n| HUMA-USDT-SWAP | 4.47% | -0.17% | warning |\n| LIGHT-USDT-SWAP | -0.33% | 4.68% | warning |\n| TAO-USDT-SWAP | 3.71% | -0.47% | warning |\n| XAU-USDT-SWAP | 1.31% | -0.27% | warning |\n\n## Rule 2: Asymmetric Basis\nAll instruments passed.\n\n## Rule 3: Asset-Type Consistency\n10 issue(s) found.\n\n| INSTRUMENT | CURRENT Y | CURRENT Z | EXPECTED Y | EXPECTED Z | STATUS |\n|---|---|---|---|---|---|\n| BTC-USD-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD-260925 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260327 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260403 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USDT-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USDT-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n\n## Rule 4: Z Cap <= Y Cap\nAll instruments passed.\n",
       "error": null,
       "source_document": null,
       "suspicious_users": [],
@@ -1759,7 +1519,7 @@
         "ema_coverage": 0,
         "issues_found": 0,
         "source": "n/a",
-        "generated_at": "2026-03-26T17:54:53.426703+00:00"
+        "generated_at": "2026-03-26T18:32:37.660792+00:00"
       },
       "metric_cards": [
         {
@@ -1799,7 +1559,7 @@
         "ema_coverage": 0,
         "issues_found": 0,
         "source": "n/a",
-        "generated_at": "2026-03-26T17:54:53.426725+00:00"
+        "generated_at": "2026-03-26T18:32:37.660845+00:00"
       },
       "metric_cards": [
         {
