@@ -3,7 +3,8 @@
    Pure CSS charts, no external libraries
    ========================================================================== */
 
-const BLOB_BASE_URL = null;
+// Data loaded from local static files (public/data/) committed by GH Actions
+const DATA_BASE = '/data';
 
 // SVG Icons
 const ICONS = {
@@ -131,22 +132,19 @@ let availableDates = [...MOCK_DATES];
 
 async function loadReport(date) {
   date = date || currentDate;
-  if (BLOB_BASE_URL) {
-    try {
-      const res = await fetch(`${BLOB_BASE_URL}/reports/${date}/report.json`);
-      if (res.ok) return await res.json();
-    } catch (e) { console.warn('Blob fetch failed:', e.message); }
-  }
+  try {
+    const res = await fetch(`${DATA_BASE}/reports/${date}/report.json`);
+    if (res.ok) return await res.json();
+  } catch (e) { console.warn('Failed to load report:', e.message); }
+  // Fallback to mock data if no real report exists
   return buildMockReport(date);
 }
 
 async function loadDates() {
-  if (BLOB_BASE_URL) {
-    try {
-      const res = await fetch(`${BLOB_BASE_URL}/reports/index.json`);
-      if (res.ok) { const d = await res.json(); if (d.dates?.length) return d.dates; }
-    } catch (e) {}
-  }
+  try {
+    const res = await fetch(`${DATA_BASE}/reports/index.json`);
+    if (res.ok) { const d = await res.json(); if (d.dates?.length) return d.dates; }
+  } catch (e) {}
   return [...MOCK_DATES];
 }
 

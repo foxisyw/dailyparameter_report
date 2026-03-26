@@ -1,10 +1,11 @@
 """Daily Parameter Review — orchestrator.
 
-Runs all adapters, builds report.json, and uploads to Vercel Blob.
+Runs all adapters, builds report.json, and saves to public/data/.
+GitHub Actions then commits and pushes, Vercel auto-deploys.
 
 Usage:
-    python -m runner.main              # run and upload
-    python -m runner.main --dry-run    # run and print JSON, skip upload
+    python -m runner.main              # run and save to public/data/
+    python -m runner.main --dry-run    # run and print JSON, skip saving
 """
 
 import argparse
@@ -19,6 +20,7 @@ from .adapters.index_review import IndexReviewAdapter
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 EMA_CACHE = PROJECT_ROOT / "params_cli" / "price_limits" / "cache" / "ema_state.json"
+DATA_DIR = PROJECT_ROOT / "public" / "data"
 
 
 def _log(msg: str):
@@ -26,7 +28,6 @@ def _log(msg: str):
 
 
 def _load_ema_data() -> dict:
-    """Load cached EMA state if available."""
     if not EMA_CACHE.exists():
         _log(f"No EMA cache at {EMA_CACHE} — EMA-based rules will be skipped")
         return {}
@@ -41,7 +42,6 @@ def _load_ema_data() -> dict:
 
 
 def _build_report(chapters: list[dict], date_str: str) -> dict:
-    """Build the top-level report.json manifest."""
     overall_status = "pass"
     for ch in chapters:
         if ch["status"] == "critical":
@@ -70,96 +70,71 @@ def _build_report(chapters: list[dict], date_str: str) -> dict:
     }
 
 
-def _upload_to_blob(chapters: list[dict], report: dict, date_str: str):
-    """Upload all artifacts to Vercel Blob."""
-    from . import blob
+def _save_report(chapters: list[dict], report: dict, date_str: str):
+    """Save report data to public/data/ for Vercel static serving."""
+    date_dir = DATA_DIR / "reports" / date_str
+    date_dir.mkdir(parents=True, exist_ok=True)
 
-    prefix = f"reports/{date_str}"
-
-    # 1. Upload report.json
-    report_url = blob.upload(
-        f"{prefix}/report.json",
-        json.dumps(report, indent=2, ensure_ascii=False),
-        "application/json",
+    # Full report with chapters
+    full = {"report": report, "chapters": chapters}
+    (date_dir / "report.json").write_text(
+        json.dumps(full, indent=2, ensure_ascii=False)
     )
-    _log(f"Uploaded report.json -> {report_url}")
+    _log(f"Saved {date_dir / 'report.json'}")
 
-    # 2. Upload chapter markdown files
+    # Chapter markdown files
     for ch in chapters:
-        md_url = blob.upload(
-            f"{prefix}/{ch['slug']}.md",
-            ch["markdown"],
-            "text/markdown",
-        )
-        _log(f"Uploaded {ch['slug']}.md -> {md_url}")
+        (date_dir / f"{ch['slug']}.md").write_text(ch.get("markdown", ""))
 
-    # 3. Upload download assets
+    # Download assets
+    assets_dir = date_dir / "assets"
+    assets_dir.mkdir(exist_ok=True)
     for ch in chapters:
         for dl in ch.get("downloads", []):
-            asset_url = blob.upload(
-                f"{prefix}/assets/{dl['filename']}",
-                dl["content"],
-                "text/csv",
-            )
-            _log(f"Uploaded {dl['filename']} -> {asset_url}")
+            (assets_dir / dl["filename"]).write_text(dl["content"])
+            _log(f"Saved {dl['filename']}")
 
-    # 4. Upload latest.json (points to current date)
+    # latest.json — points to current date
     latest = {
         "date": date_str,
         "generated_at": report["generated_at"],
         "status": report["status"],
         "total_issues": report["total_issues"],
-        "report_path": f"{prefix}/report.json",
     }
-    latest_url = blob.upload(
-        "reports/latest.json",
-        json.dumps(latest, indent=2, ensure_ascii=False),
-        "application/json",
+    reports_dir = DATA_DIR / "reports"
+    (reports_dir / "latest.json").write_text(
+        json.dumps(latest, indent=2, ensure_ascii=False)
     )
-    _log(f"Uploaded latest.json -> {latest_url}")
+    _log("Saved latest.json")
 
-    # 5. Update index.json (append date if new)
-    try:
-        existing_blobs = blob.list_blobs("reports/index.json")
+    # index.json — list of all report dates
+    index_path = reports_dir / "index.json"
+    if index_path.exists():
+        try:
+            index_data = json.loads(index_path.read_text())
+        except Exception:
+            index_data = {"dates": []}
+    else:
         index_data = {"dates": []}
-        if existing_blobs:
-            # Try to fetch existing index
-            from urllib.request import Request, urlopen
-            for b in existing_blobs:
-                if b.get("pathname") == "reports/index.json":
-                    req = Request(b["url"], headers={"User-Agent": "runner/1.0"})
-                    with urlopen(req, timeout=15) as resp:
-                        index_data = json.loads(resp.read())
-                    break
-        if date_str not in index_data.get("dates", []):
-            index_data.setdefault("dates", []).append(date_str)
-            index_data["dates"].sort(reverse=True)
-        index_url = blob.upload(
-            "reports/index.json",
-            json.dumps(index_data, indent=2, ensure_ascii=False),
-            "application/json",
-        )
-        _log(f"Uploaded index.json -> {index_url}")
-    except Exception as exc:
-        _log(f"Warning: failed to update index.json: {exc}")
+
+    if date_str not in index_data["dates"]:
+        index_data["dates"].append(date_str)
+        index_data["dates"].sort(reverse=True)
+
+    index_path.write_text(json.dumps(index_data, indent=2, ensure_ascii=False))
+    _log("Saved index.json")
 
 
 def main():
     parser = argparse.ArgumentParser(description="Daily Parameter Review runner")
-    parser.add_argument(
-        "--dry-run",
-        action="store_true",
-        help="Print report JSON to stdout without uploading",
-    )
+    parser.add_argument("--dry-run", action="store_true", help="Print JSON, skip saving")
     args = parser.parse_args()
 
     date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     _log(f"=== Daily Parameter Review — {date_str} ===")
 
-    # 1. Load EMA data
     ema_data = _load_ema_data()
 
-    # 2. Run adapters in sequence
     adapters = [
         PriceLimitAdapter(),
         MMRFuturesAdapter(),
@@ -169,53 +144,30 @@ def main():
     chapters = []
     for adapter in adapters:
         _log(f"Running adapter: {adapter.title} ({adapter.slug})...")
-        chapter = adapter.execute(ema_data)
+        try:
+            chapter = adapter.execute(ema_data)
+        except Exception as exc:
+            _log(f"  ERROR: {exc}")
+            chapter = {
+                "slug": adapter.slug, "title": adapter.title, "status": "critical",
+                "summary": f"Adapter failed: {exc}",
+                "metrics": {"instruments_scanned": 0, "ema_coverage": 0, "issues_found": 0,
+                            "source": "error", "generated_at": datetime.now(timezone.utc).isoformat()},
+                "rule_blocks": [], "recommended_changes": None, "downloads": [],
+                "markdown": "", "error": str(exc),
+            }
         chapters.append(chapter)
-        _log(
-            f"  -> {chapter['status']} | "
-            f"{chapter['metrics']['issues_found']} issues | "
-            f"{chapter['metrics']['instruments_scanned']} instruments"
-        )
+        _log(f"  -> {chapter['status']} | {chapter['metrics']['issues_found']} issues")
 
-    # 3. Build report manifest
     report = _build_report(chapters, date_str)
-    _log(
-        f"Report: status={report['status']}, "
-        f"total_issues={report['total_issues']}"
-    )
+    _log(f"Report: status={report['status']}, total_issues={report['total_issues']}")
 
-    # 4. Output or upload
     if args.dry_run:
-        output = {
-            "report": report,
-            "chapters": chapters,
-        }
-        print(json.dumps(output, indent=2, ensure_ascii=False))
-        _log("Dry run — skipping upload")
+        print(json.dumps({"report": report, "chapters": chapters}, indent=2, ensure_ascii=False))
+        _log("Dry run — skipping save")
     else:
-        import os
-        token = os.environ.get("BLOB_READ_WRITE_TOKEN", "")
-        if not token:
-            _log("WARNING: BLOB_READ_WRITE_TOKEN not set — saving report locally instead")
-            out_dir = PROJECT_ROOT / "public" / "data" / "reports" / date_str
-            out_dir.mkdir(parents=True, exist_ok=True)
-            (out_dir / "report.json").write_text(
-                json.dumps({"report": report, "chapters": chapters}, indent=2, ensure_ascii=False)
-            )
-            _log(f"Saved to {out_dir / 'report.json'}")
-        else:
-            try:
-                _upload_to_blob(chapters, report, date_str)
-                _log("Upload complete.")
-            except Exception as exc:
-                _log(f"ERROR uploading to Blob: {exc}")
-                _log("Saving report locally as fallback...")
-                out_dir = PROJECT_ROOT / "public" / "data" / "reports" / date_str
-                out_dir.mkdir(parents=True, exist_ok=True)
-                (out_dir / "report.json").write_text(
-                    json.dumps({"report": report, "chapters": chapters}, indent=2, ensure_ascii=False)
-                )
-                _log(f"Saved to {out_dir / 'report.json'}")
+        _save_report(chapters, report, date_str)
+        _log("Done.")
 
     return 0
 
