@@ -1,7 +1,7 @@
 {
   "report": {
     "date": "2026-03-26",
-    "generated_at": "2026-03-26T08:15:00.341924+00:00",
+    "generated_at": "2026-03-26T08:23:14.825228+00:00",
     "status": "critical",
     "total_issues": 43,
     "chapters": [
@@ -15,7 +15,7 @@
           "ema_coverage": 1472,
           "issues_found": 43,
           "source": "OKX API (live)",
-          "generated_at": "2026-03-26T08:14:45.422092+00:00"
+          "generated_at": "2026-03-26T08:22:59.898645+00:00"
         }
       },
       {
@@ -28,7 +28,7 @@
           "ema_coverage": 0,
           "issues_found": 0,
           "source": "n/a",
-          "generated_at": "2026-03-26T08:15:00.341855+00:00"
+          "generated_at": "2026-03-26T08:23:14.825199+00:00"
         }
       },
       {
@@ -41,7 +41,7 @@
           "ema_coverage": 0,
           "issues_found": 0,
           "source": "n/a",
-          "generated_at": "2026-03-26T08:15:00.341895+00:00"
+          "generated_at": "2026-03-26T08:23:14.825214+00:00"
         }
       }
     ]
@@ -57,7 +57,7 @@
         "ema_coverage": 1472,
         "issues_found": 43,
         "source": "OKX API (live)",
-        "generated_at": "2026-03-26T08:14:45.422092+00:00"
+        "generated_at": "2026-03-26T08:22:59.898645+00:00"
       },
       "rule_blocks": [
         {
@@ -622,7 +622,7 @@
           "content": "Task Object,timeType,Effective Time,openUpperLimit,openLowerLimit,afterOpenUpperLimit,afterOpenLowerLimit,afterOpenIndexUpperLimit,afterOpenIndexLowerLimit,preQuoteMaxJ1UpperLimit,preQuoteMinJ2LowerLimit,preQuoteC1,preQuoteC2\r\nBTC-USD_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260327,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260403,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USD_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USD_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USDT_UM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USDT_UM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\n"
         }
       ],
-      "markdown": "# Price Limit Review\n\n**Generated:** 2026-03-26T08:14:45.422092+00:00  \n**Status:** critical  \n**Instruments scanned:** 1498  \n**EMA coverage:** 1472  \n\n**Total issues found:** 43\n\n## Rule 1: Buffer Too Tight\n33 issue(s) found.\n\n| INSTRUMENT | LIMITUP_BUFFER | LIMITDN_BUFFER | STATUS |\n|---|---|---|---|\n| ADA-EUR | 1.06% | -0.05% | warning |\n| AERGO-EUR | 1.89% | -8.10% | warning |\n| BICO-EUR | 1.19% | -7.70% | warning |\n| HUMA-EUR | 4.27% | -0.36% | warning |\n| ILV-EUR | 1.95% | -5.60% | warning |\n| JTO-EUR | 2.25% | -0.29% | warning |\n| METIS-EUR | 1.98% | -4.25% | warning |\n| XLM-EUR | 2.66% | -0.57% | warning |\n| ALLO-TRY | 3.75% | -0.16% | warning |\n| FET-TRY | 3.52% | -0.05% | warning |\n| XAUT-TRY | 1.28% | -0.27% | warning |\n| DGB-USD | 1.67% | -0.51% | warning |\n| FET-USD | 3.48% | -0.04% | warning |\n| HUMA-USD | 4.42% | -0.38% | warning |\n| PAXG-USD | 1.28% | -0.30% | warning |\n| STORJ-USD | -0.03% | 0.61% | warning |\n| ZENT-USD | 1.34% | -0.31% | warning |\n| ADA-USDT | 1.11% | -0.09% | warning |\n| DGB-USDT | 1.84% | -0.28% | warning |\n| HUMA-USDT | 4.54% | -0.29% | warning |\n| JOE-USDT | 1.95% | -0.36% | warning |\n| LRC-USDT | -0.41% | 2.40% | warning |\n| MON-USDT | 1.19% | -4.77% | warning |\n| ONT-USDT | 2.71% | -0.70% | warning |\n| PAXG-USDT | 1.33% | -0.30% | warning |\n| XAUT-USDT | 1.31% | -0.28% | warning |\n| XLM-USDT | 2.70% | -0.56% | warning |\n| HUMA-USDC | 4.39% | -0.44% | warning |\n| XAU-USD_UM-SWAP | 1.31% | -0.29% | warning |\n| HUMA-USDT-SWAP | 4.47% | -0.17% | warning |\n| LIGHT-USDT-SWAP | -0.33% | 4.68% | warning |\n| TAO-USDT-SWAP | 3.71% | -0.47% | warning |\n| XAU-USDT-SWAP | 1.31% | -0.27% | warning |\n\n## Rule 2: Asymmetric Basis\nAll instruments passed.\n\n## Rule 3: Asset-Type Consistency\n10 issue(s) found.\n\n| INSTRUMENT | CURRENT Y | CURRENT Z | EXPECTED Y | EXPECTED Z | STATUS |\n|---|---|---|---|---|---|\n| BTC-USD-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD-260925 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260327 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260403 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USDT-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USDT-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n\n## Rule 4: Z Cap <= Y Cap\nAll instruments passed.\n",
+      "markdown": "# Price Limit Review\n\n**Generated:** 2026-03-26T08:22:59.898645+00:00  \n**Status:** critical  \n**Instruments scanned:** 1498  \n**EMA coverage:** 1472  \n\n**Total issues found:** 43\n\n## Rule 1: Buffer Too Tight\n33 issue(s) found.\n\n| INSTRUMENT | LIMITUP_BUFFER | LIMITDN_BUFFER | STATUS |\n|---|---|---|---|\n| ADA-EUR | 1.06% | -0.05% | warning |\n| AERGO-EUR | 1.89% | -8.10% | warning |\n| BICO-EUR | 1.19% | -7.70% | warning |\n| HUMA-EUR | 4.27% | -0.36% | warning |\n| ILV-EUR | 1.95% | -5.60% | warning |\n| JTO-EUR | 2.25% | -0.29% | warning |\n| METIS-EUR | 1.98% | -4.25% | warning |\n| XLM-EUR | 2.66% | -0.57% | warning |\n| ALLO-TRY | 3.75% | -0.16% | warning |\n| FET-TRY | 3.52% | -0.05% | warning |\n| XAUT-TRY | 1.28% | -0.27% | warning |\n| DGB-USD | 1.67% | -0.51% | warning |\n| FET-USD | 3.48% | -0.04% | warning |\n| HUMA-USD | 4.42% | -0.38% | warning |\n| PAXG-USD | 1.28% | -0.30% | warning |\n| STORJ-USD | -0.03% | 0.61% | warning |\n| ZENT-USD | 1.34% | -0.31% | warning |\n| ADA-USDT | 1.11% | -0.09% | warning |\n| DGB-USDT | 1.84% | -0.28% | warning |\n| HUMA-USDT | 4.54% | -0.29% | warning |\n| JOE-USDT | 1.95% | -0.36% | warning |\n| LRC-USDT | -0.41% | 2.40% | warning |\n| MON-USDT | 1.19% | -4.77% | warning |\n| ONT-USDT | 2.71% | -0.70% | warning |\n| PAXG-USDT | 1.33% | -0.30% | warning |\n| XAUT-USDT | 1.31% | -0.28% | warning |\n| XLM-USDT | 2.70% | -0.56% | warning |\n| HUMA-USDC | 4.39% | -0.44% | warning |\n| XAU-USD_UM-SWAP | 1.31% | -0.29% | warning |\n| HUMA-USDT-SWAP | 4.47% | -0.17% | warning |\n| LIGHT-USDT-SWAP | -0.33% | 4.68% | warning |\n| TAO-USDT-SWAP | 3.71% | -0.47% | warning |\n| XAU-USDT-SWAP | 1.31% | -0.27% | warning |\n\n## Rule 2: Asymmetric Basis\nAll instruments passed.\n\n## Rule 3: Asset-Type Consistency\n10 issue(s) found.\n\n| INSTRUMENT | CURRENT Y | CURRENT Z | EXPECTED Y | EXPECTED Z | STATUS |\n|---|---|---|---|---|---|\n| BTC-USD-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD-260925 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260327 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260403 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USDT-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USDT-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n\n## Rule 4: Z Cap <= Y Cap\nAll instruments passed.\n",
       "error": null
     },
     {
@@ -635,7 +635,7 @@
         "ema_coverage": 0,
         "issues_found": 0,
         "source": "n/a",
-        "generated_at": "2026-03-26T08:15:00.341855+00:00"
+        "generated_at": "2026-03-26T08:23:14.825199+00:00"
       },
       "rule_blocks": [],
       "recommended_changes": null,
@@ -653,7 +653,7 @@
         "ema_coverage": 0,
         "issues_found": 0,
         "source": "n/a",
-        "generated_at": "2026-03-26T08:15:00.341895+00:00"
+        "generated_at": "2026-03-26T08:23:14.825214+00:00"
       },
       "rule_blocks": [],
       "recommended_changes": null,

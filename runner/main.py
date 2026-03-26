@@ -128,6 +128,7 @@ def _save_report(chapters: list[dict], report: dict, date_str: str):
 def main():
     parser = argparse.ArgumentParser(description="Daily Parameter Review runner")
     parser.add_argument("--dry-run", action="store_true", help="Print JSON, skip saving")
+    parser.add_argument("--no-lark", action="store_true", help="Skip Lark notification")
     args = parser.parse_args()
 
     # Use HKT (UTC+8) for the report date — both daily cron runs land on same HKT day
@@ -172,12 +173,15 @@ def main():
         _save_report(chapters, report, date_str)
         _log("Report saved.")
 
-        # Send Lark notification
-        from . import lark
-        try:
-            lark.send(report, chapters, date_str)
-        except Exception as exc:
-            _log(f"Lark notification failed (non-fatal): {exc}")
+        # Send Lark notification (unless --no-lark)
+        if not args.no_lark:
+            from . import lark
+            try:
+                lark.send(report, chapters, date_str)
+            except Exception as exc:
+                _log(f"Lark notification failed (non-fatal): {exc}")
+        else:
+            _log("Lark notification skipped (--no-lark)")
 
     return 0
 

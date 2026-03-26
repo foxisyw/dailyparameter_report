@@ -1,4 +1,4 @@
-"""Send daily review summary to Lark via webhook (Interactive Card)."""
+"""Send daily review summary to Lark via webhook (Interactive Card with table)."""
 
 import json
 import os
@@ -42,28 +42,32 @@ def _color(status: str) -> str:
     return {"pass": "green", "warning": "orange", "critical": "red"}.get(status, "grey")
 
 
+def _status_text(status: str) -> str:
+    return {"pass": "PASS", "warning": "WARNING", "critical": "CRITICAL"}.get(status, status.upper())
+
+
 def build_card(report: dict, chapters: list[dict], date_str: str) -> dict:
-    """Build a Lark Interactive Card with table-formatted summary."""
+    """Build a Lark Interactive Card with native table component."""
     status = report["status"]
     total_issues = report["total_issues"]
     total_instruments = sum(
         ch.get("metrics", {}).get("instruments_scanned", 0)
         for ch in report["chapters"]
     )
-    status_text = {"pass": "All Clear", "warning": "Needs Attention", "critical": "Action Required"}.get(status, status.title())
+    verdict = {"pass": "All Clear", "warning": "Needs Attention", "critical": "Action Required"}.get(status, status.title())
 
     active = [ch for ch in chapters if ch["status"] != "pending"]
     pending = [ch for ch in chapters if ch["status"] == "pending"]
 
     elements = []
 
-    # ── Overview metrics as column_set ──
+    # ── Overview metrics (column_set) ──
     elements.append({
         "tag": "column_set",
         "flex_mode": "none",
         "background_style": "grey",
         "columns": [
-            _col(f"**{_emoji(status)} Status**\n{status_text}"),
+            _col(f"**{_emoji(status)} Status**\n{verdict}"),
             _col(f"**Instruments**\n{total_instruments:,}"),
             _col(f"**Issues**\n{total_issues}"),
             _col(f"**Sections**\n{len(active)} active / {len(pending)} pending"),
@@ -72,29 +76,49 @@ def build_card(report: dict, chapters: list[dict], date_str: str) -> dict:
 
     elements.append({"tag": "hr"})
 
-    # ── Rule Results Table per active chapter ──
+    # ── Per active chapter: header + native table ──
     for ch in active:
         instruments = ch.get("metrics", {}).get("instruments_scanned", 0)
-        issues = ch.get("metrics", {}).get("issues_found", 0)
         ema = ch.get("metrics", {}).get("ema_coverage", 0)
+        issues = ch.get("metrics", {}).get("issues_found", 0)
 
         elements.append({
             "tag": "div",
-            "text": {"tag": "lark_md", "content": f"**{_emoji(ch['status'])} {ch['title']}**  |  {instruments:,} instruments  |  EMA: {ema:,}  |  {issues} issues"},
+            "text": {"tag": "lark_md",
+                     "content": f"**{_emoji(ch['status'])} {ch['title']}**  |  {instruments:,} instruments  |  EMA: {ema:,}  |  {issues} issues"},
         })
 
-        # Rule table
+        # Native table for rule results
         rules = ch.get("rule_blocks", [])
         if rules:
-            # Build markdown table
-            table_md = "| Rule | Status | Flagged |\n| --- | --- | --- |\n"
+            table_rows = []
             for rb in rules:
                 count = len(rb.get("table", {}).get("rows", [])) if rb.get("table") else 0
-                table_md += f"| {rb['title']} | {_emoji(rb['status'])} {rb['status'].upper()} | {count} |\n"
+                table_rows.append({
+                    "rule": rb["title"],
+                    "status": [{"text": _status_text(rb["status"]),
+                                "color": {"pass": "green", "warning": "orange", "critical": "red"}.get(rb["status"], "grey")}],
+                    "flagged": count,
+                })
 
             elements.append({
-                "tag": "div",
-                "text": {"tag": "lark_md", "content": table_md},
+                "tag": "table",
+                "page_size": 10,
+                "row_height": "low",
+                "header_style": {
+                    "text_align": "left",
+                    "text_size": "normal",
+                    "background_style": "grey",
+                    "text_color": "grey",
+                    "bold": True,
+                    "lines": 1,
+                },
+                "columns": [
+                    {"name": "rule", "display_name": "Rule", "data_type": "text", "width": "auto"},
+                    {"name": "status", "display_name": "Status", "data_type": "options", "width": "auto"},
+                    {"name": "flagged", "display_name": "Flagged", "data_type": "number", "width": "80px"},
+                ],
+                "rows": table_rows,
             })
 
     # ── Pending chapters ──
@@ -104,25 +128,50 @@ def build_card(report: dict, chapters: list[dict], date_str: str) -> dict:
             "text": {"tag": "lark_md", "content": f"{_emoji('pending')} **{ch['title']}** \u2014 Pending integration"},
         })
 
-    # ── Recommended Changes Table ──
+    # ── Recommended Changes table ──
     for ch in active:
         rec = ch.get("recommended_changes")
         if rec and rec.get("rows"):
             elements.append({"tag": "hr"})
 
-            rec_md = "**Recommended Changes**\n\n| Instrument | Change | Reason |\n| --- | --- | --- |\n"
-            for row in rec["rows"][:8]:
-                inst = row[0] if len(row) > 0 else ""
-                change = row[1] if len(row) > 1 else ""
-                reason = row[2] if len(row) > 2 else ""
-                rec_md += f"| {inst} | {change} | {reason} |\n"
-            if len(rec["rows"]) > 8:
-                rec_md += f"\n... and {len(rec['rows']) - 8} more\n"
+            rec_rows = []
+            for row in rec["rows"][:10]:
+                rec_rows.append({
+                    "instrument": row[0] if len(row) > 0 else "",
+                    "change": row[1] if len(row) > 1 else "",
+                    "reason": row[2] if len(row) > 2 else "",
+                })
 
             elements.append({
                 "tag": "div",
-                "text": {"tag": "lark_md", "content": rec_md},
+                "text": {"tag": "lark_md", "content": "**Recommended Changes**"},
             })
+
+            elements.append({
+                "tag": "table",
+                "page_size": 10,
+                "row_height": "low",
+                "header_style": {
+                    "text_align": "left",
+                    "text_size": "normal",
+                    "background_style": "grey",
+                    "text_color": "grey",
+                    "bold": True,
+                    "lines": 1,
+                },
+                "columns": [
+                    {"name": "instrument", "display_name": "Instrument", "data_type": "text", "width": "auto"},
+                    {"name": "change", "display_name": "Change", "data_type": "text", "width": "auto"},
+                    {"name": "reason", "display_name": "Reason", "data_type": "text", "width": "auto"},
+                ],
+                "rows": rec_rows,
+            })
+
+            if len(rec["rows"]) > 10:
+                elements.append({
+                    "tag": "div",
+                    "text": {"tag": "lark_md", "content": f"... and {len(rec['rows']) - 10} more"},
+                })
 
     elements.append({"tag": "hr"})
 
@@ -130,32 +179,21 @@ def build_card(report: dict, chapters: list[dict], date_str: str) -> dict:
     elements.append({
         "tag": "action",
         "actions": [
-            {
-                "tag": "button",
-                "text": {"tag": "plain_text", "content": "View Full Report"},
-                "type": "primary",
-                "url": VERCEL_URL,
-            },
-            {
-                "tag": "button",
-                "text": {"tag": "plain_text", "content": "How It Works"},
-                "type": "default",
-                "url": f"{VERCEL_URL}/how-it-works.html",
-            },
+            {"tag": "button", "text": {"tag": "plain_text", "content": "View Full Report"}, "type": "primary", "url": VERCEL_URL},
+            {"tag": "button", "text": {"tag": "plain_text", "content": "How It Works"}, "type": "default", "url": f"{VERCEL_URL}/how-it-works.html"},
         ],
     })
 
-    # ── Footer note ──
+    # ── Footer ──
     elements.append({
         "tag": "note",
-        "elements": [
-            {"tag": "plain_text", "content": f"Generated {date_str} | OKX Parameter Management | Automated Daily Review"},
-        ],
+        "elements": [{"tag": "plain_text", "content": f"Generated {date_str} | OKX Parameter Management | Automated Daily Review"}],
     })
 
     return {
         "msg_type": "interactive",
         "card": {
+            "config": {"wide_screen_mode": True},
             "header": {
                 "title": {"tag": "plain_text", "content": f"Daily Parameter Review \u2014 {date_str}"},
                 "template": _color(status),
@@ -166,12 +204,8 @@ def build_card(report: dict, chapters: list[dict], date_str: str) -> dict:
 
 
 def _col(content: str) -> dict:
-    """Helper to build a column for column_set."""
     return {
-        "tag": "column",
-        "width": "weighted",
-        "weight": 1,
-        "vertical_align": "top",
+        "tag": "column", "width": "weighted", "weight": 1, "vertical_align": "top",
         "elements": [{"tag": "div", "text": {"tag": "lark_md", "content": content}}],
     }
 
