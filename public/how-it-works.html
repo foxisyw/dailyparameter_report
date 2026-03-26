@@ -333,7 +333,7 @@ body { font-family: var(--sans); color: var(--black); background: #fff; line-hei
 <div class="header">
   <div class="header-brand">OKX Parameter Management</div>
   <h1>Daily Parameter Review — How It Works</h1>
-  <p>Automated daily audit of OKX price limit parameters. Fetches live market data, runs 4 compliance rules, generates adjustment recommendations, and deploys a report website.</p>
+  <p>Automated daily audit of OKX price limit parameters. Fetches live market data, runs 4 compliance rules, generates adjustment recommendations, deploys a report website, and sends a Lark summary card.</p>
 </div>
 
 <!-- High-level flow -->
@@ -343,17 +343,17 @@ body { font-family: var(--sans); color: var(--black); background: #fff; line-hei
     <div class="flow-step">
       <div class="flow-icon flow-icon--cron">&#9200;</div>
       <div class="flow-label">Cron Trigger</div>
-      <div class="flow-sub">9AM / 1PM HKT</div>
+      <div class="flow-sub">9AM + 4:30PM HKT</div>
     </div>
     <div class="flow-step">
       <div class="flow-icon flow-icon--ema">&#9889;</div>
       <div class="flow-label">EMA Collection</div>
-      <div class="flow-sub">~15 min realtime</div>
+      <div class="flow-sub">~15 min WebSocket</div>
     </div>
     <div class="flow-step">
       <div class="flow-icon flow-icon--api">&#128279;</div>
       <div class="flow-label">OKX API Fetch</div>
-      <div class="flow-sub">1400+ instruments</div>
+      <div class="flow-sub">1498+ instruments</div>
     </div>
     <div class="flow-step">
       <div class="flow-icon flow-icon--review">&#9989;</div>
@@ -367,13 +367,18 @@ body { font-family: var(--sans); color: var(--black); background: #fff; line-hei
     </div>
     <div class="flow-step">
       <div class="flow-icon flow-icon--git">Git</div>
-      <div class="flow-label">Commit & Push</div>
+      <div class="flow-label">Commit &amp; Push</div>
       <div class="flow-sub">Auto-commit</div>
     </div>
     <div class="flow-step">
       <div class="flow-icon flow-icon--deploy">&#9650;</div>
       <div class="flow-label">Vercel Deploy</div>
-      <div class="flow-sub">Auto on push</div>
+      <div class="flow-sub">~90s wait</div>
+    </div>
+    <div class="flow-step" style="border-left:2px solid var(--amber);padding-left:8px;">
+      <div class="flow-icon" style="background:var(--amber-light);">&#128276;</div>
+      <div class="flow-label">Lark Notify</div>
+      <div class="flow-sub">4:30PM only</div>
     </div>
     <div class="flow-step">
       <div class="flow-icon flow-icon--web">&#127760;</div>
@@ -385,10 +390,10 @@ body { font-family: var(--sans); color: var(--black); background: #fff; line-hei
 
 <!-- Key metrics -->
 <div class="overview-grid">
-  <div class="overview-card"><div class="val">1472</div><div class="label">Instruments Scanned</div></div>
+  <div class="overview-card"><div class="val">1,498</div><div class="label">Instruments Scanned</div></div>
   <div class="overview-card"><div class="val">4</div><div class="label">Review Rules</div></div>
-  <div class="overview-card"><div class="val">2x daily</div><div class="label">Run Frequency</div></div>
-  <div class="overview-card"><div class="val">~18 min</div><div class="label">End-to-End Time</div></div>
+  <div class="overview-card"><div class="val">2x daily</div><div class="label">9AM + 4:30PM HKT</div></div>
+  <div class="overview-card"><div class="val">~20 min</div><div class="label">End-to-End Time</div></div>
 </div>
 
 <!-- Detailed sequence -->
@@ -407,8 +412,8 @@ body { font-family: var(--sans); color: var(--black); background: #fff; line-hei
     <div class="step-arrow"><svg width="20" height="12"><path d="M0 6h16m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
     <div class="step-content step--purple">
       <div class="step-label">Cron Job Triggered <span class="step-badge badge-purple">Automated</span></div>
-      <div class="step-detail">GitHub Actions fires on schedule (09:00 HKT / 13:00 HKT) or manual dispatch</div>
-      <div class="step-code">schedule: cron '0 1 * * *' &amp; '0 5 * * *'</div>
+      <div class="step-detail">GitHub Actions fires on schedule (09:00 HKT morning review, 16:30 HKT afternoon review + Lark) or manual dispatch</div>
+      <div class="step-code">schedule: '0 1 * * *' (9AM HKT) &amp; '30 8 * * *' (4:30PM HKT)</div>
     </div>
   </div>
 
@@ -568,11 +573,38 @@ body { font-family: var(--sans); color: var(--black); background: #fff; line-hei
   </div>
 
   <div class="step">
-    <div class="step-from">Website</div>
+    <div class="step-from">Runner</div>
+    <div class="step-arrow"><svg width="20" height="12"><path d="M0 6h16m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+    <div class="step-content">
+      <div class="step-label">Wait 90 Seconds for Vercel Deploy</div>
+      <div class="step-detail">Ensures the report is live on Vercel before sending the Lark notification. The "View Full Report" link will point to the latest data.</div>
+    </div>
+  </div>
+
+  <!-- Phase 5 -->
+  <div class="phase">
+    <span class="phase-num">Phase 5</span>
+    <span class="phase-title">Lark Notification (4:30 PM HKT only)</span>
+    <span class="phase-time">< 5 sec</span>
+  </div>
+
+  <div class="step">
+    <div class="step-from">Runner</div>
+    <div class="step-arrow"><svg width="20" height="12"><path d="M0 6h16m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+    <div class="step-content step--amber">
+      <div class="step-label">Send Lark Interactive Card</div>
+      <div class="step-detail">Reads the latest committed report.json and sends a summary card to configured Lark webhook groups. Card includes: overall status, instrument count, issues, rule results table (with colored status tags), and a "View Full Report" button linking to the live Vercel site.</div>
+      <div class="step-api">POST /open-apis/bot/v2/hook/{webhook_id}</div>
+      <div class="step-code">Sent to 2 Lark groups simultaneously</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-from">Team</div>
     <div class="step-arrow"><svg width="20" height="12"><path d="M0 6h16m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
     <div class="step-content step--green">
-      <div class="step-label">Report Available to Team</div>
-      <div class="step-detail">Parameter management team can view: summary overview, per-rule findings, recommended changes, and download adjustment CSVs. Historical reports browsable via date picker.</div>
+      <div class="step-label">Report Available &amp; Team Notified</div>
+      <div class="step-detail">Parameter management team receives the Lark card and can click through to the full report on Vercel. Historical reports browsable via date picker.</div>
     </div>
   </div>
 </div>
@@ -596,13 +628,49 @@ body { font-family: var(--sans); color: var(--black); background: #fff; line-hei
   </table>
 </div>
 
+<!-- Schedule -->
+<div class="section">
+  <div class="section-title">Daily Schedule (HKT)</div>
+  <table style="width:100%; border-collapse:collapse; font-size:13px;">
+    <thead>
+      <tr style="border-bottom:2px solid var(--black);">
+        <th style="text-align:left; padding:8px 12px; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--gray-500);">Time</th>
+        <th style="text-align:left; padding:8px 12px; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--gray-500);">Trigger</th>
+        <th style="text-align:left; padding:8px 12px; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--gray-500);">Actions</th>
+        <th style="text-align:left; padding:8px 12px; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--gray-500);">Lark</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid var(--gray-100);">
+        <td style="padding:8px 12px;font-family:var(--mono);font-weight:500;">09:00</td>
+        <td style="padding:8px 12px;">GitHub Actions cron</td>
+        <td style="padding:8px 12px;">EMA collection + OKX API fetch + 4 rules + deploy</td>
+        <td style="padding:8px 12px;color:var(--gray-400);">No</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--gray-100);">
+        <td style="padding:8px 12px;font-family:var(--mono);font-weight:500;">16:30</td>
+        <td style="padding:8px 12px;">GitHub Actions cron</td>
+        <td style="padding:8px 12px;">EMA collection + OKX API fetch + 4 rules + deploy</td>
+        <td style="padding:8px 12px;color:var(--green);font-weight:600;">Yes</td>
+      </tr>
+      <tr>
+        <td style="padding:8px 12px;font-family:var(--mono);font-weight:500;">Anytime</td>
+        <td style="padding:8px 12px;">Manual (local or GH dispatch)</td>
+        <td style="padding:8px 12px;">Full review with local EMA cache + deploy</td>
+        <td style="padding:8px 12px;color:var(--green);font-weight:600;">Yes</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 <!-- Tech stack -->
 <div class="section">
   <div class="section-title">Technology Stack</div>
-  <div class="overview-grid" style="grid-template-columns: repeat(3, 1fr);">
-    <div class="overview-card"><div class="val" style="font-size:16px;">Python 3.12</div><div class="label">Review Runner + Data Fetch</div></div>
-    <div class="overview-card"><div class="val" style="font-size:16px;">GitHub Actions</div><div class="label">Cron Scheduler + CI/CD</div></div>
-    <div class="overview-card"><div class="val" style="font-size:16px;">Vercel</div><div class="label">Static Site Hosting (HKG)</div></div>
+  <div class="overview-grid" style="grid-template-columns: repeat(4, 1fr);">
+    <div class="overview-card"><div class="val" style="font-size:16px;">Python 3.12</div><div class="label">Review Runner</div></div>
+    <div class="overview-card"><div class="val" style="font-size:16px;">GitHub Actions</div><div class="label">Cron + CI/CD</div></div>
+    <div class="overview-card"><div class="val" style="font-size:16px;">Vercel</div><div class="label">Static Hosting (HKG)</div></div>
+    <div class="overview-card"><div class="val" style="font-size:16px;">Lark Webhook</div><div class="label">Team Notifications</div></div>
   </div>
 </div>
 
