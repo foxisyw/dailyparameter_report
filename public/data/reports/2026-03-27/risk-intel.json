@@ -1,6 +1,6 @@
 {
   "date": "2026-03-27",
-  "generated_at": "2026-03-26T17:33:34.238194+00:00",
+  "generated_at": "2026-03-26T17:40:28.436192+00:00",
   "chapter": {
     "slug": "risk-intel",
     "title": "Risk Intelligence",
@@ -18,41 +18,148 @@
             "step": 1,
             "type": "远因",
             "name": "结构性弱点",
-            "description": "PROVE流通量低，OI相对市值偏高，少数用户可显著影响市场",
+            "description": "PROVE流通量低，OI相对市值偏高，少数用户可显著影响市场均衡",
+            "detail": "PROVE作为小市值代币，流通盘薄、深度弱，极少数大户的仓位变动即可造成显著OI偏移和价格波动。",
             "evidence_strength": 5,
-            "evidence_label": "铁证"
+            "evidence_label": "铁证",
+            "evidence_table": null,
+            "risk_assessment": null
           },
           {
             "step": 2,
             "type": "近因",
             "name": "OI异常堆积",
-            "description": "OI从基准水平飙升至3,904,521张，较24H均值偏离327.12%",
+            "description": "OI从基准水平飙升，较24H均值偏离327.12%，多个用户同时增仓",
+            "detail": "持仓快照显示多个用户在短时间内集中建仓，推动全市场OI急剧上升。",
             "evidence_strength": 5,
-            "evidence_label": "铁证"
+            "evidence_label": "铁证",
+            "evidence_table": {
+              "title": "P0 关键证据 — 持仓快照",
+              "headers": [
+                "USER_ID",
+                "INSTRUMENT",
+                "SIDE",
+                "MARGIN",
+                "OPEN TIME"
+              ],
+              "rows": [
+                [
+                  "6561979",
+                  "PROVE-USDT-SWAP",
+                  "SHORT",
+                  "cross+isolated",
+                  "Mar 26 06:52-16:31"
+                ],
+                [
+                  "7180900",
+                  "PROVE-USDT-SWAP",
+                  "SHORT",
+                  "cross",
+                  "Mar 26 17:50"
+                ],
+                [
+                  "4335832",
+                  "PROVE-USDT-SWAP",
+                  "SHORT",
+                  "cross",
+                  "Mar 26 12:00"
+                ],
+                [
+                  "10639724",
+                  "PROVE-USDT-SWAP",
+                  "SHORT",
+                  "cross",
+                  "Mar 10 + Mar 26"
+                ],
+                [
+                  "6837242",
+                  "PROVE-USDT-SWAP",
+                  "LONG",
+                  "isolated",
+                  "Mar 26 08:14"
+                ]
+              ],
+              "source": "ex_offline.dwd_okx_asset_user_position_hf · pt=2026032623"
+            },
+            "risk_assessment": null
           },
           {
             "step": 3,
             "type": "触发事件",
-            "name": "平台限额突破",
-            "description": "OI/平台限额占比达101.34%（阈值80%），触发风控报警",
+            "name": "平台OI限额突破",
+            "description": "OI/平台限额占比达101.34%（阈值80%），触发风控报警系统",
+            "detail": "当前OI 3,905K张，突破平台设定的限额阈值。这意味着PROVE合约的系统性风险已超出预设安全边界。",
             "evidence_strength": 5,
-            "evidence_label": "铁证"
+            "evidence_label": "铁证",
+            "evidence_table": null,
+            "risk_assessment": "OI超限意味着若发生极端行情，平台的风险敞口可能超出保险基金覆盖能力。建议立即评估限额参数是否需要调整。"
           },
           {
             "step": 4,
             "type": "一阶效应",
             "name": "价格剧烈波动",
-            "description": "24h价格范围$0.2207~$0.3875，波幅巨大",
+            "description": "24h价格范围$0.2207~$0.3875，波幅超过75%",
+            "detail": "OI堆积伴随价格大幅波动，多空双方在极端杠杆下博弈，导致价格在短时间内出现异常偏移。",
             "evidence_strength": 4,
-            "evidence_label": "强证据"
+            "evidence_label": "强证据",
+            "evidence_table": null,
+            "risk_assessment": null
           },
           {
             "step": 5,
             "type": "二阶效应",
-            "name": "资金费率异常",
-            "description": "资金费率达-0.278%，偏离正常水平",
+            "name": "资金费率异常 + 空头承压",
+            "description": "资金费率达-0.277%（正常值的数十倍），空头支付巨额费用",
+            "detail": "异常资金费率反映市场极度失衡。空头在此环境下面临持续的费用压力，可能被迫平仓。",
             "evidence_strength": 4,
-            "evidence_label": "强证据"
+            "evidence_label": "强证据",
+            "evidence_table": {
+              "title": "P0 关键证据 — 高风险用户画像",
+              "headers": [
+                "USER_ID",
+                "NATIONALITY",
+                "KYC",
+                "VOLUME",
+                "EQUITY",
+                "RATIO"
+              ],
+              "rows": [
+                [
+                  "6561979",
+                  "China",
+                  "KYC3",
+                  "40.6M",
+                  "$11.29",
+                  "0.000028%"
+                ],
+                [
+                  "7180900",
+                  "China",
+                  "KYC3",
+                  "56.4M",
+                  "$19.37",
+                  "0.000034%"
+                ],
+                [
+                  "4335832",
+                  "China",
+                  "KYC3",
+                  "10.4M",
+                  "$8.19",
+                  "0.000079%"
+                ],
+                [
+                  "10639724",
+                  "Philippines",
+                  "KYC2",
+                  "890K",
+                  "$82.97",
+                  "0.0093%"
+                ]
+              ],
+              "source": "ex_offline.dws_okx_user_master_info_df · pt=20260325"
+            },
+            "risk_assessment": "多个用户的权益/交易量比率极低（<0.01%），表明要么经历了巨额亏损，要么已大量提现。这些账户在PROVE异常期间持有空头仓位，需重点关注其后续操作。"
           }
         ],
         "market_snapshot": {
@@ -166,7 +273,7 @@
       "ema_coverage": 4,
       "issues_found": 13,
       "source": "每日风控总结 - 2026-03-26 (00:00 - 23:59)",
-      "generated_at": "2026-03-26T17:33:34.238194+00:00"
+      "generated_at": "2026-03-26T17:40:28.436192+00:00"
     },
     "metric_cards": [
       {
