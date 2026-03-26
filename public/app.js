@@ -6,6 +6,91 @@
 // Data loaded from local static files (public/data/) committed by GH Actions
 const DATA_BASE = '/data';
 
+// ---------------------------------------------------------------------------
+// i18n — EN / 繁體中文 toggle
+// ---------------------------------------------------------------------------
+
+let currentLang = localStorage.getItem('lang') || 'en';
+
+const I18N = {
+  en: {
+    brand: 'PARAMETER REVIEW',
+    subtitle: 'Daily Automated Audit',
+    generated: 'Generated',
+    reportDate: 'Report Date',
+    sections: 'Sections',
+    navigation: 'Navigation',
+    overallVerdict: 'Overall Verdict',
+    instruments: 'Instruments',
+    issuesFound: 'Issues Found',
+    emaConverage: 'EMA Coverage',
+    issues: 'Issues',
+    source: 'Source',
+    sectionsLabel: 'Sections',
+    rules: 'Rules',
+    pass: 'Pass',
+    warning: 'Warning',
+    critical: 'Critical',
+    missing: 'Missing',
+    pending: 'Pending',
+    watch: 'Watch',
+    findingsByRule: 'Findings by Rule',
+    recommendedChanges: 'Recommended Changes',
+    adjustmentFile: 'Adjustment File',
+    downloadCsv: 'Download CSV',
+    allPass: 'All instruments pass.',
+    pendingIntegration: 'Pending integration.',
+    footerOrg: 'OKX Parameter Management',
+    footerAuto: 'Automated Daily Review',
+    // Rule titles (used as fallback if data doesn't provide them)
+    bufferTight: 'Buffer Too Tight',
+    basisAsymmetric: 'Asymmetric Basis vs Z Cap',
+    consistency: 'Asset-Type Consistency',
+    zGtY: 'Z Cap > Y Cap',
+  },
+  zh: {
+    brand: '參數審查報告',
+    subtitle: '每日自動化審計',
+    generated: '生成時間',
+    reportDate: '報告日期',
+    sections: '章節',
+    navigation: '導航',
+    overallVerdict: '整體結論',
+    instruments: '幣對數量',
+    issuesFound: '發現問題',
+    emaConverage: 'EMA 覆蓋',
+    issues: '問題數',
+    source: '數據來源',
+    sectionsLabel: '章節',
+    rules: '規則',
+    pass: '通過',
+    warning: '警告',
+    critical: '嚴重',
+    missing: '缺失',
+    pending: '待接入',
+    watch: '關注',
+    findingsByRule: '各規則發現數量',
+    recommendedChanges: '建議調整',
+    adjustmentFile: '調整檔案',
+    downloadCsv: '下載 CSV',
+    allPass: '所有幣對均通過。',
+    pendingIntegration: '待接入整合。',
+    footerOrg: 'OKX 參數管理',
+    footerAuto: '自動化每日審查',
+    bufferTight: '緩衝區過窄',
+    basisAsymmetric: '基差不對稱 vs Z Cap',
+    consistency: '資產類型一致性',
+    zGtY: 'Z Cap > Y Cap',
+  },
+};
+
+function T(key) { return I18N[currentLang]?.[key] || I18N.en[key] || key; }
+
+function statusLabel(status) {
+  const map = { pass:'pass', warning:'warning', critical:'critical', missing:'missing', pending:'pending', watch:'watch' };
+  return T(map[status] || status);
+}
+
 // SVG Icons
 const ICONS = {
   check: `<svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
@@ -173,7 +258,7 @@ function fmtTime(iso) {
 
 function statusPill(status, lg) {
   const sz = lg ? ' status-pill--lg' : '';
-  const label = status.charAt(0).toUpperCase() + status.slice(1);
+  const label = statusLabel(status);
   const map = {
     pass: ['status-pill--pass', ICONS.check],
     warning: ['status-pill--warning', ICONS.alert],
@@ -217,19 +302,19 @@ function renderSummaryOverview(data) {
   document.getElementById('summary-kpis').innerHTML = `
     <div class="kpi-card kpi-card--status">
       ${statusPill(r.status, true)}
-      <div><div class="kpi-label">Overall Verdict</div></div>
+      <div><div class="kpi-label">${T('overallVerdict')}</div></div>
     </div>
     <div class="kpi-card">
       <div class="kpi-value">${esc(totalInst)}</div>
-      <div class="kpi-label">Instruments</div>
+      <div class="kpi-label">${T('instruments')}</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-value">${esc(r.total_issues)}</div>
-      <div class="kpi-label">Issues Found</div>
+      <div class="kpi-label">${T('issuesFound')}</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-value">${totalSections}</div>
-      <div class="kpi-label">Sections</div>
+      <div class="kpi-label">${T('sectionsLabel')}</div>
     </div>
   `;
 
@@ -254,9 +339,9 @@ function renderSummaryOverview(data) {
       </div>
     </div>
     <div class="donut-legend">
-      <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#16a34a"></span><span class="donut-legend-label">Pass</span><span class="donut-legend-count">${passCount}</span></div>
-      <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#d97706"></span><span class="donut-legend-label">Warning</span><span class="donut-legend-count">${warnCount}</span></div>
-      <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#dc2626"></span><span class="donut-legend-label">Critical</span><span class="donut-legend-count">${critCount}</span></div>
+      <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#16a34a"></span><span class="donut-legend-label">${T('pass')}</span><span class="donut-legend-count">${passCount}</span></div>
+      <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#d97706"></span><span class="donut-legend-label">${T('warning')}</span><span class="donut-legend-count">${warnCount}</span></div>
+      <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#dc2626"></span><span class="donut-legend-label">${T('critical')}</span><span class="donut-legend-count">${critCount}</span></div>
     </div>
   `;
 
@@ -272,7 +357,7 @@ function renderSummaryOverview(data) {
   const maxCount = Math.max(...bars.map(b => b.count), 1);
 
   document.getElementById('summary-bars').innerHTML = `
-    <div class="bar-chart-title">Findings by Rule</div>
+    <div class="bar-chart-title">${T('findingsByRule')}</div>
     ${bars.map(b => `
       <div class="bar-row">
         <div class="bar-label">${esc(b.label)}</div>
@@ -291,9 +376,13 @@ function renderSummaryOverview(data) {
 
 function renderMasthead(data) {
   const r = data.report;
+  document.querySelector('.masthead-brand').textContent = T('brand');
+  document.querySelector('.masthead-sub').textContent = T('subtitle');
   document.getElementById('masthead-date').textContent = fmtDate(r.date + 'T00:00:00Z');
-  document.getElementById('masthead-meta').textContent = `Generated ${fmtTime(r.generated_at)}`;
+  document.getElementById('masthead-meta').textContent = `${T('generated')} ${fmtTime(r.generated_at)}`;
   document.getElementById('footer-date').textContent = fmtDate(r.date + 'T00:00:00Z');
+  document.querySelector('.report-footer span:first-child').textContent = T('footerOrg');
+  document.querySelectorAll('.report-footer span')[2].textContent = T('footerAuto');
 }
 
 // ---------------------------------------------------------------------------
@@ -381,7 +470,7 @@ function renderRuleBlock(rule) {
   if (rule.description) body += `<p class="rule-description">${esc(rule.description)}</p>`;
   if (rule.note) body += `<p class="rule-description">${esc(rule.note)}</p>`;
   if (hasIssues) body += renderTable(tbl.headers, tbl.rows, rule.ruleId);
-  else body += `<div class="empty-state">${ICONS.check} All instruments pass.</div>`;
+  else body += `<div class="empty-state">${ICONS.check} ${T('allPass')}</div>`;
 
   return `<details class="rule-block" id="rule-${esc(rule.ruleId)}"${hasIssues ? ' open' : ''}>
     <summary class="rule-header">
@@ -401,10 +490,10 @@ function renderChapter(ch) {
   let metricsHtml = '';
   if (m?.instruments_scanned) {
     metricsHtml = `<div class="chapter-metrics">
-      <div class="chapter-metric"><div class="metric-value">${esc(m.instruments_scanned)}</div><div class="metric-label">Instruments</div></div>
-      <div class="chapter-metric"><div class="metric-value">${esc(m.ema_coverage)}</div><div class="metric-label">EMA Coverage</div></div>
-      <div class="chapter-metric"><div class="metric-value">${esc(m.issues_found)}</div><div class="metric-label">Issues</div></div>
-      <div class="chapter-metric"><div class="metric-value">${esc(m.source)}</div><div class="metric-label">Source</div></div>
+      <div class="chapter-metric"><div class="metric-value">${esc(m.instruments_scanned)}</div><div class="metric-label">${T('instruments')}</div></div>
+      <div class="chapter-metric"><div class="metric-value">${esc(m.ema_coverage)}</div><div class="metric-label">${T('emaConverage')}</div></div>
+      <div class="chapter-metric"><div class="metric-value">${esc(m.issues_found)}</div><div class="metric-label">${T('issues')}</div></div>
+      <div class="chapter-metric"><div class="metric-value">${esc(m.source)}</div><div class="metric-label">${T('source')}</div></div>
     </div>`;
   }
 
@@ -412,7 +501,7 @@ function renderChapter(ch) {
 
   let recHtml = '';
   if (ch.recommended_changes?.rows?.length) {
-    recHtml = `<div class="section-block"><div class="section-block-title">Recommended Changes</div>${renderTable(ch.recommended_changes.headers, ch.recommended_changes.rows, ch.slug+'-rec')}</div>`;
+    recHtml = `<div class="section-block"><div class="section-block-title">${T('recommendedChanges')}</div>${renderTable(ch.recommended_changes.headers, ch.recommended_changes.rows, ch.slug+'-rec')}</div>`;
   }
 
   let dlHtml = '';
@@ -420,7 +509,7 @@ function renderChapter(ch) {
     dlHtml = ch.downloads.map((dl, i) => `<div class="section-block">
       <div class="adj-preview-header">
         <span class="adj-preview-label">${esc(dl.label)}</span>
-        <button class="btn-download" data-dl-idx="${i}" data-slug="${esc(ch.slug)}">${ICONS.download} Download CSV</button>
+        <button class="btn-download" data-dl-idx="${i}" data-slug="${esc(ch.slug)}">${ICONS.download} ${T('downloadCsv')}</button>
       </div>
     </div>`).join('');
   }
@@ -437,7 +526,7 @@ function renderPending(ch) {
     <div class="chapter-header"><h2 class="chapter-title">${esc(ch.title)}</h2>${statusPill('pending')}</div>
     <div class="pending-content">
       <span class="pending-icon">${ICONS.clockLg}</span>
-      <div class="pending-text"><strong>Pending integration.</strong><br>${esc(ch.summary)}</div>
+      <div class="pending-text"><strong>${T('pendingIntegration')}</strong><br>${esc(ch.summary)}</div>
     </div>
   </section>`;
 }
@@ -478,6 +567,17 @@ function initRailToggle() {
 // ---------------------------------------------------------------------------
 
 function renderAll(data) {
+  // Update static HTML labels
+  document.querySelectorAll('.rail-label').forEach((el, i) => {
+    el.textContent = i === 0 ? T('reportDate') : T('sections');
+  });
+  document.querySelector('.rail-toggle span').textContent = T('navigation');
+  document.documentElement.lang = currentLang === 'zh' ? 'zh-Hant' : 'en';
+
+  // Update lang toggle button text
+  const langBtn = document.getElementById('lang-toggle');
+  if (langBtn) langBtn.textContent = currentLang === 'en' ? '中文' : 'EN';
+
   renderMasthead(data);
   renderSummaryOverview(data);
   renderDatePicker(availableDates, currentDate);
@@ -499,4 +599,16 @@ async function init() {
   renderAll(currentReport);
 }
 
-document.addEventListener('DOMContentLoaded', init);
+function initLangToggle() {
+  const btn = document.getElementById('lang-toggle');
+  btn.addEventListener('click', () => {
+    currentLang = currentLang === 'en' ? 'zh' : 'en';
+    localStorage.setItem('lang', currentLang);
+    if (currentReport) renderAll(currentReport);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initLangToggle();
+  init();
+});

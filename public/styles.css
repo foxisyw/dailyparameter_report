@@ -137,6 +137,26 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   margin-top: 1px;
 }
 
+.lang-toggle {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius);
+  color: var(--gray-600);
+  background: var(--gray-100);
+  cursor: pointer;
+  transition: all 0.15s;
+  float: right;
+  margin-bottom: 4px;
+}
+.lang-toggle:hover {
+  background: var(--black);
+  color: #fff;
+  border-color: var(--black);
+}
+
 /* ==========================================================================
    Summary Overview — KPIs + Charts
    ========================================================================== */
