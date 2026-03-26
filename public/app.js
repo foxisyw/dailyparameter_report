@@ -31,6 +31,10 @@ const I18N = {
     watch: 'Watch',
     rules: 'Rules',
     findingsByRule: 'Findings by Rule',
+    parameterAlarm: 'Parameter Alarm',
+    parameterAlarmDesc: 'Daily risk alert summary — Index Alarm, Price Limit P4, Collateral Coin, and Platform OI.',
+    forwardLooking: 'Outlook',
+    causalChain: 'Causal Chain',
     recommendedChanges: 'Recommended Changes',
     downloadCsv: 'Download CSV',
     allPass: 'All checks passed.',
@@ -79,6 +83,10 @@ const I18N = {
     watch: '關注',
     rules: '規則',
     findingsByRule: '各規則發現數量',
+    parameterAlarm: '參數報警',
+    parameterAlarmDesc: '每日風控報警匯總 — 指數報警、限價報警、小幣抵押、平台OI。',
+    forwardLooking: '前瞻性判斷',
+    causalChain: '因果鏈條',
     recommendedChanges: '建議調整',
     downloadCsv: '下載 CSV',
     allPass: '所有檢查通過。',
@@ -670,50 +678,56 @@ function renderDateDropdown(dates, current) {
   }
 }
 
+let activeSection = null  // tracks which sub-section is active within a tab
+
+function buildSectionList(chapter) {
+  const variant = normalizeRenderVariant(chapter)
+  const sections = []
+  const colors = { critical: '#dc2626', warning: '#d97706', pass: '#16a34a', pending: '#9ca3af' }
+
+  if (variant === 'risk-intel') {
+    // Each event analysis is its own section (includes its users + profiles)
+    const events = chapter.event_analyses || []
+    events.forEach(e => {
+      sections.push({ id: `event-${e.asset}`, label: e.asset, color: colors[e.severity] || '#9ca3af', type: 'event' })
+    })
+    // Combined parameter alarm section (all rule_blocks)
+    if ((chapter.rule_blocks || []).length) {
+      const worstStatus = chapter.rule_blocks.reduce((w, rb) => rb.status === 'critical' ? 'critical' : rb.status === 'warning' && w !== 'critical' ? 'warning' : w, 'pass')
+      sections.push({ id: 'parameter-alarm', label: T('parameterAlarm') || 'Parameter Alarm', color: colors[worstStatus] || '#9ca3af', type: 'alarm' })
+    }
+  } else {
+    // Price Limit etc: rule blocks as sections
+    ;(chapter.rule_blocks || []).forEach(rb => {
+      sections.push({ id: `rule-${rb.ruleId}`, label: rb.title, color: colors[rb.status] || '#9ca3af', type: 'rule' })
+    })
+  }
+
+  return sections
+}
+
 function renderSectionNav(data) {
   const chapter = data.chapters.find(ch => ch.slug === activeTab)
   const nav = document.getElementById('section-nav')
   const label = document.getElementById('rail-label')
+
   if (!chapter || chapter.status === 'pending') {
     nav.innerHTML = ''
     label.textContent = T('sections')
+    activeSection = null
     return
   }
 
   label.textContent = chapter.title
+  const sections = buildSectionList(chapter)
 
-  const variant = normalizeRenderVariant(chapter)
-  const sections = []
-
-  if (variant === 'risk-intel') {
-    // Event analyses as jump targets
-    const events = chapter.event_analyses || []
-    events.forEach(e => {
-      const colors = { critical: '#dc2626', warning: '#d97706', pass: '#16a34a' }
-      sections.push({ id: `event-${e.asset}`, label: e.asset, color: colors[e.severity] || '#9ca3af' })
-    })
-    // Alert types
-    ;(chapter.rule_blocks || []).forEach(rb => {
-      const colors = { critical: '#dc2626', warning: '#d97706', pass: '#16a34a' }
-      sections.push({ id: `rule-${rb.ruleId}`, label: rb.title, color: colors[rb.status] || '#9ca3af' })
-    })
-    // Suspicious users + profiles
-    if ((chapter.suspicious_users || []).length) {
-      sections.push({ id: 'suspicious-users', label: T('suspiciousUsers'), color: '#d97706' })
-    }
-    if ((chapter.user_profiles || []).length) {
-      sections.push({ id: 'user-profiles', label: T('userDeepDive'), color: '#6b7280' })
-    }
-  } else {
-    // Price Limit: rule blocks
-    ;(chapter.rule_blocks || []).forEach(rb => {
-      const colors = { critical: '#dc2626', warning: '#d97706', pass: '#16a34a' }
-      sections.push({ id: `rule-${rb.ruleId}`, label: rb.title, color: colors[rb.status] || '#9ca3af' })
-    })
+  // Default to first section
+  if (!activeSection || !sections.find(s => s.id === activeSection)) {
+    activeSection = sections.length ? sections[0].id : null
   }
 
   nav.innerHTML = sections.map(s => `
-    <li><button class="section-link" data-target="${esc(s.id)}">
+    <li><button class="section-link${s.id === activeSection ? ' active' : ''}" data-section="${esc(s.id)}">
       <span class="section-dot" style="background:${s.color}"></span>
       <span>${esc(s.label)}</span>
     </button></li>
@@ -721,13 +735,8 @@ function renderSectionNav(data) {
 
   nav.querySelectorAll('.section-link').forEach(btn => {
     btn.addEventListener('click', () => {
-      const target = document.getElementById(btn.dataset.target)
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        // Highlight
-        nav.querySelectorAll('.section-link').forEach(b => b.classList.remove('active'))
-        btn.classList.add('active')
-      }
+      activeSection = btn.dataset.section
+      renderAll(currentReport)
     })
   })
 }
@@ -1307,6 +1316,63 @@ function renderPendingSummary(chapter) {
   document.getElementById('summary-bars').innerHTML = ''
 }
 
+function renderSingleEventSection(chapter, event) {
+  // Render one event analysis with its related suspicious users and profiles
+  const snap = event.market_snapshot || {}
+  const snapCards = snap.price ? `
+    <div class="ev-metrics">
+      <div class="ev-metric"><span class="ev-metric-val">\$${esc(snap.price)}</span><span class="ev-metric-lbl">PRICE</span></div>
+      <div class="ev-metric"><span class="ev-metric-val">${esc(snap.change_24h)}</span><span class="ev-metric-lbl">24H</span></div>
+      <div class="ev-metric"><span class="ev-metric-val">${parseFloat(snap.funding_rate) ? (parseFloat(snap.funding_rate) * 100).toFixed(3) + '%' : '\u2014'}</span><span class="ev-metric-lbl">FUNDING</span></div>
+      <div class="ev-metric"><span class="ev-metric-val">${parseFloat(snap.open_interest) ? (parseFloat(snap.open_interest)/1000).toFixed(0) + 'K' : '\u2014'}</span><span class="ev-metric-lbl">OI</span></div>
+    </div>` : ''
+
+  const chainRows = (event.causal_chain || []).map(link => renderChainLink(link)).join('')
+
+  // Filter suspicious users related to this event's asset
+  const allUsers = chapter.suspicious_users || []
+  const relatedUsers = allUsers.filter(u => {
+    const pair = (u.related_pair || '').toUpperCase()
+    const asset = event.asset.toUpperCase()
+    return pair.includes(asset.split('-')[0]) || u.source_alert === 'platform_oi' && asset.includes('PROVE') || !u.related_pair
+  })
+
+  // Filter profiles for related users
+  const relatedProfileKeys = new Set(relatedUsers.map(u => u.uid || u.master_user_id))
+  const relatedProfiles = (chapter.user_profiles || []).filter(p => relatedProfileKeys.has(p.uid) || relatedProfileKeys.has(p.master_user_id))
+
+  // Build a mini-chapter for this event's users
+  const miniChapter = { ...chapter, suspicious_users: relatedUsers, user_profiles: relatedProfiles }
+
+  return `<section class="chapter" id="event-${esc(event.asset)}">
+    <div class="chapter-header"><h2 class="chapter-title">${esc(event.asset)}</h2>${statusPill(event.severity)}</div>
+    <p class="chapter-summary">${esc(event.executive_summary).slice(0, 200)}${event.executive_summary.length > 200 ? '...' : ''}</p>
+    ${snapCards}
+    <div class="ev-summary">${esc(event.executive_summary)}</div>
+    ${event.forward_looking ? `<div class="ev-outlook"><strong>${T('forwardLooking') || 'Outlook'}:</strong> ${esc(event.forward_looking)}</div>` : ''}
+    ${chainRows ? `
+      <div class="ev-chain-header">${T('causalChain') || 'Causal Chain'}</div>
+      <div class="table-wrap">
+        <table class="data-table ev-chain-table">
+          <thead><tr><th>#</th><th>${T('chainType') || 'TYPE'}</th><th>${T('chainDetail') || 'DETAIL'}</th><th>${T('chainEvidence') || 'EVIDENCE'}</th></tr></thead>
+          <tbody>${chainRows}</tbody>
+        </table>
+      </div>` : ''}
+    ${relatedUsers.length ? renderSuspiciousUsers(miniChapter) : ''}
+    ${relatedProfiles.length ? renderUserProfiles(miniChapter) : ''}
+  </section>`
+}
+
+function renderParameterAlarmSection(chapter) {
+  // Combined view of all rule_blocks (Index Alarm, Price Limit P4, Collateral Coin, Platform OI)
+  const rulesHtml = (chapter.rule_blocks || []).map(renderRuleBlock).join('')
+  return `<section class="chapter" id="parameter-alarm">
+    <div class="chapter-header"><h2 class="chapter-title">${T('parameterAlarm') || 'Parameter Alarm'}</h2></div>
+    <p class="chapter-summary">${T('parameterAlarmDesc') || 'Daily risk alert summary from the Trading Risk Bot — Index Alarm, Price Limit, Collateral Coin, and Platform OI.'}</p>
+    ${rulesHtml}
+  </section>`
+}
+
 function renderActiveTabContent(data) {
   const chapter = data.chapters.find(ch => ch.slug === activeTab)
   const chaptersNode = document.getElementById('chapters')
@@ -1316,18 +1382,39 @@ function renderActiveTabContent(data) {
     return
   }
 
-  // Render only the active tab's chapter content (no collapsible wrapper needed)
-  const variant = normalizeRenderVariant(chapter)
-  let html = ''
   if (chapter.status === 'pending') {
-    html = renderPending(chapter)
-  } else if (variant === 'risk-intel') {
-    html = renderRiskIntelChapter(chapter)
-  } else {
-    html = renderRulesChapter(chapter)
+    chaptersNode.innerHTML = renderPending(chapter)
+    return
   }
 
-  chaptersNode.innerHTML = html
+  const variant = normalizeRenderVariant(chapter)
+
+  if (variant === 'risk-intel') {
+    // Section-based rendering: show only the active section
+    if (activeSection && activeSection.startsWith('event-')) {
+      const assetId = activeSection.replace('event-', '')
+      const event = (chapter.event_analyses || []).find(e => e.asset === assetId)
+      if (event) {
+        chaptersNode.innerHTML = renderSingleEventSection(chapter, event)
+      } else {
+        chaptersNode.innerHTML = '<div style="padding:40px;color:var(--gray-400)">Event not found</div>'
+      }
+    } else if (activeSection === 'parameter-alarm') {
+      chaptersNode.innerHTML = renderParameterAlarmSection(chapter)
+    } else {
+      // Default: show first event
+      const events = chapter.event_analyses || []
+      if (events.length) {
+        chaptersNode.innerHTML = renderSingleEventSection(chapter, events[0])
+      } else {
+        chaptersNode.innerHTML = renderParameterAlarmSection(chapter)
+      }
+    }
+  } else {
+    // Non-risk-intel tabs: show full chapter
+    chaptersNode.innerHTML = renderRulesChapter(chapter)
+  }
+
   attachSorting(chaptersNode)
   attachDownloads(data)
   attachProfileLinks()
