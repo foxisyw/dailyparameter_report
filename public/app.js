@@ -652,23 +652,81 @@ function renderMasthead(data) {
   const report = data.report
   document.querySelector('.masthead-brand').textContent = T('brand')
   document.querySelector('.masthead-sub').textContent = T('subtitle')
-  document.getElementById('masthead-date').textContent = fmtDate(`${report.date}T00:00:00Z`)
-  document.getElementById('masthead-meta').textContent = `${T('generated')} ${fmtTime(report.generated_at)}`
   document.getElementById('footer-date').textContent = fmtDate(`${report.date}T00:00:00Z`)
   document.querySelector('.report-footer span:first-child').textContent = T('footerOrg')
   document.querySelectorAll('.report-footer span')[2].textContent = T('footerAuto')
 }
 
-function renderDatePicker(dates, current) {
-  const list = document.getElementById('date-list')
-  list.innerHTML = dates.map(date => `
-    <li><button class="date-btn" role="option" aria-selected="${date === current}" data-date="${esc(date)}">${fmtDate(`${date}T00:00:00Z`)}</button></li>
+function renderDateDropdown(dates, current) {
+  const dropdown = document.getElementById('date-dropdown')
+  dropdown.innerHTML = dates.map(d =>
+    `<option value="${esc(d)}"${d === current ? ' selected' : ''}>${fmtDate(`${d}T00:00:00Z`)}</option>`
+  ).join('')
+  dropdown.onchange = () => {
+    if (dropdown.value !== currentDate) {
+      currentDate = dropdown.value
+      init()
+    }
+  }
+}
+
+function renderSectionNav(data) {
+  const chapter = data.chapters.find(ch => ch.slug === activeTab)
+  const nav = document.getElementById('section-nav')
+  const label = document.getElementById('rail-label')
+  if (!chapter || chapter.status === 'pending') {
+    nav.innerHTML = ''
+    label.textContent = T('sections')
+    return
+  }
+
+  label.textContent = chapter.title
+
+  const variant = normalizeRenderVariant(chapter)
+  const sections = []
+
+  if (variant === 'risk-intel') {
+    // Event analyses as jump targets
+    const events = chapter.event_analyses || []
+    events.forEach(e => {
+      const colors = { critical: '#dc2626', warning: '#d97706', pass: '#16a34a' }
+      sections.push({ id: `event-${e.asset}`, label: e.asset, color: colors[e.severity] || '#9ca3af' })
+    })
+    // Alert types
+    ;(chapter.rule_blocks || []).forEach(rb => {
+      const colors = { critical: '#dc2626', warning: '#d97706', pass: '#16a34a' }
+      sections.push({ id: `rule-${rb.ruleId}`, label: rb.title, color: colors[rb.status] || '#9ca3af' })
+    })
+    // Suspicious users + profiles
+    if ((chapter.suspicious_users || []).length) {
+      sections.push({ id: 'suspicious-users', label: T('suspiciousUsers'), color: '#d97706' })
+    }
+    if ((chapter.user_profiles || []).length) {
+      sections.push({ id: 'user-profiles', label: T('userDeepDive'), color: '#6b7280' })
+    }
+  } else {
+    // Price Limit: rule blocks
+    ;(chapter.rule_blocks || []).forEach(rb => {
+      const colors = { critical: '#dc2626', warning: '#d97706', pass: '#16a34a' }
+      sections.push({ id: `rule-${rb.ruleId}`, label: rb.title, color: colors[rb.status] || '#9ca3af' })
+    })
+  }
+
+  nav.innerHTML = sections.map(s => `
+    <li><button class="section-link" data-target="${esc(s.id)}">
+      <span class="section-dot" style="background:${s.color}"></span>
+      <span>${esc(s.label)}</span>
+    </button></li>
   `).join('')
-  list.querySelectorAll('.date-btn').forEach(button => {
-    button.addEventListener('click', () => {
-      if (button.dataset.date !== currentDate) {
-        currentDate = button.dataset.date
-        init()
+
+  nav.querySelectorAll('.section-link').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(btn.dataset.target)
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        // Highlight
+        nav.querySelectorAll('.section-link').forEach(b => b.classList.remove('active'))
+        btn.classList.add('active')
       }
     })
   })
@@ -827,7 +885,7 @@ function renderSuspiciousUsers(chapter) {
   if (!users.length) {
     return `<div class="section-block"><div class="section-block-title">${T('suspiciousUsers')}</div><div class="empty-state">${ICONS.check} ${T('suspiciousUsersEmpty')}</div></div>`
   }
-  return `<div class="section-block">
+  return `<div class="section-block" id="suspicious-users">
     <div class="section-block-title">${T('suspiciousUsers')}</div>
     <div class="table-wrap">
       <table class="data-table risk-table" aria-label="Suspicious users">
@@ -863,7 +921,7 @@ function renderUserProfiles(chapter) {
   if (!profiles.length) {
     return `<div class="section-block"><div class="section-block-title">${T('userDeepDive')}</div><div class="empty-state">${ICONS.clock} ${T('userProfilesEmpty')}</div></div>`
   }
-  return `<div class="section-block">
+  return `<div class="section-block" id="user-profiles">
     <div class="section-block-title">${T('userDeepDive')}</div>
     <div class="user-profiles">
       ${profiles.map(profile => {
@@ -977,7 +1035,7 @@ function renderEventAnalyses(chapter) {
 
       const chainHtml = (event.causal_chain || []).map((link, i) => renderChainLink(link, i)).join('')
 
-      return `<details class="event-analysis event-analysis--${event.severity}" open>
+      return `<details class="event-analysis event-analysis--${event.severity}" id="event-${esc(event.asset)}" open>
         <summary class="event-collapse-header">
           <div class="event-header-left">
             <h3 class="event-asset">${esc(event.asset)}</h3>
@@ -1290,10 +1348,11 @@ function renderAll(data) {
   if (langButton) langButton.textContent = currentLang === 'en' ? '中文' : 'EN'
 
   renderMasthead(data)
+  renderDateDropdown(availableDates, currentDate)
   renderTabBar(data)
   renderTabSummary(data)
-  renderDatePicker(availableDates, currentDate)
   renderActiveTabContent(data)
+  renderSectionNav(data)
   initRailToggle()
 }
 

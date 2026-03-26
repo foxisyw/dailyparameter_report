@@ -189,6 +189,54 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .tab-btn { padding: 8px 12px; font-size: 12px; }
 }
 
+.date-dropdown {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 28px 6px 10px;
+  border: 1.5px solid var(--gray-300);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--black);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%236b7280' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  min-height: 32px;
+}
+.date-dropdown:focus { border-color: var(--black); outline: none; }
+
+/* Section Nav (left rail quick-jump) */
+.section-nav li { margin-bottom: 1px; }
+.section-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--gray-500);
+  border-radius: var(--radius);
+  transition: all 0.15s;
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+.section-link:hover { background: var(--gray-100); color: var(--black); }
+.section-link.active {
+  background: var(--gray-900);
+  color: var(--white);
+}
+.section-link .section-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
 .lang-toggle {
   font-family: var(--font-mono);
   font-size: 11px;
