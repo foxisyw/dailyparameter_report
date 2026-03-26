@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Parameter Review — System Architecture</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sans: 'DM Sans', -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+  --black: #0a0a0a;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --green: #16a34a;
+  --green-light: #dcfce7;
+  --amber: #d97706;
+  --amber-light: #fef3c7;
+  --red: #dc2626;
+  --red-light: #fee2e2;
+  --blue: #2563eb;
+  --blue-light: #dbeafe;
+  --purple: #7c3aed;
+  --purple-light: #ede9fe;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--sans); color: var(--black); background: #fff; line-height: 1.6; }
+
+.page { max-width: 1100px; margin: 0 auto; padding: 40px 32px 80px; }
+
+/* Header */
+.header { border-bottom: 2px solid var(--black); padding-bottom: 20px; margin-bottom: 40px; }
+.header-brand { font-family: var(--mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gray-400); }
+.header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; margin-top: 4px; }
+.header p { font-size: 14px; color: var(--gray-500); margin-top: 4px; max-width: 600px; }
+
+/* Section */
+.section { margin-bottom: 48px; }
+.section-title { font-size: 18px; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--gray-200); }
+
+/* Overview Stats */
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 40px;
+}
+.overview-card {
+  border: 1px solid var(--gray-200);
+  padding: 16px;
+  border-radius: 4px;
+}
+.overview-card .val { font-family: var(--mono); font-size: 22px; font-weight: 500; }
+.overview-card .label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gray-500); margin-top: 4px; }
+
+/* ─── Sequence Diagram ─── */
+.seq { position: relative; margin: 32px 0; }
+
+/* Participants */
+.seq-participants {
+  display: flex;
+  gap: 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--gray-200);
+}
+.seq-part {
+  flex: 1;
+  text-align: center;
+  padding: 10px 4px;
+}
+.seq-part-icon {
+  width: 36px; height: 36px;
+  margin: 0 auto 6px;
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  border: 1.5px solid var(--gray-300);
+  background: var(--gray-100);
+}
+.seq-part-name {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--black);
+}
+.seq-part-sub {
+  font-size: 10px;
+  color: var(--gray-400);
+  margin-top: 1px;
+}
+
+/* Lifelines */
+.seq-body { position: relative; padding-top: 16px; }
+
+/* Phase banner */
+.phase {
+  background: var(--gray-100);
+  border: 1px solid var(--gray-200);
+  border-radius: 4px;
+  padding: 10px 16px;
+  margin: 24px 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.phase:first-child { margin-top: 0; }
+.phase-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  background: var(--black);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.phase-title { font-size: 14px; font-weight: 600; }
+.phase-time {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--gray-400);
+}
+
+/* Step rows */
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 8px 0;
+  position: relative;
+}
+
+.step-from {
+  width: 140px;
+  flex-shrink: 0;
+  text-align: right;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--gray-400);
+  padding-top: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.step-arrow {
+  width: 40px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2px;
+  color: var(--gray-300);
+}
+
+.step-content {
+  flex: 1;
+  border-left: 2px solid var(--gray-200);
+  padding: 6px 0 6px 16px;
+  position: relative;
+}
+.step-content::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 12px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gray-300);
+  border: 2px solid #fff;
+}
+
+.step-content.step--green::before { background: var(--green); }
+.step-content.step--amber::before { background: var(--amber); }
+.step-content.step--red::before { background: var(--red); }
+.step-content.step--blue::before { background: var(--blue); }
+.step-content.step--purple::before { background: var(--purple); }
+
+.step-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.step-detail {
+  font-size: 12px;
+  color: var(--gray-500);
+  margin-top: 2px;
+}
+
+.step-code {
+  font-family: var(--mono);
+  font-size: 11px;
+  background: var(--gray-100);
+  border: 1px solid var(--gray-200);
+  padding: 4px 8px;
+  border-radius: 3px;
+  margin-top: 4px;
+  display: inline-block;
+  color: var(--gray-700);
+}
+
+.step-api {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--blue);
+  margin-top: 2px;
+}
+
+.step-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-left: 6px;
+}
+.badge-green { background: var(--green-light); color: var(--green); }
+.badge-amber { background: var(--amber-light); color: var(--amber); }
+.badge-blue { background: var(--blue-light); color: var(--blue); }
+.badge-purple { background: var(--purple-light); color: var(--purple); }
+
+/* Decision box */
+.decision {
+  border: 1.5px dashed var(--amber);
+  background: #fffbeb;
+  border-radius: 4px;
+  padding: 10px 14px;
+  margin: 4px 0;
+  font-size: 12px;
+}
+.decision strong { color: var(--amber); }
+
+/* Rule check */
+.rule-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+.rule-item {
+  border: 1px solid var(--gray-200);
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 12px;
+}
+.rule-item .rule-name { font-weight: 600; margin-bottom: 2px; }
+.rule-item .rule-desc { color: var(--gray-500); font-size: 11px; }
+
+/* Flow diagram (simpler horizontal) */
+.flow {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 24px 0;
+  overflow-x: auto;
+}
+.flow-step {
+  flex: 1;
+  min-width: 140px;
+  text-align: center;
+  padding: 16px 12px;
+  position: relative;
+}
+.flow-step::after {
+  content: '\2192';
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: var(--gray-300);
+  z-index: 1;
+}
+.flow-step:last-child::after { display: none; }
+
+.flow-icon {
+  width: 44px; height: 44px;
+  margin: 0 auto 8px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+}
+.flow-icon--cron { background: var(--purple-light); }
+.flow-icon--ema { background: var(--blue-light); }
+.flow-icon--api { background: var(--amber-light); }
+.flow-icon--review { background: var(--green-light); }
+.flow-icon--save { background: var(--gray-100); border: 1px solid var(--gray-200); }
+.flow-icon--git { background: var(--black); color: #fff; font-size: 14px; }
+.flow-icon--deploy { background: var(--blue-light); }
+.flow-icon--web { background: var(--green-light); }
+
+.flow-label { font-size: 12px; font-weight: 600; }
+.flow-sub { font-size: 10px; color: var(--gray-400); margin-top: 2px; }
+
+/* Footer */
+.footer { border-top: 2px solid var(--black); padding-top: 16px; margin-top: 48px; font-size: 11px; color: var(--gray-400); }
+
+@media (max-width: 768px) {
+  .overview-grid { grid-template-columns: 1fr 1fr; }
+  .rule-list { grid-template-columns: 1fr; }
+  .flow { flex-wrap: wrap; }
+  .flow-step::after { display: none; }
+  .flow-step { min-width: 100px; flex-basis: 25%; }
+  .step-from { width: 100px; font-size: 10px; }
+}
+
+@media print {
+  .page { padding: 20px; }
+  .seq-participants { position: relative; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+  <div class="header-brand">OKX Parameter Management</div>
+  <h1>Daily Parameter Review — How It Works</h1>
+  <p>Automated daily audit of OKX price limit parameters. Fetches live market data, runs 4 compliance rules, generates adjustment recommendations, and deploys a report website.</p>
+</div>
+
+<!-- High-level flow -->
+<div class="section">
+  <div class="section-title">System Overview</div>
+  <div class="flow">
+    <div class="flow-step">
+      <div class="flow-icon flow-icon--cron">&#9200;</div>
+      <div class="flow-label">Cron Trigger</div>
+      <div class="flow-sub">9AM / 1PM HKT</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-icon flow-icon--ema">&#9889;</div>
+      <div class="flow-label">EMA Collection</div>
+      <div class="flow-sub">~15 min realtime</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-icon flow-icon--api">&#128279;</div>
+      <div class="flow-label">OKX API Fetch</div>
+      <div class="flow-sub">1400+ instruments</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-icon flow-icon--review">&#9989;</div>
+      <div class="flow-label">4 Rules Review</div>
+      <div class="flow-sub">Automated audit</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-icon flow-icon--save">&#128196;</div>
+      <div class="flow-label">Generate Report</div>
+      <div class="flow-sub">JSON + CSV</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-icon flow-icon--git">Git</div>
+      <div class="flow-label">Commit & Push</div>
+      <div class="flow-sub">Auto-commit</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-icon flow-icon--deploy">&#9650;</div>
+      <div class="flow-label">Vercel Deploy</div>
+      <div class="flow-sub">Auto on push</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-icon flow-icon--web">&#127760;</div>
+      <div class="flow-label">Report Live</div>
+      <div class="flow-sub">vercel.app</div>
+    </div>
+  </div>
+</div>
+
+<!-- Key metrics -->
+<div class="overview-grid">
+  <div class="overview-card"><div class="val">1472</div><div class="label">Instruments Scanned</div></div>
+  <div class="overview-card"><div class="val">4</div><div class="label">Review Rules</div></div>
+  <div class="overview-card"><div class="val">2x daily</div><div class="label">Run Frequency</div></div>
+  <div class="overview-card"><div class="val">~18 min</div><div class="label">End-to-End Time</div></div>
+</div>
+
+<!-- Detailed sequence -->
+<div class="section">
+  <div class="section-title">Detailed Process Flow</div>
+
+  <!-- Phase 1 -->
+  <div class="phase">
+    <span class="phase-num">Phase 1</span>
+    <span class="phase-title">Cron Trigger &amp; EMA Data Collection</span>
+    <span class="phase-time">~15 min</span>
+  </div>
+
+  <div class="step">
+    <div class="step-from">GitHub Actions</div>
+    <div class="step-arrow"><svg width="20" height="12"><path d="M0 6h16m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+    <div class="step-content step--purple">
+      <div class="step-label">Cron Job Triggered <span class="step-badge badge-purple">Automated</span></div>
+      <div class="step-detail">GitHub Actions fires on schedule (09:00 HKT / 13:00 HKT) or manual dispatch</div>
+      <div class="step-code">schedule: cron '0 1 * * *' &amp; '0 5 * * *'</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-from">Runner</div>
+    <div class="step-arrow"><svg width="20" height="12"><path d="M0 6h16m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+    <div class="step-content step--blue">
+      <div class="step-label">Start Realtime WebSocket Server</div>
+      <div class="step-detail">Connects to OKX WebSocket API to collect live market data: bid/ask, index price, buy/sell limits</div>
+      <div class="step-api">ws://www.okx.com/ws/v5/public → polling every 5s</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-from">Realtime Server</div>
+    <div class="step-arrow"><svg width="20" height="12"><path d="M0 6h16m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+    <div class="step-content step--blue">
+      <div class="step-label">Calculate 24h EMA Indicators</div>
+      <div class="step-detail">For each instrument, computes exponential moving averages (tau=24h):</div>
+      <div class="rule-list" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+        <div class="rule-item"><div class="rule-name">basis</div><div class="rule-desc">Premium/discount vs index</div></div>
+        <div class="rule-item"><div class="rule-name">spread</div><div class="rule-desc">Bid-ask spread ratio</div></div>
+        <div class="rule-item"><div class="rule-name">limitUp_buffer</div><div class="rule-desc">Distance to upper limit</div></div>
+        <div class="rule-item"><div class="rule-name">limitDn_buffer</div><div class="rule-desc">Distance to lower limit</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-from">EMA Collector</div>
+    <div class="step-arrow"><svg width="20" height="12"><path d="M0 6h16m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+    <div class="step-content">
+      <div class="step-label">Poll Coverage → Stop When >80%</div>
+      <div class="step-detail">Polls /health every 30s. Once 80%+ instruments have EMA data, kills the server and saves cache.</div>
+      <div class="step-code">ema_state.json → 1488 instruments cached</div>
+    </div>
+  </div>
+
+  <!-- Phase 2 -->
+  <div class="phase">
+    <span class="phase-num">Phase 2</span>
+    <span class="phase-title">OKX API Data Fetch (Parallel)</span>
+    <span class="phase-time">~2 min</span>
+  </div>
+
+  <div class="step">
+    <div class="step-from">Price Limit Adapter</div>
+    <div class="step-arrow"><svg width="20" height="12"><path d="M0 6h16m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+    <div class="step-content step--amber">
+      <div class="step-label">Fetch All Live Instruments</div>
+      <div class="step-detail">Three parallel requests for SPOT, SWAP, FUTURES instrument lists</div>
+      <div class="step-api">GET /api/v5/public/instruments?instType={SPOT|SWAP|FUTURES}</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-from">Price Limit Adapter</div>
+    <div class="step-arrow"><svg width="20" height="12"><path d="M0 6h16m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+    <div class="step-content step--amber">
+      <div class="step-label">Fetch XYZ Cap Parameters (Batched)</div>
+      <div class="step-detail">For each 50-instrument batch, fetch Y caps (inner band) and Z caps (outer hard limit)</div>
+      <div class="step-api">GET /priapi/v5/public/products?instType={type}&amp;instId={ids}&amp;includeType=1</div>
+      <div class="step-code">~30 batches → 1472 instruments with lpY1/lpY2/lpZ1/lpZ2</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-from">Asset Map</div>
+    <div class="step-arrow"><svg width="20" height="12"><path d="M0 6h16m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+    <div class="step-content">
+      <div class="step-label">Load Asset Classification</div>
+      <div class="step-detail">Maps each base currency → asset type from assets_types.md</div>
+      <div class="step-code">BTC → Topcoins, AAPL → TradFi, USDT → Fiat, PEPE → Altcoins</div>
+    </div>
+  </div>
+
+  <!-- Phase 3 -->
+  <div class="phase">
+    <span class="phase-num">Phase 3</span>
+    <span class="phase-title">Review Rules Engine (4 Rules)</span>
+    <span class="phase-time">< 1 min</span>
+  </div>
+
+  <div class="step">
+    <div class="step-from">Rule Engine</div>
+    <div class="step-arrow"><svg width="20" height="12"><path d="M0 6h16m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+    <div class="step-content step--green">
+      <div class="step-label">Run 4 Compliance Rules Against All Instruments</div>
+      <div class="rule-list">
+        <div class="rule-item">
+          <div class="rule-name">Rule 1: Buffer Too Tight</div>
+          <div class="rule-desc">If limitUp/Dn buffer EMA < 0 → price is persistently near a limit. Compare B/A spread with Y cap spread. If too tight → widen Y cap.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-name">Rule 2: Asymmetric Basis</div>
+          <div class="rule-desc">Compare basis EMA with Z cap. If basis is large relative to the relevant Z cap → widen Z cap to accommodate premium/discount.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-name">Rule 3: Asset-Type Consistency</div>
+          <div class="rule-desc">Check Y/Z caps match expected ranges for the asset type: Topcoins Y≈1%, Z≈2%; Altcoins Y≤4%, Z≤10%; Fiat Y≈1%, Z≈2%.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-name">Rule 4: Z Cap > Y Cap</div>
+          <div class="rule-desc">Z cap (outer band) must always be wider than Y cap (inner band). If not → misconfiguration, needs immediate fix.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-from">Rule Engine</div>
+    <div class="step-arrow"><svg width="20" height="12"><path d="M0 6h16m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+    <div class="step-content step--amber">
+      <div class="step-label">Generate Findings &amp; Recommended Changes</div>
+      <div class="step-detail">Each rule produces a list of flagged instruments with issue description, current values, expected values, and suggested fix.</div>
+      <div class="decision">
+        <strong>Decision Logic:</strong> For each flagged instrument, calculate the adjustment based on asset-type defaults and current EMA data. Generate CSV files in OKX's expected upload format (spot template vs perp template).
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase 4 -->
+  <div class="phase">
+    <span class="phase-num">Phase 4</span>
+    <span class="phase-title">Report Generation &amp; Deployment</span>
+    <span class="phase-time">< 1 min</span>
+  </div>
+
+  <div class="step">
+    <div class="step-from">Runner</div>
+    <div class="step-arrow"><svg width="20" height="12"><path d="M0 6h16m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+    <div class="step-content step--green">
+      <div class="step-label">Save Report to public/data/</div>
+      <div class="step-detail">Generates structured JSON report with all findings, rule blocks, recommended changes, and downloadable CSVs.</div>
+      <div class="step-code">public/data/reports/2026-03-26/report.json (20KB)</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-from">GitHub Actions</div>
+    <div class="step-arrow"><svg width="20" height="12"><path d="M0 6h16m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+    <div class="step-content">
+      <div class="step-label">Git Commit &amp; Push</div>
+      <div class="step-detail">Auto-commits the new report data and pushes to GitHub repository.</div>
+      <div class="step-code">git add public/data/ → git commit → git push</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-from">Vercel</div>
+    <div class="step-arrow"><svg width="20" height="12"><path d="M0 6h16m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+    <div class="step-content step--blue">
+      <div class="step-label">Auto-Deploy Static Site <span class="step-badge badge-blue">Automatic</span></div>
+      <div class="step-detail">Vercel detects the push, builds the Vite static site, and deploys. Report is live within 60 seconds.</div>
+      <div class="step-code">dailyparameter-report.vercel.app → reads /data/reports/latest.json</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-from">Website</div>
+    <div class="step-arrow"><svg width="20" height="12"><path d="M0 6h16m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+    <div class="step-content step--green">
+      <div class="step-label">Report Available to Team</div>
+      <div class="step-detail">Parameter management team can view: summary overview, per-rule findings, recommended changes, and download adjustment CSVs. Historical reports browsable via date picker.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Data Flow -->
+<div class="section">
+  <div class="section-title">Parameter Definitions</div>
+  <table style="width:100%; border-collapse:collapse; font-size:13px;">
+    <thead>
+      <tr style="border-bottom:2px solid var(--black);">
+        <th style="text-align:left; padding:8px 12px; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--gray-500);">Parameter</th>
+        <th style="text-align:left; padding:8px 12px; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--gray-500);">API Fields</th>
+        <th style="text-align:left; padding:8px 12px; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--gray-500);">Meaning</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid var(--gray-100);"><td style="padding:8px 12px;font-weight:600;">X Cap</td><td style="padding:8px 12px;font-family:var(--mono);font-size:12px;">lpX1 / lpX2</td><td style="padding:8px 12px;color:var(--gray-600);">Initial Phase — ±X% deviation allowed on first tick after opening</td></tr>
+      <tr style="border-bottom:1px solid var(--gray-100);"><td style="padding:8px 12px;font-weight:600;">Y Cap</td><td style="padding:8px 12px;font-family:var(--mono);font-size:12px;">lpY1 / lpY2</td><td style="padding:8px 12px;color:var(--gray-600);">Inner Band — ±Y% max deviation from index price during normal trading</td></tr>
+      <tr><td style="padding:8px 12px;font-weight:600;">Z Cap</td><td style="padding:8px 12px;font-family:var(--mono);font-size:12px;">lpZ1 / lpZ2</td><td style="padding:8px 12px;color:var(--gray-600);">Outer Hard Cap — absolute ±Z% maximum deviation from index (must be > Y cap)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Tech stack -->
+<div class="section">
+  <div class="section-title">Technology Stack</div>
+  <div class="overview-grid" style="grid-template-columns: repeat(3, 1fr);">
+    <div class="overview-card"><div class="val" style="font-size:16px;">Python 3.12</div><div class="label">Review Runner + Data Fetch</div></div>
+    <div class="overview-card"><div class="val" style="font-size:16px;">GitHub Actions</div><div class="label">Cron Scheduler + CI/CD</div></div>
+    <div class="overview-card"><div class="val" style="font-size:16px;">Vercel</div><div class="label">Static Site Hosting (HKG)</div></div>
+  </div>
+</div>
+
+<div class="footer">
+  OKX Parameter Management &middot; Daily Parameter Review System Architecture &middot; Updated March 2026
+</div>
+
+</div>
+</body>
+</html>
