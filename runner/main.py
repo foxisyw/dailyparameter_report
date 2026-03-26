@@ -141,8 +141,8 @@ def main():
     ema_data = _load_ema_data()
 
     adapters = [
+        RiskIntelAdapter(),       # Risk Intelligence is the main/default section
         PriceLimitAdapter(),
-        RiskIntelAdapter(),
         MMRFuturesAdapter(),
         IndexReviewAdapter(),
     ]

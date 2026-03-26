@@ -549,17 +549,18 @@ async function loadDates() {
 
 function renderSummaryOverview(data) {
   const report = data.report
-  const activeChapters = data.chapters.filter(chapter => chapter.status !== 'pending')
+  const riskChapter = data.chapters.find(ch => ch.slug === 'risk-intel')
+  const allChapters = data.chapters.filter(ch => ch.status !== 'pending')
+  const suspiciousUsers = riskChapter?.suspicious_users || []
+  const alertBlocks = riskChapter?.rule_blocks || []
 
-  let passCount = 0
-  let warnCount = 0
-  let critCount = 0
-
-  activeChapters.forEach(chapter => {
-    ;(chapter.rule_blocks || []).forEach(rule => {
-      if (rule.status === 'pass') passCount += 1
-      else if (rule.status === 'warning' || rule.status === 'watch') warnCount += 1
-      else if (rule.status === 'critical' || rule.status === 'missing') critCount += 1
+  // Count alert severities from risk intel (primary) + other chapters
+  let passCount = 0, warnCount = 0, critCount = 0
+  allChapters.forEach(ch => {
+    ;(ch.rule_blocks || []).forEach(rule => {
+      if (rule.status === 'pass') passCount++
+      else if (rule.status === 'warning' || rule.status === 'watch') warnCount++
+      else if (rule.status === 'critical' || rule.status === 'missing') critCount++
     })
   })
 
@@ -568,6 +569,12 @@ function renderSummaryOverview(data) {
   const passArc = (passCount / totalRules) * circumference
   const warnArc = (warnCount / totalRules) * circumference
   const critArc = (critCount / totalRules) * circumference
+
+  // KPIs focus on risk intelligence
+  const highestTier = suspiciousUsers.reduce((max, u) => {
+    const rank = { T4: 4, T3: 3, T2: 2, T1: 1 }
+    return (rank[u.risk_tier] || 0) > (rank[max] || 0) ? u.risk_tier : max
+  }, 'T1')
 
   document.getElementById('summary-kpis').innerHTML = `
     <div class="kpi-card kpi-card--status">
@@ -579,8 +586,8 @@ function renderSummaryOverview(data) {
       <div class="kpi-label">${T('totalFindings')}</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-value">${esc(activeChapters.length)}</div>
-      <div class="kpi-label">${T('activeChapters')}</div>
+      <div class="kpi-value">${suspiciousUsers.length}</div>
+      <div class="kpi-label">${T('suspiciousUsers')}</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-value">${esc(fmtFreshness(report.generated_at))}</div>
@@ -608,9 +615,17 @@ function renderSummaryOverview(data) {
     </div>
   `
 
+  // Bar chart: show risk alert types first, then other rules
   const bars = []
-  activeChapters.forEach(chapter => {
-    ;(chapter.rule_blocks || []).forEach(rule => {
+  // Risk intel alert types first
+  alertBlocks.forEach(rule => {
+    const count = rule.table?.rows?.length || 0
+    const color = rule.status === 'pass' ? 'pass' : rule.status === 'warning' || rule.status === 'watch' ? 'warning' : 'critical'
+    bars.push({ label: rule.title, count, color })
+  })
+  // Then other chapter rules
+  allChapters.filter(ch => ch.slug !== 'risk-intel').forEach(ch => {
+    ;(ch.rule_blocks || []).forEach(rule => {
       const count = rule.table?.rows?.length || 0
       const color = rule.status === 'pass' ? 'pass' : rule.status === 'warning' || rule.status === 'watch' ? 'warning' : 'critical'
       bars.push({ label: rule.title, count, color })
