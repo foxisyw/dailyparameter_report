@@ -23,18 +23,20 @@
           <div class="masthead-date" id="masthead-date"></div>
           <div class="masthead-meta" id="masthead-meta"></div>
         </div>
-        <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">中文</button>
+        <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">EN</button>
       </div>
     </div>
+    <!-- Tab Bar -->
+    <nav class="tab-bar" id="tab-bar" role="tablist" aria-label="Report sections"></nav>
   </header>
 
   <div class="report-wrapper">
-    <!-- Summary Overview -->
+    <!-- Dynamic Summary Overview (changes per tab) -->
     <section class="summary-overview" id="summary-overview" aria-label="Report summary">
       <div class="summary-grid">
         <div class="summary-kpis" id="summary-kpis"></div>
-        <div class="summary-chart-donut" id="summary-donut" aria-label="Rule status breakdown"></div>
-        <div class="summary-chart-bars" id="summary-bars" aria-label="Issues by rule"></div>
+        <div class="summary-chart-donut" id="summary-donut" aria-label="Status breakdown"></div>
+        <div class="summary-chart-bars" id="summary-bars" aria-label="Findings breakdown"></div>
       </div>
     </section>
 
@@ -50,17 +52,10 @@
             <div class="rail-label">Report Date</div>
             <ul class="date-list" id="date-list" role="listbox" aria-label="Select report date"></ul>
           </div>
-          <div class="rail-rule"></div>
-          <div class="rail-section">
-            <div class="rail-label">Sections</div>
-            <nav>
-              <ul class="chapter-nav" id="chapter-nav" aria-label="Chapter navigation"></ul>
-            </nav>
-          </div>
         </div>
       </aside>
 
-      <!-- Main Content -->
+      <!-- Main Content (shows active tab's content) -->
       <main class="main" id="main-content" role="main">
         <div class="chapters" id="chapters"></div>
       </main>

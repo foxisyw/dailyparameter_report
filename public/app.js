@@ -525,6 +525,7 @@ function buildMockReport(date) {
 let currentReport = null
 let currentDate = MOCK_DATES[0]
 let availableDates = [...MOCK_DATES]
+let activeTab = 'risk-intel'  // default tab
 
 async function loadReport(date) {
   try {
@@ -1086,9 +1087,204 @@ function initRailToggle() {
   })
 }
 
+function renderTabBar(data) {
+  const tabBar = document.getElementById('tab-bar')
+  const statusColors = { pass: '#16a34a', warning: '#d97706', critical: '#dc2626', pending: '#9ca3af' }
+
+  tabBar.innerHTML = data.chapters.map(ch => {
+    const isActive = ch.slug === activeTab
+    const color = statusColors[ch.status] || '#9ca3af'
+    return `<button class="tab-btn${isActive ? ' active' : ''}" role="tab" aria-selected="${isActive}" data-tab="${esc(ch.slug)}">
+      <span class="tab-dot" style="background:${color}"></span>
+      ${esc(ch.title)}
+    </button>`
+  }).join('')
+
+  tabBar.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeTab = btn.dataset.tab
+      renderAll(currentReport)
+    })
+  })
+}
+
+function renderTabSummary(data) {
+  const chapter = data.chapters.find(ch => ch.slug === activeTab)
+  if (!chapter) return
+
+  const variant = normalizeRenderVariant(chapter)
+
+  if (variant === 'risk-intel') {
+    renderRiskIntelSummary(data, chapter)
+  } else if (chapter.status === 'pending') {
+    renderPendingSummary(chapter)
+  } else {
+    renderPriceLimitSummary(data, chapter)
+  }
+}
+
+function renderRiskIntelSummary(data, chapter) {
+  const events = chapter.event_analyses || []
+  const users = chapter.suspicious_users || []
+  const blocks = chapter.rule_blocks || []
+
+  let critCount = 0, warnCount = 0, passCount = 0
+  blocks.forEach(b => {
+    if (b.status === 'critical' || b.status === 'missing') critCount++
+    else if (b.status === 'warning' || b.status === 'watch') warnCount++
+    else passCount++
+  })
+  const totalRules = passCount + warnCount + critCount || 1
+  const circumference = 2 * Math.PI * 50
+
+  document.getElementById('summary-kpis').innerHTML = `
+    <div class="kpi-card kpi-card--status">${statusPill(chapter.status, true)}<div><div class="kpi-label">${T('overallVerdict')}</div></div></div>
+    <div class="kpi-card"><div class="kpi-value">${events.length}</div><div class="kpi-label">${T('eventAnalysis') || 'EVENTS'}</div></div>
+    <div class="kpi-card"><div class="kpi-value">${users.length}</div><div class="kpi-label">${T('suspiciousUsers')}</div></div>
+    <div class="kpi-card"><div class="kpi-value">${esc(fmtFreshness(data.report.generated_at))}</div><div class="kpi-label">${T('reportFreshness')}</div></div>
+  `
+
+  const passArc = (passCount / totalRules) * circumference
+  const warnArc = (warnCount / totalRules) * circumference
+  const critArc = (critCount / totalRules) * circumference
+
+  document.getElementById('summary-donut').innerHTML = `
+    <div class="donut-ring">
+      <svg viewBox="0 0 140 140">
+        <circle stroke="#e5e7eb" stroke-dasharray="${circumference}" stroke-dashoffset="0" />
+        <circle stroke="#16a34a" stroke-dasharray="${passArc} ${circumference - passArc}" stroke-dashoffset="0" />
+        <circle stroke="#d97706" stroke-dasharray="${warnArc} ${circumference - warnArc}" stroke-dashoffset="${-passArc}" />
+        <circle stroke="#dc2626" stroke-dasharray="${critArc} ${circumference - critArc}" stroke-dashoffset="${-(passArc + warnArc)}" />
+      </svg>
+      <div class="donut-center">
+        <div class="donut-center-value">${blocks.length}</div>
+        <div class="donut-center-label">${T('alertTypes') || 'ALERTS'}</div>
+      </div>
+    </div>
+    <div class="donut-legend">
+      <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#16a34a"></span><span class="donut-legend-label">${T('pass')}</span><span class="donut-legend-count">${passCount}</span></div>
+      <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#d97706"></span><span class="donut-legend-label">${T('warning')}</span><span class="donut-legend-count">${warnCount}</span></div>
+      <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#dc2626"></span><span class="donut-legend-label">${T('critical')}</span><span class="donut-legend-count">${critCount}</span></div>
+    </div>
+  `
+
+  const bars = blocks.map(b => ({
+    label: b.title,
+    count: b.table?.rows?.length || 0,
+    color: b.status === 'pass' ? 'pass' : b.status === 'warning' ? 'warning' : 'critical',
+  }))
+  const maxCount = Math.max(...bars.map(b => b.count), 1)
+
+  document.getElementById('summary-bars').innerHTML = `
+    <div class="bar-chart-title">${T('findingsByRule')}</div>
+    ${bars.map(b => `<div class="bar-row">
+      <div class="bar-label">${esc(b.label)}</div>
+      <div class="bar-track"><div class="bar-fill bar-fill--${b.color}" style="width:${Math.max((b.count / maxCount) * 100, b.count > 0 ? 4 : 0)}%"></div></div>
+      <div class="bar-count">${b.count}</div>
+    </div>`).join('')}
+  `
+}
+
+function renderPriceLimitSummary(data, chapter) {
+  const blocks = chapter.rule_blocks || []
+  let critCount = 0, warnCount = 0, passCount = 0
+  blocks.forEach(b => {
+    if (b.status === 'critical' || b.status === 'missing') critCount++
+    else if (b.status === 'warning' || b.status === 'watch') warnCount++
+    else passCount++
+  })
+  const totalRules = passCount + warnCount + critCount || 1
+  const circumference = 2 * Math.PI * 50
+  const metrics = chapter.metrics || {}
+
+  document.getElementById('summary-kpis').innerHTML = `
+    <div class="kpi-card kpi-card--status">${statusPill(chapter.status, true)}<div><div class="kpi-label">${T('overallVerdict')}</div></div></div>
+    <div class="kpi-card"><div class="kpi-value">${esc(metrics.instruments_scanned || 0)}</div><div class="kpi-label">${T('instruments')}</div></div>
+    <div class="kpi-card"><div class="kpi-value">${esc(metrics.issues_found || 0)}</div><div class="kpi-label">${T('issuesFound')}</div></div>
+    <div class="kpi-card"><div class="kpi-value">${esc(fmtFreshness(data.report.generated_at))}</div><div class="kpi-label">${T('reportFreshness')}</div></div>
+  `
+
+  const passArc = (passCount / totalRules) * circumference
+  const warnArc = (warnCount / totalRules) * circumference
+  const critArc = (critCount / totalRules) * circumference
+
+  document.getElementById('summary-donut').innerHTML = `
+    <div class="donut-ring">
+      <svg viewBox="0 0 140 140">
+        <circle stroke="#e5e7eb" stroke-dasharray="${circumference}" stroke-dashoffset="0" />
+        <circle stroke="#16a34a" stroke-dasharray="${passArc} ${circumference - passArc}" stroke-dashoffset="0" />
+        <circle stroke="#d97706" stroke-dasharray="${warnArc} ${circumference - warnArc}" stroke-dashoffset="${-passArc}" />
+        <circle stroke="#dc2626" stroke-dasharray="${critArc} ${circumference - critArc}" stroke-dashoffset="${-(passArc + warnArc)}" />
+      </svg>
+      <div class="donut-center">
+        <div class="donut-center-value">${blocks.length}</div>
+        <div class="donut-center-label">${T('rules')}</div>
+      </div>
+    </div>
+    <div class="donut-legend">
+      <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#16a34a"></span><span class="donut-legend-label">${T('pass')}</span><span class="donut-legend-count">${passCount}</span></div>
+      <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#d97706"></span><span class="donut-legend-label">${T('warning')}</span><span class="donut-legend-count">${warnCount}</span></div>
+      <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#dc2626"></span><span class="donut-legend-label">${T('critical')}</span><span class="donut-legend-count">${critCount}</span></div>
+    </div>
+  `
+
+  const bars = blocks.map(b => ({
+    label: b.title,
+    count: b.table?.rows?.length || 0,
+    color: b.status === 'pass' ? 'pass' : b.status === 'warning' ? 'warning' : 'critical',
+  }))
+  const maxCount = Math.max(...bars.map(b => b.count), 1)
+
+  document.getElementById('summary-bars').innerHTML = `
+    <div class="bar-chart-title">${T('findingsByRule')}</div>
+    ${bars.map(b => `<div class="bar-row">
+      <div class="bar-label">${esc(b.label)}</div>
+      <div class="bar-track"><div class="bar-fill bar-fill--${b.color}" style="width:${Math.max((b.count / maxCount) * 100, b.count > 0 ? 4 : 0)}%"></div></div>
+      <div class="bar-count">${b.count}</div>
+    </div>`).join('')}
+  `
+}
+
+function renderPendingSummary(chapter) {
+  document.getElementById('summary-kpis').innerHTML = `
+    <div class="kpi-card kpi-card--status">${statusPill('pending', true)}<div><div class="kpi-label">${T('overallVerdict')}</div></div></div>
+    <div class="kpi-card"><div class="kpi-value">0</div><div class="kpi-label">${T('instruments')}</div></div>
+    <div class="kpi-card"><div class="kpi-value">0</div><div class="kpi-label">${T('issuesFound')}</div></div>
+    <div class="kpi-card"><div class="kpi-value">\u2014</div><div class="kpi-label">${T('reportFreshness')}</div></div>
+  `
+  document.getElementById('summary-donut').innerHTML = '<div style="text-align:center;color:var(--gray-400);font-size:13px;padding:40px 0">' + T('pendingIntegration') + '</div>'
+  document.getElementById('summary-bars').innerHTML = ''
+}
+
+function renderActiveTabContent(data) {
+  const chapter = data.chapters.find(ch => ch.slug === activeTab)
+  const chaptersNode = document.getElementById('chapters')
+
+  if (!chapter) {
+    chaptersNode.innerHTML = '<div style="padding:40px;text-align:center;color:var(--gray-400)">No data</div>'
+    return
+  }
+
+  // Render only the active tab's chapter content (no collapsible wrapper needed)
+  const variant = normalizeRenderVariant(chapter)
+  let html = ''
+  if (chapter.status === 'pending') {
+    html = renderPending(chapter)
+  } else if (variant === 'risk-intel') {
+    html = renderRiskIntelChapter(chapter)
+  } else {
+    html = renderRulesChapter(chapter)
+  }
+
+  chaptersNode.innerHTML = html
+  attachSorting(chaptersNode)
+  attachDownloads(data)
+  attachProfileLinks()
+}
+
 function renderAll(data) {
   document.querySelectorAll('.rail-label').forEach((element, index) => {
-    element.textContent = index === 0 ? T('reportDate') : T('sections')
+    element.textContent = T('reportDate')
   })
   document.querySelector('.rail-toggle span').textContent = T('navigation')
   document.documentElement.lang = currentLang === 'zh' ? 'zh-Hant' : 'en'
@@ -1096,17 +1292,10 @@ function renderAll(data) {
   if (langButton) langButton.textContent = currentLang === 'en' ? '中文' : 'EN'
 
   renderMasthead(data)
-  renderSummaryOverview(data)
+  renderTabBar(data)
+  renderTabSummary(data)
   renderDatePicker(availableDates, currentDate)
-  renderChapterNav(data.chapters)
-
-  const chaptersNode = document.getElementById('chapters')
-  chaptersNode.innerHTML = data.chapters.map(renderChapter).join('')
-
-  attachSorting(chaptersNode)
-  attachDownloads(data)
-  attachProfileLinks()
-  initScrollSpy()
+  renderActiveTabContent(data)
   initRailToggle()
 }
 
