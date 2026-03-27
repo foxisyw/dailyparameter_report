@@ -1,7 +1,7 @@
 {
   "report": {
     "date": "2026-03-27",
-    "generated_at": "2026-03-27T03:25:25.378181+00:00",
+    "generated_at": "2026-03-27T05:01:59.606370+00:00",
     "status": "critical",
     "total_issues": 59,
     "chapters": [
@@ -15,7 +15,7 @@
           "ema_coverage": 4,
           "issues_found": 16,
           "source": "[PROD]Index Alarm - 2026-03-27 (00:00 - 23:59)",
-          "generated_at": "2026-03-27T03:25:12.231461+00:00"
+          "generated_at": "2026-03-27T05:01:44.885734+00:00"
         }
       },
       {
@@ -28,7 +28,7 @@
           "ema_coverage": 1472,
           "issues_found": 43,
           "source": "OKX API (live)",
-          "generated_at": "2026-03-27T03:25:12.373287+00:00"
+          "generated_at": "2026-03-27T05:01:45.022802+00:00"
         }
       },
       {
@@ -41,7 +41,7 @@
           "ema_coverage": 0,
           "issues_found": 0,
           "source": "n/a",
-          "generated_at": "2026-03-27T03:25:25.378132+00:00"
+          "generated_at": "2026-03-27T05:01:59.606314+00:00"
         }
       },
       {
@@ -54,7 +54,7 @@
           "ema_coverage": 0,
           "issues_found": 0,
           "source": "n/a",
-          "generated_at": "2026-03-27T03:25:25.378157+00:00"
+          "generated_at": "2026-03-27T05:01:59.606350+00:00"
         }
       }
     ]
@@ -1259,78 +1259,6 @@
               ]
             }
           ]
-        },
-        {
-          "asset": "XAU-USDT-SWAP",
-          "severity": "critical",
-          "executive_summary": "XAU-USD合约连续第2天触发Z cap硬顶限价保护。Mar 27原始18条报警（去重3条），频率进一步上升。当前价格$4436.6（24h -1.6%）。问题在于限价参数未适应黄金近期走势。",
-          "forward_looking": "建议立即上调XAU-USD的Z cap参数。连续2天高频触发说明当前参数已严重滞后于市场。",
-          "causal_chain": [
-            {
-              "step": 1,
-              "type": "触发事件",
-              "name": "Z cap连续2天触发",
-              "description": "Mar 26: 6条（去重2条），Mar 27: 20条（去重4条），频率持续升高",
-              "evidence_strength": 5,
-              "evidence_label": "铁证 · 报警验证",
-              "detail": null,
-              "evidence_table": null,
-              "risk_assessment": "连续2天触发且频率升高，说明参数调整刻不容缓。"
-            }
-          ],
-          "market_snapshot": {
-            "instId": "XAU-USDT-SWAP",
-            "price": "4436.6",
-            "change_24h": "-1.6%",
-            "high_24h": "4522.4",
-            "low_24h": "4360.6",
-            "volume_24h": "115707.066",
-            "open_interest": "23289262",
-            "funding_rate": "0.0000000000000000"
-          },
-          "key_users": [],
-          "quantitative_impact": {
-            "title": "量化影响评估",
-            "metrics": [
-              {
-                "label": "Alert Count",
-                "value": "20 alerts",
-                "detail": "去重4条, 原始18条 (up from 6 yesterday)"
-              },
-              {
-                "label": "Trigger Rate",
-                "value": "Z cap",
-                "detail": "Hard cap trigger, not Y cap"
-              },
-              {
-                "label": "User Impact",
-                "value": "Trading restricted",
-                "detail": "Users cannot place upward orders"
-              }
-            ]
-          },
-          "risk_assessment": {
-            "title": "风险评估与展望",
-            "overall_risk": "critical",
-            "actions": [
-              {
-                "priority": "P0",
-                "action": "立即上调XAU-USD的Z cap参数",
-                "reason": "连续2天触发且报警量从6升至20，参数严重滞后"
-              },
-              {
-                "priority": "P1",
-                "action": "检查XAU指数成分源可用性",
-                "reason": "Z cap触发可能与指数质量有关"
-              },
-              {
-                "priority": "P2",
-                "action": "建立限价参数与市场波动率的自动联动机制",
-                "reason": "避免手动调参滞后"
-              }
-            ]
-          },
-          "user_profiles": []
         }
       ],
       "metrics": {
@@ -1338,7 +1266,7 @@
         "ema_coverage": 4,
         "issues_found": 16,
         "source": "[PROD]Index Alarm - 2026-03-27 (00:00 - 23:59)",
-        "generated_at": "2026-03-27T03:25:12.231461+00:00"
+        "generated_at": "2026-03-27T05:01:44.885734+00:00"
       },
       "metric_cards": [
         {
@@ -1927,7 +1855,7 @@
         "ema_coverage": 1472,
         "issues_found": 43,
         "source": "OKX API (live)",
-        "generated_at": "2026-03-27T03:25:12.373287+00:00"
+        "generated_at": "2026-03-27T05:01:45.022802+00:00"
       },
       "metric_cards": [
         {
@@ -2510,7 +2438,7 @@
           "content": "Task Object,timeType,Effective Time,openUpperLimit,openLowerLimit,afterOpenUpperLimit,afterOpenLowerLimit,afterOpenIndexUpperLimit,afterOpenIndexLowerLimit,preQuoteMaxJ1UpperLimit,preQuoteMinJ2LowerLimit,preQuoteC1,preQuoteC2\r\nBTC-USD_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260327,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260403,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USD_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USD_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USDT_UM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USDT_UM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\n"
         }
       ],
-      "markdown": "# Price Limit Review\n\n**Generated:** 2026-03-27T03:25:12.373287+00:00  \n**Status:** critical  \n**Instruments scanned:** 1498  \n**EMA coverage:** 1472  \n\n**Total issues found:** 43\n\n## Rule 1: Buffer Too Tight\n33 issue(s) found.\n\n| INSTRUMENT | LIMITUP_BUFFER | LIMITDN_BUFFER | STATUS |\n|---|---|---|---|\n| ADA-EUR | 1.06% | -0.05% | warning |\n| AERGO-EUR | 1.89% | -8.10% | warning |\n| BICO-EUR | 1.19% | -7.70% | warning |\n| HUMA-EUR | 4.27% | -0.36% | warning |\n| ILV-EUR | 1.95% | -5.60% | warning |\n| JTO-EUR | 2.25% | -0.29% | warning |\n| METIS-EUR | 1.98% | -4.25% | warning |\n| XLM-EUR | 2.66% | -0.57% | warning |\n| ALLO-TRY | 3.75% | -0.16% | warning |\n| FET-TRY | 3.52% | -0.05% | warning |\n| XAUT-TRY | 1.28% | -0.27% | warning |\n| DGB-USD | 1.67% | -0.51% | warning |\n| FET-USD | 3.48% | -0.04% | warning |\n| HUMA-USD | 4.42% | -0.38% | warning |\n| PAXG-USD | 1.28% | -0.30% | warning |\n| STORJ-USD | -0.03% | 0.61% | warning |\n| ZENT-USD | 1.34% | -0.31% | warning |\n| ADA-USDT | 1.11% | -0.09% | warning |\n| DGB-USDT | 1.84% | -0.28% | warning |\n| HUMA-USDT | 4.54% | -0.29% | warning |\n| JOE-USDT | 1.95% | -0.36% | warning |\n| LRC-USDT | -0.41% | 2.40% | warning |\n| MON-USDT | 1.19% | -4.77% | warning |\n| ONT-USDT | 2.71% | -0.70% | warning |\n| PAXG-USDT | 1.33% | -0.30% | warning |\n| XAUT-USDT | 1.31% | -0.28% | warning |\n| XLM-USDT | 2.70% | -0.56% | warning |\n| HUMA-USDC | 4.39% | -0.44% | warning |\n| XAU-USD_UM-SWAP | 1.31% | -0.29% | warning |\n| HUMA-USDT-SWAP | 4.47% | -0.17% | warning |\n| LIGHT-USDT-SWAP | -0.33% | 4.68% | warning |\n| TAO-USDT-SWAP | 3.71% | -0.47% | warning |\n| XAU-USDT-SWAP | 1.31% | -0.27% | warning |\n\n## Rule 2: Asymmetric Basis\nAll instruments passed.\n\n## Rule 3: Asset-Type Consistency\n10 issue(s) found.\n\n| INSTRUMENT | CURRENT Y | CURRENT Z | EXPECTED Y | EXPECTED Z | STATUS |\n|---|---|---|---|---|---|\n| BTC-USD-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD-260925 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260327 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260403 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USDT-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USDT-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n\n## Rule 4: Z Cap <= Y Cap\nAll instruments passed.\n",
+      "markdown": "# Price Limit Review\n\n**Generated:** 2026-03-27T05:01:45.022802+00:00  \n**Status:** critical  \n**Instruments scanned:** 1498  \n**EMA coverage:** 1472  \n\n**Total issues found:** 43\n\n## Rule 1: Buffer Too Tight\n33 issue(s) found.\n\n| INSTRUMENT | LIMITUP_BUFFER | LIMITDN_BUFFER | STATUS |\n|---|---|---|---|\n| ADA-EUR | 1.06% | -0.05% | warning |\n| AERGO-EUR | 1.89% | -8.10% | warning |\n| BICO-EUR | 1.19% | -7.70% | warning |\n| HUMA-EUR | 4.27% | -0.36% | warning |\n| ILV-EUR | 1.95% | -5.60% | warning |\n| JTO-EUR | 2.25% | -0.29% | warning |\n| METIS-EUR | 1.98% | -4.25% | warning |\n| XLM-EUR | 2.66% | -0.57% | warning |\n| ALLO-TRY | 3.75% | -0.16% | warning |\n| FET-TRY | 3.52% | -0.05% | warning |\n| XAUT-TRY | 1.28% | -0.27% | warning |\n| DGB-USD | 1.67% | -0.51% | warning |\n| FET-USD | 3.48% | -0.04% | warning |\n| HUMA-USD | 4.42% | -0.38% | warning |\n| PAXG-USD | 1.28% | -0.30% | warning |\n| STORJ-USD | -0.03% | 0.61% | warning |\n| ZENT-USD | 1.34% | -0.31% | warning |\n| ADA-USDT | 1.11% | -0.09% | warning |\n| DGB-USDT | 1.84% | -0.28% | warning |\n| HUMA-USDT | 4.54% | -0.29% | warning |\n| JOE-USDT | 1.95% | -0.36% | warning |\n| LRC-USDT | -0.41% | 2.40% | warning |\n| MON-USDT | 1.19% | -4.77% | warning |\n| ONT-USDT | 2.71% | -0.70% | warning |\n| PAXG-USDT | 1.33% | -0.30% | warning |\n| XAUT-USDT | 1.31% | -0.28% | warning |\n| XLM-USDT | 2.70% | -0.56% | warning |\n| HUMA-USDC | 4.39% | -0.44% | warning |\n| XAU-USD_UM-SWAP | 1.31% | -0.29% | warning |\n| HUMA-USDT-SWAP | 4.47% | -0.17% | warning |\n| LIGHT-USDT-SWAP | -0.33% | 4.68% | warning |\n| TAO-USDT-SWAP | 3.71% | -0.47% | warning |\n| XAU-USDT-SWAP | 1.31% | -0.27% | warning |\n\n## Rule 2: Asymmetric Basis\nAll instruments passed.\n\n## Rule 3: Asset-Type Consistency\n10 issue(s) found.\n\n| INSTRUMENT | CURRENT Y | CURRENT Z | EXPECTED Y | EXPECTED Z | STATUS |\n|---|---|---|---|---|---|\n| BTC-USD-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD-260925 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260327 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260403 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USDT-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USDT-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n\n## Rule 4: Z Cap <= Y Cap\nAll instruments passed.\n",
       "error": null,
       "source_document": null,
       "suspicious_users": [],
@@ -2527,7 +2455,7 @@
         "ema_coverage": 0,
         "issues_found": 0,
         "source": "n/a",
-        "generated_at": "2026-03-27T03:25:25.378132+00:00"
+        "generated_at": "2026-03-27T05:01:59.606314+00:00"
       },
       "metric_cards": [
         {
@@ -2567,7 +2495,7 @@
         "ema_coverage": 0,
         "issues_found": 0,
         "source": "n/a",
-        "generated_at": "2026-03-27T03:25:25.378157+00:00"
+        "generated_at": "2026-03-27T05:01:59.606350+00:00"
       },
       "metric_cards": [
         {
