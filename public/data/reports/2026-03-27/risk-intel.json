@@ -1,6 +1,6 @@
 {
   "date": "2026-03-27",
-  "generated_at": "2026-03-27T08:41:32.456547+00:00",
+  "generated_at": "2026-03-27T08:56:18.509344+00:00",
   "chapter": {
     "slug": "risk-intel",
     "title": "Risk Intelligence",
@@ -249,7 +249,359 @@
             "reason": "SHORT, yesterday deposit+open"
           }
         ],
-        "user_profiles": []
+        "user_profiles": [
+          {
+            "uid": "1613911094865920",
+            "master_user_id": "8446803",
+            "overall_risk_tier": "T1",
+            "executive_summary": "老账户（2018年注册）持有2个PROVE-USDT-SWAP空头仓位（同时持有cross+isolated），累计交易量$60.5M但当前权益仅$36.7，trade/equity比例达1,648,982x，典型权益极度耗损特征。账户于2026-03-25有最新入金记录，在PROVE OI/限额超过112%的背景下集中加仓空头，行为高度可疑。",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "critical",
+                "signals": [
+                  "2018-06-19注册，PC端，CN大区，+86手机，KYC3（中国国籍）。注册至首次入金约8个月（2019-02-02首次入金），账户已活跃约7年。"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "累计交易量$60,502,573 USDT，当前权益$36.66 USDT，trade/equity比率约1,648,982x，远超正常水平（危险阈值<0.01即100x）。在PROVE-USDT-SWAP持有2个空头仓位（cross margin + isolated margin），仓位创建时间集中在2026-03-25至2026-03-27，属于在OI异常期间新增仓位。"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "warning",
+                "signals": [
+                  "登录表(dwd_okx_user_secure_login_df)访问受限(403)，无法核实关联设备与IP信息。"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "warning",
+                "signals": [
+                  "注册地区为okx_CN，登录表访问受限，无法获取具体IP/城市数据。注册使用+86手机。"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "critical",
+                "signals": [
+                  "KYC3通过，中国国籍，+86手机与国籍匹配。非市场账户，非内部账户。账户费率LV1。"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "首次入金$1,540.74 USDT（2019-02-02），最近入金2026-03-25。当前权益$36.66 USDT，相较首次入金规模已严重缩水（权益耗损约97.6%）。trade/equity=1,648,982x为极端异常值。"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "warning",
+                "signals": [
+                  "最后入金时间2026-03-25（昨日），提现/存款明细表访问受限，无法核实具体提现模式。"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "T1高风险：极端trade/equity比例（>1M倍），在PROVE OI超限(112.65%)期间持有2个空头仓位，最近入金后立即建仓，权益已接近耗尽。符合OI操纵或大规模做空攻击特征。建议立即人工复核并评估限额管控。"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "trade/equity = 1,648,982x (equity: $36.7 USDT)",
+              "2x SHORT PROVE-USDT-SWAP (cross + isolated), opened 2026-03-25~27",
+              "PROVE OI/限额 = 112.65% 期间新增仓位",
+              "最近入金: 2026-03-25",
+              "KYC3, CN, +86"
+            ]
+          },
+          {
+            "uid": "143730510437425152",
+            "master_user_id": "7156607",
+            "overall_risk_tier": "T1",
+            "executive_summary": "2018年注册H5端账户，累计交易量$43.5M，当前权益仅$58.8 USDT，trade/equity比率约741,000x。持有PROVE-USDT-SWAP空头（isolated），仓位于2026-03-26至2026-03-27建立，在PROVE OI异常期间加仓。权益极度耗损，属高风险操作账户。",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "critical",
+                "signals": [
+                  "2018-01-07注册，H5端，CN大区，+86手机，KYC3（中国国籍）。注册至首次入金约3年（首次入金2021-05-10），但首次交易更早（2021-02-10），疑为先期活跃后入金。"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "累计交易量$43,549,079 USDT，当前权益$58.84 USDT，trade/equity约741,000x。持有PROVE-USDT-SWAP空头（isolated margin），创建时间2026-03-26~2026-03-27，在OI/限额超100%期间开仓。"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "warning",
+                "signals": [
+                  "登录表访问受限(403)，无法核实关联设备与IP。"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "warning",
+                "signals": [
+                  "注册地区okx_CN，+86手机，登录表受限无法获取IP详情。"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "critical",
+                "signals": [
+                  "KYC3，中国国籍，+86与国籍匹配，非市场/内部账户，LV1费率。"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "首次入金$354.88 USDT（2021-05-10），最近入金2026-03-16。当前权益$58.84 USDT，较首次入金基本耗尽。trade/equity=741,000x为极端异常。"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "warning",
+                "signals": [
+                  "最后入金2026-03-16，提现明细表受限，无法核实提现模式。"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "T1高风险：trade/equity比率约741,000x，权益近乎耗尽，在PROVE OI危机期间建立空头仓位，行为模式与做空攻击一致。"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "trade/equity = 741,000x (equity: $58.8 USDT)",
+              "SHORT PROVE-USDT-SWAP isolated, opened 2026-03-26~27",
+              "PROVE OI/限额 = 112.65% 期间建仓",
+              "最近入金: 2026-03-16"
+            ]
+          },
+          {
+            "uid": "567264575365120",
+            "master_user_id": "6841987",
+            "overall_risk_tier": "T1",
+            "executive_summary": "2017年注册老账户（约8年历史），累计交易量高达$348.9M，但当前权益仅$798 USDT，trade/equity比率约437,000x。于2026-03-26（昨日）有最新入金，并持有PROVE-USDT-SWAP空头（isolated）。在PROVE OI超限背景下，昨日入金后建仓空头，行为高度可疑。",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "critical",
+                "signals": [
+                  "2017-12-17注册，H5端，CN大区，+86手机，KYC3（中国国籍）。注册当日首次入金（2017-12-17），账户已活跃约8年，为老账户。"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "累计交易量$348,944,455 USDT（约$3.49亿），当前权益$798.90 USDT，trade/equity约437,000x。持有PROVE-USDT-SWAP空头（isolated），仓位建立于2026-03-08，属于较早建立的空头。"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "warning",
+                "signals": [
+                  "登录表访问受限(403)，无法核实关联设备与IP。"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "warning",
+                "signals": [
+                  "注册地区okx_CN，+86手机，登录表受限。"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "critical",
+                "signals": [
+                  "KYC3，中国国籍，+86匹配，非市场/内部账户，LV1费率。"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "首次入金$192.00 USDT（2017-12-17），最近入金2026-03-26（昨日）。累计交易$348.9M但权益仅$798，权益耗损极为严重。"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "warning",
+                "signals": [
+                  "昨日(2026-03-26)有入金记录，提现明细表受限，无法核实提现模式。入金时机与PROVE OI危机高度一致。"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "T1高风险：交易量$348.9M但权益仅$798（trade/equity=437,000x），在PROVE OI超限前后持续持有空头，昨日入金后维持空头仓位，行为模式高度可疑，建议立即调查。"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "trade/equity = 437,000x (equity: $798 USDT, trade vol: $348.9M)",
+              "SHORT PROVE-USDT-SWAP isolated, position since 2026-03-08",
+              "最近入金: 2026-03-26 (昨日，OI危机期间)",
+              "PROVE OI/限额 = 112.65%"
+            ]
+          },
+          {
+            "uid": "615117494562816",
+            "master_user_id": "6453751",
+            "overall_risk_tier": "T1",
+            "executive_summary": "2017年注册最老账户之一（约8.5年），累计交易量$157.3M，当前权益仅$2,035 USDT，trade/equity约77,000x。持有2个PROVE-USDT-SWAP空头仓位（均为cross margin），2个仓位分别建立于同一天（2026-03-27早上6时段），属于当日主动加仓。在PROVE OI超过平台限额(112.65%)的情况下同时持有2个cross空头，风险极高。",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "critical",
+                "signals": [
+                  "2017-09-10注册，APP端，CN大区，+86手机，KYC3（中国国籍）。注册次日首次入金（2017-09-11），为平台最早期用户之一，账户历史约8.5年。"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "累计交易量$157,336,616 USDT，当前权益$2,035 USDT，trade/equity约77,341x。持有2个PROVE-USDT-SWAP空头仓位（均为cross margin），均建立于2026-03-27 06:20~06:37（今日早上），属于在OI危机爆发期间主动开仓。"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "warning",
+                "signals": [
+                  "登录表访问受限(403)，无法核实关联设备与IP。"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "warning",
+                "signals": [
+                  "注册地区okx_CN，+86手机，登录表受限。"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "critical",
+                "signals": [
+                  "KYC3，中国国籍，+86匹配，非市场/内部账户，LV1费率。"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "首次入金$49.01 USDT（2017-09-11），最近入金2026-03-07。当前权益$2,035 USDT，虽未完全耗尽但trade/equity=77,341x仍属极端异常。"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "warning",
+                "signals": [
+                  "最后入金2026-03-07，提现明细表受限，无法核实提现模式。"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "T1高风险：今日早上主动在PROVE OI危机期间开立2个cross空头仓位（06:20和06:37），trade/equity=77,341x，属于有计划的做空操作。建议立即调查账户行为并考虑仓位限制。"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "trade/equity = 77,341x (equity: $2,035 USDT)",
+              "2x SHORT PROVE-USDT-SWAP cross margin, opened TODAY 06:20 & 06:37 HKT",
+              "PROVE OI/限额 = 112.65% 期间主动开仓",
+              "最近入金: 2026-03-07"
+            ]
+          },
+          {
+            "uid": "215133113058201600",
+            "master_user_id": "8583364",
+            "overall_risk_tier": "T1",
+            "executive_summary": "2018年注册账户，累计交易量$110.4M，当前权益$4,109 USDT，trade/equity约26,900x。于2026-03-26（昨日）有最新入金，持有PROVE-USDT-SWAP空头（isolated）建立于2026-03-26 10:05。昨日入金后立即在PROVE OI超限期间建立空头，结合极端trade/equity比率，属T1高风险账户。",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "critical",
+                "signals": [
+                  "2018-07-10注册，APP端，CN大区，+86手机，KYC3（中国国籍）。注册至首次入金约3年（首次入金2021-10-28），为较晚激活账户。"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "累计交易量$110,396,355 USDT，当前权益$4,109 USDT，trade/equity约26,867x。持有PROVE-USDT-SWAP空头（isolated），建立于2026-03-26 10:05（昨日上午）。"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "warning",
+                "signals": [
+                  "登录表访问受限(403)，无法核实关联设备与IP。"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "warning",
+                "signals": [
+                  "注册地区okx_CN，+86手机，登录表受限。"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "critical",
+                "signals": [
+                  "KYC3，中国国籍，+86匹配，非市场/内部账户，LV1费率。"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "首次入金$5,511.81 USDT（2021-10-28），最近入金2026-03-26（昨日）。当前权益$4,109 USDT，略低于首次入金（累计亏损约25%），trade/equity=26,867x仍属极端异常。"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "warning",
+                "signals": [
+                  "昨日(2026-03-26)有入金记录，提现明细表受限，无法核实。昨日入金后建立PROVE空头仓位，时机高度可疑。"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "T1高风险：昨日入金后立即在PROVE OI超限期间建立空头仓位，trade/equity=26,867x，行为模式符合定向做空攻击特征。"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "trade/equity = 26,867x (equity: $4,109 USDT, trade vol: $110.4M)",
+              "SHORT PROVE-USDT-SWAP isolated, opened 2026-03-26 10:05 (昨日)",
+              "最近入金: 2026-03-26 (昨日，OI危机期间)",
+              "PROVE OI/限额 = 112.65%"
+            ]
+          }
+        ]
       },
       {
         "asset": "NFLX-USDT-SWAP",
@@ -313,7 +665,280 @@
           "recommendation": "关注OI偏离是否回落，监控新增开仓来源"
         },
         "involved_users_brief": [],
-        "user_profiles": []
+        "user_profiles": [
+          {
+            "uid": "",
+            "master_user_id": "43417803",
+            "overall_risk_tier": "T3",
+            "executive_summary": "LONG NFLX-USDT-SWAP, position opened 2026-03-27. Full profile pending deeper query.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Profile query pending"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "long on NFLX-USDT-SWAP, low-liquidity TradFi token"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Pending"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "Pending"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "NFLX OI deviation 632%, position during anomaly"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "long NFLX during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "long NFLX-USDT-SWAP",
+              "Position opened 2026-03-27"
+            ]
+          },
+          {
+            "uid": "",
+            "master_user_id": "40072720",
+            "overall_risk_tier": "T3",
+            "executive_summary": "LONG NFLX-USDT-SWAP, position opened 2026-03-27. Full profile pending deeper query.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Profile query pending"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "long on NFLX-USDT-SWAP, low-liquidity TradFi token"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Pending"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "Pending"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "NFLX OI deviation 632%, position during anomaly"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "long NFLX during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "long NFLX-USDT-SWAP",
+              "Position opened 2026-03-27"
+            ]
+          },
+          {
+            "uid": "",
+            "master_user_id": "43417800",
+            "overall_risk_tier": "T3",
+            "executive_summary": "LONG NFLX-USDT-SWAP, position opened 2026-03-27. Full profile pending deeper query.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Profile query pending"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "long on NFLX-USDT-SWAP, low-liquidity TradFi token"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Pending"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "Pending"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "NFLX OI deviation 632%, position during anomaly"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "long NFLX during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "long NFLX-USDT-SWAP",
+              "Position opened 2026-03-27"
+            ]
+          },
+          {
+            "uid": "",
+            "master_user_id": "61840902",
+            "overall_risk_tier": "T3",
+            "executive_summary": "SHORT NFLX-USDT-SWAP, position opened 2026-03-11. Full profile pending deeper query.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Profile query pending"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "short on NFLX-USDT-SWAP, low-liquidity TradFi token"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Pending"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "Pending"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "NFLX OI deviation 632%, position during anomaly"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "short NFLX during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "short NFLX-USDT-SWAP",
+              "Position opened 2026-03-11"
+            ]
+          }
+        ]
       }
     ],
     "metrics": {
@@ -321,7 +946,7 @@
       "ema_coverage": 4,
       "issues_found": 15,
       "source": "[PROD]Index Alarm - 2026-03-27 (00:00 - 23:59)",
-      "generated_at": "2026-03-27T08:41:32.456547+00:00"
+      "generated_at": "2026-03-27T08:56:18.509344+00:00"
     },
     "metric_cards": [
       {

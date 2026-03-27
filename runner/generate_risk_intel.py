@@ -19,6 +19,7 @@ from .risk_intel_utils import (
     hkt_date_str,
     parse_json_file,
     risk_intel_payload,
+    validate_event_analyses,
     validate_profiles_complete,
 )
 
@@ -62,16 +63,31 @@ def main() -> int:
     # Validate that all user profiles are complete
     suspicious = chapter.get("suspicious_users", [])
     profiles = snapshot.get("profiles", {})
-    errors = validate_profiles_complete(profiles, suspicious)
-    if errors:
+    profile_errors = validate_profiles_complete(profiles, suspicious)
+    if profile_errors:
         _log("=" * 60)
-        _log("WARNING: INCOMPLETE USER PROFILES DETECTED")
+        _log("FATAL: INCOMPLETE USER PROFILES — ABORTING")
         _log("You MUST query these users via Data Query MCP before proceeding.")
         _log("See DAILY_REPORT_RUNBOOK.md for the complete steps.")
         _log("-" * 60)
-        for err in errors:
+        for err in profile_errors:
             _log(f"  !! {err}")
         _log("=" * 60)
+        return 1
+
+    # Validate that event analyses are complete with RCA + embedded user profiles
+    event_analyses = chapter.get("event_analyses", [])
+    ea_errors = validate_event_analyses(event_analyses)
+    if ea_errors:
+        _log("=" * 60)
+        _log("FATAL: INCOMPLETE EVENT ANALYSES — ABORTING")
+        _log("Each critical asset needs full RCA (causal_chain + user_profiles).")
+        _log("See DAILY_REPORT_RUNBOOK.md Step 6 for the complete structure.")
+        _log("-" * 60)
+        for err in ea_errors:
+            _log(f"  !! {err}")
+        _log("=" * 60)
+        return 1
 
     payload = risk_intel_payload(chapter, date_str)
     if args.dry_run:
@@ -83,8 +99,8 @@ def main() -> int:
     out_path = out_dir / "risk-intel.json"
     out_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False))
     _log(f"Saved {out_path} ({source_kind})")
-    users_ok = len(suspicious) - len(errors)
-    _log(f"Profile validation: {users_ok}/{len(suspicious)} users complete")
+    _log(f"Profile validation: {len(suspicious)}/{len(suspicious)} users complete")
+    _log(f"Event analyses: {len(event_analyses)} events validated")
     return 0
 
 

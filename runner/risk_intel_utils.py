@@ -506,6 +506,34 @@ def validate_profiles_complete(profiles: dict[str, Any], suspicious_users: list[
     return errors
 
 
+def validate_event_analyses(event_analyses: list[dict[str, Any]]) -> list[str]:
+    """Validate that event_analyses are complete with RCA + embedded user profiles.
+    Returns list of error messages. Empty list = all good."""
+    REQUIRED_KEYS = {"asset", "severity", "executive_summary", "causal_chain", "user_profiles"}
+    errors: list[str] = []
+    if not event_analyses:
+        errors.append("event_analyses is EMPTY. Must build RCA for each critical asset.")
+        return errors
+    for i, ea in enumerate(event_analyses):
+        asset = ea.get("asset", f"event[{i}]")
+        missing = REQUIRED_KEYS - set(ea.keys())
+        if missing:
+            errors.append(f"{asset}: missing required keys: {missing}")
+        cc = ea.get("causal_chain", [])
+        if len(cc) < 2:
+            errors.append(f"{asset}: causal_chain has {len(cc)} steps, need at least 2.")
+        ups = ea.get("user_profiles", [])
+        if not ups:
+            errors.append(f"{asset}: user_profiles is EMPTY. Must include 8-dimension profiles for key users.")
+        for j, up in enumerate(ups):
+            dims = up.get("dimensions", [])
+            filled = sum(1 for d in dims if d.get("severity") not in ("pending", None, ""))
+            if filled < 4:
+                uid = up.get("uid", up.get("master_user_id", f"user[{j}]"))
+                errors.append(f"{asset} → user {uid}: only {filled}/8 dimensions filled in event profile.")
+    return errors
+
+
 def build_user_profiles(
     suspicious_users: list[dict[str, Any]],
     profiles: dict[str, Any],
