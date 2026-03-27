@@ -1,6 +1,6 @@
 {
   "date": "2026-03-27",
-  "generated_at": "2026-03-27T03:02:09.916281+00:00",
+  "generated_at": "2026-03-27T03:15:09.423599+00:00",
   "chapter": {
     "slug": "risk-intel",
     "title": "Risk Intelligence",
@@ -179,7 +179,204 @@
           "4335832",
           "10639724",
           "8413389"
-        ]
+        ],
+        "quantitative_impact": {
+          "title": "量化影响评估",
+          "metrics": [
+            {
+              "label": "Price Impact",
+              "value": "+35% → -22%",
+              "detail": "$0.258 → $0.349 (peak) → $0.272"
+            },
+            {
+              "label": "OI Delta",
+              "value": "+334%",
+              "detail": "1,922 → 8,351 users (24h)"
+            },
+            {
+              "label": "Funding Rate Peak",
+              "value": "-1.306%",
+              "detail": "260x normal (08:00 Mar 26)"
+            },
+            {
+              "label": "Volume Spike",
+              "value": "28x",
+              "detail": "2.3M → 77.2M (04:00→07:00)"
+            },
+            {
+              "label": "Users Affected",
+              "value": "8,351",
+              "detail": "Shorts: 5,410 > Longs: 4,098"
+            },
+            {
+              "label": "OI Limit Breach",
+              "value": "112.65%",
+              "detail": "Threshold: 80%, Day 2 of breach"
+            }
+          ]
+        },
+        "oi_attribution": {
+          "title": "OI变化归因",
+          "description": "核心发现：用户85408254在06:00-12:00持有7-8个LONG仓位，为最大单一多头。48164865持有4个SHORT仓位（182M volume），为最大空头力量。100026304账户仅6天即有3仓位，高度可疑。",
+          "user_hourly_table": {
+            "headers": [
+              "USER_ID",
+              "06:00",
+              "08:00",
+              "10:00",
+              "12:00",
+              "方向"
+            ],
+            "rows": [
+              [
+                "85408254",
+                "7 LONG",
+                "7 LONG",
+                "8 LONG",
+                "8 LONG",
+                "持续多头"
+              ],
+              [
+                "81271396",
+                "—",
+                "—",
+                "—",
+                "5 LONG",
+                "后期进场"
+              ],
+              [
+                "48164865",
+                "—",
+                "—",
+                "4 SHORT",
+                "4 SHORT",
+                "持续空头"
+              ],
+              [
+                "66051079",
+                "3 SHORT",
+                "3 SHORT",
+                "3 SHORT",
+                "3 SHORT",
+                "持续空头"
+              ],
+              [
+                "100026304",
+                "3 SHORT",
+                "3 SHORT",
+                "3 SHORT",
+                "3 SHORT",
+                "持续空头（新账户6天）"
+              ],
+              [
+                "21522851",
+                "3 SHORT",
+                "3 SHORT",
+                "3 SHORT",
+                "3 SHORT",
+                "持续空头"
+              ],
+              [
+                "99257724",
+                "3 SHORT",
+                "3 SHORT",
+                "3 SHORT",
+                "3 SHORT",
+                "持续空头（新账户1月）"
+              ]
+            ]
+          }
+        },
+        "risk_assessment": {
+          "title": "风险评估与展望",
+          "overall_risk": "critical",
+          "actions": [
+            {
+              "priority": "P0",
+              "action": "立即下调PROVE合约限额或限制新增开仓",
+              "reason": "OI限额占比112.65%，连续2天超限且持续恶化"
+            },
+            {
+              "priority": "P0",
+              "action": "排查用户85408254（8仓位LONG）的账户来源和关联账户",
+              "reason": "单一用户持仓集中度极高，可能操控OI"
+            },
+            {
+              "priority": "P0",
+              "action": "调查100026304（6天新账户，3仓位SHORT）",
+              "reason": "极新账户即建立多仓位，高度可疑"
+            },
+            {
+              "priority": "P1",
+              "action": "提高PROVE合约保证金要求",
+              "reason": "多空博弈激烈（5,410 SHORT vs 4,098 LONG），连锁清算风险高"
+            },
+            {
+              "priority": "P2",
+              "action": "建立OI超限自动升级处置SOP",
+              "reason": "连续2天超限未自动触发限制，流程需优化"
+            }
+          ]
+        },
+        "involved_users_brief": {
+          "title": "涉事用户",
+          "headers": [
+            "USER_ID",
+            "NATIONALITY",
+            "KYC",
+            "VOLUME",
+            "EQUITY",
+            "POSITION",
+            "RISK"
+          ],
+          "rows": [
+            [
+              "6561979",
+              "China",
+              "3",
+              "40,660,002",
+              "$10.52",
+              "2 SHORT",
+              "T3"
+            ],
+            [
+              "7180900",
+              "China",
+              "3",
+              "56,412,781",
+              "$18.35",
+              "1 SHORT",
+              "T3"
+            ],
+            [
+              "4335832",
+              "China",
+              "3",
+              "10,432,460",
+              "$1.45",
+              "1 SHORT",
+              "T3"
+            ],
+            [
+              "10639724",
+              "Philippines",
+              "2",
+              "896,140",
+              "$58.01",
+              "2 SHORT",
+              "T3"
+            ],
+            [
+              "8413389",
+              "China",
+              "3",
+              "1,249,134",
+              "$11.53",
+              "1 SHORT",
+              "T2"
+            ]
+          ]
+        }
       },
       {
         "asset": "NFLX-USDT-SWAP",
@@ -281,7 +478,103 @@
           "63503490",
           "70200254",
           "74336408"
-        ]
+        ],
+        "quantitative_impact": {
+          "title": "量化影响评估",
+          "metrics": [
+            {
+              "label": "OI Deviation",
+              "value": "632.38%",
+              "detail": "Threshold: 20%, highest today"
+            },
+            {
+              "label": "OI Size",
+              "value": "315 contracts",
+              "detail": "Very low base, micro-volume"
+            },
+            {
+              "label": "Dominant Direction",
+              "value": "SHORT 66%",
+              "detail": "10 of 15 positions are SHORT"
+            },
+            {
+              "label": "Countries",
+              "value": "4 countries",
+              "detail": "S.Korea, Pakistan, Iraq, Vietnam"
+            }
+          ]
+        },
+        "risk_assessment": {
+          "title": "风险评估与展望",
+          "overall_risk": "warning",
+          "actions": [
+            {
+              "priority": "P1",
+              "action": "监控NFLX OI是否继续扩大",
+              "reason": "基数极小，微量变动即可造成巨大百分比偏离"
+            },
+            {
+              "priority": "P1",
+              "action": "调查多国用户协同做空行为",
+              "reason": "Pakistan+Iraq+Vietnam等高风险司法管辖区用户同时出现"
+            },
+            {
+              "priority": "P2",
+              "action": "评估NFLX合约的OI报警阈值是否需要调整",
+              "reason": "315张的基数过小，20%阈值可能过于敏感"
+            }
+          ]
+        },
+        "involved_users_brief": {
+          "title": "涉事用户",
+          "headers": [
+            "USER_ID",
+            "NATIONALITY",
+            "KYC",
+            "VOLUME",
+            "EQUITY",
+            "POSITION",
+            "RISK"
+          ],
+          "rows": [
+            [
+              "21607391",
+              "South Korea",
+              "2",
+              "99,923",
+              "$270.42",
+              "2 SHORT",
+              "T2"
+            ],
+            [
+              "63503490",
+              "Pakistan",
+              "2",
+              "3,010",
+              "$2.97",
+              "2 SHORT",
+              "T3"
+            ],
+            [
+              "70200254",
+              "Iraq",
+              "2",
+              "302,104",
+              "$34.38",
+              "1 SHORT",
+              "T3"
+            ],
+            [
+              "74336408",
+              "Vietnam",
+              "2",
+              "19,631",
+              "$21.83",
+              "1 SHORT",
+              "T2"
+            ]
+          ]
+        }
       },
       {
         "asset": "XAU-USDT-SWAP",
@@ -311,7 +604,48 @@
           "open_interest": "23289262",
           "funding_rate": "0.0000000000000000"
         },
-        "key_users": []
+        "key_users": [],
+        "quantitative_impact": {
+          "title": "量化影响评估",
+          "metrics": [
+            {
+              "label": "Alert Count",
+              "value": "20 alerts",
+              "detail": "去重4条, 原始18条 (up from 6 yesterday)"
+            },
+            {
+              "label": "Trigger Rate",
+              "value": "Z cap",
+              "detail": "Hard cap trigger, not Y cap"
+            },
+            {
+              "label": "User Impact",
+              "value": "Trading restricted",
+              "detail": "Users cannot place upward orders"
+            }
+          ]
+        },
+        "risk_assessment": {
+          "title": "风险评估与展望",
+          "overall_risk": "critical",
+          "actions": [
+            {
+              "priority": "P0",
+              "action": "立即上调XAU-USD的Z cap参数",
+              "reason": "连续2天触发且报警量从6升至20，参数严重滞后"
+            },
+            {
+              "priority": "P1",
+              "action": "检查XAU指数成分源可用性",
+              "reason": "Z cap触发可能与指数质量有关"
+            },
+            {
+              "priority": "P2",
+              "action": "建立限价参数与市场波动率的自动联动机制",
+              "reason": "避免手动调参滞后"
+            }
+          ]
+        }
       }
     ],
     "metrics": {
@@ -319,7 +653,7 @@
       "ema_coverage": 4,
       "issues_found": 16,
       "source": "[PROD]Index Alarm - 2026-03-27 (00:00 - 23:59)",
-      "generated_at": "2026-03-27T03:02:09.916281+00:00"
+      "generated_at": "2026-03-27T03:15:09.423599+00:00"
     },
     "metric_cards": [
       {

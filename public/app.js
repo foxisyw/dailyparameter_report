@@ -1286,8 +1286,73 @@ function renderPendingSummary(chapter) {
   document.getElementById('summary-bars').innerHTML = ''
 }
 
+function renderQuantitativeImpact(event) {
+  const qi = event.quantitative_impact
+  if (!qi || !qi.metrics || !qi.metrics.length) return ''
+  return `<div class="section-block">
+    <div class="section-block-title">${esc(qi.title || T('quantitativeImpact') || 'Quantitative Impact')}</div>
+    <div class="impact-grid">
+      ${qi.metrics.map(m => `<div class="impact-card">
+        <div class="impact-val">${esc(m.value)}</div>
+        <div class="impact-label">${esc(m.label)}</div>
+        ${m.detail ? `<div class="impact-detail">${esc(m.detail)}</div>` : ''}
+      </div>`).join('')}
+    </div>
+  </div>`
+}
+
+function renderOIAttribution(event) {
+  const oia = event.oi_attribution
+  if (!oia || !oia.user_hourly_table) return ''
+  const t = oia.user_hourly_table
+  return `<div class="section-block">
+    <div class="section-block-title">${esc(oia.title || 'OI Attribution')}</div>
+    ${oia.description ? `<p class="ev-summary" style="margin-bottom:10px">${esc(oia.description)}</p>` : ''}
+    <div class="table-wrap"><table class="data-table">
+      <thead><tr>${t.headers.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead>
+      <tbody>${(t.rows || []).map(row => `<tr>${row.map((c, i) => {
+        const isFlip = i > 0 && c && row[i] !== row[Math.max(1, i-1)] && c !== '—' && c !== '0'
+        return `<td${isFlip ? ' class="oi-flip"' : ''}>${esc(c)}</td>`
+      }).join('')}</tr>`).join('')}</tbody>
+    </table></div>
+  </div>`
+}
+
+function renderRiskAssessment(event) {
+  const ra = event.risk_assessment
+  if (!ra || !ra.actions || !ra.actions.length) return ''
+  const prioColors = { P0: 'var(--critical)', P1: 'var(--warning)', P2: 'var(--gray-500)' }
+  return `<div class="section-block">
+    <div class="section-block-title">${esc(ra.title || T('riskAssessment') || 'Risk Assessment')}</div>
+    <div class="action-list">
+      ${ra.actions.map(a => `<div class="action-item action-item--${a.priority.toLowerCase()}">
+        <span class="action-prio" style="background:${prioColors[a.priority] || 'var(--gray-500)'}">${esc(a.priority)}</span>
+        <div class="action-body">
+          <div class="action-text">${esc(a.action)}</div>
+          ${a.reason ? `<div class="action-reason">${esc(a.reason)}</div>` : ''}
+        </div>
+      </div>`).join('')}
+    </div>
+  </div>`
+}
+
+function renderInvolvedUsersBrief(event) {
+  const iub = event.involved_users_brief
+  if (!iub || !iub.rows || !iub.rows.length) return ''
+  return `<div class="section-block">
+    <div class="section-block-title">${esc(iub.title || T('involvedUsers') || 'Involved Users')}</div>
+    <div class="table-wrap"><table class="data-table">
+      <thead><tr>${iub.headers.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead>
+      <tbody>${iub.rows.map(row => `<tr>${row.map((c, i) => {
+        const h = iub.headers[i]?.toUpperCase() || ''
+        if (h === 'RISK') return `<td>${statusPill(c === 'T3' || c === 'T4' ? 'critical' : c === 'T2' ? 'warning' : 'pass')}</td>`
+        return `<td>${esc(c)}</td>`
+      }).join('')}</tr>`).join('')}</tbody>
+    </table></div>
+  </div>`
+}
+
 function renderSingleEventSection(chapter, event) {
-  // Render one event analysis with its related suspicious users and profiles
   const snap = event.market_snapshot || {}
   const snapCards = snap.price ? `
     <div class="ev-metrics">
@@ -1299,36 +1364,36 @@ function renderSingleEventSection(chapter, event) {
 
   const chainRows = (event.causal_chain || []).map(link => renderChainLink(link)).join('')
 
-  // Filter suspicious users related to this event's asset
+  // Filter users related to this event
   const allUsers = chapter.suspicious_users || []
   const relatedUsers = allUsers.filter(u => {
     const pair = (u.related_pair || '').toUpperCase()
     const asset = event.asset.toUpperCase()
-    return pair.includes(asset.split('-')[0]) || u.source_alert === 'platform_oi' && asset.includes('PROVE') || !u.related_pair
+    return pair.includes(asset.split('-')[0]) || !u.related_pair
   })
-
-  // Filter profiles for related users
   const relatedProfileKeys = new Set(relatedUsers.map(u => u.uid || u.master_user_id))
   const relatedProfiles = (chapter.user_profiles || []).filter(p => relatedProfileKeys.has(p.uid) || relatedProfileKeys.has(p.master_user_id))
-
-  // Build a mini-chapter for this event's users
   const miniChapter = { ...chapter, suspicious_users: relatedUsers, user_profiles: relatedProfiles }
 
   return `<section class="chapter" id="event-${esc(event.asset)}">
     <div class="chapter-header"><h2 class="chapter-title">${esc(event.asset)}</h2>${statusPill(event.severity)}</div>
-    <p class="chapter-summary">${esc(event.executive_summary).slice(0, 200)}${event.executive_summary.length > 200 ? '...' : ''}</p>
     ${snapCards}
-    <div class="ev-summary">${esc(event.executive_summary)}</div>
-    ${event.forward_looking ? `<div class="ev-outlook"><strong>${T('forwardLooking') || 'Outlook'}:</strong> ${esc(event.forward_looking)}</div>` : ''}
-    ${chainRows ? `
-      <div class="ev-chain-header">${T('causalChain') || 'Causal Chain'}</div>
-      <div class="table-wrap">
-        <table class="data-table ev-chain-table">
-          <thead><tr><th>#</th><th>${T('chainType') || 'TYPE'}</th><th>${T('chainDetail') || 'DETAIL'}</th><th>${T('chainEvidence') || 'EVIDENCE'}</th></tr></thead>
-          <tbody>${chainRows}</tbody>
-        </table>
-      </div>` : ''}
-    ${relatedUsers.length ? renderSuspiciousUsers(miniChapter) : ''}
+    ${renderQuantitativeImpact(event)}
+    <div class="section-block">
+      <div class="section-block-title">${T('executiveSummary') || 'Executive Summary'}</div>
+      <div class="ev-summary">${esc(event.executive_summary)}</div>
+      ${event.forward_looking ? `<div class="ev-outlook"><strong>${T('forwardLooking') || 'Outlook'}:</strong> ${esc(event.forward_looking)}</div>` : ''}
+    </div>
+    ${chainRows ? `<div class="section-block">
+      <div class="section-block-title">${T('causalChain') || 'Causal Chain'}</div>
+      <div class="table-wrap"><table class="data-table ev-chain-table">
+        <thead><tr><th>#</th><th>${T('chainType') || 'TYPE'}</th><th>${T('chainDetail') || 'DETAIL'}</th><th>${T('chainEvidence') || 'EVIDENCE'}</th></tr></thead>
+        <tbody>${chainRows}</tbody>
+      </table></div>
+    </div>` : ''}
+    ${renderOIAttribution(event)}
+    ${renderRiskAssessment(event)}
+    ${renderInvolvedUsersBrief(event)}
     ${relatedProfiles.length ? renderUserProfiles(miniChapter) : ''}
   </section>`
 }
