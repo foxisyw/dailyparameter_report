@@ -1223,8 +1223,6 @@ function renderPriceLimitSummary(data, chapter) {
     else if (b.status === 'warning' || b.status === 'watch') warnCount++
     else passCount++
   })
-  const totalRules = passCount + warnCount + critCount || 1
-  const circumference = 2 * Math.PI * 50
   const metrics = chapter.metrics || {}
 
   document.getElementById('summary-kpis').innerHTML = `
@@ -1234,29 +1232,7 @@ function renderPriceLimitSummary(data, chapter) {
     <div class="kpi-card"><div class="kpi-value">${esc(fmtFreshness(data.report.generated_at))}</div><div class="kpi-label">${T('reportFreshness')}</div></div>
   `
 
-  const passArc = (passCount / totalRules) * circumference
-  const warnArc = (warnCount / totalRules) * circumference
-  const critArc = (critCount / totalRules) * circumference
-
-  document.getElementById('summary-donut').innerHTML = `
-    <div class="donut-ring">
-      <svg viewBox="0 0 140 140">
-        <circle stroke="#e5e7eb" stroke-dasharray="${circumference}" stroke-dashoffset="0" />
-        <circle stroke="#16a34a" stroke-dasharray="${passArc} ${circumference - passArc}" stroke-dashoffset="0" />
-        <circle stroke="#d97706" stroke-dasharray="${warnArc} ${circumference - warnArc}" stroke-dashoffset="${-passArc}" />
-        <circle stroke="#dc2626" stroke-dasharray="${critArc} ${circumference - critArc}" stroke-dashoffset="${-(passArc + warnArc)}" />
-      </svg>
-      <div class="donut-center">
-        <div class="donut-center-value">${blocks.length}</div>
-        <div class="donut-center-label">${T('rules')}</div>
-      </div>
-    </div>
-    <div class="donut-legend">
-      <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#16a34a"></span><span class="donut-legend-label">${T('pass')}</span><span class="donut-legend-count">${passCount}</span></div>
-      <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#d97706"></span><span class="donut-legend-label">${T('warning')}</span><span class="donut-legend-count">${warnCount}</span></div>
-      <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#dc2626"></span><span class="donut-legend-label">${T('critical')}</span><span class="donut-legend-count">${critCount}</span></div>
-    </div>
-  `
+  document.getElementById('summary-donut').innerHTML = ''
 
   const bars = blocks.map(b => ({
     label: b.title,
