@@ -1,21 +1,21 @@
 {
   "report": {
     "date": "2026-03-27",
-    "generated_at": "2026-03-27T09:35:47.528207+00:00",
+    "generated_at": "2026-03-27T09:40:04.651639+00:00",
     "status": "critical",
-    "total_issues": 58,
+    "total_issues": 54,
     "chapters": [
       {
         "slug": "risk-intel",
         "title": "Risk Intelligence",
         "status": "critical",
-        "summary": "4 alert types analyzed. 10 flagged alert(s) parsed. 5 suspicious user(s) highlighted.",
+        "summary": "4 alert types analyzed. 6 flagged alert(s) parsed. 5 suspicious user(s) highlighted.",
         "metrics": {
-          "instruments_scanned": 10,
+          "instruments_scanned": 6,
           "ema_coverage": 4,
-          "issues_found": 15,
+          "issues_found": 11,
           "source": "[PROD]Index Alarm - 2026-03-27 (00:00 - 23:59)",
-          "generated_at": "2026-03-27T09:17:55.275490+00:00"
+          "generated_at": "2026-03-27T09:39:48.554779+00:00"
         }
       },
       {
@@ -28,7 +28,7 @@
           "ema_coverage": 1496,
           "issues_found": 14,
           "source": "OKX API (live)",
-          "generated_at": "2026-03-27T09:35:31.924266+00:00"
+          "generated_at": "2026-03-27T09:39:48.661634+00:00"
         }
       },
       {
@@ -41,7 +41,7 @@
           "ema_coverage": 36,
           "issues_found": 29,
           "source": "OKX Tiers + Depth SQL",
-          "generated_at": "2026-03-27T09:35:45.836653+00:00"
+          "generated_at": "2026-03-27T09:40:02.985943+00:00"
         }
       },
       {
@@ -54,7 +54,7 @@
           "ema_coverage": 0,
           "issues_found": 0,
           "source": "n/a",
-          "generated_at": "2026-03-27T09:35:47.528159+00:00"
+          "generated_at": "2026-03-27T09:40:04.651614+00:00"
         }
       }
     ]
@@ -65,41 +65,41 @@
       "title": "Risk Intelligence",
       "render_variant": "risk-intel",
       "status": "critical",
-      "summary": "4 alert types analyzed. 10 flagged alert(s) parsed. 5 suspicious user(s) highlighted.",
+      "summary": "4 alert types analyzed. 6 flagged alert(s) parsed. 5 suspicious user(s) highlighted.",
       "event_analyses": [
         {
           "asset": "PROVE-USDT-SWAP",
           "severity": "critical",
-          "executive_summary": "PROVE OI/平台限额升至112.65%（阈值80%），OI偏离24H均值188.16%。今日00:00-14:00持仓用户从6,813增至8,449（+24%），空头5,495 > 多头4,130。当前价格$0.2676（24h -2.5%），OI 5,694,911张（$1.52M），空头持续占优。5个T1高风险账户集中做空，trade/equity比率极端异常（最高1,648,982x）。",
-          "forward_looking": "OI限额占比从昨日维持在112%+区间，空头持续增长。建议：1）立即评估限额下调或限制新增开仓；2）排查5个T1用户（8446803/7156607/6841987/6453751/8583364）的入金和委托链；3）监控资金费率（当前为负，空头付费）是否引发空头平仓。",
+          "executive_summary": "PROVE OI/platform limit reached 112.65% (threshold 80%), OI deviation from 24H average 188.16%. Position holders grew from 6,813 at 00:00 to 8,451 at 15:00 HKT (+24%), with shorts (5,497) consistently outpacing longs (4,124). Current price $0.2764 (+1.9%), OI 5,631,436 contracts ($1.56M). 5 T1-rated accounts with extreme trade/equity ratios (813,649x to 109,722,000x) hold concentrated PROVE positions. 3 SHORT + 2 LONG, all deposited on 2026-03-26, suggesting coordinated OI inflation.",
+          "forward_looking": "OI/limit ratio remains above 112% with no sign of natural unwind. Recommended: 1) Immediately evaluate limit reduction or restrict new position opening; 2) Investigate the 5 T1 users (6226956/5014277/2106106/7557536/7601874) deposit chains and order flow; 3) Monitor funding rate and liquidation cascade risk if price moves sharply.",
           "causal_chain": [
             {
               "step": 1,
-              "type": "远因",
-              "name": "结构性弱点",
-              "description": "PROVE流通盘薄，少数大户可显著影响OI",
+              "type": "Root Cause",
+              "name": "Thin float structural weakness",
+              "description": "PROVE has a thin circulating supply, making OI easily inflatable by a small number of large accounts.",
               "evidence_strength": 5,
-              "evidence_label": "铁证",
+              "evidence_label": "Definitive",
               "detail": null,
               "evidence_table": null,
               "risk_assessment": null
             },
             {
               "step": 2,
-              "type": "近因",
-              "name": "空头用户持续涌入",
-              "description": "今日00:00→14:00 HKT，总用户从6,813增至8,449（+24%），空头从4,124增至5,495（+33%），多头从3,384增至4,130（+22%）。空头增速持续领先。",
+              "type": "Proximate Cause",
+              "name": "Coordinated position buildup",
+              "description": "Between 00:00-15:00 HKT on 2026-03-27, total position holders grew from 6,813 to 8,451 (+24%). Short holders increased from 4,124 to 5,497 (+33%) while longs grew from 3,384 to 4,124 (+22%). Short growth consistently outpaced long growth.",
               "evidence_strength": 5,
-              "evidence_label": "铁证 · 数仓实查",
-              "detail": "空头净增1,371人 vs 多头净增746人。每小时新增用户中空头占比约65%。",
+              "evidence_label": "Definitive - Data Query verified",
+              "detail": "Short net increase: +1,373 users vs long net increase: +740 users. Approximately 65% of new position holders are short.",
               "evidence_table": {
-                "title": "PROVE-USDT-SWAP 持仓用户变化（2026-03-27 数仓实查）",
+                "title": "PROVE-USDT-SWAP Hourly Position Holders (2026-03-27 Data Query)",
                 "headers": [
-                  "时间(HKT)",
-                  "总用户",
-                  "多头",
-                  "空头",
-                  "净增"
+                  "Time(HKT)",
+                  "Total",
+                  "Long",
+                  "Short",
+                  "Net Change"
                 ],
                 "rows": [
                   [
@@ -110,18 +110,32 @@
                     "—"
                   ],
                   [
+                    "01:00",
+                    "6832",
+                    "3390",
+                    "4140",
+                    "+19"
+                  ],
+                  [
                     "03:00",
                     "6855",
                     "3400",
                     "4161",
-                    "+42"
+                    "+23"
+                  ],
+                  [
+                    "05:00",
+                    "7198",
+                    "3557",
+                    "4432",
+                    "+343"
                   ],
                   [
                     "06:00",
                     "7838",
                     "3830",
                     "5000",
-                    "+983"
+                    "+640"
                   ],
                   [
                     "09:00",
@@ -138,85 +152,85 @@
                     "+53"
                   ],
                   [
-                    "14:00",
-                    "8449",
-                    "4130",
-                    "5495",
-                    "+45"
+                    "15:00",
+                    "8451",
+                    "4124",
+                    "5497",
+                    "+47"
                   ]
                 ],
-                "source": "dwd_okx_asset_user_position_hf · instrument_name=PROVE-USDT-SWAP"
+                "source": "dwd_okx_asset_user_position_hf - instrument_name=PROVE-USDT-SWAP"
               },
               "risk_assessment": null
             },
             {
               "step": 3,
-              "type": "触发事件",
-              "name": "OI限额突破（112.65%）",
-              "description": "OI/平台限额从阈值80%升至112.65%，远超警戒线。OI偏离24H均值188.16%（阈值20%）。",
+              "type": "Trigger",
+              "name": "OI/Limit breach (112.65%)",
+              "description": "OI/platform limit surged to 112.65%, well above the 80% threshold. OI deviation from 24H average hit 188.16% (threshold 20%).",
               "evidence_strength": 5,
-              "evidence_label": "铁证 · 报警实录",
-              "detail": "两个子类型同时触发🔴高风险：OI变化/24H均值偏离188.16% + OI/平台限额占比112.65%。",
+              "evidence_label": "Definitive - Alert record",
+              "detail": "Two sub-alert types triggered simultaneously at critical severity: OI deviation 188.16% + OI/limit 112.65%.",
               "evidence_table": null,
               "risk_assessment": null
             },
             {
               "step": 4,
-              "type": "风险放大",
-              "name": "5个T1高风险账户集中做空",
-              "description": "5个老账户（2017-2019年注册，KYC3）集中持有PROVE空头，trade/equity比率极端（26,867x至1,648,982x），权益接近耗尽。其中2个账户昨日入金后立即建仓。",
+              "type": "Risk Amplifier",
+              "name": "5 T1-rated accounts with extreme ratios",
+              "description": "5 accounts (registered 2016-2018, all KYC3 CN) hold concentrated PROVE positions with trade/equity ratios from 813,649x to 109,722,000x. 3 SHORT + 2 LONG, all deposited on 2026-03-26, suggesting coordinated OI inflation.",
               "evidence_strength": 4,
-              "evidence_label": "强证据 · 数仓实查",
-              "detail": "8446803: 2x空头(cross+iso) trade/equity=1.65Mx; 6453751: 今日06:20/06:37 cross空头; 6841987: trade=.9M equity=",
+              "evidence_label": "Strong evidence - Data Query verified",
+              "detail": "6226956: SHORT cross, trade/equity=109.7Mx, equity=$2.63; 5014277: LONG cross, trade/equity=45.3Mx, equity=$1.69; 2106106: SHORT cross, trade/equity=16.2Mx, equity=$3.38; 7557536: SHORT cross, trade/equity=1.24Mx, equity=$187.86; 7601874: LONG cross, trade/equity=813Kx, equity=$217.42",
               "evidence_table": {
-                "title": "T1高风险用户做空PROVE概况",
+                "title": "Top 5 Suspicious PROVE Users by Trade/Equity",
                 "headers": [
-                  "master_user_id",
-                  "仓位",
+                  "Master ID",
+                  "Side",
                   "Trade Volume",
                   "Equity",
                   "Trade/Equity",
-                  "最近入金"
+                  "Last Deposit"
                 ],
                 "rows": [
                   [
-                    "8446803",
-                    "2x SHORT(cross+iso)",
-                    ".5M",
-                    ".7",
-                    "1,648,982x",
-                    "2026-03-25"
-                  ],
-                  [
-                    "7156607",
-                    "1x SHORT(iso)",
-                    ".5M",
-                    ".8",
-                    "741,000x",
-                    "2026-03-16"
-                  ],
-                  [
-                    "6841987",
-                    "1x SHORT(iso)",
-                    ".9M",
-                    "",
-                    "437,000x",
+                    "6226956",
+                    "SHORT",
+                    "$288.5M",
+                    "$2.63",
+                    "109,722,000x",
                     "2026-03-26"
                   ],
                   [
-                    "6453751",
-                    "2x SHORT(cross)",
-                    ".3M",
-                    ",035",
-                    "77,341x",
-                    "2026-03-07"
+                    "5014277",
+                    "LONG",
+                    "$76.5M",
+                    "$1.69",
+                    "45,266,000x",
+                    "2026-03-26"
                   ],
                   [
-                    "8583364",
-                    "1x SHORT(iso)",
-                    ".4M",
-                    ",109",
-                    "26,867x",
+                    "2106106",
+                    "SHORT",
+                    "$54.6M",
+                    "$3.38",
+                    "16,152,000x",
+                    "2026-03-26"
+                  ],
+                  [
+                    "7557536",
+                    "SHORT",
+                    "$233.1M",
+                    "$187.86",
+                    "1,240,843x",
+                    "2026-03-26"
+                  ],
+                  [
+                    "7601874",
+                    "LONG",
+                    "$176.9M",
+                    "$217.42",
+                    "813,649x",
                     "2026-03-26"
                   ]
                 ],
@@ -226,33 +240,13 @@
             }
           ],
           "market_snapshot": {
-            "price": "0.2676",
-            "change_24h": "-2.5%",
-            "open_interest": "5694911",
-            "funding_rate": "-0.00075",
-            "vol_24h": "253052895",
-            "timestamp": "2026-03-27T16:39 HKT"
+            "price": "0.2764",
+            "change_24h": "+1.9%",
+            "open_interest": "5631436",
+            "funding_rate": "0",
+            "vol_24h": "254220772",
+            "timestamp": "2026-03-27T17:32 HKT"
           },
-          "key_users": [
-            {
-              "user_id": "8446803",
-              "side": "short",
-              "positions": 2,
-              "note": "trade/equity=1.65Mx, cross+iso"
-            },
-            {
-              "user_id": "6841987",
-              "side": "short",
-              "positions": 1,
-              "note": "trade=.9M, yesterday deposit"
-            },
-            {
-              "user_id": "6453751",
-              "side": "short",
-              "positions": 2,
-              "note": "opened today 06:20+06:37 cross"
-            }
-          ],
           "quantitative_impact": {
             "title": "Quantitative Impact",
             "metrics": [
@@ -269,89 +263,78 @@
               {
                 "value": "+24%",
                 "label": "User Growth Today",
-                "detail": "6,813 → 8,449"
+                "detail": "6,813 → 8,451"
               },
               {
                 "value": "65%",
                 "label": "Short Dominance",
-                "detail": "5,495 of 8,449 users"
+                "detail": "5,497 of 8,451 users"
+              },
+              {
+                "value": "$1.56M",
+                "label": "OI Notional",
+                "detail": "5,631,436 contracts"
               }
             ]
           },
           "oi_attribution": {
             "title": "OI Attribution — Hourly Position Snapshot",
-            "description": "PROVE-USDT-SWAP position holders growth across today's hourly partitions. Shorts consistently outpace longs.",
+            "description": "PROVE-USDT-SWAP position holders growth across today's hourly partitions. Shorts consistently outpace longs, with the largest surge at 05:00-06:00 HKT (+640 users).",
             "user_hourly_table": {
               "headers": [
                 "Time(HKT)",
-                "Total Users",
+                "Total",
                 "Long",
-                "Short",
-                "Net Change"
+                "Short"
               ],
               "rows": [
                 [
                   "00:00",
                   "6813",
                   "3384",
-                  "4124",
-                  "—"
+                  "4124"
                 ],
                 [
                   "01:00",
                   "6832",
                   "3390",
-                  "4140",
-                  "+19"
+                  "4140"
                 ],
                 [
                   "03:00",
                   "6855",
                   "3400",
-                  "4161",
-                  "+23"
+                  "4161"
                 ],
                 [
                   "05:00",
                   "7198",
                   "3557",
-                  "4432",
-                  "+343"
+                  "4432"
                 ],
                 [
                   "06:00",
                   "7838",
                   "3830",
-                  "5000",
-                  "+640"
-                ],
-                [
-                  "07:00",
-                  "8039",
-                  "3946",
-                  "5164",
-                  "+201"
+                  "5000"
                 ],
                 [
                   "09:00",
                   "8351",
                   "4098",
-                  "5410",
-                  "+312"
+                  "5410"
                 ],
                 [
-                  "11:00",
-                  "8388",
-                  "4104",
-                  "5443",
-                  "+37"
+                  "12:00",
+                  "8404",
+                  "4110",
+                  "5453"
                 ],
                 [
-                  "14:00",
-                  "8449",
-                  "4130",
-                  "5495",
-                  "+61"
+                  "15:00",
+                  "8451",
+                  "4124",
+                  "5497"
                 ]
               ]
             }
@@ -361,23 +344,565 @@
             "actions": [
               {
                 "priority": "P0",
-                "action": "立即评估PROVE限额与开仓限制",
-                "reason": "OI/限额已达112.65%，远超80%阈值，持续恶化中"
+                "action": "Immediately evaluate PROVE OI limit reduction or restrict new position opening",
+                "reason": "OI/limit at 112.65%, far exceeding 80% threshold, continuously worsening"
               },
               {
                 "priority": "P0",
-                "action": "排查5个T1账户委托链与入金来源",
-                "reason": "极端trade/equity比率(26K-1.6M倍)，2个账户昨日入金后立即建仓"
+                "action": "Investigate 5 T1 accounts deposit chains and order flow (6226956, 5014277, 2106106, 7557536, 7601874)",
+                "reason": "Extreme trade/equity ratios (813K-109.7M x), all deposited 2026-03-26, 3 SHORT + 2 LONG pattern"
               },
               {
                 "priority": "P1",
-                "action": "评估是否限制PROVE新增开仓",
-                "reason": "空头占65%且持续增长，OI已超平台限额"
+                "action": "Evaluate restricting new PROVE-USDT-SWAP position openings",
+                "reason": "Shorts at 65% dominance and still growing; OI already exceeds platform limit"
               },
               {
                 "priority": "P2",
-                "action": "监控资金费率与空头平仓信号",
-                "reason": "资金费率为负(-0.075%)，空头付费但仍在加仓"
+                "action": "Monitor funding rate and liquidation cascade risk",
+                "reason": "If price reverses, concentrated short positions could trigger cascading liquidations"
+              }
+            ]
+          },
+          "involved_users_brief": {
+            "title": "Key Involved Users",
+            "headers": [
+              "Master ID",
+              "Side",
+              "RISK",
+              "Trade/Equity",
+              "Equity",
+              "Note"
+            ],
+            "rows": [
+              [
+                "6226956",
+                "SHORT",
+                "T1",
+                "109,722,000x",
+                "$2.63",
+                "cross, deposit 2026-03-26"
+              ],
+              [
+                "5014277",
+                "LONG",
+                "T1",
+                "45,266,000x",
+                "$1.69",
+                "cross, deposit 2026-03-26"
+              ],
+              [
+                "2106106",
+                "SHORT",
+                "T1",
+                "16,152,000x",
+                "$3.38",
+                "cross, deposit 2026-03-26"
+              ],
+              [
+                "7557536",
+                "SHORT",
+                "T1",
+                "1,240,843x",
+                "$187.86",
+                "cross, deposit 2026-03-26"
+              ],
+              [
+                "7601874",
+                "LONG",
+                "T1",
+                "813,649x",
+                "$217.42",
+                "cross, deposit 2026-03-26"
+              ]
+            ]
+          },
+          "user_profiles": [
+            {
+              "uid": "573261155016704",
+              "master_user_id": "6226956",
+              "overall_risk_tier": "T1",
+              "executive_summary": "2017-06-20 PC registration, CN (+86), KYC3 China. Trade volume $288.5M vs equity $2.63 yields an extreme trade/equity ratio of 109,722,000x. SHORT cross on PROVE-USDT-SWAP with last deposit 2026-03-26. Equity is virtually zero — classic shell-account pattern used for OI manipulation.",
+              "local_artifact_ref": "local://user-risk/573261155016704.html",
+              "key_evidence": [
+                "trade/equity = 109,722,000x (equity: $2.63 USDT)",
+                "SHORT PROVE-USDT-SWAP cross, last deposit 2026-03-26",
+                "PROVE OI/limit = 112.65% during active position",
+                "Registered 2017-06-20, KYC3, CN, +86"
+              ],
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "critical",
+                  "signals": [
+                    "Registered 2017-06-20 via PC, CN region, +86 phone, KYC3 (China). Account age ~8.8 years — long-lived account but equity near zero suggests dormancy or asset extraction."
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $288,509,225 USDT with equity $2.63 USDT. trade/equity ratio 109,722,000x — the most extreme in the cohort. Holds SHORT cross on PROVE-USDT-SWAP during OI/limit breach (112.65%). Last deposit 2026-03-26, suggesting reactivation specifically for this position."
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "warning",
+                  "signals": [
+                    "Login table (dwd_okx_user_secure_login_df) access restricted (403). Cannot verify associated devices or IPs. Shares timing with 4 other PROVE short holders."
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "warning",
+                  "signals": [
+                    "Registration region okx_CN, +86 phone. Login table restricted — cannot obtain specific IP/city data."
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "critical",
+                  "signals": [
+                    "KYC3 verified, Chinese nationality, +86 phone matches nationality. Non-market, non-internal account. Fee tier LV1."
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Current equity $2.63 USDT — virtually zero. Trade volume $288.5M implies massive historical turnover with near-total equity depletion. Deposited 2026-03-26 and immediately built PROVE short position."
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "warning",
+                  "signals": [
+                    "Last deposit 2026-03-26 (yesterday). Withdrawal detail table restricted. Deposit timing coincides with PROVE OI crisis escalation."
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "T1 critical: Highest trade/equity ratio in the cohort (109.7M x). Equity $2.63 means the account is effectively a position-only shell. Deposited yesterday, built SHORT cross on PROVE during OI/limit breach. Strongly consistent with coordinated OI manipulation pattern. Immediate investigation recommended."
+                  ]
+                }
+              ]
+            },
+            {
+              "uid": "211349316600729600",
+              "master_user_id": "5014277",
+              "overall_risk_tier": "T1",
+              "executive_summary": "2017-02-08 PC registration, CN (+86), KYC3 China. Trade volume $76.5M vs equity $1.69 — trade/equity ratio 45,266,000x. LONG cross on PROVE-USDT-SWAP, last deposit 2026-03-26. Only long holder among the top 5, but equity exhaustion is equally extreme.",
+              "local_artifact_ref": "local://user-risk/211349316600729600.html",
+              "key_evidence": [
+                "trade/equity = 45,266,000x (equity: $1.69 USDT)",
+                "LONG PROVE-USDT-SWAP cross, last deposit 2026-03-26",
+                "PROVE OI/limit = 112.65% during active position",
+                "Registered 2017-02-08, KYC3, CN, +86"
+              ],
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "critical",
+                  "signals": [
+                    "Registered 2017-02-08 via PC, CN region, +86 phone, KYC3 (China). Account age ~9 years. Equity near zero suggests long dormancy or systematic extraction."
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $76,479,382 USDT with equity $1.69 USDT. trade/equity ratio 45,266,000x — extremely abnormal. Holds LONG cross on PROVE-USDT-SWAP. Only long in the top-5 cohort. Last deposit 2026-03-26, potentially acting as the counter-party to the short cluster."
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "warning",
+                  "signals": [
+                    "Login table access restricted (403). Cannot verify shared devices/IPs. Temporal correlation with 4 other PROVE position holders requires relationship screening."
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "warning",
+                  "signals": [
+                    "Registration region okx_CN, +86 phone. Login table restricted."
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "critical",
+                  "signals": [
+                    "KYC3 verified, Chinese nationality, +86 matches. Non-market, non-internal account. LV1 fee tier."
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Current equity $1.69 USDT — effectively zero. Massive turnover ($76.5M) with near-complete equity depletion. Being LONG while the majority are SHORT could indicate wash-trading or counter-party support."
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "warning",
+                  "signals": [
+                    "Last deposit 2026-03-26 (yesterday). Withdrawal details restricted. Deposit timing aligns with PROVE OI stress event."
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "T1 critical: trade/equity 45.3M x with $1.69 equity. Lone long in a predominantly short cohort — may serve as counter-party or wash component. Deposited yesterday and built position during OI/limit breach. Investigation priority: high."
+                  ]
+                }
+              ]
+            },
+            {
+              "uid": "25882071633371136",
+              "master_user_id": "2106106",
+              "overall_risk_tier": "T1",
+              "executive_summary": "2016-07-05 APP registration, CN (+86), KYC3 China. Trade volume $54.6M vs equity $3.38 — trade/equity ratio 16,152,000x. SHORT cross on PROVE-USDT-SWAP, last deposit 2026-03-26. Oldest account in the cohort (~9.7 years) with near-zero equity.",
+              "local_artifact_ref": "local://user-risk/25882071633371136.html",
+              "key_evidence": [
+                "trade/equity = 16,152,000x (equity: $3.38 USDT)",
+                "SHORT PROVE-USDT-SWAP cross, last deposit 2026-03-26",
+                "PROVE OI/limit = 112.65% during active position",
+                "Registered 2016-07-05, KYC3, CN, +86 (oldest in cohort)"
+              ],
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "critical",
+                  "signals": [
+                    "Registered 2016-07-05 via APP, CN region, +86 phone, KYC3 (China). Account age ~9.7 years — the oldest in the cohort. Equity near zero on such an old account is a strong anomaly signal."
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $54,591,233 USDT with equity $3.38 USDT. trade/equity ratio 16,152,000x. Holds SHORT cross on PROVE-USDT-SWAP. Deposited 2026-03-26 and entered position during OI escalation."
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "warning",
+                  "signals": [
+                    "Login table access restricted (403). Cannot verify device/IP overlap. Concurrent PROVE activity with other flagged users warrants relationship screening."
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "warning",
+                  "signals": [
+                    "Registration region okx_CN, +86 phone. Login table restricted — no IP/city data available."
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "critical",
+                  "signals": [
+                    "KYC3 verified, Chinese nationality, +86 matches. Non-market, non-internal. LV1 fee tier."
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Equity $3.38 USDT on $54.6M trade volume — nearly complete depletion. Most recent deposit 2026-03-26. The magnitude of historical turnover vs current equity is extreme."
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "warning",
+                  "signals": [
+                    "Last deposit 2026-03-26 (yesterday). Withdrawal table restricted. Deposit-and-short pattern consistent with coordinated action."
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "T1 critical: trade/equity 16.15M x, oldest account in cohort, equity $3.38. SHORT cross during PROVE OI/limit breach (112.65%). Deposit-then-short pattern on 2026-03-26 aligns with 3 other flagged accounts. High priority for coordinated manipulation investigation."
+                  ]
+                }
+              ]
+            },
+            {
+              "uid": "8986687749369856",
+              "master_user_id": "7557536",
+              "overall_risk_tier": "T1",
+              "executive_summary": "2018-02-28 H5 registration, CN (+86), KYC3 China. Trade volume $233.1M vs equity $187.86 — trade/equity ratio 1,240,843x. SHORT cross on PROVE-USDT-SWAP, last deposit 2026-03-26. Higher equity than top-3 but ratio still extremely abnormal.",
+              "local_artifact_ref": "local://user-risk/8986687749369856.html",
+              "key_evidence": [
+                "trade/equity = 1,240,843x (equity: $187.86 USDT)",
+                "SHORT PROVE-USDT-SWAP cross, last deposit 2026-03-26",
+                "PROVE OI/limit = 112.65% during active position",
+                "Registered 2018-02-28, KYC3, CN, +86"
+              ],
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "critical",
+                  "signals": [
+                    "Registered 2018-02-28 via H5, CN region, +86 phone, KYC3 (China). Account age ~8 years. Equity $187.86 is higher than top-3 users but still far below trade volume."
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $233,122,333 USDT with equity $187.86 USDT. trade/equity ratio 1,240,843x. Holds SHORT cross on PROVE-USDT-SWAP. Last deposit 2026-03-26 — building position during OI anomaly."
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "warning",
+                  "signals": [
+                    "Login table access restricted (403). Cannot verify shared devices/IPs. Same deposit-and-short timing as other flagged PROVE users."
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "warning",
+                  "signals": [
+                    "Registration region okx_CN, +86 phone. Login detail restricted."
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "critical",
+                  "signals": [
+                    "KYC3 verified, Chinese nationality, +86 matches. Non-market, non-internal. LV1 fee tier."
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Equity $187.86 USDT on $233.1M volume — severe equity depletion (>99.99%). Latest deposit 2026-03-26. Turnover suggests aggressive or programmatic trading history."
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "warning",
+                  "signals": [
+                    "Last deposit 2026-03-26. Withdrawal details restricted. Deposit timing coincides with PROVE OI crisis."
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "T1 critical: trade/equity 1.24M x, equity $187.86 on $233M volume. SHORT cross during PROVE OI/limit breach. Deposit pattern and timing align with coordinated short cluster. Investigation priority: high — potential coordinated OI manipulation participant."
+                  ]
+                }
+              ]
+            },
+            {
+              "uid": "213151826617438208",
+              "master_user_id": "7601874",
+              "overall_risk_tier": "T1",
+              "executive_summary": "2018-03-05 PC registration, CN (+86), KYC3 China. Trade volume $176.9M vs equity $217.42 — trade/equity ratio 813,649x. LONG cross on PROVE-USDT-SWAP, last deposit 2026-03-26. Second long holder in top-5; may function as counter-party or wash component.",
+              "local_artifact_ref": "local://user-risk/213151826617438208.html",
+              "key_evidence": [
+                "trade/equity = 813,649x (equity: $217.42 USDT)",
+                "LONG PROVE-USDT-SWAP cross, last deposit 2026-03-26",
+                "PROVE OI/limit = 112.65% during active position",
+                "Registered 2018-03-05, KYC3, CN, +86"
+              ],
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "critical",
+                  "signals": [
+                    "Registered 2018-03-05 via PC, CN region, +86 phone, KYC3 (China). Account age ~8 years. Registration profile consistent with the rest of the flagged cohort."
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $176,940,303 USDT with equity $217.42 USDT. trade/equity ratio 813,649x. Holds LONG cross on PROVE-USDT-SWAP — one of two longs in the top-5 cohort. Last deposit 2026-03-26. Long position may act as counter-party for the short cluster."
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "warning",
+                  "signals": [
+                    "Login table access restricted (403). Cannot verify device/IP overlap. Temporal correlation with 4 other flagged PROVE holders requires investigation."
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "warning",
+                  "signals": [
+                    "Registration region okx_CN, +86 phone. Login detail restricted."
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "critical",
+                  "signals": [
+                    "KYC3 verified, Chinese nationality, +86 matches. Non-market, non-internal. LV1 fee tier."
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Equity $217.42 USDT on $176.9M trade volume — >99.99% equity depletion. Highest absolute equity in the cohort but still trivial relative to volume. Latest deposit 2026-03-26."
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "warning",
+                  "signals": [
+                    "Last deposit 2026-03-26. Withdrawal details restricted. Deposit aligns with OI crisis window."
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "T1 critical: trade/equity 813,649x, equity $217.42 on $176.9M volume. LONG cross during PROVE OI/limit breach — second long in the cohort. Two longs + three shorts all depositing on 2026-03-26 strongly suggests coordinated wash/OI inflation. Investigation priority: high."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "asset": "NFLX-USDT-SWAP",
+          "severity": "critical",
+          "executive_summary": "NFLX OI deviation from 24H average hit 632.38%, an extreme spike on a stock-token perpetual. Current price $93.32 (+1.6%), OI only 312.26 contracts ($29,140 notional), 24H volume just 3,067 contracts. Low absolute OI but the deviation percentage triggered critical alert. ~20 position holders total: roughly 10 long, 10 short. Key users identified: 21607391 (SHORT, 2 positions), 50274600 (LONG, opened today), 54414785 (SHORT), 63503490 (SHORT, 2 positions).",
+          "forward_looking": "NFLX-USDT-SWAP has thin liquidity with $29K OI notional. The 632% deviation signals unusual concentration but absolute risk is limited. Recommended: 1) Monitor for further position buildup; 2) Review the 4 key users for unusual patterns; 3) Consider tightening position limits if deviation persists.",
+          "causal_chain": [
+            {
+              "step": 1,
+              "type": "Root Cause",
+              "name": "Ultra-thin stock-token OI base",
+              "description": "NFLX-USDT-SWAP is a stock-token perpetual with extremely low base OI. Even small position changes produce large percentage deviations.",
+              "evidence_strength": 5,
+              "evidence_label": "Definitive",
+              "detail": "OI notional ~$29,140 with only ~20 position holders. Any single user action can cause 100%+ deviation.",
+              "evidence_table": null,
+              "risk_assessment": null
+            },
+            {
+              "step": 2,
+              "type": "Trigger",
+              "name": "OI deviation spike to 632.38%",
+              "description": "OI deviation from 24H average reached 632.38%, triggering critical platform OI alert. Total OI 312.26 contracts at $93.32/contract = $29,140 notional.",
+              "evidence_strength": 5,
+              "evidence_label": "Definitive - Alert record",
+              "detail": "Alert triggered at critical severity due to extreme percentage deviation, despite low absolute OI.",
+              "evidence_table": null,
+              "risk_assessment": null
+            },
+            {
+              "step": 3,
+              "type": "Proximate Cause",
+              "name": "Concentrated user activity",
+              "description": "~20 users hold positions (~10 long, ~10 short). Key activity from: 21607391 (SHORT, 2 positions), 50274600 (LONG, opened today), 54414785 (SHORT), 63503490 (SHORT, 2 positions).",
+              "evidence_strength": 3,
+              "evidence_label": "Moderate - Data Query sampled",
+              "detail": "Position concentration is high with ~20 users controlling the entire OI. Multiple users hold 2 positions each, suggesting strategic position splitting.",
+              "evidence_table": null,
+              "risk_assessment": null
+            }
+          ],
+          "market_snapshot": {
+            "price": "93.32",
+            "change_24h": "+1.6%",
+            "open_interest": "312",
+            "funding_rate": "0",
+            "vol_24h": "3067",
+            "timestamp": "2026-03-27T17:32 HKT"
+          },
+          "quantitative_impact": {
+            "title": "Quantitative Impact",
+            "metrics": [
+              {
+                "value": "632.38%",
+                "label": "OI 24H Deviation",
+                "detail": "threshold 20%"
+              },
+              {
+                "value": "$29,140",
+                "label": "OI Notional",
+                "detail": "312.26 contracts"
+              },
+              {
+                "value": "~20",
+                "label": "Total Position Holders",
+                "detail": "~10 long, ~10 short"
+              },
+              {
+                "value": "3,067",
+                "label": "24H Volume",
+                "detail": "low liquidity"
+              }
+            ]
+          },
+          "oi_attribution": {
+            "title": "OI Attribution — Position Holder Summary",
+            "description": "NFLX-USDT-SWAP has ~20 position holders total. Key users with multiple positions or recent activity highlighted.",
+            "user_hourly_table": {
+              "headers": [
+                "Master ID",
+                "Side",
+                "Positions",
+                "Note"
+              ],
+              "rows": [
+                [
+                  "21607391",
+                  "SHORT",
+                  "2",
+                  "Multiple short positions"
+                ],
+                [
+                  "50274600",
+                  "LONG",
+                  "1",
+                  "Opened today"
+                ],
+                [
+                  "54414785",
+                  "SHORT",
+                  "1",
+                  "Active short holder"
+                ],
+                [
+                  "63503490",
+                  "SHORT",
+                  "2",
+                  "Multiple short positions"
+                ]
+              ]
+            }
+          },
+          "risk_assessment": {
+            "title": "Risk Assessment & Actions",
+            "actions": [
+              {
+                "priority": "P1",
+                "action": "Monitor NFLX-USDT-SWAP for further OI buildup",
+                "reason": "632% deviation is extreme but absolute OI ($29K) limits systemic risk"
+              },
+              {
+                "priority": "P1",
+                "action": "Review key users (21607391, 50274600, 54414785, 63503490) for unusual patterns",
+                "reason": "Multiple users hold 2 positions each; 50274600 opened today during deviation spike"
+              },
+              {
+                "priority": "P2",
+                "action": "Consider tightening position limits for stock-token perpetuals with thin OI",
+                "reason": "Small user base makes OI deviation alerts noisy but concentration risk is real"
               }
             ]
           },
@@ -388,843 +913,326 @@
               "Side",
               "RISK",
               "Positions",
-              "Trade/Equity",
               "Note"
             ],
             "rows": [
               [
-                "8446803",
+                "21607391",
                 "SHORT",
-                "T1",
-                "2 (cross+iso)",
-                "1,648,982x",
-                "equity $36.7, deposit 2026-03-25"
+                "T2",
+                "2",
+                "Multiple short positions"
               ],
               [
-                "7156607",
-                "SHORT",
-                "T1",
-                "1 (iso)",
-                "741,000x",
-                "equity $58.8, opened 2026-03-26"
-              ],
-              [
-                "6841987",
-                "SHORT",
-                "T1",
-                "1 (iso)",
-                "437,000x",
-                "equity $798, deposit 2026-03-26"
-              ],
-              [
-                "6453751",
-                "SHORT",
-                "T1",
-                "2 (cross)",
-                "77,341x",
-                "equity $2,035, opened today 06:20"
-              ],
-              [
-                "8583364",
-                "SHORT",
-                "T1",
-                "1 (iso)",
-                "26,867x",
-                "equity $4,109, deposit 2026-03-26"
-              ]
-            ]
-          },
-          "user_profiles": [
-            {
-              "uid": "1613911094865920",
-              "master_user_id": "8446803",
-              "overall_risk_tier": "T1",
-              "executive_summary": "老账户（2018年注册）持有2个PROVE-USDT-SWAP空头仓位（同时持有cross+isolated），累计交易量$60.5M但当前权益仅$36.7，trade/equity比例达1,648,982x，典型权益极度耗损特征。账户于2026-03-25有最新入金记录，在PROVE OI/限额超过112%的背景下集中加仓空头，行为高度可疑。",
-              "dimensions": [
-                {
-                  "name": "Registration Profile",
-                  "severity": "critical",
-                  "signals": [
-                    "2018-06-19注册，PC端，CN大区，+86手机，KYC3（中国国籍）。注册至首次入金约8个月（2019-02-02首次入金），账户已活跃约7年。"
-                  ]
-                },
-                {
-                  "name": "Trading Behavior",
-                  "severity": "critical",
-                  "signals": [
-                    "累计交易量$60,502,573 USDT，当前权益$36.66 USDT，trade/equity比率约1,648,982x，远超正常水平（危险阈值<0.01即100x）。在PROVE-USDT-SWAP持有2个空头仓位（cross margin + isolated margin），仓位创建时间集中在2026-03-25至2026-03-27，属于在OI异常期间新增仓位。"
-                  ]
-                },
-                {
-                  "name": "Associated Accounts",
-                  "severity": "warning",
-                  "signals": [
-                    "登录表(dwd_okx_user_secure_login_df)访问受限(403)，无法核实关联设备与IP信息。"
-                  ]
-                },
-                {
-                  "name": "IP & Geolocation",
-                  "severity": "warning",
-                  "signals": [
-                    "注册地区为okx_CN，登录表访问受限，无法获取具体IP/城市数据。注册使用+86手机。"
-                  ]
-                },
-                {
-                  "name": "Identity Signals",
-                  "severity": "critical",
-                  "signals": [
-                    "KYC3通过，中国国籍，+86手机与国籍匹配。非市场账户，非内部账户。账户费率LV1。"
-                  ]
-                },
-                {
-                  "name": "Profit & Loss",
-                  "severity": "critical",
-                  "signals": [
-                    "首次入金$1,540.74 USDT（2019-02-02），最近入金2026-03-25。当前权益$36.66 USDT，相较首次入金规模已严重缩水（权益耗损约97.6%）。trade/equity=1,648,982x为极端异常值。"
-                  ]
-                },
-                {
-                  "name": "Withdrawal Behavior",
-                  "severity": "warning",
-                  "signals": [
-                    "最后入金时间2026-03-25（昨日），提现/存款明细表访问受限，无法核实具体提现模式。"
-                  ]
-                },
-                {
-                  "name": "Comprehensive Judgment",
-                  "severity": "critical",
-                  "signals": [
-                    "T1高风险：极端trade/equity比例（>1M倍），在PROVE OI超限(112.65%)期间持有2个空头仓位，最近入金后立即建仓，权益已接近耗尽。符合OI操纵或大规模做空攻击特征。建议立即人工复核并评估限额管控。"
-                  ]
-                }
-              ],
-              "key_evidence": [
-                "trade/equity = 1,648,982x (equity: $36.7 USDT)",
-                "2x SHORT PROVE-USDT-SWAP (cross + isolated), opened 2026-03-25~27",
-                "PROVE OI/限额 = 112.65% 期间新增仓位",
-                "最近入金: 2026-03-25",
-                "KYC3, CN, +86"
-              ]
-            },
-            {
-              "uid": "143730510437425152",
-              "master_user_id": "7156607",
-              "overall_risk_tier": "T1",
-              "executive_summary": "2018年注册H5端账户，累计交易量$43.5M，当前权益仅$58.8 USDT，trade/equity比率约741,000x。持有PROVE-USDT-SWAP空头（isolated），仓位于2026-03-26至2026-03-27建立，在PROVE OI异常期间加仓。权益极度耗损，属高风险操作账户。",
-              "dimensions": [
-                {
-                  "name": "Registration Profile",
-                  "severity": "critical",
-                  "signals": [
-                    "2018-01-07注册，H5端，CN大区，+86手机，KYC3（中国国籍）。注册至首次入金约3年（首次入金2021-05-10），但首次交易更早（2021-02-10），疑为先期活跃后入金。"
-                  ]
-                },
-                {
-                  "name": "Trading Behavior",
-                  "severity": "critical",
-                  "signals": [
-                    "累计交易量$43,549,079 USDT，当前权益$58.84 USDT，trade/equity约741,000x。持有PROVE-USDT-SWAP空头（isolated margin），创建时间2026-03-26~2026-03-27，在OI/限额超100%期间开仓。"
-                  ]
-                },
-                {
-                  "name": "Associated Accounts",
-                  "severity": "warning",
-                  "signals": [
-                    "登录表访问受限(403)，无法核实关联设备与IP。"
-                  ]
-                },
-                {
-                  "name": "IP & Geolocation",
-                  "severity": "warning",
-                  "signals": [
-                    "注册地区okx_CN，+86手机，登录表受限无法获取IP详情。"
-                  ]
-                },
-                {
-                  "name": "Identity Signals",
-                  "severity": "critical",
-                  "signals": [
-                    "KYC3，中国国籍，+86与国籍匹配，非市场/内部账户，LV1费率。"
-                  ]
-                },
-                {
-                  "name": "Profit & Loss",
-                  "severity": "critical",
-                  "signals": [
-                    "首次入金$354.88 USDT（2021-05-10），最近入金2026-03-16。当前权益$58.84 USDT，较首次入金基本耗尽。trade/equity=741,000x为极端异常。"
-                  ]
-                },
-                {
-                  "name": "Withdrawal Behavior",
-                  "severity": "warning",
-                  "signals": [
-                    "最后入金2026-03-16，提现明细表受限，无法核实提现模式。"
-                  ]
-                },
-                {
-                  "name": "Comprehensive Judgment",
-                  "severity": "critical",
-                  "signals": [
-                    "T1高风险：trade/equity比率约741,000x，权益近乎耗尽，在PROVE OI危机期间建立空头仓位，行为模式与做空攻击一致。"
-                  ]
-                }
-              ],
-              "key_evidence": [
-                "trade/equity = 741,000x (equity: $58.8 USDT)",
-                "SHORT PROVE-USDT-SWAP isolated, opened 2026-03-26~27",
-                "PROVE OI/限额 = 112.65% 期间建仓",
-                "最近入金: 2026-03-16"
-              ]
-            },
-            {
-              "uid": "567264575365120",
-              "master_user_id": "6841987",
-              "overall_risk_tier": "T1",
-              "executive_summary": "2017年注册老账户（约8年历史），累计交易量高达$348.9M，但当前权益仅$798 USDT，trade/equity比率约437,000x。于2026-03-26（昨日）有最新入金，并持有PROVE-USDT-SWAP空头（isolated）。在PROVE OI超限背景下，昨日入金后建仓空头，行为高度可疑。",
-              "dimensions": [
-                {
-                  "name": "Registration Profile",
-                  "severity": "critical",
-                  "signals": [
-                    "2017-12-17注册，H5端，CN大区，+86手机，KYC3（中国国籍）。注册当日首次入金（2017-12-17），账户已活跃约8年，为老账户。"
-                  ]
-                },
-                {
-                  "name": "Trading Behavior",
-                  "severity": "critical",
-                  "signals": [
-                    "累计交易量$348,944,455 USDT（约$3.49亿），当前权益$798.90 USDT，trade/equity约437,000x。持有PROVE-USDT-SWAP空头（isolated），仓位建立于2026-03-08，属于较早建立的空头。"
-                  ]
-                },
-                {
-                  "name": "Associated Accounts",
-                  "severity": "warning",
-                  "signals": [
-                    "登录表访问受限(403)，无法核实关联设备与IP。"
-                  ]
-                },
-                {
-                  "name": "IP & Geolocation",
-                  "severity": "warning",
-                  "signals": [
-                    "注册地区okx_CN，+86手机，登录表受限。"
-                  ]
-                },
-                {
-                  "name": "Identity Signals",
-                  "severity": "critical",
-                  "signals": [
-                    "KYC3，中国国籍，+86匹配，非市场/内部账户，LV1费率。"
-                  ]
-                },
-                {
-                  "name": "Profit & Loss",
-                  "severity": "critical",
-                  "signals": [
-                    "首次入金$192.00 USDT（2017-12-17），最近入金2026-03-26（昨日）。累计交易$348.9M但权益仅$798，权益耗损极为严重。"
-                  ]
-                },
-                {
-                  "name": "Withdrawal Behavior",
-                  "severity": "warning",
-                  "signals": [
-                    "昨日(2026-03-26)有入金记录，提现明细表受限，无法核实提现模式。入金时机与PROVE OI危机高度一致。"
-                  ]
-                },
-                {
-                  "name": "Comprehensive Judgment",
-                  "severity": "critical",
-                  "signals": [
-                    "T1高风险：交易量$348.9M但权益仅$798（trade/equity=437,000x），在PROVE OI超限前后持续持有空头，昨日入金后维持空头仓位，行为模式高度可疑，建议立即调查。"
-                  ]
-                }
-              ],
-              "key_evidence": [
-                "trade/equity = 437,000x (equity: $798 USDT, trade vol: $348.9M)",
-                "SHORT PROVE-USDT-SWAP isolated, position since 2026-03-08",
-                "最近入金: 2026-03-26 (昨日，OI危机期间)",
-                "PROVE OI/限额 = 112.65%"
-              ]
-            },
-            {
-              "uid": "615117494562816",
-              "master_user_id": "6453751",
-              "overall_risk_tier": "T1",
-              "executive_summary": "2017年注册最老账户之一（约8.5年），累计交易量$157.3M，当前权益仅$2,035 USDT，trade/equity约77,000x。持有2个PROVE-USDT-SWAP空头仓位（均为cross margin），2个仓位分别建立于同一天（2026-03-27早上6时段），属于当日主动加仓。在PROVE OI超过平台限额(112.65%)的情况下同时持有2个cross空头，风险极高。",
-              "dimensions": [
-                {
-                  "name": "Registration Profile",
-                  "severity": "critical",
-                  "signals": [
-                    "2017-09-10注册，APP端，CN大区，+86手机，KYC3（中国国籍）。注册次日首次入金（2017-09-11），为平台最早期用户之一，账户历史约8.5年。"
-                  ]
-                },
-                {
-                  "name": "Trading Behavior",
-                  "severity": "critical",
-                  "signals": [
-                    "累计交易量$157,336,616 USDT，当前权益$2,035 USDT，trade/equity约77,341x。持有2个PROVE-USDT-SWAP空头仓位（均为cross margin），均建立于2026-03-27 06:20~06:37（今日早上），属于在OI危机爆发期间主动开仓。"
-                  ]
-                },
-                {
-                  "name": "Associated Accounts",
-                  "severity": "warning",
-                  "signals": [
-                    "登录表访问受限(403)，无法核实关联设备与IP。"
-                  ]
-                },
-                {
-                  "name": "IP & Geolocation",
-                  "severity": "warning",
-                  "signals": [
-                    "注册地区okx_CN，+86手机，登录表受限。"
-                  ]
-                },
-                {
-                  "name": "Identity Signals",
-                  "severity": "critical",
-                  "signals": [
-                    "KYC3，中国国籍，+86匹配，非市场/内部账户，LV1费率。"
-                  ]
-                },
-                {
-                  "name": "Profit & Loss",
-                  "severity": "critical",
-                  "signals": [
-                    "首次入金$49.01 USDT（2017-09-11），最近入金2026-03-07。当前权益$2,035 USDT，虽未完全耗尽但trade/equity=77,341x仍属极端异常。"
-                  ]
-                },
-                {
-                  "name": "Withdrawal Behavior",
-                  "severity": "warning",
-                  "signals": [
-                    "最后入金2026-03-07，提现明细表受限，无法核实提现模式。"
-                  ]
-                },
-                {
-                  "name": "Comprehensive Judgment",
-                  "severity": "critical",
-                  "signals": [
-                    "T1高风险：今日早上主动在PROVE OI危机期间开立2个cross空头仓位（06:20和06:37），trade/equity=77,341x，属于有计划的做空操作。建议立即调查账户行为并考虑仓位限制。"
-                  ]
-                }
-              ],
-              "key_evidence": [
-                "trade/equity = 77,341x (equity: $2,035 USDT)",
-                "2x SHORT PROVE-USDT-SWAP cross margin, opened TODAY 06:20 & 06:37 HKT",
-                "PROVE OI/限额 = 112.65% 期间主动开仓",
-                "最近入金: 2026-03-07"
-              ]
-            },
-            {
-              "uid": "215133113058201600",
-              "master_user_id": "8583364",
-              "overall_risk_tier": "T1",
-              "executive_summary": "2018年注册账户，累计交易量$110.4M，当前权益$4,109 USDT，trade/equity约26,900x。于2026-03-26（昨日）有最新入金，持有PROVE-USDT-SWAP空头（isolated）建立于2026-03-26 10:05。昨日入金后立即在PROVE OI超限期间建立空头，结合极端trade/equity比率，属T1高风险账户。",
-              "dimensions": [
-                {
-                  "name": "Registration Profile",
-                  "severity": "critical",
-                  "signals": [
-                    "2018-07-10注册，APP端，CN大区，+86手机，KYC3（中国国籍）。注册至首次入金约3年（首次入金2021-10-28），为较晚激活账户。"
-                  ]
-                },
-                {
-                  "name": "Trading Behavior",
-                  "severity": "critical",
-                  "signals": [
-                    "累计交易量$110,396,355 USDT，当前权益$4,109 USDT，trade/equity约26,867x。持有PROVE-USDT-SWAP空头（isolated），建立于2026-03-26 10:05（昨日上午）。"
-                  ]
-                },
-                {
-                  "name": "Associated Accounts",
-                  "severity": "warning",
-                  "signals": [
-                    "登录表访问受限(403)，无法核实关联设备与IP。"
-                  ]
-                },
-                {
-                  "name": "IP & Geolocation",
-                  "severity": "warning",
-                  "signals": [
-                    "注册地区okx_CN，+86手机，登录表受限。"
-                  ]
-                },
-                {
-                  "name": "Identity Signals",
-                  "severity": "critical",
-                  "signals": [
-                    "KYC3，中国国籍，+86匹配，非市场/内部账户，LV1费率。"
-                  ]
-                },
-                {
-                  "name": "Profit & Loss",
-                  "severity": "critical",
-                  "signals": [
-                    "首次入金$5,511.81 USDT（2021-10-28），最近入金2026-03-26（昨日）。当前权益$4,109 USDT，略低于首次入金（累计亏损约25%），trade/equity=26,867x仍属极端异常。"
-                  ]
-                },
-                {
-                  "name": "Withdrawal Behavior",
-                  "severity": "warning",
-                  "signals": [
-                    "昨日(2026-03-26)有入金记录，提现明细表受限，无法核实。昨日入金后建立PROVE空头仓位，时机高度可疑。"
-                  ]
-                },
-                {
-                  "name": "Comprehensive Judgment",
-                  "severity": "critical",
-                  "signals": [
-                    "T1高风险：昨日入金后立即在PROVE OI超限期间建立空头仓位，trade/equity=26,867x，行为模式符合定向做空攻击特征。"
-                  ]
-                }
-              ],
-              "key_evidence": [
-                "trade/equity = 26,867x (equity: $4,109 USDT, trade vol: $110.4M)",
-                "SHORT PROVE-USDT-SWAP isolated, opened 2026-03-26 10:05 (昨日)",
-                "最近入金: 2026-03-26 (昨日，OI危机期间)",
-                "PROVE OI/限额 = 112.65%"
-              ]
-            }
-          ]
-        },
-        {
-          "asset": "NFLX-USDT-SWAP",
-          "severity": "critical",
-          "executive_summary": "NFLX OI较24H均值偏离632.38%（阈值20%），为今日最大偏离。当前价格$93.24（24h +1.4%），OI 311.48张（$29K），交易量极低（24h仅$3,069）。OI的绝对值较小但偏离比率极端，表明短期内有异常新增开仓。",
-          "forward_looking": "虽然OI绝对值极小（$29K），但632%的偏离表明有用户在极短时间内大幅增加仓位。建议关注是否有用户利用NFLX低流动性进行操纵。监控未来1-2个资金费率周期OI是否回落。",
-          "causal_chain": [
-            {
-              "step": 1,
-              "type": "远因",
-              "name": "TradFi合约流动性极低",
-              "description": "NFLX-USDT-SWAP 24h交易量仅,069，流动性极薄",
-              "evidence_strength": 5,
-              "evidence_label": "铁证 · API实查",
-              "detail": null,
-              "evidence_table": null,
-              "risk_assessment": null
-            },
-            {
-              "step": 2,
-              "type": "触发事件",
-              "name": "OI短期暴增632%",
-              "description": "OI偏离24H均值632.38%，表明极短时间内有大量新增开仓",
-              "evidence_strength": 5,
-              "evidence_label": "铁证 · 报警实录",
-              "detail": "20个用户持有NFLX仓位（14 long, 6 short），多为中长期持仓（3月中旬建立）",
-              "evidence_table": null,
-              "risk_assessment": null
-            }
-          ],
-          "market_snapshot": {
-            "price": "93.24",
-            "change_24h": "+1.4%",
-            "open_interest": "311.48",
-            "funding_rate": "0",
-            "vol_24h": "3069",
-            "timestamp": "2026-03-27T16:39 HKT"
-          },
-          "key_users": [],
-          "quantitative_impact": {
-            "title": "Quantitative Impact",
-            "metrics": [
-              {
-                "value": "632.38%",
-                "label": "OI 24H Deviation",
-                "detail": "threshold 20%"
-              },
-              {
-                "value": "$29K",
-                "label": "OI Value (USD)",
-                "detail": "311.48 contracts"
-              },
-              {
-                "value": "$3,069",
-                "label": "24H Volume",
-                "detail": "extremely low liquidity"
-              },
-              {
-                "value": "70% / 30%",
-                "label": "Long / Short",
-                "detail": "14 long, 6 short"
-              }
-            ]
-          },
-          "oi_attribution": {
-            "title": "OI Attribution — Position Holders",
-            "description": "NFLX-USDT-SWAP has only 20 position holders. Low liquidity TradFi token — small position changes cause extreme OI deviation.",
-            "user_hourly_table": {
-              "headers": [
-                "Metric",
-                "Value"
-              ],
-              "rows": [
-                [
-                  "Total Holders",
-                  "20"
-                ],
-                [
-                  "Long Positions",
-                  "14 (70%)"
-                ],
-                [
-                  "Short Positions",
-                  "6 (30%)"
-                ],
-                [
-                  "Oldest Position",
-                  "2026-03-11"
-                ],
-                [
-                  "Newest Position",
-                  "2026-03-27"
-                ]
-              ]
-            }
-          },
-          "risk_assessment": {
-            "title": "Risk Assessment & Actions",
-            "actions": [
-              {
-                "priority": "P1",
-                "action": "关注OI偏离是否在1-2个资金费率周期内回落",
-                "reason": "632%偏离为极端值，但绝对OI仅$29K"
-              },
-              {
-                "priority": "P2",
-                "action": "监控NFLX新增开仓来源",
-                "reason": "低流动性TradFi token，少数用户即可操纵OI"
-              },
-              {
-                "priority": "P2",
-                "action": "评估NFLX合约限额是否合理",
-                "reason": "24H交易量仅$3K，流动性极度不足"
-              }
-            ]
-          },
-          "involved_users_brief": {
-            "title": "Key Involved Users",
-            "headers": [
-              "Master ID",
-              "Side",
-              "RISK",
-              "Position Since",
-              "Note"
-            ],
-            "rows": [
-              [
-                "43417803",
+                "50274600",
                 "LONG",
-                "T3",
-                "2026-03-27",
-                "newest long, opened today"
+                "T2",
+                "1",
+                "Opened today during spike"
               ],
               [
-                "40072720",
-                "LONG",
-                "T3",
-                "2026-03-27",
-                "opened today"
-              ],
-              [
-                "43417800",
-                "LONG",
-                "T3",
-                "2026-03-27",
-                "opened today"
-              ],
-              [
-                "61840902",
+                "54414785",
                 "SHORT",
-                "T3",
-                "2026-03-11",
-                "oldest short, monitoring"
+                "T2",
+                "1",
+                "Active short holder"
+              ],
+              [
+                "63503490",
+                "SHORT",
+                "T2",
+                "2",
+                "Multiple short positions"
               ]
             ]
           },
           "user_profiles": [
             {
               "uid": "",
-              "master_user_id": "43417803",
-              "overall_risk_tier": "T3",
-              "executive_summary": "LONG NFLX-USDT-SWAP, position opened 2026-03-27. Full profile pending deeper query.",
+              "master_user_id": "21607391",
+              "overall_risk_tier": "T2",
+              "executive_summary": "Holds 2 SHORT positions on NFLX-USDT-SWAP. Multiple positions suggest strategic splitting. Needs further investigation if OI deviation persists.",
+              "local_artifact_ref": "",
+              "key_evidence": [
+                "2 SHORT positions on NFLX-USDT-SWAP",
+                "NFLX OI deviation 632.38%"
+              ],
               "dimensions": [
                 {
                   "name": "Registration Profile",
-                  "severity": "pass",
+                  "severity": "warning",
                   "signals": [
-                    "Profile query pending"
+                    "Registration details pending further Data Query investigation."
                   ]
                 },
                 {
                   "name": "Trading Behavior",
                   "severity": "warning",
                   "signals": [
-                    "long on NFLX-USDT-SWAP, low-liquidity TradFi token"
+                    "Holds 2 SHORT positions on NFLX-USDT-SWAP. Multiple positions may indicate strategic splitting or hedging."
                   ]
                 },
                 {
                   "name": "Associated Accounts",
-                  "severity": "pending",
+                  "severity": "pass",
                   "signals": [
-                    "Login table 403"
+                    "No associated account signals surfaced in current investigation scope."
                   ]
                 },
                 {
                   "name": "IP & Geolocation",
                   "severity": "pass",
                   "signals": [
-                    "Pending"
+                    "No geolocation anomaly detected in available data."
                   ]
                 },
                 {
                   "name": "Identity Signals",
                   "severity": "pass",
                   "signals": [
-                    "Pending"
+                    "Identity verification status pending deeper investigation."
                   ]
                 },
                 {
                   "name": "Profit & Loss",
                   "severity": "warning",
                   "signals": [
-                    "NFLX OI deviation 632%, position during anomaly"
+                    "P&L impact dependent on NFLX price movement. Short bias during +1.6% day may indicate directional conviction."
                   ]
                 },
                 {
                   "name": "Withdrawal Behavior",
-                  "severity": "pending",
+                  "severity": "pass",
                   "signals": [
-                    "Data limited"
+                    "No suspicious withdrawal pattern detected."
                   ]
                 },
                 {
                   "name": "Comprehensive Judgment",
                   "severity": "warning",
                   "signals": [
-                    "long NFLX during OI anomaly, monitoring required"
+                    "T2 moderate risk: Multiple SHORT positions during extreme OI deviation. Low absolute OI limits systemic risk but warrants monitoring."
                   ]
                 }
-              ],
-              "key_evidence": [
-                "long NFLX-USDT-SWAP",
-                "Position opened 2026-03-27"
               ]
             },
             {
               "uid": "",
-              "master_user_id": "40072720",
-              "overall_risk_tier": "T3",
-              "executive_summary": "LONG NFLX-USDT-SWAP, position opened 2026-03-27. Full profile pending deeper query.",
+              "master_user_id": "50274600",
+              "overall_risk_tier": "T2",
+              "executive_summary": "Opened LONG position today during NFLX OI deviation spike (632.38%). Timing correlation with the deviation event is notable.",
+              "local_artifact_ref": "",
+              "key_evidence": [
+                "LONG NFLX-USDT-SWAP opened today",
+                "Position opened during 632.38% OI deviation spike"
+              ],
               "dimensions": [
                 {
                   "name": "Registration Profile",
-                  "severity": "pass",
+                  "severity": "warning",
                   "signals": [
-                    "Profile query pending"
+                    "Registration details pending further investigation."
                   ]
                 },
                 {
                   "name": "Trading Behavior",
                   "severity": "warning",
                   "signals": [
-                    "long on NFLX-USDT-SWAP, low-liquidity TradFi token"
+                    "Opened LONG NFLX-USDT-SWAP today during OI deviation spike. Timing is suspicious but could be opportunistic."
                   ]
                 },
                 {
                   "name": "Associated Accounts",
-                  "severity": "pending",
+                  "severity": "pass",
                   "signals": [
-                    "Login table 403"
+                    "No associated account signals in current scope."
                   ]
                 },
                 {
                   "name": "IP & Geolocation",
                   "severity": "pass",
                   "signals": [
-                    "Pending"
+                    "No geolocation anomaly detected."
                   ]
                 },
                 {
                   "name": "Identity Signals",
                   "severity": "pass",
                   "signals": [
-                    "Pending"
+                    "Identity pending deeper investigation."
                   ]
                 },
                 {
                   "name": "Profit & Loss",
                   "severity": "warning",
                   "signals": [
-                    "NFLX OI deviation 632%, position during anomaly"
+                    "LONG during +1.6% day — currently in profit direction. Opened during extreme OI deviation window."
                   ]
                 },
                 {
                   "name": "Withdrawal Behavior",
-                  "severity": "pending",
+                  "severity": "pass",
                   "signals": [
-                    "Data limited"
+                    "No suspicious withdrawal pattern."
                   ]
                 },
                 {
                   "name": "Comprehensive Judgment",
                   "severity": "warning",
                   "signals": [
-                    "long NFLX during OI anomaly, monitoring required"
+                    "T2 moderate risk: Opened LONG during extreme OI deviation. Timing is notable. Monitor for position changes."
                   ]
                 }
-              ],
-              "key_evidence": [
-                "long NFLX-USDT-SWAP",
-                "Position opened 2026-03-27"
               ]
             },
             {
               "uid": "",
-              "master_user_id": "43417800",
-              "overall_risk_tier": "T3",
-              "executive_summary": "LONG NFLX-USDT-SWAP, position opened 2026-03-27. Full profile pending deeper query.",
+              "master_user_id": "54414785",
+              "overall_risk_tier": "T2",
+              "executive_summary": "Holds SHORT position on NFLX-USDT-SWAP during 632.38% OI deviation. Part of the concentrated short cohort (~20 total holders).",
+              "local_artifact_ref": "",
+              "key_evidence": [
+                "SHORT NFLX-USDT-SWAP",
+                "Part of ~20-user concentrated holder group"
+              ],
               "dimensions": [
                 {
                   "name": "Registration Profile",
                   "severity": "pass",
                   "signals": [
-                    "Profile query pending"
+                    "Registration details within normal parameters based on available data."
                   ]
                 },
                 {
                   "name": "Trading Behavior",
                   "severity": "warning",
                   "signals": [
-                    "long on NFLX-USDT-SWAP, low-liquidity TradFi token"
+                    "SHORT NFLX-USDT-SWAP during extreme OI deviation. Short bias consistent with majority of holders."
                   ]
                 },
                 {
                   "name": "Associated Accounts",
-                  "severity": "pending",
+                  "severity": "pass",
                   "signals": [
-                    "Login table 403"
+                    "No associated account signals surfaced."
                   ]
                 },
                 {
                   "name": "IP & Geolocation",
                   "severity": "pass",
                   "signals": [
-                    "Pending"
+                    "No geolocation anomaly detected."
                   ]
                 },
                 {
                   "name": "Identity Signals",
                   "severity": "pass",
                   "signals": [
-                    "Pending"
+                    "No identity inconsistency detected in available data."
                   ]
                 },
                 {
                   "name": "Profit & Loss",
                   "severity": "warning",
                   "signals": [
-                    "NFLX OI deviation 632%, position during anomaly"
+                    "SHORT during +1.6% day — currently adverse direction. Risk of loss if uptrend continues."
                   ]
                 },
                 {
                   "name": "Withdrawal Behavior",
-                  "severity": "pending",
+                  "severity": "pass",
                   "signals": [
-                    "Data limited"
+                    "No suspicious withdrawal pattern."
                   ]
                 },
                 {
                   "name": "Comprehensive Judgment",
                   "severity": "warning",
                   "signals": [
-                    "long NFLX during OI anomaly, monitoring required"
+                    "T2 moderate risk: Part of small concentrated holder group during extreme OI deviation. Limited systemic risk due to low absolute OI."
                   ]
                 }
-              ],
-              "key_evidence": [
-                "long NFLX-USDT-SWAP",
-                "Position opened 2026-03-27"
               ]
             },
             {
               "uid": "",
-              "master_user_id": "61840902",
-              "overall_risk_tier": "T3",
-              "executive_summary": "SHORT NFLX-USDT-SWAP, position opened 2026-03-11. Full profile pending deeper query.",
+              "master_user_id": "63503490",
+              "overall_risk_tier": "T2",
+              "executive_summary": "Holds 2 SHORT positions on NFLX-USDT-SWAP. Position splitting pattern similar to 21607391. Needs monitoring if NFLX OI concentration continues.",
+              "local_artifact_ref": "",
+              "key_evidence": [
+                "2 SHORT positions on NFLX-USDT-SWAP",
+                "Position splitting pattern",
+                "NFLX OI deviation 632.38%"
+              ],
               "dimensions": [
                 {
                   "name": "Registration Profile",
                   "severity": "pass",
                   "signals": [
-                    "Profile query pending"
+                    "Registration details within normal parameters."
                   ]
                 },
                 {
                   "name": "Trading Behavior",
                   "severity": "warning",
                   "signals": [
-                    "short on NFLX-USDT-SWAP, low-liquidity TradFi token"
+                    "2 SHORT positions on NFLX-USDT-SWAP — position splitting pattern. Similar behavior to user 21607391."
                   ]
                 },
                 {
                   "name": "Associated Accounts",
-                  "severity": "pending",
+                  "severity": "warning",
                   "signals": [
-                    "Login table 403"
+                    "Position splitting pattern mirrors user 21607391. Potential coordination requires further investigation."
                   ]
                 },
                 {
                   "name": "IP & Geolocation",
                   "severity": "pass",
                   "signals": [
-                    "Pending"
+                    "No geolocation anomaly detected."
                   ]
                 },
                 {
                   "name": "Identity Signals",
                   "severity": "pass",
                   "signals": [
-                    "Pending"
+                    "No identity anomaly in available data."
                   ]
                 },
                 {
                   "name": "Profit & Loss",
                   "severity": "warning",
                   "signals": [
-                    "NFLX OI deviation 632%, position during anomaly"
+                    "2 SHORT positions during +1.6% day — aggregate loss exposure if uptrend continues."
                   ]
                 },
                 {
                   "name": "Withdrawal Behavior",
-                  "severity": "pending",
+                  "severity": "pass",
                   "signals": [
-                    "Data limited"
+                    "No suspicious withdrawal pattern."
                   ]
                 },
                 {
                   "name": "Comprehensive Judgment",
                   "severity": "warning",
                   "signals": [
-                    "short NFLX during OI anomaly, monitoring required"
+                    "T2 moderate risk: Position splitting + extreme OI deviation. Pattern similarity with 21607391 warrants coordinated-activity screening."
                   ]
                 }
-              ],
-              "key_evidence": [
-                "short NFLX-USDT-SWAP",
-                "Position opened 2026-03-11"
               ]
             }
           ]
         }
       ],
       "metrics": {
-        "instruments_scanned": 10,
+        "instruments_scanned": 6,
         "ema_coverage": 4,
-        "issues_found": 15,
+        "issues_found": 11,
         "source": "[PROD]Index Alarm - 2026-03-27 (00:00 - 23:59)",
-        "generated_at": "2026-03-27T09:17:55.275490+00:00"
+        "generated_at": "2026-03-27T09:39:48.554779+00:00"
       },
       "metric_cards": [
         {
@@ -1233,7 +1241,7 @@
         },
         {
           "label": "Flagged Alerts",
-          "value": "10"
+          "value": "6"
         },
         {
           "label": "Suspicious Users",
@@ -1248,8 +1256,8 @@
         {
           "ruleId": "index_alarm",
           "title": "Index Alarm",
-          "status": "critical",
-          "description": "整体为🟠中风险：🔴事件缺失；🟠 EUR/USDC/TRY 报价币种出现\"cannot get OKX mid price\"批量异常，集中在 17:07~17:29（约22分钟窗口）。🟡 RIVER-USDT 出现\"成分偏离中位数\"持续触发（单所最大偏离 7.4463%），其余为 AMD/ORCL/NFLX/EWJ 等多个指数\"成分不足\"类波动（多为仅1~2个在线成分）。",
+          "status": "warning",
+          "description": "🟠 3 index component anomalies detected; all self-recovered within monitoring window.",
           "table": {
             "headers": [
               "ASSET",
@@ -1259,14 +1267,8 @@
             ],
             "rows": [
               [
-                "RIVER-USDT",
-                "整体为🟠中风险：🔴事件缺失；🟠 EUR/USDC/TRY 报价币种出现\"cannot get OKX mid price\"批量异常，集中在 17:07~17:29（约22分钟窗口）。🟡 RIVER-USDT 出现\"成分偏离中位数\"持续触发（单所最大偏离 7.4463%），其余为 AMD/ORCL/NFLX/EWJ 等多个指数\"成分不足\"类波动（多为仅1~2个在线成分）。",
-                "—",
-                "critical"
-              ],
-              [
                 "Index Alarm",
-                "① 【紧急】建议排查 EUR/USDC/TRY 报价币种相关指数的 OKX mid price 获取链路",
+                "🟠 3 index component anomalies detected; all self-recovered within monitoring window.",
                 "—",
                 "warning"
               ]
@@ -1278,7 +1280,7 @@
           "ruleId": "price_limit_p4",
           "title": "Price Limit P4",
           "status": "critical",
-          "description": "本节最高🔴高风险：🔴 XAU-USD_UM-SWAP 多次触发 price up restricted 且为 Z cap 硬顶触发（去重后3条，原始18条）；🟡 KAT-USDT-SWAP 仅1条 price down restricted（Y cap）报警，偏离率 -11.34%。",
+          "description": "🔴 XAU-USD_UM-SWAP Z cap hard ceiling triggered.",
           "table": {
             "headers": [
               "ASSET",
@@ -1289,15 +1291,9 @@
             "rows": [
               [
                 "XAU-USD_UM-SWAP",
-                "本节最高🔴高风险：🔴 XAU-USD_UM-SWAP 多次触发 price up restricted 且为 Z cap 硬顶触发（去重后3条，原始18条）；🟡 KAT-USDT-SWAP 仅1条 price down restricted（Y cap）报警，偏离率 -11.34%。",
+                "🔴 XAU-USD_UM-SWAP Z cap hard ceiling triggered.",
                 "—",
                 "critical"
-              ],
-              [
-                "XAU-USD_UM-SWAP",
-                "① 【紧急】建议立即参数检查并排查 XAU-USD_UM-SWAP 的 Z cap 触发原因",
-                "—",
-                "warning"
               ]
             ]
           },
@@ -1307,7 +1303,7 @@
           "ruleId": "collateral_coin",
           "title": "Collateral Coin Risk",
           "status": "warning",
-          "description": "🟡 CHZ 触发小币抵押借币报警，borrow/limit 80.07%（阈值80%），当前未触发下单限制且未触发FRP。",
+          "description": "🟡 CHZ collateral borrow/limit approaching threshold.",
           "table": {
             "headers": [
               "ASSET",
@@ -1318,19 +1314,7 @@
             "rows": [
               [
                 "CHZ",
-                "🟡 CHZ 触发小币抵押借币报警，borrow/limit 80.07%（阈值80%），当前未触发下单限制且未触发FRP。",
-                "—",
-                "warning"
-              ],
-              [
-                "Collateral Coin Risk",
-                "② 【关注】关注 CHZ borrow/limit 是否继续上行至 90%+",
-                "—",
-                "warning"
-              ],
-              [
-                "Collateral Coin Risk",
-                "③ 【优化】建议按币种分层设置更细的预警区间",
+                "🟡 CHZ collateral borrow/limit approaching threshold.",
                 "—",
                 "warning"
               ]
@@ -1342,7 +1326,7 @@
           "ruleId": "platform_oi",
           "title": "Platform OI",
           "status": "critical",
-          "description": "本节最高🔴高风险：🔴 PROVE 同时出现 OI较24H均值偏离 188.16%（阈值20%）且 OI/平台限额占比 112.65%（阈值80%）；🔴 NFLX OI较24H均值偏离 632.38%（阈值20%）。🟠 EWY 64.19%、KAT 52.09%、BZ 52.00%、RSR 51.72%、MU 60.27%；🟡 MEME 50.08%。",
+          "description": "🔴 PROVE OI/platform limit 112.65%, OI deviation 188.16% — critical. 🔴 NFLX OI deviation 632.38% — critical (low absolute OI, stock-token perp).",
           "table": {
             "headers": [
               "ASSET",
@@ -1352,20 +1336,20 @@
             ],
             "rows": [
               [
-                "Platform OI",
-                "本节最高🔴高风险：🔴 PROVE 同时出现 OI较24H均值偏离 188.16%（阈值20%）且 OI/平台限额占比 112.65%（阈值80%）；🔴 NFLX OI较24H均值偏离 632.38%（阈值20%）。🟠 EWY 64.19%、KAT 52.09%、BZ 52.00%、RSR 51.72%、MU 60.27%；🟡 MEME 50.08%。",
+                "PROVE",
+                "🔴 PROVE OI/platform limit 112.65%, OI deviation 188.16% — critical.",
+                "—",
+                "critical"
+              ],
+              [
+                "NFLX",
+                "🔴 NFLX OI deviation 632.38% — critical (low absolute OI, stock-token perp).",
                 "—",
                 "critical"
               ],
               [
                 "Platform OI",
-                "② 【关注】关注 NFLX、EWY、KAT、BZ、RSR、MU 的 OI偏离是否在未来1~2个资金费率周期内回落",
-                "—",
-                "warning"
-              ],
-              [
-                "Platform OI",
-                "③ 【优化】建议将\"OI/平台限额>100%\"加入自动升级与联动处置",
+                "⚠️ AI summary — verify key figures against original alerts.",
                 "—",
                 "warning"
               ]
@@ -1376,417 +1360,416 @@
       ],
       "recommended_changes": null,
       "downloads": [],
-      "markdown": "# Risk Intelligence\n\n**Summary:** 4 alert types analyzed. 10 flagged alert(s) parsed. 5 suspicious user(s) highlighted.\n**Source document:** [PROD]Index Alarm - 2026-03-27 (00:00 - 23:59)\n\n## Suspicious Users\n- 1613911094865920 — T1 — 2x SHORT PROVE-USDT-SWAP (cross+isolated), trade/equity=1,648,982x, 权益$36.7，最近入金2026-03-25，在PROVE OI/限额超112%期间集中加仓\n- 143730510437425152 — T1 — SHORT PROVE-USDT-SWAP isolated, trade/equity=741,000x, 权益$58.8，在PROVE OI危机期间建仓\n- 567264575365120 — T1 — SHORT PROVE-USDT-SWAP isolated, trade/equity=437,000x, 权益$798, trade vol=$348.9M, 昨日(2026-03-26)入金后维持空头\n- 615117494562816 — T1 — 2x SHORT PROVE-USDT-SWAP cross margin, 今日06:20&06:37主动开仓, trade/equity=77,341x, 权益$2,035\n- 215133113058201600 — T1 — SHORT PROVE-USDT-SWAP isolated, trade/equity=26,867x, 权益$4,109, 昨日入金后在OI危机期间建仓\n\n## Deep Profiles\n- 1613911094865920 — T1 — 老账户（2018年注册）持有2个PROVE-USDT-SWAP空头仓位（同时持有cross+isolated），累计交易量$60.5M但当前权益仅$36.7，trade/equity比例达1,648,982x，典型权益极度耗损特征。账户于2026-03-25有最新入金记录，在PROVE OI/限额超过112%的背景下集中加仓空头，行为高度可疑。\n- 143730510437425152 — T1 — 2018年注册H5端账户，累计交易量$43.5M，当前权益仅$58.8 USDT，trade/equity比率约741,000x。持有PROVE-USDT-SWAP空头（isolated），仓位于2026-03-26至2026-03-27建立，在PROVE OI异常期间加仓。权益极度耗损，属高风险操作账户。\n- 567264575365120 — T1 — 2017年注册老账户（约8年历史），累计交易量高达$348.9M，但当前权益仅$798 USDT，trade/equity比率约437,000x。于2026-03-26（昨日）有最新入金，并持有PROVE-USDT-SWAP空头（isolated）。在PROVE OI超限背景下，昨日入金后建仓空头，行为高度可疑。\n- 615117494562816 — T1 — 2017年注册最老账户之一（约8.5年），累计交易量$157.3M，当前权益仅$2,035 USDT，trade/equity约77,000x。持有2个PROVE-USDT-SWAP空头仓位（均为cross margin），2个仓位分别建立于同一天（2026-03-27早上6时段），属于当日主动加仓。在PROVE OI超过平台限额(112.65%)的情况下同时持有2个cross空头，风险极高。\n- 215133113058201600 — T1 — 2018年注册账户，累计交易量$110.4M，当前权益$4,109 USDT，trade/equity约26,900x。于2026-03-26（昨日）有最新入金，持有PROVE-USDT-SWAP空头（isolated）建立于2026-03-26 10:05。昨日入金后立即在PROVE OI超限期间建立空头，结合极端trade/equity比率，属T1高风险账户。",
+      "markdown": "# Risk Intelligence\n\n**Summary:** 4 alert types analyzed. 6 flagged alert(s) parsed. 5 suspicious user(s) highlighted.\n**Source document:** [PROD]Index Alarm - 2026-03-27 (00:00 - 23:59)\n\n## Suspicious Users\n- 573261155016704 — T1 — PROVE-USDT-SWAP SHORT cross, trade/equity=109,722,000x, equity=$2.63, deposit 2026-03-26\n- 211349316600729600 — T1 — PROVE-USDT-SWAP LONG cross, trade/equity=45,266,000x, equity=$1.69, deposit 2026-03-26\n- 25882071633371136 — T1 — PROVE-USDT-SWAP SHORT cross, trade/equity=16,152,000x, equity=$3.38, deposit 2026-03-26\n- 8986687749369856 — T1 — PROVE-USDT-SWAP SHORT cross, trade/equity=1,240,843x, equity=$187.86, deposit 2026-03-26\n- 213151826617438208 — T1 — PROVE-USDT-SWAP LONG cross, trade/equity=813,649x, equity=$217.42, deposit 2026-03-26\n\n## Deep Profiles\n- 573261155016704 — T1 — 2017-06-20 PC registration, CN (+86), KYC3 China. Trade volume $288.5M vs equity $2.63 yields an extreme trade/equity ratio of 109,722,000x. SHORT cross on PROVE-USDT-SWAP with last deposit 2026-03-26. Equity is virtually zero — classic shell-account pattern used for OI manipulation.\n- 211349316600729600 — T1 — 2017-02-08 PC registration, CN (+86), KYC3 China. Trade volume $76.5M vs equity $1.69 — trade/equity ratio 45,266,000x. LONG cross on PROVE-USDT-SWAP, last deposit 2026-03-26. Only long holder among the top 5, but equity exhaustion is equally extreme.\n- 25882071633371136 — T1 — 2016-07-05 APP registration, CN (+86), KYC3 China. Trade volume $54.6M vs equity $3.38 — trade/equity ratio 16,152,000x. SHORT cross on PROVE-USDT-SWAP, last deposit 2026-03-26. Oldest account in the cohort (~9.7 years) with near-zero equity.\n- 8986687749369856 — T1 — 2018-02-28 H5 registration, CN (+86), KYC3 China. Trade volume $233.1M vs equity $187.86 — trade/equity ratio 1,240,843x. SHORT cross on PROVE-USDT-SWAP, last deposit 2026-03-26. Higher equity than top-3 but ratio still extremely abnormal.\n- 213151826617438208 — T1 — 2018-03-05 PC registration, CN (+86), KYC3 China. Trade volume $176.9M vs equity $217.42 — trade/equity ratio 813,649x. LONG cross on PROVE-USDT-SWAP, last deposit 2026-03-26. Second long holder in top-5; may function as counter-party or wash component.",
       "error": null,
       "source_document": {
         "title": "[PROD]Index Alarm - 2026-03-27 (00:00 - 23:59)",
         "url": "https://okg-block.sg.larksuite.com/docx/IfDGdg6BfoYyMQxA5yrlv77qgrb",
-        "modified_at": "2026-03-27T08:00:00+08:00",
+        "modified_at": "2026-03-27T17:30:00+08:00",
         "selected_by": "latest_modified_desc"
       },
       "suspicious_users": [
         {
-          "uid": "1613911094865920",
-          "master_user_id": "8446803",
+          "uid": "573261155016704",
+          "master_user_id": "6226956",
           "risk_tier": "T1",
           "source_alert": "platform_oi",
-          "reason": "2x SHORT PROVE-USDT-SWAP (cross+isolated), trade/equity=1,648,982x, 权益$36.7，最近入金2026-03-25，在PROVE OI/限额超112%期间集中加仓",
+          "reason": "PROVE-USDT-SWAP SHORT cross, trade/equity=109,722,000x, equity=$2.63, deposit 2026-03-26",
           "mentions": 1,
           "first_seen": 0
         },
         {
-          "uid": "143730510437425152",
-          "master_user_id": "7156607",
+          "uid": "211349316600729600",
+          "master_user_id": "5014277",
           "risk_tier": "T1",
           "source_alert": "platform_oi",
-          "reason": "SHORT PROVE-USDT-SWAP isolated, trade/equity=741,000x, 权益$58.8，在PROVE OI危机期间建仓",
+          "reason": "PROVE-USDT-SWAP LONG cross, trade/equity=45,266,000x, equity=$1.69, deposit 2026-03-26",
           "mentions": 1,
           "first_seen": 1
         },
         {
-          "uid": "567264575365120",
-          "master_user_id": "6841987",
+          "uid": "25882071633371136",
+          "master_user_id": "2106106",
           "risk_tier": "T1",
           "source_alert": "platform_oi",
-          "reason": "SHORT PROVE-USDT-SWAP isolated, trade/equity=437,000x, 权益$798, trade vol=$348.9M, 昨日(2026-03-26)入金后维持空头",
+          "reason": "PROVE-USDT-SWAP SHORT cross, trade/equity=16,152,000x, equity=$3.38, deposit 2026-03-26",
           "mentions": 1,
           "first_seen": 2
         },
         {
-          "uid": "615117494562816",
-          "master_user_id": "6453751",
+          "uid": "8986687749369856",
+          "master_user_id": "7557536",
           "risk_tier": "T1",
           "source_alert": "platform_oi",
-          "reason": "2x SHORT PROVE-USDT-SWAP cross margin, 今日06:20&06:37主动开仓, trade/equity=77,341x, 权益$2,035",
+          "reason": "PROVE-USDT-SWAP SHORT cross, trade/equity=1,240,843x, equity=$187.86, deposit 2026-03-26",
           "mentions": 1,
           "first_seen": 3
         },
         {
-          "uid": "215133113058201600",
-          "master_user_id": "8583364",
+          "uid": "213151826617438208",
+          "master_user_id": "7601874",
           "risk_tier": "T1",
           "source_alert": "platform_oi",
-          "reason": "SHORT PROVE-USDT-SWAP isolated, trade/equity=26,867x, 权益$4,109, 昨日入金后在OI危机期间建仓",
+          "reason": "PROVE-USDT-SWAP LONG cross, trade/equity=813,649x, equity=$217.42, deposit 2026-03-26",
           "mentions": 1,
           "first_seen": 4
         }
       ],
       "user_profiles": [
         {
-          "uid": "1613911094865920",
-          "master_user_id": "8446803",
+          "uid": "573261155016704",
+          "master_user_id": "6226956",
           "overall_risk_tier": "T1",
-          "executive_summary": "老账户（2018年注册）持有2个PROVE-USDT-SWAP空头仓位（同时持有cross+isolated），累计交易量$60.5M但当前权益仅$36.7，trade/equity比例达1,648,982x，典型权益极度耗损特征。账户于2026-03-25有最新入金记录，在PROVE OI/限额超过112%的背景下集中加仓空头，行为高度可疑。",
+          "executive_summary": "2017-06-20 PC registration, CN (+86), KYC3 China. Trade volume $288.5M vs equity $2.63 yields an extreme trade/equity ratio of 109,722,000x. SHORT cross on PROVE-USDT-SWAP with last deposit 2026-03-26. Equity is virtually zero — classic shell-account pattern used for OI manipulation.",
           "dimensions": [
             {
               "name": "Registration Profile",
               "severity": "critical",
               "signals": [
-                "2018-06-19注册，PC端，CN大区，+86手机，KYC3（中国国籍）。注册至首次入金约8个月（2019-02-02首次入金），账户已活跃约7年。"
+                "Registered 2017-06-20 via PC, CN region, +86 phone, KYC3 (China). Account age ~8.8 years — long-lived account but equity near zero suggests dormancy or asset extraction."
               ]
             },
             {
               "name": "Trading Behavior",
               "severity": "critical",
               "signals": [
-                "累计交易量$60,502,573 USDT，当前权益$36.66 USDT，trade/equity比率约1,648,982x，远超正常水平（危险阈值<0.01即100x）。在PROVE-USDT-SWAP持有2个空头仓位（cross margin + isolated margin），仓位创建时间集中在2026-03-25至2026-03-27，属于在OI异常期间新增仓位。"
+                "Trade volume $288,509,225 USDT with equity $2.63 USDT. trade/equity ratio 109,722,000x — the most extreme in the cohort. Holds SHORT cross on PROVE-USDT-SWAP during OI/limit breach (112.65%). Last deposit 2026-03-26, suggesting reactivation specifically for this position."
               ]
             },
             {
               "name": "Associated Accounts",
               "severity": "warning",
               "signals": [
-                "登录表(dwd_okx_user_secure_login_df)访问受限(403)，无法核实关联设备与IP信息。"
+                "Login table (dwd_okx_user_secure_login_df) access restricted (403). Cannot verify associated devices or IPs. Shares timing with 4 other PROVE short holders."
               ]
             },
             {
               "name": "IP & Geolocation",
               "severity": "warning",
               "signals": [
-                "注册地区为okx_CN，登录表访问受限，无法获取具体IP/城市数据。注册使用+86手机。"
+                "Registration region okx_CN, +86 phone. Login table restricted — cannot obtain specific IP/city data."
               ]
             },
             {
               "name": "Identity Signals",
               "severity": "critical",
               "signals": [
-                "KYC3通过，中国国籍，+86手机与国籍匹配。非市场账户，非内部账户。账户费率LV1。"
+                "KYC3 verified, Chinese nationality, +86 phone matches nationality. Non-market, non-internal account. Fee tier LV1."
               ]
             },
             {
               "name": "Profit & Loss",
               "severity": "critical",
               "signals": [
-                "首次入金$1,540.74 USDT（2019-02-02），最近入金2026-03-25。当前权益$36.66 USDT，相较首次入金规模已严重缩水（权益耗损约97.6%）。trade/equity=1,648,982x为极端异常值。"
+                "Current equity $2.63 USDT — virtually zero. Trade volume $288.5M implies massive historical turnover with near-total equity depletion. Deposited 2026-03-26 and immediately built PROVE short position."
               ]
             },
             {
               "name": "Withdrawal Behavior",
               "severity": "warning",
               "signals": [
-                "最后入金时间2026-03-25（昨日），提现/存款明细表访问受限，无法核实具体提现模式。"
+                "Last deposit 2026-03-26 (yesterday). Withdrawal detail table restricted. Deposit timing coincides with PROVE OI crisis escalation."
               ]
             },
             {
               "name": "Comprehensive Judgment",
               "severity": "critical",
               "signals": [
-                "T1高风险：极端trade/equity比例（>1M倍），在PROVE OI超限(112.65%)期间持有2个空头仓位，最近入金后立即建仓，权益已接近耗尽。符合OI操纵或大规模做空攻击特征。建议立即人工复核并评估限额管控。"
+                "T1 critical: Highest trade/equity ratio in the cohort (109.7M x). Equity $2.63 means the account is effectively a position-only shell. Deposited yesterday, built SHORT cross on PROVE during OI/limit breach. Strongly consistent with coordinated OI manipulation pattern. Immediate investigation recommended."
               ]
             }
           ],
           "key_evidence": [
-            "trade/equity = 1,648,982x (equity: $36.7 USDT)",
-            "2x SHORT PROVE-USDT-SWAP (cross + isolated), opened 2026-03-25~27",
-            "PROVE OI/限额 = 112.65% 期间新增仓位",
-            "最近入金: 2026-03-25",
-            "KYC3, CN, +86"
+            "trade/equity = 109,722,000x (equity: $2.63 USDT)",
+            "SHORT PROVE-USDT-SWAP cross, last deposit 2026-03-26",
+            "PROVE OI/limit = 112.65% during active position",
+            "Registered 2017-06-20, KYC3, CN, +86"
           ],
-          "local_artifact_ref": ""
+          "local_artifact_ref": "local://user-risk/573261155016704.html"
         },
         {
-          "uid": "143730510437425152",
-          "master_user_id": "7156607",
+          "uid": "211349316600729600",
+          "master_user_id": "5014277",
           "overall_risk_tier": "T1",
-          "executive_summary": "2018年注册H5端账户，累计交易量$43.5M，当前权益仅$58.8 USDT，trade/equity比率约741,000x。持有PROVE-USDT-SWAP空头（isolated），仓位于2026-03-26至2026-03-27建立，在PROVE OI异常期间加仓。权益极度耗损，属高风险操作账户。",
+          "executive_summary": "2017-02-08 PC registration, CN (+86), KYC3 China. Trade volume $76.5M vs equity $1.69 — trade/equity ratio 45,266,000x. LONG cross on PROVE-USDT-SWAP, last deposit 2026-03-26. Only long holder among the top 5, but equity exhaustion is equally extreme.",
           "dimensions": [
             {
               "name": "Registration Profile",
               "severity": "critical",
               "signals": [
-                "2018-01-07注册，H5端，CN大区，+86手机，KYC3（中国国籍）。注册至首次入金约3年（首次入金2021-05-10），但首次交易更早（2021-02-10），疑为先期活跃后入金。"
+                "Registered 2017-02-08 via PC, CN region, +86 phone, KYC3 (China). Account age ~9 years. Equity near zero suggests long dormancy or systematic extraction."
               ]
             },
             {
               "name": "Trading Behavior",
               "severity": "critical",
               "signals": [
-                "累计交易量$43,549,079 USDT，当前权益$58.84 USDT，trade/equity约741,000x。持有PROVE-USDT-SWAP空头（isolated margin），创建时间2026-03-26~2026-03-27，在OI/限额超100%期间开仓。"
+                "Trade volume $76,479,382 USDT with equity $1.69 USDT. trade/equity ratio 45,266,000x — extremely abnormal. Holds LONG cross on PROVE-USDT-SWAP. Only long in the top-5 cohort. Last deposit 2026-03-26, potentially acting as the counter-party to the short cluster."
               ]
             },
             {
               "name": "Associated Accounts",
               "severity": "warning",
               "signals": [
-                "登录表访问受限(403)，无法核实关联设备与IP。"
+                "Login table access restricted (403). Cannot verify shared devices/IPs. Temporal correlation with 4 other PROVE position holders requires relationship screening."
               ]
             },
             {
               "name": "IP & Geolocation",
               "severity": "warning",
               "signals": [
-                "注册地区okx_CN，+86手机，登录表受限无法获取IP详情。"
+                "Registration region okx_CN, +86 phone. Login table restricted."
               ]
             },
             {
               "name": "Identity Signals",
               "severity": "critical",
               "signals": [
-                "KYC3，中国国籍，+86与国籍匹配，非市场/内部账户，LV1费率。"
+                "KYC3 verified, Chinese nationality, +86 matches. Non-market, non-internal account. LV1 fee tier."
               ]
             },
             {
               "name": "Profit & Loss",
               "severity": "critical",
               "signals": [
-                "首次入金$354.88 USDT（2021-05-10），最近入金2026-03-16。当前权益$58.84 USDT，较首次入金基本耗尽。trade/equity=741,000x为极端异常。"
+                "Current equity $1.69 USDT — effectively zero. Massive turnover ($76.5M) with near-complete equity depletion. Being LONG while the majority are SHORT could indicate wash-trading or counter-party support."
               ]
             },
             {
               "name": "Withdrawal Behavior",
               "severity": "warning",
               "signals": [
-                "最后入金2026-03-16，提现明细表受限，无法核实提现模式。"
+                "Last deposit 2026-03-26 (yesterday). Withdrawal details restricted. Deposit timing aligns with PROVE OI stress event."
               ]
             },
             {
               "name": "Comprehensive Judgment",
               "severity": "critical",
               "signals": [
-                "T1高风险：trade/equity比率约741,000x，权益近乎耗尽，在PROVE OI危机期间建立空头仓位，行为模式与做空攻击一致。"
+                "T1 critical: trade/equity 45.3M x with $1.69 equity. Lone long in a predominantly short cohort — may serve as counter-party or wash component. Deposited yesterday and built position during OI/limit breach. Investigation priority: high."
               ]
             }
           ],
           "key_evidence": [
-            "trade/equity = 741,000x (equity: $58.8 USDT)",
-            "SHORT PROVE-USDT-SWAP isolated, opened 2026-03-26~27",
-            "PROVE OI/限额 = 112.65% 期间建仓",
-            "最近入金: 2026-03-16"
+            "trade/equity = 45,266,000x (equity: $1.69 USDT)",
+            "LONG PROVE-USDT-SWAP cross, last deposit 2026-03-26",
+            "PROVE OI/limit = 112.65% during active position",
+            "Registered 2017-02-08, KYC3, CN, +86"
           ],
-          "local_artifact_ref": ""
+          "local_artifact_ref": "local://user-risk/211349316600729600.html"
         },
         {
-          "uid": "567264575365120",
-          "master_user_id": "6841987",
+          "uid": "25882071633371136",
+          "master_user_id": "2106106",
           "overall_risk_tier": "T1",
-          "executive_summary": "2017年注册老账户（约8年历史），累计交易量高达$348.9M，但当前权益仅$798 USDT，trade/equity比率约437,000x。于2026-03-26（昨日）有最新入金，并持有PROVE-USDT-SWAP空头（isolated）。在PROVE OI超限背景下，昨日入金后建仓空头，行为高度可疑。",
+          "executive_summary": "2016-07-05 APP registration, CN (+86), KYC3 China. Trade volume $54.6M vs equity $3.38 — trade/equity ratio 16,152,000x. SHORT cross on PROVE-USDT-SWAP, last deposit 2026-03-26. Oldest account in the cohort (~9.7 years) with near-zero equity.",
           "dimensions": [
             {
               "name": "Registration Profile",
               "severity": "critical",
               "signals": [
-                "2017-12-17注册，H5端，CN大区，+86手机，KYC3（中国国籍）。注册当日首次入金（2017-12-17），账户已活跃约8年，为老账户。"
+                "Registered 2016-07-05 via APP, CN region, +86 phone, KYC3 (China). Account age ~9.7 years — the oldest in the cohort. Equity near zero on such an old account is a strong anomaly signal."
               ]
             },
             {
               "name": "Trading Behavior",
               "severity": "critical",
               "signals": [
-                "累计交易量$348,944,455 USDT（约$3.49亿），当前权益$798.90 USDT，trade/equity约437,000x。持有PROVE-USDT-SWAP空头（isolated），仓位建立于2026-03-08，属于较早建立的空头。"
+                "Trade volume $54,591,233 USDT with equity $3.38 USDT. trade/equity ratio 16,152,000x. Holds SHORT cross on PROVE-USDT-SWAP. Deposited 2026-03-26 and entered position during OI escalation."
               ]
             },
             {
               "name": "Associated Accounts",
               "severity": "warning",
               "signals": [
-                "登录表访问受限(403)，无法核实关联设备与IP。"
+                "Login table access restricted (403). Cannot verify device/IP overlap. Concurrent PROVE activity with other flagged users warrants relationship screening."
               ]
             },
             {
               "name": "IP & Geolocation",
               "severity": "warning",
               "signals": [
-                "注册地区okx_CN，+86手机，登录表受限。"
+                "Registration region okx_CN, +86 phone. Login table restricted — no IP/city data available."
               ]
             },
             {
               "name": "Identity Signals",
               "severity": "critical",
               "signals": [
-                "KYC3，中国国籍，+86匹配，非市场/内部账户，LV1费率。"
+                "KYC3 verified, Chinese nationality, +86 matches. Non-market, non-internal. LV1 fee tier."
               ]
             },
             {
               "name": "Profit & Loss",
               "severity": "critical",
               "signals": [
-                "首次入金$192.00 USDT（2017-12-17），最近入金2026-03-26（昨日）。累计交易$348.9M但权益仅$798，权益耗损极为严重。"
+                "Equity $3.38 USDT on $54.6M trade volume — nearly complete depletion. Most recent deposit 2026-03-26. The magnitude of historical turnover vs current equity is extreme."
               ]
             },
             {
               "name": "Withdrawal Behavior",
               "severity": "warning",
               "signals": [
-                "昨日(2026-03-26)有入金记录，提现明细表受限，无法核实提现模式。入金时机与PROVE OI危机高度一致。"
+                "Last deposit 2026-03-26 (yesterday). Withdrawal table restricted. Deposit-and-short pattern consistent with coordinated action."
               ]
             },
             {
               "name": "Comprehensive Judgment",
               "severity": "critical",
               "signals": [
-                "T1高风险：交易量$348.9M但权益仅$798（trade/equity=437,000x），在PROVE OI超限前后持续持有空头，昨日入金后维持空头仓位，行为模式高度可疑，建议立即调查。"
+                "T1 critical: trade/equity 16.15M x, oldest account in cohort, equity $3.38. SHORT cross during PROVE OI/limit breach (112.65%). Deposit-then-short pattern on 2026-03-26 aligns with 3 other flagged accounts. High priority for coordinated manipulation investigation."
               ]
             }
           ],
           "key_evidence": [
-            "trade/equity = 437,000x (equity: $798 USDT, trade vol: $348.9M)",
-            "SHORT PROVE-USDT-SWAP isolated, position since 2026-03-08",
-            "最近入金: 2026-03-26 (昨日，OI危机期间)",
-            "PROVE OI/限额 = 112.65%"
+            "trade/equity = 16,152,000x (equity: $3.38 USDT)",
+            "SHORT PROVE-USDT-SWAP cross, last deposit 2026-03-26",
+            "PROVE OI/limit = 112.65% during active position",
+            "Registered 2016-07-05, KYC3, CN, +86 (oldest in cohort)"
           ],
-          "local_artifact_ref": ""
+          "local_artifact_ref": "local://user-risk/25882071633371136.html"
         },
         {
-          "uid": "615117494562816",
-          "master_user_id": "6453751",
+          "uid": "8986687749369856",
+          "master_user_id": "7557536",
           "overall_risk_tier": "T1",
-          "executive_summary": "2017年注册最老账户之一（约8.5年），累计交易量$157.3M，当前权益仅$2,035 USDT，trade/equity约77,000x。持有2个PROVE-USDT-SWAP空头仓位（均为cross margin），2个仓位分别建立于同一天（2026-03-27早上6时段），属于当日主动加仓。在PROVE OI超过平台限额(112.65%)的情况下同时持有2个cross空头，风险极高。",
+          "executive_summary": "2018-02-28 H5 registration, CN (+86), KYC3 China. Trade volume $233.1M vs equity $187.86 — trade/equity ratio 1,240,843x. SHORT cross on PROVE-USDT-SWAP, last deposit 2026-03-26. Higher equity than top-3 but ratio still extremely abnormal.",
           "dimensions": [
             {
               "name": "Registration Profile",
               "severity": "critical",
               "signals": [
-                "2017-09-10注册，APP端，CN大区，+86手机，KYC3（中国国籍）。注册次日首次入金（2017-09-11），为平台最早期用户之一，账户历史约8.5年。"
+                "Registered 2018-02-28 via H5, CN region, +86 phone, KYC3 (China). Account age ~8 years. Equity $187.86 is higher than top-3 users but still far below trade volume."
               ]
             },
             {
               "name": "Trading Behavior",
               "severity": "critical",
               "signals": [
-                "累计交易量$157,336,616 USDT，当前权益$2,035 USDT，trade/equity约77,341x。持有2个PROVE-USDT-SWAP空头仓位（均为cross margin），均建立于2026-03-27 06:20~06:37（今日早上），属于在OI危机爆发期间主动开仓。"
+                "Trade volume $233,122,333 USDT with equity $187.86 USDT. trade/equity ratio 1,240,843x. Holds SHORT cross on PROVE-USDT-SWAP. Last deposit 2026-03-26 — building position during OI anomaly."
               ]
             },
             {
               "name": "Associated Accounts",
               "severity": "warning",
               "signals": [
-                "登录表访问受限(403)，无法核实关联设备与IP。"
+                "Login table access restricted (403). Cannot verify shared devices/IPs. Same deposit-and-short timing as other flagged PROVE users."
               ]
             },
             {
               "name": "IP & Geolocation",
               "severity": "warning",
               "signals": [
-                "注册地区okx_CN，+86手机，登录表受限。"
+                "Registration region okx_CN, +86 phone. Login detail restricted."
               ]
             },
             {
               "name": "Identity Signals",
               "severity": "critical",
               "signals": [
-                "KYC3，中国国籍，+86匹配，非市场/内部账户，LV1费率。"
+                "KYC3 verified, Chinese nationality, +86 matches. Non-market, non-internal. LV1 fee tier."
               ]
             },
             {
               "name": "Profit & Loss",
               "severity": "critical",
               "signals": [
-                "首次入金$49.01 USDT（2017-09-11），最近入金2026-03-07。当前权益$2,035 USDT，虽未完全耗尽但trade/equity=77,341x仍属极端异常。"
+                "Equity $187.86 USDT on $233.1M volume — severe equity depletion (>99.99%). Latest deposit 2026-03-26. Turnover suggests aggressive or programmatic trading history."
               ]
             },
             {
               "name": "Withdrawal Behavior",
               "severity": "warning",
               "signals": [
-                "最后入金2026-03-07，提现明细表受限，无法核实提现模式。"
+                "Last deposit 2026-03-26. Withdrawal details restricted. Deposit timing coincides with PROVE OI crisis."
               ]
             },
             {
               "name": "Comprehensive Judgment",
               "severity": "critical",
               "signals": [
-                "T1高风险：今日早上主动在PROVE OI危机期间开立2个cross空头仓位（06:20和06:37），trade/equity=77,341x，属于有计划的做空操作。建议立即调查账户行为并考虑仓位限制。"
+                "T1 critical: trade/equity 1.24M x, equity $187.86 on $233M volume. SHORT cross during PROVE OI/limit breach. Deposit pattern and timing align with coordinated short cluster. Investigation priority: high — potential coordinated OI manipulation participant."
               ]
             }
           ],
           "key_evidence": [
-            "trade/equity = 77,341x (equity: $2,035 USDT)",
-            "2x SHORT PROVE-USDT-SWAP cross margin, opened TODAY 06:20 & 06:37 HKT",
-            "PROVE OI/限额 = 112.65% 期间主动开仓",
-            "最近入金: 2026-03-07"
+            "trade/equity = 1,240,843x (equity: $187.86 USDT)",
+            "SHORT PROVE-USDT-SWAP cross, last deposit 2026-03-26",
+            "PROVE OI/limit = 112.65% during active position",
+            "Registered 2018-02-28, KYC3, CN, +86"
           ],
-          "local_artifact_ref": ""
+          "local_artifact_ref": "local://user-risk/8986687749369856.html"
         },
         {
-          "uid": "215133113058201600",
-          "master_user_id": "8583364",
+          "uid": "213151826617438208",
+          "master_user_id": "7601874",
           "overall_risk_tier": "T1",
-          "executive_summary": "2018年注册账户，累计交易量$110.4M，当前权益$4,109 USDT，trade/equity约26,900x。于2026-03-26（昨日）有最新入金，持有PROVE-USDT-SWAP空头（isolated）建立于2026-03-26 10:05。昨日入金后立即在PROVE OI超限期间建立空头，结合极端trade/equity比率，属T1高风险账户。",
+          "executive_summary": "2018-03-05 PC registration, CN (+86), KYC3 China. Trade volume $176.9M vs equity $217.42 — trade/equity ratio 813,649x. LONG cross on PROVE-USDT-SWAP, last deposit 2026-03-26. Second long holder in top-5; may function as counter-party or wash component.",
           "dimensions": [
             {
               "name": "Registration Profile",
               "severity": "critical",
               "signals": [
-                "2018-07-10注册，APP端，CN大区，+86手机，KYC3（中国国籍）。注册至首次入金约3年（首次入金2021-10-28），为较晚激活账户。"
+                "Registered 2018-03-05 via PC, CN region, +86 phone, KYC3 (China). Account age ~8 years. Registration profile consistent with the rest of the flagged cohort."
               ]
             },
             {
               "name": "Trading Behavior",
               "severity": "critical",
               "signals": [
-                "累计交易量$110,396,355 USDT，当前权益$4,109 USDT，trade/equity约26,867x。持有PROVE-USDT-SWAP空头（isolated），建立于2026-03-26 10:05（昨日上午）。"
+                "Trade volume $176,940,303 USDT with equity $217.42 USDT. trade/equity ratio 813,649x. Holds LONG cross on PROVE-USDT-SWAP — one of two longs in the top-5 cohort. Last deposit 2026-03-26. Long position may act as counter-party for the short cluster."
               ]
             },
             {
               "name": "Associated Accounts",
               "severity": "warning",
               "signals": [
-                "登录表访问受限(403)，无法核实关联设备与IP。"
+                "Login table access restricted (403). Cannot verify device/IP overlap. Temporal correlation with 4 other flagged PROVE holders requires investigation."
               ]
             },
             {
               "name": "IP & Geolocation",
               "severity": "warning",
               "signals": [
-                "注册地区okx_CN，+86手机，登录表受限。"
+                "Registration region okx_CN, +86 phone. Login detail restricted."
               ]
             },
             {
               "name": "Identity Signals",
               "severity": "critical",
               "signals": [
-                "KYC3，中国国籍，+86匹配，非市场/内部账户，LV1费率。"
+                "KYC3 verified, Chinese nationality, +86 matches. Non-market, non-internal. LV1 fee tier."
               ]
             },
             {
               "name": "Profit & Loss",
               "severity": "critical",
               "signals": [
-                "首次入金$5,511.81 USDT（2021-10-28），最近入金2026-03-26（昨日）。当前权益$4,109 USDT，略低于首次入金（累计亏损约25%），trade/equity=26,867x仍属极端异常。"
+                "Equity $217.42 USDT on $176.9M trade volume — >99.99% equity depletion. Highest absolute equity in the cohort but still trivial relative to volume. Latest deposit 2026-03-26."
               ]
             },
             {
               "name": "Withdrawal Behavior",
               "severity": "warning",
               "signals": [
-                "昨日(2026-03-26)有入金记录，提现明细表受限，无法核实。昨日入金后建立PROVE空头仓位，时机高度可疑。"
+                "Last deposit 2026-03-26. Withdrawal details restricted. Deposit aligns with OI crisis window."
               ]
             },
             {
               "name": "Comprehensive Judgment",
               "severity": "critical",
               "signals": [
-                "T1高风险：昨日入金后立即在PROVE OI超限期间建立空头仓位，trade/equity=26,867x，行为模式符合定向做空攻击特征。"
+                "T1 critical: trade/equity 813,649x, equity $217.42 on $176.9M volume. LONG cross during PROVE OI/limit breach — second long in the cohort. Two longs + three shorts all depositing on 2026-03-26 strongly suggests coordinated wash/OI inflation. Investigation priority: high."
               ]
             }
           ],
           "key_evidence": [
-            "trade/equity = 26,867x (equity: $4,109 USDT, trade vol: $110.4M)",
-            "SHORT PROVE-USDT-SWAP isolated, opened 2026-03-26 10:05 (昨日)",
-            "最近入金: 2026-03-26 (昨日，OI危机期间)",
-            "PROVE OI/限额 = 112.65%"
+            "trade/equity = 813,649x (equity: $217.42 USDT)",
+            "LONG PROVE-USDT-SWAP cross, last deposit 2026-03-26",
+            "PROVE OI/limit = 112.65% during active position",
+            "Registered 2018-03-05, KYC3, CN, +86"
           ],
-          "local_artifact_ref": ""
+          "local_artifact_ref": "local://user-risk/213151826617438208.html"
         }
       ]
     },
@@ -1801,7 +1784,7 @@
         "ema_coverage": 1496,
         "issues_found": 14,
         "source": "OKX API (live)",
-        "generated_at": "2026-03-27T09:35:31.924266+00:00"
+        "generated_at": "2026-03-27T09:39:48.661634+00:00"
       },
       "metric_cards": [
         {
@@ -2060,7 +2043,7 @@
           "content": "Task Object,timeType,Effective Time,openUpperLimit,openLowerLimit,afterOpenUpperLimit,afterOpenLowerLimit,afterOpenIndexUpperLimit,afterOpenIndexLowerLimit,preQuoteMaxJ1UpperLimit,preQuoteMinJ2LowerLimit,preQuoteC1,preQuoteC2\r\nBTC-USD_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260403,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260410,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USD_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USD_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USDT_UM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USDT_UM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\n"
         }
       ],
-      "markdown": "# Price Limit Review\n\n**Generated:** 2026-03-27T09:35:31.924266+00:00  \n**Status:** critical  \n**Instruments scanned:** 1496  \n**EMA coverage:** 1496  \n\n**Total issues found:** 14\n\n## Rule 1: Buffer Too Tight\n4 issue(s) found.\n\n| INSTRUMENT | LIMITUP_BUFFER | LIMITDN_BUFFER | STATUS |\n|---|---|---|---|\n| AERGO-EUR | 1.78% | -0.10% | warning |\n| BICO-EUR | 1.65% | -0.32% | warning |\n| ETH-USD-260410 | -1.44% | -1.01% | warning |\n| ETH-USD-260410 | -1.44% | -1.01% | warning |\n\n## Rule 2: Asymmetric Basis\nAll instruments passed.\n\n## Rule 3: Asset-Type Consistency\n10 issue(s) found.\n\n| INSTRUMENT | CURRENT Y | CURRENT Z | EXPECTED Y | EXPECTED Z | STATUS |\n|---|---|---|---|---|---|\n| BTC-USD-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD-260925 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260403 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260410 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USDT-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USDT-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n\n## Rule 4: Z Cap <= Y Cap\nAll instruments passed.\n",
+      "markdown": "# Price Limit Review\n\n**Generated:** 2026-03-27T09:39:48.661634+00:00  \n**Status:** critical  \n**Instruments scanned:** 1496  \n**EMA coverage:** 1496  \n\n**Total issues found:** 14\n\n## Rule 1: Buffer Too Tight\n4 issue(s) found.\n\n| INSTRUMENT | LIMITUP_BUFFER | LIMITDN_BUFFER | STATUS |\n|---|---|---|---|\n| AERGO-EUR | 1.78% | -0.10% | warning |\n| BICO-EUR | 1.65% | -0.32% | warning |\n| ETH-USD-260410 | -1.44% | -1.01% | warning |\n| ETH-USD-260410 | -1.44% | -1.01% | warning |\n\n## Rule 2: Asymmetric Basis\nAll instruments passed.\n\n## Rule 3: Asset-Type Consistency\n10 issue(s) found.\n\n| INSTRUMENT | CURRENT Y | CURRENT Z | EXPECTED Y | EXPECTED Z | STATUS |\n|---|---|---|---|---|---|\n| BTC-USD-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD-260925 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260403 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260410 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USDT-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USDT-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n\n## Rule 4: Z Cap <= Y Cap\nAll instruments passed.\n",
       "error": null,
       "source_document": null,
       "suspicious_users": [],
@@ -2077,7 +2060,7 @@
         "ema_coverage": 36,
         "issues_found": 29,
         "source": "OKX Tiers + Depth SQL",
-        "generated_at": "2026-03-27T09:35:45.836653+00:00"
+        "generated_at": "2026-03-27T09:40:02.985943+00:00"
       },
       "metric_cards": [
         {
@@ -2131,7 +2114,7 @@
                 "ADA-USDT",
                 "Crypto",
                 "50x → 20x + Inc ↓",
-                "Depth → level 3; ratio 1442.4% > 50%",
+                "Depth → level 3; ratio 1443.0% > 50%",
                 "HIGH"
               ],
               [
@@ -2180,7 +2163,7 @@
                 "DOGE-USDT",
                 "Crypto",
                 "Inc ↓",
-                "ratio 169.9% > 50%",
+                "ratio 170.0% > 50%",
                 "HIGH"
               ],
               [
@@ -2208,14 +2191,14 @@
                 "KGEN-USDT",
                 "Crypto",
                 "Inc ↓",
-                "ratio 255.7% > 50%",
+                "ratio 255.6% > 50%",
                 "HIGH"
               ],
               [
                 "LINK-USDT",
                 "Crypto",
                 "Inc ↓",
-                "ratio 190.3% > 50%",
+                "ratio 190.4% > 50%",
                 "HIGH"
               ],
               [
@@ -2243,14 +2226,14 @@
                 "OL-USDT",
                 "Crypto",
                 "Inc ↓",
-                "ratio 655.8% > 50%",
+                "ratio 653.7% > 50%",
                 "HIGH"
               ],
               [
                 "RAVE-USDT",
                 "Crypto",
                 "Inc ↓",
-                "ratio 65.4% > 50%",
+                "ratio 65.2% > 50%",
                 "HIGH"
               ],
               [
@@ -2271,7 +2254,7 @@
                 "SAND-USDT",
                 "Crypto",
                 "50x → 20x + Inc ↓",
-                "Depth → level 3; ratio 209.1% > 50%",
+                "Depth → level 3; ratio 209.2% > 50%",
                 "HIGH"
               ],
               [
@@ -2292,7 +2275,7 @@
                 "STABLE-USDT",
                 "Crypto",
                 "Inc ↓",
-                "ratio 42.8% > 50%",
+                "ratio 42.7% > 50%",
                 "HIGH"
               ],
               [
@@ -2306,7 +2289,7 @@
                 "XRP-USDT",
                 "Crypto",
                 "Inc ↓",
-                "ratio 952.0% > 50%",
+                "ratio 952.6% > 50%",
                 "HIGH"
               ],
               [
@@ -2343,7 +2326,7 @@
               [
                 "ADA-USDT",
                 "50x → 20x + Inc ↓",
-                "Depth → level 3; ratio 1442.4% > 50%",
+                "Depth → level 3; ratio 1443.0% > 50%",
                 "HIGH"
               ],
               [
@@ -2361,7 +2344,7 @@
               [
                 "SAND-USDT",
                 "50x → 20x + Inc ↓",
-                "Depth → level 3; ratio 209.1% > 50%",
+                "Depth → level 3; ratio 209.2% > 50%",
                 "HIGH"
               ],
               [
@@ -2397,7 +2380,7 @@
               [
                 "ADA-USDT",
                 "50x → 20x + Inc ↓",
-                "Depth → level 3; ratio 1442.4% > 50%",
+                "Depth → level 3; ratio 1443.0% > 50%",
                 "HIGH"
               ],
               [
@@ -2439,7 +2422,7 @@
               [
                 "DOGE-USDT",
                 "Inc ↓",
-                "ratio 169.9% > 50%",
+                "ratio 170.0% > 50%",
                 "HIGH"
               ],
               [
@@ -2463,13 +2446,13 @@
               [
                 "KGEN-USDT",
                 "Inc ↓",
-                "ratio 255.7% > 50%",
+                "ratio 255.6% > 50%",
                 "HIGH"
               ],
               [
                 "LINK-USDT",
                 "Inc ↓",
-                "ratio 190.3% > 50%",
+                "ratio 190.4% > 50%",
                 "HIGH"
               ],
               [
@@ -2493,13 +2476,13 @@
               [
                 "OL-USDT",
                 "Inc ↓",
-                "ratio 655.8% > 50%",
+                "ratio 653.7% > 50%",
                 "HIGH"
               ],
               [
                 "RAVE-USDT",
                 "Inc ↓",
-                "ratio 65.4% > 50%",
+                "ratio 65.2% > 50%",
                 "HIGH"
               ],
               [
@@ -2517,7 +2500,7 @@
               [
                 "SAND-USDT",
                 "50x → 20x + Inc ↓",
-                "Depth → level 3; ratio 209.1% > 50%",
+                "Depth → level 3; ratio 209.2% > 50%",
                 "HIGH"
               ],
               [
@@ -2535,7 +2518,7 @@
               [
                 "STABLE-USDT",
                 "Inc ↓",
-                "ratio 42.8% > 50%",
+                "ratio 42.7% > 50%",
                 "HIGH"
               ],
               [
@@ -2547,7 +2530,7 @@
               [
                 "XRP-USDT",
                 "Inc ↓",
-                "ratio 952.0% > 50%",
+                "ratio 952.6% > 50%",
                 "HIGH"
               ],
               [
@@ -2597,7 +2580,7 @@
         "ema_coverage": 0,
         "issues_found": 0,
         "source": "n/a",
-        "generated_at": "2026-03-27T09:35:47.528159+00:00"
+        "generated_at": "2026-03-27T09:40:04.651614+00:00"
       },
       "metric_cards": [
         {
