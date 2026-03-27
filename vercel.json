@@ -3,11 +3,6 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "regions": ["hkg1"],
-  "functions": {
-    "middleware.js": {
-      "runtime": "edge"
-    }
-  },
   "headers": [
     {
       "source": "/assets/(.*)",
