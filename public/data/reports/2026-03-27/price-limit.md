@@ -1,9 +1,9 @@
 # Price Limit Review
 
-**Generated:** 2026-03-27T07:56:14.179746+00:00  
+**Generated:** 2026-03-27T08:33:09.528083+00:00  
 **Status:** critical  
-**Instruments scanned:** 1498  
-**EMA coverage:** 1472  
+**Instruments scanned:** 1496  
+**EMA coverage:** 1466  
 
 **Total issues found:** 43
 
@@ -56,8 +56,8 @@ All instruments passed.
 |---|---|---|---|---|---|
 | BTC-USD-260626 | 1.0% | 10.0% | 1% | 2% | warning |
 | BTC-USD-260925 | 1.0% | 10.0% | 1% | 2% | warning |
-| BTC-USD_UM-260327 | 2.0% | 10.0% | 1% | 2% | warning |
 | BTC-USD_UM-260403 | 2.0% | 10.0% | 1% | 2% | warning |
+| BTC-USD_UM-260410 | 2.0% | 10.0% | 1% | 2% | warning |
 | BTC-USD_UM-260626 | 2.0% | 10.0% | 1% | 2% | warning |
 | BTC-USD_UM-260925 | 2.0% | 10.0% | 1% | 2% | warning |
 | ETH-USD-260626 | 2.0% | 10.0% | 1% | 2% | warning |
