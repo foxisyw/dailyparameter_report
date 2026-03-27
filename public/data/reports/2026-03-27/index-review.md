@@ -1,5 +1,3 @@
 # Index Review
 
-**Status:** pending
-
-Integration ETA: **March 28, 2026**.
+Scanned 1257 indexes (1204 with EMA). 1184 flagged, 20 pass.
