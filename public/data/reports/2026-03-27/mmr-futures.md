@@ -1,5 +1,5 @@
 # MMR Futures Review
 
-**Status:** pending
+**Status:** warning
 
-Integration ETA: **March 28, 2026**.
+29 adjustments across 36 in-scope instruments.

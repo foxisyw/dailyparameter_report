@@ -369,6 +369,34 @@ Do NOT proceed to Step 7 until this validation passes.
 
 ---
 
+## Step 6b: Fetch Depth Data for MMR Futures
+
+### 6b-1. Submit depth SQL
+```
+Use: mcp__claude_ai_Data_Query_-_Global__submitQuery
+  sql: SELECT symbol, contract_type, AVG(avg_depth) AS depth_7d_avg
+       FROM ads_okx_competitor_all_min_depth_di
+       WHERE exchange = 'OKX'
+         AND type = '永续'
+         AND pt BETWEEN '{YYYYMMDD_7days_ago}' AND '{YYYYMMDD_today}'
+       GROUP BY symbol, contract_type
+  project: ex_offline
+```
+Wait 8 seconds, then getQueryResult.
+
+### 6b-2. Save to /tmp/depth_sql.json
+Parse rows into `{symbol: depth_7d_avg}` dict, e.g.:
+```json
+{"BTC-USDT": 88584339.60, "ETH-USDT": 42173882.10, ...}
+```
+Save to `/tmp/depth_sql.json`.
+
+### 6b-3. Validate
+- BTC-USDT depth must be > 1,000,000. If not, re-fetch.
+- If the table is inaccessible (403/timeout): log the failure, continue. MMR Futures will show a pending warning but the rest of the report runs normally.
+
+---
+
 ## Step 7: Generate Report
 
 ```bash
@@ -384,6 +412,7 @@ Verify output:
 - Event analyses count > 0
 - All 4-5 suspicious users have filled profiles
 - Price Limit chapter has real data
+- MMR Futures chapter is NOT "pending" (if depth data was available)
 
 ---
 

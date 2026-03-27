@@ -175,7 +175,10 @@ function navDot(status) {
 }
 
 function normalizeRenderVariant(chapter) {
-  return chapter.render_variant || (chapter.slug === 'risk-intel' ? 'risk-intel' : 'rules')
+  if (chapter.render_variant) return chapter.render_variant
+  if (chapter.slug === 'risk-intel') return 'risk-intel'
+  if (chapter.slug === 'mmr-futures') return 'mmr-futures'
+  return 'rules'
 }
 
 function deriveMetricCards(chapter) {
@@ -485,14 +488,14 @@ function buildMockReport(date) {
       {
         slug: 'mmr-futures',
         title: 'MMR Futures Review',
-        render_variant: 'rules',
+        render_variant: 'mmr-futures',
         status: 'pending',
-        summary: 'Integration pending — ETA March 28, 2026.',
+        summary: 'Run daily cron to fetch depth data and generate MMR Futures review.',
         metrics: { instruments_scanned: 0, ema_coverage: 0, issues_found: 0, source: 'n/a', generated_at: `${date}T08:05:00Z` },
         metric_cards: [
           { label: 'Instruments', value: '0' },
-          { label: 'EMA Coverage', value: '0' },
-          { label: 'Issues', value: '0' },
+          { label: 'In Scope', value: '0' },
+          { label: 'Adjustments', value: '0' },
           { label: 'Source', value: 'n/a' },
         ],
         rule_blocks: [],
@@ -696,6 +699,30 @@ function buildSectionList(chapter) {
       const worstStatus = chapter.rule_blocks.reduce((w, rb) => rb.status === 'critical' ? 'critical' : rb.status === 'warning' && w !== 'critical' ? 'warning' : w, 'pass')
       sections.push({ id: 'parameter-alarm', label: T('parameterAlarm') || 'Parameter Alarm', color: colors[worstStatus] || '#9ca3af', type: 'alarm' })
     }
+  } else if (variant === 'mmr-futures') {
+    // MMR Futures: grouped sections with switch-mode navigation
+    const rbs = chapter.rule_blocks || []
+    const allBlock = rbs.find(rb => rb.ruleId === 'all_changes')
+    if (allBlock) {
+      const cnt = allBlock.count ?? (allBlock.table?.rows?.length ?? 0)
+      sections.push({ id: 'mmr-all_changes', label: `All Changes (${cnt})`, color: colors[allBlock.status] || '#9ca3af', type: 'mmr-section' })
+    }
+    const groups = {}
+    rbs.filter(rb => rb.ruleId !== 'all_changes').forEach(rb => {
+      const g = rb.category_group || 'OTHER'
+      if (!groups[g]) groups[g] = []
+      groups[g].push(rb)
+    })
+    Object.entries(groups).forEach(([group, blocks]) => {
+      sections.push({ id: `mmr-group-${group}`, label: group, type: 'group-header', color: '#9ca3af' })
+      blocks.forEach(rb => {
+        const cnt = rb.count ?? (rb.table?.rows?.length ?? 0)
+        sections.push({ id: `mmr-${rb.ruleId}`, label: `${rb.title} (${cnt})`, color: colors[rb.status] || '#9ca3af', type: 'mmr-section' })
+      })
+    })
+    if (chapter.downloads?.length) {
+      sections.push({ id: 'mmr-downloads', label: T('downloads') || 'Downloads', color: '#6b7280', type: 'mmr-section' })
+    }
   } else {
     // Price Limit etc: rule blocks + recommended changes + downloads
     ;(chapter.rule_blocks || []).forEach(rb => {
@@ -727,23 +754,27 @@ function renderSectionNav(data) {
   label.textContent = chapter.title
   const sections = buildSectionList(chapter)
 
-  // Default to first section
-  if (!activeSection || !sections.find(s => s.id === activeSection)) {
-    activeSection = sections.length ? sections[0].id : null
+  // Default to first clickable section (skip group-header items)
+  const clickable = sections.filter(s => s.type !== 'group-header')
+  if (!activeSection || !clickable.find(s => s.id === activeSection)) {
+    activeSection = clickable.length ? clickable[0].id : null
   }
 
-  nav.innerHTML = sections.map(s => `
-    <li><button class="section-link${s.id === activeSection ? ' active' : ''}" data-section="${esc(s.id)}">
+  nav.innerHTML = sections.map(s => {
+    if (s.type === 'group-header') {
+      return `<li class="section-group-header">${esc(s.label)}</li>`
+    }
+    return `<li><button class="section-link${s.id === activeSection ? ' active' : ''}" data-section="${esc(s.id)}">
       <span class="section-dot" style="background:${s.color}"></span>
       <span>${esc(s.label)}</span>
-    </button></li>
-  `).join('')
+    </button></li>`
+  }).join('')
 
   const variant = normalizeRenderVariant(chapter)
   nav.querySelectorAll('.section-link').forEach(btn => {
     btn.addEventListener('click', () => {
-      if (variant === 'risk-intel') {
-        // Risk Intel: switch section (replace content)
+      if (variant === 'risk-intel' || variant === 'mmr-futures') {
+        // Switch section (replace content)
         activeSection = btn.dataset.section
         renderAll(currentReport)
       } else {
@@ -790,6 +821,7 @@ function cellContent(value, header) {
   const normalized = header.toUpperCase()
   if (normalized === 'STATUS') return statusPill(value)
   if (normalized === 'INSTRUMENT' || normalized === 'ASSET') return `<span class="inst-tag">${esc(value)}</span>`
+  if (normalized === 'PRIORITY') return `<span class="mmr-priority-badge mmr-priority-badge--${(value || '').toLowerCase()}">${esc(value)}</span>`
   return esc(value)
 }
 
@@ -1092,6 +1124,51 @@ function renderRiskIntelChapter(chapter) {
   const eventsHtml = renderEventAnalyses(chapter)
   const rulesHtml = (chapter.rule_blocks || []).map(renderRuleBlock).join('')
   return renderChapterShell(chapter, `${renderSourceDocument(chapter)}${eventsHtml}${rulesHtml}${renderSuspiciousUsers(chapter)}${renderUserProfiles(chapter)}`)
+}
+
+function renderMMRFuturesSection(chapter, sectionId) {
+  const rbs = chapter.rule_blocks || []
+  // Resolve target block from sectionId (format: "mmr-{ruleId}")
+  const ruleId = (sectionId || '').startsWith('mmr-') ? sectionId.slice(4) : sectionId
+  const block = rbs.find(rb => rb.ruleId === ruleId) || rbs[0]
+
+  if (!block) {
+    return `<section class="chapter" id="chapter-${esc(chapter.slug)}">
+      <p class="chapter-summary">${esc(chapter.summary)}</p>
+      ${renderMetricCards(chapter)}
+      <div class="empty-state">${ICONS.check} No data available.</div>
+    </section>`
+  }
+
+  const count = block.count ?? (block.table?.rows?.length ?? 0)
+  const hasRows = block.table?.rows?.length > 0
+
+  // Badge text
+  let badge = ''
+  if (block.status === 'pass') {
+    badge = `<span class="status-pill status-pill--pass">${ICONS.check} PASS</span>`
+  } else if (block.status === 'pending') {
+    badge = `<span class="status-pill status-pill--pending">PENDING</span>`
+  } else {
+    badge = `<span class="mmr-changes-badge">&#9651; ${count} CHANGES</span>`
+  }
+
+  const tableCaption = hasRows ? `<div class="mmr-table-caption">ADJUSTMENT PREVIEW — ${count} CHANGES</div>` : ''
+  const tableHtml = hasRows ? renderTable(block.table.headers, block.table.rows) : `<div class="empty-state">${ICONS.check} ${T('allPass')}</div>`
+
+  return `<section class="chapter" id="chapter-${esc(chapter.slug)}">
+    <p class="chapter-summary">${esc(chapter.summary)}</p>
+    ${renderMetricCards(chapter)}
+    <div class="mmr-section-content">
+      <div class="mmr-section-header">
+        <h2 class="chapter-title">${esc(block.ruleId === 'all_changes' ? 'All Recommended Changes' : block.title)}</h2>
+        ${badge}
+      </div>
+      ${block.description ? `<p class="mmr-section-desc">${esc(block.description)}</p>` : ''}
+      ${tableCaption}
+      ${tableHtml}
+    </div>
+  </section>`
 }
 
 function renderPending(chapter) {
@@ -1438,6 +1515,9 @@ function renderActiveTabContent(data) {
         chaptersNode.innerHTML = renderParameterAlarmSection(chapter)
       }
     }
+  } else if (variant === 'mmr-futures') {
+    // MMR Futures: switch-mode section display
+    chaptersNode.innerHTML = renderMMRFuturesSection(chapter, activeSection)
   } else {
     // Non-risk-intel tabs: show full chapter
     chaptersNode.innerHTML = renderRulesChapter(chapter)

@@ -244,6 +244,80 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   flex-shrink: 0;
 }
 
+/* Section group header (MMR Futures nav) */
+.section-group-header {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gray-400);
+  padding: 12px 10px 4px;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* MMR Futures section content */
+.mmr-section-content { margin-top: 24px; }
+.mmr-section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.mmr-section-header .chapter-title { margin: 0; }
+.mmr-section-desc {
+  font-size: 13px;
+  color: var(--gray-600);
+  margin-bottom: 16px;
+}
+.mmr-table-caption {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  padding: 10px 12px;
+  border: 1px solid var(--gray-200);
+  border-bottom: none;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: var(--gray-50);
+}
+.mmr-table-caption + .table-wrap .data-table { border-radius: 0 0 var(--radius) var(--radius); }
+.mmr-changes-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  color: var(--warning);
+  background: var(--warning-light);
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.mmr-priority-badge {
+  font-size: 10px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  padding: 2px 6px;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+}
+.mmr-priority-badge--high {
+  background: #fee2e2;
+  color: #dc2626;
+}
+.mmr-priority-badge--medium {
+  background: var(--warning-light);
+  color: var(--warning);
+}
+.mmr-priority-badge--low {
+  background: var(--gray-100);
+  color: var(--gray-600);
+}
+
 .lang-toggle {
   font-family: var(--font-mono);
   font-size: 11px;
