@@ -1,6 +1,6 @@
 {
   "date": "2026-03-27",
-  "generated_at": "2026-03-27T10:00:16.258473+00:00",
+  "generated_at": "2026-03-27T10:20:58.038488+00:00",
   "chapter": {
     "slug": "risk-intel",
     "title": "Risk Intelligence",
@@ -9,62 +9,106 @@
     "summary": "4 alert types analyzed. 0 flagged alert(s) parsed. 5 suspicious user(s) highlighted.",
     "event_analyses": [
       {
-        "asset": "PROVE",
+        "asset": "PROVE-USDT-SWAP",
         "severity": "critical",
-        "executive_summary": "PROVE-USDT-SWAP triggered dual critical alerts on March 27: OI exceeded 24H average by 188.16% AND breached platform limit at 112.65% utilization. Current price $0.2703 (+1.96% 24H) with 5.44M contracts OI. Negative funding rate (-0.00122) suggests market is net short with funding flowing to longs. Top position holders are concentrated CN accounts using high leverage. The limit breach requires immediate parameter review.",
-        "forward_looking": "If OI continues expanding above 100% platform limit, consider tightening position limits or temporarily restricting new opens. Monitor funding rate — persistent negative funding may attract more shorts, further pressuring the limit. Recommend reviewing tier structure given depth of only $48K.",
+        "executive_summary": "PROVE-USDT-SWAP triggered critical alert. Price: $0.2764 (+1.88%). OI deviation: 188.16%. OI/limit: 112.65%. 5 user(s) profiled.",
+        "forward_looking": "Monitor PROVE-USDT-SWAP OI trajectory over the next 24 hours. If OI continues expanding, consider tightening position limits. Watch for funding rate shifts that may attract additional directional flow.",
         "market_snapshot": {
-          "price": "0.2703",
-          "change_24h": "+1.96%",
-          "funding_rate": "-0.001216",
-          "open_interest": "5440334"
+          "price": "0.2764",
+          "change_24h": "+1.88%",
+          "open_interest": "5631436",
+          "funding_rate": "-0.00075",
+          "vol_24h": "254220772",
+          "timestamp": "2026-03-27T18:20:57.978213+08:00"
         },
         "quantitative_impact": {
-          "oi_deviation_pct": "188.16",
-          "oi_vs_limit_pct": "112.65",
-          "alert_count": 2,
-          "alert_types": [
-            "OI vs 24H avg",
-            "OI vs platform limit"
+          "title": "Quantitative Impact",
+          "metrics": [
+            {
+              "value": "188.16%",
+              "label": "OI Deviation (24H)",
+              "detail": "Open interest deviated 188.16% from the 24-hour average"
+            },
+            {
+              "value": "112.65%",
+              "label": "OI / Platform Limit",
+              "detail": "Open interest is at 112.65% of the platform position limit"
+            },
+            {
+              "value": "CRITICAL",
+              "label": "Alert Severity",
+              "detail": "Alert classified as critical"
+            },
+            {
+              "value": "+24.0%",
+              "label": "User Growth (period)",
+              "detail": "Total users changed from 6813 to 8451 over the observation window"
+            }
           ]
         },
-        "causal_chain": [
-          {
-            "step": 1,
-            "type": "Market Event",
-            "name": "PROVE Price Surge",
-            "description": "PROVE token +1.96% on March 27, attracting short sellers expecting reversion",
-            "evidence_strength": 3,
-            "evidence_label": "Market data"
-          },
-          {
-            "step": 2,
-            "type": "Position Buildup",
-            "name": "Short Accumulation",
-            "description": "18 of 20 top holders are SHORT, concentrated March 26-27 opens. CN retail cluster identified.",
-            "evidence_strength": 4,
-            "evidence_label": "Position data"
-          },
-          {
-            "step": 3,
-            "type": "Limit Breach",
-            "name": "OI Exceeds Platform Cap",
-            "description": "Platform OI limit breached at 112.65% — new positions may be auto-restricted. OI also 188% above 7-day average.",
-            "evidence_strength": 5,
-            "evidence_label": "Platform alert"
-          },
-          {
-            "step": 4,
-            "type": "Risk Signal",
-            "name": "Negative Funding Persists",
-            "description": "Funding rate -0.00122 indicates shorts dominate — funding paid to long holders. May attract arb longs.",
-            "evidence_strength": 3,
-            "evidence_label": "Funding data"
-          }
-        ],
         "oi_attribution": {
+          "title": "OI Attribution (Hourly User Breakdown)",
+          "description": "Hourly breakdown of user positioning for the instrument.",
+          "user_hourly_table": {
+            "headers": [
+              "Hour (pt)",
+              "Total Users",
+              "Longs",
+              "Shorts"
+            ],
+            "rows": [
+              [
+                "2026032700",
+                "6813",
+                "3384",
+                "4124"
+              ],
+              [
+                "2026032706",
+                "7838",
+                "3830",
+                "5000"
+              ],
+              [
+                "2026032709",
+                "8351",
+                "4098",
+                "5410"
+              ],
+              [
+                "2026032715",
+                "8451",
+                "4124",
+                "5497"
+              ]
+            ]
+          }
+        },
+        "risk_assessment": {
+          "title": "Risk Assessment & Recommended Actions",
+          "actions": [
+            {
+              "priority": "P0",
+              "action": "Verify whether new position opens are restricted (OI/limit at 112.65%)",
+              "reason": "Platform OI limit breached — platform_oi alert at critical level"
+            },
+            {
+              "priority": "P1",
+              "action": "Deep-review top risk users: 5014277, 7557536, 7601874",
+              "reason": "5 user(s) flagged with elevated trade/equity ratios or suspicious patterns"
+            },
+            {
+              "priority": "P2",
+              "action": "Continue monitoring OI trajectory and funding rate changes over the next 24 hours",
+              "reason": "Position dynamics may shift as new data comes in — ensure no further limit breaches"
+            }
+          ]
+        },
+        "involved_users_brief": {
+          "title": "Involved Users (Brief)",
           "headers": [
             "User ID",
+            "UID",
             "Position",
             "Margin",
             "Opened",
@@ -72,78 +116,188 @@
           ],
           "rows": [
             [
-              "6453751",
-              "SHORT (x2)",
-              "Cross/Isolated",
-              "2026-03-27",
-              "T3"
-            ],
-            [
-              "8257206",
+              "5014277",
+              "211349316600729600",
               "LONG",
               "Cross",
-              "2026-03-27 00:01",
-              "T3"
+              "2026-03-26T18:08:40",
+              "T1"
             ],
             [
-              "8446803",
-              "SHORT (x2)",
-              "Cross",
-              "2026-03-27",
-              "T2"
-            ],
-            [
-              "7225039",
-              "SHORT",
-              "Isolated",
-              "2026-03-27 08:15",
-              "T2"
-            ],
-            [
-              "9322809",
+              "7557536",
+              "8986687749369856",
               "SHORT",
               "Cross",
-              "2026-03-27 06:25",
-              "T2"
+              "2026-03-26T14:24:14",
+              "T1"
+            ],
+            [
+              "7601874",
+              "213151826617438208",
+              "LONG",
+              "Cross",
+              "2026-03-27T07:28:35",
+              "T1"
+            ],
+            [
+              "6226956",
+              "573261155016704",
+              "SHORT",
+              "Cross",
+              "2026-03-27T08:36:06",
+              "T1"
+            ],
+            [
+              "2106106",
+              "25882071633371136",
+              "SHORT",
+              "Cross",
+              "2026-03-26T19:48:25",
+              "T1"
             ]
           ]
         },
-        "risk_assessment": "HIGH — Platform limit breached at 112.65%. Immediate action: verify whether new position opens are already restricted. If not, consider manual cap. The dual-alert (OI deviation + limit breach) is a T4-level trigger for parameter review.",
+        "causal_chain": [
+          {
+            "step": 1,
+            "type": "远因 (Structural)",
+            "name": "PROVE-USDT-SWAP Thin Liquidity / Low Float",
+            "description": "PROVE-USDT-SWAP has limited market depth (24H vol: 254220772). Low float instruments are susceptible to rapid OI deviation.",
+            "evidence_strength": 3,
+            "evidence_label": "Market data"
+          },
+          {
+            "step": 2,
+            "type": "近因 (User Influx)",
+            "name": "PROVE-USDT-SWAP Position Buildup",
+            "description": "Users grew from 6813 to 8451 (longs 3384->4124, shorts 4124->5497) between 2026032700 and 2026032715.",
+            "evidence_strength": 4,
+            "evidence_label": "Position data",
+            "evidence_table": {
+              "headers": [
+                "Hour",
+                "Total Users",
+                "Longs",
+                "Shorts"
+              ],
+              "rows": [
+                [
+                  "2026032700",
+                  "6813",
+                  "3384",
+                  "4124"
+                ],
+                [
+                  "2026032706",
+                  "7838",
+                  "3830",
+                  "5000"
+                ],
+                [
+                  "2026032709",
+                  "8351",
+                  "4098",
+                  "5410"
+                ],
+                [
+                  "2026032715",
+                  "8451",
+                  "4124",
+                  "5497"
+                ]
+              ]
+            }
+          },
+          {
+            "step": 3,
+            "type": "触发事件 (Trigger)",
+            "name": "Alert Fired",
+            "description": "platform_oi alert fired at critical level. OI deviation: 188.16%. OI/platform limit: 112.65%.",
+            "evidence_strength": 5,
+            "evidence_label": "Platform alert"
+          },
+          {
+            "step": 4,
+            "type": "风险放大 (Amplification)",
+            "name": "User Concentration Risk",
+            "description": "Top users concentrating: 5014277, 7557536, 7601874, 6226956, 2106106 (risk tiers: T1, T1, T1, T1, T1). Position overlap amplifies systemic exposure.",
+            "evidence_strength": 4,
+            "evidence_label": "User data",
+            "evidence_table": {
+              "headers": [
+                "User ID",
+                "Risk Tier",
+                "Summary"
+              ],
+              "rows": [
+                [
+                  "5014277",
+                  "T1",
+                  "China account (okx_cn). registered 2017-02-08 (9.1yr). trade/equity ratio 45,254..."
+                ],
+                [
+                  "7557536",
+                  "T1",
+                  "China account (okx_cn). registered 2018-02-28 (8.1yr). trade/equity ratio 1,240,..."
+                ],
+                [
+                  "7601874",
+                  "T1",
+                  "China account (okx_cn). registered 2018-03-05 (8.1yr). trade/equity ratio 813,81..."
+                ],
+                [
+                  "6226956",
+                  "T1",
+                  "China account (okx_cn). registered 2017-06-20 (8.8yr). trade/equity ratio 109,69..."
+                ],
+                [
+                  "2106106",
+                  "T1",
+                  "China account (okx_cn). registered 2016-07-05 (9.7yr). trade/equity ratio 16,151..."
+                ]
+              ]
+            }
+          }
+        ],
         "key_users": [
-          "6453751",
-          "8257206"
+          "5014277",
+          "7557536",
+          "7601874",
+          "6226956",
+          "2106106"
         ],
         "user_profiles": [
           {
-            "uid": "615117494562816",
-            "master_user_id": "6453751",
-            "overall_risk_tier": "T3",
-            "executive_summary": "Long-standing CN account (2017) with extremely high trade/equity ratio ($157M vol vs $2K equity). Accumulated multiple PROVE short positions on March 27 during the critical OI spike. High-leverage perpetual trading style.",
+            "uid": "211349316600729600",
+            "master_user_id": "5014277",
+            "overall_risk_tier": "T1",
+            "executive_summary": "China account (okx_cn). registered 2017-02-08 (9.1yr). trade/equity ratio 45,254,072x.",
             "dimensions": [
               {
                 "name": "Registration Profile",
-                "severity": "pass",
+                "severity": "warning",
                 "signals": [
-                  "Registered 2017-09-10 (8.5yr)",
-                  "CN region, phone 86 (consistent)",
-                  "KYC3 China verified (highest level)",
-                  "First deposit 1 day after registration — quick onboarding"
+                  "Registered 2017-02-08 (9.1yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: PC",
+                  "Registration-to-first-deposit gap: 7.5yr (anomalous)"
                 ]
               },
               {
                 "name": "Trading Behavior",
-                "severity": "warning",
+                "severity": "critical",
                 "signals": [
-                  "Multiple PROVE-USDT-SWAP SHORT positions opened March 27",
-                  "Position type 2 (short) in both isolated and cross margin",
-                  "Concentrated on PROVE during critical OI spike event"
+                  "Trade volume $76,479,382.12 vs equity $1.69 (ratio 45,254,072x)",
+                  "Fee tier: LV1",
+                  "PROVE-USDT-SWAP LONG (Cross), opened 2026-03-26T18:08"
                 ]
               },
               {
                 "name": "Associated Accounts",
-                "severity": "pass",
+                "severity": "pending",
                 "signals": [
-                  "Login table access denied (403) — cannot verify device cluster",
+                  "Login table access denied (403) -- cannot verify device cluster",
                   "No sub-account evidence from position query"
                 ]
               },
@@ -151,8 +305,8 @@
                 "name": "IP & Geolocation",
                 "severity": "pass",
                 "signals": [
-                  "Registered in CN (okx_CN region)",
-                  "Phone area code 86 matches KYC3 China nationality",
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
                   "No region mismatch detected"
                 ]
               },
@@ -160,196 +314,465 @@
                 "name": "Identity Signals",
                 "severity": "pass",
                 "signals": [
-                  "KYC3 (highest level) — China verified",
-                  "is_market_account: 普通用户 (retail)",
-                  "is_internal_account: 普通账户 (external)",
-                  "Phone 86 consistent with China KYC"
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
                 ]
               },
               {
                 "name": "Profit & Loss",
-                "severity": "warning",
+                "severity": "critical",
                 "signals": [
-                  "Trade vol $157.3M vs equity $2,035 → ratio 77,000x (extreme churn)",
-                  "First deposit only $49.01 in Sept 2017",
-                  "Last deposit 2026-03-07 (3 weeks ago)",
-                  "Equity depletion suggests high turnover / losses absorbed"
+                  "Trade volume $76,479,382.12, equity $1.69",
+                  "First deposit $68.58",
+                  "Last deposit 2026-03-26",
+                  "Equity retention: 2.5% of first deposit"
                 ]
               },
               {
                 "name": "Withdrawal Behavior",
-                "severity": "pass",
+                "severity": "pending",
                 "signals": [
-                  "Last deposit 2026-03-07",
-                  "Deposit/withdrawal detail table inaccessible",
-                  "Regular cadence based on available data"
+                  "Last deposit 2026-03-26",
+                  "Withdrawal detail table inaccessible (data limited)"
                 ]
               },
               {
                 "name": "Comprehensive Judgment",
-                "severity": "warning",
+                "severity": "critical",
                 "signals": [
-                  "Concentrated PROVE shorts on day of 188% OI spike + 112.65% limit breach",
-                  "Trade/equity ratio 77k indicates extreme leverage cycling",
-                  "Long-tenure CN KYC3 account — no identity concerns",
-                  "Risk: contributing to PROVE OI limit penetration"
+                  "Overall risk tier: T1 (trade/equity ratio 45,254,072x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: PROVE-USDT-SWAP"
                 ]
               }
             ],
             "key_evidence": [
-              "Multiple PROVE shorts March 27 during OI spike",
-              "Trade/equity 77,000x — extreme leverage cycling"
+              "Trade/equity ratio 45,254,072x indicates high leverage cycling",
+              "PROVE-USDT-SWAP LONG opened 2026-03-26T18:08",
+              "Active during critical platform_oi alert"
             ],
             "local_artifact_ref": ""
           },
           {
-            "uid": "584491672416256",
-            "master_user_id": "8257206",
-            "overall_risk_tier": "T3",
-            "executive_summary": "CN account (2018) holding the only LONG on PROVE in top 20 holders. Position opened at midnight March 27. Equity depleted to $74. Contrarian pattern during OI spike.",
+            "uid": "8986687749369856",
+            "master_user_id": "7557536",
+            "overall_risk_tier": "T1",
+            "executive_summary": "China account (okx_cn). registered 2018-02-28 (8.1yr). trade/equity ratio 1,240,937x.",
             "dimensions": [
               {
                 "name": "Registration Profile",
                 "severity": "pass",
                 "signals": [
-                  "Registered 2018-05-15 (7.8yr)",
-                  "CN region, phone 86",
-                  "KYC2 only — not upgraded despite 7yr+ age",
-                  "First deposit 2018-05-20, 5 days after registration"
+                  "Registered 2018-02-28 (8.1yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: H5"
                 ]
               },
               {
                 "name": "Trading Behavior",
                 "severity": "critical",
                 "signals": [
-                  "SOLE LONG on PROVE among top 20 position holders",
-                  "Position opened 2026-03-27 00:01:31 HKT (midnight)",
-                  "Cross margin mode — higher risk/reward on contrarian bet",
-                  "Contrarian long during OI spike — unusual pattern"
+                  "Trade volume $233,122,333.68 vs equity $187.86 (ratio 1,240,937x)",
+                  "Fee tier: LV1",
+                  "PROVE-USDT-SWAP SHORT (Cross), opened 2026-03-26T14:24"
                 ]
               },
               {
                 "name": "Associated Accounts",
-                "severity": "pass",
+                "severity": "pending",
                 "signals": [
-                  "Login table access denied (403)",
-                  "No linked sub-account evidence in position data"
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
                 ]
               },
               {
                 "name": "IP & Geolocation",
                 "severity": "pass",
                 "signals": [
-                  "Registered CN, okx_CN region",
-                  "Phone 86 matches KYC2 China nationality",
-                  "No region mismatch"
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
                 ]
               },
               {
                 "name": "Identity Signals",
-                "severity": "warning",
+                "severity": "pass",
                 "signals": [
-                  "KYC2 only after 7yr+ — unusual for active trader",
-                  "Retail account (普通用户), external (普通账户)",
-                  "Phone 86 consistent with China",
-                  "No upgrade to KYC3 despite longevity"
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
                 ]
               },
               {
                 "name": "Profit & Loss",
                 "severity": "critical",
                 "signals": [
-                  "Equity $74 — near zero, severe depletion",
-                  "Trade vol $1.78M vs $74 equity → ratio 24,000x",
-                  "First deposit $462.24 in 2018, last deposit 2025-07-20 (8 months gap)",
-                  "Effectively operating with near-zero capital"
+                  "Trade volume $233,122,333.68, equity $187.86",
+                  "First deposit $7,727.98",
+                  "Last deposit 2026-03-26",
+                  "Equity retention: 2.4% of first deposit"
                 ]
               },
               {
                 "name": "Withdrawal Behavior",
-                "severity": "warning",
+                "severity": "pending",
                 "signals": [
-                  "Last deposit 2025-07-20 (8 months ago)",
-                  "No deposits despite ongoing trading — sustainable only via gains or leverage",
-                  "Deposit history inaccessible for full analysis"
+                  "Last deposit 2026-03-26",
+                  "Withdrawal detail table inaccessible (data limited)"
                 ]
               },
               {
                 "name": "Comprehensive Judgment",
                 "severity": "critical",
                 "signals": [
-                  "Contrarian PROVE LONG at midnight during OI spike — bottom fishing or coordination signal",
-                  "Equity almost fully depleted ($74 remaining)",
-                  "7yr account never upgraded to KYC3 — anomalous pattern",
-                  "Risk tier T3: contrarian position + depleted equity + KYC2 anomaly"
+                  "Overall risk tier: T1 (trade/equity ratio 1,240,937x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: PROVE-USDT-SWAP"
                 ]
               }
             ],
             "key_evidence": [
-              "Only LONG position on PROVE in top 20",
-              "Position opened midnight March 27",
-              "Equity depleted to $74"
+              "Trade/equity ratio 1,240,937x indicates high leverage cycling",
+              "PROVE-USDT-SWAP SHORT opened 2026-03-26T14:24",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "213151826617438208",
+            "master_user_id": "7601874",
+            "overall_risk_tier": "T1",
+            "executive_summary": "China account (okx_cn). registered 2018-03-05 (8.1yr). trade/equity ratio 813,818x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "warning",
+                "signals": [
+                  "Registered 2018-03-05 (8.1yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: PC",
+                  "Registration-to-first-deposit gap: 3.9yr (anomalous)"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $176,940,303.19 vs equity $217.42 (ratio 813,818x)",
+                  "Fee tier: LV1",
+                  "PROVE-USDT-SWAP LONG (Cross), opened 2026-03-27T07:28"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "pass",
+                "signals": [
+                  "Trade volume $176,940,303.19, equity $217.42",
+                  "First deposit $309.59",
+                  "Last deposit 2026-03-26",
+                  "Equity retention: 70.2% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2026-03-26",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio 813,818x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: PROVE-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 813,818x indicates high leverage cycling",
+              "PROVE-USDT-SWAP LONG opened 2026-03-27T07:28",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "573261155016704",
+            "master_user_id": "6226956",
+            "overall_risk_tier": "T1",
+            "executive_summary": "China account (okx_cn). registered 2017-06-20 (8.8yr). trade/equity ratio 109,699,325x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Registered 2017-06-20 (8.8yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: PC"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $288,509,225.51 vs equity $2.63 (ratio 109,699,325x)",
+                  "Fee tier: LV1",
+                  "PROVE-USDT-SWAP SHORT (Cross), opened 2026-03-27T08:36"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $288,509,225.51, equity $2.63",
+                  "First deposit $6,145.85",
+                  "Last deposit 2026-03-26",
+                  "Equity retention: 0.0% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2026-03-26",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio 109,699,325x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: PROVE-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 109,699,325x indicates high leverage cycling",
+              "PROVE-USDT-SWAP SHORT opened 2026-03-27T08:36",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "25882071633371136",
+            "master_user_id": "2106106",
+            "overall_risk_tier": "T1",
+            "executive_summary": "China account (okx_cn). registered 2016-07-05 (9.7yr). trade/equity ratio 16,151,252x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "warning",
+                "signals": [
+                  "Registered 2016-07-05 (9.7yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: APP",
+                  "Registration-to-first-deposit gap: 1.4yr (anomalous)"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $54,591,233.32 vs equity $3.38 (ratio 16,151,252x)",
+                  "Fee tier: LV1",
+                  "PROVE-USDT-SWAP SHORT (Cross), opened 2026-03-26T19:48"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $54,591,233.32, equity $3.38",
+                  "First deposit $701.15",
+                  "Last deposit 2026-03-26",
+                  "Equity retention: 0.5% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2026-03-26",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio 16,151,252x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: PROVE-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 16,151,252x indicates high leverage cycling",
+              "PROVE-USDT-SWAP SHORT opened 2026-03-26T19:48",
+              "Active during critical platform_oi alert"
             ],
             "local_artifact_ref": ""
           }
         ]
       },
       {
-        "asset": "NFLX",
+        "asset": "NFLX-USDT-SWAP",
         "severity": "critical",
-        "executive_summary": "NFLX-USDT-SWAP OI spiked 632.38% above 24H average on March 27, the highest OI deviation in today's alerts. Price relatively stable at $93.32 (+0.47%). OI stands at 312.26 contracts with near-zero funding. Key driver: VIP9 market maker (user 47180145) has held a large NFLX LONG since March 13. Multiple Vietnam-based retail shorts opposing the institutional long.",
-        "forward_looking": "Monitor whether market maker reduces NFLX LONG position — unwinding could sharply reduce OI and trigger stop-losses on short-side retail positions. Vietnam retail short accounts (86067447, 61840902) are exposed if NFLX price rises. Near-zero funding indicates the long-short is roughly balanced in funding terms despite heavy OI concentration.",
+        "executive_summary": "NFLX-USDT-SWAP triggered critical alert. Price: $93.32 (+1.52%). OI deviation: 632.38%. 2 user(s) profiled.",
+        "forward_looking": "Monitor NFLX-USDT-SWAP OI trajectory over the next 24 hours. If OI continues expanding, consider tightening position limits. Watch for funding rate shifts that may attract additional directional flow.",
         "market_snapshot": {
           "price": "93.32",
-          "change_24h": "+0.47%",
-          "funding_rate": "0.0000000000000000",
-          "open_interest": "312.26"
+          "change_24h": "+1.52%",
+          "open_interest": "312.26",
+          "funding_rate": "0",
+          "vol_24h": "3067",
+          "timestamp": "2026-03-27T18:20:57.978259+08:00"
         },
         "quantitative_impact": {
-          "oi_deviation_pct": "632.38",
-          "oi_vs_limit_pct": "n/a",
-          "alert_count": 1,
-          "alert_types": [
-            "OI vs 24H avg"
+          "title": "Quantitative Impact",
+          "metrics": [
+            {
+              "value": "632.38%",
+              "label": "OI Deviation (24H)",
+              "detail": "Open interest deviated 632.38% from the 24-hour average"
+            },
+            {
+              "value": "CRITICAL",
+              "label": "Alert Severity",
+              "detail": "Alert classified as critical"
+            }
           ]
         },
-        "causal_chain": [
-          {
-            "step": 1,
-            "type": "Institutional Activity",
-            "name": "Market Maker Positions NFLX Long",
-            "description": "VIP9 market maker (47180145) took NFLX LONG position on 2026-03-13 and has maintained it, building up OI baseline.",
-            "evidence_strength": 5,
-            "evidence_label": "Position data"
-          },
-          {
-            "step": 2,
-            "type": "Retail Reaction",
-            "name": "Vietnam Retail Shorts Enter",
-            "description": "Multiple Vietnam-based new accounts took NFLX SHORT positions March 24-27, opposing institutional long.",
-            "evidence_strength": 3,
-            "evidence_label": "Position data"
-          },
-          {
-            "step": 3,
-            "type": "OI Spike",
-            "name": "OI 632% Above 24H Average",
-            "description": "Combined institutional long + retail shorts drove OI far above average. Low absolute OI (312 contracts) amplifies the percentage.",
-            "evidence_strength": 4,
-            "evidence_label": "Platform alert"
-          },
-          {
-            "step": 4,
-            "type": "Risk Signal",
-            "name": "Zero Funding Rate",
-            "description": "Funding at 0.00% indicates long/short balance in funding terms despite positional concentration.",
-            "evidence_strength": 2,
-            "evidence_label": "Market data"
-          }
-        ],
         "oi_attribution": {
+          "title": "OI Attribution (Hourly User Breakdown)",
+          "description": "Hourly breakdown of user positioning for the instrument.",
+          "user_hourly_table": {
+            "headers": [
+              "Hour (pt)",
+              "Total Users",
+              "Longs",
+              "Shorts"
+            ],
+            "rows": []
+          }
+        },
+        "risk_assessment": {
+          "title": "Risk Assessment & Recommended Actions",
+          "actions": [
+            {
+              "priority": "P0",
+              "action": "Review platform position limits for this instrument immediately",
+              "reason": "Critical platform_oi alert requires immediate parameter review"
+            },
+            {
+              "priority": "P1",
+              "action": "Deep-review top risk users: 50274600, 21607391",
+              "reason": "2 user(s) flagged with elevated trade/equity ratios or suspicious patterns"
+            },
+            {
+              "priority": "P2",
+              "action": "Continue monitoring OI trajectory and funding rate changes over the next 24 hours",
+              "reason": "Position dynamics may shift as new data comes in — ensure no further limit breaches"
+            }
+          ]
+        },
+        "involved_users_brief": {
+          "title": "Involved Users (Brief)",
           "headers": [
             "User ID",
+            "UID",
             "Position",
             "Margin",
             "Opened",
@@ -357,510 +780,216 @@
           ],
           "rows": [
             [
-              "47180145",
-              "LONG (MM)",
+              "50274600",
+              "",
+              "LONG",
               "Cross",
-              "2026-03-13",
-              "T1"
-            ],
-            [
-              "86067447",
-              "SHORT",
-              "Isolated",
-              "2026-03-24",
+              "2026-03-27T11:51:00",
               "T3"
             ],
             [
-              "61840902",
+              "21607391",
+              "",
               "SHORT",
-              "Isolated",
-              "2024-08-17",
-              "T2"
-            ],
-            [
-              "43417803",
-              "LONG",
               "Cross",
-              "2026-03-27",
-              "T2"
-            ],
-            [
-              "40072720",
-              "LONG",
-              "Cross",
-              "2026-03-27",
-              "T2"
+              "2026-03-26T21:43:08",
+              "T3"
             ]
-          ]
-        },
-        "risk_assessment": "MEDIUM-HIGH — OI spike driven by institutional market maker. Retail short positions from Vietnam are exposed to potential squeeze. Recommend monitoring position concentration and setting alert if market maker begins unwinding.",
-        "key_users": [
-          "47180145",
-          "86067447"
-        ],
-        "user_profiles": [
-          {
-            "uid": "516094364179638834",
-            "master_user_id": "47180145",
-            "overall_risk_tier": "T1",
-            "executive_summary": "VIP9 market maker (Cayman Islands). NFLX LONG since March 13. $8.46T cumulative volume. Institutional hedged position, expected behavior.",
-            "dimensions": [
-              {
-                "name": "Registration Profile",
-                "severity": "pass",
-                "signals": [
-                  "Registered 2023-11-30 (1.3yr)",
-                  "Cayman Islands, phone 44 (UK)",
-                  "KYC2, Cayman Islands nationality — institutional jurisdiction",
-                  "First deposit April 2024 ($500 — token initial deposit)"
-                ]
-              },
-              {
-                "name": "Trading Behavior",
-                "severity": "pass",
-                "signals": [
-                  "NFLX LONG since 2026-03-13 (2 weeks of holding)",
-                  "Market maker — hedged long/short book expected",
-                  "VIP9 fee tier — highest trading tier",
-                  "Position consistent with market-making activities"
-                ]
-              },
-              {
-                "name": "Associated Accounts",
-                "severity": "pass",
-                "signals": [
-                  "Login table access denied (403)",
-                  "Institutional accounts typically have multiple sub-accounts"
-                ]
-              },
-              {
-                "name": "IP & Geolocation",
-                "severity": "pass",
-                "signals": [
-                  "Cayman Islands — known institutional jurisdiction",
-                  "Phone 44 (UK) — consistent with offshore entity with UK ops",
-                  "okx_Asia region registration"
-                ]
-              },
-              {
-                "name": "Identity Signals",
-                "severity": "pass",
-                "signals": [
-                  "Explicitly flagged as 市商用户 (market maker) in system",
-                  "VIP9 — highest fee level (institutional only)",
-                  "KYC2 Cayman Islands — standard for offshore entities",
-                  "No adverse identity signals"
-                ]
-              },
-              {
-                "name": "Profit & Loss",
-                "severity": "pass",
-                "signals": [
-                  "Equity $57.5M — large institutional balance",
-                  "Trade vol $8.46 TRILLION cumulative",
-                  "First deposit $500 (symbolic), bulk capital managed separately",
-                  "Last deposit 2026-03-26"
-                ]
-              },
-              {
-                "name": "Withdrawal Behavior",
-                "severity": "pass",
-                "signals": [
-                  "Last deposit 2026-03-26 (active capital management)",
-                  "Institutional fund flows expected to be large and regular"
-                ]
-              },
-              {
-                "name": "Comprehensive Judgment",
-                "severity": "pass",
-                "signals": [
-                  "Market maker with confirmed system flag — NFLX long is part of hedged book",
-                  "OI spike likely attributable to this account's activity",
-                  "No adverse risk signals — monitor position size changes only",
-                  "Risk tier T1: known institutional entity"
-                ]
-              }
-            ],
-            "key_evidence": [
-              "Confirmed market maker (市商用户), VIP9",
-              "NFLX LONG held since March 13",
-              "$8.46T volume — institutional scale"
-            ],
-            "local_artifact_ref": ""
-          },
-          {
-            "uid": "785142243199033355",
-            "master_user_id": "86067447",
-            "overall_risk_tier": "T3",
-            "executive_summary": "New Vietnam account (Dec 2025, 3.5 months old), $10K first deposit, NFLX SHORT during 632% OI spike. Aggressive new account profile.",
-            "dimensions": [
-              {
-                "name": "Registration Profile",
-                "severity": "warning",
-                "signals": [
-                  "Registered 2025-12-11 (only 3.5 months old)",
-                  "Vietnam, phone 84 (Vietnam), okx_Asia region",
-                  "KYC2, Vietnam nationality",
-                  "Very new account active in NFLX equity perpetuals"
-                ]
-              },
-              {
-                "name": "Trading Behavior",
-                "severity": "warning",
-                "signals": [
-                  "NFLX SHORT since 2026-03-24 (3 days)",
-                  "Isolated margin on NFLX — significant exposure",
-                  "Trade vol $12.2M in 3.5 months — aggressive for account age",
-                  "Positioned against institutional market maker long"
-                ]
-              },
-              {
-                "name": "Associated Accounts",
-                "severity": "pass",
-                "signals": [
-                  "Login table access denied (403)",
-                  "New account — likely no sub-accounts yet"
-                ]
-              },
-              {
-                "name": "IP & Geolocation",
-                "severity": "warning",
-                "signals": [
-                  "Vietnam (phone 84), okx_Asia region",
-                  "New Vietnam accounts with large deposits are a known elevated risk profile",
-                  "Consistent phone/registration — no mismatch"
-                ]
-              },
-              {
-                "name": "Identity Signals",
-                "severity": "warning",
-                "signals": [
-                  "KYC2 only despite high trading activity",
-                  "First deposit $10,000 on first day of KYC (Dec 12, 2025)",
-                  "Large initial deposit for brand new account — anomalous",
-                  "Phone 84 consistent with Vietnam KYC"
-                ]
-              },
-              {
-                "name": "Profit & Loss",
-                "severity": "warning",
-                "signals": [
-                  "Equity $1,781 vs trade vol $12.2M → ratio ~6,900x",
-                  "First deposit $10,000 — large initial capital injection",
-                  "Last deposit 2026-03-20 (1 week ago)",
-                  "Rapid capital deployment suggests experienced operator in new account"
-                ]
-              },
-              {
-                "name": "Withdrawal Behavior",
-                "severity": "pass",
-                "signals": [
-                  "Last deposit 2026-03-20 (1 week ago)",
-                  "Regular deposit cadence observed for 3.5 months"
-                ]
-              },
-              {
-                "name": "Comprehensive Judgment",
-                "severity": "warning",
-                "signals": [
-                  "New VN account + $10K first deposit + rapid high-volume = known risk pattern (insurance drain / new account funding)",
-                  "NFLX short opposing institutional long — exposed to squeeze risk",
-                  "KYC2 never upgraded despite months of high activity",
-                  "Risk tier T3: new account risk pattern + elevated regional flag"
-                ]
-              }
-            ],
-            "key_evidence": [
-              "3.5 month old account, $10K first deposit",
-              "NFLX short opposing institutional long",
-              "$12.2M volume in 3.5 months"
-            ],
-            "local_artifact_ref": ""
-          }
-        ]
-      },
-      {
-        "asset": "XAU",
-        "severity": "critical",
-        "executive_summary": "XAU-USD_UM-SWAP triggered Price Limit P4 Z-cap (hard ceiling) 18 times on March 26 (3 after deduplication), indicating price was repeatedly hitting the upper limit. Gold at $4,430.9 (+0.09% today). Multiple CN institutional accounts hold short positions. The Z-cap trigger suggests the mark price or index price approached the limit, potentially restricting longs from opening.",
-        "forward_looking": "Review XAU-USD_UM-SWAP Z-cap parameters — 18 triggers in one day indicates the price limit band may need widening to accommodate current gold price volatility. Check if legitimate long-side orders are being blocked. Monitor user 5001716 who deposited yesterday and holds XAU shorts.",
-        "market_snapshot": {
-          "price": "4430.9",
-          "change_24h": "+0.09%",
-          "funding_rate": "-0.000124",
-          "open_interest": "8314"
-        },
-        "quantitative_impact": {
-          "oi_deviation_pct": "n/a",
-          "oi_vs_limit_pct": "n/a",
-          "alert_count": 18,
-          "alert_count_deduped": 3,
-          "alert_types": [
-            "price up restricted (Z cap)"
           ]
         },
         "causal_chain": [
           {
             "step": 1,
-            "type": "Market Event",
-            "name": "Gold Price Near All-Time High",
-            "description": "XAU-USD_UM at $4,430.9 — gold near ATH. Price approaching the Z-cap upper price limit band.",
-            "evidence_strength": 4,
+            "type": "远因 (Structural)",
+            "name": "NFLX-USDT-SWAP Thin Liquidity / Low Float",
+            "description": "NFLX-USDT-SWAP has limited market depth (24H vol: 3067). Low float instruments are susceptible to rapid OI deviation.",
+            "evidence_strength": 3,
             "evidence_label": "Market data"
           },
           {
             "step": 2,
-            "type": "Limit Trigger",
-            "name": "Z-Cap Triggered 18 Times",
-            "description": "price up restricted triggered 18 times (3 unique events after dedup). Hard ceiling prevents longs from opening above limit price.",
+            "type": "近因 (User Influx)",
+            "name": "NFLX-USDT-SWAP Position Buildup",
+            "description": "User positioning changed on NFLX-USDT-SWAP.",
+            "evidence_strength": 4,
+            "evidence_label": "Position data"
+          },
+          {
+            "step": 3,
+            "type": "触发事件 (Trigger)",
+            "name": "Alert Fired",
+            "description": "platform_oi alert fired at critical level. OI deviation: 632.38%.",
             "evidence_strength": 5,
             "evidence_label": "Platform alert"
           },
           {
-            "step": 3,
-            "type": "Parameter Gap",
-            "name": "Price Limit Not Updated",
-            "description": "High trigger frequency suggests XAU price limit parameters lag behind gold's current price level. Requires immediate P4 parameter adjustment.",
-            "evidence_strength": 4,
-            "evidence_label": "Alert pattern"
-          },
-          {
             "step": 4,
-            "type": "Position Risk",
-            "name": "CN Short Holders at Risk",
-            "description": "Top short holders (2118011, 5001716, 2093678) may face liquidation if gold continues rising above current limit band.",
-            "evidence_strength": 3,
-            "evidence_label": "Position data"
+            "type": "风险放大 (Amplification)",
+            "name": "User Concentration Risk",
+            "description": "Top users concentrating: 50274600, 21607391 (risk tiers: T3, T3). Position overlap amplifies systemic exposure.",
+            "evidence_strength": 4,
+            "evidence_label": "User data",
+            "evidence_table": {
+              "headers": [
+                "User ID",
+                "Risk Tier",
+                "Summary"
+              ],
+              "rows": [
+                [
+                  "50274600",
+                  "T3",
+                  "LONG NFLX-USDT-SWAP, master info not available for deeper analysis."
+                ],
+                [
+                  "21607391",
+                  "T3",
+                  "SHORT NFLX-USDT-SWAP, master info not available for deeper analysis."
+                ]
+              ]
+            }
           }
         ],
-        "oi_attribution": {
-          "headers": [
-            "User ID",
-            "Position",
-            "Margin",
-            "Opened",
-            "Risk Tier"
-          ],
-          "rows": [
-            [
-              "2118011",
-              "SHORT (x3)",
-              "Cross/Isolated",
-              "2025-10-21 / 2026-03-27",
-              "T2"
-            ],
-            [
-              "5001716",
-              "SHORT (x2)",
-              "Cross",
-              "2026-03-23/24",
-              "T2"
-            ],
-            [
-              "2093678",
-              "SHORT",
-              "Cross",
-              "2026-03-23",
-              "T2"
-            ],
-            [
-              "2126061",
-              "SHORT (x2)",
-              "Cross",
-              "2026-02-21 / 2026-03-11",
-              "T1"
-            ],
-            [
-              "2101832",
-              "SHORT",
-              "Isolated",
-              "2026-03-23",
-              "T1"
-            ]
-          ]
-        },
-        "risk_assessment": "HIGH — Z-cap triggering 18 times in one day requires immediate price limit parameter review for XAU-USD_UM-SWAP. Multiple CN short holders are exposed if gold price breaks current limit ceiling. Action: widen Z-cap band to reflect current gold price level.",
         "key_users": [
-          "2118011",
-          "5001716"
+          "50274600",
+          "21607391"
         ],
         "user_profiles": [
           {
-            "uid": "150922492180078592",
-            "master_user_id": "2118011",
-            "overall_risk_tier": "T2",
-            "executive_summary": "Oldest account in dataset — registered November 2013 (12+ years). Active XAU trader with 3 positions including one opened today (March 27). $30.8M cumulative trade volume. CN, KYC3.",
+            "uid": "",
+            "master_user_id": "50274600",
+            "overall_risk_tier": "T3",
+            "executive_summary": "LONG NFLX-USDT-SWAP, master info not available for deeper analysis.",
             "dimensions": [
               {
                 "name": "Registration Profile",
                 "severity": "pass",
                 "signals": [
-                  "Registered 2013-11-28 (12+ years — oldest account in dataset)",
-                  "CN region, phone 86",
-                  "KYC3 China verified",
-                  "First deposit 2017-12-15 (4yr gap from registration to deposit — was dormant early on)"
+                  "Master info not queried — no signals available"
                 ]
               },
               {
                 "name": "Trading Behavior",
                 "severity": "warning",
                 "signals": [
-                  "3 XAU-USDT-SWAP SHORT positions open simultaneously",
-                  "Oldest position from 2025-10-21 (5+ months), newest opened today March 27 10:20 HKT",
-                  "Both cross and isolated margin used",
-                  "Adding to XAU short during Z-cap event is notable"
+                  "LONG NFLX-USDT-SWAP, 1 position(s)"
                 ]
               },
               {
                 "name": "Associated Accounts",
-                "severity": "pass",
+                "severity": "pending",
                 "signals": [
-                  "Login table access denied (403)",
-                  "No sub-account evidence in position data"
+                  "Login table 403"
                 ]
               },
               {
                 "name": "IP & Geolocation",
                 "severity": "pass",
                 "signals": [
-                  "CN registration, okx_CN region",
-                  "Phone 86 matches KYC3 China",
-                  "No region mismatch — consistent long-term profile"
+                  "Region data requires master info query"
                 ]
               },
               {
                 "name": "Identity Signals",
                 "severity": "pass",
                 "signals": [
-                  "KYC3 verified, nationality China",
-                  "Phone 86 consistent with nationality",
-                  "Not market/internal account",
-                  "12yr account longevity — established user"
+                  "KYC data requires master info query"
                 ]
               },
               {
                 "name": "Profit & Loss",
-                "severity": "pass",
+                "severity": "warning",
                 "signals": [
-                  "Trade vol $30.8M, equity $1,633",
-                  "First deposit $174.57 in Dec 2017",
-                  "Last deposit 2026-03-23 (4 days ago)",
-                  "Moderate equity relative to XAU position size"
+                  "Equity data requires master info query — position during OI anomaly flagged"
                 ]
               },
               {
                 "name": "Withdrawal Behavior",
-                "severity": "pass",
+                "severity": "pending",
                 "signals": [
-                  "Last deposit 2026-03-23 (4 days ago)",
-                  "Regular deposit pattern for long-term user"
+                  "Data limited"
                 ]
               },
               {
                 "name": "Comprehensive Judgment",
                 "severity": "warning",
                 "signals": [
-                  "Experienced XAU trader — 12yr account, multiple short positions",
-                  "Added new XAU short TODAY at 10:20 HKT during Z-cap event",
-                  "Consistent CN retail trader profile — identity concerns low",
-                  "Risk tier T2: experienced XAU short during price limit breach event"
+                  "LONG during OI anomaly, monitoring required"
                 ]
               }
             ],
             "key_evidence": [
-              "3 XAU positions including one opened today during Z-cap event",
-              "12-year old account — experienced trader",
-              "Last deposit March 23, position opened March 27"
-            ],
-            "local_artifact_ref": ""
+              "LONG NFLX-USDT-SWAP",
+              "Position opened 2026-03-27T11:51:00"
+            ]
           },
           {
-            "uid": "211339444467404800",
-            "master_user_id": "5001716",
-            "overall_risk_tier": "T2",
-            "executive_summary": "CN account registered 2017, dormant until April 2024. XAU shorts held during Z-cap event. Deposited yesterday (March 26). $48.5M trade volume.",
+            "uid": "",
+            "master_user_id": "21607391",
+            "overall_risk_tier": "T3",
+            "executive_summary": "SHORT NFLX-USDT-SWAP, master info not available for deeper analysis.",
             "dimensions": [
               {
                 "name": "Registration Profile",
-                "severity": "warning",
+                "severity": "pass",
                 "signals": [
-                  "Registered 2017-01-13 but FIRST DEPOSIT only 2024-04-28 (7yr dormancy)",
-                  "CN region, phone 86",
-                  "KYC3 China verified",
-                  "Registration-to-first-deposit gap: 7 years — highly anomalous"
+                  "Master info not queried — no signals available"
                 ]
               },
               {
                 "name": "Trading Behavior",
                 "severity": "warning",
                 "signals": [
-                  "XAU-USDT-SWAP SHORT positions (opened March 23 and March 24)",
-                  "Short positions held during XAU Z-cap Price Limit trigger event",
-                  "Cross margin mode on XAU positions"
+                  "SHORT NFLX-USDT-SWAP, 1 position(s)"
                 ]
               },
               {
                 "name": "Associated Accounts",
-                "severity": "pass",
+                "severity": "pending",
                 "signals": [
-                  "Login table access denied (403)",
-                  "No sub-account evidence in position data"
+                  "Login table 403"
                 ]
               },
               {
                 "name": "IP & Geolocation",
                 "severity": "pass",
                 "signals": [
-                  "CN registration, okx_CN region",
-                  "Phone 86 matches KYC3 China",
-                  "No region mismatch detected"
+                  "Region data requires master info query"
                 ]
               },
               {
                 "name": "Identity Signals",
                 "severity": "pass",
                 "signals": [
-                  "KYC3 verified, nationality China",
-                  "Phone 86 consistent with nationality",
-                  "Not market/internal account",
-                  "Normal retail profile"
+                  "KYC data requires master info query"
                 ]
               },
               {
                 "name": "Profit & Loss",
-                "severity": "pass",
+                "severity": "warning",
                 "signals": [
-                  "Trade vol $48.5M, equity $5,867 (ratio ~8,300x — moderate)",
-                  "First deposit $679.34 (April 2024)",
-                  "Healthy equity balance relative to position",
-                  "Last deposit 2026-03-26 (yesterday)"
+                  "Equity data requires master info query — position during OI anomaly flagged"
                 ]
               },
               {
                 "name": "Withdrawal Behavior",
-                "severity": "warning",
+                "severity": "pending",
                 "signals": [
-                  "Last deposit 2026-03-26 (day before XAU Z-cap event)",
-                  "Active capital management observed",
-                  "Deposited into XAU position context"
+                  "Data limited"
                 ]
               },
               {
                 "name": "Comprehensive Judgment",
                 "severity": "warning",
                 "signals": [
-                  "7yr dormancy then sudden activation in April 2024 is anomalous",
-                  "Deposited yesterday + holds XAU shorts during Z-cap trigger",
-                  "Account timing warrants further investigation",
-                  "Risk tier T2: anomalous registration pattern + timely deposit"
+                  "SHORT during OI anomaly, monitoring required"
                 ]
               }
             ],
             "key_evidence": [
-              "Deposited yesterday, holding XAU shorts during Z-cap",
-              "7-year dormant account reactivated April 2024"
-            ],
-            "local_artifact_ref": ""
+              "SHORT NFLX-USDT-SWAP",
+              "Position opened 2026-03-26T21:43:08"
+            ]
           }
         ]
       }
@@ -870,7 +999,7 @@
       "ema_coverage": 4,
       "issues_found": 5,
       "source": "[PROD]Index Alarm - 2026-03-27 (00:00 - 23:59)",
-      "generated_at": "2026-03-27T10:00:16.258473+00:00"
+      "generated_at": "2026-03-27T10:20:58.038488+00:00"
     },
     "metric_cards": [
       {
@@ -887,7 +1016,7 @@
       },
       {
         "label": "Highest Risk",
-        "value": "T3"
+        "value": "T1"
       }
     ],
     "rule_blocks": [
@@ -926,92 +1055,92 @@
     ],
     "recommended_changes": null,
     "downloads": [],
-    "markdown": "# Risk Intelligence\n\n**Summary:** 4 alert types analyzed. 0 flagged alert(s) parsed. 5 suspicious user(s) highlighted.\n**Source document:** [PROD]Index Alarm - 2026-03-27 (00:00 - 23:59)\n\n## Suspicious Users\n- 615117494562816 — T3 — Multiple PROVE shorts on March 27 during 188% OI spike + 112.65% limit breach. High-churn CN account.\n- 584491672416256 — T3 — Only LONG on PROVE in top 20, opened midnight March 27. Equity depleted to $74.\n- 785142243199033355 — T3 — New Vietnam account (Dec 2025), $10K first deposit, NFLX short during 632% OI spike. Aggressive new account pattern.\n- 211339444467404800 — T2 — XAU short positions during Z-cap event. Deposited yesterday. 7-year dormant account reactivated 2024.\n- 516094364179638834 — T1 — VIP9 market maker (Cayman). NFLX LONG since March 13. Likely driving 632% OI spike via institutional hedging.\n\n## Deep Profiles\n- 615117494562816 — T3 — Long-standing CN account (2017) with extremely high trade/equity ratio ($157M vol vs $2K equity = 77,000x). Accumulated multiple PROVE short positions on March 27 during the critical OI spike event. Pattern suggests high-leverage perpetual trading with PROVE as a key instrument.\n- 584491672416256 — T3 — CN account (2018) holding the only LONG position on PROVE among top 20 holders, opened at midnight March 27 (00:01 HKT). Contrarian position during critical OI spike. Very low equity ($74) with $1.78M trade history suggests account has depleted significantly. KYC2 only (not upgraded).\n- 785142243199033355 — T3 — Very new Vietnam account (registered December 2025, 3.5 months old) with anomalously large first deposit ($10,000) relative to account age. Holding NFLX SHORT during the 632% OI spike. Vietnam accounts with large first deposits and rapid high-volume trading are a known risk pattern. KYC2 only.\n- 211339444467404800 — T2 — Long-standing CN account (2017) with active XAU-USDT-SWAP short positions. Deposited yesterday (March 26) suggesting recent capital injection ahead of today's XAU Price Limit Z-cap event. Healthy trade vol ($48.5M) with moderate equity ($5.9K). Interesting gap: account registered 2017 but first deposit only in April 2024.\n- 516094364179638834 — T1 — VIP9 market maker account (Cayman Islands, UK phone) with $8.46 trillion cumulative trade volume. Holding NFLX LONG since March 13 as part of hedged market-making activity. The 632% NFLX OI spike is likely attributable to this institutional participant's activity. Known entity, expected behavior — monitoring for position size changes.",
+    "markdown": "# Risk Intelligence\n\n**Summary:** 4 alert types analyzed. 0 flagged alert(s) parsed. 5 suspicious user(s) highlighted.\n**Source document:** [PROD]Index Alarm - 2026-03-27 (00:00 - 23:59)\n\n## Suspicious Users\n- 573261155016704 — T1 — Trade/equity ratio 109,699,325x. Active on: PROVE-USDT-SWAP.\n- 211349316600729600 — T1 — Trade/equity ratio 45,254,072x. Active on: PROVE-USDT-SWAP.\n- 25882071633371136 — T1 — Trade/equity ratio 16,151,252x. Active on: PROVE-USDT-SWAP.\n- 8986687749369856 — T1 — Trade/equity ratio 1,240,937x. Active on: PROVE-USDT-SWAP.\n- 213151826617438208 — T1 — Trade/equity ratio 813,818x. Active on: PROVE-USDT-SWAP.\n\n## Deep Profiles\n- 573261155016704 — T1 — China account (okx_cn). registered 2017-06-20 (8.8yr). trade/equity ratio 109,699,325x.\n- 211349316600729600 — T1 — China account (okx_cn). registered 2017-02-08 (9.1yr). trade/equity ratio 45,254,072x.\n- 25882071633371136 — T1 — China account (okx_cn). registered 2016-07-05 (9.7yr). trade/equity ratio 16,151,252x.\n- 8986687749369856 — T1 — China account (okx_cn). registered 2018-02-28 (8.1yr). trade/equity ratio 1,240,937x.\n- 213151826617438208 — T1 — China account (okx_cn). registered 2018-03-05 (8.1yr). trade/equity ratio 813,818x.",
     "error": null,
     "source_document": {
       "title": "[PROD]Index Alarm - 2026-03-27 (00:00 - 23:59)",
-      "url": "https://okg-block.sg.larksuite.com/docx/DwNIdsvkkooT0hx3MKZlYHDMgIg",
-      "modified_at": "2026-03-27T09:00:00Z",
+      "url": "https://okg-block.sg.larksuite.com/docx/IfDGdg6BfoYyMQxA5yrlv77qgrb",
+      "modified_at": "2026-03-27T08:00:00+08:00",
       "selected_by": "latest_modified_desc"
     },
     "suspicious_users": [
       {
-        "uid": "615117494562816",
-        "master_user_id": "6453751",
-        "risk_tier": "T3",
-        "source_alert": "platform_oi",
-        "reason": "Multiple PROVE shorts on March 27 during 188% OI spike + 112.65% limit breach. High-churn CN account.",
+        "uid": "573261155016704",
+        "master_user_id": "6226956",
+        "risk_tier": "T1",
+        "source_alert": "build_risk_intel",
+        "reason": "Trade/equity ratio 109,699,325x. Active on: PROVE-USDT-SWAP.",
         "mentions": 1,
         "first_seen": 0
       },
       {
-        "uid": "584491672416256",
-        "master_user_id": "8257206",
-        "risk_tier": "T3",
-        "source_alert": "platform_oi",
-        "reason": "Only LONG on PROVE in top 20, opened midnight March 27. Equity depleted to $74.",
+        "uid": "211349316600729600",
+        "master_user_id": "5014277",
+        "risk_tier": "T1",
+        "source_alert": "build_risk_intel",
+        "reason": "Trade/equity ratio 45,254,072x. Active on: PROVE-USDT-SWAP.",
         "mentions": 1,
         "first_seen": 1
       },
       {
-        "uid": "785142243199033355",
-        "master_user_id": "86067447",
-        "risk_tier": "T3",
-        "source_alert": "platform_oi",
-        "reason": "New Vietnam account (Dec 2025), $10K first deposit, NFLX short during 632% OI spike. Aggressive new account pattern.",
-        "mentions": 1,
-        "first_seen": 4
-      },
-      {
-        "uid": "211339444467404800",
-        "master_user_id": "5001716",
-        "risk_tier": "T2",
-        "source_alert": "price_limit_p4",
-        "reason": "XAU short positions during Z-cap event. Deposited yesterday. 7-year dormant account reactivated 2024.",
+        "uid": "25882071633371136",
+        "master_user_id": "2106106",
+        "risk_tier": "T1",
+        "source_alert": "build_risk_intel",
+        "reason": "Trade/equity ratio 16,151,252x. Active on: PROVE-USDT-SWAP.",
         "mentions": 1,
         "first_seen": 2
       },
       {
-        "uid": "516094364179638834",
-        "master_user_id": "47180145",
+        "uid": "8986687749369856",
+        "master_user_id": "7557536",
         "risk_tier": "T1",
-        "source_alert": "platform_oi",
-        "reason": "VIP9 market maker (Cayman). NFLX LONG since March 13. Likely driving 632% OI spike via institutional hedging.",
+        "source_alert": "build_risk_intel",
+        "reason": "Trade/equity ratio 1,240,937x. Active on: PROVE-USDT-SWAP.",
         "mentions": 1,
         "first_seen": 3
+      },
+      {
+        "uid": "213151826617438208",
+        "master_user_id": "7601874",
+        "risk_tier": "T1",
+        "source_alert": "build_risk_intel",
+        "reason": "Trade/equity ratio 813,818x. Active on: PROVE-USDT-SWAP.",
+        "mentions": 1,
+        "first_seen": 4
       }
     ],
     "user_profiles": [
       {
-        "uid": "615117494562816",
-        "master_user_id": "6453751",
-        "overall_risk_tier": "T3",
-        "executive_summary": "Long-standing CN account (2017) with extremely high trade/equity ratio ($157M vol vs $2K equity = 77,000x). Accumulated multiple PROVE short positions on March 27 during the critical OI spike event. Pattern suggests high-leverage perpetual trading with PROVE as a key instrument.",
+        "uid": "573261155016704",
+        "master_user_id": "6226956",
+        "overall_risk_tier": "T1",
+        "executive_summary": "China account (okx_cn). registered 2017-06-20 (8.8yr). trade/equity ratio 109,699,325x.",
         "dimensions": [
           {
             "name": "Registration Profile",
             "severity": "pass",
             "signals": [
-              "Registered 2017-09-10 (8.5yr)",
-              "CN region, phone 86 (consistent)",
-              "KYC3 China verified (highest level)",
-              "First deposit 1 day after registration — quick onboarding"
+              "Registered 2017-06-20 (8.8yr)",
+              "okx_CN, phone 86",
+              "KYC3 China verified",
+              "Client type: PC"
             ]
           },
           {
             "name": "Trading Behavior",
-            "severity": "warning",
+            "severity": "critical",
             "signals": [
-              "Multiple PROVE-USDT-SWAP SHORT positions opened March 27",
-              "Position type 2 (short) in both isolated and cross margin",
-              "Concentrated on PROVE during critical OI spike event"
+              "Trade volume $288,509,225.51 vs equity $2.63 (ratio 109,699,325x)",
+              "Fee tier: LV1",
+              "PROVE-USDT-SWAP SHORT (Cross), opened 2026-03-27T08:36"
             ]
           },
           {
             "name": "Associated Accounts",
-            "severity": "pass",
+            "severity": "pending",
             "signals": [
-              "Login table access denied (403) — cannot verify device cluster",
+              "Login table access denied (403) -- cannot verify device cluster",
               "No sub-account evidence from position query"
             ]
           },
@@ -1019,8 +1148,8 @@
             "name": "IP & Geolocation",
             "severity": "pass",
             "signals": [
-              "Registered in CN (okx_CN region)",
-              "Phone area code 86 matches KYC3 China nationality",
+              "Registered okx_CN",
+              "Phone 86 matches China nationality",
               "No region mismatch detected"
             ]
           },
@@ -1028,403 +1157,395 @@
             "name": "Identity Signals",
             "severity": "pass",
             "signals": [
-              "KYC3 (highest level) — China verified",
-              "is_market_account: 普通用户 (retail)",
-              "is_internal_account: 普通账户 (external)",
-              "Phone 86 consistent with China KYC"
-            ]
-          },
-          {
-            "name": "Profit & Loss",
-            "severity": "warning",
-            "signals": [
-              "Trade vol $157.3M vs equity $2,035 → ratio 77,000x (extreme churn)",
-              "First deposit only $49.01 in Sept 2017",
-              "Last deposit 2026-03-07 (3 weeks ago)",
-              "Equity depletion suggests high turnover / losses absorbed"
-            ]
-          },
-          {
-            "name": "Withdrawal Behavior",
-            "severity": "pass",
-            "signals": [
-              "Last deposit 2026-03-07",
-              "Deposit/withdrawal detail table inaccessible",
-              "Regular cadence based on available data"
-            ]
-          },
-          {
-            "name": "Comprehensive Judgment",
-            "severity": "warning",
-            "signals": [
-              "Concentrated PROVE shorts on day of 188% OI spike + 112.65% limit breach",
-              "Trade/equity ratio 77k indicates extreme leverage cycling",
-              "Long-tenure CN KYC3 account — no identity concerns",
-              "Risk: contributing to PROVE OI limit penetration"
-            ]
-          }
-        ],
-        "key_evidence": [
-          "Multiple PROVE-USDT-SWAP SHORT positions opened March 27 (06:12 + 06:20)",
-          "Trade/equity ratio 77,000x suggests extreme leverage cycling",
-          "PROVE OI/limit at 112.65% — top 20 position holder"
-        ],
-        "local_artifact_ref": ""
-      },
-      {
-        "uid": "584491672416256",
-        "master_user_id": "8257206",
-        "overall_risk_tier": "T3",
-        "executive_summary": "CN account (2018) holding the only LONG position on PROVE among top 20 holders, opened at midnight March 27 (00:01 HKT). Contrarian position during critical OI spike. Very low equity ($74) with $1.78M trade history suggests account has depleted significantly. KYC2 only (not upgraded).",
-        "dimensions": [
-          {
-            "name": "Registration Profile",
-            "severity": "pass",
-            "signals": [
-              "Registered 2018-05-15 (7.8yr)",
-              "CN region, phone 86",
-              "KYC2 only — not upgraded despite 7yr+ age",
-              "First deposit 2018-05-20, 5 days after registration"
-            ]
-          },
-          {
-            "name": "Trading Behavior",
-            "severity": "critical",
-            "signals": [
-              "SOLE LONG on PROVE among top 20 position holders",
-              "Position opened 2026-03-27 00:01:31 HKT (midnight)",
-              "Cross margin mode — higher risk/reward on contrarian bet",
-              "Contrarian long during OI spike — unusual pattern"
-            ]
-          },
-          {
-            "name": "Associated Accounts",
-            "severity": "pass",
-            "signals": [
-              "Login table access denied (403)",
-              "No linked sub-account evidence in position data"
-            ]
-          },
-          {
-            "name": "IP & Geolocation",
-            "severity": "pass",
-            "signals": [
-              "Registered CN, okx_CN region",
-              "Phone 86 matches KYC2 China nationality",
-              "No region mismatch"
-            ]
-          },
-          {
-            "name": "Identity Signals",
-            "severity": "warning",
-            "signals": [
-              "KYC2 only after 7yr+ — unusual for active trader",
-              "Retail account (普通用户), external (普通账户)",
-              "Phone 86 consistent with China",
-              "No upgrade to KYC3 despite longevity"
+              "KYC3 — China",
+              "is_market_account: 普通用户",
+              "is_internal_account: 普通账户",
+              "Phone 86 consistent with China"
             ]
           },
           {
             "name": "Profit & Loss",
             "severity": "critical",
             "signals": [
-              "Equity $74 — near zero, severe depletion",
-              "Trade vol $1.78M vs $74 equity → ratio 24,000x",
-              "First deposit $462.24 in 2018, last deposit 2025-07-20 (8 months gap)",
-              "Effectively operating with near-zero capital"
+              "Trade volume $288,509,225.51, equity $2.63",
+              "First deposit $6,145.85",
+              "Last deposit 2026-03-26",
+              "Equity retention: 0.0% of first deposit"
             ]
           },
           {
             "name": "Withdrawal Behavior",
-            "severity": "warning",
+            "severity": "pending",
             "signals": [
-              "Last deposit 2025-07-20 (8 months ago)",
-              "No deposits despite ongoing trading — sustainable only via gains or leverage",
-              "Deposit history inaccessible for full analysis"
+              "Last deposit 2026-03-26",
+              "Withdrawal detail table inaccessible (data limited)"
             ]
           },
           {
             "name": "Comprehensive Judgment",
             "severity": "critical",
             "signals": [
-              "Contrarian PROVE LONG at midnight during OI spike — bottom fishing or coordination signal",
-              "Equity almost fully depleted ($74 remaining)",
-              "7yr account never upgraded to KYC3 — anomalous pattern",
-              "Risk tier T3: contrarian position + depleted equity + KYC2 anomaly"
+              "Overall risk tier: T1 (trade/equity ratio 109,699,325x)",
+              "Flagged in platform_oi alert (critical)",
+              "Active positions on: PROVE-USDT-SWAP"
             ]
           }
         ],
         "key_evidence": [
-          "Only LONG position on PROVE in top 20 holders during OI spike",
-          "Position opened midnight March 27 (00:01:31 HKT)",
-          "Equity depleted to $74 from first deposit of $462 in 2018"
+          "Trade/equity ratio 109,699,325x indicates high leverage cycling",
+          "PROVE-USDT-SWAP SHORT opened 2026-03-27T08:36",
+          "Active during critical platform_oi alert"
         ],
         "local_artifact_ref": ""
       },
       {
-        "uid": "785142243199033355",
-        "master_user_id": "86067447",
-        "overall_risk_tier": "T3",
-        "executive_summary": "Very new Vietnam account (registered December 2025, 3.5 months old) with anomalously large first deposit ($10,000) relative to account age. Holding NFLX SHORT during the 632% OI spike. Vietnam accounts with large first deposits and rapid high-volume trading are a known risk pattern. KYC2 only.",
-        "dimensions": [
-          {
-            "name": "Registration Profile",
-            "severity": "warning",
-            "signals": [
-              "Registered 2025-12-11 (only 3.5 months old)",
-              "Vietnam, phone 84 (Vietnam), okx_Asia region",
-              "KYC2, Vietnam nationality",
-              "Very new account active in NFLX equity perpetuals"
-            ]
-          },
-          {
-            "name": "Trading Behavior",
-            "severity": "warning",
-            "signals": [
-              "NFLX SHORT since 2026-03-24 (3 days)",
-              "Isolated margin on NFLX — significant exposure",
-              "Trade vol $12.2M in 3.5 months — aggressive for account age",
-              "Positioned against institutional market maker long"
-            ]
-          },
-          {
-            "name": "Associated Accounts",
-            "severity": "pass",
-            "signals": [
-              "Login table access denied (403)",
-              "New account — likely no sub-accounts yet"
-            ]
-          },
-          {
-            "name": "IP & Geolocation",
-            "severity": "warning",
-            "signals": [
-              "Vietnam (phone 84), okx_Asia region",
-              "New Vietnam accounts with large deposits are a known elevated risk profile",
-              "Consistent phone/registration — no mismatch"
-            ]
-          },
-          {
-            "name": "Identity Signals",
-            "severity": "warning",
-            "signals": [
-              "KYC2 only despite high trading activity",
-              "First deposit $10,000 on first day of KYC (Dec 12, 2025)",
-              "Large initial deposit for brand new account — anomalous",
-              "Phone 84 consistent with Vietnam KYC"
-            ]
-          },
-          {
-            "name": "Profit & Loss",
-            "severity": "warning",
-            "signals": [
-              "Equity $1,781 vs trade vol $12.2M → ratio ~6,900x",
-              "First deposit $10,000 — large initial capital injection",
-              "Last deposit 2026-03-20 (1 week ago)",
-              "Rapid capital deployment suggests experienced operator in new account"
-            ]
-          },
-          {
-            "name": "Withdrawal Behavior",
-            "severity": "pass",
-            "signals": [
-              "Last deposit 2026-03-20 (1 week ago)",
-              "Regular deposit cadence observed for 3.5 months"
-            ]
-          },
-          {
-            "name": "Comprehensive Judgment",
-            "severity": "warning",
-            "signals": [
-              "New VN account + $10K first deposit + rapid high-volume = known risk pattern (insurance drain / new account funding)",
-              "NFLX short opposing institutional long — exposed to squeeze risk",
-              "KYC2 never upgraded despite months of high activity",
-              "Risk tier T3: new account risk pattern + elevated regional flag"
-            ]
-          }
-        ],
-        "key_evidence": [
-          "Account only 3.5 months old with $10,000 first deposit (Dec 12, 2025)",
-          "NFLX SHORT during 632% OI spike — positioned against institutional flow",
-          "$12.2M trade volume in 3.5 months for KYC2 Vietnam account"
-        ],
-        "local_artifact_ref": ""
-      },
-      {
-        "uid": "211339444467404800",
-        "master_user_id": "5001716",
-        "overall_risk_tier": "T2",
-        "executive_summary": "Long-standing CN account (2017) with active XAU-USDT-SWAP short positions. Deposited yesterday (March 26) suggesting recent capital injection ahead of today's XAU Price Limit Z-cap event. Healthy trade vol ($48.5M) with moderate equity ($5.9K). Interesting gap: account registered 2017 but first deposit only in April 2024.",
-        "dimensions": [
-          {
-            "name": "Registration Profile",
-            "severity": "warning",
-            "signals": [
-              "Registered 2017-01-13 but FIRST DEPOSIT only 2024-04-28 (7yr dormancy)",
-              "CN region, phone 86",
-              "KYC3 China verified",
-              "Registration-to-first-deposit gap: 7 years — highly anomalous"
-            ]
-          },
-          {
-            "name": "Trading Behavior",
-            "severity": "warning",
-            "signals": [
-              "XAU-USDT-SWAP SHORT positions (opened March 23 and March 24)",
-              "Short positions held during XAU Z-cap Price Limit trigger event",
-              "Cross margin mode on XAU positions"
-            ]
-          },
-          {
-            "name": "Associated Accounts",
-            "severity": "pass",
-            "signals": [
-              "Login table access denied (403)",
-              "No sub-account evidence in position data"
-            ]
-          },
-          {
-            "name": "IP & Geolocation",
-            "severity": "pass",
-            "signals": [
-              "CN registration, okx_CN region",
-              "Phone 86 matches KYC3 China",
-              "No region mismatch detected"
-            ]
-          },
-          {
-            "name": "Identity Signals",
-            "severity": "pass",
-            "signals": [
-              "KYC3 verified, nationality China",
-              "Phone 86 consistent with nationality",
-              "Not market/internal account",
-              "Normal retail profile"
-            ]
-          },
-          {
-            "name": "Profit & Loss",
-            "severity": "pass",
-            "signals": [
-              "Trade vol $48.5M, equity $5,867 (ratio ~8,300x — moderate)",
-              "First deposit $679.34 (April 2024)",
-              "Healthy equity balance relative to position",
-              "Last deposit 2026-03-26 (yesterday)"
-            ]
-          },
-          {
-            "name": "Withdrawal Behavior",
-            "severity": "warning",
-            "signals": [
-              "Last deposit 2026-03-26 (day before XAU Z-cap event)",
-              "Active capital management observed",
-              "Deposited into XAU position context"
-            ]
-          },
-          {
-            "name": "Comprehensive Judgment",
-            "severity": "warning",
-            "signals": [
-              "7yr dormancy then sudden activation in April 2024 is anomalous",
-              "Deposited yesterday + holds XAU shorts during Z-cap trigger",
-              "Account timing warrants further investigation",
-              "Risk tier T2: anomalous registration pattern + timely deposit"
-            ]
-          }
-        ],
-        "key_evidence": [
-          "XAU-USDT-SWAP SHORT positions open during Z-cap Price Limit trigger (18 raw alerts)",
-          "Deposited on 2026-03-26 (yesterday) — day before event",
-          "Account dormant from 2017 registration until April 2024 first deposit"
-        ],
-        "local_artifact_ref": ""
-      },
-      {
-        "uid": "516094364179638834",
-        "master_user_id": "47180145",
+        "uid": "211349316600729600",
+        "master_user_id": "5014277",
         "overall_risk_tier": "T1",
-        "executive_summary": "VIP9 market maker account (Cayman Islands, UK phone) with $8.46 trillion cumulative trade volume. Holding NFLX LONG since March 13 as part of hedged market-making activity. The 632% NFLX OI spike is likely attributable to this institutional participant's activity. Known entity, expected behavior — monitoring for position size changes.",
+        "executive_summary": "China account (okx_cn). registered 2017-02-08 (9.1yr). trade/equity ratio 45,254,072x.",
         "dimensions": [
           {
             "name": "Registration Profile",
-            "severity": "pass",
+            "severity": "warning",
             "signals": [
-              "Registered 2023-11-30 (1.3yr)",
-              "Cayman Islands, phone 44 (UK)",
-              "KYC2, Cayman Islands nationality — institutional jurisdiction",
-              "First deposit April 2024 ($500 — token initial deposit)"
+              "Registered 2017-02-08 (9.1yr)",
+              "okx_CN, phone 86",
+              "KYC3 China verified",
+              "Client type: PC",
+              "Registration-to-first-deposit gap: 7.5yr (anomalous)"
             ]
           },
           {
             "name": "Trading Behavior",
-            "severity": "pass",
+            "severity": "critical",
             "signals": [
-              "NFLX LONG since 2026-03-13 (2 weeks of holding)",
-              "Market maker — hedged long/short book expected",
-              "VIP9 fee tier — highest trading tier",
-              "Position consistent with market-making activities"
+              "Trade volume $76,479,382.12 vs equity $1.69 (ratio 45,254,072x)",
+              "Fee tier: LV1",
+              "PROVE-USDT-SWAP LONG (Cross), opened 2026-03-26T18:08"
             ]
           },
           {
             "name": "Associated Accounts",
-            "severity": "pass",
+            "severity": "pending",
             "signals": [
-              "Login table access denied (403)",
-              "Institutional accounts typically have multiple sub-accounts"
+              "Login table access denied (403) -- cannot verify device cluster",
+              "No sub-account evidence from position query"
             ]
           },
           {
             "name": "IP & Geolocation",
             "severity": "pass",
             "signals": [
-              "Cayman Islands — known institutional jurisdiction",
-              "Phone 44 (UK) — consistent with offshore entity with UK ops",
-              "okx_Asia region registration"
+              "Registered okx_CN",
+              "Phone 86 matches China nationality",
+              "No region mismatch detected"
             ]
           },
           {
             "name": "Identity Signals",
             "severity": "pass",
             "signals": [
-              "Explicitly flagged as 市商用户 (market maker) in system",
-              "VIP9 — highest fee level (institutional only)",
-              "KYC2 Cayman Islands — standard for offshore entities",
-              "No adverse identity signals"
+              "KYC3 — China",
+              "is_market_account: 普通用户",
+              "is_internal_account: 普通账户",
+              "Phone 86 consistent with China"
+            ]
+          },
+          {
+            "name": "Profit & Loss",
+            "severity": "critical",
+            "signals": [
+              "Trade volume $76,479,382.12, equity $1.69",
+              "First deposit $68.58",
+              "Last deposit 2026-03-26",
+              "Equity retention: 2.5% of first deposit"
+            ]
+          },
+          {
+            "name": "Withdrawal Behavior",
+            "severity": "pending",
+            "signals": [
+              "Last deposit 2026-03-26",
+              "Withdrawal detail table inaccessible (data limited)"
+            ]
+          },
+          {
+            "name": "Comprehensive Judgment",
+            "severity": "critical",
+            "signals": [
+              "Overall risk tier: T1 (trade/equity ratio 45,254,072x)",
+              "Flagged in platform_oi alert (critical)",
+              "Active positions on: PROVE-USDT-SWAP"
+            ]
+          }
+        ],
+        "key_evidence": [
+          "Trade/equity ratio 45,254,072x indicates high leverage cycling",
+          "PROVE-USDT-SWAP LONG opened 2026-03-26T18:08",
+          "Active during critical platform_oi alert"
+        ],
+        "local_artifact_ref": ""
+      },
+      {
+        "uid": "25882071633371136",
+        "master_user_id": "2106106",
+        "overall_risk_tier": "T1",
+        "executive_summary": "China account (okx_cn). registered 2016-07-05 (9.7yr). trade/equity ratio 16,151,252x.",
+        "dimensions": [
+          {
+            "name": "Registration Profile",
+            "severity": "warning",
+            "signals": [
+              "Registered 2016-07-05 (9.7yr)",
+              "okx_CN, phone 86",
+              "KYC3 China verified",
+              "Client type: APP",
+              "Registration-to-first-deposit gap: 1.4yr (anomalous)"
+            ]
+          },
+          {
+            "name": "Trading Behavior",
+            "severity": "critical",
+            "signals": [
+              "Trade volume $54,591,233.32 vs equity $3.38 (ratio 16,151,252x)",
+              "Fee tier: LV1",
+              "PROVE-USDT-SWAP SHORT (Cross), opened 2026-03-26T19:48"
+            ]
+          },
+          {
+            "name": "Associated Accounts",
+            "severity": "pending",
+            "signals": [
+              "Login table access denied (403) -- cannot verify device cluster",
+              "No sub-account evidence from position query"
+            ]
+          },
+          {
+            "name": "IP & Geolocation",
+            "severity": "pass",
+            "signals": [
+              "Registered okx_CN",
+              "Phone 86 matches China nationality",
+              "No region mismatch detected"
+            ]
+          },
+          {
+            "name": "Identity Signals",
+            "severity": "pass",
+            "signals": [
+              "KYC3 — China",
+              "is_market_account: 普通用户",
+              "is_internal_account: 普通账户",
+              "Phone 86 consistent with China"
+            ]
+          },
+          {
+            "name": "Profit & Loss",
+            "severity": "critical",
+            "signals": [
+              "Trade volume $54,591,233.32, equity $3.38",
+              "First deposit $701.15",
+              "Last deposit 2026-03-26",
+              "Equity retention: 0.5% of first deposit"
+            ]
+          },
+          {
+            "name": "Withdrawal Behavior",
+            "severity": "pending",
+            "signals": [
+              "Last deposit 2026-03-26",
+              "Withdrawal detail table inaccessible (data limited)"
+            ]
+          },
+          {
+            "name": "Comprehensive Judgment",
+            "severity": "critical",
+            "signals": [
+              "Overall risk tier: T1 (trade/equity ratio 16,151,252x)",
+              "Flagged in platform_oi alert (critical)",
+              "Active positions on: PROVE-USDT-SWAP"
+            ]
+          }
+        ],
+        "key_evidence": [
+          "Trade/equity ratio 16,151,252x indicates high leverage cycling",
+          "PROVE-USDT-SWAP SHORT opened 2026-03-26T19:48",
+          "Active during critical platform_oi alert"
+        ],
+        "local_artifact_ref": ""
+      },
+      {
+        "uid": "8986687749369856",
+        "master_user_id": "7557536",
+        "overall_risk_tier": "T1",
+        "executive_summary": "China account (okx_cn). registered 2018-02-28 (8.1yr). trade/equity ratio 1,240,937x.",
+        "dimensions": [
+          {
+            "name": "Registration Profile",
+            "severity": "pass",
+            "signals": [
+              "Registered 2018-02-28 (8.1yr)",
+              "okx_CN, phone 86",
+              "KYC3 China verified",
+              "Client type: H5"
+            ]
+          },
+          {
+            "name": "Trading Behavior",
+            "severity": "critical",
+            "signals": [
+              "Trade volume $233,122,333.68 vs equity $187.86 (ratio 1,240,937x)",
+              "Fee tier: LV1",
+              "PROVE-USDT-SWAP SHORT (Cross), opened 2026-03-26T14:24"
+            ]
+          },
+          {
+            "name": "Associated Accounts",
+            "severity": "pending",
+            "signals": [
+              "Login table access denied (403) -- cannot verify device cluster",
+              "No sub-account evidence from position query"
+            ]
+          },
+          {
+            "name": "IP & Geolocation",
+            "severity": "pass",
+            "signals": [
+              "Registered okx_CN",
+              "Phone 86 matches China nationality",
+              "No region mismatch detected"
+            ]
+          },
+          {
+            "name": "Identity Signals",
+            "severity": "pass",
+            "signals": [
+              "KYC3 — China",
+              "is_market_account: 普通用户",
+              "is_internal_account: 普通账户",
+              "Phone 86 consistent with China"
+            ]
+          },
+          {
+            "name": "Profit & Loss",
+            "severity": "critical",
+            "signals": [
+              "Trade volume $233,122,333.68, equity $187.86",
+              "First deposit $7,727.98",
+              "Last deposit 2026-03-26",
+              "Equity retention: 2.4% of first deposit"
+            ]
+          },
+          {
+            "name": "Withdrawal Behavior",
+            "severity": "pending",
+            "signals": [
+              "Last deposit 2026-03-26",
+              "Withdrawal detail table inaccessible (data limited)"
+            ]
+          },
+          {
+            "name": "Comprehensive Judgment",
+            "severity": "critical",
+            "signals": [
+              "Overall risk tier: T1 (trade/equity ratio 1,240,937x)",
+              "Flagged in platform_oi alert (critical)",
+              "Active positions on: PROVE-USDT-SWAP"
+            ]
+          }
+        ],
+        "key_evidence": [
+          "Trade/equity ratio 1,240,937x indicates high leverage cycling",
+          "PROVE-USDT-SWAP SHORT opened 2026-03-26T14:24",
+          "Active during critical platform_oi alert"
+        ],
+        "local_artifact_ref": ""
+      },
+      {
+        "uid": "213151826617438208",
+        "master_user_id": "7601874",
+        "overall_risk_tier": "T1",
+        "executive_summary": "China account (okx_cn). registered 2018-03-05 (8.1yr). trade/equity ratio 813,818x.",
+        "dimensions": [
+          {
+            "name": "Registration Profile",
+            "severity": "warning",
+            "signals": [
+              "Registered 2018-03-05 (8.1yr)",
+              "okx_CN, phone 86",
+              "KYC3 China verified",
+              "Client type: PC",
+              "Registration-to-first-deposit gap: 3.9yr (anomalous)"
+            ]
+          },
+          {
+            "name": "Trading Behavior",
+            "severity": "critical",
+            "signals": [
+              "Trade volume $176,940,303.19 vs equity $217.42 (ratio 813,818x)",
+              "Fee tier: LV1",
+              "PROVE-USDT-SWAP LONG (Cross), opened 2026-03-27T07:28"
+            ]
+          },
+          {
+            "name": "Associated Accounts",
+            "severity": "pending",
+            "signals": [
+              "Login table access denied (403) -- cannot verify device cluster",
+              "No sub-account evidence from position query"
+            ]
+          },
+          {
+            "name": "IP & Geolocation",
+            "severity": "pass",
+            "signals": [
+              "Registered okx_CN",
+              "Phone 86 matches China nationality",
+              "No region mismatch detected"
+            ]
+          },
+          {
+            "name": "Identity Signals",
+            "severity": "pass",
+            "signals": [
+              "KYC3 — China",
+              "is_market_account: 普通用户",
+              "is_internal_account: 普通账户",
+              "Phone 86 consistent with China"
             ]
           },
           {
             "name": "Profit & Loss",
             "severity": "pass",
             "signals": [
-              "Equity $57.5M — large institutional balance",
-              "Trade vol $8.46 TRILLION cumulative",
-              "First deposit $500 (symbolic), bulk capital managed separately",
-              "Last deposit 2026-03-26"
+              "Trade volume $176,940,303.19, equity $217.42",
+              "First deposit $309.59",
+              "Last deposit 2026-03-26",
+              "Equity retention: 70.2% of first deposit"
             ]
           },
           {
             "name": "Withdrawal Behavior",
-            "severity": "pass",
+            "severity": "pending",
             "signals": [
-              "Last deposit 2026-03-26 (active capital management)",
-              "Institutional fund flows expected to be large and regular"
+              "Last deposit 2026-03-26",
+              "Withdrawal detail table inaccessible (data limited)"
             ]
           },
           {
             "name": "Comprehensive Judgment",
-            "severity": "pass",
+            "severity": "critical",
             "signals": [
-              "Market maker with confirmed system flag — NFLX long is part of hedged book",
-              "OI spike likely attributable to this account's activity",
-              "No adverse risk signals — monitor position size changes only",
-              "Risk tier T1: known institutional entity"
+              "Overall risk tier: T1 (trade/equity ratio 813,818x)",
+              "Flagged in platform_oi alert (critical)",
+              "Active positions on: PROVE-USDT-SWAP"
             ]
           }
         ],
         "key_evidence": [
-          "Confirmed market maker (市商用户) with VIP9 status",
-          "NFLX LONG held since March 13 — predates today's OI spike",
-          "$8.46T cumulative trade volume confirms institutional scale"
+          "Trade/equity ratio 813,818x indicates high leverage cycling",
+          "PROVE-USDT-SWAP LONG opened 2026-03-27T07:28",
+          "Active during critical platform_oi alert"
         ],
         "local_artifact_ref": ""
       }

@@ -29,7 +29,7 @@ ACT-USD,Altcoins,4,0.3548,0.5104,AL-5: ema_avg_update_lag 1461s > 300s
 ACT-USDT,Altcoins,4,0.3750,0.5403,AL-5: ema_avg_update_lag 1784s > 300s
 ACU-USDT,Altcoins,4,0.3233,0.4214,AL-5: ema_avg_update_lag 1726s > 300s
 ADA-TRY,Topcoins,3,0.2407,0.2789,TC: ema_avg_deviation 0.24% ≥ 0.15%; TC: only 3 components (need ≥5)
-ADA-USDC,Topcoins,5,0.1687,0.2398,TC: ema_avg_deviation 0.17% ≥ 0.15%
+ADA-USDC,Topcoins,4,0.1687,0.2398,TC: ema_avg_deviation 0.17% ≥ 0.15%; TC: only 4 components (need ≥5)
 ADA-USDT,Topcoins,5,0.1664,0.1978,TC: ema_avg_deviation 0.17% ≥ 0.15%
 AERGO-EUR,Altcoins,2,0.2585,0.3129,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1751s > 300s
 AERGO-USD,Altcoins,2,0.1965,0.2615,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1242s > 300s
@@ -58,7 +58,7 @@ ALLO-TRY,Altcoins,4,0.2908,0.4179,AL-1: Binance available but not in components;
 ALLO-USD,Altcoins,4,0.3330,0.4656,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1633s > 300s
 ALLO-USDC,Altcoins,4,0.2822,0.3473,AL-1: Binance available but not in components
 ALLO-USDT,Altcoins,4,0.2650,0.3938,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 943s > 300s
-AMD-USDT,TradFi,3,0.2590,0.3111,TF-1: Ondo_TICKER available but not in components; TF-1: dxFeed available but not in components
+AMD-USDT,TradFi,2,0.2590,0.3111,TF-1: Ondo_TICKER available but not in components; TF-1: dxFeed available but not in components; TF-3: OKX_PERPETUAL (score 4) available but not used; TF-5: only 2 components (need ≥3)
 AMZN-USDT,TradFi,6,0.1051,0.1557,TF-1: dxFeed available but not in components
 ANIME-EUR,Altcoins,3,0.1544,0.2080,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1641s > 300s
 ANIME-TRY,Altcoins,5,0.1793,0.2797,AL-5: ema_avg_update_lag 1187s > 300s
@@ -98,7 +98,7 @@ ARKM-USD,Altcoins,4,0.2823,0.4517,AL-5: ema_avg_update_lag 1413s > 300s
 ARKM-USDC,Altcoins,4,0.2569,0.4487,AL-5: ema_avg_update_lag 1814s > 300s
 ARKM-USDT,Altcoins,4,0.2900,0.5017,AL-5: ema_avg_update_lag 1575s > 300s
 ASP-USD,Altcoins,3,0.2620,0.4032,AL-5: ema_avg_update_lag 1184s > 300s
-ASP-USDT,Altcoins,3,0.3252,0.4784,AL-5: ema_avg_update_lag 1377s > 300s
+ASP-USDT,Altcoins,2,0.3252,0.4784,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1377s > 300s
 ASTER-EUR,Altcoins,5,0.1000,0.1606,AL-5: ema_avg_update_lag 1699s > 300s
 ASTER-TRY,Altcoins,2,0.0875,0.0918,AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1698s > 300s
 ASTER-USD,Altcoins,5,0.0863,0.1349,AL-5: ema_avg_update_lag 1246s > 300s
@@ -211,7 +211,7 @@ BREV-USD,Altcoins,3,0.1679,0.2233,AL-5: ema_avg_update_lag 1062s > 300s
 BREV-USDC,Altcoins,3,0.1700,0.2130,AL-5: ema_avg_update_lag 1770s > 300s
 BREV-USDT,Altcoins,3,0.2438,0.2943,AL-5: ema_avg_update_lag 1520s > 300s
 BRL1-BRL,Altcoins,2,0.0722,0.0766,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 4018s > 300s
-BRL1-USDT,Altcoins,1,0.0459,0.0557,AL-1: OKX available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 4039s > 300s
+BRL1-USDT,Altcoins,1,0.0459,0.0557,AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 4039s > 300s
 BTC-TRY,Topcoins,3,0.1209,0.1651,TC: only 3 components (need ≥5)
 BTC-USD,Topcoins,4,0.1175,0.1320,TC: only 4 components (need ≥5)
 BTC-USDC,Topcoins,5,0.1833,0.2205,TC: ema_avg_deviation 0.18% ≥ 0.15%
@@ -311,7 +311,7 @@ DOOD-EUR,Altcoins,4,0.1822,0.2897,AL-5: ema_avg_update_lag 1714s > 300s
 DOOD-USD,Altcoins,4,0.1632,0.2787,AL-5: ema_avg_update_lag 1599s > 300s
 DOOD-USDC,Altcoins,3,0.2046,0.3568,AL-5: ema_avg_update_lag 1710s > 300s
 DOOD-USDT,Altcoins,3,0.2534,0.4032,AL-5: ema_avg_update_lag 1722s > 300s
-DORA-USDT,Altcoins,2,0.2382,0.2775,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 2120s > 300s
+DORA-USDT,Altcoins,1,0.2382,0.2775,AL-1: OKX available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 2120s > 300s
 DOT-EUR,Topcoins,4,0.2444,0.2983,TC: ema_avg_deviation 0.24% ≥ 0.15%; TC: only 4 components (need ≥5)
 DOT-TRY,Topcoins,2,0.1889,0.2059,TC: ema_avg_deviation 0.19% ≥ 0.15%; TC: only 2 components (need ≥5)
 DOT-USD,Topcoins,5,0.2129,0.2748,TC: ema_avg_deviation 0.21% ≥ 0.15%
@@ -367,7 +367,7 @@ ETHW-USD,Altcoins,4,0.1711,0.2818,AL-1: Bybit available but not in components; A
 ETHW-USDC,Altcoins,4,0.3348,0.4582,AL-5: ema_avg_update_lag 1762s > 300s
 ETHW-USDT,Altcoins,4,0.2259,0.3546,AL-5: ema_avg_update_lag 1735s > 300s
 EURC-USD,Fiat,2,0.0221,0.0294,Fiat: only 2 components (need ≥3)
-EWJ-USDT,TradFi,2,0.1335,0.2022,TF-1: dxFeed available but not in components; TF-1: Binance_LINEAR_INDEX available but not in components; TF-3: Binance_LINEAR_PERPETUAL (score 4) available but not used; TF-5: only 2 components (need ≥3)
+EWJ-USDT,TradFi,1,0.1335,0.2022,TF-1: dxFeed available but not in components; TF-1: Binance_LINEAR_INDEX available but not in components; TF-3: Binance_LINEAR_PERPETUAL (score 4) available but not used; TF-3: OKX_PERPETUAL (score 4) available but not used; TF-5: only 1 components (need ≥3)
 EWY-USDT,TradFi,3,0.1852,0.2375,TF-1: dxFeed available but not in components; TF-1: Binance_LINEAR_INDEX available but not in components; TF-3: Binance_LINEAR_PERPETUAL (score 4) available but not used
 F-USDT,Altcoins,5,0.1790,0.2844,AL-5: ema_avg_update_lag 1704s > 300s
 FARTCOIN-USDT,Altcoins,5,0.2852,0.3962,AL-5: ema_avg_update_lag 1646s > 300s
@@ -432,7 +432,7 @@ GOAT-USD,Altcoins,3,0.3376,0.5220,AL-1: OKX available but not in components; AL-
 GOAT-USDC,Altcoins,4,0.2907,0.5199,AL-5: ema_avg_update_lag 1906s > 300s
 GOAT-USDT,Altcoins,4,0.2890,0.5249,AL-5: ema_avg_update_lag 1897s > 300s
 GODS-USD,Altcoins,4,0.2314,0.3350,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1917s > 300s
-GODS-USDT,Altcoins,3,0.2701,0.3832,AL-5: ema_avg_update_lag 1764s > 300s
+GODS-USDT,Altcoins,4,0.2701,0.3832,AL-5: ema_avg_update_lag 1764s > 300s
 GOOGL-USDT,TradFi,5,0.1405,0.2250,TF-1: dxFeed available but not in components
 GPS-USDT,Altcoins,5,0.2211,0.3243,AL-5: ema_avg_update_lag 1409s > 300s
 GRASS-USDT,Altcoins,5,0.4522,0.5670,AL-5: ema_avg_update_lag 897s > 300s
@@ -484,7 +484,7 @@ IMX-USDT,Altcoins,5,0.2191,0.3194,AL-5: ema_avg_update_lag 1740s > 300s
 INIT-USDT,Altcoins,5,0.3082,0.4193,AL-5: ema_avg_update_lag 1377s > 300s
 INJ-EUR,Altcoins,3,0.1686,0.2203,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 2116s > 300s
 INJ-USD,Altcoins,4,0.1839,0.2497,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1203s > 300s
-INJ-USDC,Altcoins,5,0.2074,0.3508,AL-5: ema_avg_update_lag 1806s > 300s
+INJ-USDC,Altcoins,4,0.2074,0.3508,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1806s > 300s
 INJ-USDT,Altcoins,5,0.1755,0.2489,AL-5: ema_avg_update_lag 1776s > 300s
 INTC-USDT,TradFi,5,0.2050,0.2572,TF-1: dxFeed available but not in components
 IOST-EUR,Altcoins,4,0.2220,0.3066,AL-5: ema_avg_update_lag 1897s > 300s
@@ -559,8 +559,8 @@ LDO-USDC,Altcoins,5,0.1604,0.2464,AL-5: ema_avg_update_lag 1724s > 300s
 LDO-USDT,Altcoins,5,0.1889,0.2662,AL-5: ema_avg_update_lag 1372s > 300s
 LEO-EUR,Altcoins,2,0.1021,0.1177,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 2213s > 300s
 LEO-USD,Altcoins,2,0.0845,0.1016,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1474s > 300s
-LEO-USDC,Altcoins,2,0.0877,0.1048,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 2421s > 300s
-LEO-USDT,Altcoins,2,0.0887,0.1072,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 2400s > 300s
+LEO-USDC,Altcoins,1,0.0877,0.1048,AL-1: OKX available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 2421s > 300s
+LEO-USDT,Altcoins,1,0.0887,0.1072,AL-1: OKX available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 2400s > 300s
 LIGHT-USDT,Altcoins,4,0.7088,0.8332,AL-5: ema_avg_deviation 0.71% > 0.5%; AL-5: ema_avg_update_lag 947s > 300s
 LINEA-EUR,Altcoins,5,0.1856,0.2884,AL-5: ema_avg_update_lag 1104s > 300s
 LINEA-TRY,Altcoins,3,0.2185,0.3001,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 2005s > 300s
@@ -608,8 +608,8 @@ MANA-USDC,Altcoins,5,0.1936,0.3294,AL-5: ema_avg_update_lag 1689s > 300s
 MANA-USDT,Altcoins,5,0.1976,0.3043,AL-5: ema_avg_update_lag 1774s > 300s
 MASK-EUR,Altcoins,1,0.1338,0.1338,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1653s > 300s
 MASK-USD,Altcoins,4,0.2700,0.6046,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1437s > 300s
-MASK-USDC,Altcoins,5,0.2630,0.3758,AL-5: ema_avg_update_lag 1541s > 300s
-MASK-USDT,Altcoins,5,0.2191,0.3616,AL-5: ema_avg_update_lag 1803s > 300s
+MASK-USDC,Altcoins,4,0.2630,0.3758,AL-5: ema_avg_update_lag 1541s > 300s
+MASK-USDT,Altcoins,4,0.2191,0.3616,AL-5: ema_avg_update_lag 1803s > 300s
 ME-EUR,Altcoins,1,0.1542,0.1542,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1658s > 300s
 ME-USD,Altcoins,4,0.1424,0.2073,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1318s > 300s
 ME-USDC,Altcoins,5,0.1674,0.2474,AL-5: ema_avg_update_lag 1827s > 300s
@@ -630,7 +630,7 @@ MET-USDT,Altcoins,4,0.4024,0.5377,AL-1: Binance available but not in components;
 META-USDT,TradFi,5,0.2470,0.3549,TF-1: dxFeed available but not in components
 METIS-EUR,Altcoins,1,0.1854,0.1854,AL-1: OKX available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1912s > 300s
 METIS-USD,Altcoins,4,0.2343,0.3573,AL-5: ema_avg_update_lag 1266s > 300s
-METIS-USDC,Altcoins,4,0.2783,0.4269,AL-5: ema_avg_update_lag 1640s > 300s
+METIS-USDC,Altcoins,3,0.2783,0.4269,AL-5: ema_avg_update_lag 1640s > 300s
 METIS-USDT,Altcoins,4,0.2292,0.3668,AL-5: ema_avg_update_lag 1160s > 300s
 MEW-EUR,Altcoins,1,0.1556,0.1556,AL-1: OKX available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1632s > 300s
 MEW-USD,Altcoins,4,0.2129,0.3251,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1268s > 300s
@@ -681,7 +681,7 @@ NEO-EUR,Altcoins,4,0.2020,0.3997,AL-5: ema_avg_update_lag 1901s > 300s
 NEO-USD,Altcoins,4,0.1298,0.1733,AL-5: ema_avg_update_lag 1073s > 300s
 NEO-USDC,Altcoins,5,0.1686,0.3432,AL-5: ema_avg_update_lag 1886s > 300s
 NEO-USDT,Altcoins,4,0.1602,0.2353,AL-5: ema_avg_update_lag 1750s > 300s
-NFLX-USDT,TradFi,1,0.1164,0.1443,TF-1: Ondo_TICKER available but not in components; TF-1: dxFeed available but not in components; TF-3: OKX_PERPETUAL (score 4) available but not used; TF-5: only 1 components (need ≥3)
+NFLX-USDT,TradFi,2,0.1164,0.1443,TF-1: Ondo_TICKER available but not in components; TF-1: dxFeed available but not in components; TF-5: only 2 components (need ≥3)
 NFT-USD,Altcoins,3,0.2058,0.3015,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1601s > 300s
 NFT-USDT,Altcoins,3,0.2062,0.3346,AL-1: OKX available but not in components; AL-5: ema_avg_update_lag 1929s > 300s
 NIGHT-EUR,Altcoins,3,0.2920,0.3196,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1608s > 300s
@@ -761,7 +761,7 @@ PEPE-BRL,Altcoins,5,0.1932,0.3160,AL-5: ema_avg_update_lag 1877s > 300s
 PEPE-EUR,Altcoins,5,0.1431,0.2229,AL-5: ema_avg_update_lag 1429s > 300s
 PEPE-TRY,Altcoins,3,0.1473,0.2031,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1398s > 300s
 PEPE-USD,Altcoins,5,0.1112,0.1426,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 991s > 300s
-PEPE-USDC,Altcoins,4,0.1915,0.2990,AL-5: ema_avg_update_lag 2034s > 300s
+PEPE-USDC,Altcoins,3,0.1915,0.2990,AL-1: OKX available but not in components; AL-5: ema_avg_update_lag 2034s > 300s
 PEPE-USDT,Altcoins,5,0.1691,0.2493,AL-5: ema_avg_update_lag 1745s > 300s
 PHA-TRY,Altcoins,4,0.2823,0.4424,AL-5: ema_avg_update_lag 1794s > 300s
 PHA-USD,Altcoins,4,0.2900,0.4600,AL-5: ema_avg_update_lag 1741s > 300s
@@ -923,7 +923,7 @@ SONIC-EUR,Altcoins,1,0.1859,0.1859,AL-1: OKX available but not in components; AL
 SONIC-USD,Altcoins,4,0.2338,0.3544,AL-5: ema_avg_update_lag 1638s > 300s
 SONIC-USDC,Altcoins,4,0.2698,0.3722,AL-5: ema_avg_update_lag 1777s > 300s
 SONIC-USDT,Altcoins,4,0.2570,0.3827,AL-5: ema_avg_update_lag 1365s > 300s
-SOON-USDT,Altcoins,4,0.2338,0.3749,AL-5: ema_avg_update_lag 1803s > 300s
+SOON-USDT,Altcoins,5,0.2338,0.3749,AL-5: ema_avg_update_lag 1803s > 300s
 SOPH-USD,Altcoins,4,0.1712,0.3444,AL-5: ema_avg_update_lag 1733s > 300s
 SOPH-USDT,Altcoins,3,0.1853,0.3179,AL-1: OKX available but not in components; AL-5: ema_avg_update_lag 1820s > 300s
 SPACE-TRY,Altcoins,3,0.2785,0.3544,AL-5: ema_avg_update_lag 1222s > 300s
@@ -936,7 +936,7 @@ SPK-USDT,Altcoins,4,0.1787,0.2288,AL-5: ema_avg_update_lag 1806s > 300s
 SPURS-USD,Altcoins,2,0.1823,0.2229,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1354s > 300s
 SPURS-USDT,Altcoins,2,0.1742,0.2092,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 2041s > 300s
 SPX-USDT,Altcoins,5,0.2132,0.3711,AL-5: ema_avg_update_lag 1773s > 300s
-SPY-USDT,TradFi,4,0.0843,0.1431,TF-1: dxFeed available but not in components
+SPY-USDT,TradFi,3,0.0843,0.1431,TF-1: dxFeed available but not in components; TF-3: OKX_PERPETUAL (score 4) available but not used
 SSV-EUR,Altcoins,1,0.1801,0.1801,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1722s > 300s
 SSV-USD,Altcoins,4,0.2153,0.3290,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 907s > 300s
 SSV-USDC,Altcoins,5,0.2311,0.3302,AL-5: ema_avg_update_lag 1778s > 300s
@@ -1015,7 +1015,7 @@ TRUMP-TRY,Altcoins,5,0.1417,0.1835,AL-5: ema_avg_update_lag 1643s > 300s
 TRUMP-USD,Altcoins,5,0.1203,0.1586,AL-5: ema_avg_update_lag 1132s > 300s
 TRUMP-USDC,Altcoins,5,0.1529,0.2188,AL-5: ema_avg_update_lag 1623s > 300s
 TRUMP-USDT,Altcoins,5,0.1446,0.2052,AL-5: ema_avg_update_lag 1733s > 300s
-TRUST-USDT,Altcoins,4,0.3495,0.5618,AL-5: ema_avg_update_lag 1175s > 300s
+TRUST-USDT,Altcoins,3,0.3495,0.5618,AL-5: ema_avg_update_lag 1175s > 300s
 TRUTH-USDT,Altcoins,4,0.3526,0.5895,AL-5: ema_avg_update_lag 1443s > 300s
 TRX-EUR,Altcoins,4,0.0757,0.1095,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1687s > 300s
 TRX-TRY,Altcoins,3,0.1037,0.1659,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1217s > 300s
@@ -1169,7 +1169,7 @@ ZK-USDC,Altcoins,4,0.3387,0.3907,AL-5: ema_avg_update_lag 1766s > 300s
 ZK-USDT,Altcoins,4,0.3203,0.3690,AL-5: ema_avg_update_lag 1651s > 300s
 ZKJ-USD,Altcoins,3,0.1767,0.2550,AL-5: ema_avg_update_lag 1749s > 300s
 ZKJ-USDT,Altcoins,3,0.1767,0.2455,AL-5: ema_avg_update_lag 1498s > 300s
-ZKP-USDT,Altcoins,5,0.2536,0.4641,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1513s > 300s
+ZKP-USDT,Altcoins,4,0.2536,0.4641,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1513s > 300s
 ZORA-EUR,Altcoins,4,0.1481,0.2101,AL-5: ema_avg_update_lag 1776s > 300s
 ZORA-USD,Altcoins,5,0.1582,0.2311,AL-5: ema_avg_update_lag 1088s > 300s
 ZORA-USDC,Altcoins,5,0.1665,0.2509,AL-5: ema_avg_update_lag 1169s > 300s

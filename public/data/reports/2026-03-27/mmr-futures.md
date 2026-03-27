@@ -2,4 +2,4 @@
 
 **Status:** warning
 
-49 adjustments across 118 in-scope instruments.
+48 adjustments across 118 in-scope instruments.
