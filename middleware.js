@@ -3,6 +3,7 @@ import { next } from '@vercel/functions';
 const PASSWORD = 'parameter0728';
 const COOKIE_NAME = 'pr_auth';
 const SECRET = 'paramreview_hmac_secret_2026';
+const DAILY_SALT = 'paramreview_daily_salt_2026';
 const COOKIE_MAX_AGE = 30 * 24 * 60 * 60;
 
 async function hmacSign(message) {
@@ -12,6 +13,18 @@ async function hmacSign(message) {
   );
   const sig = await crypto.subtle.sign('HMAC', key, encoder.encode(message));
   return Array.from(new Uint8Array(sig)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function getDailyToken() {
+  // Token changes every day (UTC). Format: pr_YYYYMMDD_8hexchars
+  const today = new Date().toISOString().slice(0, 10);
+  const encoder = new TextEncoder();
+  const key = await crypto.subtle.importKey(
+    'raw', encoder.encode(DAILY_SALT), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']
+  );
+  const sig = await crypto.subtle.sign('HMAC', key, encoder.encode(today));
+  const hex = Array.from(new Uint8Array(sig)).map(b => b.toString(16).padStart(2, '0')).join('');
+  return `pr_${today.replace(/-/g, '')}_${hex.slice(0, 8)}`;
 }
 
 function loginHTML(error = false) {
@@ -57,7 +70,25 @@ ${error ? '<div class="err">Incorrect password. Please try again.</div>' : ''}
 export default async function middleware(request) {
   const url = new URL(request.url);
 
-  // POST /__auth → validate password
+  // ── Magic link: ?pw=pr_YYYYMMDD_xxxxxxxx → auto-login ──
+  const pwParam = url.searchParams.get('pw');
+  if (pwParam) {
+    const dailyToken = await getDailyToken();
+    if (pwParam === dailyToken) {
+      // Valid daily token! Set auth cookie and redirect to clean URL
+      const cookieToken = await hmacSign(PASSWORD);
+      return new Response(null, {
+        status: 302,
+        headers: {
+          Location: '/',
+          'Set-Cookie': `${COOKIE_NAME}=${cookieToken}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=${COOKIE_MAX_AGE}`,
+        },
+      });
+    }
+    // Invalid or expired token → fall through to login page
+  }
+
+  // ── POST /__auth → validate static password ──
   if (url.pathname === '/__auth' && request.method === 'POST') {
     const formData = await request.formData();
     const password = formData.get('password');
@@ -79,7 +110,7 @@ export default async function middleware(request) {
     });
   }
 
-  // GET /__logout → clear cookie
+  // ── GET /__logout → clear cookie ──
   if (url.pathname === '/__logout') {
     return new Response(null, {
       status: 302,
@@ -90,7 +121,7 @@ export default async function middleware(request) {
     });
   }
 
-  // Check auth cookie
+  // ── Check auth cookie ──
   const cookies = request.headers.get('cookie') || '';
   const match = cookies.split(';').map(c => c.trim()).find(c => c.startsWith(`${COOKIE_NAME}=`));
 
@@ -98,12 +129,11 @@ export default async function middleware(request) {
     const token = match.split('=')[1];
     const valid = await hmacSign(PASSWORD);
     if (token === valid) {
-      // Authenticated — pass through
       return next();
     }
   }
 
-  // Not authenticated → login page
+  // ── Not authenticated → login page ──
   return new Response(loginHTML(false), {
     status: 401,
     headers: { 'Content-Type': 'text/html; charset=utf-8' },

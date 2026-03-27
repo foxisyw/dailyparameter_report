@@ -16,7 +16,16 @@ except Exception:
     _SSL_CTX.verify_mode = ssl.CERT_NONE
 
 VERCEL_URL = "https://dailyparameter-report.vercel.app"
+DAILY_SALT = b'paramreview_daily_salt_2026'
 TIMEOUT = 15
+
+
+def get_daily_token(date_str: str) -> str:
+    """Generate daily rotating token matching middleware.js logic."""
+    import hmac as _hmac
+    import hashlib as _hashlib
+    sig = _hmac.new(DAILY_SALT, date_str.encode(), _hashlib.sha256).hexdigest()
+    return f"pr_{date_str.replace('-', '')}_{sig[:8]}"
 
 DEFAULT_WEBHOOKS = [
     "https://open.larksuite.com/open-apis/bot/v2/hook/f6726392-3780-407b-94c9-bf2ca1ec6774",
@@ -158,7 +167,7 @@ def build_card(report: dict, chapters: list[dict], date_str: str) -> dict:
     elements.append({
         "tag": "action",
         "actions": [
-            {"tag": "button", "text": {"tag": "plain_text", "content": "View Full Report"}, "type": "primary", "url": VERCEL_URL},
+            {"tag": "button", "text": {"tag": "plain_text", "content": "View Full Report"}, "type": "primary", "url": f"{VERCEL_URL}?pw={get_daily_token(date_str)}"},
             {"tag": "button", "text": {"tag": "plain_text", "content": "How It Works"}, "type": "default", "url": f"{VERCEL_URL}/how-it-works.html"},
         ],
     })
