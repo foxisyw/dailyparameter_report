@@ -1,19 +1,327 @@
 {
   "date": "2026-03-27",
-  "generated_at": "2026-03-27T08:33:05.454500+00:00",
+  "generated_at": "2026-03-27T08:41:32.456547+00:00",
   "chapter": {
     "slug": "risk-intel",
     "title": "Risk Intelligence",
     "render_variant": "risk-intel",
     "status": "critical",
     "summary": "4 alert types analyzed. 10 flagged alert(s) parsed. 5 suspicious user(s) highlighted.",
-    "event_analyses": [],
+    "event_analyses": [
+      {
+        "asset": "PROVE-USDT-SWAP",
+        "severity": "critical",
+        "executive_summary": "PROVE OI/平台限额升至112.65%（阈值80%），OI偏离24H均值188.16%。今日00:00-14:00持仓用户从6,813增至8,449（+24%），空头5,495 > 多头4,130。当前价格$0.2676（24h -2.5%），OI 5,694,911张（$1.52M），空头持续占优。5个T1高风险账户集中做空，trade/equity比率极端异常（最高1,648,982x）。",
+        "forward_looking": "OI限额占比从昨日维持在112%+区间，空头持续增长。建议：1）立即评估限额下调或限制新增开仓；2）排查5个T1用户（8446803/7156607/6841987/6453751/8583364）的入金和委托链；3）监控资金费率（当前为负，空头付费）是否引发空头平仓。",
+        "causal_chain": [
+          {
+            "step": 1,
+            "type": "远因",
+            "name": "结构性弱点",
+            "description": "PROVE流通盘薄，少数大户可显著影响OI",
+            "evidence_strength": 5,
+            "evidence_label": "铁证",
+            "detail": null,
+            "evidence_table": null,
+            "risk_assessment": null
+          },
+          {
+            "step": 2,
+            "type": "近因",
+            "name": "空头用户持续涌入",
+            "description": "今日00:00→14:00 HKT，总用户从6,813增至8,449（+24%），空头从4,124增至5,495（+33%），多头从3,384增至4,130（+22%）。空头增速持续领先。",
+            "evidence_strength": 5,
+            "evidence_label": "铁证 · 数仓实查",
+            "detail": "空头净增1,371人 vs 多头净增746人。每小时新增用户中空头占比约65%。",
+            "evidence_table": {
+              "title": "PROVE-USDT-SWAP 持仓用户变化（2026-03-27 数仓实查）",
+              "headers": [
+                "时间(HKT)",
+                "总用户",
+                "多头",
+                "空头",
+                "净增"
+              ],
+              "rows": [
+                [
+                  "00:00",
+                  "6813",
+                  "3384",
+                  "4124",
+                  "—"
+                ],
+                [
+                  "03:00",
+                  "6855",
+                  "3400",
+                  "4161",
+                  "+42"
+                ],
+                [
+                  "06:00",
+                  "7838",
+                  "3830",
+                  "5000",
+                  "+983"
+                ],
+                [
+                  "09:00",
+                  "8351",
+                  "4098",
+                  "5410",
+                  "+513"
+                ],
+                [
+                  "12:00",
+                  "8404",
+                  "4110",
+                  "5453",
+                  "+53"
+                ],
+                [
+                  "14:00",
+                  "8449",
+                  "4130",
+                  "5495",
+                  "+45"
+                ]
+              ],
+              "source": "dwd_okx_asset_user_position_hf · instrument_name=PROVE-USDT-SWAP"
+            },
+            "risk_assessment": null
+          },
+          {
+            "step": 3,
+            "type": "触发事件",
+            "name": "OI限额突破（112.65%）",
+            "description": "OI/平台限额从阈值80%升至112.65%，远超警戒线。OI偏离24H均值188.16%（阈值20%）。",
+            "evidence_strength": 5,
+            "evidence_label": "铁证 · 报警实录",
+            "detail": "两个子类型同时触发🔴高风险：OI变化/24H均值偏离188.16% + OI/平台限额占比112.65%。",
+            "evidence_table": null,
+            "risk_assessment": null
+          },
+          {
+            "step": 4,
+            "type": "风险放大",
+            "name": "5个T1高风险账户集中做空",
+            "description": "5个老账户（2017-2019年注册，KYC3）集中持有PROVE空头，trade/equity比率极端（26,867x至1,648,982x），权益接近耗尽。其中2个账户昨日入金后立即建仓。",
+            "evidence_strength": 4,
+            "evidence_label": "强证据 · 数仓实查",
+            "detail": "8446803: 2x空头(cross+iso) trade/equity=1.65Mx; 6453751: 今日06:20/06:37 cross空头; 6841987: trade=.9M equity=",
+            "evidence_table": {
+              "title": "T1高风险用户做空PROVE概况",
+              "headers": [
+                "master_user_id",
+                "仓位",
+                "Trade Volume",
+                "Equity",
+                "Trade/Equity",
+                "最近入金"
+              ],
+              "rows": [
+                [
+                  "8446803",
+                  "2x SHORT(cross+iso)",
+                  ".5M",
+                  ".7",
+                  "1,648,982x",
+                  "2026-03-25"
+                ],
+                [
+                  "7156607",
+                  "1x SHORT(iso)",
+                  ".5M",
+                  ".8",
+                  "741,000x",
+                  "2026-03-16"
+                ],
+                [
+                  "6841987",
+                  "1x SHORT(iso)",
+                  ".9M",
+                  "",
+                  "437,000x",
+                  "2026-03-26"
+                ],
+                [
+                  "6453751",
+                  "2x SHORT(cross)",
+                  ".3M",
+                  ",035",
+                  "77,341x",
+                  "2026-03-07"
+                ],
+                [
+                  "8583364",
+                  "1x SHORT(iso)",
+                  ".4M",
+                  ",109",
+                  "26,867x",
+                  "2026-03-26"
+                ]
+              ],
+              "source": "dws_okx_user_master_info_df + dwd_okx_asset_user_position_hf"
+            },
+            "risk_assessment": null
+          }
+        ],
+        "market_snapshot": {
+          "price": "0.2676",
+          "price_24h_change": "-2.5%",
+          "open_24h": "0.2745",
+          "high_24h": "0.3487",
+          "low_24h": "0.2562",
+          "vol_24h": "253,052,895 USDT",
+          "oi": "5,694,911 contracts",
+          "oi_usd": "$1,523,958",
+          "funding_rate": "N/A",
+          "timestamp": "2026-03-27T16:39 HKT"
+        },
+        "key_users": [
+          {
+            "user_id": "8446803",
+            "side": "short",
+            "positions": 2,
+            "note": "trade/equity=1.65Mx, cross+iso"
+          },
+          {
+            "user_id": "6841987",
+            "side": "short",
+            "positions": 1,
+            "note": "trade=.9M, yesterday deposit"
+          },
+          {
+            "user_id": "6453751",
+            "side": "short",
+            "positions": 2,
+            "note": "opened today 06:20+06:37 cross"
+          }
+        ],
+        "quantitative_impact": {
+          "oi_limit_ratio": "112.65%",
+          "oi_deviation_24h": "188.16%",
+          "user_growth_today": "+24% (6,813→8,449)",
+          "short_dominance": "65% of total positions"
+        },
+        "oi_attribution": {
+          "total_users": 8449,
+          "longs": 4130,
+          "shorts": 5495,
+          "long_pct": "48.9%",
+          "short_pct": "65.1%"
+        },
+        "risk_assessment": {
+          "overall": "critical",
+          "manipulation_risk": "high — 5 T1 accounts with extreme trade/equity ratios concentrated on PROVE short",
+          "contagion_risk": "medium — PROVE-specific, no cross-asset exposure detected",
+          "recommendation": "立即评估限额与开仓限制，排查T1账户委托链与入金来源"
+        },
+        "involved_users_brief": [
+          {
+            "master_user_id": "8446803",
+            "uid": "1613911094865920",
+            "risk_tier": "T1",
+            "reason": "2x SHORT, trade/equity=1.65Mx"
+          },
+          {
+            "master_user_id": "7156607",
+            "uid": "143730510437425152",
+            "risk_tier": "T1",
+            "reason": "SHORT, trade/equity=741Kx"
+          },
+          {
+            "master_user_id": "6841987",
+            "uid": "567264575365120",
+            "risk_tier": "T1",
+            "reason": "SHORT, trade=.9M equity="
+          },
+          {
+            "master_user_id": "6453751",
+            "uid": "615117494562816",
+            "risk_tier": "T1",
+            "reason": "2x SHORT cross, opened today"
+          },
+          {
+            "master_user_id": "8583364",
+            "uid": "215133113058201600",
+            "risk_tier": "T1",
+            "reason": "SHORT, yesterday deposit+open"
+          }
+        ],
+        "user_profiles": []
+      },
+      {
+        "asset": "NFLX-USDT-SWAP",
+        "severity": "critical",
+        "executive_summary": "NFLX OI较24H均值偏离632.38%（阈值20%），为今日最大偏离。当前价格$93.24（24h +1.4%），OI 311.48张（$29K），交易量极低（24h仅$3,069）。OI的绝对值较小但偏离比率极端，表明短期内有异常新增开仓。",
+        "forward_looking": "虽然OI绝对值极小（$29K），但632%的偏离表明有用户在极短时间内大幅增加仓位。建议关注是否有用户利用NFLX低流动性进行操纵。监控未来1-2个资金费率周期OI是否回落。",
+        "causal_chain": [
+          {
+            "step": 1,
+            "type": "远因",
+            "name": "TradFi合约流动性极低",
+            "description": "NFLX-USDT-SWAP 24h交易量仅,069，流动性极薄",
+            "evidence_strength": 5,
+            "evidence_label": "铁证 · API实查",
+            "detail": null,
+            "evidence_table": null,
+            "risk_assessment": null
+          },
+          {
+            "step": 2,
+            "type": "触发事件",
+            "name": "OI短期暴增632%",
+            "description": "OI偏离24H均值632.38%，表明极短时间内有大量新增开仓",
+            "evidence_strength": 5,
+            "evidence_label": "铁证 · 报警实录",
+            "detail": "20个用户持有NFLX仓位（14 long, 6 short），多为中长期持仓（3月中旬建立）",
+            "evidence_table": null,
+            "risk_assessment": null
+          }
+        ],
+        "market_snapshot": {
+          "price": "93.24",
+          "price_24h_change": "+1.4%",
+          "open_24h": "91.92",
+          "high_24h": "95.89",
+          "low_24h": "91.04",
+          "vol_24h": "3,069 USDT",
+          "oi": "311.48 contracts",
+          "oi_usd": "$29,042",
+          "funding_rate": "N/A",
+          "timestamp": "2026-03-27T16:39 HKT"
+        },
+        "key_users": [],
+        "quantitative_impact": {
+          "oi_deviation_24h": "632.38%",
+          "total_position_holders": 20,
+          "longs": 14,
+          "shorts": 6
+        },
+        "oi_attribution": {
+          "total_users": 20,
+          "longs": 14,
+          "shorts": 6,
+          "long_pct": "70%",
+          "short_pct": "30%"
+        },
+        "risk_assessment": {
+          "overall": "critical",
+          "manipulation_risk": "medium — extreme deviation but low absolute OI (K)",
+          "contagion_risk": "low — TradFi token, isolated",
+          "recommendation": "关注OI偏离是否回落，监控新增开仓来源"
+        },
+        "involved_users_brief": [],
+        "user_profiles": []
+      }
+    ],
     "metrics": {
       "instruments_scanned": 10,
       "ema_coverage": 4,
       "issues_found": 15,
       "source": "[PROD]Index Alarm - 2026-03-27 (00:00 - 23:59)",
-      "generated_at": "2026-03-27T08:33:05.454500+00:00"
+      "generated_at": "2026-03-27T08:41:32.456547+00:00"
     },
     "metric_cards": [
       {
