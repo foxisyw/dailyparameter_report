@@ -201,7 +201,7 @@ function sourceAlertLabel(value) {
 
 function riskTierToStatus(value) {
   const tier = String(value || '').toUpperCase()
-  if (tier === 'T4' || tier === 'CRITICAL') return 'critical'
+  if (tier === 'T1' || tier === 'CRITICAL') return 'critical'
   if (tier === 'T2' || tier === 'T3' || tier === 'HIGH' || tier === 'MEDIUM') return 'warning'
   if (tier === 'PENDING') return 'pending'
   return 'pass'
@@ -1346,7 +1346,7 @@ function renderInvolvedUsersBrief(event) {
       <thead><tr>${iub.headers.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead>
       <tbody>${iub.rows.map(row => `<tr>${row.map((c, i) => {
         const h = iub.headers[i]?.toUpperCase() || ''
-        if (h === 'RISK') return `<td>${statusPill(c === 'T3' || c === 'T4' ? 'critical' : c === 'T2' ? 'warning' : 'pass')}</td>`
+        if (h === 'RISK') return `<td>${statusPill(c === 'T1' ? 'critical' : c === 'T2' || c === 'T3' ? 'warning' : 'pass')}</td>`
         return `<td>${esc(c)}</td>`
       }).join('')}</tr>`).join('')}</tbody>
     </table></div>

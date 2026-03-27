@@ -1,6 +1,6 @@
 {
   "date": "2026-03-27",
-  "generated_at": "2026-03-27T08:56:18.509344+00:00",
+  "generated_at": "2026-03-27T09:17:55.275490+00:00",
   "chapter": {
     "slug": "risk-intel",
     "title": "Risk Intelligence",
@@ -168,14 +168,10 @@
         ],
         "market_snapshot": {
           "price": "0.2676",
-          "price_24h_change": "-2.5%",
-          "open_24h": "0.2745",
-          "high_24h": "0.3487",
-          "low_24h": "0.2562",
-          "vol_24h": "253,052,895 USDT",
-          "oi": "5,694,911 contracts",
-          "oi_usd": "$1,523,958",
-          "funding_rate": "N/A",
+          "change_24h": "-2.5%",
+          "open_interest": "5694911",
+          "funding_rate": "-0.00075",
+          "vol_24h": "253052895",
           "timestamp": "2026-03-27T16:39 HKT"
         },
         "key_users": [
@@ -199,56 +195,186 @@
           }
         ],
         "quantitative_impact": {
-          "oi_limit_ratio": "112.65%",
-          "oi_deviation_24h": "188.16%",
-          "user_growth_today": "+24% (6,813→8,449)",
-          "short_dominance": "65% of total positions"
+          "title": "Quantitative Impact",
+          "metrics": [
+            {
+              "value": "112.65%",
+              "label": "OI/Limit Ratio",
+              "detail": "threshold 80%"
+            },
+            {
+              "value": "188.16%",
+              "label": "OI 24H Deviation",
+              "detail": "threshold 20%"
+            },
+            {
+              "value": "+24%",
+              "label": "User Growth Today",
+              "detail": "6,813 → 8,449"
+            },
+            {
+              "value": "65%",
+              "label": "Short Dominance",
+              "detail": "5,495 of 8,449 users"
+            }
+          ]
         },
         "oi_attribution": {
-          "total_users": 8449,
-          "longs": 4130,
-          "shorts": 5495,
-          "long_pct": "48.9%",
-          "short_pct": "65.1%"
+          "title": "OI Attribution — Hourly Position Snapshot",
+          "description": "PROVE-USDT-SWAP position holders growth across today's hourly partitions. Shorts consistently outpace longs.",
+          "user_hourly_table": {
+            "headers": [
+              "Time(HKT)",
+              "Total Users",
+              "Long",
+              "Short",
+              "Net Change"
+            ],
+            "rows": [
+              [
+                "00:00",
+                "6813",
+                "3384",
+                "4124",
+                "—"
+              ],
+              [
+                "01:00",
+                "6832",
+                "3390",
+                "4140",
+                "+19"
+              ],
+              [
+                "03:00",
+                "6855",
+                "3400",
+                "4161",
+                "+23"
+              ],
+              [
+                "05:00",
+                "7198",
+                "3557",
+                "4432",
+                "+343"
+              ],
+              [
+                "06:00",
+                "7838",
+                "3830",
+                "5000",
+                "+640"
+              ],
+              [
+                "07:00",
+                "8039",
+                "3946",
+                "5164",
+                "+201"
+              ],
+              [
+                "09:00",
+                "8351",
+                "4098",
+                "5410",
+                "+312"
+              ],
+              [
+                "11:00",
+                "8388",
+                "4104",
+                "5443",
+                "+37"
+              ],
+              [
+                "14:00",
+                "8449",
+                "4130",
+                "5495",
+                "+61"
+              ]
+            ]
+          }
         },
         "risk_assessment": {
-          "overall": "critical",
-          "manipulation_risk": "high — 5 T1 accounts with extreme trade/equity ratios concentrated on PROVE short",
-          "contagion_risk": "medium — PROVE-specific, no cross-asset exposure detected",
-          "recommendation": "立即评估限额与开仓限制，排查T1账户委托链与入金来源"
+          "title": "Risk Assessment & Actions",
+          "actions": [
+            {
+              "priority": "P0",
+              "action": "立即评估PROVE限额与开仓限制",
+              "reason": "OI/限额已达112.65%，远超80%阈值，持续恶化中"
+            },
+            {
+              "priority": "P0",
+              "action": "排查5个T1账户委托链与入金来源",
+              "reason": "极端trade/equity比率(26K-1.6M倍)，2个账户昨日入金后立即建仓"
+            },
+            {
+              "priority": "P1",
+              "action": "评估是否限制PROVE新增开仓",
+              "reason": "空头占65%且持续增长，OI已超平台限额"
+            },
+            {
+              "priority": "P2",
+              "action": "监控资金费率与空头平仓信号",
+              "reason": "资金费率为负(-0.075%)，空头付费但仍在加仓"
+            }
+          ]
         },
-        "involved_users_brief": [
-          {
-            "master_user_id": "8446803",
-            "uid": "1613911094865920",
-            "risk_tier": "T1",
-            "reason": "2x SHORT, trade/equity=1.65Mx"
-          },
-          {
-            "master_user_id": "7156607",
-            "uid": "143730510437425152",
-            "risk_tier": "T1",
-            "reason": "SHORT, trade/equity=741Kx"
-          },
-          {
-            "master_user_id": "6841987",
-            "uid": "567264575365120",
-            "risk_tier": "T1",
-            "reason": "SHORT, trade=.9M equity="
-          },
-          {
-            "master_user_id": "6453751",
-            "uid": "615117494562816",
-            "risk_tier": "T1",
-            "reason": "2x SHORT cross, opened today"
-          },
-          {
-            "master_user_id": "8583364",
-            "uid": "215133113058201600",
-            "risk_tier": "T1",
-            "reason": "SHORT, yesterday deposit+open"
-          }
-        ],
+        "involved_users_brief": {
+          "title": "Key Involved Users",
+          "headers": [
+            "Master ID",
+            "Side",
+            "RISK",
+            "Positions",
+            "Trade/Equity",
+            "Note"
+          ],
+          "rows": [
+            [
+              "8446803",
+              "SHORT",
+              "T1",
+              "2 (cross+iso)",
+              "1,648,982x",
+              "equity $36.7, deposit 2026-03-25"
+            ],
+            [
+              "7156607",
+              "SHORT",
+              "T1",
+              "1 (iso)",
+              "741,000x",
+              "equity $58.8, opened 2026-03-26"
+            ],
+            [
+              "6841987",
+              "SHORT",
+              "T1",
+              "1 (iso)",
+              "437,000x",
+              "equity $798, deposit 2026-03-26"
+            ],
+            [
+              "6453751",
+              "SHORT",
+              "T1",
+              "2 (cross)",
+              "77,341x",
+              "equity $2,035, opened today 06:20"
+            ],
+            [
+              "8583364",
+              "SHORT",
+              "T1",
+              "1 (iso)",
+              "26,867x",
+              "equity $4,109, deposit 2026-03-26"
+            ]
+          ]
+        },
         "user_profiles": [
           {
             "uid": "1613911094865920",
@@ -634,37 +760,130 @@
         ],
         "market_snapshot": {
           "price": "93.24",
-          "price_24h_change": "+1.4%",
-          "open_24h": "91.92",
-          "high_24h": "95.89",
-          "low_24h": "91.04",
-          "vol_24h": "3,069 USDT",
-          "oi": "311.48 contracts",
-          "oi_usd": "$29,042",
-          "funding_rate": "N/A",
+          "change_24h": "+1.4%",
+          "open_interest": "311.48",
+          "funding_rate": "0",
+          "vol_24h": "3069",
           "timestamp": "2026-03-27T16:39 HKT"
         },
         "key_users": [],
         "quantitative_impact": {
-          "oi_deviation_24h": "632.38%",
-          "total_position_holders": 20,
-          "longs": 14,
-          "shorts": 6
+          "title": "Quantitative Impact",
+          "metrics": [
+            {
+              "value": "632.38%",
+              "label": "OI 24H Deviation",
+              "detail": "threshold 20%"
+            },
+            {
+              "value": "$29K",
+              "label": "OI Value (USD)",
+              "detail": "311.48 contracts"
+            },
+            {
+              "value": "$3,069",
+              "label": "24H Volume",
+              "detail": "extremely low liquidity"
+            },
+            {
+              "value": "70% / 30%",
+              "label": "Long / Short",
+              "detail": "14 long, 6 short"
+            }
+          ]
         },
         "oi_attribution": {
-          "total_users": 20,
-          "longs": 14,
-          "shorts": 6,
-          "long_pct": "70%",
-          "short_pct": "30%"
+          "title": "OI Attribution — Position Holders",
+          "description": "NFLX-USDT-SWAP has only 20 position holders. Low liquidity TradFi token — small position changes cause extreme OI deviation.",
+          "user_hourly_table": {
+            "headers": [
+              "Metric",
+              "Value"
+            ],
+            "rows": [
+              [
+                "Total Holders",
+                "20"
+              ],
+              [
+                "Long Positions",
+                "14 (70%)"
+              ],
+              [
+                "Short Positions",
+                "6 (30%)"
+              ],
+              [
+                "Oldest Position",
+                "2026-03-11"
+              ],
+              [
+                "Newest Position",
+                "2026-03-27"
+              ]
+            ]
+          }
         },
         "risk_assessment": {
-          "overall": "critical",
-          "manipulation_risk": "medium — extreme deviation but low absolute OI (K)",
-          "contagion_risk": "low — TradFi token, isolated",
-          "recommendation": "关注OI偏离是否回落，监控新增开仓来源"
+          "title": "Risk Assessment & Actions",
+          "actions": [
+            {
+              "priority": "P1",
+              "action": "关注OI偏离是否在1-2个资金费率周期内回落",
+              "reason": "632%偏离为极端值，但绝对OI仅$29K"
+            },
+            {
+              "priority": "P2",
+              "action": "监控NFLX新增开仓来源",
+              "reason": "低流动性TradFi token，少数用户即可操纵OI"
+            },
+            {
+              "priority": "P2",
+              "action": "评估NFLX合约限额是否合理",
+              "reason": "24H交易量仅$3K，流动性极度不足"
+            }
+          ]
         },
-        "involved_users_brief": [],
+        "involved_users_brief": {
+          "title": "Key Involved Users",
+          "headers": [
+            "Master ID",
+            "Side",
+            "RISK",
+            "Position Since",
+            "Note"
+          ],
+          "rows": [
+            [
+              "43417803",
+              "LONG",
+              "T3",
+              "2026-03-27",
+              "newest long, opened today"
+            ],
+            [
+              "40072720",
+              "LONG",
+              "T3",
+              "2026-03-27",
+              "opened today"
+            ],
+            [
+              "43417800",
+              "LONG",
+              "T3",
+              "2026-03-27",
+              "opened today"
+            ],
+            [
+              "61840902",
+              "SHORT",
+              "T3",
+              "2026-03-11",
+              "oldest short, monitoring"
+            ]
+          ]
+        },
         "user_profiles": [
           {
             "uid": "",
@@ -946,7 +1165,7 @@
       "ema_coverage": 4,
       "issues_found": 15,
       "source": "[PROD]Index Alarm - 2026-03-27 (00:00 - 23:59)",
-      "generated_at": "2026-03-27T08:56:18.509344+00:00"
+      "generated_at": "2026-03-27T09:17:55.275490+00:00"
     },
     "metric_cards": [
       {
