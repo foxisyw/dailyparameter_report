@@ -1364,16 +1364,8 @@ function renderSingleEventSection(chapter, event) {
 
   const chainRows = (event.causal_chain || []).map(link => renderChainLink(link)).join('')
 
-  // Filter users related to this event
-  const allUsers = chapter.suspicious_users || []
-  const relatedUsers = allUsers.filter(u => {
-    const pair = (u.related_pair || '').toUpperCase()
-    const asset = event.asset.toUpperCase()
-    return pair.includes(asset.split('-')[0]) || !u.related_pair
-  })
-  const relatedProfileKeys = new Set(relatedUsers.map(u => u.uid || u.master_user_id))
-  const relatedProfiles = (chapter.user_profiles || []).filter(p => relatedProfileKeys.has(p.uid) || relatedProfileKeys.has(p.master_user_id))
-  const miniChapter = { ...chapter, suspicious_users: relatedUsers, user_profiles: relatedProfiles }
+  // Each event has its OWN user_profiles — NOT shared from chapter
+  const eventProfiles = event.user_profiles || []
 
   return `<section class="chapter" id="event-${esc(event.asset)}">
     <div class="chapter-header"><h2 class="chapter-title">${esc(event.asset)}</h2>${statusPill(event.severity)}</div>
@@ -1394,7 +1386,7 @@ function renderSingleEventSection(chapter, event) {
     ${renderOIAttribution(event)}
     ${renderRiskAssessment(event)}
     ${renderInvolvedUsersBrief(event)}
-    ${relatedProfiles.length ? renderUserProfiles(miniChapter) : ''}
+    ${eventProfiles.length ? renderUserProfiles({ user_profiles: eventProfiles, slug: event.asset }) : ''}
   </section>`
 }
 

@@ -1,6 +1,6 @@
 {
   "date": "2026-03-27",
-  "generated_at": "2026-03-27T03:15:09.423599+00:00",
+  "generated_at": "2026-03-27T03:25:12.231461+00:00",
   "chapter": {
     "slug": "risk-intel",
     "title": "Risk Intelligence",
@@ -376,7 +376,354 @@
               "T2"
             ]
           ]
-        }
+        },
+        "user_profiles": [
+          {
+            "uid": "613832447893504",
+            "master_user_id": "6561979",
+            "overall_risk_tier": "T3",
+            "executive_summary": "PROVE SHORT x2 (cross+isolated). 40.6M volume, equity $10.52. Extreme drawdown.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Registered 2017-11-29, KYC 3, China, phone +86"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Volume: 40,660,002 USDT, 2 SHORT on PROVE",
+                  "Equity/vol: 0.000000"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region: okx_CN"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC 3, China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Equity: $10.52, Volume: 40,660,002, Ratio: 0.000000"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "PROVE SHORT x2 (cross+isolated). 40.6M volume, equity $10.52. Extreme drawdown."
+                ]
+              }
+            ],
+            "key_evidence": [
+              "2 SHORT on PROVE",
+              "Equity $10.52 vs 40,660,002 volume"
+            ]
+          },
+          {
+            "uid": "43607852442591232",
+            "master_user_id": "7180900",
+            "overall_risk_tier": "T3",
+            "executive_summary": "PROVE SHORT. 56.4M volume, equity $18.35. Near-zero equity ratio.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Registered 2018-01-09, KYC 3, China, phone +86"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Volume: 56,412,781 USDT, 1 SHORT on PROVE",
+                  "Equity/vol: 0.000000"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region: okx_CN"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC 3, China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Equity: $18.35, Volume: 56,412,781, Ratio: 0.000000"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "PROVE SHORT. 56.4M volume, equity $18.35. Near-zero equity ratio."
+                ]
+              }
+            ],
+            "key_evidence": [
+              "1 SHORT on PROVE",
+              "Equity $18.35 vs 56,412,781 volume"
+            ]
+          },
+          {
+            "uid": "214913582327009280",
+            "master_user_id": "4335832",
+            "overall_risk_tier": "T3",
+            "executive_summary": "PROVE SHORT. 10.4M volume, equity $1.45. Almost total capital loss.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Registered 2017-03-21, KYC 3, China, phone +86"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Volume: 10,432,460 USDT, 1 SHORT on PROVE",
+                  "Equity/vol: 0.000000"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region: okx_CN"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC 3, China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Equity: $1.45, Volume: 10,432,460, Ratio: 0.000000"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "PROVE SHORT. 10.4M volume, equity $1.45. Almost total capital loss."
+                ]
+              }
+            ],
+            "key_evidence": [
+              "1 SHORT on PROVE",
+              "Equity $1.45 vs 10,432,460 volume"
+            ]
+          },
+          {
+            "uid": "123317305596850176",
+            "master_user_id": "10639724",
+            "overall_risk_tier": "T3",
+            "executive_summary": "Philippines KYC2. PROVE SHORT x2. 896K volume, equity $58.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "warning",
+                "signals": [
+                  "Registered 2019-09-16, KYC 2, Philippines, phone +63"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Volume: 896,140 USDT, 2 SHORT on PROVE",
+                  "Equity/vol: 0.000065"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "warning",
+                "signals": [
+                  "Region: okx_English"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "warning",
+                "signals": [
+                  "KYC 2, Philippines"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Equity: $58.01, Volume: 896,140, Ratio: 0.000065"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Philippines KYC2. PROVE SHORT x2. 896K volume, equity $58."
+                ]
+              }
+            ],
+            "key_evidence": [
+              "2 SHORT on PROVE",
+              "Equity $58.01 vs 896,140 volume"
+            ]
+          },
+          {
+            "uid": "192366067841146880",
+            "master_user_id": "8413389",
+            "overall_risk_tier": "T3",
+            "executive_summary": "PROVE SHORT. 1.25M volume, equity $11.53.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Registered 2018-06-10, KYC 3, China, phone +86"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Volume: 1,249,134 USDT, 1 SHORT on PROVE",
+                  "Equity/vol: 0.000009"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region: okx_CN"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC 3, China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Equity: $11.53, Volume: 1,249,134, Ratio: 0.000009"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "PROVE SHORT. 1.25M volume, equity $11.53."
+                ]
+              }
+            ],
+            "key_evidence": [
+              "1 SHORT on PROVE",
+              "Equity $11.53 vs 1,249,134 volume"
+            ]
+          }
+        ]
       },
       {
         "asset": "NFLX-USDT-SWAP",
@@ -574,7 +921,285 @@
               "T2"
             ]
           ]
-        }
+        },
+        "user_profiles": [
+          {
+            "uid": "256872916631863296",
+            "master_user_id": "21607391",
+            "overall_risk_tier": "T2",
+            "executive_summary": "South Korea KYC2. NFLX SHORT x2 opened Mar 26. 100K volume.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "warning",
+                "signals": [
+                  "Registered 2021-12-15, KYC 2, South Korea, phone +82"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "Volume: 99,923 USDT, 2 SHORT on NFLX",
+                  "Equity/vol: 0.002706"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "warning",
+                "signals": [
+                  "Region: okx_Asia"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "warning",
+                "signals": [
+                  "KYC 2, South Korea"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity: $270.42, Volume: 99,923, Ratio: 0.002706"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "South Korea KYC2. NFLX SHORT x2 opened Mar 26. 100K volume."
+                ]
+              }
+            ],
+            "key_evidence": [
+              "2 SHORT on NFLX",
+              "Equity $270.42 vs 99,923 volume"
+            ]
+          },
+          {
+            "uid": "616169224612248773",
+            "master_user_id": "63503490",
+            "overall_risk_tier": "T2",
+            "executive_summary": "Pakistan KYC2. NFLX SHORT x2. Only 3K volume, equity $2.97. Very small but suspicious jurisdiction.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "warning",
+                "signals": [
+                  "Registered 2024-09-01, KYC 2, Pakistan, phone +92"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "Volume: 3,010 USDT, 2 SHORT on NFLX",
+                  "Equity/vol: 0.000987"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "warning",
+                "signals": [
+                  "Region: okx_CIS_MEA_LA"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "warning",
+                "signals": [
+                  "KYC 2, Pakistan"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity: $2.97, Volume: 3,010, Ratio: 0.000987"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "Pakistan KYC2. NFLX SHORT x2. Only 3K volume, equity $2.97. Very small but suspicious jurisdiction."
+                ]
+              }
+            ],
+            "key_evidence": [
+              "2 SHORT on NFLX",
+              "Equity $2.97 vs 3,010 volume"
+            ]
+          },
+          {
+            "uid": "652489126805430287",
+            "master_user_id": "70200254",
+            "overall_risk_tier": "T2",
+            "executive_summary": "Iraq KYC2. NFLX SHORT opened Mar 27. 302K volume, equity $34.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "warning",
+                "signals": [
+                  "Registered 2024-12-10, KYC 2, Iraq, phone +964"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "Volume: 302,104 USDT, 1 SHORT on NFLX",
+                  "Equity/vol: 0.000114"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "warning",
+                "signals": [
+                  "Region: okx_CIS_MEA_LA"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "warning",
+                "signals": [
+                  "KYC 2, Iraq"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Equity: $34.38, Volume: 302,104, Ratio: 0.000114"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "Iraq KYC2. NFLX SHORT opened Mar 27. 302K volume, equity $34."
+                ]
+              }
+            ],
+            "key_evidence": [
+              "1 SHORT on NFLX",
+              "Equity $34.38 vs 302,104 volume"
+            ]
+          },
+          {
+            "uid": "679314249461907633",
+            "master_user_id": "74336408",
+            "overall_risk_tier": "T2",
+            "executive_summary": "Vietnam KYC2. NFLX SHORT. 19K volume, equity $21.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "warning",
+                "signals": [
+                  "Registered 2025-02-22, KYC 2, Vietnam, phone +84"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "Volume: 19,631 USDT, 1 SHORT on NFLX",
+                  "Equity/vol: 0.001112"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "warning",
+                "signals": [
+                  "Region: okx_Asia"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "warning",
+                "signals": [
+                  "KYC 2, Vietnam"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity: $21.83, Volume: 19,631, Ratio: 0.001112"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "Vietnam KYC2. NFLX SHORT. 19K volume, equity $21."
+                ]
+              }
+            ],
+            "key_evidence": [
+              "1 SHORT on NFLX",
+              "Equity $21.83 vs 19,631 volume"
+            ]
+          }
+        ]
       },
       {
         "asset": "XAU-USDT-SWAP",
@@ -645,7 +1270,8 @@
               "reason": "避免手动调参滞后"
             }
           ]
-        }
+        },
+        "user_profiles": []
       }
     ],
     "metrics": {
@@ -653,7 +1279,7 @@
       "ema_coverage": 4,
       "issues_found": 16,
       "source": "[PROD]Index Alarm - 2026-03-27 (00:00 - 23:59)",
-      "generated_at": "2026-03-27T03:15:09.423599+00:00"
+      "generated_at": "2026-03-27T03:25:12.231461+00:00"
     },
     "metric_cards": [
       {
