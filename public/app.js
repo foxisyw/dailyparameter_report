@@ -697,10 +697,16 @@ function buildSectionList(chapter) {
       sections.push({ id: 'parameter-alarm', label: T('parameterAlarm') || 'Parameter Alarm', color: colors[worstStatus] || '#9ca3af', type: 'alarm' })
     }
   } else {
-    // Price Limit etc: rule blocks as sections
+    // Price Limit etc: rule blocks + recommended changes + downloads
     ;(chapter.rule_blocks || []).forEach(rb => {
       sections.push({ id: `rule-${rb.ruleId}`, label: rb.title, color: colors[rb.status] || '#9ca3af', type: 'rule' })
     })
+    if (chapter.recommended_changes?.rows?.length) {
+      sections.push({ id: 'recommended-changes', label: T('recommendedChanges') || 'Recommended Changes', color: '#6b7280', type: 'rule' })
+    }
+    if (chapter.downloads?.length) {
+      sections.push({ id: 'downloads', label: T('downloads') || 'Downloads', color: '#6b7280', type: 'rule' })
+    }
   }
 
   return sections
@@ -733,10 +739,23 @@ function renderSectionNav(data) {
     </button></li>
   `).join('')
 
+  const variant = normalizeRenderVariant(chapter)
   nav.querySelectorAll('.section-link').forEach(btn => {
     btn.addEventListener('click', () => {
-      activeSection = btn.dataset.section
-      renderAll(currentReport)
+      if (variant === 'risk-intel') {
+        // Risk Intel: switch section (replace content)
+        activeSection = btn.dataset.section
+        renderAll(currentReport)
+      } else {
+        // Price Limit etc: scroll to section
+        const target = document.getElementById(btn.dataset.section)
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          if (target.tagName === 'DETAILS') target.open = true
+        }
+        nav.querySelectorAll('.section-link').forEach(b => b.classList.remove('active'))
+        btn.classList.add('active')
+      }
     })
   })
 }
@@ -855,13 +874,19 @@ function renderSourceDocument(chapter) {
 
 function renderRecommendations(chapter) {
   if (!chapter.recommended_changes?.rows?.length) return ''
-  return `<div class="section-block"><div class="section-block-title">${T('recommendedChanges')}</div>${renderTable(chapter.recommended_changes.headers, chapter.recommended_changes.rows)}</div>`
+  return `<details class="section-block" id="recommended-changes">
+    <summary class="section-block-title" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between">
+      ${T('recommendedChanges')} (${chapter.recommended_changes.rows.length})
+      <span class="chapter-collapse-chevron" aria-hidden="true">${ICONS.chevron}</span>
+    </summary>
+    <div style="padding-top:8px">${renderTable(chapter.recommended_changes.headers, chapter.recommended_changes.rows)}</div>
+  </details>`
 }
 
 function renderDownloads(chapter) {
   if (!chapter.downloads?.length) return ''
   return chapter.downloads.map((download, index) => `
-    <div class="section-block">
+    <div class="section-block" id="downloads">
       <div class="adj-preview-header">
         <span class="adj-preview-label">${esc(download.label)}</span>
         <button class="btn-download" data-dl-idx="${index}" data-slug="${esc(chapter.slug)}">${ICONS.download} ${T('downloadCsv')}</button>
@@ -1441,10 +1466,19 @@ function renderAll(data) {
   initRailToggle()
 }
 
+let isFirstLoad = true
+
 async function init() {
   availableDates = await loadDates()
-  // Always default to the latest (most recent) date
-  currentDate = availableDates[0] || currentDate
+  // Only default to latest date on FIRST load — not when user switches dates
+  if (isFirstLoad) {
+    currentDate = availableDates[0] || currentDate
+    isFirstLoad = false
+  }
+  // Ensure currentDate is valid
+  if (!availableDates.includes(currentDate)) {
+    currentDate = availableDates[0] || currentDate
+  }
   currentReport = await loadReport(currentDate)
   renderAll(currentReport)
 }
