@@ -1,7 +1,7 @@
 # Daily Parameter Review — 完整設計文檔
 
 > OKX 參數管理團隊 · 每日自動化參數審計系統
-> 最後更新：2026-03-26
+> 最後更新：2026-03-27
 
 ---
 
@@ -19,6 +19,13 @@
 10. [國際化 (i18n)](#10-國際化-i18n)
 11. [遇到的問題與解決方案](#11-遇到的問題與解決方案)
 12. [未來規劃](#12-未來規劃)
+13. [Risk Intelligence 模組](#13-risk-intelligence-模組)
+14. [前端架構重構 — Tab + Section 系統](#14-前端架構重構)
+15. [Event Analysis 完整 RCA 結構](#15-event-analysis-完整-rca-結構)
+16. [密碼保護與 Magic Link](#16-密碼保護與-magic-link)
+17. [macOS 本地 Cron 自動化](#17-macos-本地-cron-自動化)
+18. [完整問題與解決方案日誌 (ISSUE-011~025)](#18-完整問題與解決方案日誌)
+19. [Lessons Learned — 關鍵教訓](#19-lessons-learned)
 
 ---
 
@@ -1223,4 +1230,225 @@ Step 5: 驗證：所有 5 個用戶必須至少 4/8 維度有真實數據
 
 ---
 
-*本文檔由 OKX 參數管理團隊維護。最後更新 2026-03-27。*
+---
+
+## 16. 密碼保護與 Magic Link (2026-03-27)
+
+### 16.1 Vercel Edge Middleware 密碼保護
+
+由於 Vercel 內建密碼保護需要額外付費，我們使用 **Vercel Edge Middleware**（免費）實現：
+
+- `middleware.js` 攔截所有請求，檢查 auth cookie
+- 無 cookie → 顯示自定義登入頁面
+- POST `/__auth` → 驗證密碼，設置 HttpOnly cookie
+- 密碼：`parameter0728`（HMAC-signed cookie，30天過期）
+
+### 16.2 Daily Rotating Magic Link
+
+每日自動生成唯一 URL，點擊即可免密碼進入：
+
+```
+https://dailyparameter-report.vercel.app?pw=pr_20260327_7ec26e59
+```
+
+**生成邏輯**：
+```
+Token = HMAC-SHA256(date_str + "paramreview_daily_salt_2026")[:8]
+Format: pr_YYYYMMDD_8hexchars
+```
+
+- Token 每天不同，昨天的 token 今天無效
+- Middleware 檢測 `?pw=` 參數 → 驗證 → 設 cookie → redirect 到乾淨 URL
+- Lark 通知卡片的「View Full Report」按鈕自動包含當日 magic link
+- Python 和 JS 使用相同的 salt，確保 token 一致
+
+### 16.3 安全評估
+
+| 攻擊向量 | 防護 |
+|---------|------|
+| 直接 URL 訪問 | Middleware 攔截，顯示登入頁 |
+| 查看源碼 | 源碼不會被送到瀏覽器 |
+| curl 無 cookie | 返回登入頁 HTML |
+| Token 洩露在 URL 欄 | Middleware redirect 後 URL 變為乾淨的 `/` |
+| 舊 token 重用 | Token 按日期生成，昨天的今天無效 |
+| 暴力破解 | 8 hex chars = 40億種可能/天 |
+
+---
+
+## 17. macOS 本地 Cron 自動化 (2026-03-27)
+
+### 17.1 為什麼不用 GitHub Actions？
+
+MCP 工具（Lark MCP、Data Query MCP）只能在 Claude Code 中調用。GitHub Actions 無法使用 MCP。因此：
+- **Price Limit Review**：可以在 GitHub Actions 跑（純 Python，不需要 MCP）
+- **Risk Intelligence**：必須在本地跑（需要 Lark MCP + Data Query MCP）
+
+### 17.2 本地自動化架構
+
+```
+macOS launchd (永久，重啟不消失)
+  └── 9:30 AM HKT → cron-local.sh
+       └── claude -p "Run full daily report..."
+            ├── Lark MCP → 讀取最新風控文檔
+            ├── Data Query MCP → 持倉快照 + 用戶畫像
+            ├── OKX API → 市場數據
+            ├── python3 -m runner.generate_risk_intel
+            ├── python3 -m runner.main --no-lark
+            ├── git push → Vercel 部署
+            └── python3 -m runner.notify_lark → Lark 通知
+```
+
+### 17.3 關鍵文件
+
+| 文件 | 用途 |
+|------|------|
+| `cron-local.sh` | launchd 調用的腳本，用 `claude -p` 執行完整管道 |
+| `keep-awake.sh` | `caffeinate -s` 包裝器，防止 Mac 休眠 |
+| `~/Library/LaunchAgents/com.paramreview.daily.plist` | macOS 排程任務 |
+| `middleware.js` | Vercel Edge Middleware 密碼保護 |
+
+### 17.4 CronCreate vs launchd
+
+| 方案 | 持久性 | MCP 訪問 | 限制 |
+|------|--------|---------|------|
+| CronCreate（Claude Code 內建）| Session-only，7天過期 | 有 | 關閉 session 即消失 |
+| launchd + `claude -p` | 永久，重啟不消失 | 有（CLI 模式） | 需要 Mac 保持清醒 |
+| GitHub Actions | 永久 | 無 MCP | 只能跑純 Python |
+
+**最終選擇**：launchd + `claude -p` — 永久排程 + 完整 MCP 訪問。
+
+### 17.5 Mac 保持清醒
+
+```bash
+# 方法 1: caffeinate（推薦）
+./keep-awake.sh   # 防止 Mac 休眠，即使蓋上蓋子（需接電源）
+
+# 方法 2: pmset 喚醒排程（備份）
+sudo pmset repeat wakeorpoweron MTWRFSU 08:50:00
+```
+
+---
+
+## 18. 完整問題與解決方案日誌
+
+### ISSUE-016: 前端 Schema 不匹配 Runner 輸出
+
+**問題**：前端 mock 用 `sections[].rules[].evidence`，Runner 輸出用 `chapters[].rule_blocks[].table`。
+
+**解決方案**：統一到 Runner schema。重寫前端 mock + 所有渲染函數。
+
+**教訓**：先定義數據 schema，再寫前端。不要讓前端和後端各自發明格式。
+
+### ISSUE-017: Vite 構建不包含 data/ 目錄
+
+**問題**：`root: 'public'` 配置下，`public/data/` 不會被複製到 `dist/`。Vercel 上 `/data/reports/latest.json` 返回 404。
+
+**解決方案**：`package.json` build script 添加 `cp -r public/data dist/data`。
+
+**教訓**：Vite 的 `publicDir` 概念在 `root: 'public'` 時很混亂。用 post-build copy 最可靠。
+
+### ISSUE-018: Git Push 衝突（Cron vs 本地）
+
+**問題**：EMA 收集 15 分鐘期間，本地 push 了代碼，Cron 的 push 被拒絕。
+
+**解決方案**：`git pull --rebase` before push + push 失敗設為非致命。
+
+### ISSUE-019: 每日報告總是顯示昨天的
+
+**問題**：`init()` 每次都設 `currentDate = availableDates[0]`，即使用戶手動切換了日期。
+
+**解決方案**：添加 `isFirstLoad` 標誌，只在首次加載時默認到最新日期。
+
+### ISSUE-020: Event Analysis 用戶共享（PROVE = NFLX = XAU）
+
+**問題**：所有 event 從 `chapter.user_profiles` 共享池過濾，結果三個 event 顯示相同用戶。
+
+**解決方案**：每個 event 攜帶自己的 `event.user_profiles` 陣列。前端從 `event.user_profiles` 直接讀取。
+
+**教訓**：永遠不要在多個獨立實體間共享數據池再靠前端過濾。數據歸屬應該在數據層定義，不是渲染層。
+
+### ISSUE-021: Lark 文檔搜索名稱不一致
+
+**問題**：Mar 27 的風控總結文檔標題是 `[PROD]Index Alarm`（不是 `每日风控总结`），搜索關鍵詞不匹配。
+
+**解決方案**：擴大搜索範圍，讀取文檔內容確認是否為風控總結（不依賴標題）。
+
+**教訓**：不要假設 Lark 文檔命名規範。應該搜索 folder 內容並按修改時間排序，取最新的。
+
+### ISSUE-022: OKX Trade MCP Demo Mode
+
+**問題**：`@okx_ai/okx-trade-mcp` 在 demo mode 下運行，小幣（PROVE、PIPPIN）返回 404。
+
+**解決方案**：繞過 MCP，直接用 Python urllib 調用 OKX 公開 REST API。
+
+### ISSUE-023: Data Query 分區格式不一致
+
+**問題**：daily 表 pt=`YYYYMMDD`，hourly 表 pt=`YYYYMMDDHH`。用錯格式返回 0 行。
+
+**解決方案**：在 Skill 文件記錄正確格式。先查 `GROUP BY pt ORDER BY pt DESC LIMIT 1` 找最新分區。
+
+### ISSUE-024: 密碼保護 Middleware 未生效
+
+**問題**：首次部署 `middleware.js`，Vercel 沒有攔截請求，報告直接顯示。
+
+**解決方案**：安裝 `@vercel/functions`，使用 `next()` helper。確保 `package.json` 有 `"type": "module"`。
+
+### ISSUE-025: Event Analysis 過於淺薄
+
+**問題**：初始版本只有因果鏈表格，缺少 OI 變化歸因、量化影響、風險評估、涉事用戶等專門章節。
+
+**解決方案**：完全按照 RCA Skill 的報告結構，為每個 event 添加 6 個專門章節：量化影響評估、Executive Summary、因果鏈條、OI 變化歸因、風險評估與展望、涉事用戶。
+
+---
+
+## 19. Lessons Learned — 關鍵教訓
+
+### 19.1 架構決策
+
+1. **Git Commit > Vercel Blob**：最初用 Vercel Blob API 存報告，後改為 git commit 方式。Git 是驗證了幾十年的工具，比 API 調用更可靠。最簡單的方案往往最好。
+
+2. **MCP 只能在 Claude Code 中用**：Lark MCP 和 Data Query MCP 無法在 GitHub Actions 或純 Python 中調用。整個 Risk Intelligence 管道必須在 Claude Code 環境中運行。最終方案：`launchd` + `claude -p` CLI。
+
+3. **每個 Event 應該獨立**：Event Analysis 的用戶數據不應該從全局池過濾，而應該在數據層就綁定到特定 event。共享數據 + 前端過濾 = 災難。
+
+### 19.2 MCP 數據查詢
+
+4. **等 8 秒不是 3 秒**：Data Query MCP 文檔說等 3-5 秒，實際需要 8-12 秒。複雜查詢需要 15+ 秒。
+
+5. **欄位名必須精確**：`position_type` 不是 `position_volume`/`position_side`。沒有 `INFORMATION_SCHEMA` 可查。只能依賴 Skill 參考文件或錯誤提示（「Did you mean position_type?」）。
+
+6. **Batch 查詢省時間**：把多個 user_id 放在一個 `IN (...)` 裡比逐個查快 10 倍。獨立查詢可以並行 submit，然後批量 getResult。
+
+7. **分區格式是關鍵**：daily 表 `YYYYMMDD`，hourly 表 `YYYYMMDDHH`。用錯了不報錯，只返回 0 行。
+
+8. **先查最新分區**：`SELECT pt ... ORDER BY pt DESC LIMIT 1` 確認數據是最新的。`pt=20260326` 可能不存在但 `20260325` 存在。
+
+### 19.3 前端設計
+
+9. **Pie Chart 無用**：用戶明確反饋 pie chart 沒有任何 insight。移除後頁面更清晰。不要為了「有圖表」而加圖表。
+
+10. **Tab > Scroll**：單頁滾動報告不適合多章節。改為 Tab 系統後，每個 Tab 有獨立摘要，用戶體驗大幅提升。
+
+11. **Section Nav 應該 switch，不是 scroll**：Risk Intelligence 的 Section Nav 點擊應該替換內容區域，不是滾動到那裡。Price Limit 的 Section Nav 則用滾動。兩種模式需要共存。
+
+12. **暗色主題 → 亮色主題**：初始版本用暗色（交易所風格），用戶要求改為亮色（專業報告風格）。報告類產品應該像金融文件，不像 SaaS dashboard。
+
+### 19.4 Lark 整合
+
+13. **Lark 不渲染 Markdown 表格**：`lark_md` 中的 `| --- |` 顯示為原始文本。必須用原生 `table` 組件。
+
+14. **Lark 通知必須在 Vercel 部署後發送**：先 git push，等 90 秒 Vercel 部署完成，再發 Lark。否則用戶點「View Full Report」看到的是舊報告。
+
+15. **Magic Link 比密碼更好**：用戶不想每次都輸密碼。daily rotating token + `?pw=` 參數實現一鍵進入，安全性不減。
+
+### 19.5 自動化
+
+16. **GitHub Actions 不可靠但足夠**：多次失敗（exit code 1、git push 衝突、Node.js 廢棄警告）。但基本的 Price Limit review 可以跑。
+
+17. **本地 Cron 更可控**：`launchd` + `claude -p` 是最可靠的方案。不依賴雲端，完整 MCP 訪問，永久排程。代價是需要 Mac 保持清醒。
+
+18. **caffeinate 是 macOS 的隱藏寶石**：`caffeinate -s` 讓 Mac 即使蓋上蓋子也不休眠（需接電源）。這是一個不需要安裝任何東西的零成本解決方案。
+
+---
+
+*本文檔由 CoreTrading ParaMgnt Team 維護。最後更新 2026-03-27。*
