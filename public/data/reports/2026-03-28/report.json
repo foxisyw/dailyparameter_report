@@ -1,9 +1,9 @@
 {
   "report": {
     "date": "2026-03-28",
-    "generated_at": "2026-03-28T05:52:39.284819+00:00",
+    "generated_at": "2026-03-28T10:18:30.149263+00:00",
     "status": "critical",
-    "total_issues": 22,
+    "total_issues": 20,
     "chapters": [
       {
         "slug": "risk-intel",
@@ -22,13 +22,13 @@
         "slug": "price-limit",
         "title": "Price Limit Review",
         "status": "critical",
-        "summary": "Scanned 1496 instruments. Found 17 issue(s) across 4 rules.",
+        "summary": "Scanned 1496 instruments. Found 15 issue(s) across 4 rules.",
         "metrics": {
           "instruments_scanned": 1496,
           "ema_coverage": 1496,
-          "issues_found": 17,
+          "issues_found": 15,
           "source": "OKX API (live)",
-          "generated_at": "2026-03-28T05:52:29.582197+00:00"
+          "generated_at": "2026-03-28T10:18:19.813325+00:00"
         }
       },
       {
@@ -41,7 +41,7 @@
           "ema_coverage": 0,
           "issues_found": 0,
           "source": "n/a",
-          "generated_at": "2026-03-28T05:52:39.170978+00:00"
+          "generated_at": "2026-03-28T10:18:30.030260+00:00"
         }
       },
       {
@@ -54,7 +54,7 @@
           "ema_coverage": 0,
           "issues_found": 0,
           "source": "n/a",
-          "generated_at": "2026-03-28T05:52:39.284785+00:00"
+          "generated_at": "2026-03-28T10:18:30.149215+00:00"
         }
       }
     ]
@@ -1409,13 +1409,13 @@
       "title": "Price Limit Review",
       "render_variant": "rules",
       "status": "critical",
-      "summary": "Scanned 1496 instruments. Found 17 issue(s) across 4 rules.",
+      "summary": "Scanned 1496 instruments. Found 15 issue(s) across 4 rules.",
       "metrics": {
         "instruments_scanned": 1496,
         "ema_coverage": 1496,
-        "issues_found": 17,
+        "issues_found": 15,
         "source": "OKX API (live)",
-        "generated_at": "2026-03-28T05:52:29.582197+00:00"
+        "generated_at": "2026-03-28T10:18:19.813325+00:00"
       },
       "metric_cards": [
         {
@@ -1428,7 +1428,7 @@
         },
         {
           "label": "Issues",
-          "value": "17"
+          "value": "15"
         },
         {
           "label": "Source",
@@ -1451,38 +1451,26 @@
             "rows": [
               [
                 "DGB-USD",
-                "0.20%",
-                "-0.15%",
-                "warning"
-              ],
-              [
-                "SLP-USD",
-                "-4.90%",
-                "-1.00%",
-                "warning"
-              ],
-              [
-                "SLP-USD",
-                "-4.90%",
-                "-1.00%",
+                "-0.46%",
+                "0.18%",
                 "warning"
               ],
               [
                 "T-USD",
-                "-0.16%",
-                "-0.61%",
+                "-9.76%",
+                "-1.50%",
                 "warning"
               ],
               [
                 "T-USD",
-                "-0.16%",
-                "-0.61%",
+                "-9.76%",
+                "-1.50%",
                 "warning"
               ],
               [
                 "T-USDC",
-                "-1.37%",
-                "0.74%",
+                "1.80%",
+                "-0.34%",
                 "warning"
               ]
             ]
@@ -1503,8 +1491,8 @@
             ],
             "rows": [
               [
-                "SLP-USD",
-                "4.00%",
+                "T-USD",
+                "7.44%",
                 "5.0%",
                 "warning"
               ]
@@ -1680,22 +1668,17 @@
           [
             "DGB-USD",
             "Widen Y caps",
-            "limitDn_buffer=-0.15%, B/A spread(3.98%) vs Y spread(4.0%)"
-          ],
-          [
-            "SLP-USD",
-            "Widen Y caps",
-            "limitUp_buffer=-4.90%, B/A spread(9.98%) vs Y spread(4.0%)"
+            "limitUp_buffer=-0.46%, B/A spread(4.30%) vs Y spread(4.0%)"
           ],
           [
             "T-USD",
             "Widen Y caps",
-            "limitUp_buffer=-0.16%, B/A spread(4.71%) vs Y spread(4.0%)"
+            "limitUp_buffer=-9.76%, B/A spread(16.62%) vs Y spread(4.0%)"
           ],
           [
             "T-USDC",
             "Widen Y caps",
-            "limitUp_buffer=-1.37%, B/A spread(4.63%) vs Y spread(4.0%)"
+            "limitDn_buffer=-0.34%, B/A spread(2.52%) vs Y spread(4.0%)"
           ]
         ]
       },
@@ -1706,7 +1689,7 @@
           "content": "Task Object,timeType,Effective Time,openUpperLimit,openLowerLimit,afterOpenUpperLimit,afterOpenLowerLimit,afterOpenIndexUpperLimit,afterOpenIndexLowerLimit,preQuoteMaxJ1UpperLimit,preQuoteMinJ2LowerLimit,preQuoteC1,preQuoteC2\r\nBTC-USD_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260403,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260410,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USD_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USD_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USDT_UM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USDT_UM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\n"
         }
       ],
-      "markdown": "# Price Limit Review\n\n**Generated:** 2026-03-28T05:52:29.582197+00:00  \n**Status:** critical  \n**Instruments scanned:** 1496  \n**EMA coverage:** 1496  \n\n**Total issues found:** 17\n\n## Rule 1: Buffer Too Tight\n6 issue(s) found.\n\n| INSTRUMENT | LIMITUP_BUFFER | LIMITDN_BUFFER | STATUS |\n|---|---|---|---|\n| DGB-USD | 0.20% | -0.15% | warning |\n| SLP-USD | -4.90% | -1.00% | warning |\n| SLP-USD | -4.90% | -1.00% | warning |\n| T-USD | -0.16% | -0.61% | warning |\n| T-USD | -0.16% | -0.61% | warning |\n| T-USDC | -1.37% | 0.74% | warning |\n\n## Rule 2: Asymmetric Basis\n1 issue(s) found.\n\n| INSTRUMENT | BASIS_EMA | RELEVANT Z CAP | STATUS |\n|---|---|---|---|\n| SLP-USD | 4.00% | 5.0% | warning |\n\n## Rule 3: Asset-Type Consistency\n10 issue(s) found.\n\n| INSTRUMENT | CURRENT Y | CURRENT Z | EXPECTED Y | EXPECTED Z | STATUS |\n|---|---|---|---|---|---|\n| BTC-USD-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD-260925 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260403 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260410 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USDT-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USDT-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n\n## Rule 4: Z Cap <= Y Cap\nAll instruments passed.\n",
+      "markdown": "# Price Limit Review\n\n**Generated:** 2026-03-28T10:18:19.813325+00:00  \n**Status:** critical  \n**Instruments scanned:** 1496  \n**EMA coverage:** 1496  \n\n**Total issues found:** 15\n\n## Rule 1: Buffer Too Tight\n4 issue(s) found.\n\n| INSTRUMENT | LIMITUP_BUFFER | LIMITDN_BUFFER | STATUS |\n|---|---|---|---|\n| DGB-USD | -0.46% | 0.18% | warning |\n| T-USD | -9.76% | -1.50% | warning |\n| T-USD | -9.76% | -1.50% | warning |\n| T-USDC | 1.80% | -0.34% | warning |\n\n## Rule 2: Asymmetric Basis\n1 issue(s) found.\n\n| INSTRUMENT | BASIS_EMA | RELEVANT Z CAP | STATUS |\n|---|---|---|---|\n| T-USD | 7.44% | 5.0% | warning |\n\n## Rule 3: Asset-Type Consistency\n10 issue(s) found.\n\n| INSTRUMENT | CURRENT Y | CURRENT Z | EXPECTED Y | EXPECTED Z | STATUS |\n|---|---|---|---|---|---|\n| BTC-USD-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD-260925 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260403 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260410 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USDT-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USDT-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n\n## Rule 4: Z Cap <= Y Cap\nAll instruments passed.\n",
       "error": null,
       "source_document": null,
       "suspicious_users": [],
@@ -1723,7 +1706,7 @@
         "ema_coverage": 0,
         "issues_found": 0,
         "source": "n/a",
-        "generated_at": "2026-03-28T05:52:39.170978+00:00"
+        "generated_at": "2026-03-28T10:18:30.030260+00:00"
       },
       "metric_cards": [
         {
@@ -1763,7 +1746,7 @@
         "ema_coverage": 0,
         "issues_found": 0,
         "source": "n/a",
-        "generated_at": "2026-03-28T05:52:39.284785+00:00"
+        "generated_at": "2026-03-28T10:18:30.149215+00:00"
       },
       "metric_cards": [
         {

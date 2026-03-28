@@ -1,30 +1,28 @@
 # Price Limit Review
 
-**Generated:** 2026-03-28T05:52:29.582197+00:00  
+**Generated:** 2026-03-28T10:18:19.813325+00:00  
 **Status:** critical  
 **Instruments scanned:** 1496  
 **EMA coverage:** 1496  
 
-**Total issues found:** 17
+**Total issues found:** 15
 
 ## Rule 1: Buffer Too Tight
-6 issue(s) found.
+4 issue(s) found.
 
 | INSTRUMENT | LIMITUP_BUFFER | LIMITDN_BUFFER | STATUS |
 |---|---|---|---|
-| DGB-USD | 0.20% | -0.15% | warning |
-| SLP-USD | -4.90% | -1.00% | warning |
-| SLP-USD | -4.90% | -1.00% | warning |
-| T-USD | -0.16% | -0.61% | warning |
-| T-USD | -0.16% | -0.61% | warning |
-| T-USDC | -1.37% | 0.74% | warning |
+| DGB-USD | -0.46% | 0.18% | warning |
+| T-USD | -9.76% | -1.50% | warning |
+| T-USD | -9.76% | -1.50% | warning |
+| T-USDC | 1.80% | -0.34% | warning |
 
 ## Rule 2: Asymmetric Basis
 1 issue(s) found.
 
 | INSTRUMENT | BASIS_EMA | RELEVANT Z CAP | STATUS |
 |---|---|---|---|
-| SLP-USD | 4.00% | 5.0% | warning |
+| T-USD | 7.44% | 5.0% | warning |
 
 ## Rule 3: Asset-Type Consistency
 10 issue(s) found.
