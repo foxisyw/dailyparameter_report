@@ -1,3 +1,3 @@
 # MMR Futures Review
 
-**Error:** Failed to refresh competitors: No module named 'binance'
+**Pending:** Depth data not available — re-run cron to fetch via MCP (Step 5b).

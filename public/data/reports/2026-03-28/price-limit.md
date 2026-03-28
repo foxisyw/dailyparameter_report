@@ -1,24 +1,30 @@
 # Price Limit Review
 
-**Generated:** 2026-03-28T01:44:26.746969+00:00  
+**Generated:** 2026-03-28T05:52:29.582197+00:00  
 **Status:** critical  
 **Instruments scanned:** 1496  
 **EMA coverage:** 1496  
 
-**Total issues found:** 14
+**Total issues found:** 17
 
 ## Rule 1: Buffer Too Tight
-4 issue(s) found.
+6 issue(s) found.
 
 | INSTRUMENT | LIMITUP_BUFFER | LIMITDN_BUFFER | STATUS |
 |---|---|---|---|
-| AERGO-EUR | 1.78% | -0.10% | warning |
-| BICO-EUR | 1.65% | -0.32% | warning |
-| ETH-USD-260410 | -1.44% | -1.01% | warning |
-| ETH-USD-260410 | -1.44% | -1.01% | warning |
+| DGB-USD | 0.20% | -0.15% | warning |
+| SLP-USD | -4.90% | -1.00% | warning |
+| SLP-USD | -4.90% | -1.00% | warning |
+| T-USD | -0.16% | -0.61% | warning |
+| T-USD | -0.16% | -0.61% | warning |
+| T-USDC | -1.37% | 0.74% | warning |
 
 ## Rule 2: Asymmetric Basis
-All instruments passed.
+1 issue(s) found.
+
+| INSTRUMENT | BASIS_EMA | RELEVANT Z CAP | STATUS |
+|---|---|---|---|
+| SLP-USD | 4.00% | 5.0% | warning |
 
 ## Rule 3: Asset-Type Consistency
 10 issue(s) found.
