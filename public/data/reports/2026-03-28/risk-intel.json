@@ -1,0 +1,1348 @@
+{
+  "date": "2026-03-28",
+  "generated_at": "2026-03-28T01:44:19.268608+00:00",
+  "chapter": {
+    "slug": "risk-intel",
+    "title": "Risk Intelligence",
+    "render_variant": "risk-intel",
+    "status": "warning",
+    "summary": "4 alert types analyzed. 0 flagged alert(s) parsed. 5 suspicious user(s) highlighted.",
+    "event_analyses": [
+      {
+        "event_id": "EVT-20260328-UXLINK-ZCAP",
+        "asset": "UXLINK-USDT",
+        "severity": "critical",
+        "executive_summary": "UXLINK-USDT 遭遇 Z cap 硬顶限价触发，24小时跌幅达 -36.86%（0.004454→0.002812），触发 price down restricted 报警。当前持仓用户 232 人中有 218 人（94%）为空头，多空比极度失衡。",
+        "forward_looking": "关注 UXLINK 是否继续触发 Z cap 限制，评估做空集中度是否构成操纵风险，建议核查 Z cap 参数是否需调整。",
+        "market_snapshot": {
+          "price": 0.002812,
+          "change_24h": "-36.86%",
+          "open_interest": null,
+          "funding_rate": null,
+          "vol_24h": 2452805.16,
+          "timestamp": "2026-03-28T09:35+08:00",
+          "notes": "No SWAP contract exists; OI and funding rate not applicable"
+        },
+        "causal_chain": [
+          {
+            "step": 1,
+            "type": "远因",
+            "description": "UXLINK is a thin-liquidity margin-only token with no SWAP contract, making it vulnerable to sharp price moves"
+          },
+          {
+            "step": 2,
+            "type": "近因",
+            "description": "94% short user concentration (218/232 users short) creates extreme directional imbalance"
+          },
+          {
+            "step": 3,
+            "type": "触发事件",
+            "description": "Z cap price down restricted triggered as price fell -36.86% in 24 hours"
+          },
+          {
+            "step": 4,
+            "type": "风险放大",
+            "description": "Concentrated short positions held by users with phone/KYC mismatches raise manipulation concerns"
+          }
+        ],
+        "key_users": [
+          {
+            "user_id": "78109361",
+            "side": "short",
+            "positions": 2,
+            "note": "HK phone/Taiwan KYC mismatch, 2 short isolated positions"
+          }
+        ],
+        "quantitative_impact": {
+          "metrics": [
+            {
+              "value": "-36.86%",
+              "label": "24H Price Change",
+              "detail": "Z cap triggered"
+            },
+            {
+              "value": "93.97%",
+              "label": "Short User Ratio",
+              "detail": "218/232 users short"
+            }
+          ]
+        },
+        "oi_attribution": {
+          "asset": "UXLINK-USDT",
+          "type": "margin_positions",
+          "user_hourly_table": {
+            "headers": [
+              "Time(HKT)",
+              "Total Users",
+              "Long",
+              "Short",
+              "Net Change"
+            ],
+            "rows": [
+              [
+                "00:00",
+                231,
+                21,
+                218,
+                null
+              ],
+              [
+                "01:00",
+                231,
+                21,
+                218,
+                0
+              ],
+              [
+                "02:00",
+                231,
+                21,
+                218,
+                0
+              ],
+              [
+                "03:00",
+                232,
+                22,
+                218,
+                1
+              ],
+              [
+                "04:00",
+                232,
+                22,
+                218,
+                0
+              ],
+              [
+                "05:00",
+                232,
+                22,
+                218,
+                0
+              ],
+              [
+                "06:00",
+                232,
+                22,
+                218,
+                0
+              ],
+              [
+                "07:00",
+                232,
+                22,
+                218,
+                0
+              ]
+            ]
+          },
+          "summary": "Minimal user activity: only 1 new long user added at 03:00. Short user count stable at 218. Total users went from 231 to 232 (+1) over 8 hours."
+        },
+        "risk_assessment": {
+          "actions": [
+            {
+              "priority": "P0",
+              "action": "Check Z cap parameters for UXLINK",
+              "reason": "Z cap price down restricted triggered; need to verify if current parameters are appropriate for this thin-liquidity token"
+            },
+            {
+              "priority": "P1",
+              "action": "Review users with phone/KYC mismatches",
+              "reason": "User 78109361 has HK phone (852) but Taiwan KYC, holding 2 short positions during -36.86% crash"
+            },
+            {
+              "priority": "P2",
+              "action": "Evaluate margin requirement adjustments",
+              "reason": "94% short concentration with no SWAP contract creates systemic risk; margin requirements may need tightening"
+            }
+          ]
+        },
+        "involved_users_brief": {
+          "title": "UXLINK-USDT Key Users",
+          "headers": [
+            "User ID",
+            "Tier",
+            "Side",
+            "Positions",
+            "Vol/Equity Ratio",
+            "Key Flag"
+          ],
+          "rows": [
+            [
+              "78109361",
+              "T2",
+              "short",
+              2,
+              "88.8:1",
+              "HK phone / Taiwan KYC mismatch"
+            ],
+            [
+              "8437866",
+              "—",
+              "—",
+              "—",
+              "—",
+              "Referenced in alert context"
+            ]
+          ]
+        },
+        "user_profiles": [
+          {
+            "uid": "707234790063706453",
+            "master_user_id": "78109361",
+            "overall_risk_tier": "T2",
+            "executive_summary": "T2 WARNING: Phone/KYC mismatch (852 HK phone, Taiwan KYC). Two short UXLINK positions during -36.86% crash. Single deposit of $3,499 on registration day only. APP registration, KYC2 Taiwan.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "warning",
+                "signals": [
+                  "Registered 2025-05-10 via APP",
+                  "China region but HK phone +852",
+                  "KYC2 Taiwan passed same day",
+                  "Account age ~10 months"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "Trade volume $246K vs equity $2,776 — ratio 88.8:1",
+                  "2 short UXLINK-USDT isolated margin positions",
+                  "Positions during -36.86% UXLINK crash"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied — cannot verify"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied",
+                  "Register region: China"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "critical",
+                "signals": [
+                  "Phone area 852 (HK) vs KYC nationality Taiwan — MISMATCH",
+                  "Normal user, normal account",
+                  "KYC2 level"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "pass",
+                "signals": [
+                  "Equity $2,776 vs first deposit $3,499",
+                  "Moderate equity retention (~79%)"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "warning",
+                "signals": [
+                  "Only deposited on registration day (2025-05-10)",
+                  "No subsequent deposits in 10 months"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "T2 WARNING: Phone/KYC geographic mismatch raises identity concern",
+                  "Double short positions on crashing UXLINK",
+                  "Single-deposit pattern"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Phone 852 (HK) vs KYC Taiwan mismatch",
+              "2 short positions during -36.86% crash",
+              "Single deposit day"
+            ]
+          }
+        ]
+      },
+      {
+        "event_id": "EVT-20260328-SNDK-OI",
+        "asset": "SNDK-USDT-SWAP",
+        "severity": "warning",
+        "executive_summary": "SNDK-USDT-SWAP 持仓偏离 24H 均值达 80.04%（阈值20%），OI 为 $228,762（376.34张），过去8小时新增29名用户。发现一名 T1 高危用户 54687374（交易量/权益比=912,340:1）。",
+        "forward_looking": "密切关注 SNDK OI 是否继续扩大，重点追踪 54687374 的仓位变化和资金流向，评估是否需要提升监控等级。",
+        "market_snapshot": {
+          "price": 607.86,
+          "change_24h": "+0.05%",
+          "open_interest": 376.34,
+          "funding_rate": 0.0,
+          "vol_24h": 2314.07,
+          "timestamp": "2026-03-28T09:35+08:00"
+        },
+        "causal_chain": [
+          {
+            "step": 1,
+            "type": "远因",
+            "description": "SNDK is a stock token with limited liquidity, making OI deviations more impactful"
+          },
+          {
+            "step": 2,
+            "type": "近因",
+            "description": "Steady user influx: +29 users in 8 hours (885→914), both long and short side growing"
+          },
+          {
+            "step": 3,
+            "type": "触发事件",
+            "description": "OI deviation reached 80.04%, far exceeding the 20% threshold"
+          },
+          {
+            "step": 4,
+            "type": "风险放大",
+            "description": "T1 user 54687374 with $10.2M trade volume on $11 equity (ratio 912,340:1) — likely wash trading or bot account"
+          }
+        ],
+        "key_users": [
+          {
+            "user_id": "54687374",
+            "side": "short",
+            "positions": 1,
+            "note": "T1 CRITICAL: trade/equity=912K:1"
+          },
+          {
+            "user_id": "76038333",
+            "side": "short",
+            "positions": 1,
+            "note": "Deposited yesterday, opened position same day"
+          },
+          {
+            "user_id": "73153922",
+            "side": "short",
+            "positions": 2,
+            "note": "Vietnam phone/Taiwan KYC mismatch"
+          },
+          {
+            "user_id": "73769935",
+            "side": "short",
+            "positions": 2,
+            "note": "$0.91 first deposit"
+          }
+        ],
+        "quantitative_impact": {
+          "metrics": [
+            {
+              "value": "80.04%",
+              "label": "OI/24H Avg Deviation",
+              "detail": "threshold 20%"
+            },
+            {
+              "value": "$228,762",
+              "label": "Open Interest (USD)",
+              "detail": "376.34 contracts"
+            },
+            {
+              "value": "912,340:1",
+              "label": "Max Trade/Equity Ratio",
+              "detail": "user 54687374"
+            }
+          ]
+        },
+        "oi_attribution": {
+          "asset": "SNDK-USDT-SWAP",
+          "type": "swap_positions",
+          "user_hourly_table": {
+            "headers": [
+              "Time(HKT)",
+              "Total Users",
+              "Long",
+              "Short",
+              "Net Change"
+            ],
+            "rows": [
+              [
+                "00:00",
+                885,
+                475,
+                461,
+                null
+              ],
+              [
+                "01:00",
+                891,
+                474,
+                467,
+                6
+              ],
+              [
+                "02:00",
+                898,
+                477,
+                471,
+                7
+              ],
+              [
+                "03:00",
+                903,
+                479,
+                474,
+                5
+              ],
+              [
+                "04:00",
+                906,
+                480,
+                476,
+                3
+              ],
+              [
+                "05:00",
+                908,
+                481,
+                477,
+                2
+              ],
+              [
+                "06:00",
+                912,
+                484,
+                478,
+                4
+              ],
+              [
+                "07:00",
+                914,
+                485,
+                480,
+                2
+              ]
+            ]
+          },
+          "summary": "Steady user growth from 885 to 914 (+29) over 8 hours. Long side grew from 475 to 485 (+10), short side grew from 461 to 480 (+19). Short side growing nearly 2x faster than long side."
+        },
+        "risk_assessment": {
+          "actions": [
+            {
+              "priority": "P0",
+              "action": "Investigate user 54687374 for wash trading",
+              "reason": "T1 CRITICAL: $10.2M trade volume on $11 equity (ratio 912,340:1), $6 initial deposit — extreme anomaly consistent with wash trading or bot activity"
+            },
+            {
+              "priority": "P1",
+              "action": "Monitor SNDK OI trend",
+              "reason": "OI deviation at 80.04% (4x threshold), steady user influx of +29 in 8 hours, short side growing 2x faster than long"
+            },
+            {
+              "priority": "P2",
+              "action": "Review SNDK margin and position limits",
+              "reason": "Multiple suspicious users holding short positions; current limits may be insufficient to prevent concentrated risk"
+            }
+          ]
+        },
+        "involved_users_brief": {
+          "title": "SNDK-USDT-SWAP Key Users",
+          "headers": [
+            "User ID",
+            "Tier",
+            "Side",
+            "Positions",
+            "Vol/Equity Ratio",
+            "Key Flag"
+          ],
+          "rows": [
+            [
+              "54687374",
+              "T1",
+              "short",
+              1,
+              "912,340:1",
+              "Extreme trade/equity disparity, likely wash trading"
+            ],
+            [
+              "76038333",
+              "T2",
+              "short",
+              1,
+              "16,898:1",
+              "Deposited and opened position yesterday, KYC 7-month gap"
+            ],
+            [
+              "73153922",
+              "T2",
+              "short",
+              2,
+              "362.8:1",
+              "Vietnam phone / Taiwan KYC mismatch"
+            ],
+            [
+              "73769935",
+              "T3",
+              "short",
+              2,
+              "1,065.7:1",
+              "$0.91 first deposit, mixed margin modes"
+            ]
+          ]
+        },
+        "user_profiles": [
+          {
+            "uid": "564684519945918478",
+            "master_user_id": "54687374",
+            "overall_risk_tier": "T1",
+            "executive_summary": "T1 CRITICAL: South Korea KYC2 user with extreme trade/equity disparity ($10.2M traded on $11 equity, ratio 912,340:1). Tiny initial deposit ($6). Active SNDK short position via cross margin. Strong wash trading or bot account indicators.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "warning",
+                "signals": [
+                  "Registered 2024-04-12 via H5",
+                  "South Korea region, phone +82",
+                  "KYC2 passed same day",
+                  "Account age ~2 years"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $10.2M vs equity $11 — ratio 912,340:1",
+                  "Short SNDK-USDT-SWAP cross margin",
+                  "Extreme leverage implied by vol/equity ratio"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied — cannot verify"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied",
+                  "Register region: South Korea (Asia)"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC2 South Korea, phone +82 South Korea — match",
+                  "Normal user, normal account"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Equity $11.21 vs trade vol $10.2M",
+                  "First deposit only $6",
+                  "Near-total equity depletion"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "warning",
+                "signals": [
+                  "Last deposit 2026-03-25",
+                  "Active deposits despite near-zero equity"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "T1 CRITICAL: Extreme trade/equity disparity strongly suggests wash trading or automated manipulation",
+                  "Tiny deposits with massive trading volume",
+                  "Active short position on OI-deviant asset"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 912,340:1",
+              "First deposit $6 only",
+              "Active SNDK short position"
+            ]
+          },
+          {
+            "uid": "687231510357127617",
+            "master_user_id": "76038333",
+            "overall_risk_tier": "T2",
+            "executive_summary": "T2 WARNING: New China KYC3 account (1 year old) with high vol/equity ratio (16,898:1, $6.3M on $373). Deposited and opened SNDK short position on same day (2026-03-27). H5 registration with 7-month gap to KYC completion.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "warning",
+                "signals": [
+                  "Registered 2025-03-16 via H5",
+                  "China region, phone +86",
+                  "KYC3 passed 2025-10-11 (7-month gap)",
+                  "Account age ~1 year"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $6.3M vs equity $373 — ratio 16,898:1",
+                  "Short SNDK-USDT-SWAP isolated margin",
+                  "Position opened on deposit day (2026-03-27)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied — cannot verify"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied",
+                  "Register region: China"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 China, phone +86 China — match",
+                  "Normal user, normal account"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Equity $372.70 vs trade vol $6.3M",
+                  "First deposit $416.08",
+                  "Significant equity depletion from deposits"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "warning",
+                "signals": [
+                  "Last deposit 2026-03-27 (yesterday)",
+                  "Active recent deposit activity"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "T2 WARNING: High vol/equity ratio with same-day deposit+position pattern",
+                  "New account with delayed KYC",
+                  "H5 web registration channel"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 16,898:1",
+              "Same-day deposit and position opening",
+              "7-month registration-to-KYC gap"
+            ]
+          },
+          {
+            "uid": "676482232714192046",
+            "master_user_id": "73153922",
+            "overall_risk_tier": "T2",
+            "executive_summary": "T2 WARNING: Phone/KYC mismatch (84 Vietnam phone, Taiwan KYC). Two short SNDK positions with recent deposit activity (2026-03-26). Trade volume $1.6M on $4,408 equity (ratio 362:1).",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "warning",
+                "signals": [
+                  "Registered 2025-02-14 via APP",
+                  "Asia region, phone +84 (Vietnam)",
+                  "KYC2 Taiwan passed same day",
+                  "Account age ~13 months"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "Trade volume $1.6M vs equity $4,408 — ratio 362.8:1",
+                  "2 short SNDK-USDT-SWAP isolated margin positions",
+                  "Positions created 2026-03-10 and 2026-03-25"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied — cannot verify"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied",
+                  "Register region: Asia"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "critical",
+                "signals": [
+                  "Phone area 84 (Vietnam) vs KYC nationality Taiwan — MISMATCH",
+                  "Normal user, normal account",
+                  "KYC2 level"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity $4,408 but first deposit data unavailable",
+                  "Moderate equity level"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "warning",
+                "signals": [
+                  "Last deposit 2026-03-26 (recent)",
+                  "Active deposit pattern"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "T2 WARNING: Phone/KYC geographic mismatch (Vietnam/Taiwan)",
+                  "Two short positions on OI-deviant SNDK",
+                  "Recent deposit activity"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Phone 84 (Vietnam) vs KYC Taiwan mismatch",
+              "2 short SNDK positions",
+              "Recent deposit 2026-03-26"
+            ]
+          },
+          {
+            "uid": "678492009254154290",
+            "master_user_id": "73769935",
+            "overall_risk_tier": "T3",
+            "executive_summary": "T3 MODERATE: South Korea KYC2 user with high vol/equity ratio (1,066:1). Tiny first deposit ($0.91). Two SNDK short positions using both cross and isolated margin modes.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Registered 2025-02-20 via PC",
+                  "Asia/South Korea region, phone +82",
+                  "KYC2 South Korea passed same day",
+                  "Account age ~13 months"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "Trade volume $242K vs equity $227 — ratio 1,065.7:1",
+                  "2 short SNDK positions (cross + isolated margin)",
+                  "Using both margin modes simultaneously"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied — cannot verify"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied",
+                  "Register region: South Korea (Asia)"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC2 South Korea, phone +82 South Korea — match",
+                  "Normal user, normal account"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Equity $227 vs trade vol $242K",
+                  "First deposit only $0.91",
+                  "Significant equity depletion"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pass",
+                "signals": [
+                  "Last deposit 2026-03-09",
+                  "Moderate deposit activity"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "T3 MODERATE: High vol/equity ratio with tiny initial deposit",
+                  "Dual margin mode usage on same asset",
+                  "No identity mismatch detected"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 1,065.7:1",
+              "First deposit $0.91",
+              "Dual margin modes (cross+isolated)"
+            ]
+          }
+        ]
+      }
+    ],
+    "metrics": {
+      "instruments_scanned": 0,
+      "ema_coverage": 4,
+      "issues_found": 5,
+      "source": "每日风控总结 - 2026-03-28 00:00:00 ~ 2026-03-28 23:59:59",
+      "generated_at": "2026-03-28T01:44:19.268608+00:00"
+    },
+    "metric_cards": [
+      {
+        "label": "Alert Types",
+        "value": "4"
+      },
+      {
+        "label": "Flagged Alerts",
+        "value": "0"
+      },
+      {
+        "label": "Suspicious Users",
+        "value": "5"
+      },
+      {
+        "label": "Highest Risk",
+        "value": "T3"
+      }
+    ],
+    "rule_blocks": [
+      {
+        "ruleId": "index_alarm",
+        "title": "Index Alarm",
+        "status": "pass",
+        "description": "Summarizes component-price anomalies and missing quotes.",
+        "table": null,
+        "note": "No flagged entries parsed from the selected document."
+      },
+      {
+        "ruleId": "price_limit_p4",
+        "title": "Price Limit P4",
+        "status": "pass",
+        "description": "Summarizes hard-cap and inner-band triggers with affected contracts.",
+        "table": null,
+        "note": "No flagged entries parsed from the selected document."
+      },
+      {
+        "ruleId": "collateral_coin",
+        "title": "Collateral Coin Risk",
+        "status": "pass",
+        "description": "Summarizes borrow-limit pressure and collateral restrictions.",
+        "table": null,
+        "note": "No flagged entries parsed from the selected document."
+      },
+      {
+        "ruleId": "platform_oi",
+        "title": "Platform OI",
+        "status": "pass",
+        "description": "Summarizes OI deviations, concentration, and platform limit pressure.",
+        "table": null,
+        "note": "No flagged entries parsed from the selected document."
+      }
+    ],
+    "recommended_changes": null,
+    "downloads": [],
+    "markdown": "# Risk Intelligence\n\n**Summary:** 4 alert types analyzed. 0 flagged alert(s) parsed. 5 suspicious user(s) highlighted.\n**Source document:** 每日风控总结 - 2026-03-28 00:00:00 ~ 2026-03-28 23:59:59\n\n## Suspicious Users\n- 678492009254154290 — T3 — \n- 687231510357127617 — T2 — \n- 707234790063706453 — T2 — \n- 676482232714192046 — T2 — \n- 564684519945918478 — T1 — \n\n## Deep Profiles\n- 678492009254154290 — T3 — T3 MODERATE: South Korea KYC2 user with high vol/equity ratio (1,066:1). Tiny first deposit ($0.91). Two SNDK short positions using both cross and isolated margin modes.\n- 687231510357127617 — T2 — T2 WARNING: New China KYC3 account (1 year old) with high vol/equity ratio (16,898:1, $6.3M on $373). Deposited and opened SNDK short position on same day (2026-03-27). H5 registration with 7-month gap to KYC completion.\n- 707234790063706453 — T2 — T2 WARNING: Phone/KYC mismatch (852 HK phone, Taiwan KYC). Two short UXLINK positions during -36.86% crash. Single deposit of $3,499 on registration day only. APP registration, KYC2 Taiwan.\n- 676482232714192046 — T2 — T2 WARNING: Phone/KYC mismatch (84 Vietnam phone, Taiwan KYC). Two short SNDK positions with recent deposit activity (2026-03-26). Trade volume $1.6M on $4,408 equity (ratio 362:1).\n- 564684519945918478 — T1 — T1 CRITICAL: South Korea KYC2 user with extreme trade/equity disparity ($10.2M traded on $11 equity, ratio 912,340:1). Tiny initial deposit ($6). Active SNDK short position via cross margin. Strong wash trading or bot account indicators.",
+    "error": null,
+    "source_document": {
+      "title": "每日风控总结 - 2026-03-28 00:00:00 ~ 2026-03-28 23:59:59",
+      "url": "https://okg-block.sg.larksuite.com/docx/CxDEdce7LoQK0uxzxYslljbHgyh",
+      "modified_at": "2026-03-28T01:44:19.268608+00:00",
+      "selected_by": "latest_modified_desc"
+    },
+    "suspicious_users": [
+      {
+        "uid": "678492009254154290",
+        "master_user_id": "73769935",
+        "risk_tier": "T3",
+        "source_alert": "",
+        "reason": "",
+        "mentions": 1,
+        "first_seen": 4
+      },
+      {
+        "uid": "687231510357127617",
+        "master_user_id": "76038333",
+        "risk_tier": "T2",
+        "source_alert": "",
+        "reason": "",
+        "mentions": 1,
+        "first_seen": 1
+      },
+      {
+        "uid": "707234790063706453",
+        "master_user_id": "78109361",
+        "risk_tier": "T2",
+        "source_alert": "",
+        "reason": "",
+        "mentions": 1,
+        "first_seen": 2
+      },
+      {
+        "uid": "676482232714192046",
+        "master_user_id": "73153922",
+        "risk_tier": "T2",
+        "source_alert": "",
+        "reason": "",
+        "mentions": 1,
+        "first_seen": 3
+      },
+      {
+        "uid": "564684519945918478",
+        "master_user_id": "54687374",
+        "risk_tier": "T1",
+        "source_alert": "",
+        "reason": "",
+        "mentions": 1,
+        "first_seen": 0
+      }
+    ],
+    "user_profiles": [
+      {
+        "uid": "678492009254154290",
+        "master_user_id": "73769935",
+        "overall_risk_tier": "T3",
+        "executive_summary": "T3 MODERATE: South Korea KYC2 user with high vol/equity ratio (1,066:1). Tiny first deposit ($0.91). Two SNDK short positions using both cross and isolated margin modes.",
+        "dimensions": [
+          {
+            "name": "Registration Profile",
+            "severity": "pass",
+            "signals": [
+              "Registered 2025-02-20 via PC",
+              "Asia/South Korea region, phone +82",
+              "KYC2 South Korea passed same day",
+              "Account age ~13 months"
+            ]
+          },
+          {
+            "name": "Trading Behavior",
+            "severity": "warning",
+            "signals": [
+              "Trade volume $242K vs equity $227 — ratio 1,065.7:1",
+              "2 short SNDK positions (cross + isolated margin)",
+              "Using both margin modes simultaneously"
+            ]
+          },
+          {
+            "name": "Associated Accounts",
+            "severity": "pending",
+            "signals": [
+              "Login table access denied — cannot verify"
+            ]
+          },
+          {
+            "name": "IP & Geolocation",
+            "severity": "pending",
+            "signals": [
+              "Login table access denied",
+              "Register region: South Korea (Asia)"
+            ]
+          },
+          {
+            "name": "Identity Signals",
+            "severity": "pass",
+            "signals": [
+              "KYC2 South Korea, phone +82 South Korea — match",
+              "Normal user, normal account"
+            ]
+          },
+          {
+            "name": "Profit & Loss",
+            "severity": "critical",
+            "signals": [
+              "Equity $227 vs trade vol $242K",
+              "First deposit only $0.91",
+              "Significant equity depletion"
+            ]
+          },
+          {
+            "name": "Withdrawal Behavior",
+            "severity": "pass",
+            "signals": [
+              "Last deposit 2026-03-09",
+              "Moderate deposit activity"
+            ]
+          },
+          {
+            "name": "Comprehensive Judgment",
+            "severity": "warning",
+            "signals": [
+              "T3 MODERATE: High vol/equity ratio with tiny initial deposit",
+              "Dual margin mode usage on same asset",
+              "No identity mismatch detected"
+            ]
+          }
+        ],
+        "key_evidence": [
+          "Trade/equity ratio 1,065.7:1",
+          "First deposit $0.91",
+          "Dual margin modes (cross+isolated)"
+        ],
+        "local_artifact_ref": ""
+      },
+      {
+        "uid": "687231510357127617",
+        "master_user_id": "76038333",
+        "overall_risk_tier": "T2",
+        "executive_summary": "T2 WARNING: New China KYC3 account (1 year old) with high vol/equity ratio (16,898:1, $6.3M on $373). Deposited and opened SNDK short position on same day (2026-03-27). H5 registration with 7-month gap to KYC completion.",
+        "dimensions": [
+          {
+            "name": "Registration Profile",
+            "severity": "warning",
+            "signals": [
+              "Registered 2025-03-16 via H5",
+              "China region, phone +86",
+              "KYC3 passed 2025-10-11 (7-month gap)",
+              "Account age ~1 year"
+            ]
+          },
+          {
+            "name": "Trading Behavior",
+            "severity": "critical",
+            "signals": [
+              "Trade volume $6.3M vs equity $373 — ratio 16,898:1",
+              "Short SNDK-USDT-SWAP isolated margin",
+              "Position opened on deposit day (2026-03-27)"
+            ]
+          },
+          {
+            "name": "Associated Accounts",
+            "severity": "pending",
+            "signals": [
+              "Login table access denied — cannot verify"
+            ]
+          },
+          {
+            "name": "IP & Geolocation",
+            "severity": "pending",
+            "signals": [
+              "Login table access denied",
+              "Register region: China"
+            ]
+          },
+          {
+            "name": "Identity Signals",
+            "severity": "pass",
+            "signals": [
+              "KYC3 China, phone +86 China — match",
+              "Normal user, normal account"
+            ]
+          },
+          {
+            "name": "Profit & Loss",
+            "severity": "critical",
+            "signals": [
+              "Equity $372.70 vs trade vol $6.3M",
+              "First deposit $416.08",
+              "Significant equity depletion from deposits"
+            ]
+          },
+          {
+            "name": "Withdrawal Behavior",
+            "severity": "warning",
+            "signals": [
+              "Last deposit 2026-03-27 (yesterday)",
+              "Active recent deposit activity"
+            ]
+          },
+          {
+            "name": "Comprehensive Judgment",
+            "severity": "critical",
+            "signals": [
+              "T2 WARNING: High vol/equity ratio with same-day deposit+position pattern",
+              "New account with delayed KYC",
+              "H5 web registration channel"
+            ]
+          }
+        ],
+        "key_evidence": [
+          "Trade/equity ratio 16,898:1",
+          "Same-day deposit and position opening",
+          "7-month registration-to-KYC gap"
+        ],
+        "local_artifact_ref": ""
+      },
+      {
+        "uid": "707234790063706453",
+        "master_user_id": "78109361",
+        "overall_risk_tier": "T2",
+        "executive_summary": "T2 WARNING: Phone/KYC mismatch (852 HK phone, Taiwan KYC). Two short UXLINK positions during -36.86% crash. Single deposit of $3,499 on registration day only. APP registration, KYC2 Taiwan.",
+        "dimensions": [
+          {
+            "name": "Registration Profile",
+            "severity": "warning",
+            "signals": [
+              "Registered 2025-05-10 via APP",
+              "China region but HK phone +852",
+              "KYC2 Taiwan passed same day",
+              "Account age ~10 months"
+            ]
+          },
+          {
+            "name": "Trading Behavior",
+            "severity": "warning",
+            "signals": [
+              "Trade volume $246K vs equity $2,776 — ratio 88.8:1",
+              "2 short UXLINK-USDT isolated margin positions",
+              "Positions during -36.86% UXLINK crash"
+            ]
+          },
+          {
+            "name": "Associated Accounts",
+            "severity": "pending",
+            "signals": [
+              "Login table access denied — cannot verify"
+            ]
+          },
+          {
+            "name": "IP & Geolocation",
+            "severity": "pending",
+            "signals": [
+              "Login table access denied",
+              "Register region: China"
+            ]
+          },
+          {
+            "name": "Identity Signals",
+            "severity": "critical",
+            "signals": [
+              "Phone area 852 (HK) vs KYC nationality Taiwan — MISMATCH",
+              "Normal user, normal account",
+              "KYC2 level"
+            ]
+          },
+          {
+            "name": "Profit & Loss",
+            "severity": "pass",
+            "signals": [
+              "Equity $2,776 vs first deposit $3,499",
+              "Moderate equity retention (~79%)"
+            ]
+          },
+          {
+            "name": "Withdrawal Behavior",
+            "severity": "warning",
+            "signals": [
+              "Only deposited on registration day (2025-05-10)",
+              "No subsequent deposits in 10 months"
+            ]
+          },
+          {
+            "name": "Comprehensive Judgment",
+            "severity": "warning",
+            "signals": [
+              "T2 WARNING: Phone/KYC geographic mismatch raises identity concern",
+              "Double short positions on crashing UXLINK",
+              "Single-deposit pattern"
+            ]
+          }
+        ],
+        "key_evidence": [
+          "Phone 852 (HK) vs KYC Taiwan mismatch",
+          "2 short positions during -36.86% crash",
+          "Single deposit day"
+        ],
+        "local_artifact_ref": ""
+      },
+      {
+        "uid": "676482232714192046",
+        "master_user_id": "73153922",
+        "overall_risk_tier": "T2",
+        "executive_summary": "T2 WARNING: Phone/KYC mismatch (84 Vietnam phone, Taiwan KYC). Two short SNDK positions with recent deposit activity (2026-03-26). Trade volume $1.6M on $4,408 equity (ratio 362:1).",
+        "dimensions": [
+          {
+            "name": "Registration Profile",
+            "severity": "warning",
+            "signals": [
+              "Registered 2025-02-14 via APP",
+              "Asia region, phone +84 (Vietnam)",
+              "KYC2 Taiwan passed same day",
+              "Account age ~13 months"
+            ]
+          },
+          {
+            "name": "Trading Behavior",
+            "severity": "warning",
+            "signals": [
+              "Trade volume $1.6M vs equity $4,408 — ratio 362.8:1",
+              "2 short SNDK-USDT-SWAP isolated margin positions",
+              "Positions created 2026-03-10 and 2026-03-25"
+            ]
+          },
+          {
+            "name": "Associated Accounts",
+            "severity": "pending",
+            "signals": [
+              "Login table access denied — cannot verify"
+            ]
+          },
+          {
+            "name": "IP & Geolocation",
+            "severity": "pending",
+            "signals": [
+              "Login table access denied",
+              "Register region: Asia"
+            ]
+          },
+          {
+            "name": "Identity Signals",
+            "severity": "critical",
+            "signals": [
+              "Phone area 84 (Vietnam) vs KYC nationality Taiwan — MISMATCH",
+              "Normal user, normal account",
+              "KYC2 level"
+            ]
+          },
+          {
+            "name": "Profit & Loss",
+            "severity": "warning",
+            "signals": [
+              "Equity $4,408 but first deposit data unavailable",
+              "Moderate equity level"
+            ]
+          },
+          {
+            "name": "Withdrawal Behavior",
+            "severity": "warning",
+            "signals": [
+              "Last deposit 2026-03-26 (recent)",
+              "Active deposit pattern"
+            ]
+          },
+          {
+            "name": "Comprehensive Judgment",
+            "severity": "warning",
+            "signals": [
+              "T2 WARNING: Phone/KYC geographic mismatch (Vietnam/Taiwan)",
+              "Two short positions on OI-deviant SNDK",
+              "Recent deposit activity"
+            ]
+          }
+        ],
+        "key_evidence": [
+          "Phone 84 (Vietnam) vs KYC Taiwan mismatch",
+          "2 short SNDK positions",
+          "Recent deposit 2026-03-26"
+        ],
+        "local_artifact_ref": ""
+      },
+      {
+        "uid": "564684519945918478",
+        "master_user_id": "54687374",
+        "overall_risk_tier": "T1",
+        "executive_summary": "T1 CRITICAL: South Korea KYC2 user with extreme trade/equity disparity ($10.2M traded on $11 equity, ratio 912,340:1). Tiny initial deposit ($6). Active SNDK short position via cross margin. Strong wash trading or bot account indicators.",
+        "dimensions": [
+          {
+            "name": "Registration Profile",
+            "severity": "warning",
+            "signals": [
+              "Registered 2024-04-12 via H5",
+              "South Korea region, phone +82",
+              "KYC2 passed same day",
+              "Account age ~2 years"
+            ]
+          },
+          {
+            "name": "Trading Behavior",
+            "severity": "critical",
+            "signals": [
+              "Trade volume $10.2M vs equity $11 — ratio 912,340:1",
+              "Short SNDK-USDT-SWAP cross margin",
+              "Extreme leverage implied by vol/equity ratio"
+            ]
+          },
+          {
+            "name": "Associated Accounts",
+            "severity": "pending",
+            "signals": [
+              "Login table access denied — cannot verify"
+            ]
+          },
+          {
+            "name": "IP & Geolocation",
+            "severity": "pending",
+            "signals": [
+              "Login table access denied",
+              "Register region: South Korea (Asia)"
+            ]
+          },
+          {
+            "name": "Identity Signals",
+            "severity": "pass",
+            "signals": [
+              "KYC2 South Korea, phone +82 South Korea — match",
+              "Normal user, normal account"
+            ]
+          },
+          {
+            "name": "Profit & Loss",
+            "severity": "critical",
+            "signals": [
+              "Equity $11.21 vs trade vol $10.2M",
+              "First deposit only $6",
+              "Near-total equity depletion"
+            ]
+          },
+          {
+            "name": "Withdrawal Behavior",
+            "severity": "warning",
+            "signals": [
+              "Last deposit 2026-03-25",
+              "Active deposits despite near-zero equity"
+            ]
+          },
+          {
+            "name": "Comprehensive Judgment",
+            "severity": "critical",
+            "signals": [
+              "T1 CRITICAL: Extreme trade/equity disparity strongly suggests wash trading or automated manipulation",
+              "Tiny deposits with massive trading volume",
+              "Active short position on OI-deviant asset"
+            ]
+          }
+        ],
+        "key_evidence": [
+          "Trade/equity ratio 912,340:1",
+          "First deposit $6 only",
+          "Active SNDK short position"
+        ],
+        "local_artifact_ref": ""
+      }
+    ]
+  }
+}
