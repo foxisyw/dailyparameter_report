@@ -1,0 +1,468 @@
+{
+  "report": {
+    "date": "2026-03-29",
+    "generated_at": "2026-03-29T04:06:33.383052+00:00",
+    "status": "critical",
+    "total_issues": 13,
+    "chapters": [
+      {
+        "slug": "risk-intel",
+        "title": "Risk Intelligence",
+        "status": "pending",
+        "summary": "Risk intel has not been generated locally for this report date.",
+        "metrics": {
+          "instruments_scanned": 0,
+          "ema_coverage": 0,
+          "issues_found": 0,
+          "source": "Claude Code local generation",
+          "generated_at": "2026-03-29T04:06:22.872847+00:00"
+        }
+      },
+      {
+        "slug": "price-limit",
+        "title": "Price Limit Review",
+        "status": "critical",
+        "summary": "Scanned 1496 instruments. Found 13 issue(s) across 4 rules.",
+        "metrics": {
+          "instruments_scanned": 1496,
+          "ema_coverage": 1496,
+          "issues_found": 13,
+          "source": "OKX API (live)",
+          "generated_at": "2026-03-29T04:06:22.872888+00:00"
+        }
+      },
+      {
+        "slug": "mmr-futures",
+        "title": "MMR Futures Review",
+        "status": "pending",
+        "summary": "Depth data not available — re-run cron to fetch via MCP (Step 5b).",
+        "metrics": {
+          "instruments_scanned": 0,
+          "ema_coverage": 0,
+          "issues_found": 0,
+          "source": "n/a",
+          "generated_at": "2026-03-29T04:06:33.265452+00:00"
+        }
+      },
+      {
+        "slug": "index-review",
+        "title": "Index Review",
+        "status": "pending",
+        "summary": "CLI review failed or server not running.",
+        "metrics": {
+          "instruments_scanned": 0,
+          "ema_coverage": 0,
+          "issues_found": 0,
+          "source": "n/a",
+          "generated_at": "2026-03-29T04:06:33.383018+00:00"
+        }
+      }
+    ]
+  },
+  "chapters": [
+    {
+      "slug": "risk-intel",
+      "title": "Risk Intelligence",
+      "render_variant": "risk-intel",
+      "status": "pending",
+      "summary": "Risk intel has not been generated locally for this report date.",
+      "metrics": {
+        "instruments_scanned": 0,
+        "ema_coverage": 0,
+        "issues_found": 0,
+        "source": "Claude Code local generation",
+        "generated_at": "2026-03-29T04:06:22.872847+00:00"
+      },
+      "metric_cards": [
+        {
+          "label": "Alert Types",
+          "value": "0"
+        },
+        {
+          "label": "Flagged Alerts",
+          "value": "0"
+        },
+        {
+          "label": "Suspicious Users",
+          "value": "0"
+        },
+        {
+          "label": "Highest Risk",
+          "value": "T1"
+        }
+      ],
+      "rule_blocks": [],
+      "recommended_changes": null,
+      "downloads": [],
+      "markdown": "# Risk Intelligence\n\n**Status:** pending\n\nRisk intel has not been generated locally for this report date.\n",
+      "error": null,
+      "source_document": {
+        "title": "No source document selected",
+        "url": "https://okg-block.sg.larksuite.com/drive/folder/Wu2Pfktq6lq4t8dWL52lB97pgQb",
+        "modified_at": "2026-03-29T04:06:22.872847+00:00",
+        "selected_by": "latest_modified_desc"
+      },
+      "suspicious_users": [],
+      "user_profiles": []
+    },
+    {
+      "slug": "price-limit",
+      "title": "Price Limit Review",
+      "render_variant": "rules",
+      "status": "critical",
+      "summary": "Scanned 1496 instruments. Found 13 issue(s) across 4 rules.",
+      "metrics": {
+        "instruments_scanned": 1496,
+        "ema_coverage": 1496,
+        "issues_found": 13,
+        "source": "OKX API (live)",
+        "generated_at": "2026-03-29T04:06:22.872888+00:00"
+      },
+      "metric_cards": [
+        {
+          "label": "Instruments",
+          "value": "1496"
+        },
+        {
+          "label": "EMA Coverage",
+          "value": "1496"
+        },
+        {
+          "label": "Issues",
+          "value": "13"
+        },
+        {
+          "label": "Source",
+          "value": "OKX API"
+        }
+      ],
+      "rule_blocks": [
+        {
+          "ruleId": "rule-1",
+          "title": "Buffer Too Tight",
+          "status": "warning",
+          "description": "Flags instruments where the EMA-derived limit price is already breaching or very close to the Y cap boundary, indicating the buffer is too tight for current market conditions.",
+          "table": {
+            "headers": [
+              "INSTRUMENT",
+              "LIMITUP_BUFFER",
+              "LIMITDN_BUFFER",
+              "STATUS"
+            ],
+            "rows": [
+              [
+                "DGB-USD",
+                "-0.75%",
+                "0.02%",
+                "warning"
+              ]
+            ]
+          },
+          "note": null
+        },
+        {
+          "ruleId": "rule-2",
+          "title": "Asymmetric Basis",
+          "status": "warning",
+          "description": "Flags perp instruments where the EMA basis is large relative to the Z cap, suggesting the cap should be widened on one side to accommodate the persistent premium/discount.",
+          "table": {
+            "headers": [
+              "INSTRUMENT",
+              "BASIS_EMA",
+              "RELEVANT Z CAP",
+              "STATUS"
+            ],
+            "rows": [
+              [
+                "UXLINK-USD",
+                "2.96%",
+                "5.0%",
+                "warning"
+              ],
+              [
+                "UXLINK-USDT",
+                "3.11%",
+                "5.0%",
+                "warning"
+              ]
+            ]
+          },
+          "note": null
+        },
+        {
+          "ruleId": "rule-3",
+          "title": "Asset-Type Consistency",
+          "status": "warning",
+          "description": "Checks whether each instrument's Y/Z caps are consistent with the standard ranges for its asset type classification.",
+          "table": {
+            "headers": [
+              "INSTRUMENT",
+              "CURRENT Y",
+              "CURRENT Z",
+              "EXPECTED Y",
+              "EXPECTED Z",
+              "STATUS"
+            ],
+            "rows": [
+              [
+                "BTC-USD-260626",
+                "1.0%",
+                "10.0%",
+                "1%",
+                "2%",
+                "warning"
+              ],
+              [
+                "BTC-USD-260925",
+                "1.0%",
+                "10.0%",
+                "1%",
+                "2%",
+                "warning"
+              ],
+              [
+                "BTC-USD_UM-260403",
+                "2.0%",
+                "10.0%",
+                "1%",
+                "2%",
+                "warning"
+              ],
+              [
+                "BTC-USD_UM-260410",
+                "2.0%",
+                "10.0%",
+                "1%",
+                "2%",
+                "warning"
+              ],
+              [
+                "BTC-USD_UM-260626",
+                "2.0%",
+                "10.0%",
+                "1%",
+                "2%",
+                "warning"
+              ],
+              [
+                "BTC-USD_UM-260925",
+                "2.0%",
+                "10.0%",
+                "1%",
+                "2%",
+                "warning"
+              ],
+              [
+                "ETH-USD-260626",
+                "2.0%",
+                "10.0%",
+                "1%",
+                "2%",
+                "warning"
+              ],
+              [
+                "ETH-USD-260925",
+                "2.0%",
+                "10.0%",
+                "1%",
+                "2%",
+                "warning"
+              ],
+              [
+                "BTC-USDT-260626",
+                "2.0%",
+                "10.0%",
+                "1%",
+                "2%",
+                "warning"
+              ],
+              [
+                "ETH-USDT-260626",
+                "1.0%",
+                "10.0%",
+                "1%",
+                "2%",
+                "warning"
+              ]
+            ]
+          },
+          "note": null
+        },
+        {
+          "ruleId": "rule-4",
+          "title": "Z Cap <= Y Cap",
+          "status": "pass",
+          "description": "The Z (index) cap must always be strictly greater than the Y (limit) cap. If Z <= Y the price limit hierarchy is broken.",
+          "table": null,
+          "note": null
+        }
+      ],
+      "recommended_changes": {
+        "headers": [
+          "INSTRUMENT",
+          "CHANGE",
+          "REASON"
+        ],
+        "rows": [
+          [
+            "BTC-USD-260626",
+            "Set Y=1%, Z=2%",
+            "Z_upper(10.0%) out of range for Topcoins (typical ~2%)"
+          ],
+          [
+            "BTC-USD-260925",
+            "Set Y=1%, Z=2%",
+            "Z_upper(10.0%) out of range for Topcoins (typical ~2%)"
+          ],
+          [
+            "BTC-USD_UM-260403",
+            "Set Y=1%, Z=2%",
+            "Z_upper(10.0%) out of range for Topcoins (typical ~2%)"
+          ],
+          [
+            "BTC-USD_UM-260410",
+            "Set Y=1%, Z=2%",
+            "Z_upper(10.0%) out of range for Topcoins (typical ~2%)"
+          ],
+          [
+            "BTC-USD_UM-260626",
+            "Set Y=1%, Z=2%",
+            "Z_upper(10.0%) out of range for Topcoins (typical ~2%)"
+          ],
+          [
+            "BTC-USD_UM-260925",
+            "Set Y=1%, Z=2%",
+            "Z_upper(10.0%) out of range for Topcoins (typical ~2%)"
+          ],
+          [
+            "ETH-USD-260626",
+            "Set Y=1%, Z=2%",
+            "Z_upper(10.0%) out of range for Topcoins (typical ~2%)"
+          ],
+          [
+            "ETH-USD-260925",
+            "Set Y=1%, Z=2%",
+            "Z_upper(10.0%) out of range for Topcoins (typical ~2%)"
+          ],
+          [
+            "BTC-USDT-260626",
+            "Set Y=1%, Z=2%",
+            "Z_upper(10.0%) out of range for Topcoins (typical ~2%)"
+          ],
+          [
+            "ETH-USDT-260626",
+            "Set Y=1%, Z=2%",
+            "Z_upper(10.0%) out of range for Topcoins (typical ~2%)"
+          ],
+          [
+            "DGB-USD",
+            "Widen Y caps",
+            "limitUp_buffer=-0.75%, B/A spread(4.72%) vs Y spread(4.0%)"
+          ],
+          [
+            "UXLINK-USD",
+            "Widen upper Z cap to accommodate basis",
+            "basis=2.96% vs upper_Z=5.0%"
+          ],
+          [
+            "UXLINK-USDT",
+            "Widen upper Z cap to accommodate basis",
+            "basis=3.11% vs upper_Z=5.0%"
+          ]
+        ]
+      },
+      "downloads": [
+        {
+          "label": "Perp/Futures adjustment CSV (10 instruments)",
+          "filename": "pricelimit_adjustment_perp_20260329.csv",
+          "content": "Task Object,timeType,Effective Time,openUpperLimit,openLowerLimit,afterOpenUpperLimit,afterOpenLowerLimit,afterOpenIndexUpperLimit,afterOpenIndexLowerLimit,preQuoteMaxJ1UpperLimit,preQuoteMinJ2LowerLimit,preQuoteC1,preQuoteC2\r\nBTC-USD_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260403,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260410,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USD_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USD_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USDT_UM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USDT_UM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\n"
+        }
+      ],
+      "markdown": "# Price Limit Review\n\n**Generated:** 2026-03-29T04:06:22.872888+00:00  \n**Status:** critical  \n**Instruments scanned:** 1496  \n**EMA coverage:** 1496  \n\n**Total issues found:** 13\n\n## Rule 1: Buffer Too Tight\n1 issue(s) found.\n\n| INSTRUMENT | LIMITUP_BUFFER | LIMITDN_BUFFER | STATUS |\n|---|---|---|---|\n| DGB-USD | -0.75% | 0.02% | warning |\n\n## Rule 2: Asymmetric Basis\n2 issue(s) found.\n\n| INSTRUMENT | BASIS_EMA | RELEVANT Z CAP | STATUS |\n|---|---|---|---|\n| UXLINK-USD | 2.96% | 5.0% | warning |\n| UXLINK-USDT | 3.11% | 5.0% | warning |\n\n## Rule 3: Asset-Type Consistency\n10 issue(s) found.\n\n| INSTRUMENT | CURRENT Y | CURRENT Z | EXPECTED Y | EXPECTED Z | STATUS |\n|---|---|---|---|---|---|\n| BTC-USD-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD-260925 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260403 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260410 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USDT-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USDT-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n\n## Rule 4: Z Cap <= Y Cap\nAll instruments passed.\n",
+      "error": null,
+      "source_document": null,
+      "suspicious_users": [],
+      "user_profiles": []
+    },
+    {
+      "slug": "mmr-futures",
+      "title": "MMR Futures Review",
+      "render_variant": "mmr-futures",
+      "status": "pending",
+      "summary": "Depth data not available — re-run cron to fetch via MCP (Step 5b).",
+      "metrics": {
+        "instruments_scanned": 0,
+        "ema_coverage": 0,
+        "issues_found": 0,
+        "source": "n/a",
+        "generated_at": "2026-03-29T04:06:33.265452+00:00"
+      },
+      "metric_cards": [
+        {
+          "label": "Instruments",
+          "value": "0"
+        },
+        {
+          "label": "In Scope",
+          "value": "0"
+        },
+        {
+          "label": "Adjustments",
+          "value": "0"
+        },
+        {
+          "label": "Source",
+          "value": "n/a"
+        }
+      ],
+      "rule_blocks": [],
+      "recommended_changes": null,
+      "downloads": [],
+      "markdown": "# MMR Futures Review\n\n**Pending:** Depth data not available — re-run cron to fetch via MCP (Step 5b).\n",
+      "error": null,
+      "source_document": null,
+      "suspicious_users": [],
+      "user_profiles": []
+    },
+    {
+      "slug": "index-review",
+      "title": "Index Review",
+      "render_variant": "rules",
+      "status": "pending",
+      "summary": "CLI review failed or server not running.",
+      "metrics": {
+        "instruments_scanned": 0,
+        "ema_coverage": 0,
+        "issues_found": 0,
+        "source": "n/a",
+        "generated_at": "2026-03-29T04:06:33.383018+00:00"
+      },
+      "metric_cards": [
+        {
+          "label": "Instruments",
+          "value": "0"
+        },
+        {
+          "label": "EMA Coverage",
+          "value": "0"
+        },
+        {
+          "label": "Issues",
+          "value": "0"
+        },
+        {
+          "label": "Source",
+          "value": "n/a"
+        }
+      ],
+      "rule_blocks": [],
+      "recommended_changes": null,
+      "downloads": [],
+      "markdown": "# Index Review\n\n**Status:** pending\n\nCLI review failed or server not running.\n",
+      "error": null,
+      "source_document": null,
+      "suspicious_users": [],
+      "user_profiles": []
+    }
+  ]
+}
