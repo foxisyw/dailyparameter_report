@@ -1,26 +1,29 @@
 # Price Limit Review
 
-**Generated:** 2026-03-29T04:06:22.872888+00:00  
+**Generated:** 2026-03-29T09:21:32.340183+00:00  
 **Status:** critical  
 **Instruments scanned:** 1496  
 **EMA coverage:** 1496  
 
-**Total issues found:** 13
+**Total issues found:** 16
 
 ## Rule 1: Buffer Too Tight
-1 issue(s) found.
+3 issue(s) found.
 
 | INSTRUMENT | LIMITUP_BUFFER | LIMITDN_BUFFER | STATUS |
 |---|---|---|---|
-| DGB-USD | -0.75% | 0.02% | warning |
+| T-USD | -12.59% | -1.00% | warning |
+| T-USD | -12.59% | -1.00% | warning |
+| UXLINK-USD | -0.51% | 1.92% | warning |
 
 ## Rule 2: Asymmetric Basis
-2 issue(s) found.
+3 issue(s) found.
 
 | INSTRUMENT | BASIS_EMA | RELEVANT Z CAP | STATUS |
 |---|---|---|---|
-| UXLINK-USD | 2.96% | 5.0% | warning |
-| UXLINK-USDT | 3.11% | 5.0% | warning |
+| T-USD | 9.48% | 5.0% | warning |
+| UXLINK-USD | 3.73% | 5.0% | warning |
+| UXLINK-USDT | 3.60% | 5.0% | warning |
 
 ## Rule 3: Asset-Type Consistency
 10 issue(s) found.

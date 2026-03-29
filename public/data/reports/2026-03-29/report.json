@@ -1,9 +1,9 @@
 {
   "report": {
     "date": "2026-03-29",
-    "generated_at": "2026-03-29T04:06:33.383052+00:00",
+    "generated_at": "2026-03-29T09:21:44.380859+00:00",
     "status": "critical",
-    "total_issues": 13,
+    "total_issues": 16,
     "chapters": [
       {
         "slug": "risk-intel",
@@ -15,20 +15,20 @@
           "ema_coverage": 0,
           "issues_found": 0,
           "source": "Claude Code local generation",
-          "generated_at": "2026-03-29T04:06:22.872847+00:00"
+          "generated_at": "2026-03-29T09:21:32.340148+00:00"
         }
       },
       {
         "slug": "price-limit",
         "title": "Price Limit Review",
         "status": "critical",
-        "summary": "Scanned 1496 instruments. Found 13 issue(s) across 4 rules.",
+        "summary": "Scanned 1496 instruments. Found 16 issue(s) across 4 rules.",
         "metrics": {
           "instruments_scanned": 1496,
           "ema_coverage": 1496,
-          "issues_found": 13,
+          "issues_found": 16,
           "source": "OKX API (live)",
-          "generated_at": "2026-03-29T04:06:22.872888+00:00"
+          "generated_at": "2026-03-29T09:21:32.340183+00:00"
         }
       },
       {
@@ -41,7 +41,7 @@
           "ema_coverage": 0,
           "issues_found": 0,
           "source": "n/a",
-          "generated_at": "2026-03-29T04:06:33.265452+00:00"
+          "generated_at": "2026-03-29T09:21:44.274068+00:00"
         }
       },
       {
@@ -54,7 +54,7 @@
           "ema_coverage": 0,
           "issues_found": 0,
           "source": "n/a",
-          "generated_at": "2026-03-29T04:06:33.383018+00:00"
+          "generated_at": "2026-03-29T09:21:44.380818+00:00"
         }
       }
     ]
@@ -71,7 +71,7 @@
         "ema_coverage": 0,
         "issues_found": 0,
         "source": "Claude Code local generation",
-        "generated_at": "2026-03-29T04:06:22.872847+00:00"
+        "generated_at": "2026-03-29T09:21:32.340148+00:00"
       },
       "metric_cards": [
         {
@@ -99,7 +99,7 @@
       "source_document": {
         "title": "No source document selected",
         "url": "https://okg-block.sg.larksuite.com/drive/folder/Wu2Pfktq6lq4t8dWL52lB97pgQb",
-        "modified_at": "2026-03-29T04:06:22.872847+00:00",
+        "modified_at": "2026-03-29T09:21:32.340148+00:00",
         "selected_by": "latest_modified_desc"
       },
       "suspicious_users": [],
@@ -110,13 +110,13 @@
       "title": "Price Limit Review",
       "render_variant": "rules",
       "status": "critical",
-      "summary": "Scanned 1496 instruments. Found 13 issue(s) across 4 rules.",
+      "summary": "Scanned 1496 instruments. Found 16 issue(s) across 4 rules.",
       "metrics": {
         "instruments_scanned": 1496,
         "ema_coverage": 1496,
-        "issues_found": 13,
+        "issues_found": 16,
         "source": "OKX API (live)",
-        "generated_at": "2026-03-29T04:06:22.872888+00:00"
+        "generated_at": "2026-03-29T09:21:32.340183+00:00"
       },
       "metric_cards": [
         {
@@ -129,7 +129,7 @@
         },
         {
           "label": "Issues",
-          "value": "13"
+          "value": "16"
         },
         {
           "label": "Source",
@@ -151,9 +151,21 @@
             ],
             "rows": [
               [
-                "DGB-USD",
-                "-0.75%",
-                "0.02%",
+                "T-USD",
+                "-12.59%",
+                "-1.00%",
+                "warning"
+              ],
+              [
+                "T-USD",
+                "-12.59%",
+                "-1.00%",
+                "warning"
+              ],
+              [
+                "UXLINK-USD",
+                "-0.51%",
+                "1.92%",
                 "warning"
               ]
             ]
@@ -174,14 +186,20 @@
             ],
             "rows": [
               [
+                "T-USD",
+                "9.48%",
+                "5.0%",
+                "warning"
+              ],
+              [
                 "UXLINK-USD",
-                "2.96%",
+                "3.73%",
                 "5.0%",
                 "warning"
               ],
               [
                 "UXLINK-USDT",
-                "3.11%",
+                "3.60%",
                 "5.0%",
                 "warning"
               ]
@@ -355,19 +373,19 @@
             "Z_upper(10.0%) out of range for Topcoins (typical ~2%)"
           ],
           [
-            "DGB-USD",
+            "T-USD",
             "Widen Y caps",
-            "limitUp_buffer=-0.75%, B/A spread(4.72%) vs Y spread(4.0%)"
+            "limitUp_buffer=-12.59%, B/A spread(19.29%) vs Y spread(4.0%)"
           ],
           [
             "UXLINK-USD",
-            "Widen upper Z cap to accommodate basis",
-            "basis=2.96% vs upper_Z=5.0%"
+            "Widen Y caps",
+            "limitUp_buffer=-0.51%, B/A spread(3.50%) vs Y spread(4.0%)"
           ],
           [
             "UXLINK-USDT",
             "Widen upper Z cap to accommodate basis",
-            "basis=3.11% vs upper_Z=5.0%"
+            "basis=3.60% vs upper_Z=5.0%"
           ]
         ]
       },
@@ -378,7 +396,7 @@
           "content": "Task Object,timeType,Effective Time,openUpperLimit,openLowerLimit,afterOpenUpperLimit,afterOpenLowerLimit,afterOpenIndexUpperLimit,afterOpenIndexLowerLimit,preQuoteMaxJ1UpperLimit,preQuoteMinJ2LowerLimit,preQuoteC1,preQuoteC2\r\nBTC-USD_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260403,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260410,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USD_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USD_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USDT_UM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USDT_UM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\n"
         }
       ],
-      "markdown": "# Price Limit Review\n\n**Generated:** 2026-03-29T04:06:22.872888+00:00  \n**Status:** critical  \n**Instruments scanned:** 1496  \n**EMA coverage:** 1496  \n\n**Total issues found:** 13\n\n## Rule 1: Buffer Too Tight\n1 issue(s) found.\n\n| INSTRUMENT | LIMITUP_BUFFER | LIMITDN_BUFFER | STATUS |\n|---|---|---|---|\n| DGB-USD | -0.75% | 0.02% | warning |\n\n## Rule 2: Asymmetric Basis\n2 issue(s) found.\n\n| INSTRUMENT | BASIS_EMA | RELEVANT Z CAP | STATUS |\n|---|---|---|---|\n| UXLINK-USD | 2.96% | 5.0% | warning |\n| UXLINK-USDT | 3.11% | 5.0% | warning |\n\n## Rule 3: Asset-Type Consistency\n10 issue(s) found.\n\n| INSTRUMENT | CURRENT Y | CURRENT Z | EXPECTED Y | EXPECTED Z | STATUS |\n|---|---|---|---|---|---|\n| BTC-USD-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD-260925 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260403 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260410 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USDT-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USDT-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n\n## Rule 4: Z Cap <= Y Cap\nAll instruments passed.\n",
+      "markdown": "# Price Limit Review\n\n**Generated:** 2026-03-29T09:21:32.340183+00:00  \n**Status:** critical  \n**Instruments scanned:** 1496  \n**EMA coverage:** 1496  \n\n**Total issues found:** 16\n\n## Rule 1: Buffer Too Tight\n3 issue(s) found.\n\n| INSTRUMENT | LIMITUP_BUFFER | LIMITDN_BUFFER | STATUS |\n|---|---|---|---|\n| T-USD | -12.59% | -1.00% | warning |\n| T-USD | -12.59% | -1.00% | warning |\n| UXLINK-USD | -0.51% | 1.92% | warning |\n\n## Rule 2: Asymmetric Basis\n3 issue(s) found.\n\n| INSTRUMENT | BASIS_EMA | RELEVANT Z CAP | STATUS |\n|---|---|---|---|\n| T-USD | 9.48% | 5.0% | warning |\n| UXLINK-USD | 3.73% | 5.0% | warning |\n| UXLINK-USDT | 3.60% | 5.0% | warning |\n\n## Rule 3: Asset-Type Consistency\n10 issue(s) found.\n\n| INSTRUMENT | CURRENT Y | CURRENT Z | EXPECTED Y | EXPECTED Z | STATUS |\n|---|---|---|---|---|---|\n| BTC-USD-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD-260925 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260403 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260410 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USDT-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USDT-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n\n## Rule 4: Z Cap <= Y Cap\nAll instruments passed.\n",
       "error": null,
       "source_document": null,
       "suspicious_users": [],
@@ -395,7 +413,7 @@
         "ema_coverage": 0,
         "issues_found": 0,
         "source": "n/a",
-        "generated_at": "2026-03-29T04:06:33.265452+00:00"
+        "generated_at": "2026-03-29T09:21:44.274068+00:00"
       },
       "metric_cards": [
         {
@@ -435,7 +453,7 @@
         "ema_coverage": 0,
         "issues_found": 0,
         "source": "n/a",
-        "generated_at": "2026-03-29T04:06:33.383018+00:00"
+        "generated_at": "2026-03-29T09:21:44.380818+00:00"
       },
       "metric_cards": [
         {
