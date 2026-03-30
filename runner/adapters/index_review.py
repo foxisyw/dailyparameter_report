@@ -202,6 +202,7 @@ class IndexReviewAdapter(BaseAdapter):
                     "component_count": idx.get("component_count", 0),
                     "ema_avg_deviation": idx.get("ema_avg_deviation", 0),
                     "ema_max_deviation": idx.get("ema_max_deviation", 0),
+                    "components": idx.get("components", []),
                 }
                 by_type.setdefault(asset_type, []).append(entry)
                 all_flagged.append(entry)
@@ -270,7 +271,7 @@ class IndexReviewAdapter(BaseAdapter):
             "rows": rec_rows,
         } if rec_rows else None
 
-        # CSV download
+        # CSV download (summary)
         csv_buf = io.StringIO()
         writer = csv.writer(csv_buf)
         writer.writerow(["index", "assetsType", "component_count", "ema_avg_deviation", "ema_max_deviation", "issues"])
@@ -282,6 +283,23 @@ class IndexReviewAdapter(BaseAdapter):
             ])
         csv_content = csv_buf.getvalue()
         date_str = datetime.now(timezone.utc).strftime("%Y%m%d")
+
+        # Component-level template CSV (20-column upload format)
+        template_csv_content = ""
+        try:
+            sys.path.insert(0, str(CLI_DIR.parent))
+            from index.fetcher import generate_adjustment
+            components_spec = [
+                {"index": f["index"], "components": f.get("components", [])}
+                for f in all_flagged if f.get("components")
+            ]
+            if components_spec:
+                result = generate_adjustment(components_spec)
+                template_csv_content = Path(result["path"]).read_text()
+                _log(f"Generated component template: {result['rows']} rows, {result['indexes']} indexes")
+        except Exception as e:
+            _log(f"Component template generation failed (non-fatal): {e}")
+            template_csv_content = ""
 
         summary = (
             f"Scanned {total_indexes} indexes ({ema_cov} with EMA). "
@@ -309,13 +327,17 @@ class IndexReviewAdapter(BaseAdapter):
             ],
             "rule_blocks": rule_blocks,
             "recommended_changes": recommended_changes,
-            "downloads": [
+            "downloads": ([
                 {
-                    "label": "Index Review CSV",
+                    "label": "Index Review Summary",
                     "filename": f"index_review_{date_str}.csv",
                     "content": csv_content,
                 },
-            ] if all_flagged else [],
+            ] + ([{
+                    "label": "Index Components Template",
+                    "filename": f"index_components_{date_str}.csv",
+                    "content": template_csv_content,
+            }] if template_csv_content else [])) if all_flagged else [],
             "markdown": f"# Index Review\n\n{summary}\n",
             "error": None,
             "source_document": None,
