@@ -1,3 +1,5 @@
 # Index Review
 
-Scanned 1257 indexes (1193 with EMA). 418 flagged, 775 pass.
+**Status:** pending
+
+CLI review failed or server not running.
