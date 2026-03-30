@@ -12,6 +12,7 @@ Usage:
 
 import argparse
 import json
+import subprocess
 import sys
 import time
 import urllib.request
@@ -106,7 +107,9 @@ def _check_regression(existing_chapters: dict, new_chapters: dict):
 
 RISK_INTEL_INPUT = PROJECT_ROOT / "runner" / "local" / "risk_intel_input.json"
 DEPTH_FILE = PROJECT_ROOT / "runner" / "local" / "depth_sql.json"
-MMR_COMPETITOR_CACHE = PROJECT_ROOT / "params_cli" / "mmr_future" / "competitor_leverage.json"
+MMR_CLI_DIR = PROJECT_ROOT / "params_cli" / "mmr_future"
+MMR_TIERS_CACHE = MMR_CLI_DIR / "current_tiers.json"
+MMR_COMPETITOR_CACHE = MMR_CLI_DIR / "competitor_leverage.json"
 
 _REQUIRED_EVENT_KEYS = {
     "asset", "executive_summary", "quantitative_impact", "oi_attribution",
@@ -135,6 +138,18 @@ def _preflight_check(adapters_to_run: list, date_str: str) -> list[tuple[str, st
     if "mmr-futures" in slugs:
         ok = DEPTH_FILE.exists() and DEPTH_FILE.stat().st_size > 10
         checks.append(("depth_sql.json", ok, str(DEPTH_FILE)))
+        # Validate depth covers ≥90% of tier instruments
+        if ok and MMR_TIERS_CACHE.exists():
+            try:
+                depth = json.loads(DEPTH_FILE.read_text())
+                tiers = json.loads(MMR_TIERS_CACHE.read_text())
+                covered = len(set(depth.keys()) & set(tiers.keys()))
+                total = len(tiers)
+                pct = covered / total * 100 if total else 0
+                cov_ok = pct >= 90
+                checks.append(("depth coverage", cov_ok, f"{covered}/{total} ({pct:.0f}%)"))
+            except Exception:
+                checks.append(("depth coverage", False, "parse error"))
 
     if "index-review" in slugs:
         ok = _check_port(8786)
@@ -167,6 +182,24 @@ def _validate_report(chapters: list[dict]) -> list[str]:
                 if missing:
                     warnings.append(f"risk-intel event {e.get('asset', '?')}: missing {missing}")
     return warnings
+
+
+def _ensure_mmr_tiers():
+    """Fetch fresh OKX tiers if stale (>24h) so MMR covers all instruments."""
+    if MMR_TIERS_CACHE.exists():
+        age_h = (time.time() - MMR_TIERS_CACHE.stat().st_mtime) / 3600
+        if age_h < 24:
+            return
+    _log("Fetching fresh OKX tiers for MMR review...")
+    result = subprocess.run(
+        [sys.executable, "ptr_cli.py", "fetch", "tiers"],
+        cwd=str(MMR_CLI_DIR),
+        capture_output=True, text=True, timeout=120,
+    )
+    if result.returncode == 0:
+        _log("  Tiers refreshed successfully")
+    else:
+        _log(f"  Tiers fetch failed: {result.stderr[:200]}")
 
 
 def _refresh_mmr_cache():
@@ -282,8 +315,9 @@ def main():
     if failed_checks:
         _log(f"WARNING: {len(failed_checks)} pre-flight check(s) failed — affected adapters may return pending")
 
-    # Auto-refresh MMR competitor cache to prevent stale-refresh crash
+    # Auto-refresh MMR tiers + competitor cache
     if any(a.slug == "mmr-futures" for a in adapters_to_run):
+        _ensure_mmr_tiers()
         _refresh_mmr_cache()
 
     new_chapters: dict[str, dict] = {}
