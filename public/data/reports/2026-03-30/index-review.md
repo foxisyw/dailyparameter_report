@@ -1,3 +1,3 @@
 # Index Review
 
-Scanned 1257 indexes (1197 with EMA). 820 flagged, 377 pass.
+Scanned 1257 indexes (1193 with EMA). 586 flagged, 607 pass.

@@ -1,6 +1,6 @@
 {
   "date": "2026-03-30",
-  "generated_at": "2026-03-30T02:26:06.068973+00:00",
+  "generated_at": "2026-03-30T02:32:46.378459+00:00",
   "chapter": {
     "slug": "risk-intel",
     "title": "Risk Intelligence",
@@ -139,7 +139,15 @@
                   12487,
                   "78.2%"
                 ]
-              ]
+              ],
+              "headers": [
+                "Time(HKT)",
+                "Total Users",
+                "Long",
+                "Short",
+                "Net Change"
+              ],
+              "title": "Hourly Position Data"
             },
             "risk_assessment": {
               "level": "critical",
@@ -186,7 +194,12 @@
           "oi": 75770300,
           "oi_usd": 2543608.97,
           "funding_rate": -0.0001479328057262,
-          "fetched_at": "2026-03-30T16:00:00+08:00"
+          "fetched_at": "2026-03-30T16:00:00+08:00",
+          "price": 0.03359,
+          "change_24h": -48.7,
+          "open_interest": 75770300,
+          "vol_24h": 2451427713,
+          "timestamp": "2026-03-30T16:00:00+08:00"
         },
         "user_profiles": [
           {
@@ -688,7 +701,15 @@
                   5745,
                   "73.8%"
                 ]
-              ]
+              ],
+              "headers": [
+                "Time(HKT)",
+                "Total Users",
+                "Long",
+                "Short",
+                "Net Change"
+              ],
+              "title": "Hourly Position Data"
             },
             "risk_assessment": {
               "level": "warning",
@@ -736,7 +757,12 @@
           "oi_contracts": 859116,
           "oi_usd": 716159.1,
           "funding_rate": 1.25e-05,
-          "fetched_at": "2026-03-30T16:00:00+08:00"
+          "fetched_at": "2026-03-30T16:00:00+08:00",
+          "price": 0.008329,
+          "change_24h": 3.6,
+          "open_interest": 85911600,
+          "vol_24h": 1058312300,
+          "timestamp": "2026-03-30T16:00:00+08:00"
         },
         "user_profiles": [
           {
@@ -1083,7 +1109,7 @@
       "ema_coverage": 4,
       "issues_found": 13,
       "source": "每日风控总结 - 2026-03-30 00:00:00 ~ 2026-03-30 23:59:59",
-      "generated_at": "2026-03-30T02:26:06.068973+00:00"
+      "generated_at": "2026-03-30T02:32:46.378459+00:00"
     },
     "metric_cards": [
       {
@@ -1228,7 +1254,7 @@
     "source_document": {
       "title": "每日风控总结 - 2026-03-30 00:00:00 ~ 2026-03-30 23:59:59",
       "url": "https://okg-block.sg.larksuite.com/drive/folder/Wu2Pfktq6lq4t8dWL52lB97pgQb",
-      "modified_at": "2026-03-30T02:26:06.068973+00:00",
+      "modified_at": "2026-03-30T02:32:46.378459+00:00",
       "selected_by": "latest_modified_desc"
     },
     "suspicious_users": [

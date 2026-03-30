@@ -1,6 +1,6 @@
 # Price Limit Review
 
-**Generated:** 2026-03-30T02:26:18.476404+00:00  
+**Generated:** 2026-03-30T02:32:46.477527+00:00  
 **Status:** critical  
 **Instruments scanned:** 1496  
 **EMA coverage:** 1496  
