@@ -1,6 +1,6 @@
 {
   "date": "2026-03-30",
-  "generated_at": "2026-03-30T02:32:46.378459+00:00",
+  "generated_at": "2026-03-30T03:04:42.341732+00:00",
   "chapter": {
     "slug": "risk-intel",
     "title": "Risk Intelligence",
@@ -9,1099 +9,3724 @@
     "summary": "4 alert types analyzed. 8 flagged alert(s) parsed. 5 suspicious user(s) highlighted.",
     "event_analyses": [
       {
-        "event_id": "CORE-USDT-SWAP-20260330",
+        "asset": "CORE-USDT-SWAP",
         "severity": "critical",
-        "title": "CORE-USDT-SWAP price crash -48.7% with OI deviation 58.34%",
+        "executive_summary": "CORE-USDT-SWAP triggered critical alert. Price: $0.03359 (-48.67%). OI deviation: 58.34%. 18 user(s) profiled.",
+        "forward_looking": "Monitor CORE-USDT-SWAP OI trajectory over the next 24 hours. If OI continues expanding, consider tightening position limits. Watch for funding rate shifts that may attract additional directional flow.",
+        "market_snapshot": {
+          "price": "0.03359",
+          "change_24h": "-48.67%",
+          "open_interest": "75770300",
+          "funding_rate": "-0.0001479328057262",
+          "vol_24h": "2451427713",
+          "timestamp": "2026-03-30T11:04:21.658161+08:00"
+        },
+        "quantitative_impact": {
+          "title": "Quantitative Impact",
+          "metrics": [
+            {
+              "value": "58.34%",
+              "label": "OI Deviation (24H)",
+              "detail": "Open interest deviated 58.34% from the 24-hour average"
+            },
+            {
+              "value": "CRITICAL",
+              "label": "Alert Severity",
+              "detail": "Alert classified as critical"
+            },
+            {
+              "value": "+121.4%",
+              "label": "User Growth (period)",
+              "detail": "Total users changed from 7215 to 15972 over the observation window"
+            }
+          ]
+        },
+        "oi_attribution": {
+          "title": "OI Attribution (Hourly User Breakdown)",
+          "description": "Hourly breakdown of user positioning for the instrument.",
+          "user_hourly_table": {
+            "headers": [
+              "Hour (pt)",
+              "Total Users",
+              "Longs",
+              "Shorts"
+            ],
+            "rows": [
+              [
+                "2026032900",
+                "7215",
+                "2709",
+                "5708"
+              ],
+              [
+                "2026032906",
+                "7223",
+                "2710",
+                "5713"
+              ],
+              [
+                "2026032912",
+                "7232",
+                "2714",
+                "5718"
+              ],
+              [
+                "2026032916",
+                "7341",
+                "2752",
+                "5792"
+              ],
+              [
+                "2026032917",
+                "8136",
+                "3129",
+                "6311"
+              ],
+              [
+                "2026032918",
+                "9230",
+                "3653",
+                "7081"
+              ],
+              [
+                "2026032920",
+                "11923",
+                "4937",
+                "9243"
+              ],
+              [
+                "2026032922",
+                "13731",
+                "5783",
+                "10680"
+              ],
+              [
+                "2026033000",
+                "14850",
+                "6295",
+                "11546"
+              ],
+              [
+                "2026033004",
+                "15410",
+                "6532",
+                "12023"
+              ],
+              [
+                "2026033008",
+                "15972",
+                "6754",
+                "12487"
+              ]
+            ]
+          }
+        },
+        "risk_assessment": {
+          "title": "Risk Assessment & Recommended Actions",
+          "actions": [
+            {
+              "priority": "P0",
+              "action": "Review platform position limits for this instrument immediately",
+              "reason": "Critical platform_oi alert requires immediate parameter review"
+            },
+            {
+              "priority": "P1",
+              "action": "Deep-review top risk users: 8736391, 6837242, 6439528",
+              "reason": "15 user(s) flagged with elevated trade/equity ratios or suspicious patterns"
+            },
+            {
+              "priority": "P2",
+              "action": "Continue monitoring OI trajectory and funding rate changes over the next 24 hours",
+              "reason": "Position dynamics may shift as new data comes in — ensure no further limit breaches"
+            }
+          ]
+        },
+        "involved_users_brief": {
+          "title": "Involved Users (Brief)",
+          "headers": [
+            "User ID",
+            "UID",
+            "Position",
+            "Margin",
+            "Opened",
+            "Risk Tier"
+          ],
+          "rows": [
+            [
+              "8736391",
+              "191064032546037760",
+              "SHORT",
+              "Cross",
+              "2026-03-30T00:54:54.870+08:00",
+              "T1"
+            ],
+            [
+              "6837242",
+              "",
+              "LONG",
+              "Cross",
+              "2026-03-29T19:24:01.032+08:00",
+              "T1"
+            ],
+            [
+              "6439528",
+              "127888928928837632",
+              "SHORT",
+              "Cross",
+              "2026-03-29T22:11:58.942+08:00",
+              "T1"
+            ],
+            [
+              "3438667",
+              "1638848958439424",
+              "LONG",
+              "Isolated",
+              "2026-03-29T21:20:23.746+08:00",
+              "T1"
+            ],
+            [
+              "7014545",
+              "1658238818983936",
+              "SHORT",
+              "Cross",
+              "2026-03-29T17:48:42.380+08:00",
+              "T1"
+            ],
+            [
+              "2044005",
+              "566647412895744",
+              "SHORT",
+              "Cross",
+              "2026-03-30T07:34:15.281+08:00",
+              "T1"
+            ],
+            [
+              "6428116",
+              "",
+              "LONG",
+              "Isolated",
+              "2026-03-30T08:02:50.254+08:00",
+              "T1"
+            ],
+            [
+              "6435422",
+              "211703507051483136",
+              "SHORT",
+              "Cross",
+              "2026-03-24T00:03:53.478+08:00",
+              "T1"
+            ],
+            [
+              "8425308",
+              "3148760259637248",
+              "SHORT",
+              "Cross",
+              "2026-03-24T00:02:33.637+08:00",
+              "T1"
+            ],
+            [
+              "7180900",
+              "",
+              "SHORT",
+              "Isolated",
+              "2026-03-30T00:56:02.035+08:00",
+              "T1"
+            ],
+            [
+              "6561979",
+              "",
+              "SHORT",
+              "Isolated",
+              "2026-03-30T02:46:00.221+08:00",
+              "T1"
+            ],
+            [
+              "7285324",
+              "4761228480229376",
+              "SHORT",
+              "Cross",
+              "2026-03-29T19:54:40.706+08:00",
+              "T2"
+            ],
+            [
+              "7285324",
+              "4761228480229376",
+              "SHORT",
+              "Cross",
+              "2026-03-30T08:39:51.682+08:00",
+              "T2"
+            ],
+            [
+              "7125274",
+              "10720534413320192",
+              "SHORT",
+              "Cross",
+              "2026-03-29T23:23:24.313+08:00",
+              "T2"
+            ],
+            [
+              "3890255",
+              "568215172427776",
+              "SHORT",
+              "Isolated",
+              "2026-03-29T21:16:56.258+08:00",
+              "T3"
+            ],
+            [
+              "6529155",
+              "795149923917824",
+              "SHORT",
+              "Isolated",
+              "2026-03-29T20:40:38.804+08:00",
+              "T3"
+            ],
+            [
+              "7508068",
+              "168341841819901952",
+              "SHORT",
+              "Cross",
+              "2026-03-29T20:36:49.248+08:00",
+              "T4"
+            ],
+            [
+              "6143219",
+              "211473677366202368",
+              "LONG",
+              "Isolated",
+              "2026-03-30T00:03:24.599+08:00",
+              "T4"
+            ],
+            [
+              "2116334",
+              "835389589958656",
+              "SHORT",
+              "Cross",
+              "2024-12-22T07:23:01.042+08:00",
+              "T4"
+            ],
+            [
+              "2116334",
+              "835389589958656",
+              "SHORT",
+              "Cross",
+              "2024-12-22T09:33:22.184+08:00",
+              "T4"
+            ]
+          ]
+        },
         "causal_chain": [
           {
             "step": 1,
-            "type": "远因",
-            "name": "Low market cap token with thin liquidity",
-            "description": "CORE is a low market cap token with thin order book depth (avg ~$51,408). The shallow liquidity makes it highly susceptible to price manipulation and cascading liquidations from relatively small order sizes.",
-            "evidence_strength": 4,
-            "evidence_label": "strong",
-            "detail": "Order book depth averaged approximately $51,408 across bid/ask sides. Total OI USD only $2.54M. Low liquidity amplifies any directional pressure and enables outsized price moves from moderate capital deployment.",
-            "evidence_table": null,
-            "risk_assessment": null
+            "type": "远因 (Structural)",
+            "name": "CORE-USDT-SWAP Thin Liquidity / Low Float",
+            "description": "CORE-USDT-SWAP has limited market depth (24H vol: 2451427713). Low float instruments are susceptible to rapid OI deviation.",
+            "evidence_strength": 3,
+            "evidence_label": "Market data"
           },
           {
             "step": 2,
-            "type": "近因",
-            "name": "Massive user influx — +121% in 33 hours",
-            "description": "Total users holding CORE-USDT-SWAP positions surged from 7,215 (2026-03-29 00:00) to 15,972 (2026-03-30 08:00), a 121% increase. The surge accelerated dramatically after 2026-03-29 16:00, with user count nearly doubling from 7,341 to 15,972 in just 16 hours.",
-            "evidence_strength": 5,
-            "evidence_label": "definitive",
-            "detail": "Hourly position data shows the influx began slowly (7,215 to 7,341 over 16 hours) then exploded: 7,341 at 16:00 → 8,136 at 17:00 → 9,230 at 18:00 → 10,193 at 19:00 → 11,923 at 20:00 → 13,019 at 21:00. Short positions consistently outnumber longs at ~1.85:1 ratio throughout the surge.",
+            "type": "近因 (User Influx)",
+            "name": "CORE-USDT-SWAP Position Buildup",
+            "description": "Users grew from 7215 to 15972 (longs 2709->6754, shorts 5708->12487) between 2026032900 and 2026033008.",
+            "evidence_strength": 4,
+            "evidence_label": "Position data",
             "evidence_table": {
-              "columns": [
-                "pt",
-                "total_users",
-                "longs",
-                "shorts",
-                "short_ratio"
+              "headers": [
+                "Hour",
+                "Total Users",
+                "Longs",
+                "Shorts"
               ],
               "rows": [
                 [
                   "2026032900",
-                  7215,
-                  2709,
-                  5708,
-                  "79.1%"
+                  "7215",
+                  "2709",
+                  "5708"
                 ],
                 [
                   "2026032906",
-                  7223,
-                  2710,
-                  5713,
-                  "79.1%"
+                  "7223",
+                  "2710",
+                  "5713"
                 ],
                 [
                   "2026032912",
-                  7232,
-                  2714,
-                  5718,
-                  "79.0%"
+                  "7232",
+                  "2714",
+                  "5718"
                 ],
                 [
                   "2026032916",
-                  7341,
-                  2752,
-                  5792,
-                  "78.9%"
+                  "7341",
+                  "2752",
+                  "5792"
                 ],
                 [
                   "2026032917",
-                  8136,
-                  3129,
-                  6311,
-                  "77.6%"
+                  "8136",
+                  "3129",
+                  "6311"
                 ],
                 [
                   "2026032918",
-                  9230,
-                  3653,
-                  7081,
-                  "76.7%"
-                ],
-                [
-                  "2026032919",
-                  10193,
-                  4131,
-                  7764,
-                  "76.2%"
+                  "9230",
+                  "3653",
+                  "7081"
                 ],
                 [
                   "2026032920",
-                  11923,
-                  4937,
-                  9243,
-                  "77.5%"
-                ],
-                [
-                  "2026032921",
-                  13019,
-                  5471,
-                  10099,
-                  "77.6%"
+                  "11923",
+                  "4937",
+                  "9243"
                 ],
                 [
                   "2026032922",
-                  13731,
-                  5783,
-                  10680,
-                  "77.8%"
-                ],
-                [
-                  "2026032923",
-                  14339,
-                  6074,
-                  11156,
-                  "77.8%"
+                  "13731",
+                  "5783",
+                  "10680"
                 ],
                 [
                   "2026033000",
-                  14850,
-                  6295,
-                  11546,
-                  "77.7%"
+                  "14850",
+                  "6295",
+                  "11546"
                 ],
                 [
                   "2026033004",
-                  15410,
-                  6532,
-                  12023,
-                  "78.0%"
+                  "15410",
+                  "6532",
+                  "12023"
                 ],
                 [
                   "2026033008",
-                  15972,
-                  6754,
-                  12487,
-                  "78.2%"
+                  "15972",
+                  "6754",
+                  "12487"
                 ]
-              ],
-              "headers": [
-                "Time(HKT)",
-                "Total Users",
-                "Long",
-                "Short",
-                "Net Change"
-              ],
-              "title": "Hourly Position Data"
-            },
-            "risk_assessment": {
-              "level": "critical",
-              "detail": "121% user surge in 33 hours is highly abnormal for a low-cap token. The consistent ~78% short dominance throughout the influx suggests coordinated directional betting or herding behavior ahead of or during the crash."
+              ]
             }
           },
           {
             "step": 3,
-            "type": "触发事件",
-            "name": "Price crash -48.7%, OI deviation 58.34% triggered platform alarm",
-            "description": "CORE price crashed from 0.06544 to 0.03359 (-48.7%) within 24 hours, hitting a low of 0.0291 (-55.5%). Open interest deviation reached 58.34%, well above the 20% threshold, triggering the platform's risk monitoring alarm.",
+            "type": "触发事件 (Trigger)",
+            "name": "Alert Fired",
+            "description": "platform_oi alert fired at critical level. OI deviation: 58.34%.",
             "evidence_strength": 5,
-            "evidence_label": "definitive",
-            "detail": "Market data: last=0.03359, open24h=0.06544, high24h=0.06621, low24h=0.0291. OI=75,770,300 contracts ($2,543,608.97 USD). Funding rate deeply negative at -0.0001479 indicating extreme short pressure. 24h volume=2,451,427,713 contracts — massive volume relative to OI.",
-            "evidence_table": null,
-            "risk_assessment": {
-              "level": "critical",
-              "detail": "58.34% OI deviation far exceeds 20% threshold. -48.7% price move in 24h is extreme. Negative funding rate confirms overwhelming short pressure. Volume/OI ratio suggests rapid turnover and potential cascading liquidations."
-            }
+            "evidence_label": "Platform alert"
           },
           {
             "step": 4,
-            "type": "风险放大",
-            "name": "Short-heavy concentration and depleted-equity positions",
-            "description": "As of 2026-03-30 08:00, short positions (12,487) outnumber longs (6,754) at a 1.85:1 ratio. Multiple flagged users hold positions with near-zero equity — including accounts with $0.037 and $0.17 equity holding leveraged CORE positions through the crash.",
+            "type": "风险放大 (Amplification)",
+            "name": "User Concentration Risk",
+            "description": "Top users concentrating: 8736391, 6837242, 6439528, 3438667, 7014545 (risk tiers: T1, T1, T1, T1, T1). Position overlap amplifies systemic exposure.",
             "evidence_strength": 4,
-            "evidence_label": "strong",
-            "detail": "Short/long ratio 1.85:1 (12,487 vs 6,754). Flagged users: master_user_id=8425308 has $0.037 equity on a CORE short; master_user_id=3438667 has $0.17 equity on a CORE long (isolated margin — likely liquidated). master_user_id=2044005 has $65.51 equity but $475M historical volume. These near-zero-equity accounts amplify liquidation cascade risk.",
-            "evidence_table": null,
-            "risk_assessment": {
-              "level": "critical",
-              "detail": "Depleted-equity positions on both sides create liquidation cascade risk. Short-heavy imbalance means any short squeeze could trigger mass liquidations. Conversely, continued downward pressure liquidates the minority longs, accelerating the crash."
+            "evidence_label": "User data",
+            "evidence_table": {
+              "headers": [
+                "User ID",
+                "Risk Tier",
+                "Summary"
+              ],
+              "rows": [
+                [
+                  "8736391",
+                  "T1",
+                  "China account (okx_cn). registered 2018-09-03 (7.6yr). trade/equity ratio 124,29..."
+                ],
+                [
+                  "6837242",
+                  "T1",
+                  "Registered unknown (0 days). trade/equity ratio inf."
+                ],
+                [
+                  "6439528",
+                  "T1",
+                  "China account (okx_cn). registered 2017-09-07 (8.6yr). trade/equity ratio 402,32..."
+                ],
+                [
+                  "3438667",
+                  "T1",
+                  "China account (okx_cn). registered 2013-12-04 (12.3yr). trade/equity ratio 78,67..."
+                ],
+                [
+                  "7014545",
+                  "T1",
+                  "China account (okx_cn). registered 2017-12-26 (8.3yr). trade/equity ratio 476,57..."
+                ]
+              ]
             }
           }
         ],
-        "market_snapshot": {
-          "inst_id": "CORE-USDT-SWAP",
-          "last": 0.03359,
-          "open24h": 0.06544,
-          "high24h": 0.06621,
-          "low24h": 0.0291,
-          "change_24h_pct": -48.7,
-          "volCcy24h": 2451427713,
-          "oi": 75770300,
-          "oi_usd": 2543608.97,
-          "funding_rate": -0.0001479328057262,
-          "fetched_at": "2026-03-30T16:00:00+08:00",
-          "price": 0.03359,
-          "change_24h": -48.7,
-          "open_interest": 75770300,
-          "vol_24h": 2451427713,
-          "timestamp": "2026-03-30T16:00:00+08:00"
-        },
+        "key_users": [
+          "7285324",
+          "8736391",
+          "3890255",
+          "6837242",
+          "6439528"
+        ],
         "user_profiles": [
           {
-            "master_user_id": 2044005,
-            "uid": "566647412895744",
-            "register_time": "2013-11-20",
-            "region": "CN",
-            "kyc_level": "KYC3",
-            "country": "China",
-            "trade_vol": 475213224.76,
-            "equity": 65.51,
-            "first_deposit": 196.04,
-            "position": {
-              "inst_id": "CORE-USDT-SWAP",
-              "direction": "short",
-              "margin_mode": "cross",
-              "created": "2026-03-30T07:34"
-            },
+            "uid": "191064032546037760",
+            "master_user_id": "8736391",
+            "overall_risk_tier": "T1",
+            "executive_summary": "China account (okx_cn). registered 2018-09-03 (7.6yr). trade/equity ratio 124,291x.",
             "dimensions": [
               {
                 "name": "Registration Profile",
                 "severity": "warning",
                 "signals": [
-                  "12+ year old account, CN region. Reactivated for CORE short during extreme event."
+                  "Registered 2018-09-03 (7.6yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: APP",
+                  "Registration-to-first-deposit gap: 3.5yr (anomalous)"
                 ]
               },
               {
                 "name": "Trading Behavior",
                 "severity": "critical",
                 "signals": [
-                  "$475.2M volume, $65.51 equity — 7.25M:1 ratio. Extreme equity depletion."
+                  "Trade volume $46,100,847.08 vs equity $370.91 (ratio 124,291x)",
+                  "Fee tier: LV1",
+                  "CORE-USDT-SWAP SHORT (Cross), opened 2026-03-30T00:54"
                 ]
               },
               {
                 "name": "Associated Accounts",
                 "severity": "pending",
                 "signals": [
-                  "Login table access denied — cannot verify."
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
                 ]
               },
               {
                 "name": "IP & Geolocation",
-                "severity": "pending",
+                "severity": "pass",
                 "signals": [
-                  "Login table access denied — cannot verify."
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
                 ]
               },
               {
                 "name": "Identity Signals",
                 "severity": "pass",
                 "signals": [
-                  "KYC3, CN, phone 86. No mismatch."
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
                 ]
               },
               {
                 "name": "Profit & Loss",
-                "severity": "critical",
+                "severity": "warning",
                 "signals": [
-                  "First deposit $196 to $65.51 equity. Net loss with $475M volume."
+                  "Trade volume $46,100,847.08, equity $370.91",
+                  "First deposit $789.88",
+                  "Last deposit 2026-03-29",
+                  "Equity retention: 47.0% of first deposit"
                 ]
               },
               {
                 "name": "Withdrawal Behavior",
-                "severity": "warning",
+                "severity": "pending",
                 "signals": [
-                  "Last deposit 2026-03-29, day before position."
+                  "Last deposit 2026-03-29",
+                  "Withdrawal detail table inaccessible (data limited)"
                 ]
               },
               {
                 "name": "Comprehensive Judgment",
                 "severity": "critical",
                 "signals": [
-                  "T4 — Extreme equity depletion, 12yr account, CORE short during crash."
+                  "Overall risk tier: T1 (trade/equity ratio 124,291x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: CORE-USDT-SWAP"
                 ]
               }
             ],
-            "executive_summary": "12-year-old CN account with $475M cumulative trade volume but only $65 equity — trade/equity ratio 7.25Mx. Opened CORE-USDT-SWAP short on 2026-03-30 just after fresh deposit, consistent with equity depletion cycling.",
-            "overall_risk_tier": "T4",
             "key_evidence": [
-              "Trade/equity ratio 7.25M:1",
-              "Fresh deposit 2026-03-29 before CORE short",
-              "Equity $65.51 vs $475M volume"
-            ]
+              "Trade/equity ratio 124,291x indicates high leverage cycling",
+              "CORE-USDT-SWAP SHORT opened 2026-03-30T00:54",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
           },
           {
-            "master_user_id": 8425308,
-            "uid": "3148760259637248",
-            "register_time": "2018-06-13",
-            "region": "CN",
-            "kyc_level": "KYC3",
-            "country": "China",
-            "trade_vol": 21122251.83,
-            "equity": 0.037,
-            "first_deposit": 1522.07,
-            "position": {
-              "inst_id": "CORE-USDT-SWAP",
-              "direction": "short",
-              "margin_mode": "cross",
-              "created": "2026-03-24"
-            },
+            "uid": "",
+            "master_user_id": "6837242",
+            "overall_risk_tier": "T1",
+            "executive_summary": "Registered unknown (0 days). trade/equity ratio inf.",
             "dimensions": [
               {
                 "name": "Registration Profile",
-                "severity": "pass",
+                "severity": "critical",
                 "signals": [
-                  "7+ year old account, APP channel, CN. Established."
+                  "Registered unknown (0 days)",
+                  "KYC level unknown"
                 ]
               },
               {
                 "name": "Trading Behavior",
                 "severity": "critical",
                 "signals": [
-                  "$21.1M volume, $0.037 equity. Total depletion."
+                  "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                  "CORE-USDT-SWAP LONG (Cross), opened 2026-03-29T19:24"
                 ]
               },
               {
                 "name": "Associated Accounts",
                 "severity": "pending",
                 "signals": [
-                  "Login table access denied — cannot verify."
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
                 ]
               },
               {
                 "name": "IP & Geolocation",
-                "severity": "pending",
+                "severity": "pass",
                 "signals": [
-                  "Login table access denied — cannot verify."
+                  "Registration region unknown",
+                  "Phone unknown",
+                  "No region mismatch detected"
                 ]
               },
               {
                 "name": "Identity Signals",
-                "severity": "pass",
+                "severity": "critical",
                 "signals": [
-                  "KYC3, CN, phone 86. No mismatch."
+                  "KYC0"
                 ]
               },
               {
                 "name": "Profit & Loss",
                 "severity": "critical",
                 "signals": [
-                  "$1,522 to $0.037 — 99.998% loss."
+                  "Trade volume $0.00, equity $0.00",
+                  "First deposit unknown",
+                  "Last deposit unknown"
                 ]
               },
               {
                 "name": "Withdrawal Behavior",
-                "severity": "critical",
+                "severity": "pending",
                 "signals": [
-                  "Last deposit 2026-03-29, equity $0.037 — immediate consumption."
+                  "Last deposit unknown",
+                  "Withdrawal detail table inaccessible (data limited)"
                 ]
               },
               {
                 "name": "Comprehensive Judgment",
                 "severity": "critical",
                 "signals": [
-                  "T4 — Total equity depletion. $0.037 from $1,522. Possible liquidation cascade participant."
+                  "Overall risk tier: T1 (trade/equity ratio inf)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: CORE-USDT-SWAP"
                 ]
               }
             ],
-            "executive_summary": "8-year CN account with $21.1M trade volume and zero equity ($0.037). CORE-USDT-SWAP short since 2026-03-24. Total equity depletion with active trading signals drain pattern.",
-            "overall_risk_tier": "T4",
             "key_evidence": [
-              "Equity $0.037 — zero",
-              "Trade volume $21.1M",
-              "Active CORE short since 2026-03-24"
-            ]
+              "Trade/equity ratio inf indicates high leverage cycling",
+              "CORE-USDT-SWAP LONG opened 2026-03-29T19:24",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
           },
           {
-            "master_user_id": 3438667,
+            "uid": "127888928928837632",
+            "master_user_id": "6439528",
+            "overall_risk_tier": "T1",
+            "executive_summary": "China account (okx_cn). registered 2017-09-07 (8.6yr). trade/equity ratio 402,325x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "warning",
+                "signals": [
+                  "Registered 2017-09-07 (8.6yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: H5",
+                  "Registration-to-first-deposit gap: 3.4yr (anomalous)"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $20,236,941.58 vs equity $50.30 (ratio 402,325x)",
+                  "Fee tier: LV1",
+                  "CORE-USDT-SWAP SHORT (Cross), opened 2026-03-29T22:11"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "pass",
+                "signals": [
+                  "Trade volume $20,236,941.58, equity $50.30",
+                  "First deposit $39.59",
+                  "Last deposit 2026-03-27",
+                  "Equity retention: 127.1% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2026-03-27",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio 402,325x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: CORE-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 402,325x indicates high leverage cycling",
+              "CORE-USDT-SWAP SHORT opened 2026-03-29T22:11",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
             "uid": "1638848958439424",
-            "register_time": "2013-12-04",
-            "region": "CN",
-            "kyc_level": "KYC3",
-            "country": "China",
-            "trade_vol": 13375221.66,
-            "equity": 0.17,
-            "first_deposit": 12.61,
-            "position": {
-              "inst_id": "CORE-USDT-SWAP",
-              "direction": "long",
-              "margin_mode": "isolated",
-              "created": "2026-03-29"
-            },
+            "master_user_id": "3438667",
+            "overall_risk_tier": "T1",
+            "executive_summary": "China account (okx_cn). registered 2013-12-04 (12.3yr). trade/equity ratio 78,677,774x.",
             "dimensions": [
               {
                 "name": "Registration Profile",
                 "severity": "warning",
                 "signals": [
-                  "12+ year old account, small initial deposit. Possible reactivated dormant."
+                  "Registered 2013-12-04 (12.3yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: PC",
+                  "Registration-to-first-deposit gap: 6.1yr (anomalous)"
                 ]
               },
               {
                 "name": "Trading Behavior",
                 "severity": "critical",
                 "signals": [
-                  "$13.4M volume, $0.17 equity. CORE long on isolated margin into -48.7% crash."
+                  "Trade volume $13,375,221.66 vs equity $0.17 (ratio 78,677,774x)",
+                  "Fee tier: LV1",
+                  "CORE-USDT-SWAP LONG (Isolated), opened 2026-03-29T21:20"
                 ]
               },
               {
                 "name": "Associated Accounts",
                 "severity": "pending",
                 "signals": [
-                  "Login table access denied — cannot verify."
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
                 ]
               },
               {
                 "name": "IP & Geolocation",
-                "severity": "pending",
+                "severity": "pass",
                 "signals": [
-                  "Login table access denied — cannot verify."
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
                 ]
               },
               {
                 "name": "Identity Signals",
                 "severity": "pass",
                 "signals": [
-                  "KYC3, CN, phone 86. No mismatch."
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
                 ]
               },
               {
                 "name": "Profit & Loss",
                 "severity": "critical",
                 "signals": [
-                  "$12.61 to $0.17 — 98.7% loss. Long into crash."
+                  "Trade volume $13,375,221.66, equity $0.17",
+                  "First deposit $12.61",
+                  "Last deposit 2026-03-27",
+                  "Equity retention: 1.3% of first deposit"
                 ]
               },
               {
                 "name": "Withdrawal Behavior",
-                "severity": "warning",
+                "severity": "pending",
                 "signals": [
-                  "Last deposit 2026-03-27, minimal equity."
+                  "Last deposit 2026-03-27",
+                  "Withdrawal detail table inaccessible (data limited)"
                 ]
               },
               {
                 "name": "Comprehensive Judgment",
                 "severity": "critical",
                 "signals": [
-                  "T3 — Near-zero equity, counter-trend CORE long. Likely liquidated."
+                  "Overall risk tier: T1 (trade/equity ratio 78,677,774x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: CORE-USDT-SWAP"
                 ]
               }
             ],
-            "executive_summary": "12-year CN account with $13.4M trade volume and $0.17 equity. CORE-USDT-SWAP long (isolated) opened 2026-03-29. Near-zero equity with active derivatives.",
-            "overall_risk_tier": "T3",
             "key_evidence": [
-              "Equity $0.17",
-              "Trade volume $13.4M",
-              "CORE long isolated 2026-03-29"
-            ]
+              "Trade/equity ratio 78,677,774x indicates high leverage cycling",
+              "CORE-USDT-SWAP LONG opened 2026-03-29T21:20",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
           },
           {
-            "master_user_id": 7285324,
+            "uid": "1658238818983936",
+            "master_user_id": "7014545",
+            "overall_risk_tier": "T1",
+            "executive_summary": "China account (okx_cn). registered 2017-12-26 (8.3yr). trade/equity ratio 476,574x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Registered 2017-12-26 (8.3yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: H5"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $96,954,304.03 vs equity $203.44 (ratio 476,574x)",
+                  "Fee tier: LV1",
+                  "CORE-USDT-SWAP SHORT (Cross), opened 2026-03-29T17:48"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "pass",
+                "signals": [
+                  "Trade volume $96,954,304.03, equity $203.44",
+                  "First deposit $100.00",
+                  "Last deposit 2026-03-27",
+                  "Equity retention: 203.4% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2026-03-27",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio 476,574x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: CORE-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 476,574x indicates high leverage cycling",
+              "CORE-USDT-SWAP SHORT opened 2026-03-29T17:48",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "566647412895744",
+            "master_user_id": "2044005",
+            "overall_risk_tier": "T1",
+            "executive_summary": "China account (okx_cn). registered 2013-11-20 (12.4yr). trade/equity ratio 7,254,056x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "warning",
+                "signals": [
+                  "Registered 2013-11-20 (12.4yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: PC",
+                  "Registration-to-first-deposit gap: 3.5yr (anomalous)"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $475,213,224.76 vs equity $65.51 (ratio 7,254,056x)",
+                  "Fee tier: LV1",
+                  "CORE-USDT-SWAP SHORT (Cross), opened 2026-03-30T07:34"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Trade volume $475,213,224.76, equity $65.51",
+                  "First deposit $196.04",
+                  "Last deposit 2026-03-29",
+                  "Equity retention: 33.4% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2026-03-29",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio 7,254,056x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: CORE-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 7,254,056x indicates high leverage cycling",
+              "CORE-USDT-SWAP SHORT opened 2026-03-30T07:34",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "",
+            "master_user_id": "6428116",
+            "overall_risk_tier": "T1",
+            "executive_summary": "Registered unknown (0 days). trade/equity ratio inf.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "critical",
+                "signals": [
+                  "Registered unknown (0 days)",
+                  "KYC level unknown"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                  "CORE-USDT-SWAP LONG (Isolated), opened 2026-03-30T08:02"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registration region unknown",
+                  "Phone unknown",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "critical",
+                "signals": [
+                  "KYC0"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $0.00, equity $0.00",
+                  "First deposit unknown",
+                  "Last deposit unknown"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit unknown",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio inf)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: CORE-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio inf indicates high leverage cycling",
+              "CORE-USDT-SWAP LONG opened 2026-03-30T08:02",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "211703507051483136",
+            "master_user_id": "6435422",
+            "overall_risk_tier": "T1",
+            "executive_summary": "China account (okx_cn). registered 2017-09-06 (8.6yr). trade/equity ratio 228,726x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "warning",
+                "signals": [
+                  "Registered 2017-09-06 (8.6yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: APP",
+                  "Registration-to-first-deposit gap: 4.7yr (anomalous)"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $15,063,911.56 vs equity $65.86 (ratio 228,726x)",
+                  "Fee tier: LV1",
+                  "CORE-USDT-SWAP SHORT (Cross), opened 2026-03-24T00:03"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Trade volume $15,063,911.56, equity $65.86",
+                  "First deposit $400.00",
+                  "Last deposit 2026-02-25",
+                  "Equity retention: 16.5% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2026-02-25",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio 228,726x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: CORE-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 228,726x indicates high leverage cycling",
+              "CORE-USDT-SWAP SHORT opened 2026-03-24T00:03",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "3148760259637248",
+            "master_user_id": "8425308",
+            "overall_risk_tier": "T1",
+            "executive_summary": "China account (okx_cn). registered 2018-06-13 (7.8yr). trade/equity ratio 570,871,671x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Registered 2018-06-13 (7.8yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: APP"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $21,122,251.83 vs equity $0.04 (ratio 570,871,671x)",
+                  "Fee tier: LV1",
+                  "CORE-USDT-SWAP SHORT (Cross), opened 2026-03-24T00:02"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $21,122,251.83, equity $0.04",
+                  "First deposit $1,522.07",
+                  "Last deposit 2026-03-29",
+                  "Equity retention: 0.0% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2026-03-29",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio 570,871,671x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: CORE-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 570,871,671x indicates high leverage cycling",
+              "CORE-USDT-SWAP SHORT opened 2026-03-24T00:02",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "",
+            "master_user_id": "7180900",
+            "overall_risk_tier": "T1",
+            "executive_summary": "Registered unknown (0 days). trade/equity ratio inf.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "critical",
+                "signals": [
+                  "Registered unknown (0 days)",
+                  "KYC level unknown"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                  "CORE-USDT-SWAP SHORT (Isolated), opened 2026-03-30T00:56"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registration region unknown",
+                  "Phone unknown",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "critical",
+                "signals": [
+                  "KYC0"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $0.00, equity $0.00",
+                  "First deposit unknown",
+                  "Last deposit unknown"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit unknown",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio inf)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: CORE-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio inf indicates high leverage cycling",
+              "CORE-USDT-SWAP SHORT opened 2026-03-30T00:56",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "",
+            "master_user_id": "6561979",
+            "overall_risk_tier": "T1",
+            "executive_summary": "Registered unknown (0 days). trade/equity ratio inf.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "critical",
+                "signals": [
+                  "Registered unknown (0 days)",
+                  "KYC level unknown"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                  "CORE-USDT-SWAP SHORT (Isolated), opened 2026-03-30T02:46"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registration region unknown",
+                  "Phone unknown",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "critical",
+                "signals": [
+                  "KYC0"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $0.00, equity $0.00",
+                  "First deposit unknown",
+                  "Last deposit unknown"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit unknown",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio inf)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: CORE-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio inf indicates high leverage cycling",
+              "CORE-USDT-SWAP SHORT opened 2026-03-30T02:46",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
             "uid": "4761228480229376",
-            "register_time": "2018-01-16",
-            "region": "CN",
-            "kyc_level": "KYC3",
-            "country": "China",
-            "trade_vol": 25212440.49,
-            "equity": 261.93,
-            "first_deposit": 175.31,
-            "position": {
-              "inst_id": "CORE-USDT-SWAP",
-              "direction": "short",
-              "leverage": "2x",
-              "margin_mode": "cross",
-              "created": [
-                "2026-03-29",
-                "2026-03-30"
-              ]
-            },
+            "master_user_id": "7285324",
+            "overall_risk_tier": "T2",
+            "executive_summary": "China account (okx_cn). registered 2018-01-16 (8.2yr). trade/equity ratio 96,256x.",
             "dimensions": [
               {
                 "name": "Registration Profile",
                 "severity": "pass",
                 "signals": [
-                  "8+ year old account, H5 channel, CN. Established."
+                  "Registered 2018-01-16 (8.2yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: H5"
                 ]
               },
               {
                 "name": "Trading Behavior",
-                "severity": "warning",
+                "severity": "critical",
                 "signals": [
-                  "$25.2M volume, $261.93 equity. 2x CORE short timed around crash."
+                  "Trade volume $25,212,440.49 vs equity $261.93 (ratio 96,256x)",
+                  "Fee tier: LV1",
+                  "CORE-USDT-SWAP SHORT (Cross), opened 2026-03-29T19:54",
+                  "CORE-USDT-SWAP SHORT (Cross), opened 2026-03-30T08:39"
                 ]
               },
               {
                 "name": "Associated Accounts",
                 "severity": "pending",
                 "signals": [
-                  "Login table access denied — cannot verify."
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
                 ]
               },
               {
                 "name": "IP & Geolocation",
-                "severity": "pending",
+                "severity": "pass",
                 "signals": [
-                  "Login table access denied — cannot verify."
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
                 ]
               },
               {
                 "name": "Identity Signals",
                 "severity": "pass",
                 "signals": [
-                  "KYC3, CN, phone 86. No mismatch."
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
                 ]
               },
               {
                 "name": "Profit & Loss",
-                "severity": "warning",
+                "severity": "pass",
                 "signals": [
-                  "$175.31 to $261.93 — net positive. Some profitability."
+                  "Trade volume $25,212,440.49, equity $261.93",
+                  "First deposit $175.31",
+                  "Last deposit 2026-03-27",
+                  "Equity retention: 149.4% of first deposit"
                 ]
               },
               {
                 "name": "Withdrawal Behavior",
-                "severity": "pass",
+                "severity": "pending",
                 "signals": [
-                  "Equity exceeds first deposit. No red flags."
+                  "Last deposit 2026-03-27",
+                  "Withdrawal detail table inaccessible (data limited)"
                 ]
               },
               {
                 "name": "Comprehensive Judgment",
                 "severity": "warning",
                 "signals": [
-                  "Moderate risk — 2x short timed around crash. Profitable. Monitor for informed trading."
+                  "Overall risk tier: T2 (trade/equity ratio 96,256x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: CORE-USDT-SWAP"
                 ]
               }
             ],
-            "executive_summary": "8-year CN account, $25.2M volume, $261 equity. Multiple CORE-USDT-SWAP shorts (cross). Concentrated directional bet, low equity.",
-            "overall_risk_tier": "T3",
             "key_evidence": [
-              "2x CORE short cross",
-              "Equity $261 vs $25.2M volume"
-            ]
+              "Trade/equity ratio 96,256x indicates high leverage cycling",
+              "CORE-USDT-SWAP SHORT opened 2026-03-29T19:54",
+              "CORE-USDT-SWAP SHORT opened 2026-03-30T08:39",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
           },
           {
-            "master_user_id": 6529155,
-            "uid": "795149923917824",
-            "register_time": "2017-11-12",
-            "region": "CN",
-            "kyc_level": "KYC3",
-            "country": "China",
-            "trade_vol": 201334735.62,
-            "equity": 43614.94,
-            "first_deposit": 109.6,
-            "position": {
-              "inst_id": "CORE-USDT-SWAP",
-              "direction": "short",
-              "margin_mode": "isolated",
-              "created": "2026-03-29"
-            },
+            "uid": "10720534413320192",
+            "master_user_id": "7125274",
+            "overall_risk_tier": "T2",
+            "executive_summary": "China account (okx_cn). registered 2018-01-05 (8.2yr). trade/equity ratio 35,030x.",
             "dimensions": [
               {
                 "name": "Registration Profile",
                 "severity": "pass",
                 "signals": [
-                  "8+ year old account, H5 channel, CN. Established."
+                  "Registered 2018-01-05 (8.2yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: PC"
                 ]
               },
               {
                 "name": "Trading Behavior",
-                "severity": "warning",
+                "severity": "critical",
                 "signals": [
-                  "$201.3M volume, $43.6K equity. CORE short timed at crash onset."
+                  "Trade volume $20,794,433.61 vs equity $593.62 (ratio 35,030x)",
+                  "Fee tier: LV1",
+                  "CORE-USDT-SWAP SHORT (Cross), opened 2026-03-29T23:23"
                 ]
               },
               {
                 "name": "Associated Accounts",
                 "severity": "pending",
                 "signals": [
-                  "Login table access denied — cannot verify."
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
                 ]
               },
               {
                 "name": "IP & Geolocation",
-                "severity": "pending",
+                "severity": "pass",
                 "signals": [
-                  "Login table access denied — cannot verify."
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
                 ]
               },
               {
                 "name": "Identity Signals",
                 "severity": "pass",
                 "signals": [
-                  "KYC3, CN, phone 86. No mismatch."
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
                 ]
               },
               {
                 "name": "Profit & Loss",
                 "severity": "pass",
                 "signals": [
-                  "$109.60 to $43,614.94 — significant profit."
+                  "Trade volume $20,794,433.61, equity $593.62",
+                  "First deposit $307.21",
+                  "Last deposit 2026-03-28",
+                  "Equity retention: 193.2% of first deposit"
                 ]
               },
               {
                 "name": "Withdrawal Behavior",
-                "severity": "pass",
+                "severity": "pending",
                 "signals": [
-                  "Equity far exceeds first deposit. No red flags."
+                  "Last deposit 2026-03-28",
+                  "Withdrawal detail table inaccessible (data limited)"
                 ]
               },
               {
                 "name": "Comprehensive Judgment",
                 "severity": "warning",
                 "signals": [
-                  "Low-moderate risk — Profitable account. CORE short at crash onset warrants monitoring."
+                  "Overall risk tier: T2 (trade/equity ratio 35,030x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: CORE-USDT-SWAP"
                 ]
               }
             ],
-            "executive_summary": "8-year CN high-volume trader ($201M) with $43.6K equity. CORE short isolated. Established trader, adequate capitalization.",
-            "overall_risk_tier": "T2",
             "key_evidence": [
-              "$201M volume with $43.6K equity",
-              "CORE short isolated"
-            ]
+              "Trade/equity ratio 35,030x indicates high leverage cycling",
+              "CORE-USDT-SWAP SHORT opened 2026-03-29T23:23",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "568215172427776",
+            "master_user_id": "3890255",
+            "overall_risk_tier": "T3",
+            "executive_summary": "China account (okx_cn). registered 2016-05-28 (9.8yr). trade/equity ratio 5,721x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "warning",
+                "signals": [
+                  "Registered 2016-05-28 (9.8yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: APP",
+                  "Registration-to-first-deposit gap: 1.5yr (anomalous)"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "Trade volume $63,204,233.74 vs equity $11,048.06 (ratio 5,721x)",
+                  "Fee tier: LV1",
+                  "CORE-USDT-SWAP SHORT (Isolated), opened 2026-03-29T21:16"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "pass",
+                "signals": [
+                  "Trade volume $63,204,233.74, equity $11,048.06",
+                  "First deposit $81.64",
+                  "Last deposit 2025-01-14",
+                  "Equity retention: 13532.7% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2025-01-14",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "Overall risk tier: T3 (trade/equity ratio 5,721x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: CORE-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 5,721x indicates high leverage cycling",
+              "CORE-USDT-SWAP SHORT opened 2026-03-29T21:16",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "795149923917824",
+            "master_user_id": "6529155",
+            "overall_risk_tier": "T3",
+            "executive_summary": "China account (okx_cn). registered 2017-11-12 (8.4yr). trade/equity ratio 4,616x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Registered 2017-11-12 (8.4yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: H5"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "Trade volume $201,334,735.62 vs equity $43,614.94 (ratio 4,616x)",
+                  "Fee tier: LV1",
+                  "CORE-USDT-SWAP SHORT (Isolated), opened 2026-03-29T20:40"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "pass",
+                "signals": [
+                  "Trade volume $201,334,735.62, equity $43,614.94",
+                  "First deposit $109.60",
+                  "Last deposit 2026-03-29",
+                  "Equity retention: 39794.7% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2026-03-29",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "Overall risk tier: T3 (trade/equity ratio 4,616x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: CORE-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 4,616x indicates high leverage cycling",
+              "CORE-USDT-SWAP SHORT opened 2026-03-29T20:40",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "168341841819901952",
+            "master_user_id": "7508068",
+            "overall_risk_tier": "T4",
+            "executive_summary": "China account (okx_cn). registered 2018-02-18 (8.1yr). trade/equity ratio 847x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "warning",
+                "signals": [
+                  "Registered 2018-02-18 (8.1yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: H5",
+                  "Registration-to-first-deposit gap: 3.2yr (anomalous)"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "pass",
+                "signals": [
+                  "Trade volume $17,443,570.21 vs equity $20,601.31 (ratio 847x)",
+                  "Fee tier: LV1",
+                  "CORE-USDT-SWAP SHORT (Cross), opened 2026-03-29T20:36"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "pass",
+                "signals": [
+                  "Trade volume $17,443,570.21, equity $20,601.31",
+                  "First deposit $355.02",
+                  "Last deposit 2026-02-19",
+                  "Equity retention: 5802.9% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2026-02-19",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "pass",
+                "signals": [
+                  "Overall risk tier: T4 (trade/equity ratio 847x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: CORE-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "CORE-USDT-SWAP SHORT opened 2026-03-29T20:36",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "211473677366202368",
+            "master_user_id": "6143219",
+            "overall_risk_tier": "T4",
+            "executive_summary": "China account (okx_cn). registered 2017-05-28 (8.8yr). trade/equity ratio 468x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "warning",
+                "signals": [
+                  "Registered 2017-05-28 (8.8yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: PC",
+                  "Registration-to-first-deposit gap: 6.7yr (anomalous)"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "pass",
+                "signals": [
+                  "Trade volume $1,976,698.84 vs equity $4,222.36 (ratio 468x)",
+                  "Fee tier: LV1",
+                  "CORE-USDT-SWAP LONG (Isolated), opened 2026-03-30T00:03"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "pass",
+                "signals": [
+                  "Trade volume $1,976,698.84, equity $4,222.36",
+                  "First deposit $1,367.98",
+                  "Last deposit 2026-03-18",
+                  "Equity retention: 308.7% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2026-03-18",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "pass",
+                "signals": [
+                  "Overall risk tier: T4 (trade/equity ratio 468x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: CORE-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "CORE-USDT-SWAP LONG opened 2026-03-30T00:03",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "835389589958656",
+            "master_user_id": "2116334",
+            "overall_risk_tier": "T4",
+            "executive_summary": "China account (okx_cn). registered 2016-10-07 (9.5yr). trade/equity ratio 432x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Registered 2016-10-07 (9.5yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: PC"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "pass",
+                "signals": [
+                  "Trade volume $5,252,289.66 vs equity $12,161.74 (ratio 432x)",
+                  "Fee tier: LV1",
+                  "CORE-USDT-SWAP SHORT (Cross), opened 2024-12-22T07:23",
+                  "CORE-USDT-SWAP SHORT (Cross), opened 2024-12-22T09:33"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "pass",
+                "signals": [
+                  "Trade volume $5,252,289.66, equity $12,161.74",
+                  "First deposit $515.05",
+                  "Last deposit 2024-12-04",
+                  "Equity retention: 2361.3% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2024-12-04",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "pass",
+                "signals": [
+                  "Overall risk tier: T4 (trade/equity ratio 432x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: CORE-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "CORE-USDT-SWAP SHORT opened 2024-12-22T07:23",
+              "CORE-USDT-SWAP SHORT opened 2024-12-22T09:33",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
           }
-        ],
-        "asset": "CORE-USDT-SWAP",
-        "executive_summary": "CORE experienced a -48.7% price crash (0.06544 to 0.03359) within 24 hours, triggering an OI deviation alarm at 58.34%. User count surged +121% from 7,215 to 15,972 in 33 hours. Short-heavy concentration at 1.85:1 ratio (12,487 shorts vs 6,754 longs). Multiple users with near-zero equity holding positions during extreme volatility.",
-        "forward_looking": "CORE-USDT-SWAP price crash -48.7% with OI deviation 58.34%"
+        ]
       },
       {
-        "event_id": "SOPH-USDT-SWAP-20260330",
+        "asset": "SOPH-USDT-SWAP",
         "severity": "warning",
-        "title": "SOPH-USDT-SWAP price down restricted with OI deviation 55.04%",
+        "executive_summary": "SOPH-USDT-SWAP triggered warning alert. Price: $0.008329 (+3.57%). OI deviation: 55.04%. 16 user(s) profiled.",
+        "forward_looking": "Monitor SOPH-USDT-SWAP OI trajectory over the next 24 hours. If OI continues expanding, consider tightening position limits. Watch for funding rate shifts that may attract additional directional flow.",
+        "market_snapshot": {
+          "price": "0.008329",
+          "change_24h": "+3.57%",
+          "open_interest": "85911600",
+          "funding_rate": "0.0000125",
+          "vol_24h": "1058312300",
+          "timestamp": "2026-03-30T11:04:21.658313+08:00"
+        },
+        "quantitative_impact": {
+          "title": "Quantitative Impact",
+          "metrics": [
+            {
+              "value": "55.04%",
+              "label": "OI Deviation (24H)",
+              "detail": "Open interest deviated 55.04% from the 24-hour average"
+            },
+            {
+              "value": "WARNING",
+              "label": "Alert Severity",
+              "detail": "Alert classified as warning"
+            },
+            {
+              "value": "+16.2%",
+              "label": "User Growth (period)",
+              "detail": "Total users changed from 6705 to 7788 over the observation window"
+            }
+          ]
+        },
+        "oi_attribution": {
+          "title": "OI Attribution (Hourly User Breakdown)",
+          "description": "Hourly breakdown of user positioning for the instrument.",
+          "user_hourly_table": {
+            "headers": [
+              "Hour (pt)",
+              "Total Users",
+              "Longs",
+              "Shorts"
+            ],
+            "rows": [
+              [
+                "2026032900",
+                "6705",
+                "2799",
+                "4992"
+              ],
+              [
+                "2026032912",
+                "6709",
+                "2800",
+                "4995"
+              ],
+              [
+                "2026033000",
+                "6679",
+                "2783",
+                "4982"
+              ],
+              [
+                "2026033004",
+                "7292",
+                "3067",
+                "5407"
+              ],
+              [
+                "2026033006",
+                "7586",
+                "3190",
+                "5627"
+              ],
+              [
+                "2026033008",
+                "7788",
+                "3292",
+                "5745"
+              ]
+            ]
+          }
+        },
+        "risk_assessment": {
+          "title": "Risk Assessment & Recommended Actions",
+          "actions": [
+            {
+              "priority": "P1",
+              "action": "Deep-review top risk users: 15935586, 16311201, 12576700",
+              "reason": "15 user(s) flagged with elevated trade/equity ratios or suspicious patterns"
+            },
+            {
+              "priority": "P2",
+              "action": "Continue monitoring OI trajectory and funding rate changes over the next 24 hours",
+              "reason": "Position dynamics may shift as new data comes in — ensure no further limit breaches"
+            }
+          ]
+        },
+        "involved_users_brief": {
+          "title": "Involved Users (Brief)",
+          "headers": [
+            "User ID",
+            "UID",
+            "Position",
+            "Margin",
+            "Opened",
+            "Risk Tier"
+          ],
+          "rows": [
+            [
+              "15935586",
+              "",
+              "LONG",
+              "Cross",
+              "2026-03-28T09:15:32.983+08:00",
+              "T1"
+            ],
+            [
+              "16311201",
+              "",
+              "SHORT",
+              "Cross",
+              "2026-02-28T10:56:27.307+08:00",
+              "T1"
+            ],
+            [
+              "12576700",
+              "",
+              "SHORT",
+              "Cross",
+              "2026-03-13T14:59:19.217+08:00",
+              "T1"
+            ],
+            [
+              "3573410",
+              "6727149969092608",
+              "SHORT",
+              "Cross",
+              "2026-03-19T15:40:18.708+08:00",
+              "T1"
+            ],
+            [
+              "3573410",
+              "6727149969092608",
+              "SHORT",
+              "Cross",
+              "2026-03-19T15:44:19.739+08:00",
+              "T1"
+            ],
+            [
+              "6400208",
+              "",
+              "LONG",
+              "Isolated",
+              "2026-03-06T12:41:38.271+08:00",
+              "T1"
+            ],
+            [
+              "9708807",
+              "",
+              "LONG",
+              "Cross",
+              "2026-03-20T05:08:00.497+08:00",
+              "T1"
+            ],
+            [
+              "5002143",
+              "564715436777472",
+              "SHORT",
+              "Isolated",
+              "2026-03-26T21:19:31.385+08:00",
+              "T1"
+            ],
+            [
+              "5002143",
+              "564715436777472",
+              "SHORT",
+              "Isolated",
+              "2026-03-30T04:40:25.604+08:00",
+              "T1"
+            ],
+            [
+              "9064264",
+              "",
+              "LONG",
+              "Isolated",
+              "2026-02-28T18:35:38.285+08:00",
+              "T1"
+            ],
+            [
+              "9160505",
+              "",
+              "LONG",
+              "Cross",
+              "2026-02-28T11:59:41.081+08:00",
+              "T1"
+            ],
+            [
+              "10779337",
+              "",
+              "LONG",
+              "Isolated",
+              "2026-02-28T23:06:13.440+08:00",
+              "T1"
+            ],
+            [
+              "14903630",
+              "154563475207790592",
+              "SHORT",
+              "Cross",
+              "2026-03-30T04:32:07.215+08:00",
+              "T1"
+            ],
+            [
+              "11639906",
+              "",
+              "SHORT",
+              "Isolated",
+              "2025-12-20T05:03:54.840+08:00",
+              "T1"
+            ],
+            [
+              "16763822",
+              "",
+              "SHORT",
+              "Isolated",
+              "2026-03-08T01:46:17.779+08:00",
+              "T1"
+            ],
+            [
+              "8257206",
+              "584491672416256",
+              "LONG",
+              "Cross",
+              "2026-03-30T05:19:46.982+08:00",
+              "T2"
+            ],
+            [
+              "10543257",
+              "610524022841344",
+              "SHORT",
+              "Cross",
+              "2025-07-24T19:59:33.211+08:00",
+              "T3"
+            ],
+            [
+              "10543257",
+              "610524022841344",
+              "SHORT",
+              "Cross",
+              "2025-10-23T19:39:03.123+08:00",
+              "T3"
+            ],
+            [
+              "8418585",
+              "10369137113178112",
+              "SHORT",
+              "Cross",
+              "2025-06-03T21:24:06.315+08:00",
+              "T4"
+            ],
+            [
+              "8418585",
+              "10369137113178112",
+              "SHORT",
+              "Cross",
+              "2025-06-04T01:01:22.864+08:00",
+              "T4"
+            ]
+          ]
+        },
         "causal_chain": [
           {
             "step": 1,
-            "type": "远因",
-            "name": "Low liquidity token with shallow depth",
-            "description": "SOPH-USDT-SWAP has very low order book depth (~$21,207) making it highly vulnerable to price manipulation. OI USD is only $716,159 — a single moderately-sized position can represent a significant portion of total open interest.",
-            "evidence_strength": 4,
-            "evidence_label": "strong",
-            "detail": "Total OI USD $716,159.10 with depth approximately $21,207. The low liquidity means even modest selling pressure can trigger price restriction mechanisms. Token is susceptible to outsized price moves.",
-            "evidence_table": null,
-            "risk_assessment": null
+            "type": "远因 (Structural)",
+            "name": "SOPH-USDT-SWAP Thin Liquidity / Low Float",
+            "description": "SOPH-USDT-SWAP has limited market depth (24H vol: 1058312300). Low float instruments are susceptible to rapid OI deviation.",
+            "evidence_strength": 3,
+            "evidence_label": "Market data"
           },
           {
             "step": 2,
-            "type": "近因",
-            "name": "Sudden user surge +16.4% in 4-hour window",
-            "description": "Total SOPH users holding positions increased from ~6,688 baseline to 7,788 (+16.4%), with the surge concentrated between 2026-03-30 04:00 and 2026-03-30 08:00. The user count had been stable around 6,700 for the prior 24 hours before the sudden spike.",
+            "type": "近因 (User Influx)",
+            "name": "SOPH-USDT-SWAP Position Buildup",
+            "description": "Users grew from 6705 to 7788 (longs 2799->3292, shorts 4992->5745) between 2026032900 and 2026033008.",
             "evidence_strength": 4,
-            "evidence_label": "strong",
-            "detail": "Hourly data shows stability from 2026-03-29 00:00 (6,705) through 2026-03-30 00:00 (6,679), then sharp increase: 7,292 at 04:00 → 7,461 at 05:00 → 7,586 at 06:00 → 7,788 at 08:00. Short positions drove the surge (4,982 at 00:00 → 5,745 at 08:00, +763 shorts vs +509 longs).",
+            "evidence_label": "Position data",
             "evidence_table": {
-              "columns": [
-                "pt",
-                "total_users",
-                "longs",
-                "shorts",
-                "short_ratio"
+              "headers": [
+                "Hour",
+                "Total Users",
+                "Longs",
+                "Shorts"
               ],
               "rows": [
                 [
                   "2026032900",
-                  6705,
-                  2799,
-                  4992,
-                  "74.5%"
+                  "6705",
+                  "2799",
+                  "4992"
                 ],
                 [
                   "2026032912",
-                  6709,
-                  2800,
-                  4995,
-                  "74.4%"
+                  "6709",
+                  "2800",
+                  "4995"
                 ],
                 [
                   "2026033000",
-                  6679,
-                  2783,
-                  4982,
-                  "74.6%"
+                  "6679",
+                  "2783",
+                  "4982"
                 ],
                 [
                   "2026033004",
-                  7292,
-                  3067,
-                  5407,
-                  "74.1%"
-                ],
-                [
-                  "2026033005",
-                  7461,
-                  3157,
-                  5522,
-                  "74.0%"
+                  "7292",
+                  "3067",
+                  "5407"
                 ],
                 [
                   "2026033006",
-                  7586,
-                  3190,
-                  5627,
-                  "74.2%"
+                  "7586",
+                  "3190",
+                  "5627"
                 ],
                 [
                   "2026033008",
-                  7788,
-                  3292,
-                  5745,
-                  "73.8%"
+                  "7788",
+                  "3292",
+                  "5745"
                 ]
-              ],
-              "headers": [
-                "Time(HKT)",
-                "Total Users",
-                "Long",
-                "Short",
-                "Net Change"
-              ],
-              "title": "Hourly Position Data"
-            },
-            "risk_assessment": {
-              "level": "warning",
-              "detail": "16.4% user surge in 4 hours is abnormal for a low-liquidity token. Concentrated timing suggests potential coordinated activity or social media-driven herding."
+              ]
             }
           },
           {
             "step": 3,
-            "type": "触发事件",
-            "name": "Price down restricted (Y cap), OI deviation 55.04%",
-            "description": "SOPH-USDT-SWAP price was restricted downward (Y cap mechanism triggered). OI deviation reached 55.04%, nearly 3x the 20% alert threshold. The 24h price range showed significant volatility (high 0.009633, low 0.007956).",
+            "type": "触发事件 (Trigger)",
+            "name": "Alert Fired",
+            "description": "price_limit_p4 alert fired at warning level. OI deviation: 55.04%.",
             "evidence_strength": 5,
-            "evidence_label": "definitive",
-            "detail": "Market data: last=0.008329, open24h=0.008042, high24h=0.009633, low24h=0.007956. Change +3.6% at time of snapshot but price restriction indicates prior extreme downward move that triggered the cap. OI=85,911,600 (859,116 contracts), OI USD=$716,159.10. Funding rate=0.0000125 (near neutral).",
-            "evidence_table": null,
-            "risk_assessment": {
-              "level": "warning",
-              "detail": "55.04% OI deviation is 2.75x the 20% threshold. Price restriction mechanism activated. Despite current +3.6% at snapshot, the Y cap indicates prior extreme downward pressure that was mechanically halted."
-            }
+            "evidence_label": "Platform alert"
           },
           {
             "step": 4,
-            "type": "风险放大",
-            "name": "Short-heavy positions with depleted-equity users",
-            "description": "Short positions dominate at 1.75:1 ratio (5,745 shorts vs 3,292 longs). Multiple flagged users hold leveraged short positions with near-zero equity, amplifying liquidation cascade risk if the price restriction lifts and a short squeeze occurs.",
+            "type": "风险放大 (Amplification)",
+            "name": "User Concentration Risk",
+            "description": "Top users concentrating: 15935586, 16311201, 12576700, 3573410, 6400208 (risk tiers: T1, T1, T1, T1, T1). Position overlap amplifies systemic exposure.",
             "evidence_strength": 4,
-            "evidence_label": "strong",
-            "detail": "Flagged users: master_user_id=3573410 has $0.057 equity on 2x SOPH short (region mismatch); master_user_id=5002143 has $10.84 equity on 2x SOPH short ($187.4M volume). master_user_id=10543257 has $81,685 equity — large enough to represent ~11.4% of total SOPH OI USD. Depleted accounts risk cascading liquidations; large accounts risk market manipulation.",
-            "evidence_table": null,
-            "risk_assessment": {
-              "level": "warning",
-              "detail": "Combination of depleted-equity short holders and one large-capital short holder creates dual risk: cascading liquidations from small accounts and potential market influence from the large account."
+            "evidence_label": "User data",
+            "evidence_table": {
+              "headers": [
+                "User ID",
+                "Risk Tier",
+                "Summary"
+              ],
+              "rows": [
+                [
+                  "15935586",
+                  "T1",
+                  "Registered unknown (0 days). trade/equity ratio inf."
+                ],
+                [
+                  "16311201",
+                  "T1",
+                  "Registered unknown (0 days). trade/equity ratio inf."
+                ],
+                [
+                  "12576700",
+                  "T1",
+                  "Registered unknown (0 days). trade/equity ratio inf."
+                ],
+                [
+                  "3573410",
+                  "T1",
+                  "China account (okx_cis_mea_la). registered 2014-02-04 (12.2yr). trade/equity rat..."
+                ],
+                [
+                  "6400208",
+                  "T1",
+                  "Registered unknown (0 days). trade/equity ratio inf."
+                ]
+              ]
             }
           }
         ],
-        "market_snapshot": {
-          "inst_id": "SOPH-USDT-SWAP",
-          "last": 0.008329,
-          "open24h": 0.008042,
-          "high24h": 0.009633,
-          "low24h": 0.007956,
-          "change_24h_pct": 3.6,
-          "volCcy24h": 1058312300,
-          "oi": 85911600,
-          "oi_contracts": 859116,
-          "oi_usd": 716159.1,
-          "funding_rate": 1.25e-05,
-          "fetched_at": "2026-03-30T16:00:00+08:00",
-          "price": 0.008329,
-          "change_24h": 3.6,
-          "open_interest": 85911600,
-          "vol_24h": 1058312300,
-          "timestamp": "2026-03-30T16:00:00+08:00"
-        },
+        "key_users": [
+          "15935586",
+          "16311201",
+          "12576700",
+          "3573410",
+          "8418585"
+        ],
         "user_profiles": [
           {
-            "master_user_id": 5002143,
-            "uid": "564715436777472",
-            "register_time": "2017-01-13",
-            "region": "CN",
-            "kyc_level": "KYC3",
-            "country": "China",
-            "trade_vol": 187367628.92,
-            "equity": 10.84,
-            "first_deposit": 819.83,
-            "position": {
-              "inst_id": "SOPH-USDT-SWAP",
-              "direction": "short",
-              "leverage": "2x",
-              "margin_mode": "isolated",
-              "created": [
-                "2026-03-26",
-                "2026-03-30"
-              ]
-            },
+            "uid": "",
+            "master_user_id": "15935586",
+            "overall_risk_tier": "T1",
+            "executive_summary": "Registered unknown (0 days). trade/equity ratio inf.",
             "dimensions": [
               {
                 "name": "Registration Profile",
-                "severity": "pass",
+                "severity": "critical",
                 "signals": [
-                  "9+ year old account, PC channel, CN. Established."
+                  "Registered unknown (0 days)",
+                  "KYC level unknown"
                 ]
               },
               {
                 "name": "Trading Behavior",
                 "severity": "critical",
                 "signals": [
-                  "$187.4M volume, $10.84 equity — 17.3M:1 ratio. 2x SOPH short isolated."
+                  "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                  "SOPH-USDT-SWAP LONG (Cross), opened 2026-03-28T09:15"
                 ]
               },
               {
                 "name": "Associated Accounts",
                 "severity": "pending",
                 "signals": [
-                  "Login table access denied — cannot verify."
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
                 ]
               },
               {
                 "name": "IP & Geolocation",
-                "severity": "pending",
+                "severity": "pass",
                 "signals": [
-                  "Login table access denied — cannot verify."
+                  "Registration region unknown",
+                  "Phone unknown",
+                  "No region mismatch detected"
                 ]
               },
               {
                 "name": "Identity Signals",
-                "severity": "pass",
+                "severity": "critical",
                 "signals": [
-                  "KYC3, CN, phone 86. No mismatch."
+                  "KYC0"
                 ]
               },
               {
                 "name": "Profit & Loss",
                 "severity": "critical",
                 "signals": [
-                  "$819.83 to $10.84 — 98.7% loss."
+                  "Trade volume $0.00, equity $0.00",
+                  "First deposit unknown",
+                  "Last deposit unknown"
                 ]
               },
               {
                 "name": "Withdrawal Behavior",
-                "severity": "warning",
+                "severity": "pending",
                 "signals": [
-                  "Last deposit 2026-03-28, equity near zero."
+                  "Last deposit unknown",
+                  "Withdrawal detail table inaccessible (data limited)"
                 ]
               },
               {
                 "name": "Comprehensive Judgment",
                 "severity": "critical",
                 "signals": [
-                  "T3 — 17.3M:1 volume/equity ratio. Extreme depletion. 2x SOPH short on isolated margin."
+                  "Overall risk tier: T1 (trade/equity ratio inf)",
+                  "Flagged in price_limit_p4 alert (warning)",
+                  "Active positions on: SOPH-USDT-SWAP"
                 ]
               }
             ],
-            "executive_summary": "9-year CN account with $187M trade volume and $10.84 equity — 17.3Mx ratio. 2x SOPH-USDT-SWAP short (isolated), latest opened 2026-03-30. Severe equity depletion.",
-            "overall_risk_tier": "T3",
             "key_evidence": [
-              "Trade/equity ratio 17.3M:1",
-              "2x SOPH short positions",
-              "Equity $10.84 vs $187M volume"
-            ]
+              "Trade/equity ratio inf indicates high leverage cycling",
+              "SOPH-USDT-SWAP LONG opened 2026-03-28T09:15"
+            ],
+            "local_artifact_ref": ""
           },
           {
-            "master_user_id": 3573410,
+            "uid": "",
+            "master_user_id": "16311201",
+            "overall_risk_tier": "T1",
+            "executive_summary": "Registered unknown (0 days). trade/equity ratio inf.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "critical",
+                "signals": [
+                  "Registered unknown (0 days)",
+                  "KYC level unknown"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                  "SOPH-USDT-SWAP SHORT (Cross), opened 2026-02-28T10:56"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registration region unknown",
+                  "Phone unknown",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "critical",
+                "signals": [
+                  "KYC0"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $0.00, equity $0.00",
+                  "First deposit unknown",
+                  "Last deposit unknown"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit unknown",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio inf)",
+                  "Flagged in price_limit_p4 alert (warning)",
+                  "Active positions on: SOPH-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio inf indicates high leverage cycling",
+              "SOPH-USDT-SWAP SHORT opened 2026-02-28T10:56"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "",
+            "master_user_id": "12576700",
+            "overall_risk_tier": "T1",
+            "executive_summary": "Registered unknown (0 days). trade/equity ratio inf.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "critical",
+                "signals": [
+                  "Registered unknown (0 days)",
+                  "KYC level unknown"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                  "SOPH-USDT-SWAP SHORT (Cross), opened 2026-03-13T14:59"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registration region unknown",
+                  "Phone unknown",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "critical",
+                "signals": [
+                  "KYC0"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $0.00, equity $0.00",
+                  "First deposit unknown",
+                  "Last deposit unknown"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit unknown",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio inf)",
+                  "Flagged in price_limit_p4 alert (warning)",
+                  "Active positions on: SOPH-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio inf indicates high leverage cycling",
+              "SOPH-USDT-SWAP SHORT opened 2026-03-13T14:59"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
             "uid": "6727149969092608",
-            "register_time": "2014-02-04",
-            "region": "CIS_MEA_LA",
-            "kyc_level": "KYC3",
-            "country": "China",
-            "trade_vol": 8560254.04,
-            "equity": 0.057,
-            "first_deposit": 42.01,
-            "position": {
-              "inst_id": "SOPH-USDT-SWAP",
-              "direction": "short",
-              "leverage": "2x",
-              "margin_mode": "cross",
-              "created": "2026-03-19"
-            },
+            "master_user_id": "3573410",
+            "overall_risk_tier": "T1",
+            "executive_summary": "China account (okx_cis_mea_la). registered 2014-02-04 (12.2yr). trade/equity ratio 150,179,895x.",
             "dimensions": [
               {
                 "name": "Registration Profile",
                 "severity": "warning",
                 "signals": [
-                  "12+ year old account, CIS_MEA_LA region but CN phone. Region mismatch."
+                  "Registered 2014-02-04 (12.2yr)",
+                  "okx_CIS_MEA_LA, phone 86",
+                  "KYC3 China verified",
+                  "Client type: PC",
+                  "Registration-to-first-deposit gap: 6.1yr (anomalous)"
                 ]
               },
               {
                 "name": "Trading Behavior",
                 "severity": "critical",
                 "signals": [
-                  "$8.6M volume, $0.057 equity. 2x SOPH short cross margin."
+                  "Trade volume $8,560,254.04 vs equity $0.06 (ratio 150,179,895x)",
+                  "Fee tier: LV1",
+                  "SOPH-USDT-SWAP SHORT (Cross), opened 2026-03-19T15:40",
+                  "SOPH-USDT-SWAP SHORT (Cross), opened 2026-03-19T15:44"
                 ]
               },
               {
                 "name": "Associated Accounts",
                 "severity": "pending",
                 "signals": [
-                  "Login table access denied — cannot verify."
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
                 ]
               },
               {
                 "name": "IP & Geolocation",
-                "severity": "pending",
-                "signals": [
-                  "Login table access denied — cannot verify. Region mismatch makes this critical."
-                ]
-              },
-              {
-                "name": "Identity Signals",
-                "severity": "warning",
-                "signals": [
-                  "Region mismatch: CIS_MEA_LA registration, CN phone/KYC."
-                ]
-              },
-              {
-                "name": "Profit & Loss",
-                "severity": "critical",
-                "signals": [
-                  "$42.01 to $0.057 — 99.86% loss."
-                ]
-              },
-              {
-                "name": "Withdrawal Behavior",
-                "severity": "warning",
-                "signals": [
-                  "Last deposit 2026-03-17, funds fully consumed."
-                ]
-              },
-              {
-                "name": "Comprehensive Judgment",
-                "severity": "critical",
-                "signals": [
-                  "T3 — Region mismatch + total equity depletion. 2x SOPH short since 2026-03-19."
-                ]
-              }
-            ],
-            "executive_summary": "12-year account in CIS_MEA_LA region but CN phone 86 — region mismatch. $8.6M volume, $0.057 equity. 2x SOPH short (cross). Region inconsistency plus severe depletion.",
-            "overall_risk_tier": "T3",
-            "key_evidence": [
-              "Region mismatch: CIS_MEA_LA vs CN phone",
-              "Equity $0.057",
-              "2x SOPH short positions"
-            ]
-          },
-          {
-            "master_user_id": 10543257,
-            "uid": "610524022841344",
-            "register_time": "2019-08-25",
-            "region": "Others",
-            "kyc_level": "KYC2",
-            "country": "China",
-            "trade_vol": 292883528.63,
-            "equity": 81685.65,
-            "first_deposit": 70215.07,
-            "position": {
-              "inst_id": "SOPH-USDT-SWAP",
-              "direction": "short",
-              "leverage": "2x",
-              "margin_mode": "cross"
-            },
-            "dimensions": [
-              {
-                "name": "Registration Profile",
-                "severity": "warning",
-                "signals": [
-                  "'Others' region, CN phone, KYC2 only. Region mismatch + lower KYC."
-                ]
-              },
-              {
-                "name": "Trading Behavior",
-                "severity": "warning",
-                "signals": [
-                  "$292.9M volume, $81.7K equity. 2x SOPH short. Large-capital trader."
-                ]
-              },
-              {
-                "name": "Associated Accounts",
-                "severity": "pending",
-                "signals": [
-                  "Login table access denied — cannot verify."
-                ]
-              },
-              {
-                "name": "IP & Geolocation",
-                "severity": "pending",
-                "signals": [
-                  "Login table access denied — cannot verify. 'Others' region needs IP check."
-                ]
-              },
-              {
-                "name": "Identity Signals",
-                "severity": "warning",
-                "signals": [
-                  "KYC2 only, 'Others' region with CN phone. Incomplete verification."
-                ]
-              },
-              {
-                "name": "Profit & Loss",
                 "severity": "pass",
                 "signals": [
-                  "$70,215 to $81,686 — net positive."
+                  "Registered okx_CIS_MEA_LA",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $8,560,254.04, equity $0.06",
+                  "First deposit $42.01",
+                  "Last deposit 2026-03-17",
+                  "Equity retention: 0.1% of first deposit"
                 ]
               },
               {
                 "name": "Withdrawal Behavior",
-                "severity": "warning",
+                "severity": "pending",
                 "signals": [
-                  "Last deposit 2025-12-10 — 3+ months ago."
+                  "Last deposit 2026-03-17",
+                  "Withdrawal detail table inaccessible (data limited)"
                 ]
               },
               {
                 "name": "Comprehensive Judgment",
-                "severity": "warning",
+                "severity": "critical",
                 "signals": [
-                  "Moderate risk — $81.7K equity = ~11.4% of SOPH OI USD. Monitor for market manipulation."
+                  "Overall risk tier: T1 (trade/equity ratio 150,179,895x)",
+                  "Flagged in price_limit_p4 alert (warning)",
+                  "Active positions on: SOPH-USDT-SWAP"
                 ]
               }
             ],
-            "executive_summary": "6-year Others region account with CN phone. High first deposit $70K, large equity $81.7K, $293M volume. SOPH shorts. KYC2 only.",
-            "overall_risk_tier": "T2",
             "key_evidence": [
-              "Others region + CN phone",
-              "KYC2 only",
-              "$70K first deposit"
-            ]
+              "Trade/equity ratio 150,179,895x indicates high leverage cycling",
+              "SOPH-USDT-SWAP SHORT opened 2026-03-19T15:40",
+              "SOPH-USDT-SWAP SHORT opened 2026-03-19T15:44"
+            ],
+            "local_artifact_ref": ""
           },
           {
-            "master_user_id": 14903630,
+            "uid": "",
+            "master_user_id": "6400208",
+            "overall_risk_tier": "T1",
+            "executive_summary": "Registered unknown (0 days). trade/equity ratio inf.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "critical",
+                "signals": [
+                  "Registered unknown (0 days)",
+                  "KYC level unknown"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                  "SOPH-USDT-SWAP LONG (Isolated), opened 2026-03-06T12:41"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registration region unknown",
+                  "Phone unknown",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "critical",
+                "signals": [
+                  "KYC0"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $0.00, equity $0.00",
+                  "First deposit unknown",
+                  "Last deposit unknown"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit unknown",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio inf)",
+                  "Flagged in price_limit_p4 alert (warning)",
+                  "Active positions on: SOPH-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio inf indicates high leverage cycling",
+              "SOPH-USDT-SWAP LONG opened 2026-03-06T12:41"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "",
+            "master_user_id": "9708807",
+            "overall_risk_tier": "T1",
+            "executive_summary": "Registered unknown (0 days). trade/equity ratio inf.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "critical",
+                "signals": [
+                  "Registered unknown (0 days)",
+                  "KYC level unknown"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                  "SOPH-USDT-SWAP LONG (Cross), opened 2026-03-20T05:08"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registration region unknown",
+                  "Phone unknown",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "critical",
+                "signals": [
+                  "KYC0"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $0.00, equity $0.00",
+                  "First deposit unknown",
+                  "Last deposit unknown"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit unknown",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio inf)",
+                  "Flagged in price_limit_p4 alert (warning)",
+                  "Active positions on: SOPH-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio inf indicates high leverage cycling",
+              "SOPH-USDT-SWAP LONG opened 2026-03-20T05:08"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "564715436777472",
+            "master_user_id": "5002143",
+            "overall_risk_tier": "T1",
+            "executive_summary": "China account (okx_cn). registered 2017-01-13 (9.2yr). trade/equity ratio 17,284,837x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "warning",
+                "signals": [
+                  "Registered 2017-01-13 (9.2yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: PC",
+                  "Registration-to-first-deposit gap: 1.5yr (anomalous)"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $187,367,628.92 vs equity $10.84 (ratio 17,284,837x)",
+                  "Fee tier: LV1",
+                  "SOPH-USDT-SWAP SHORT (Isolated), opened 2026-03-26T21:19",
+                  "SOPH-USDT-SWAP SHORT (Isolated), opened 2026-03-30T04:40"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $187,367,628.92, equity $10.84",
+                  "First deposit $819.83",
+                  "Last deposit 2026-03-28",
+                  "Equity retention: 1.3% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2026-03-28",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio 17,284,837x)",
+                  "Flagged in price_limit_p4 alert (warning)",
+                  "Active positions on: SOPH-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 17,284,837x indicates high leverage cycling",
+              "SOPH-USDT-SWAP SHORT opened 2026-03-26T21:19",
+              "SOPH-USDT-SWAP SHORT opened 2026-03-30T04:40"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "",
+            "master_user_id": "9064264",
+            "overall_risk_tier": "T1",
+            "executive_summary": "Registered unknown (0 days). trade/equity ratio inf.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "critical",
+                "signals": [
+                  "Registered unknown (0 days)",
+                  "KYC level unknown"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                  "SOPH-USDT-SWAP LONG (Isolated), opened 2026-02-28T18:35"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registration region unknown",
+                  "Phone unknown",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "critical",
+                "signals": [
+                  "KYC0"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $0.00, equity $0.00",
+                  "First deposit unknown",
+                  "Last deposit unknown"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit unknown",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio inf)",
+                  "Flagged in price_limit_p4 alert (warning)",
+                  "Active positions on: SOPH-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio inf indicates high leverage cycling",
+              "SOPH-USDT-SWAP LONG opened 2026-02-28T18:35"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "",
+            "master_user_id": "9160505",
+            "overall_risk_tier": "T1",
+            "executive_summary": "Registered unknown (0 days). trade/equity ratio inf.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "critical",
+                "signals": [
+                  "Registered unknown (0 days)",
+                  "KYC level unknown"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                  "SOPH-USDT-SWAP LONG (Cross), opened 2026-02-28T11:59"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registration region unknown",
+                  "Phone unknown",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "critical",
+                "signals": [
+                  "KYC0"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $0.00, equity $0.00",
+                  "First deposit unknown",
+                  "Last deposit unknown"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit unknown",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio inf)",
+                  "Flagged in price_limit_p4 alert (warning)",
+                  "Active positions on: SOPH-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio inf indicates high leverage cycling",
+              "SOPH-USDT-SWAP LONG opened 2026-02-28T11:59"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "",
+            "master_user_id": "10779337",
+            "overall_risk_tier": "T1",
+            "executive_summary": "Registered unknown (0 days). trade/equity ratio inf.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "critical",
+                "signals": [
+                  "Registered unknown (0 days)",
+                  "KYC level unknown"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                  "SOPH-USDT-SWAP LONG (Isolated), opened 2026-02-28T23:06"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registration region unknown",
+                  "Phone unknown",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "critical",
+                "signals": [
+                  "KYC0"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $0.00, equity $0.00",
+                  "First deposit unknown",
+                  "Last deposit unknown"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit unknown",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio inf)",
+                  "Flagged in price_limit_p4 alert (warning)",
+                  "Active positions on: SOPH-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio inf indicates high leverage cycling",
+              "SOPH-USDT-SWAP LONG opened 2026-02-28T23:06"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
             "uid": "154563475207790592",
-            "register_time": "2021-03-07",
-            "region": "CN",
-            "kyc_level": "KYC3",
-            "country": "China",
-            "trade_vol": 4316259.54,
-            "equity": 12.71,
-            "first_deposit": 30.0,
-            "position": {
-              "inst_id": "SOPH-USDT-SWAP",
-              "direction": "short",
-              "margin_mode": "cross",
-              "created": "2026-03-30"
-            },
+            "master_user_id": "14903630",
+            "overall_risk_tier": "T1",
+            "executive_summary": "China account (okx_cn). registered 2021-03-07 (5.1yr). trade/equity ratio 339,596x.",
             "dimensions": [
               {
                 "name": "Registration Profile",
                 "severity": "pass",
                 "signals": [
-                  "5 year old account, H5 channel, CN. Moderately established."
+                  "Registered 2021-03-07 (5.1yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: H5"
                 ]
               },
               {
                 "name": "Trading Behavior",
-                "severity": "warning",
+                "severity": "critical",
                 "signals": [
-                  "$4.3M volume, $12.71 equity. SOPH short on cross margin."
+                  "Trade volume $4,316,259.54 vs equity $12.71 (ratio 339,596x)",
+                  "Fee tier: LV1",
+                  "SOPH-USDT-SWAP SHORT (Cross), opened 2026-03-30T04:32"
                 ]
               },
               {
                 "name": "Associated Accounts",
                 "severity": "pending",
                 "signals": [
-                  "Login table access denied — cannot verify."
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
                 ]
               },
               {
                 "name": "IP & Geolocation",
-                "severity": "pending",
+                "severity": "pass",
                 "signals": [
-                  "Login table access denied — cannot verify."
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
                 ]
               },
               {
                 "name": "Identity Signals",
                 "severity": "pass",
                 "signals": [
-                  "KYC3, CN, phone 86. No mismatch."
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
                 ]
               },
               {
                 "name": "Profit & Loss",
                 "severity": "warning",
                 "signals": [
-                  "$30 to $12.71 — 57.6% loss."
+                  "Trade volume $4,316,259.54, equity $12.71",
+                  "First deposit $30.00",
+                  "Last deposit 2026-03-18",
+                  "Equity retention: 42.4% of first deposit"
                 ]
               },
               {
                 "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2026-03-18",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio 339,596x)",
+                  "Flagged in price_limit_p4 alert (warning)",
+                  "Active positions on: SOPH-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 339,596x indicates high leverage cycling",
+              "SOPH-USDT-SWAP SHORT opened 2026-03-30T04:32"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "",
+            "master_user_id": "11639906",
+            "overall_risk_tier": "T1",
+            "executive_summary": "Registered unknown (0 days). trade/equity ratio inf.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "critical",
+                "signals": [
+                  "Registered unknown (0 days)",
+                  "KYC level unknown"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                  "SOPH-USDT-SWAP SHORT (Isolated), opened 2025-12-20T05:03"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
                 "severity": "pass",
                 "signals": [
-                  "Last deposit 2026-03-18. Moderate depletion."
+                  "Registration region unknown",
+                  "Phone unknown",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "critical",
+                "signals": [
+                  "KYC0"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $0.00, equity $0.00",
+                  "First deposit unknown",
+                  "Last deposit unknown"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit unknown",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio inf)",
+                  "Flagged in price_limit_p4 alert (warning)",
+                  "Active positions on: SOPH-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio inf indicates high leverage cycling",
+              "SOPH-USDT-SWAP SHORT opened 2025-12-20T05:03"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "",
+            "master_user_id": "16763822",
+            "overall_risk_tier": "T1",
+            "executive_summary": "Registered unknown (0 days). trade/equity ratio inf.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "critical",
+                "signals": [
+                  "Registered unknown (0 days)",
+                  "KYC level unknown"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                  "SOPH-USDT-SWAP SHORT (Isolated), opened 2026-03-08T01:46"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registration region unknown",
+                  "Phone unknown",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "critical",
+                "signals": [
+                  "KYC0"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $0.00, equity $0.00",
+                  "First deposit unknown",
+                  "Last deposit unknown"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit unknown",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio inf)",
+                  "Flagged in price_limit_p4 alert (warning)",
+                  "Active positions on: SOPH-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio inf indicates high leverage cycling",
+              "SOPH-USDT-SWAP SHORT opened 2026-03-08T01:46"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "584491672416256",
+            "master_user_id": "8257206",
+            "overall_risk_tier": "T2",
+            "executive_summary": "China account (okx_cn). registered 2018-05-15 (7.9yr). trade/equity ratio 26,319x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Registered 2018-05-15 (7.9yr)",
+                  "okx_CN, phone 86",
+                  "KYC2 China verified",
+                  "Client type: PC"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $1,781,778.48 vs equity $67.70 (ratio 26,319x)",
+                  "Fee tier: LV1",
+                  "SOPH-USDT-SWAP LONG (Cross), opened 2026-03-30T05:19"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "warning",
+                "signals": [
+                  "KYC2 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China",
+                  "KYC2 despite 7.9yr account age — upgrade anomaly"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Trade volume $1,781,778.48, equity $67.70",
+                  "First deposit $462.24",
+                  "Last deposit 2025-07-20",
+                  "Equity retention: 14.6% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2025-07-20",
+                  "Withdrawal detail table inaccessible (data limited)"
                 ]
               },
               {
                 "name": "Comprehensive Judgment",
                 "severity": "warning",
                 "signals": [
-                  "Moderate risk — SOPH short during price restriction event. Moderate equity depletion."
+                  "Overall risk tier: T2 (trade/equity ratio 26,319x)",
+                  "Flagged in price_limit_p4 alert (warning)",
+                  "Active positions on: SOPH-USDT-SWAP"
                 ]
               }
             ],
-            "executive_summary": "5-year CN account, $4.3M volume, $12.71 equity. Late KYC (2024 for 2021 account). SOPH short (cross) opened 2026-03-30.",
-            "overall_risk_tier": "T3",
             "key_evidence": [
-              "Equity $12.71",
-              "Late KYC 2024",
-              "SOPH short opened today"
-            ]
+              "Trade/equity ratio 26,319x indicates high leverage cycling",
+              "SOPH-USDT-SWAP LONG opened 2026-03-30T05:19"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "610524022841344",
+            "master_user_id": "10543257",
+            "overall_risk_tier": "T3",
+            "executive_summary": "China account (others). registered 2019-08-25 (6.6yr). trade/equity ratio 3,585x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Registered 2019-08-25 (6.6yr)",
+                  "Others, phone 86",
+                  "KYC2 China verified",
+                  "Client type: 未识别"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "Trade volume $292,883,528.63 vs equity $81,685.65 (ratio 3,585x)",
+                  "Fee tier: LV1",
+                  "SOPH-USDT-SWAP SHORT (Cross), opened 2025-07-24T19:59",
+                  "SOPH-USDT-SWAP SHORT (Cross), opened 2025-10-23T19:39"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered Others",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "warning",
+                "signals": [
+                  "KYC2 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China",
+                  "KYC2 despite 6.6yr account age — upgrade anomaly"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "pass",
+                "signals": [
+                  "Trade volume $292,883,528.63, equity $81,685.65",
+                  "First deposit $70,215.07",
+                  "Last deposit 2025-12-10",
+                  "Equity retention: 116.3% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2025-12-10",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "Overall risk tier: T3 (trade/equity ratio 3,585x)",
+                  "Flagged in price_limit_p4 alert (warning)",
+                  "Active positions on: SOPH-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 3,585x indicates high leverage cycling",
+              "SOPH-USDT-SWAP SHORT opened 2025-07-24T19:59",
+              "SOPH-USDT-SWAP SHORT opened 2025-10-23T19:39"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "10369137113178112",
+            "master_user_id": "8418585",
+            "overall_risk_tier": "T4",
+            "executive_summary": "China account (okx_cn). registered 2018-06-11 (7.8yr). trade/equity ratio 124x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "warning",
+                "signals": [
+                  "Registered 2018-06-11 (7.8yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: PC",
+                  "Registration-to-first-deposit gap: 1.6yr (anomalous)"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "pass",
+                "signals": [
+                  "Trade volume $6,196,570.28 vs equity $49,834.00 (ratio 124x)",
+                  "Fee tier: LV1",
+                  "SOPH-USDT-SWAP SHORT (Cross), opened 2025-06-03T21:24",
+                  "SOPH-USDT-SWAP SHORT (Cross), opened 2025-06-04T01:01"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "pass",
+                "signals": [
+                  "Trade volume $6,196,570.28, equity $49,834.00",
+                  "First deposit $759.82",
+                  "Last deposit 2025-09-24",
+                  "Equity retention: 6558.7% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2025-09-24",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "pass",
+                "signals": [
+                  "Overall risk tier: T4 (trade/equity ratio 124x)",
+                  "Flagged in price_limit_p4 alert (warning)",
+                  "Active positions on: SOPH-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "SOPH-USDT-SWAP SHORT opened 2025-06-03T21:24",
+              "SOPH-USDT-SWAP SHORT opened 2025-06-04T01:01"
+            ],
+            "local_artifact_ref": ""
           }
-        ],
-        "asset": "SOPH-USDT-SWAP",
-        "executive_summary": "SOPH triggered a price down restriction (Y cap) with OI deviation reaching 55.04%, well above the 20% threshold. User count increased +16.4% from ~6,688 to 7,788 in a 4-hour window starting at 2026-03-30 04:00. Short-heavy positions at 1.75:1 ratio (5,745 shorts vs 3,292 longs). Multiple users with depleted equity holding leveraged short positions.",
-        "forward_looking": "SOPH-USDT-SWAP price down restricted with OI deviation 55.04%"
+        ]
       }
     ],
     "metrics": {
@@ -1109,7 +3734,7 @@
       "ema_coverage": 4,
       "issues_found": 13,
       "source": "每日风控总结 - 2026-03-30 00:00:00 ~ 2026-03-30 23:59:59",
-      "generated_at": "2026-03-30T02:32:46.378459+00:00"
+      "generated_at": "2026-03-30T03:04:42.341732+00:00"
     },
     "metric_cards": [
       {
@@ -1249,409 +3874,456 @@
     ],
     "recommended_changes": null,
     "downloads": [],
-    "markdown": "# Risk Intelligence\n\n**Summary:** 4 alert types analyzed. 8 flagged alert(s) parsed. 5 suspicious user(s) highlighted.\n**Source document:** 每日风控总结 - 2026-03-30 00:00:00 ~ 2026-03-30 23:59:59\n\n## Suspicious Users\n- 566647412895744 — T1 — CORE short, trade volume $475.2M vs equity $65.51 — ratio 7.25M:1. Extreme equity depletion. 12-year-old account reactivated for volatile event.\n- 3148760259637248 — T1 — CORE short, equity $0.037 — total depletion from $1,522 first deposit (99.998% loss). $21.1M volume with near-zero residual.\n- 564715436777472 — T1 — SOPH 2x short, trade volume $187.4M vs equity $10.84 — ratio 17.3M:1. Near-zero equity on isolated margin.\n- 1638848958439424 — T1 — CORE long into -48.7% crash, equity $0.17. 12-year-old account with near-total depletion. Counter-trend position on isolated margin.\n- 6727149969092608 — T1 — SOPH 2x short, equity $0.057. Region mismatch (CIS_MEA_LA registration but CN phone/KYC). 12-year-old account with 99.86% equity loss.\n\n## Deep Profiles\n- 566647412895744 — T4 — 12-year-old CN account with $475M cumulative trade volume but only $65 equity — trade/equity ratio 7.25Mx. Opened CORE-USDT-SWAP short on 2026-03-30 just after fresh deposit, consistent with equity depletion cycling.\n- 3148760259637248 — T4 — 8-year CN account with $21.1M trade volume and zero equity ($0.037). CORE-USDT-SWAP short since 2026-03-24. Total equity depletion with active trading signals drain pattern.\n- 564715436777472 — T3 — 9-year CN account with $187M trade volume and $10.84 equity — 17.3Mx ratio. 2x SOPH-USDT-SWAP short (isolated), latest opened 2026-03-30. Severe equity depletion.\n- 1638848958439424 — T3 — 12-year CN account with $13.4M trade volume and $0.17 equity. CORE-USDT-SWAP long (isolated) opened 2026-03-29. Near-zero equity with active derivatives.\n- 6727149969092608 — T3 — 12-year account in CIS_MEA_LA region but CN phone 86 — region mismatch. $8.6M volume, $0.057 equity. 2x SOPH short (cross). Region inconsistency plus severe depletion.",
+    "markdown": "# Risk Intelligence\n\n**Summary:** 4 alert types analyzed. 8 flagged alert(s) parsed. 5 suspicious user(s) highlighted.\n**Source document:** 每日风控总结 - 2026-03-30 00:00:00 ~ 2026-03-30 23:59:59\n\n## Suspicious Users\n- 7180900 — T1 — Zero equity with active positions on CORE-USDT-SWAP.\n- 16763822 — T1 — Zero equity with active positions on SOPH-USDT-SWAP.\n- 6561979 — T1 — Zero equity with active positions on CORE-USDT-SWAP.\n- 12576700 — T1 — Zero equity with active positions on SOPH-USDT-SWAP.\n- 6400208 — T1 — Zero equity with active positions on SOPH-USDT-SWAP.\n\n## Deep Profiles\n- 7180900 — T1 — Registered unknown (0 days). trade/equity ratio inf.\n- 16763822 — T1 — Registered unknown (0 days). trade/equity ratio inf.\n- 6561979 — T1 — Registered unknown (0 days). trade/equity ratio inf.\n- 12576700 — T1 — Registered unknown (0 days). trade/equity ratio inf.\n- 6400208 — T1 — Registered unknown (0 days). trade/equity ratio inf.",
     "error": null,
     "source_document": {
       "title": "每日风控总结 - 2026-03-30 00:00:00 ~ 2026-03-30 23:59:59",
-      "url": "https://okg-block.sg.larksuite.com/drive/folder/Wu2Pfktq6lq4t8dWL52lB97pgQb",
-      "modified_at": "2026-03-30T02:32:46.378459+00:00",
+      "url": "https://okg-block.sg.larksuite.com/docx/LYAkdkG1QoeelQxFHiGlvZ6rgVo",
+      "modified_at": "2026-03-30T09:00:00+08:00",
       "selected_by": "latest_modified_desc"
     },
     "suspicious_users": [
       {
-        "uid": "566647412895744",
-        "master_user_id": 2044005,
+        "uid": "",
+        "master_user_id": "7180900",
         "risk_tier": "T1",
-        "source_alert": "",
-        "reason": "CORE short, trade volume $475.2M vs equity $65.51 — ratio 7.25M:1. Extreme equity depletion. 12-year-old account reactivated for volatile event.",
+        "source_alert": "build_risk_intel",
+        "reason": "Zero equity with active positions on CORE-USDT-SWAP.",
         "mentions": 1,
         "first_seen": 0
       },
       {
-        "uid": "3148760259637248",
-        "master_user_id": 8425308,
+        "uid": "",
+        "master_user_id": "16763822",
         "risk_tier": "T1",
-        "source_alert": "",
-        "reason": "CORE short, equity $0.037 — total depletion from $1,522 first deposit (99.998% loss). $21.1M volume with near-zero residual.",
+        "source_alert": "build_risk_intel",
+        "reason": "Zero equity with active positions on SOPH-USDT-SWAP.",
         "mentions": 1,
         "first_seen": 1
       },
       {
-        "uid": "564715436777472",
-        "master_user_id": 5002143,
+        "uid": "",
+        "master_user_id": "6561979",
         "risk_tier": "T1",
-        "source_alert": "",
-        "reason": "SOPH 2x short, trade volume $187.4M vs equity $10.84 — ratio 17.3M:1. Near-zero equity on isolated margin.",
+        "source_alert": "build_risk_intel",
+        "reason": "Zero equity with active positions on CORE-USDT-SWAP.",
         "mentions": 1,
         "first_seen": 2
       },
       {
-        "uid": "1638848958439424",
-        "master_user_id": 3438667,
+        "uid": "",
+        "master_user_id": "12576700",
         "risk_tier": "T1",
-        "source_alert": "",
-        "reason": "CORE long into -48.7% crash, equity $0.17. 12-year-old account with near-total depletion. Counter-trend position on isolated margin.",
+        "source_alert": "build_risk_intel",
+        "reason": "Zero equity with active positions on SOPH-USDT-SWAP.",
         "mentions": 1,
         "first_seen": 3
       },
       {
-        "uid": "6727149969092608",
-        "master_user_id": 3573410,
+        "uid": "",
+        "master_user_id": "6400208",
         "risk_tier": "T1",
-        "source_alert": "",
-        "reason": "SOPH 2x short, equity $0.057. Region mismatch (CIS_MEA_LA registration but CN phone/KYC). 12-year-old account with 99.86% equity loss.",
+        "source_alert": "build_risk_intel",
+        "reason": "Zero equity with active positions on SOPH-USDT-SWAP.",
         "mentions": 1,
         "first_seen": 4
       }
     ],
     "user_profiles": [
       {
-        "uid": "566647412895744",
-        "master_user_id": 2044005,
-        "overall_risk_tier": "T4",
-        "executive_summary": "12-year-old CN account with $475M cumulative trade volume but only $65 equity — trade/equity ratio 7.25Mx. Opened CORE-USDT-SWAP short on 2026-03-30 just after fresh deposit, consistent with equity depletion cycling.",
+        "uid": "",
+        "master_user_id": "7180900",
+        "overall_risk_tier": "T1",
+        "executive_summary": "Registered unknown (0 days). trade/equity ratio inf.",
         "dimensions": [
           {
             "name": "Registration Profile",
-            "severity": "warning",
+            "severity": "critical",
             "signals": [
-              "Account registered 2013-11-20 (12+ years old), CN region. Long-dormant account reactivated for recent CORE short — deposit on 2026-03-29 just before position open."
+              "Registered unknown (0 days)",
+              "KYC level unknown"
             ]
           },
           {
             "name": "Trading Behavior",
             "severity": "critical",
             "signals": [
-              "Cumulative trade volume $475.2M but current equity only $65.51 — ratio of 7.25 million:1. Extreme equity depletion relative to historical volume indicates repeated large leveraged bets with heavy losses."
+              "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+              "CORE-USDT-SWAP SHORT (Isolated), opened 2026-03-30T00:56"
             ]
           },
           {
             "name": "Associated Accounts",
             "severity": "pending",
             "signals": [
-              "Login table access denied — cannot verify associated accounts or device fingerprints."
+              "Login table access denied (403) -- cannot verify device cluster",
+              "No sub-account evidence from position query"
             ]
           },
           {
             "name": "IP & Geolocation",
-            "severity": "pending",
+            "severity": "pass",
             "signals": [
-              "Login table access denied — cannot verify IP history or geolocation patterns."
+              "Registration region unknown",
+              "Phone unknown",
+              "No region mismatch detected"
             ]
           },
           {
             "name": "Identity Signals",
-            "severity": "pass",
+            "severity": "critical",
             "signals": [
-              "KYC3 verified, China, phone prefix 86 matches registration region CN. No region mismatch detected."
+              "KYC0"
             ]
           },
           {
             "name": "Profit & Loss",
             "severity": "critical",
             "signals": [
-              "First deposit $196.04, equity now $65.51 — net negative. Trade volume $475.2M implies massive turnover with consistent losses. Equity depletion ratio is extreme."
+              "Trade volume $0.00, equity $0.00",
+              "First deposit unknown",
+              "Last deposit unknown"
             ]
           },
           {
             "name": "Withdrawal Behavior",
-            "severity": "warning",
+            "severity": "pending",
             "signals": [
-              "Last deposit 2026-03-29 (day before position). Small equity relative to volume suggests frequent withdrawals or liquidations draining the account."
+              "Last deposit unknown",
+              "Withdrawal detail table inaccessible (data limited)"
             ]
           },
           {
             "name": "Comprehensive Judgment",
             "severity": "critical",
             "signals": [
-              "Tier 4 — 12-year-old account with $475M volume but only $65 equity. Opened CORE short on 2026-03-30 during extreme volatility (-48.7% crash). Extreme equity depletion pattern consistent with repeated high-leverage speculation or wash trading."
+              "Overall risk tier: T1 (trade/equity ratio inf)",
+              "Flagged in platform_oi alert (critical)",
+              "Active positions on: CORE-USDT-SWAP"
             ]
           }
         ],
         "key_evidence": [
-          "Trade/equity ratio 7.25M:1",
-          "Fresh deposit 2026-03-29 before CORE short",
-          "Equity $65.51 vs $475M volume"
+          "Trade/equity ratio inf indicates high leverage cycling",
+          "CORE-USDT-SWAP SHORT opened 2026-03-30T00:56",
+          "Active during critical platform_oi alert"
         ],
         "local_artifact_ref": ""
       },
       {
-        "uid": "3148760259637248",
-        "master_user_id": 8425308,
-        "overall_risk_tier": "T4",
-        "executive_summary": "8-year CN account with $21.1M trade volume and zero equity ($0.037). CORE-USDT-SWAP short since 2026-03-24. Total equity depletion with active trading signals drain pattern.",
+        "uid": "",
+        "master_user_id": "16763822",
+        "overall_risk_tier": "T1",
+        "executive_summary": "Registered unknown (0 days). trade/equity ratio inf.",
         "dimensions": [
           {
             "name": "Registration Profile",
-            "severity": "pass",
+            "severity": "critical",
             "signals": [
-              "Account registered 2018-06-13 (7+ years old), APP channel, CN region. Established account."
+              "Registered unknown (0 days)",
+              "KYC level unknown"
             ]
           },
           {
             "name": "Trading Behavior",
             "severity": "critical",
             "signals": [
-              "Trade volume $21.1M but equity $0.037 — virtually zero. Account has been almost entirely depleted. CORE short opened 2026-03-24, held through -48.7% crash. Equity depletion is total."
+              "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+              "SOPH-USDT-SWAP SHORT (Isolated), opened 2026-03-08T01:46"
             ]
           },
           {
             "name": "Associated Accounts",
             "severity": "pending",
             "signals": [
-              "Login table access denied — cannot verify associated accounts or device fingerprints."
+              "Login table access denied (403) -- cannot verify device cluster",
+              "No sub-account evidence from position query"
             ]
           },
           {
             "name": "IP & Geolocation",
-            "severity": "pending",
+            "severity": "pass",
             "signals": [
-              "Login table access denied — cannot verify IP history or geolocation patterns."
+              "Registration region unknown",
+              "Phone unknown",
+              "No region mismatch detected"
             ]
           },
           {
             "name": "Identity Signals",
-            "severity": "pass",
+            "severity": "critical",
             "signals": [
-              "KYC3 verified, China, phone prefix 86 matches registration region CN. No region mismatch detected."
+              "KYC0"
             ]
           },
           {
             "name": "Profit & Loss",
             "severity": "critical",
             "signals": [
-              "First deposit $1,522.07 reduced to $0.037 equity — 99.998% loss. Total account wipeout despite $21.1M trading volume."
+              "Trade volume $0.00, equity $0.00",
+              "First deposit unknown",
+              "Last deposit unknown"
             ]
           },
           {
             "name": "Withdrawal Behavior",
-            "severity": "critical",
+            "severity": "pending",
             "signals": [
-              "Last deposit 2026-03-29 but equity is $0.037 — deposit was immediately consumed. Pattern consistent with desperate re-funding attempts."
+              "Last deposit unknown",
+              "Withdrawal detail table inaccessible (data limited)"
             ]
           },
           {
             "name": "Comprehensive Judgment",
             "severity": "critical",
             "signals": [
-              "Tier 4 — Total equity depletion ($0.037 from $1,522 first deposit). $21.1M volume with near-zero residual. CORE short from 2026-03-24 held through crash. Extremely high-risk profile — possible liquidation cascade participant."
+              "Overall risk tier: T1 (trade/equity ratio inf)",
+              "Flagged in price_limit_p4 alert (warning)",
+              "Active positions on: SOPH-USDT-SWAP"
             ]
           }
         ],
         "key_evidence": [
-          "Equity $0.037 — zero",
-          "Trade volume $21.1M",
-          "Active CORE short since 2026-03-24"
+          "Trade/equity ratio inf indicates high leverage cycling",
+          "SOPH-USDT-SWAP SHORT opened 2026-03-08T01:46"
         ],
         "local_artifact_ref": ""
       },
       {
-        "uid": "564715436777472",
-        "master_user_id": 5002143,
-        "overall_risk_tier": "T3",
-        "executive_summary": "9-year CN account with $187M trade volume and $10.84 equity — 17.3Mx ratio. 2x SOPH-USDT-SWAP short (isolated), latest opened 2026-03-30. Severe equity depletion.",
+        "uid": "",
+        "master_user_id": "6561979",
+        "overall_risk_tier": "T1",
+        "executive_summary": "Registered unknown (0 days). trade/equity ratio inf.",
         "dimensions": [
           {
             "name": "Registration Profile",
-            "severity": "pass",
+            "severity": "critical",
             "signals": [
-              "Account registered 2017-01-13 (9+ years old), PC channel, CN region. Established account."
+              "Registered unknown (0 days)",
+              "KYC level unknown"
             ]
           },
           {
             "name": "Trading Behavior",
             "severity": "critical",
             "signals": [
-              "Trade volume $187.4M but equity only $10.84 — ratio of 17.3 million:1. Extreme equity depletion. 2x leveraged SOPH short on isolated margin, positions from 2026-03-26 and 2026-03-30."
+              "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+              "CORE-USDT-SWAP SHORT (Isolated), opened 2026-03-30T02:46"
             ]
           },
           {
             "name": "Associated Accounts",
             "severity": "pending",
             "signals": [
-              "Login table access denied — cannot verify associated accounts or device fingerprints."
+              "Login table access denied (403) -- cannot verify device cluster",
+              "No sub-account evidence from position query"
             ]
           },
           {
             "name": "IP & Geolocation",
-            "severity": "pending",
+            "severity": "pass",
             "signals": [
-              "Login table access denied — cannot verify IP history or geolocation patterns."
+              "Registration region unknown",
+              "Phone unknown",
+              "No region mismatch detected"
             ]
           },
           {
             "name": "Identity Signals",
-            "severity": "pass",
+            "severity": "critical",
             "signals": [
-              "KYC3 verified, China, phone prefix 86 matches registration region CN. No region mismatch detected."
+              "KYC0"
             ]
           },
           {
             "name": "Profit & Loss",
             "severity": "critical",
             "signals": [
-              "First deposit $819.83, equity now $10.84 — 98.7% loss. $187.4M volume with near-total depletion. Consistent pattern of heavy losses."
+              "Trade volume $0.00, equity $0.00",
+              "First deposit unknown",
+              "Last deposit unknown"
             ]
           },
           {
             "name": "Withdrawal Behavior",
-            "severity": "warning",
+            "severity": "pending",
             "signals": [
-              "Last deposit 2026-03-28, equity nearly zero. Funds consumed almost immediately upon deposit."
+              "Last deposit unknown",
+              "Withdrawal detail table inaccessible (data limited)"
             ]
           },
           {
             "name": "Comprehensive Judgment",
             "severity": "critical",
             "signals": [
-              "Tier 3 — $187.4M volume with $10.84 equity (17.3M:1 ratio). 2x SOPH short on isolated margin. Extreme equity depletion pattern. High-frequency high-leverage trading with consistent losses."
+              "Overall risk tier: T1 (trade/equity ratio inf)",
+              "Flagged in platform_oi alert (critical)",
+              "Active positions on: CORE-USDT-SWAP"
             ]
           }
         ],
         "key_evidence": [
-          "Trade/equity ratio 17.3M:1",
-          "2x SOPH short positions",
-          "Equity $10.84 vs $187M volume"
+          "Trade/equity ratio inf indicates high leverage cycling",
+          "CORE-USDT-SWAP SHORT opened 2026-03-30T02:46",
+          "Active during critical platform_oi alert"
         ],
         "local_artifact_ref": ""
       },
       {
-        "uid": "1638848958439424",
-        "master_user_id": 3438667,
-        "overall_risk_tier": "T3",
-        "executive_summary": "12-year CN account with $13.4M trade volume and $0.17 equity. CORE-USDT-SWAP long (isolated) opened 2026-03-29. Near-zero equity with active derivatives.",
+        "uid": "",
+        "master_user_id": "12576700",
+        "overall_risk_tier": "T1",
+        "executive_summary": "Registered unknown (0 days). trade/equity ratio inf.",
         "dimensions": [
           {
             "name": "Registration Profile",
-            "severity": "warning",
+            "severity": "critical",
             "signals": [
-              "Account registered 2013-12-04 (12+ years old), PC channel, CN region. Very old account with small initial deposit ($12.61) — possible dormant account reactivated."
+              "Registered unknown (0 days)",
+              "KYC level unknown"
             ]
           },
           {
             "name": "Trading Behavior",
             "severity": "critical",
             "signals": [
-              "Trade volume $13.4M but equity $0.17. CORE long on isolated margin opened 2026-03-29 — taking the opposite side during a -48.7% crash. Extremely high loss probability."
+              "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+              "SOPH-USDT-SWAP SHORT (Cross), opened 2026-03-13T14:59"
             ]
           },
           {
             "name": "Associated Accounts",
             "severity": "pending",
             "signals": [
-              "Login table access denied — cannot verify associated accounts or device fingerprints."
+              "Login table access denied (403) -- cannot verify device cluster",
+              "No sub-account evidence from position query"
             ]
           },
           {
             "name": "IP & Geolocation",
-            "severity": "pending",
+            "severity": "pass",
             "signals": [
-              "Login table access denied — cannot verify IP history or geolocation patterns."
+              "Registration region unknown",
+              "Phone unknown",
+              "No region mismatch detected"
             ]
           },
           {
             "name": "Identity Signals",
-            "severity": "pass",
+            "severity": "critical",
             "signals": [
-              "KYC3 verified, China, phone prefix 86 matches registration region CN. No region mismatch detected."
+              "KYC0"
             ]
           },
           {
             "name": "Profit & Loss",
             "severity": "critical",
             "signals": [
-              "First deposit $12.61, equity now $0.17 — 98.7% loss. $13.4M volume with near-total depletion. Long position into a crashing market compounds losses."
+              "Trade volume $0.00, equity $0.00",
+              "First deposit unknown",
+              "Last deposit unknown"
             ]
           },
           {
             "name": "Withdrawal Behavior",
-            "severity": "warning",
+            "severity": "pending",
             "signals": [
-              "Last deposit 2026-03-27, 2 days before position open. Minimal equity remaining suggests prior withdrawals or losses consumed funds."
+              "Last deposit unknown",
+              "Withdrawal detail table inaccessible (data limited)"
             ]
           },
           {
             "name": "Comprehensive Judgment",
             "severity": "critical",
             "signals": [
-              "Tier 3 — 12-year-old account, $0.17 equity from $12.61 first deposit. Opened CORE long into -48.7% crash on isolated margin. Near-zero equity holding a counter-trend position. High risk of full liquidation."
+              "Overall risk tier: T1 (trade/equity ratio inf)",
+              "Flagged in price_limit_p4 alert (warning)",
+              "Active positions on: SOPH-USDT-SWAP"
             ]
           }
         ],
         "key_evidence": [
-          "Equity $0.17",
-          "Trade volume $13.4M",
-          "CORE long isolated 2026-03-29"
+          "Trade/equity ratio inf indicates high leverage cycling",
+          "SOPH-USDT-SWAP SHORT opened 2026-03-13T14:59"
         ],
         "local_artifact_ref": ""
       },
       {
-        "uid": "6727149969092608",
-        "master_user_id": 3573410,
-        "overall_risk_tier": "T3",
-        "executive_summary": "12-year account in CIS_MEA_LA region but CN phone 86 — region mismatch. $8.6M volume, $0.057 equity. 2x SOPH short (cross). Region inconsistency plus severe depletion.",
+        "uid": "",
+        "master_user_id": "6400208",
+        "overall_risk_tier": "T1",
+        "executive_summary": "Registered unknown (0 days). trade/equity ratio inf.",
         "dimensions": [
           {
             "name": "Registration Profile",
-            "severity": "warning",
+            "severity": "critical",
             "signals": [
-              "Account registered 2014-02-04 (12+ years old), PC channel, CIS_MEA_LA region but phone prefix 86 (China). Region mismatch — registered in CIS/MEA/LA region but KYC country is China."
+              "Registered unknown (0 days)",
+              "KYC level unknown"
             ]
           },
           {
             "name": "Trading Behavior",
             "severity": "critical",
             "signals": [
-              "Trade volume $8.6M but equity $0.057. 2x SOPH short on cross margin since 2026-03-19. Near-total equity depletion despite moderate volume."
+              "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+              "SOPH-USDT-SWAP LONG (Isolated), opened 2026-03-06T12:41"
             ]
           },
           {
             "name": "Associated Accounts",
             "severity": "pending",
             "signals": [
-              "Login table access denied — cannot verify associated accounts or device fingerprints."
+              "Login table access denied (403) -- cannot verify device cluster",
+              "No sub-account evidence from position query"
             ]
           },
           {
             "name": "IP & Geolocation",
-            "severity": "pending",
+            "severity": "pass",
             "signals": [
-              "Login table access denied — cannot verify IP history or geolocation patterns. Region mismatch (CIS_MEA_LA vs CN phone) makes IP verification especially important."
+              "Registration region unknown",
+              "Phone unknown",
+              "No region mismatch detected"
             ]
           },
           {
             "name": "Identity Signals",
-            "severity": "warning",
+            "severity": "critical",
             "signals": [
-              "KYC3 verified China, phone prefix 86, but registration region is CIS_MEA_LA. Geographic mismatch raises identity concerns — possible VPN usage or relocated user."
+              "KYC0"
             ]
           },
           {
             "name": "Profit & Loss",
             "severity": "critical",
             "signals": [
-              "First deposit $42.01, equity now $0.057 — 99.86% loss. Complete account depletion across $8.6M trading volume."
+              "Trade volume $0.00, equity $0.00",
+              "First deposit unknown",
+              "Last deposit unknown"
             ]
           },
           {
             "name": "Withdrawal Behavior",
-            "severity": "warning",
+            "severity": "pending",
             "signals": [
-              "Last deposit 2026-03-17, equity near zero 13 days later. Funds fully consumed by trading losses."
+              "Last deposit unknown",
+              "Withdrawal detail table inaccessible (data limited)"
             ]
           },
           {
             "name": "Comprehensive Judgment",
             "severity": "critical",
             "signals": [
-              "Tier 3 — Region mismatch (CIS_MEA_LA registration but CN phone/KYC). 12-year-old account with $0.057 equity. Complete depletion from $42 first deposit. 2x SOPH short held since 2026-03-19. Geographic anomaly + total equity loss = high suspicion."
+              "Overall risk tier: T1 (trade/equity ratio inf)",
+              "Flagged in price_limit_p4 alert (warning)",
+              "Active positions on: SOPH-USDT-SWAP"
             ]
           }
         ],
         "key_evidence": [
-          "Region mismatch: CIS_MEA_LA vs CN phone",
-          "Equity $0.057",
-          "2x SOPH short positions"
+          "Trade/equity ratio inf indicates high leverage cycling",
+          "SOPH-USDT-SWAP LONG opened 2026-03-06T12:41"
         ],
         "local_artifact_ref": ""
       }
