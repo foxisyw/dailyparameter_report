@@ -1,3 +1,5 @@
 # MMR Futures Review
 
-**Error:** Expecting value: line 1 column 1 (char 0)
+**Status:** warning
+
+15 adjustments across 65 in-scope instruments.
