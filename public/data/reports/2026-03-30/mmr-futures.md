@@ -1,5 +1,3 @@
 # MMR Futures Review
 
-**Status:** warning
-
-14 adjustments across 65 in-scope instruments.
+**Pending:** Depth data not available — re-run cron to fetch via MCP (Step 5b).
