@@ -1,0 +1,1185 @@
+index,assetsType,component_count,ema_avg_deviation,ema_max_deviation,issues
+0G-USDT,Altcoins,4,0.2561,0.4209,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1760s > 300s
+1INCH-EUR,Altcoins,3,0.1814,0.2174,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 3001s > 300s
+1INCH-USD,Altcoins,4,0.1776,0.3149,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1836s > 300s
+1INCH-USDC,Altcoins,5,0.1696,0.2660,AL-5: ema_avg_update_lag 1797s > 300s
+1INCH-USDT,Altcoins,5,0.1330,0.2005,AL-5: ema_avg_update_lag 1646s > 300s
+2Z-EUR,Altcoins,5,0.1355,0.1909,AL-5: ema_avg_update_lag 1700s > 300s
+2Z-USD,Altcoins,5,0.1326,0.1916,AL-5: ema_avg_update_lag 1162s > 300s
+2Z-USDC,Altcoins,5,0.1313,0.1936,AL-5: ema_avg_update_lag 1163s > 300s
+2Z-USDT,Altcoins,5,0.1403,0.2031,AL-5: ema_avg_update_lag 1659s > 300s
+A-EUR,Altcoins,5,0.1962,0.2980,AL-5: ema_avg_update_lag 1742s > 300s
+A-USD,Altcoins,5,0.2651,0.3673,AL-5: ema_avg_update_lag 1005s > 300s
+A-USDC,Altcoins,5,0.1677,0.2343,AL-5: ema_avg_update_lag 1665s > 300s
+A-USDT,Altcoins,5,0.2081,0.2923,AL-5: ema_avg_update_lag 1827s > 300s
+AAPL-USDT,TradFi,5,0.1100,0.1736,TF-1: dxFeed available but not in components
+AAVE-EUR,Altcoins,4,0.2733,0.3480,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1881s > 300s
+AAVE-TRY,Altcoins,3,0.1458,0.1687,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1689s > 300s
+AAVE-USD,Altcoins,4,0.1354,0.1678,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1028s > 300s
+AAVE-USDC,Altcoins,4,0.1578,0.1786,AL-5: ema_avg_update_lag 1669s > 300s
+AAVE-USDT,Altcoins,4,0.1828,0.2097,AL-5: ema_avg_update_lag 1308s > 300s
+ACE-USD,Altcoins,3,0.2112,0.3551,AL-5: ema_avg_update_lag 1596s > 300s
+ACE-USDT,Altcoins,3,0.3164,0.4778,AL-5: ema_avg_update_lag 1533s > 300s
+ACH-EUR,Altcoins,1,0.0888,0.0888,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1931s > 300s
+ACH-USD,Altcoins,4,0.1939,0.3404,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1365s > 300s
+ACH-USDC,Altcoins,5,0.1823,0.3225,AL-5: ema_avg_update_lag 1556s > 300s
+ACH-USDT,Altcoins,5,0.1564,0.2810,AL-5: ema_avg_update_lag 1200s > 300s
+ACT-TRY,Altcoins,2,0.2971,0.3266,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 2258s > 300s
+ACT-USD,Altcoins,4,0.3548,0.5104,AL-5: ema_avg_update_lag 1461s > 300s
+ACT-USDT,Altcoins,4,0.3750,0.5403,AL-5: ema_avg_update_lag 1784s > 300s
+ACU-USDT,Altcoins,4,0.3233,0.4214,AL-5: ema_avg_update_lag 1726s > 300s
+ADA-TRY,Topcoins,3,0.2407,0.2789,TC: ema_avg_deviation 0.24% ≥ 0.15%; TC: only 3 components (need ≥5)
+ADA-USDC,Topcoins,5,0.1687,0.2398,TC: ema_avg_deviation 0.17% ≥ 0.15%
+ADA-USDT,Topcoins,5,0.1664,0.1978,TC: ema_avg_deviation 0.17% ≥ 0.15%
+AERGO-EUR,Altcoins,2,0.2585,0.3129,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1751s > 300s
+AERGO-USD,Altcoins,2,0.1965,0.2615,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1242s > 300s
+AERGO-USDC,Altcoins,2,0.2036,0.2407,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 2005s > 300s
+AERGO-USDT,Altcoins,2,0.1819,0.2405,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1746s > 300s
+AERO-USDT,Altcoins,5,0.2269,0.3449,AL-5: ema_avg_update_lag 1277s > 300s
+AEVO-EUR,Altcoins,1,0.2895,0.2895,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1671s > 300s
+AEVO-USD,Altcoins,4,0.3677,0.5309,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1534s > 300s
+AEVO-USDC,Altcoins,5,0.2954,0.4495,AL-5: ema_avg_update_lag 1259s > 300s
+AEVO-USDT,Altcoins,5,0.2504,0.4046,AL-5: ema_avg_update_lag 1055s > 300s
+AGLD-EUR,Altcoins,1,0.1467,0.1467,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1091s > 300s
+AGLD-USD,Altcoins,5,0.1723,0.2711,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1360s > 300s
+AGLD-USDC,Altcoins,5,0.2401,0.3605,AL-5: ema_avg_update_lag 1767s > 300s
+AGLD-USDT,Altcoins,5,0.2626,0.3898,AL-5: ema_avg_update_lag 1621s > 300s
+AIXBT-EUR,Altcoins,1,0.3282,0.3282,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1684s > 300s
+AIXBT-TRY,Altcoins,5,0.3804,0.5378,AL-5: ema_avg_update_lag 1335s > 300s
+AIXBT-USD,Altcoins,5,0.2849,0.4420,AL-5: ema_avg_update_lag 1081s > 300s
+AIXBT-USDC,Altcoins,5,0.4607,0.6499,AL-5: ema_avg_update_lag 1814s > 300s
+AIXBT-USDT,Altcoins,5,0.5020,0.7001,AL-5: ema_avg_deviation 0.50% > 0.5%; AL-5: ema_avg_update_lag 1744s > 300s
+ALGO-EUR,Altcoins,4,0.2010,0.2794,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 2064s > 300s
+ALGO-USD,Altcoins,5,0.1209,0.1700,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1141s > 300s
+ALGO-USDC,Altcoins,4,0.1828,0.2174,AL-5: ema_avg_update_lag 1281s > 300s
+ALGO-USDT,Altcoins,4,0.1920,0.2265,AL-5: ema_avg_update_lag 1733s > 300s
+ALLO-EUR,Altcoins,4,0.1144,0.3158,AL-1: Binance available but not in components
+ALLO-TRY,Altcoins,4,0.2908,0.4179,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1246s > 300s
+ALLO-USD,Altcoins,4,0.3330,0.4656,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1633s > 300s
+ALLO-USDC,Altcoins,4,0.2822,0.3473,AL-1: Binance available but not in components
+ALLO-USDT,Altcoins,4,0.2650,0.3938,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 943s > 300s
+AMD-USDT,TradFi,3,0.2590,0.3111,TF-1: Ondo_TICKER available but not in components; TF-1: dxFeed available but not in components
+AMZN-USDT,TradFi,6,0.1051,0.1557,TF-1: dxFeed available but not in components
+ANIME-EUR,Altcoins,3,0.1544,0.2080,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1641s > 300s
+ANIME-TRY,Altcoins,5,0.1793,0.2797,AL-5: ema_avg_update_lag 1187s > 300s
+ANIME-USD,Altcoins,5,0.1676,0.2452,AL-5: ema_avg_update_lag 1288s > 300s
+ANIME-USDC,Altcoins,5,0.1697,0.2673,AL-5: ema_avg_update_lag 1786s > 300s
+ANIME-USDT,Altcoins,5,0.1921,0.2800,AL-5: ema_avg_update_lag 1756s > 300s
+APE-EUR,Altcoins,3,0.3109,0.4210,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 3596s > 300s
+APE-USD,Altcoins,5,0.2501,0.3967,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1378s > 300s
+APE-USDC,Altcoins,5,0.2352,0.3123,AL-5: ema_avg_update_lag 1691s > 300s
+APE-USDT,Altcoins,5,0.3055,0.3716,AL-5: ema_avg_update_lag 1746s > 300s
+API3-EUR,Altcoins,4,0.2329,0.3629,AL-5: ema_avg_update_lag 1773s > 300s
+API3-USD,Altcoins,4,0.2033,0.3250,AL-5: ema_avg_update_lag 1400s > 300s
+API3-USDC,Altcoins,4,0.2144,0.3273,AL-5: ema_avg_update_lag 1454s > 300s
+API3-USDT,Altcoins,4,0.2142,0.3410,AL-5: ema_avg_update_lag 1715s > 300s
+APR-USDT,Altcoins,4,0.4358,0.5732,AL-5: ema_avg_update_lag 1526s > 300s
+APT-EUR,Altcoins,4,0.2283,0.3239,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 2115s > 300s
+APT-TRY,Altcoins,3,0.2777,0.3408,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1925s > 300s
+APT-USD,Altcoins,5,0.2751,0.3312,AL-5: ema_avg_update_lag 1669s > 300s
+APT-USDC,Altcoins,4,0.2665,0.3259,AL-5: ema_avg_update_lag 1909s > 300s
+APT-USDT,Altcoins,5,0.2500,0.3246,AL-5: ema_avg_update_lag 1503s > 300s
+AR-EUR,Altcoins,1,0.2254,0.2254,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1790s > 300s
+AR-USD,Altcoins,4,0.2410,0.3569,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1496s > 300s
+AR-USDC,Altcoins,5,0.2682,0.3939,AL-5: ema_avg_update_lag 1372s > 300s
+AR-USDT,Altcoins,5,0.3021,0.4433,AL-5: ema_avg_update_lag 1766s > 300s
+ARB-EUR,Altcoins,4,0.2603,0.4247,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 2226s > 300s
+ARB-TRY,Altcoins,3,0.1766,0.2335,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1900s > 300s
+ARB-USD,Altcoins,5,0.2359,0.2934,AL-5: ema_avg_update_lag 1287s > 300s
+ARB-USDC,Altcoins,4,0.1709,0.2095,AL-5: ema_avg_update_lag 1922s > 300s
+ARB-USDT,Altcoins,4,0.2113,0.2405,AL-5: ema_avg_update_lag 1493s > 300s
+ARG-EUR,Altcoins,2,0.1666,0.1890,AL-4: only 2 distinct exchanges (need ≥3)
+ARG-USD,Altcoins,2,0.2049,0.2449,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1278s > 300s
+ARG-USDC,Altcoins,2,0.1975,0.2455,AL-4: only 2 distinct exchanges (need ≥3)
+ARG-USDT,Altcoins,2,0.2372,0.2898,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1731s > 300s
+ARKM-EUR,Altcoins,4,0.2539,0.4549,AL-5: ema_avg_update_lag 1884s > 300s
+ARKM-TRY,Altcoins,3,0.1813,0.2292,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1891s > 300s
+ARKM-USD,Altcoins,4,0.2823,0.4517,AL-5: ema_avg_update_lag 1413s > 300s
+ARKM-USDC,Altcoins,4,0.2569,0.4487,AL-5: ema_avg_update_lag 1814s > 300s
+ARKM-USDT,Altcoins,4,0.2900,0.5017,AL-5: ema_avg_update_lag 1575s > 300s
+ASP-USD,Altcoins,3,0.2620,0.4032,AL-5: ema_avg_update_lag 1184s > 300s
+ASP-USDT,Altcoins,3,0.3252,0.4784,AL-5: ema_avg_update_lag 1377s > 300s
+ASTER-EUR,Altcoins,5,0.1000,0.1606,AL-5: ema_avg_update_lag 1699s > 300s
+ASTER-TRY,Altcoins,2,0.0875,0.0918,AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1698s > 300s
+ASTER-USD,Altcoins,5,0.0863,0.1349,AL-5: ema_avg_update_lag 1246s > 300s
+ASTER-USDC,Altcoins,5,0.0918,0.1474,AL-5: ema_avg_update_lag 1161s > 300s
+ASTER-USDT,Altcoins,5,0.1083,0.1568,AL-5: ema_avg_update_lag 1652s > 300s
+ASTR-EUR,Altcoins,3,0.2147,0.2791,AL-5: ema_avg_update_lag 1035s > 300s
+ASTR-USD,Altcoins,3,0.2153,0.2775,AL-5: ema_avg_update_lag 1179s > 300s
+ASTR-USDC,Altcoins,3,0.2491,0.3132,AL-5: ema_avg_update_lag 1635s > 300s
+ASTR-USDT,Altcoins,3,0.2694,0.3295,AL-5: ema_avg_update_lag 1340s > 300s
+AT-USDT,Altcoins,4,0.1735,0.2559,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1670s > 300s
+ATH-EUR,Altcoins,4,0.4529,0.5466,AL-5: ema_avg_update_lag 1742s > 300s
+ATH-TRY,Altcoins,4,0.3939,0.4626,AL-5: ema_avg_update_lag 1615s > 300s
+ATH-USD,Altcoins,4,0.3975,0.4881,AL-5: ema_avg_update_lag 867s > 300s
+ATH-USDC,Altcoins,4,0.4295,0.5122,AL-5: ema_avg_update_lag 1111s > 300s
+ATH-USDT,Altcoins,4,0.4169,0.4937,AL-5: ema_avg_update_lag 1646s > 300s
+ATOM-EUR,Altcoins,5,0.1301,0.2239,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1897s > 300s
+ATOM-USD,Altcoins,5,0.1544,0.2366,AL-5: ema_avg_update_lag 1379s > 300s
+ATOM-USDC,Altcoins,4,0.1567,0.1999,AL-5: ema_avg_update_lag 1712s > 300s
+ATOM-USDT,Altcoins,4,0.1874,0.2368,AL-5: ema_avg_update_lag 1664s > 300s
+AUCTION-EUR,Altcoins,1,0.0987,0.0987,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1671s > 300s
+AUCTION-USD,Altcoins,4,0.1286,0.2116,AL-5: ema_avg_update_lag 1372s > 300s
+AUCTION-USDC,Altcoins,4,0.1630,0.2274,AL-5: ema_avg_update_lag 1924s > 300s
+AUCTION-USDT,Altcoins,4,0.1549,0.2449,AL-5: ema_avg_update_lag 1878s > 300s
+AVAX-EUR,Altcoins,6,0.1980,0.4434,AL-5: ema_avg_update_lag 2058s > 300s
+AVAX-TRY,Altcoins,3,0.1747,0.2309,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1864s > 300s
+AVAX-USD,Altcoins,5,0.1463,0.2159,AL-5: ema_avg_update_lag 1379s > 300s
+AVAX-USDC,Altcoins,4,0.1458,0.1944,AL-5: ema_avg_update_lag 1461s > 300s
+AVAX-USDT,Altcoins,4,0.2563,0.3108,AL-5: ema_avg_update_lag 1656s > 300s
+AVNT-EUR,Altcoins,5,0.3267,0.4150,AL-5: ema_avg_update_lag 1667s > 300s
+AVNT-USD,Altcoins,5,0.3610,0.4518,AL-5: ema_avg_update_lag 1088s > 300s
+AVNT-USDC,Altcoins,5,0.3310,0.4192,AL-5: ema_avg_update_lag 1655s > 300s
+AVNT-USDT,Altcoins,5,0.3304,0.3961,AL-5: ema_avg_update_lag 1778s > 300s
+AXS-EUR,Altcoins,2,0.3574,0.4008,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 2217s > 300s
+AXS-TRY,Altcoins,4,0.2167,0.3051,AL-5: ema_avg_update_lag 1698s > 300s
+AXS-USD,Altcoins,5,0.2500,0.3504,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1621s > 300s
+AXS-USDC,Altcoins,4,0.2132,0.2724,AL-5: ema_avg_update_lag 1341s > 300s
+AXS-USDT,Altcoins,4,0.2550,0.3392,AL-5: ema_avg_update_lag 1560s > 300s
+AZTEC-USDT,Altcoins,3,0.2308,0.3085,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1844s > 300s
+BABY-EUR,Altcoins,4,0.3497,0.4219,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1630s > 300s
+BABY-USD,Altcoins,4,0.2191,0.3057,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1156s > 300s
+BABY-USDC,Altcoins,4,0.3421,0.4157,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1687s > 300s
+BABY-USDT,Altcoins,5,0.3914,0.5037,AL-5: ema_avg_update_lag 1659s > 300s
+BABYDOGE-EUR,Altcoins,4,0.2868,0.4825,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1821s > 300s
+BABYDOGE-USD,Altcoins,4,0.2287,0.3892,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1361s > 300s
+BABYDOGE-USDC,Altcoins,4,0.2817,0.4764,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1784s > 300s
+BABYDOGE-USDT,Altcoins,4,0.2424,0.4160,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1519s > 300s
+BANANA-USD,Altcoins,4,0.2186,0.3079,AL-5: ema_avg_update_lag 2007s > 300s
+BANANA-USDT,Altcoins,4,0.2492,0.3337,AL-5: ema_avg_update_lag 1872s > 300s
+BAND-EUR,Altcoins,4,0.1902,0.3260,AL-5: ema_avg_update_lag 1777s > 300s
+BAND-USD,Altcoins,4,0.2005,0.3619,AL-5: ema_avg_update_lag 1613s > 300s
+BAND-USDC,Altcoins,4,0.2264,0.4068,AL-5: ema_avg_update_lag 1540s > 300s
+BAND-USDT,Altcoins,4,0.1997,0.3606,AL-5: ema_avg_update_lag 2187s > 300s
+BARD-EUR,Altcoins,4,0.2755,0.3611,AL-5: ema_avg_update_lag 1580s > 300s
+BARD-TRY,Altcoins,4,0.2374,0.3439,AL-5: ema_avg_update_lag 1197s > 300s
+BARD-USD,Altcoins,4,0.2354,0.3418,AL-5: ema_avg_update_lag 1632s > 300s
+BARD-USDC,Altcoins,4,0.2909,0.3865,AL-5: ema_avg_update_lag 1143s > 300s
+BARD-USDT,Altcoins,4,0.2829,0.3709,AL-5: ema_avg_update_lag 1630s > 300s
+BAT-EUR,Altcoins,5,0.3127,0.4643,AL-5: ema_avg_update_lag 1783s > 300s
+BAT-USD,Altcoins,4,0.2852,0.4135,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1072s > 300s
+BAT-USDC,Altcoins,5,0.3012,0.4322,AL-5: ema_avg_update_lag 1401s > 300s
+BAT-USDT,Altcoins,5,0.3515,0.5033,AL-5: ema_avg_update_lag 1710s > 300s
+BCH-EUR,Topcoins,1,0.1750,0.1750,TC: ema_avg_deviation 0.18% ≥ 0.15%; TC: only 1 components (need ≥5)
+BCH-USDC,Topcoins,4,0.1571,0.1825,TC: ema_avg_deviation 0.16% ≥ 0.15%; TC: only 4 components (need ≥5)
+BEAT-USDT,Altcoins,4,1.6546,1.8700,AL-5: ema_avg_deviation 1.65% > 0.5%; AL-5: ema_max_deviation 1.87% > 1.5%; AL-5: ema_avg_update_lag 1687s > 300s
+BERA-EUR,Altcoins,4,0.2684,0.3518,AL-5: ema_avg_update_lag 1743s > 300s
+BERA-TRY,Altcoins,4,0.2682,0.3627,AL-5: ema_avg_update_lag 1688s > 300s
+BERA-USD,Altcoins,4,0.2468,0.3115,AL-5: ema_avg_update_lag 1172s > 300s
+BERA-USDC,Altcoins,4,0.2624,0.3522,AL-5: ema_avg_update_lag 1697s > 300s
+BERA-USDT,Altcoins,4,0.3204,0.4145,AL-5: ema_avg_update_lag 1623s > 300s
+BETH-ETH,Topcoins,4,0.0086,0.0163,TC: only 4 components (need ≥5)
+BETH-USDT,Topcoins,5,0.1550,0.1650,TC: ema_avg_deviation 0.15% ≥ 0.15%
+BICO-EUR,Altcoins,4,0.2777,0.4509,AL-5: ema_avg_update_lag 1846s > 300s
+BICO-USD,Altcoins,4,0.2859,0.4614,AL-5: ema_avg_update_lag 1241s > 300s
+BICO-USDC,Altcoins,4,0.3673,0.5254,AL-5: ema_avg_update_lag 1823s > 300s
+BICO-USDT,Altcoins,4,0.3634,0.5439,AL-5: ema_avg_update_lag 1428s > 300s
+BIGTIME-EUR,Altcoins,1,0.1723,0.1723,AL-1: OKX available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1331s > 300s
+BIGTIME-USD,Altcoins,4,0.1504,0.2427,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1317s > 300s
+BIGTIME-USDC,Altcoins,4,0.1725,0.2523,AL-5: ema_avg_update_lag 1843s > 300s
+BIGTIME-USDT,Altcoins,4,0.1811,0.2614,AL-5: ema_avg_update_lag 1864s > 300s
+BIO-EUR,Altcoins,4,0.2089,0.3258,AL-5: ema_avg_update_lag 1824s > 300s
+BIO-TRY,Altcoins,4,0.2046,0.3218,AL-5: ema_avg_update_lag 1806s > 300s
+BIO-USD,Altcoins,3,0.1908,0.2967,AL-1: OKX available but not in components; AL-5: ema_avg_update_lag 1230s > 300s
+BIO-USDC,Altcoins,4,0.2395,0.3617,AL-5: ema_avg_update_lag 1762s > 300s
+BIO-USDT,Altcoins,4,0.2434,0.3652,AL-5: ema_avg_update_lag 1966s > 300s
+BLUR-EUR,Altcoins,5,0.2195,0.4221,AL-5: ema_avg_update_lag 1804s > 300s
+BLUR-USD,Altcoins,5,0.1997,0.3772,AL-5: ema_avg_update_lag 1923s > 300s
+BLUR-USDC,Altcoins,5,0.1945,0.3633,AL-5: ema_avg_update_lag 1800s > 300s
+BLUR-USDT,Altcoins,5,0.2093,0.4158,AL-5: ema_avg_update_lag 1743s > 300s
+BNB-EUR,Altcoins,4,0.0853,0.1312,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1645s > 300s
+BNB-USD,Altcoins,5,0.0732,0.0920,AL-5: ema_avg_update_lag 1705s > 300s
+BNB-USDC,Altcoins,4,0.1004,0.1204,AL-5: ema_avg_update_lag 1679s > 300s
+BNB-USDT,Altcoins,5,0.1123,0.1368,AL-5: ema_avg_update_lag 1736s > 300s
+BNT-EUR,Altcoins,2,0.1620,0.1693,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1155s > 300s
+BNT-USD,Altcoins,4,0.2550,0.4173,AL-5: ema_avg_update_lag 1324s > 300s
+BNT-USDC,Altcoins,5,0.2112,0.3592,AL-5: ema_avg_update_lag 1913s > 300s
+BNT-USDT,Altcoins,5,0.2165,0.3559,AL-5: ema_avg_update_lag 1867s > 300s
+BOME-EUR,Altcoins,4,0.1986,0.3057,AL-5: ema_avg_update_lag 1684s > 300s
+BOME-USD,Altcoins,4,0.2806,0.3962,AL-5: ema_avg_update_lag 1317s > 300s
+BOME-USDC,Altcoins,4,0.1856,0.2715,AL-5: ema_avg_update_lag 1680s > 300s
+BOME-USDT,Altcoins,4,0.2193,0.3212,AL-5: ema_avg_update_lag 1563s > 300s
+BONK-EUR,Altcoins,1,0.1755,0.1755,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1617s > 300s
+BONK-TRY,Altcoins,3,0.1500,0.2064,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1371s > 300s
+BONK-USD,Altcoins,4,0.1859,0.2405,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1305s > 300s
+BONK-USDC,Altcoins,5,0.1692,0.2276,AL-5: ema_avg_update_lag 1626s > 300s
+BONK-USDT,Altcoins,5,0.1806,0.2423,AL-5: ema_avg_update_lag 1507s > 300s
+BRETT-USDT,Altcoins,4,0.2582,0.3404,AL-5: ema_avg_update_lag 995s > 300s
+BREV-EUR,Altcoins,3,0.1642,0.2403,AL-5: ema_avg_update_lag 1277s > 300s
+BREV-TRY,Altcoins,3,0.1701,0.2114,AL-5: ema_avg_update_lag 1349s > 300s
+BREV-USD,Altcoins,3,0.1679,0.2233,AL-5: ema_avg_update_lag 1062s > 300s
+BREV-USDC,Altcoins,3,0.1700,0.2130,AL-5: ema_avg_update_lag 1770s > 300s
+BREV-USDT,Altcoins,3,0.2438,0.2943,AL-5: ema_avg_update_lag 1520s > 300s
+BRL1-BRL,Altcoins,2,0.0722,0.0766,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 4018s > 300s
+BRL1-USDT,Altcoins,2,0.0459,0.0557,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 4039s > 300s
+BTC-TRY,Topcoins,3,0.1209,0.1651,TC: only 3 components (need ≥5)
+BTC-USD,Topcoins,4,0.1175,0.1320,TC: only 4 components (need ≥5)
+BTC-USDC,Topcoins,5,0.1833,0.2205,TC: ema_avg_deviation 0.18% ≥ 0.15%
+BTC-USDT,Topcoins,5,0.1567,0.1640,TC: ema_avg_deviation 0.16% ≥ 0.15%
+BZ-USDT,TradFi,3,0.2116,0.2782,TF-1: dxFeed available but not in components
+CAT-EUR,Altcoins,3,0.1552,0.2756,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-1: Bybit available but not in components
+CAT-USD,Altcoins,4,0.1948,0.3341,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1327s > 300s
+CAT-USDC,Altcoins,4,0.1775,0.3328,AL-1: Binance available but not in components; AL-1: Bybit available but not in components
+CAT-USDT,Altcoins,4,0.2424,0.4133,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1845s > 300s
+CATI-USD,Altcoins,4,0.2654,0.3436,AL-5: ema_avg_update_lag 1296s > 300s
+CATI-USDT,Altcoins,4,0.2190,0.3073,AL-5: ema_avg_update_lag 1852s > 300s
+CC-TRY,Altcoins,3,0.2353,0.2942,AL-1: OKX available but not in components; AL-5: ema_avg_update_lag 1646s > 300s
+CC-USD,Altcoins,5,0.2292,0.3099,AL-5: ema_avg_update_lag 1595s > 300s
+CC-USDT,Altcoins,6,0.2555,0.3453,AL-5: ema_avg_update_lag 1675s > 300s
+CELO-EUR,Altcoins,1,0.2206,0.2206,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1654s > 300s
+CELO-USD,Altcoins,3,0.2448,0.3567,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1593s > 300s
+CELO-USDC,Altcoins,4,0.3098,0.4525,AL-5: ema_avg_update_lag 1822s > 300s
+CELO-USDT,Altcoins,4,0.2953,0.4188,AL-5: ema_avg_update_lag 1384s > 300s
+CELR-EUR,Altcoins,1,0.5339,0.5339,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_deviation 0.53% > 0.5%; AL-5: ema_avg_update_lag 1573s > 300s
+CELR-USD,Altcoins,3,0.5399,0.7301,AL-5: ema_avg_deviation 0.54% > 0.5%; AL-5: ema_avg_update_lag 1265s > 300s
+CELR-USDC,Altcoins,4,0.6826,0.9357,AL-5: ema_avg_deviation 0.68% > 0.5%; AL-5: ema_avg_update_lag 1782s > 300s
+CELR-USDT,Altcoins,4,0.6848,0.8821,AL-5: ema_avg_deviation 0.68% > 0.5%; AL-5: ema_avg_update_lag 1820s > 300s
+CETUS-USD,Altcoins,3,0.3418,0.4947,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1191s > 300s
+CETUS-USDT,Altcoins,4,0.4043,0.4980,AL-5: ema_avg_update_lag 1676s > 300s
+CFG-EUR,Altcoins,1,0.4462,0.4462,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1572s > 300s
+CFG-TRY,Altcoins,4,0.4543,0.5575,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1186s > 300s
+CFG-USD,Altcoins,4,0.6092,0.7426,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_deviation 0.61% > 0.5%; AL-5: ema_avg_update_lag 1109s > 300s
+CFG-USDC,Altcoins,4,0.4703,0.5995,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1910s > 300s
+CFG-USDT,Altcoins,4,0.4247,0.5488,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1430s > 300s
+CFX-EUR,Altcoins,3,0.2499,0.2864,AL-5: ema_avg_update_lag 1663s > 300s
+CFX-USD,Altcoins,3,0.1659,0.1995,AL-5: ema_avg_update_lag 1137s > 300s
+CFX-USDC,Altcoins,3,0.2326,0.2829,AL-5: ema_avg_update_lag 1644s > 300s
+CFX-USDT,Altcoins,3,0.2727,0.3289,AL-5: ema_avg_update_lag 1698s > 300s
+CHZ-EUR,Altcoins,3,0.2470,0.3483,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 2594s > 300s
+CHZ-TRY,Altcoins,3,0.1478,0.1815,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1668s > 300s
+CHZ-USD,Altcoins,4,0.1450,0.2294,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1156s > 300s
+CHZ-USDC,Altcoins,4,0.1468,0.1992,AL-5: ema_avg_update_lag 1960s > 300s
+CHZ-USDT,Altcoins,4,0.1799,0.2472,AL-5: ema_avg_update_lag 1468s > 300s
+CITY-USD,Altcoins,3,0.1661,0.2335,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1148s > 300s
+CITY-USDT,Altcoins,3,0.2047,0.3175,AL-5: ema_avg_update_lag 1321s > 300s
+CL-USDT,TradFi,3,0.1830,0.2453,TF-1: Pyth available but not in components; TF-1: dxFeed available but not in components
+COAI-USDT,Altcoins,4,0.1767,0.2903,AL-5: ema_avg_update_lag 1682s > 300s
+COIN-USDT,TradFi,6,0.1991,0.2507,TF-1: dxFeed available but not in components
+COMP-EUR,Altcoins,3,0.0747,0.1034,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 3581s > 300s
+COMP-USD,Altcoins,4,0.1099,0.1719,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1059s > 300s
+COMP-USDC,Altcoins,4,0.1616,0.3169,AL-5: ema_avg_update_lag 1272s > 300s
+COMP-USDT,Altcoins,4,0.1662,0.3181,AL-5: ema_avg_update_lag 1804s > 300s
+CORE-EUR,Altcoins,4,0.3777,0.4886,AL-5: ema_avg_update_lag 1143s > 300s
+CORE-USD,Altcoins,4,0.3267,0.3975,AL-5: ema_avg_update_lag 1047s > 300s
+CORE-USDC,Altcoins,4,0.3703,0.5048,AL-5: ema_avg_update_lag 1144s > 300s
+CORE-USDT,Altcoins,4,0.3753,0.4608,AL-5: ema_avg_update_lag 1613s > 300s
+CRCL-USDT,TradFi,6,0.3660,0.4672,TF-1: dxFeed available but not in components
+CRO-EUR,Altcoins,4,0.0747,0.1090,AL-5: ema_avg_update_lag 1707s > 300s
+CRO-TRY,Altcoins,4,0.0852,0.1164,AL-5: ema_avg_update_lag 1689s > 300s
+CRO-USD,Altcoins,4,0.0844,0.1267,AL-5: ema_avg_update_lag 1172s > 300s
+CRO-USDC,Altcoins,4,0.0749,0.1107,AL-5: ema_avg_update_lag 1369s > 300s
+CRO-USDT,Altcoins,4,0.0981,0.1299,AL-5: ema_avg_update_lag 1594s > 300s
+CRV-EUR,Altcoins,4,0.2628,0.4024,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1949s > 300s
+CRV-USD,Altcoins,5,0.1826,0.2521,AL-5: ema_avg_update_lag 1140s > 300s
+CRV-USDC,Altcoins,4,0.1971,0.2538,AL-5: ema_avg_update_lag 1720s > 300s
+CRV-USDT,Altcoins,4,0.2701,0.3367,AL-5: ema_avg_update_lag 1744s > 300s
+CSPR-EUR,Altcoins,1,0.3473,0.3473,AL-1: OKX available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1903s > 300s
+CSPR-USD,Altcoins,4,0.3473,0.5174,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1383s > 300s
+CSPR-USDC,Altcoins,5,0.3644,0.5486,AL-5: ema_avg_update_lag 1739s > 300s
+CSPR-USDT,Altcoins,5,0.3942,0.6217,AL-5: ema_avg_update_lag 1785s > 300s
+CTC-EUR,Altcoins,4,0.2907,0.5442,AL-5: ema_avg_update_lag 1788s > 300s
+CTC-USD,Altcoins,4,0.2785,0.5004,AL-5: ema_avg_update_lag 1756s > 300s
+CTC-USDC,Altcoins,4,0.2810,0.5234,AL-5: ema_avg_update_lag 1854s > 300s
+CTC-USDT,Altcoins,4,0.2667,0.4913,AL-5: ema_avg_update_lag 1516s > 300s
+CVC-EUR,Altcoins,3,0.2339,0.2784,AL-5: ema_avg_update_lag 1667s > 300s
+CVC-USD,Altcoins,3,0.2148,0.2618,AL-5: ema_avg_update_lag 1659s > 300s
+CVC-USDC,Altcoins,3,0.2702,0.3286,AL-5: ema_avg_update_lag 1757s > 300s
+CVC-USDT,Altcoins,3,0.2510,0.3077,AL-5: ema_avg_update_lag 1465s > 300s
+CVX-EUR,Altcoins,4,0.2717,0.4283,AL-5: ema_avg_update_lag 1203s > 300s
+CVX-USD,Altcoins,4,0.2512,0.3870,AL-5: ema_avg_update_lag 1356s > 300s
+CVX-USDC,Altcoins,4,0.3079,0.4399,AL-5: ema_avg_update_lag 1392s > 300s
+CVX-USDT,Altcoins,4,0.3381,0.5327,AL-5: ema_avg_update_lag 1664s > 300s
+DAI-TRY,Altcoins,3,0.0269,0.0386,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 2005s > 300s
+DAI-USD,Altcoins,3,0.0108,0.0177,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1314s > 300s
+DAI-USDT,Altcoins,3,0.0172,0.0245,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 2404s > 300s
+DASH-EUR,Altcoins,5,0.1710,0.2514,AL-5: ema_avg_update_lag 1598s > 300s
+DASH-USD,Altcoins,5,0.1539,0.2360,AL-5: ema_avg_update_lag 1142s > 300s
+DASH-USDC,Altcoins,5,0.1684,0.2558,AL-5: ema_avg_update_lag 1132s > 300s
+DASH-USDT,Altcoins,5,0.1661,0.2337,AL-5: ema_avg_update_lag 1627s > 300s
+DEGEN-USD,Altcoins,5,0.2323,0.3717,AL-5: ema_avg_update_lag 1378s > 300s
+DEGEN-USDT,Altcoins,5,0.3201,0.5247,AL-5: ema_avg_update_lag 1926s > 300s
+DGB-EUR,Altcoins,4,0.3904,0.6124,AL-5: ema_avg_update_lag 1909s > 300s
+DGB-USD,Altcoins,4,0.2618,0.4324,AL-5: ema_avg_update_lag 1539s > 300s
+DGB-USDC,Altcoins,4,0.3219,0.5259,AL-5: ema_avg_update_lag 1350s > 300s
+DGB-USDT,Altcoins,4,0.3122,0.5873,AL-5: ema_avg_update_lag 1499s > 300s
+DOGE-EUR,Topcoins,5,0.1559,0.2803,TC: ema_avg_deviation 0.16% ≥ 0.15%
+DOGE-TRY,Topcoins,3,0.1349,0.1895,TC: only 3 components (need ≥5)
+DOGE-USDT,Topcoins,5,0.1656,0.1864,TC: ema_avg_deviation 0.17% ≥ 0.15%
+DOGS-USD,Altcoins,4,0.2702,0.4290,AL-5: ema_avg_update_lag 1212s > 300s
+DOGS-USDT,Altcoins,4,0.2969,0.4058,AL-5: ema_avg_update_lag 1759s > 300s
+DOOD-EUR,Altcoins,4,0.1822,0.2897,AL-5: ema_avg_update_lag 1714s > 300s
+DOOD-USD,Altcoins,4,0.1632,0.2787,AL-5: ema_avg_update_lag 1599s > 300s
+DOOD-USDC,Altcoins,4,0.2046,0.3568,AL-5: ema_avg_update_lag 1710s > 300s
+DOOD-USDT,Altcoins,4,0.2534,0.4032,AL-5: ema_avg_update_lag 1722s > 300s
+DORA-USDT,Altcoins,2,0.2382,0.2775,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 2120s > 300s
+DOT-EUR,Topcoins,4,0.2444,0.2983,TC: ema_avg_deviation 0.24% ≥ 0.15%; TC: only 4 components (need ≥5)
+DOT-TRY,Topcoins,2,0.1889,0.2059,TC: ema_avg_deviation 0.19% ≥ 0.15%; TC: only 2 components (need ≥5)
+DOT-USD,Topcoins,5,0.2129,0.2748,TC: ema_avg_deviation 0.21% ≥ 0.15%
+DOT-USDC,Topcoins,4,0.2363,0.2694,TC: ema_avg_deviation 0.24% ≥ 0.15%; TC: only 4 components (need ≥5)
+DOT-USDT,Topcoins,5,0.2739,0.3159,TC: ema_avg_deviation 0.27% ≥ 0.15%; TC: ema_max_deviation 0.32% ≥ 0.3%
+DUCK-USD,Altcoins,3,0.1894,0.2781,AL-5: ema_avg_update_lag 1271s > 300s
+DUCK-USDT,Altcoins,3,0.1758,0.2820,AL-5: ema_avg_update_lag 1697s > 300s
+DYDX-EUR,Altcoins,5,0.4078,0.5274,AL-5: ema_avg_update_lag 1313s > 300s
+DYDX-USD,Altcoins,5,0.3517,0.4520,AL-5: ema_avg_update_lag 1681s > 300s
+DYDX-USDC,Altcoins,5,0.4230,0.5192,AL-5: ema_avg_update_lag 1705s > 300s
+DYDX-USDT,Altcoins,5,0.5125,0.6444,AL-5: ema_avg_deviation 0.51% > 0.5%; AL-5: ema_avg_update_lag 1621s > 300s
+EDEN-USDT,Altcoins,5,0.4019,0.6916,AL-5: ema_avg_update_lag 974s > 300s
+EGLD-EUR,Altcoins,4,0.2434,0.3458,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 2791s > 300s
+EGLD-USD,Altcoins,5,0.2169,0.4377,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1669s > 300s
+EGLD-USDC,Altcoins,5,0.2047,0.3365,AL-5: ema_avg_update_lag 1825s > 300s
+EGLD-USDT,Altcoins,5,0.1986,0.2925,AL-5: ema_avg_update_lag 2001s > 300s
+EIGEN-EUR,Altcoins,4,0.2396,0.3805,AL-5: ema_avg_update_lag 1825s > 300s
+EIGEN-TRY,Altcoins,3,0.1870,0.2523,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1866s > 300s
+EIGEN-USD,Altcoins,4,0.2634,0.3908,AL-5: ema_avg_update_lag 1336s > 300s
+EIGEN-USDC,Altcoins,4,0.2714,0.3864,AL-5: ema_avg_update_lag 1440s > 300s
+EIGEN-USDT,Altcoins,4,0.3289,0.5126,AL-5: ema_avg_update_lag 1622s > 300s
+ELF-EUR,Altcoins,2,0.1282,0.1585,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1895s > 300s
+ELF-USD,Altcoins,2,0.1316,0.1624,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1592s > 300s
+ELF-USDC,Altcoins,2,0.1419,0.2024,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1822s > 300s
+ELF-USDT,Altcoins,2,0.1194,0.1447,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1134s > 300s
+ENA-EUR,Altcoins,5,0.4085,0.4681,AL-5: ema_avg_update_lag 1717s > 300s
+ENA-TRY,Altcoins,3,0.4396,0.5272,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1748s > 300s
+ENA-USD,Altcoins,5,0.3129,0.3673,AL-5: ema_avg_update_lag 1233s > 300s
+ENA-USDC,Altcoins,5,0.4227,0.4725,AL-5: ema_avg_update_lag 1717s > 300s
+ENA-USDT,Altcoins,5,0.4294,0.4890,AL-5: ema_avg_update_lag 1728s > 300s
+ENJ-EUR,Altcoins,1,0.3718,0.3718,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1789s > 300s
+ENJ-USD,Altcoins,4,0.3816,0.5346,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1769s > 300s
+ENJ-USDC,Altcoins,5,0.4433,0.6037,AL-5: ema_avg_update_lag 1717s > 300s
+ENJ-USDT,Altcoins,5,0.4335,0.6321,AL-5: ema_avg_update_lag 1409s > 300s
+ENS-EUR,Altcoins,4,0.1517,0.2288,AL-5: ema_avg_update_lag 1161s > 300s
+ENS-USD,Altcoins,5,0.1555,0.2593,AL-5: ema_avg_update_lag 1205s > 300s
+ENS-USDC,Altcoins,4,0.2306,0.3089,AL-5: ema_avg_update_lag 2009s > 300s
+ENS-USDT,Altcoins,4,0.1723,0.2473,AL-5: ema_avg_update_lag 1778s > 300s
+ENSO-USDT,Altcoins,4,0.2728,0.3562,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1648s > 300s
+ESP-USDT,Altcoins,4,0.2918,0.3901,AL-5: ema_avg_update_lag 1761s > 300s
+ETC-USD,Topcoins,5,0.2173,0.3183,TC: ema_avg_deviation 0.22% ≥ 0.15%; TC: ema_max_deviation 0.32% ≥ 0.3%
+ETC-USDC,Topcoins,5,0.1644,0.2344,TC: ema_avg_deviation 0.16% ≥ 0.15%
+ETC-USDT,Topcoins,5,0.1790,0.2686,TC: ema_avg_deviation 0.18% ≥ 0.15%
+ETH-TRY,Topcoins,3,0.1249,0.1577,TC: only 3 components (need ≥5)
+ETH-USDC,Topcoins,5,0.1549,0.1848,TC: ema_avg_deviation 0.15% ≥ 0.15%
+ETHFI-EUR,Altcoins,4,0.2338,0.2934,AL-5: ema_avg_update_lag 1716s > 300s
+ETHFI-TRY,Altcoins,3,0.2250,0.3250,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1976s > 300s
+ETHFI-USD,Altcoins,4,0.1880,0.2608,AL-5: ema_avg_update_lag 1360s > 300s
+ETHFI-USDC,Altcoins,4,0.2254,0.3102,AL-5: ema_avg_update_lag 1477s > 300s
+ETHFI-USDT,Altcoins,4,0.2891,0.3605,AL-5: ema_avg_update_lag 988s > 300s
+ETHW-EUR,Altcoins,1,0.2384,0.2384,AL-1: OKX available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1923s > 300s
+ETHW-USD,Altcoins,4,0.1711,0.2818,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1026s > 300s
+ETHW-USDC,Altcoins,4,0.3348,0.4582,AL-5: ema_avg_update_lag 1762s > 300s
+ETHW-USDT,Altcoins,4,0.2259,0.3546,AL-5: ema_avg_update_lag 1735s > 300s
+EURC-USD,Fiat,2,0.0221,0.0294,Fiat: only 2 components (need ≥3)
+EWJ-USDT,TradFi,3,0.1335,0.2022,TF-1: dxFeed available but not in components; TF-1: Binance_LINEAR_INDEX available but not in components; TF-3: Binance_LINEAR_PERPETUAL (score 4) available but not used
+EWY-USDT,TradFi,3,0.1852,0.2375,TF-1: dxFeed available but not in components; TF-1: Binance_LINEAR_INDEX available but not in components; TF-3: Binance_LINEAR_PERPETUAL (score 4) available but not used
+F-USDT,Altcoins,5,0.1790,0.2844,AL-5: ema_avg_update_lag 1704s > 300s
+FARTCOIN-USDT,Altcoins,5,0.2852,0.3962,AL-5: ema_avg_update_lag 1646s > 300s
+FET-EUR,Altcoins,3,0.4152,0.5452,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1697s > 300s
+FET-TRY,Altcoins,3,0.4294,0.6104,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1815s > 300s
+FET-USD,Altcoins,4,0.4044,0.4605,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1166s > 300s
+FET-USDC,Altcoins,5,0.5187,0.7245,AL-1: Bybit available but not in components; AL-5: ema_avg_deviation 0.52% > 0.5%; AL-5: ema_avg_update_lag 1410s > 300s
+FET-USDT,Altcoins,5,0.4448,0.5046,AL-5: ema_avg_update_lag 1573s > 300s
+FIL-EUR,Altcoins,5,0.1924,0.2526,AL-5: ema_avg_update_lag 1042s > 300s
+FIL-TRY,Altcoins,5,0.1760,0.2244,AL-5: ema_avg_update_lag 1204s > 300s
+FIL-USD,Altcoins,5,0.2122,0.3382,AL-5: ema_avg_update_lag 1371s > 300s
+FIL-USDC,Altcoins,2,0.2006,0.2483,AL-1: OKX available but not in components; AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1227s > 300s
+FIL-USDT,Altcoins,5,0.2494,0.3362,AL-5: ema_avg_update_lag 1670s > 300s
+FLOKI-EUR,Altcoins,1,0.1249,0.1249,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1846s > 300s
+FLOKI-TRY,Altcoins,3,0.1600,0.2229,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1830s > 300s
+FLOKI-USD,Altcoins,5,0.1313,0.1871,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1048s > 300s
+FLOKI-USDC,Altcoins,6,0.1591,0.2250,AL-5: ema_avg_update_lag 1225s > 300s
+FLOKI-USDT,Altcoins,6,0.1873,0.2722,AL-5: ema_avg_update_lag 1644s > 300s
+FLOW-EUR,Altcoins,4,0.2586,0.3834,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1361s > 300s
+FLOW-USD,Altcoins,5,0.5345,1.0929,AL-1: Bybit available but not in components; AL-5: ema_avg_deviation 0.53% > 0.5%; AL-5: ema_avg_update_lag 1313s > 300s
+FLOW-USDC,Altcoins,5,0.2950,0.4116,AL-5: ema_avg_update_lag 1663s > 300s
+FLOW-USDT,Altcoins,5,0.2796,0.4079,AL-5: ema_avg_update_lag 1770s > 300s
+FLR-EUR,Altcoins,4,0.1696,0.2755,AL-5: ema_avg_update_lag 1431s > 300s
+FLR-USD,Altcoins,5,0.1667,0.2736,AL-5: ema_avg_update_lag 1811s > 300s
+FLR-USDC,Altcoins,4,0.1800,0.3020,AL-5: ema_avg_update_lag 1513s > 300s
+FLR-USDT,Altcoins,4,0.1720,0.2773,AL-5: ema_avg_update_lag 1747s > 300s
+FLUID-EUR,Altcoins,2,0.1794,0.2168,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1724s > 300s
+FLUID-USD,Altcoins,2,0.1746,0.2066,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1832s > 300s
+FLUID-USDC,Altcoins,2,0.1700,0.2008,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1700s > 300s
+FLUID-USDT,Altcoins,2,0.1633,0.1952,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1435s > 300s
+FOGO-EUR,Altcoins,4,0.3346,0.3912,AL-5: ema_avg_update_lag 1615s > 300s
+FOGO-TRY,Altcoins,4,0.3107,0.3540,AL-5: ema_avg_update_lag 1644s > 300s
+FOGO-USD,Altcoins,4,0.3280,0.3773,AL-5: ema_avg_update_lag 1708s > 300s
+FOGO-USDC,Altcoins,4,0.2949,0.3496,AL-5: ema_avg_update_lag 1326s > 300s
+FOGO-USDT,Altcoins,4,0.4275,0.4737,AL-5: ema_avg_update_lag 1670s > 300s
+G-EUR,Altcoins,5,0.2233,0.3541,AL-5: ema_avg_update_lag 1836s > 300s
+G-USD,Altcoins,5,0.2146,0.3313,AL-5: ema_avg_update_lag 1811s > 300s
+G-USDC,Altcoins,5,0.2894,0.4164,AL-5: ema_avg_update_lag 1851s > 300s
+G-USDT,Altcoins,5,0.2389,0.3720,AL-5: ema_avg_update_lag 1939s > 300s
+GALA-EUR,Altcoins,1,0.2033,0.2033,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1554s > 300s
+GALA-USD,Altcoins,4,0.2107,0.3489,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1793s > 300s
+GALA-USDC,Altcoins,4,0.3312,0.4149,AL-5: ema_avg_update_lag 1283s > 300s
+GALA-USDT,Altcoins,4,0.2882,0.3973,AL-5: ema_avg_update_lag 1661s > 300s
+GALFT-USDT,Altcoins,1,0.0683,0.0683,AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 2074s > 300s
+GAS-EUR,Altcoins,4,0.1558,0.2356,AL-5: ema_avg_update_lag 1818s > 300s
+GAS-USD,Altcoins,4,0.1336,0.2223,AL-5: ema_avg_update_lag 1360s > 300s
+GAS-USDC,Altcoins,4,0.1503,0.2415,AL-5: ema_avg_update_lag 1774s > 300s
+GAS-USDT,Altcoins,4,0.2170,0.3264,AL-5: ema_avg_update_lag 1399s > 300s
+GIGGLE-USDT,Altcoins,5,0.2505,0.3420,AL-5: ema_avg_update_lag 1660s > 300s
+GLM-EUR,Altcoins,4,0.2514,0.3657,AL-5: ema_avg_update_lag 1480s > 300s
+GLM-USD,Altcoins,4,0.2452,0.3738,AL-5: ema_avg_update_lag 1233s > 300s
+GLM-USDC,Altcoins,4,0.2584,0.3987,AL-5: ema_avg_update_lag 1345s > 300s
+GLM-USDT,Altcoins,4,0.2570,0.4076,AL-5: ema_avg_update_lag 1772s > 300s
+GMT-EUR,Altcoins,4,0.1789,0.2757,AL-5: ema_avg_update_lag 1802s > 300s
+GMT-USD,Altcoins,3,0.2207,0.3308,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1895s > 300s
+GMT-USDC,Altcoins,4,0.1990,0.2918,AL-5: ema_avg_update_lag 1821s > 300s
+GMT-USDT,Altcoins,4,0.2312,0.3281,AL-5: ema_avg_update_lag 1509s > 300s
+GMX-USD,Altcoins,5,0.2225,0.3564,AL-5: ema_avg_update_lag 1525s > 300s
+GMX-USDT,Altcoins,5,0.2030,0.3887,AL-5: ema_avg_update_lag 1878s > 300s
+GOAT-EUR,Altcoins,1,0.2291,0.2291,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1663s > 300s
+GOAT-USD,Altcoins,3,0.3376,0.5220,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1699s > 300s
+GOAT-USDC,Altcoins,4,0.2907,0.5199,AL-5: ema_avg_update_lag 1906s > 300s
+GOAT-USDT,Altcoins,4,0.2890,0.5249,AL-5: ema_avg_update_lag 1897s > 300s
+GODS-USD,Altcoins,4,0.2314,0.3350,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1917s > 300s
+GODS-USDT,Altcoins,4,0.2701,0.3832,AL-5: ema_avg_update_lag 1764s > 300s
+GOOGL-USDT,TradFi,5,0.1405,0.2250,TF-1: dxFeed available but not in components
+GPS-USDT,Altcoins,5,0.2211,0.3243,AL-5: ema_avg_update_lag 1409s > 300s
+GRASS-USDT,Altcoins,5,0.4522,0.5670,AL-5: ema_avg_update_lag 897s > 300s
+GRT-EUR,Altcoins,4,0.1964,0.3346,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 2466s > 300s
+GRT-USD,Altcoins,4,0.1624,0.2664,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1926s > 300s
+GRT-USDC,Altcoins,5,0.1386,0.2252,AL-5: ema_avg_update_lag 1804s > 300s
+GRT-USDT,Altcoins,5,0.1974,0.3295,AL-5: ema_avg_update_lag 1846s > 300s
+H-USDT,Altcoins,5,0.3954,0.4967,AL-5: ema_avg_update_lag 1618s > 300s
+HBAR-EUR,Altcoins,3,0.1802,0.2335,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1745s > 300s
+HBAR-TRY,Altcoins,5,0.1196,0.1524,AL-5: ema_avg_update_lag 1625s > 300s
+HBAR-USD,Altcoins,5,0.1503,0.1858,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1250s > 300s
+HBAR-USDC,Altcoins,5,0.1468,0.1784,AL-5: ema_avg_update_lag 1715s > 300s
+HBAR-USDT,Altcoins,5,0.1446,0.2001,AL-5: ema_avg_update_lag 1654s > 300s
+HMSTR-TRY,Altcoins,4,0.1512,0.2214,AL-5: ema_avg_update_lag 1724s > 300s
+HMSTR-USD,Altcoins,4,0.1457,0.2382,AL-5: ema_avg_update_lag 1324s > 300s
+HMSTR-USDT,Altcoins,4,0.1607,0.2240,AL-5: ema_avg_update_lag 942s > 300s
+HOME-USDT,Altcoins,5,0.2005,0.3342,AL-5: ema_avg_update_lag 1495s > 300s
+HOOD-USDT,TradFi,6,0.2063,0.2778,TF-1: dxFeed available but not in components
+HUMA-EUR,Altcoins,4,0.7818,0.9149,AL-5: ema_avg_deviation 0.78% > 0.5%; AL-5: ema_avg_update_lag 1649s > 300s
+HUMA-USD,Altcoins,4,0.6947,0.8683,AL-5: ema_avg_deviation 0.69% > 0.5%; AL-5: ema_avg_update_lag 1216s > 300s
+HUMA-USDC,Altcoins,4,0.8412,1.0030,AL-5: ema_avg_deviation 0.84% > 0.5%; AL-5: ema_avg_update_lag 1351s > 300s
+HUMA-USDT,Altcoins,4,0.5861,0.7527,AL-5: ema_avg_deviation 0.59% > 0.5%; AL-5: ema_avg_update_lag 888s > 300s
+HYPE-EUR,Altcoins,5,0.1986,0.2364,AL-5: ema_avg_update_lag 1620s > 300s
+HYPE-TRY,Altcoins,5,0.1835,0.2120,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1190s > 300s
+HYPE-USD,Altcoins,5,0.1838,0.2090,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1634s > 300s
+HYPE-USDC,Altcoins,5,0.2260,0.2915,AL-5: ema_avg_update_lag 1190s > 300s
+HYPE-USDT,Altcoins,5,0.2306,0.2562,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1668s > 300s
+ICP-EUR,Altcoins,5,0.1807,0.3052,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1996s > 300s
+ICP-TRY,Altcoins,4,0.1325,0.1783,AL-5: ema_avg_update_lag 1652s > 300s
+ICP-USD,Altcoins,5,0.1497,0.2066,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1129s > 300s
+ICP-USDC,Altcoins,4,0.1444,0.1753,AL-5: ema_avg_update_lag 1717s > 300s
+ICP-USDT,Altcoins,4,0.1840,0.2362,AL-5: ema_avg_update_lag 1688s > 300s
+ICX-EUR,Altcoins,1,0.2088,0.2088,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1172s > 300s
+ICX-USD,Altcoins,4,0.2616,0.4312,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1384s > 300s
+ICX-USDC,Altcoins,5,0.2531,0.3993,AL-5: ema_avg_update_lag 1832s > 300s
+ICX-USDT,Altcoins,5,0.3003,0.4779,AL-5: ema_avg_update_lag 1763s > 300s
+ID-EUR,Altcoins,2,0.1543,0.1948,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1791s > 300s
+ID-USD,Altcoins,4,0.1969,0.3135,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1401s > 300s
+ID-USDC,Altcoins,5,0.2744,0.4591,AL-5: ema_avg_update_lag 1830s > 300s
+ID-USDT,Altcoins,5,0.2104,0.3477,AL-5: ema_avg_update_lag 1657s > 300s
+ILV-EUR,Altcoins,4,0.2061,0.3325,AL-5: ema_avg_update_lag 1859s > 300s
+ILV-USD,Altcoins,4,0.2251,0.3477,AL-5: ema_avg_update_lag 1475s > 300s
+ILV-USDC,Altcoins,4,0.2344,0.3815,AL-5: ema_avg_update_lag 1935s > 300s
+ILV-USDT,Altcoins,4,0.2572,0.4029,AL-5: ema_avg_update_lag 1860s > 300s
+IMX-EUR,Altcoins,3,0.3044,0.4110,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 2428s > 300s
+IMX-USD,Altcoins,5,0.2367,0.3557,AL-5: ema_avg_update_lag 1172s > 300s
+IMX-USDC,Altcoins,5,0.2802,0.4201,AL-5: ema_avg_update_lag 1780s > 300s
+IMX-USDT,Altcoins,5,0.2191,0.3194,AL-5: ema_avg_update_lag 1740s > 300s
+INIT-USDT,Altcoins,5,0.3082,0.4193,AL-5: ema_avg_update_lag 1377s > 300s
+INJ-EUR,Altcoins,3,0.1686,0.2203,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 2116s > 300s
+INJ-USD,Altcoins,4,0.1839,0.2497,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1203s > 300s
+INJ-USDC,Altcoins,5,0.2074,0.3508,AL-5: ema_avg_update_lag 1806s > 300s
+INJ-USDT,Altcoins,5,0.1755,0.2489,AL-5: ema_avg_update_lag 1776s > 300s
+INTC-USDT,TradFi,5,0.2050,0.2572,TF-1: dxFeed available but not in components
+IOST-EUR,Altcoins,4,0.2220,0.3066,AL-5: ema_avg_update_lag 1897s > 300s
+IOST-USD,Altcoins,4,0.1919,0.2818,AL-5: ema_avg_update_lag 1837s > 300s
+IOST-USDC,Altcoins,4,0.2132,0.3562,AL-5: ema_avg_update_lag 1843s > 300s
+IOST-USDT,Altcoins,4,0.2157,0.3411,AL-5: ema_avg_update_lag 1865s > 300s
+IOTA-EUR,Altcoins,1,0.1645,0.1645,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1548s > 300s
+IOTA-USD,Altcoins,3,0.1886,0.2694,AL-5: ema_avg_update_lag 1092s > 300s
+IOTA-USDC,Altcoins,4,0.2041,0.2995,AL-5: ema_avg_update_lag 1764s > 300s
+IOTA-USDT,Altcoins,4,0.2473,0.3478,AL-5: ema_avg_update_lag 1997s > 300s
+IP-EUR,Altcoins,4,0.3110,0.3723,AL-5: ema_avg_update_lag 1725s > 300s
+IP-TRY,Altcoins,4,0.2251,0.2784,AL-5: ema_avg_update_lag 1641s > 300s
+IP-USD,Altcoins,4,0.2162,0.2791,AL-5: ema_avg_update_lag 1166s > 300s
+IP-USDC,Altcoins,4,0.3069,0.3784,AL-5: ema_avg_update_lag 1337s > 300s
+IP-USDT,Altcoins,4,0.2853,0.3639,AL-5: ema_avg_update_lag 1541s > 300s
+J-USDT,Altcoins,2,0.1744,0.1968,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 2097s > 300s
+JELLYJELLY-USDT,Altcoins,3,0.2464,0.3150,AL-5: ema_avg_update_lag 1456s > 300s
+JITOSOL-USDT,Altcoins,3,0.1394,0.1864,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1921s > 300s
+JOE-EUR,Altcoins,1,0.0680,0.0680,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)
+JOE-USD,Altcoins,3,0.2696,0.3909,AL-5: ema_avg_update_lag 1916s > 300s
+JOE-USDT,Altcoins,4,0.2296,0.3697,AL-5: ema_avg_update_lag 1865s > 300s
+JTO-EUR,Altcoins,3,0.3052,0.3803,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1944s > 300s
+JTO-USD,Altcoins,4,0.3218,0.4581,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1176s > 300s
+JTO-USDC,Altcoins,5,0.3564,0.5824,AL-5: ema_avg_update_lag 1751s > 300s
+JTO-USDT,Altcoins,5,0.3837,0.5663,AL-5: ema_avg_update_lag 1843s > 300s
+JUP-EUR,Altcoins,5,0.1831,0.2554,AL-5: ema_avg_update_lag 1632s > 300s
+JUP-TRY,Altcoins,5,0.1463,0.2037,AL-5: ema_avg_update_lag 1162s > 300s
+JUP-USD,Altcoins,5,0.1537,0.2124,AL-5: ema_avg_update_lag 1155s > 300s
+JUP-USDC,Altcoins,5,0.1652,0.2307,AL-5: ema_avg_update_lag 1188s > 300s
+JUP-USDT,Altcoins,5,0.1834,0.2451,AL-5: ema_avg_update_lag 1761s > 300s
+KAIA-EUR,Altcoins,4,0.1304,0.1979,AL-5: ema_avg_update_lag 1769s > 300s
+KAIA-USD,Altcoins,5,0.1230,0.1923,AL-5: ema_avg_update_lag 1375s > 300s
+KAIA-USDC,Altcoins,5,0.1658,0.2902,AL-5: ema_avg_update_lag 1787s > 300s
+KAIA-USDT,Altcoins,5,0.1552,0.2340,AL-5: ema_avg_update_lag 1789s > 300s
+KAITO-EUR,Altcoins,4,0.2659,0.3327,AL-5: ema_avg_update_lag 1719s > 300s
+KAITO-USD,Altcoins,4,0.2534,0.3435,AL-5: ema_avg_update_lag 1176s > 300s
+KAITO-USDC,Altcoins,4,0.2724,0.3711,AL-5: ema_avg_update_lag 1691s > 300s
+KAITO-USDT,Altcoins,4,0.2776,0.3708,AL-5: ema_avg_update_lag 1682s > 300s
+KAT-TRY,Altcoins,5,0.7100,0.8221,AL-5: ema_avg_deviation 0.71% > 0.5%; AL-5: ema_avg_update_lag 1191s > 300s
+KAT-USD,Altcoins,5,0.7948,0.9472,AL-5: ema_avg_deviation 0.79% > 0.5%; AL-5: ema_avg_update_lag 1123s > 300s
+KAT-USDT,Altcoins,5,0.9151,1.0422,AL-5: ema_avg_deviation 0.92% > 0.5%; AL-5: ema_avg_update_lag 1700s > 300s
+KGEN-USDT,Altcoins,5,0.3284,0.5088,AL-5: ema_avg_update_lag 1535s > 300s
+KITE-EUR,Altcoins,4,0.4223,0.5325,AL-5: ema_avg_update_lag 1621s > 300s
+KITE-TRY,Altcoins,4,0.4724,0.6276,AL-5: ema_avg_update_lag 1592s > 300s
+KITE-USD,Altcoins,4,0.4930,0.6400,AL-5: ema_avg_update_lag 1632s > 300s
+KITE-USDC,Altcoins,4,0.4172,0.5579,AL-5: ema_avg_update_lag 1652s > 300s
+KITE-USDT,Altcoins,4,0.4575,0.5936,AL-5: ema_avg_update_lag 1414s > 300s
+KMNO-EUR,Altcoins,4,0.2681,0.3780,AL-5: ema_avg_update_lag 1772s > 300s
+KMNO-USD,Altcoins,4,0.2882,0.4301,AL-5: ema_avg_update_lag 1060s > 300s
+KMNO-USDC,Altcoins,4,0.2773,0.4431,AL-5: ema_avg_update_lag 1759s > 300s
+KMNO-USDT,Altcoins,4,0.3017,0.4600,AL-5: ema_avg_update_lag 1461s > 300s
+KNC-EUR,Altcoins,1,0.7710,0.7710,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_deviation 0.77% > 0.5%; AL-5: ema_avg_update_lag 1685s > 300s
+KNC-USD,Altcoins,4,0.9441,1.1208,AL-5: ema_avg_deviation 0.94% > 0.5%; AL-5: ema_avg_update_lag 1828s > 300s
+KNC-USDC,Altcoins,4,0.8325,1.0000,AL-5: ema_avg_deviation 0.83% > 0.5%; AL-5: ema_avg_update_lag 1679s > 300s
+KNC-USDT,Altcoins,4,0.7862,0.9412,AL-5: ema_avg_deviation 0.79% > 0.5%; AL-5: ema_avg_update_lag 1547s > 300s
+KSM-EUR,Altcoins,4,0.2867,0.4201,AL-5: ema_avg_update_lag 1996s > 300s
+KSM-USD,Altcoins,4,0.2739,0.3979,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1650s > 300s
+KSM-USDC,Altcoins,4,0.3448,0.4830,AL-5: ema_avg_update_lag 1929s > 300s
+KSM-USDT,Altcoins,4,0.3294,0.4539,AL-5: ema_avg_update_lag 2038s > 300s
+LA-USDT,Altcoins,5,0.2572,0.3975,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1447s > 300s
+LAB-USDT,Altcoins,5,0.3208,0.4673,AL-5: ema_avg_update_lag 1722s > 300s
+LAT-USD,Altcoins,3,0.1448,0.2333,AL-5: ema_avg_update_lag 996s > 300s
+LAT-USDT,Altcoins,4,0.1759,0.2898,AL-5: ema_avg_update_lag 1368s > 300s
+LAYER-EUR,Altcoins,1,0.1542,0.1542,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1769s > 300s
+LAYER-TRY,Altcoins,5,0.1883,0.3217,AL-5: ema_avg_update_lag 1822s > 300s
+LAYER-USD,Altcoins,5,0.1784,0.3036,AL-5: ema_avg_update_lag 1566s > 300s
+LAYER-USDC,Altcoins,5,0.1856,0.3161,AL-5: ema_avg_update_lag 1797s > 300s
+LAYER-USDT,Altcoins,5,0.2205,0.4114,AL-5: ema_avg_update_lag 1678s > 300s
+LDO-EUR,Altcoins,3,0.1917,0.2533,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 3103s > 300s
+LDO-USD,Altcoins,5,0.1506,0.2289,AL-5: ema_avg_update_lag 1241s > 300s
+LDO-USDC,Altcoins,5,0.1604,0.2464,AL-5: ema_avg_update_lag 1724s > 300s
+LDO-USDT,Altcoins,5,0.1889,0.2662,AL-5: ema_avg_update_lag 1372s > 300s
+LEO-EUR,Altcoins,2,0.1021,0.1177,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 2213s > 300s
+LEO-USD,Altcoins,2,0.0845,0.1016,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1474s > 300s
+LEO-USDC,Altcoins,2,0.0877,0.1048,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 2421s > 300s
+LEO-USDT,Altcoins,3,0.0887,0.1072,AL-5: ema_avg_update_lag 2400s > 300s
+LIGHT-USDT,Altcoins,4,0.7088,0.8332,AL-5: ema_avg_deviation 0.71% > 0.5%; AL-5: ema_avg_update_lag 947s > 300s
+LINEA-EUR,Altcoins,5,0.1856,0.2884,AL-5: ema_avg_update_lag 1104s > 300s
+LINEA-TRY,Altcoins,3,0.2185,0.3001,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 2005s > 300s
+LINEA-USD,Altcoins,5,0.2007,0.2833,AL-5: ema_avg_update_lag 1130s > 300s
+LINEA-USDC,Altcoins,5,0.2149,0.2999,AL-5: ema_avg_update_lag 1688s > 300s
+LINEA-USDT,Altcoins,5,0.2326,0.3091,AL-5: ema_avg_update_lag 1776s > 300s
+LINK-EUR,Topcoins,6,0.1741,0.3138,TC: ema_avg_deviation 0.17% ≥ 0.15%; TC: ema_max_deviation 0.31% ≥ 0.3%
+LINK-TRY,Topcoins,5,0.1542,0.1920,TC: ema_avg_deviation 0.15% ≥ 0.15%
+LINK-USDC,Topcoins,4,0.1630,0.2061,TC: ema_avg_deviation 0.16% ≥ 0.15%; TC: only 4 components (need ≥5)
+LIT-TRY,Altcoins,3,0.2377,0.2800,AL-5: ema_avg_update_lag 1625s > 300s
+LIT-USD,Altcoins,3,0.2581,0.3051,AL-5: ema_avg_update_lag 1502s > 300s
+LIT-USDT,Altcoins,3,0.2617,0.3175,AL-5: ema_avg_update_lag 1629s > 300s
+LPT-EUR,Altcoins,1,0.1258,0.1258,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1823s > 300s
+LPT-USD,Altcoins,4,0.1436,0.2274,AL-5: ema_avg_update_lag 1351s > 300s
+LPT-USDC,Altcoins,4,0.1690,0.2729,AL-5: ema_avg_update_lag 1379s > 300s
+LPT-USDT,Altcoins,4,0.2034,0.3411,AL-5: ema_avg_update_lag 1531s > 300s
+LQTY-EUR,Altcoins,4,0.1795,0.3017,AL-5: ema_avg_update_lag 1954s > 300s
+LQTY-USD,Altcoins,4,0.1818,0.3190,AL-5: ema_avg_update_lag 1263s > 300s
+LQTY-USDC,Altcoins,4,0.2115,0.3198,AL-5: ema_avg_update_lag 1863s > 300s
+LQTY-USDT,Altcoins,4,0.2120,0.3154,AL-5: ema_avg_update_lag 1939s > 300s
+LRC-EUR,Altcoins,1,0.3683,0.3683,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1590s > 300s
+LRC-USD,Altcoins,4,0.3834,0.6475,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1352s > 300s
+LRC-USDC,Altcoins,5,0.3138,0.5351,AL-5: ema_avg_update_lag 1174s > 300s
+LRC-USDT,Altcoins,5,0.3539,0.5813,AL-5: ema_avg_update_lag 1731s > 300s
+LSK-EUR,Altcoins,1,0.1259,0.1259,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1220s > 300s
+LSK-USD,Altcoins,4,0.2194,0.3476,AL-5: ema_avg_update_lag 1537s > 300s
+LSK-USDC,Altcoins,5,0.1965,0.3899,AL-5: ema_avg_update_lag 2029s > 300s
+LSK-USDT,Altcoins,5,0.2513,0.4887,AL-5: ema_avg_update_lag 2227s > 300s
+LTC-USD,Topcoins,4,0.0976,0.1190,TC: only 4 components (need ≥5)
+LUNA-EUR,Altcoins,4,0.1728,0.3099,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1799s > 300s
+LUNA-TRY,Altcoins,3,0.1282,0.1790,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1303s > 300s
+LUNA-USD,Altcoins,4,0.1701,0.2747,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1468s > 300s
+LUNA-USDC,Altcoins,4,0.2129,0.3303,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1504s > 300s
+LUNA-USDT,Altcoins,4,0.1847,0.3178,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1626s > 300s
+MAGIC-EUR,Altcoins,1,0.1258,0.1258,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1284s > 300s
+MAGIC-TRY,Altcoins,4,0.1576,0.2577,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1732s > 300s
+MAGIC-USD,Altcoins,5,0.1722,0.3310,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1467s > 300s
+MAGIC-USDC,Altcoins,5,0.1379,0.2376,AL-5: ema_avg_update_lag 1800s > 300s
+MAGIC-USDT,Altcoins,5,0.1495,0.2595,AL-5: ema_avg_update_lag 1773s > 300s
+MAJOR-USD,Altcoins,5,0.2713,0.4772,AL-5: ema_avg_update_lag 1966s > 300s
+MAJOR-USDT,Altcoins,5,0.2736,0.5039,AL-5: ema_avg_update_lag 1781s > 300s
+MANA-EUR,Altcoins,4,0.2849,0.4093,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1946s > 300s
+MANA-USD,Altcoins,5,0.1613,0.2675,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1432s > 300s
+MANA-USDC,Altcoins,5,0.1936,0.3294,AL-5: ema_avg_update_lag 1689s > 300s
+MANA-USDT,Altcoins,5,0.1976,0.3043,AL-5: ema_avg_update_lag 1774s > 300s
+MASK-EUR,Altcoins,1,0.1338,0.1338,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1653s > 300s
+MASK-USD,Altcoins,4,0.2700,0.6046,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1437s > 300s
+MASK-USDC,Altcoins,5,0.2630,0.3758,AL-5: ema_avg_update_lag 1541s > 300s
+MASK-USDT,Altcoins,5,0.2191,0.3616,AL-5: ema_avg_update_lag 1803s > 300s
+ME-EUR,Altcoins,1,0.1542,0.1542,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1658s > 300s
+ME-USD,Altcoins,4,0.1424,0.2073,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1318s > 300s
+ME-USDC,Altcoins,5,0.1674,0.2474,AL-5: ema_avg_update_lag 1827s > 300s
+ME-USDT,Altcoins,5,0.1654,0.2452,AL-5: ema_avg_update_lag 1729s > 300s
+MEME-EUR,Altcoins,4,0.4020,0.4851,AL-5: ema_avg_update_lag 1791s > 300s
+MEME-USD,Altcoins,4,0.3844,0.4947,AL-5: ema_avg_update_lag 1134s > 300s
+MEME-USDC,Altcoins,4,0.4007,0.5180,AL-5: ema_avg_update_lag 1218s > 300s
+MEME-USDT,Altcoins,4,0.3800,0.4546,AL-5: ema_avg_update_lag 1635s > 300s
+MENGO-USD,Altcoins,2,0.2509,0.3590,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1317s > 300s
+MENGO-USDT,Altcoins,2,0.2751,0.3453,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1959s > 300s
+MERL-EUR,Altcoins,2,0.2971,0.3551,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1559s > 300s
+MERL-TRY,Altcoins,3,0.3115,0.4174,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1694s > 300s
+MERL-USD,Altcoins,3,0.2918,0.3793,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1109s > 300s
+MERL-USDC,Altcoins,3,0.2965,0.3850,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1720s > 300s
+MERL-USDT,Altcoins,3,0.3865,0.4967,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1728s > 300s
+MET-USD,Altcoins,4,0.3806,0.5102,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1732s > 300s
+MET-USDT,Altcoins,4,0.4024,0.5377,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1787s > 300s
+META-USDT,TradFi,5,0.2470,0.3549,TF-1: dxFeed available but not in components
+METIS-EUR,Altcoins,1,0.1854,0.1854,AL-1: OKX available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1912s > 300s
+METIS-USD,Altcoins,4,0.2343,0.3573,AL-5: ema_avg_update_lag 1266s > 300s
+METIS-USDC,Altcoins,4,0.2783,0.4269,AL-5: ema_avg_update_lag 1640s > 300s
+METIS-USDT,Altcoins,4,0.2292,0.3668,AL-5: ema_avg_update_lag 1160s > 300s
+MEW-EUR,Altcoins,1,0.1556,0.1556,AL-1: OKX available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1632s > 300s
+MEW-USD,Altcoins,4,0.2129,0.3251,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1268s > 300s
+MEW-USDC,Altcoins,5,0.2515,0.3939,AL-5: ema_avg_update_lag 1431s > 300s
+MEW-USDT,Altcoins,5,0.2386,0.3630,AL-5: ema_avg_update_lag 1004s > 300s
+MINA-EUR,Altcoins,4,0.1464,0.2172,AL-5: ema_avg_update_lag 1184s > 300s
+MINA-USD,Altcoins,4,0.1992,0.3328,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1550s > 300s
+MINA-USDC,Altcoins,4,0.1854,0.2575,AL-5: ema_avg_update_lag 1849s > 300s
+MINA-USDT,Altcoins,4,0.1776,0.2480,AL-5: ema_avg_update_lag 1865s > 300s
+MMT-EUR,Altcoins,3,0.2012,0.2978,AL-5: ema_avg_update_lag 1178s > 300s
+MMT-USD,Altcoins,3,0.1922,0.2587,AL-5: ema_avg_update_lag 1145s > 300s
+MMT-USDC,Altcoins,3,0.1846,0.2273,AL-5: ema_avg_update_lag 1722s > 300s
+MMT-USDT,Altcoins,3,0.2264,0.3222,AL-5: ema_avg_update_lag 1818s > 300s
+MON-EUR,Altcoins,3,0.4249,0.4802,AL-1: OKX available but not in components; AL-5: ema_avg_update_lag 1279s > 300s
+MON-TRY,Altcoins,3,0.3874,0.4274,AL-1: OKX available but not in components; AL-5: ema_avg_update_lag 1260s > 300s
+MON-USD,Altcoins,3,0.3543,0.3909,AL-1: OKX available but not in components; AL-5: ema_avg_update_lag 1003s > 300s
+MON-USDC,Altcoins,3,0.5679,0.6034,AL-1: OKX available but not in components; AL-5: ema_avg_deviation 0.57% > 0.5%; AL-5: ema_avg_update_lag 1655s > 300s
+MON-USDT,Altcoins,4,0.6875,0.7768,AL-1: OKX available but not in components; AL-5: ema_avg_deviation 0.69% > 0.5%; AL-5: ema_avg_update_lag 1697s > 300s
+MOODENG-EUR,Altcoins,3,0.1901,0.2608,AL-1: OKX available but not in components; AL-5: ema_avg_update_lag 1669s > 300s
+MOODENG-USD,Altcoins,4,0.1999,0.2888,AL-5: ema_avg_update_lag 1251s > 300s
+MOODENG-USDC,Altcoins,4,0.2351,0.3652,AL-5: ema_avg_update_lag 1722s > 300s
+MOODENG-USDT,Altcoins,4,0.2489,0.3547,AL-5: ema_avg_update_lag 1689s > 300s
+MORPHO-EUR,Altcoins,4,0.3198,0.4380,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1407s > 300s
+MORPHO-USD,Altcoins,4,0.3293,0.4681,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1041s > 300s
+MORPHO-USDC,Altcoins,4,0.3331,0.4057,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1703s > 300s
+MORPHO-USDT,Altcoins,4,0.3241,0.4269,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1350s > 300s
+MOVE-EUR,Altcoins,1,0.1380,0.1380,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1705s > 300s
+MOVE-USD,Altcoins,4,0.1889,0.2862,AL-5: ema_avg_update_lag 1968s > 300s
+MOVE-USDC,Altcoins,4,0.1835,0.2686,AL-5: ema_avg_update_lag 2178s > 300s
+MOVE-USDT,Altcoins,4,0.1820,0.2743,AL-5: ema_avg_update_lag 1771s > 300s
+MSFT-USDT,TradFi,4,0.2264,0.4351,TF-1: dxFeed available but not in components
+MSTR-USDT,TradFi,6,0.2186,0.3269,TF-1: dxFeed available but not in components
+MU-USDT,TradFi,4,0.2514,0.4295,TF-1: dxFeed available but not in components
+MUBARAK-USDT,Altcoins,5,0.2521,0.4139,AL-5: ema_avg_update_lag 1317s > 300s
+NAVX-USD,Altcoins,4,0.2787,0.4115,AL-1: OKX available but not in components; AL-5: ema_avg_update_lag 1259s > 300s
+NAVX-USDT,Altcoins,4,0.2546,0.3977,AL-1: OKX available but not in components; AL-5: ema_avg_update_lag 1888s > 300s
+NEAR-EUR,Altcoins,5,0.1619,0.2088,AL-5: ema_avg_update_lag 1035s > 300s
+NEAR-TRY,Altcoins,5,0.1243,0.1683,AL-5: ema_avg_update_lag 1231s > 300s
+NEAR-USD,Altcoins,5,0.1833,0.2246,AL-5: ema_avg_update_lag 993s > 300s
+NEAR-USDC,Altcoins,5,0.1628,0.1969,AL-5: ema_avg_update_lag 1628s > 300s
+NEAR-USDT,Altcoins,5,0.1848,0.2312,AL-5: ema_avg_update_lag 1370s > 300s
+NEIRO-EUR,Altcoins,2,0.1801,0.2078,AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1640s > 300s
+NEIRO-TRY,Altcoins,2,0.2601,0.2765,AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 2057s > 300s
+NEIRO-USD,Altcoins,3,0.2252,0.3287,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1262s > 300s
+NEIRO-USDC,Altcoins,2,0.2500,0.2893,AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1593s > 300s
+NEIRO-USDT,Altcoins,3,0.2968,0.3567,AL-5: ema_avg_update_lag 1496s > 300s
+NEO-EUR,Altcoins,4,0.2020,0.3997,AL-5: ema_avg_update_lag 1901s > 300s
+NEO-USD,Altcoins,4,0.1298,0.1733,AL-5: ema_avg_update_lag 1073s > 300s
+NEO-USDC,Altcoins,7,0.1686,0.3432,AL-5: ema_avg_update_lag 1886s > 300s
+NEO-USDT,Altcoins,4,0.1602,0.2353,AL-5: ema_avg_update_lag 1750s > 300s
+NFLX-USDT,TradFi,3,0.1164,0.1443,TF-1: Ondo_TICKER available but not in components; TF-1: dxFeed available but not in components
+NFT-USD,Altcoins,3,0.2058,0.3015,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1601s > 300s
+NFT-USDT,Altcoins,4,0.2062,0.3346,AL-5: ema_avg_update_lag 1929s > 300s
+NIGHT-EUR,Altcoins,3,0.2920,0.3196,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1608s > 300s
+NIGHT-TRY,Altcoins,3,0.2700,0.2997,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1186s > 300s
+NIGHT-USD,Altcoins,3,0.3085,0.3378,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1684s > 300s
+NIGHT-USDC,Altcoins,3,0.2897,0.3160,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1320s > 300s
+NIGHT-USDT,Altcoins,3,0.3377,0.3693,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1509s > 300s
+NMR-EUR,Altcoins,4,0.2149,0.3367,AL-5: ema_avg_update_lag 1920s > 300s
+NMR-USD,Altcoins,4,0.1706,0.2665,AL-5: ema_avg_update_lag 1232s > 300s
+NMR-USDC,Altcoins,4,0.2347,0.3548,AL-5: ema_avg_update_lag 2072s > 300s
+NMR-USDT,Altcoins,4,0.2411,0.3736,AL-5: ema_avg_update_lag 1637s > 300s
+NOT-EUR,Altcoins,1,0.2070,0.2070,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1656s > 300s
+NOT-USD,Altcoins,4,0.2084,0.2870,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1734s > 300s
+NOT-USDC,Altcoins,5,0.2848,0.3938,AL-5: ema_avg_update_lag 1772s > 300s
+NOT-USDT,Altcoins,5,0.2192,0.3034,AL-5: ema_avg_update_lag 1772s > 300s
+NVDA-USDT,TradFi,5,0.1153,0.1568,TF-1: dxFeed available but not in components; TF-1: Binance_LINEAR_INDEX available but not in components; TF-3: Binance_LINEAR_PERPETUAL (score 4) available but not used
+OKB-BTC,Altcoins,4,0.0907,0.1580,AL-5: ema_avg_update_lag 1588s > 300s
+OKB-USDT,Altcoins,4,0.1543,0.2209,AL-5: ema_avg_update_lag 1699s > 300s
+OKSOL-SOL,Topcoins,3,0.0125,0.0184,TC: only 3 components (need ≥5)
+OL-USD,Altcoins,3,0.7196,0.8761,AL-5: ema_avg_deviation 0.72% > 0.5%; AL-5: ema_avg_update_lag 1753s > 300s
+OL-USDT,Altcoins,4,1.1597,1.4295,AL-5: ema_avg_deviation 1.16% > 0.5%; AL-5: ema_avg_update_lag 1672s > 300s
+OMI-EUR,Altcoins,2,0.2743,0.3886,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1834s > 300s
+OMI-USD,Altcoins,2,0.2468,0.3142,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1915s > 300s
+OMI-USDC,Altcoins,2,0.2719,0.3560,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1879s > 300s
+OMI-USDT,Altcoins,2,0.2569,0.3426,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1536s > 300s
+ONDO-EUR,Altcoins,1,0.3458,0.3458,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1578s > 300s
+ONDO-TRY,Altcoins,5,0.4776,0.5291,AL-5: ema_avg_update_lag 1173s > 300s
+ONDO-USD,Altcoins,4,0.3353,0.3785,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1116s > 300s
+ONDO-USDC,Altcoins,5,0.3856,0.4277,AL-5: ema_avg_update_lag 1690s > 300s
+ONDO-USDT,Altcoins,5,0.4043,0.4518,AL-5: ema_avg_update_lag 1482s > 300s
+ONE-EUR,Altcoins,1,0.2608,0.2608,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 2118s > 300s
+ONE-USD,Altcoins,4,0.2777,0.4841,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1452s > 300s
+ONE-USDC,Altcoins,5,0.3697,0.6160,AL-5: ema_avg_update_lag 1574s > 300s
+ONE-USDT,Altcoins,5,0.4497,0.6729,AL-5: ema_avg_update_lag 1755s > 300s
+ONT-EUR,Altcoins,4,0.6003,0.7541,AL-5: ema_avg_deviation 0.60% > 0.5%; AL-5: ema_avg_update_lag 1708s > 300s
+ONT-USD,Altcoins,4,0.5845,0.7632,AL-5: ema_avg_deviation 0.58% > 0.5%; AL-5: ema_avg_update_lag 1634s > 300s
+ONT-USDC,Altcoins,4,0.6101,0.7703,AL-5: ema_avg_deviation 0.61% > 0.5%; AL-5: ema_avg_update_lag 1201s > 300s
+ONT-USDT,Altcoins,4,0.6262,0.7623,AL-5: ema_avg_deviation 0.63% > 0.5%; AL-5: ema_avg_update_lag 1692s > 300s
+OP-EUR,Altcoins,3,0.2199,0.2843,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 2097s > 300s
+OP-TRY,Altcoins,5,0.1696,0.2290,AL-5: ema_avg_update_lag 1748s > 300s
+OP-USD,Altcoins,5,0.2901,0.4888,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1514s > 300s
+OP-USDC,Altcoins,5,0.1842,0.2211,AL-5: ema_avg_update_lag 1140s > 300s
+OP-USDT,Altcoins,5,0.2425,0.2811,AL-5: ema_avg_update_lag 1032s > 300s
+OPN-USDT,Altcoins,3,0.5995,0.6619,AL-1: Binance available but not in components; AL-5: ema_avg_deviation 0.60% > 0.5%; AL-5: ema_avg_update_lag 909s > 300s
+ORBS-EUR,Altcoins,1,0.2757,0.2757,AL-1: OKX available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1569s > 300s
+ORBS-USD,Altcoins,3,0.2640,0.4229,AL-5: ema_avg_update_lag 966s > 300s
+ORBS-USDC,Altcoins,3,0.3106,0.4674,AL-5: ema_avg_update_lag 1712s > 300s
+ORBS-USDT,Altcoins,3,0.2939,0.4340,AL-5: ema_avg_update_lag 1799s > 300s
+ORCL-USDT,TradFi,3,0.1687,0.2100,TF-1: dxFeed available but not in components
+ORDER-USDT,Altcoins,5,0.3054,0.4843,AL-5: ema_avg_update_lag 1663s > 300s
+ORDI-EUR,Altcoins,4,0.1584,0.2474,AL-5: ema_avg_update_lag 1769s > 300s
+ORDI-USD,Altcoins,4,0.1484,0.2250,AL-5: ema_avg_update_lag 1158s > 300s
+ORDI-USDC,Altcoins,4,0.2499,0.3350,AL-5: ema_avg_update_lag 1807s > 300s
+ORDI-USDT,Altcoins,4,0.2180,0.3517,AL-5: ema_avg_update_lag 1788s > 300s
+PARTI-EUR,Altcoins,4,0.5163,0.6272,AL-5: ema_avg_deviation 0.52% > 0.5%; AL-5: ema_avg_update_lag 1659s > 300s
+PARTI-TRY,Altcoins,2,0.7566,0.8330,AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_deviation 0.76% > 0.5%; AL-5: ema_avg_update_lag 2023s > 300s
+PARTI-USD,Altcoins,4,0.4449,0.5844,AL-5: ema_avg_update_lag 1000s > 300s
+PARTI-USDC,Altcoins,4,0.6249,0.7408,AL-5: ema_avg_deviation 0.62% > 0.5%; AL-5: ema_avg_update_lag 1676s > 300s
+PARTI-USDT,Altcoins,4,0.5534,0.6524,AL-5: ema_avg_deviation 0.55% > 0.5%; AL-5: ema_avg_update_lag 1447s > 300s
+PAXG-TRY,Altcoins,2,0.1319,0.1467,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1618s > 300s
+PAXG-USD,Altcoins,4,0.0883,0.1075,AL-5: ema_avg_update_lag 1215s > 300s
+PAXG-USDT,Altcoins,4,0.0912,0.1119,AL-5: ema_avg_update_lag 898s > 300s
+PENDLE-EUR,Altcoins,5,0.1771,0.2839,AL-5: ema_avg_update_lag 1483s > 300s
+PENDLE-USD,Altcoins,5,0.1765,0.2670,AL-5: ema_avg_update_lag 1102s > 300s
+PENDLE-USDC,Altcoins,5,0.1866,0.3007,AL-5: ema_avg_update_lag 1814s > 300s
+PENDLE-USDT,Altcoins,5,0.2053,0.3295,AL-5: ema_avg_update_lag 1767s > 300s
+PENGU-EUR,Altcoins,4,0.1439,0.1671,AL-5: ema_avg_update_lag 1713s > 300s
+PENGU-TRY,Altcoins,3,0.1705,0.2342,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1866s > 300s
+PENGU-USD,Altcoins,4,0.1922,0.2169,AL-5: ema_avg_update_lag 1048s > 300s
+PENGU-USDC,Altcoins,4,0.1430,0.1852,AL-5: ema_avg_update_lag 1636s > 300s
+PENGU-USDT,Altcoins,4,0.2208,0.2550,AL-5: ema_avg_update_lag 1700s > 300s
+PEOPLE-EUR,Altcoins,1,0.1511,0.1511,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1677s > 300s
+PEOPLE-USD,Altcoins,4,0.1342,0.2190,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1189s > 300s
+PEOPLE-USDC,Altcoins,5,0.1981,0.3275,AL-5: ema_avg_update_lag 1746s > 300s
+PEOPLE-USDT,Altcoins,5,0.2125,0.3168,AL-5: ema_avg_update_lag 1852s > 300s
+PEPE-BRL,Altcoins,5,0.1932,0.3160,AL-5: ema_avg_update_lag 1877s > 300s
+PEPE-EUR,Altcoins,5,0.1431,0.2229,AL-5: ema_avg_update_lag 1429s > 300s
+PEPE-TRY,Altcoins,3,0.1473,0.2031,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1398s > 300s
+PEPE-USD,Altcoins,5,0.1112,0.1426,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 991s > 300s
+PEPE-USDC,Altcoins,4,0.1915,0.2990,AL-5: ema_avg_update_lag 2034s > 300s
+PEPE-USDT,Altcoins,5,0.1691,0.2493,AL-5: ema_avg_update_lag 1745s > 300s
+PHA-TRY,Altcoins,4,0.2823,0.4424,AL-5: ema_avg_update_lag 1794s > 300s
+PHA-USD,Altcoins,4,0.2900,0.4600,AL-5: ema_avg_update_lag 1741s > 300s
+PHA-USDT,Altcoins,4,0.3703,0.5596,AL-5: ema_avg_update_lag 1024s > 300s
+PI-BRL,Altcoins,3,0.1451,0.1800,AL-5: ema_avg_update_lag 1656s > 300s
+PI-EUR,Altcoins,3,0.3721,0.4038,AL-5: ema_avg_update_lag 1703s > 300s
+PI-TRY,Altcoins,3,0.1990,0.2316,AL-5: ema_avg_update_lag 1639s > 300s
+PI-USD,Altcoins,3,0.1684,0.1937,AL-5: ema_avg_update_lag 1221s > 300s
+PI-USDC,Altcoins,3,0.1752,0.2410,AL-5: ema_avg_update_lag 1824s > 300s
+PI-USDT,Altcoins,3,0.2318,0.2683,AL-5: ema_avg_update_lag 1472s > 300s
+PIEVERSE-USDT,Altcoins,4,0.3228,0.4899,AL-5: ema_avg_update_lag 1631s > 300s
+PIPPIN-USDT,Altcoins,5,1.6197,1.8938,AL-5: ema_avg_deviation 1.62% > 0.5%; AL-5: ema_max_deviation 1.89% > 1.5%; AL-5: ema_avg_update_lag 1394s > 300s
+PIXEL-USD,Altcoins,4,0.5912,0.7211,AL-5: ema_avg_deviation 0.59% > 0.5%; AL-5: ema_avg_update_lag 1730s > 300s
+PIXEL-USDT,Altcoins,4,0.6134,0.7363,AL-5: ema_avg_deviation 0.61% > 0.5%; AL-5: ema_avg_update_lag 1262s > 300s
+PLTR-USDT,TradFi,5,0.2552,0.2996,TF-1: dxFeed available but not in components
+PLUME-USDT,Altcoins,5,0.4167,0.5406,AL-5: ema_avg_update_lag 1706s > 300s
+PNUT-EUR,Altcoins,4,0.1580,0.2568,AL-5: ema_avg_update_lag 1209s > 300s
+PNUT-TRY,Altcoins,3,0.2022,0.2488,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1594s > 300s
+PNUT-USD,Altcoins,4,0.1719,0.2729,AL-5: ema_avg_update_lag 1300s > 300s
+PNUT-USDC,Altcoins,4,0.2615,0.3470,AL-5: ema_avg_update_lag 1409s > 300s
+PNUT-USDT,Altcoins,4,0.2589,0.3601,AL-5: ema_avg_update_lag 1626s > 300s
+POL-EUR,Altcoins,4,0.1645,0.2192,AL-5: ema_avg_update_lag 1742s > 300s
+POL-TRY,Altcoins,4,0.1833,0.2301,AL-5: ema_avg_update_lag 1715s > 300s
+POL-USD,Altcoins,4,0.1373,0.1868,AL-5: ema_avg_update_lag 999s > 300s
+POL-USDC,Altcoins,4,0.1501,0.1990,AL-5: ema_avg_update_lag 1159s > 300s
+POL-USDT,Altcoins,4,0.1668,0.2325,AL-5: ema_avg_update_lag 1719s > 300s
+POPCAT-USDT,Altcoins,5,0.2388,0.3834,AL-5: ema_avg_update_lag 1514s > 300s
+POR-USD,Altcoins,2,0.2307,0.2872,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1234s > 300s
+POR-USDT,Altcoins,2,0.2665,0.3247,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1747s > 300s
+PRCL-USD,Altcoins,4,0.3194,0.4608,AL-5: ema_avg_update_lag 1396s > 300s
+PRCL-USDT,Altcoins,4,0.3308,0.5217,AL-5: ema_avg_update_lag 1119s > 300s
+PROMPT-EUR,Altcoins,4,0.1931,0.2570,AL-5: ema_avg_update_lag 1623s > 300s
+PROMPT-USD,Altcoins,4,0.1966,0.2593,AL-5: ema_avg_update_lag 1577s > 300s
+PROMPT-USDC,Altcoins,4,0.1903,0.2747,AL-5: ema_avg_update_lag 1687s > 300s
+PROMPT-USDT,Altcoins,4,0.2075,0.2738,AL-5: ema_avg_update_lag 1334s > 300s
+PROVE-EUR,Altcoins,5,0.8723,0.9444,AL-5: ema_avg_deviation 0.87% > 0.5%; AL-5: ema_avg_update_lag 1310s > 300s
+PROVE-USD,Altcoins,5,0.6508,0.7267,AL-5: ema_avg_deviation 0.65% > 0.5%; AL-5: ema_avg_update_lag 984s > 300s
+PROVE-USDC,Altcoins,5,1.0700,1.1452,AL-5: ema_avg_deviation 1.07% > 0.5%; AL-5: ema_avg_update_lag 1613s > 300s
+PROVE-USDT,Altcoins,5,1.2228,1.3008,AL-5: ema_avg_deviation 1.22% > 0.5%; AL-5: ema_avg_update_lag 1706s > 300s
+PUMP-EUR,Altcoins,5,0.2135,0.2807,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1764s > 300s
+PUMP-TRY,Altcoins,3,0.2139,0.2791,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1863s > 300s
+PUMP-USD,Altcoins,5,0.1646,0.2428,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1629s > 300s
+PUMP-USDC,Altcoins,5,0.2155,0.2931,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1706s > 300s
+PUMP-USDT,Altcoins,5,0.3085,0.3794,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1508s > 300s
+PYTH-EUR,Altcoins,5,0.1897,0.2691,AL-5: ema_avg_update_lag 1761s > 300s
+PYTH-USD,Altcoins,4,0.1591,0.2024,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1627s > 300s
+PYTH-USDC,Altcoins,5,0.2053,0.2673,AL-5: ema_avg_update_lag 1760s > 300s
+PYTH-USDT,Altcoins,5,0.1661,0.2170,AL-5: ema_avg_update_lag 1693s > 300s
+QQQ-USDT,TradFi,5,0.0741,0.1097,TF-1: dxFeed available but not in components
+QTUM-EUR,Altcoins,1,0.1646,0.1646,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1697s > 300s
+QTUM-USD,Altcoins,5,0.1758,0.2615,AL-5: ema_avg_update_lag 1072s > 300s
+QTUM-USDC,Altcoins,5,0.2021,0.3115,AL-5: ema_avg_update_lag 1730s > 300s
+QTUM-USDT,Altcoins,5,0.2171,0.3192,AL-5: ema_avg_update_lag 1831s > 300s
+RAVE-USDT,Altcoins,3,0.4234,0.5376,AL-5: ema_avg_update_lag 1422s > 300s
+RAY-EUR,Altcoins,4,0.1352,0.2038,AL-5: ema_avg_update_lag 1804s > 300s
+RAY-USD,Altcoins,4,0.1413,0.2229,AL-5: ema_avg_update_lag 1726s > 300s
+RAY-USDC,Altcoins,4,0.1601,0.2599,AL-5: ema_avg_update_lag 1863s > 300s
+RAY-USDT,Altcoins,4,0.1908,0.2881,AL-5: ema_avg_update_lag 1452s > 300s
+RECALL-USDT,Altcoins,5,0.2730,0.4009,AL-5: ema_avg_update_lag 1827s > 300s
+RENDER-EUR,Altcoins,4,0.3250,0.3671,AL-5: ema_avg_update_lag 1679s > 300s
+RENDER-TRY,Altcoins,4,0.2733,0.3284,AL-5: ema_avg_update_lag 1667s > 300s
+RENDER-USD,Altcoins,4,0.2464,0.3039,AL-5: ema_avg_update_lag 1073s > 300s
+RENDER-USDC,Altcoins,4,0.3259,0.3843,AL-5: ema_avg_update_lag 1624s > 300s
+RENDER-USDT,Altcoins,4,0.5412,0.5932,AL-5: ema_avg_deviation 0.54% > 0.5%; AL-5: ema_avg_update_lag 1723s > 300s
+RESOLV-EUR,Altcoins,5,0.4510,0.6791,AL-5: ema_avg_update_lag 1712s > 300s
+RESOLV-TRY,Altcoins,2,0.5808,0.6780,AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_deviation 0.58% > 0.5%; AL-5: ema_avg_update_lag 2021s > 300s
+RESOLV-USD,Altcoins,4,0.3520,0.4960,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1598s > 300s
+RESOLV-USDC,Altcoins,5,0.4015,0.5512,AL-5: ema_avg_update_lag 1612s > 300s
+RESOLV-USDT,Altcoins,5,0.5117,0.6846,AL-5: ema_avg_deviation 0.51% > 0.5%; AL-5: ema_avg_update_lag 1771s > 300s
+RIVER-USDT,Altcoins,5,1.4016,3.1142,AL-5: ema_avg_deviation 1.40% > 0.5%; AL-5: ema_max_deviation 3.11% > 1.5%; AL-5: ema_avg_update_lag 1694s > 300s; AL-5: Binance_LINEAR_PERPETUAL RIVER/USDT deviation 2.72% > 2%
+RLS-USDT,Altcoins,5,0.2593,0.4064,AL-5: ema_avg_update_lag 1139s > 300s
+ROBO-EUR,Altcoins,4,0.6639,0.8148,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-5: ema_avg_deviation 0.66% > 0.5%; AL-5: ema_avg_update_lag 1697s > 300s
+ROBO-TRY,Altcoins,6,0.8073,0.9548,AL-1: Binance available but not in components; AL-5: ema_avg_deviation 0.81% > 0.5%; AL-5: ema_avg_update_lag 1688s > 300s
+ROBO-USD,Altcoins,5,0.7378,0.8574,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-5: ema_avg_deviation 0.74% > 0.5%; AL-5: ema_avg_update_lag 1154s > 300s
+ROBO-USDC,Altcoins,4,0.7324,0.9001,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-5: ema_avg_deviation 0.73% > 0.5%; AL-5: ema_avg_update_lag 1641s > 300s
+ROBO-USDT,Altcoins,5,0.8312,1.0183,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-5: ema_avg_deviation 0.83% > 0.5%; AL-5: ema_avg_update_lag 1677s > 300s
+RON-EUR,Altcoins,3,0.1964,0.2684,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1386s > 300s
+RON-USD,Altcoins,3,0.1785,0.2572,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1013s > 300s
+RON-USDC,Altcoins,3,0.2073,0.2997,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1183s > 300s
+RON-USDT,Altcoins,3,0.2145,0.3375,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1766s > 300s
+RPL-EUR,Altcoins,5,0.2719,0.5418,AL-5: ema_avg_update_lag 1956s > 300s
+RPL-USD,Altcoins,5,0.2744,0.5459,AL-5: ema_avg_update_lag 2051s > 300s
+RPL-USDC,Altcoins,5,0.2801,0.4979,AL-5: ema_avg_update_lag 2138s > 300s
+RPL-USDT,Altcoins,5,0.2798,0.4790,AL-5: ema_avg_update_lag 1994s > 300s
+RSR-EUR,Altcoins,4,0.3888,0.4807,AL-5: ema_avg_update_lag 1673s > 300s
+RSR-USD,Altcoins,4,0.3927,0.4790,AL-5: ema_avg_update_lag 1339s > 300s
+RSR-USDC,Altcoins,4,0.4897,0.6153,AL-5: ema_avg_update_lag 1738s > 300s
+RSR-USDT,Altcoins,4,0.4453,0.5549,AL-5: ema_avg_update_lag 1659s > 300s
+RVN-EUR,Altcoins,2,0.1633,0.1920,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1393s > 300s
+RVN-USD,Altcoins,5,0.1926,0.3006,AL-5: ema_avg_update_lag 1105s > 300s
+RVN-USDC,Altcoins,5,0.2307,0.3417,AL-5: ema_avg_update_lag 1665s > 300s
+RVN-USDT,Altcoins,5,0.1807,0.2745,AL-5: ema_avg_update_lag 1099s > 300s
+S-USD,Altcoins,5,0.2849,0.3721,AL-5: ema_avg_update_lag 1743s > 300s
+S-USDT,Altcoins,5,0.2527,0.3374,AL-5: ema_avg_update_lag 1394s > 300s
+SAFE-EUR,Altcoins,4,0.1930,0.3160,AL-5: ema_avg_update_lag 1767s > 300s
+SAFE-USD,Altcoins,4,0.1981,0.3229,AL-5: ema_avg_update_lag 1730s > 300s
+SAFE-USDC,Altcoins,4,0.1811,0.3033,AL-5: ema_avg_update_lag 1415s > 300s
+SAFE-USDT,Altcoins,4,0.2067,0.3142,AL-5: ema_avg_update_lag 1786s > 300s
+SAHARA-EUR,Altcoins,4,0.6248,0.7364,AL-5: ema_avg_deviation 0.62% > 0.5%; AL-5: ema_avg_update_lag 1629s > 300s
+SAHARA-TRY,Altcoins,3,0.3711,0.4492,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1644s > 300s
+SAHARA-USD,Altcoins,3,0.3011,0.3666,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1134s > 300s
+SAHARA-USDC,Altcoins,4,0.4299,0.5345,AL-5: ema_avg_update_lag 1695s > 300s
+SAHARA-USDT,Altcoins,3,0.3680,0.4476,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1445s > 300s
+SAND-EUR,Altcoins,4,0.6635,1.4868,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_deviation 0.66% > 0.5%; AL-5: ema_avg_update_lag 2551s > 300s; AL-5: Bitstamp SAND/EUR deviation 2.28% > 2%
+SAND-USD,Altcoins,5,0.1702,0.2697,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1245s > 300s
+SAND-USDC,Altcoins,4,0.1653,0.2220,AL-5: ema_avg_update_lag 1989s > 300s
+SAND-USDT,Altcoins,4,0.1654,0.2318,AL-5: ema_avg_update_lag 1582s > 300s
+SAPIEN-USDT,Altcoins,5,0.2653,0.4074,AL-5: ema_avg_update_lag 1608s > 300s
+SATS-EUR,Altcoins,1,0.2034,0.2034,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 2342s > 300s
+SATS-USD,Altcoins,4,0.2090,0.3240,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1920s > 300s
+SATS-USDC,Altcoins,5,0.3579,0.5383,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1846s > 300s
+SATS-USDT,Altcoins,5,0.3329,0.5720,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1868s > 300s
+SCR-EUR,Altcoins,1,0.0430,0.0430,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)
+SCR-USD,Altcoins,4,0.2885,0.3904,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1777s > 300s
+SCR-USDT,Altcoins,5,0.2835,0.3858,AL-5: ema_avg_update_lag 1879s > 300s
+SD-USD,Altcoins,3,0.2122,0.3632,AL-5: ema_avg_update_lag 1363s > 300s
+SD-USDT,Altcoins,3,0.2015,0.3137,AL-5: ema_avg_update_lag 1781s > 300s
+SEI-EUR,Altcoins,5,0.1452,0.2049,AL-5: ema_avg_update_lag 1860s > 300s
+SEI-TRY,Altcoins,5,0.1438,0.1931,AL-5: ema_avg_update_lag 1736s > 300s
+SEI-USD,Altcoins,5,0.1170,0.1692,AL-5: ema_avg_update_lag 1214s > 300s
+SEI-USDC,Altcoins,5,0.1399,0.1806,AL-5: ema_avg_update_lag 1723s > 300s
+SEI-USDT,Altcoins,5,0.1725,0.2308,AL-5: ema_avg_update_lag 1439s > 300s
+SENT-EUR,Altcoins,5,0.1792,0.2493,AL-1: OKX available but not in components; AL-5: ema_avg_update_lag 1690s > 300s
+SENT-TRY,Altcoins,4,0.1795,0.2548,AL-1: OKX available but not in components; AL-5: ema_avg_update_lag 1218s > 300s
+SENT-USD,Altcoins,4,0.1699,0.2364,AL-1: OKX available but not in components; AL-5: ema_avg_update_lag 1644s > 300s
+SENT-USDC,Altcoins,4,0.2008,0.3045,AL-1: OKX available but not in components; AL-5: ema_avg_update_lag 1195s > 300s
+SENT-USDT,Altcoins,5,0.2072,0.2976,AL-1: OKX available but not in components; AL-5: ema_avg_update_lag 1777s > 300s
+SHELL-USDT,Altcoins,4,0.2441,0.4633,AL-5: ema_avg_update_lag 1933s > 300s
+SHIB-EUR,Altcoins,5,0.1516,0.2522,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1548s > 300s
+SHIB-TRY,Altcoins,3,0.1440,0.1983,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1383s > 300s
+SHIB-USD,Altcoins,5,0.1334,0.2035,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1382s > 300s
+SHIB-USDC,Altcoins,5,0.1305,0.1812,AL-5: ema_avg_update_lag 1335s > 300s
+SHIB-USDT,Altcoins,5,0.1469,0.2075,AL-5: ema_avg_update_lag 955s > 300s
+SIGN-USDT,Altcoins,5,0.5997,0.7757,AL-5: ema_avg_deviation 0.60% > 0.5%; AL-5: ema_avg_update_lag 1431s > 300s
+SKL-EUR,Altcoins,4,0.1693,0.2480,AL-5: ema_avg_update_lag 1529s > 300s
+SKL-USD,Altcoins,6,0.2361,0.4695,AL-5: ema_avg_update_lag 1343s > 300s
+SKL-USDC,Altcoins,5,0.2683,0.4363,AL-5: ema_avg_update_lag 1497s > 300s
+SKL-USDT,Altcoins,6,0.2625,0.4883,AL-5: ema_avg_update_lag 1242s > 300s
+SKY-EUR,Altcoins,4,0.1708,0.2188,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1157s > 300s
+SKY-USD,Altcoins,4,0.1689,0.2024,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1043s > 300s
+SKY-USDC,Altcoins,4,0.1942,0.2321,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1703s > 300s
+SKY-USDT,Altcoins,4,0.1768,0.2154,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1623s > 300s
+SLP-USD,Altcoins,4,0.2360,0.3717,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1115s > 300s
+SLP-USDT,Altcoins,5,0.2349,0.4297,AL-5: ema_avg_update_lag 1571s > 300s
+SNDK-USDT,TradFi,3,0.3844,0.4467,TF-1: dxFeed available but not in components
+SNT-EUR,Altcoins,2,0.2112,0.2493,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1749s > 300s
+SNT-USD,Altcoins,2,0.1761,0.2070,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1225s > 300s
+SNT-USDC,Altcoins,2,0.1851,0.2363,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1368s > 300s
+SNT-USDT,Altcoins,2,0.1688,0.2068,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 981s > 300s
+SNX-EUR,Altcoins,5,0.1965,0.3538,AL-5: ema_avg_update_lag 1850s > 300s
+SNX-TRY,Altcoins,5,0.2429,0.3923,AL-5: ema_avg_update_lag 1839s > 300s
+SNX-USD,Altcoins,5,0.2265,0.3854,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 2028s > 300s
+SNX-USDC,Altcoins,5,0.2419,0.3606,AL-5: ema_avg_update_lag 1858s > 300s
+SNX-USDT,Altcoins,5,0.2972,0.4267,AL-5: ema_avg_update_lag 1896s > 300s
+SOL-EUR,Topcoins,7,0.1991,0.3282,TC: ema_avg_deviation 0.20% ≥ 0.15%; TC: ema_max_deviation 0.33% ≥ 0.3%
+SOL-USDC,Topcoins,5,0.1819,0.2558,TC: ema_avg_deviation 0.18% ≥ 0.15%
+SOL-USDT,Topcoins,5,0.1671,0.1792,TC: ema_avg_deviation 0.17% ≥ 0.15%
+SONIC-EUR,Altcoins,1,0.1859,0.1859,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1633s > 300s
+SONIC-USD,Altcoins,4,0.2338,0.3544,AL-5: ema_avg_update_lag 1638s > 300s
+SONIC-USDC,Altcoins,4,0.2698,0.3722,AL-5: ema_avg_update_lag 1777s > 300s
+SONIC-USDT,Altcoins,4,0.2570,0.3827,AL-5: ema_avg_update_lag 1365s > 300s
+SOON-USDT,Altcoins,5,0.2338,0.3749,AL-5: ema_avg_update_lag 1803s > 300s
+SOPH-USD,Altcoins,4,0.1712,0.3444,AL-5: ema_avg_update_lag 1733s > 300s
+SOPH-USDT,Altcoins,3,0.1853,0.3179,AL-1: OKX available but not in components; AL-5: ema_avg_update_lag 1820s > 300s
+SPACE-TRY,Altcoins,3,0.2785,0.3544,AL-5: ema_avg_update_lag 1222s > 300s
+SPACE-USD,Altcoins,4,0.3271,0.4326,AL-5: ema_avg_update_lag 1172s > 300s
+SPACE-USDT,Altcoins,4,0.4284,0.5492,AL-5: ema_avg_update_lag 1692s > 300s
+SPK-EUR,Altcoins,4,0.1371,0.1791,AL-5: ema_avg_update_lag 1787s > 300s
+SPK-USD,Altcoins,4,0.1080,0.1583,AL-5: ema_avg_update_lag 959s > 300s
+SPK-USDC,Altcoins,4,0.1772,0.2313,AL-5: ema_avg_update_lag 1748s > 300s
+SPK-USDT,Altcoins,4,0.1787,0.2288,AL-5: ema_avg_update_lag 1806s > 300s
+SPURS-USD,Altcoins,2,0.1823,0.2229,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1354s > 300s
+SPURS-USDT,Altcoins,2,0.1742,0.2092,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 2041s > 300s
+SPX-USDT,Altcoins,5,0.2132,0.3711,AL-5: ema_avg_update_lag 1773s > 300s
+SPY-USDT,TradFi,4,0.0843,0.1431,TF-1: dxFeed available but not in components
+SSV-EUR,Altcoins,1,0.1801,0.1801,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1722s > 300s
+SSV-USD,Altcoins,4,0.2153,0.3290,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 907s > 300s
+SSV-USDC,Altcoins,5,0.2311,0.3302,AL-5: ema_avg_update_lag 1778s > 300s
+SSV-USDT,Altcoins,5,0.2752,0.3950,AL-5: ema_avg_update_lag 1432s > 300s
+STABLE-USDT,Altcoins,4,0.3731,0.5209,AL-5: ema_avg_update_lag 1724s > 300s
+STETH-ETH,Altcoins,3,0.0199,0.0320,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 2006s > 300s
+STETH-USD,Altcoins,4,0.1209,0.1864,AL-5: ema_avg_update_lag 1620s > 300s
+STETH-USDT,Altcoins,4,0.1427,0.2045,AL-5: ema_avg_update_lag 1640s > 300s
+STORJ-EUR,Altcoins,4,0.2977,0.4914,AL-5: ema_avg_update_lag 1836s > 300s
+STORJ-USD,Altcoins,4,0.2270,0.3994,AL-5: ema_avg_update_lag 1814s > 300s
+STORJ-USDC,Altcoins,4,0.2403,0.4202,AL-5: ema_avg_update_lag 1870s > 300s
+STORJ-USDT,Altcoins,4,0.2739,0.4250,AL-5: ema_avg_update_lag 1772s > 300s
+STRK-EUR,Altcoins,4,0.2170,0.2999,AL-5: ema_avg_update_lag 1790s > 300s
+STRK-TRY,Altcoins,3,0.3005,0.3783,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 2083s > 300s; AL-5: OKX STRK/TRY deviation 2.05% > 2%
+STRK-USD,Altcoins,6,0.4011,0.9211,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 2147s > 300s
+STRK-USDC,Altcoins,4,0.2709,0.3615,AL-5: ema_avg_update_lag 1725s > 300s
+STRK-USDT,Altcoins,4,0.2428,0.3359,AL-5: ema_avg_update_lag 1789s > 300s
+STX-EUR,Altcoins,5,0.1297,0.1811,AL-5: ema_avg_update_lag 1772s > 300s
+STX-TRY,Altcoins,5,0.1219,0.1769,AL-5: ema_avg_update_lag 1739s > 300s
+STX-USD,Altcoins,5,0.1900,0.2859,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1320s > 300s
+STX-USDC,Altcoins,5,0.1265,0.1778,AL-5: ema_avg_update_lag 1469s > 300s
+STX-USDT,Altcoins,5,0.1416,0.1883,AL-5: ema_avg_update_lag 1551s > 300s
+SUI-EUR,Altcoins,5,0.2573,0.3910,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1554s > 300s
+SUI-TRY,Altcoins,3,0.1839,0.2322,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1494s > 300s
+SUI-USD,Altcoins,4,0.1394,0.1551,AL-5: ema_avg_update_lag 1209s > 300s
+SUI-USDC,Altcoins,3,0.1999,0.2561,AL-5: ema_avg_update_lag 1516s > 300s
+SUI-USDT,Altcoins,4,0.1598,0.1718,AL-5: ema_avg_update_lag 938s > 300s
+SUSHI-EUR,Altcoins,3,0.1878,0.2404,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 3314s > 300s; AL-5: OKX SUSHI/EUR deviation 2.26% > 2%
+SUSHI-USD,Altcoins,5,0.1354,0.2190,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1190s > 300s
+SUSHI-USDC,Altcoins,5,0.2055,0.3282,AL-5: ema_avg_update_lag 1776s > 300s
+SUSHI-USDT,Altcoins,5,0.1990,0.3036,AL-5: ema_avg_update_lag 1762s > 300s
+SWFTC-EUR,Altcoins,3,0.3413,0.4593,AL-5: ema_avg_update_lag 1589s > 300s
+SWFTC-USD,Altcoins,3,0.3441,0.4746,AL-5: ema_avg_update_lag 1618s > 300s
+SWFTC-USDC,Altcoins,3,0.3596,0.4599,AL-5: ema_avg_update_lag 1374s > 300s
+SWFTC-USDT,Altcoins,3,0.3447,0.4497,AL-5: ema_avg_update_lag 1640s > 300s
+SYRUP-USDT,Altcoins,5,0.3030,0.4248,AL-5: ema_avg_update_lag 1668s > 300s
+T-EUR,Altcoins,1,0.1435,0.1435,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1692s > 300s
+T-USD,Altcoins,4,0.1687,0.2612,AL-5: ema_avg_update_lag 1820s > 300s
+T-USDC,Altcoins,4,0.2426,0.3562,AL-5: ema_avg_update_lag 2104s > 300s
+T-USDT,Altcoins,4,0.1969,0.3141,AL-5: ema_avg_update_lag 1681s > 300s
+TAO-USDT,Altcoins,4,0.6288,0.6949,AL-5: ema_avg_deviation 0.63% > 0.5%; AL-5: ema_avg_update_lag 1634s > 300s
+THETA-EUR,Altcoins,3,0.2252,0.3418,AL-5: ema_avg_update_lag 1496s > 300s
+THETA-USD,Altcoins,4,0.1742,0.2822,AL-5: ema_avg_update_lag 1290s > 300s
+THETA-USDC,Altcoins,6,0.2305,0.3955,AL-5: ema_avg_update_lag 1402s > 300s
+THETA-USDT,Altcoins,4,0.2793,0.3951,AL-5: ema_avg_update_lag 1059s > 300s
+TIA-EUR,Altcoins,4,0.1480,0.1854,AL-5: ema_avg_update_lag 1672s > 300s
+TIA-TRY,Altcoins,3,0.2326,0.3029,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 2147s > 300s
+TIA-USD,Altcoins,4,0.1311,0.1604,AL-5: ema_avg_update_lag 988s > 300s
+TIA-USDC,Altcoins,4,0.3004,0.3453,AL-5: ema_avg_update_lag 1714s > 300s
+TIA-USDT,Altcoins,4,0.1985,0.2463,AL-5: ema_avg_update_lag 1489s > 300s
+TNSR-EUR,Altcoins,2,0.1924,0.2429,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1747s > 300s
+TNSR-TRY,Altcoins,4,0.2004,0.2641,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1859s > 300s
+TNSR-USD,Altcoins,4,0.1740,0.2339,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1201s > 300s
+TNSR-USDC,Altcoins,5,0.3072,0.4210,AL-5: ema_avg_update_lag 1757s > 300s
+TNSR-USDT,Altcoins,5,0.2381,0.3222,AL-5: ema_avg_update_lag 1813s > 300s
+TON-EUR,Altcoins,4,0.1072,0.1454,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1671s > 300s
+TON-TRY,Altcoins,5,0.0824,0.1175,AL-5: ema_avg_update_lag 1637s > 300s
+TON-USD,Altcoins,4,0.1331,0.1696,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1166s > 300s
+TON-USDC,Altcoins,3,0.1455,0.2165,AL-5: ema_avg_update_lag 2124s > 300s
+TON-USDT,Altcoins,5,0.1046,0.1467,AL-5: ema_avg_update_lag 1492s > 300s
+TOSHI-EUR,Altcoins,4,0.1696,0.2725,AL-5: ema_avg_update_lag 1810s > 300s
+TOSHI-USD,Altcoins,5,0.2666,0.3876,AL-5: ema_avg_update_lag 1267s > 300s
+TOSHI-USDC,Altcoins,5,0.1965,0.2982,AL-5: ema_avg_update_lag 1835s > 300s
+TOSHI-USDT,Altcoins,5,0.1928,0.3125,AL-5: ema_avg_update_lag 1680s > 300s
+TRA-USD,Altcoins,2,0.4814,0.6313,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1641s > 300s
+TRA-USDT,Altcoins,2,0.5459,0.6975,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_deviation 0.55% > 0.5%; AL-5: ema_avg_update_lag 1344s > 300s
+TRB-EUR,Altcoins,4,0.1361,0.2058,AL-5: ema_avg_update_lag 1849s > 300s
+TRB-USD,Altcoins,4,0.1347,0.2090,AL-5: ema_avg_update_lag 1386s > 300s
+TRB-USDC,Altcoins,4,0.1275,0.1859,AL-5: ema_avg_update_lag 2070s > 300s
+TRB-USDT,Altcoins,4,0.1460,0.2238,AL-5: ema_avg_update_lag 1636s > 300s
+TRIA-USDT,Altcoins,4,0.8381,1.0025,AL-5: ema_avg_deviation 0.84% > 0.5%; AL-5: ema_avg_update_lag 1706s > 300s
+TRUMP-AUD,Altcoins,5,0.1323,0.1757,AL-5: ema_avg_update_lag 1642s > 300s
+TRUMP-BRL,Altcoins,5,0.1224,0.1675,AL-5: ema_avg_update_lag 1693s > 300s
+TRUMP-EUR,Altcoins,5,0.1295,0.1741,AL-5: ema_avg_update_lag 1640s > 300s
+TRUMP-TRY,Altcoins,5,0.1417,0.1835,AL-5: ema_avg_update_lag 1643s > 300s
+TRUMP-USD,Altcoins,5,0.1203,0.1586,AL-5: ema_avg_update_lag 1132s > 300s
+TRUMP-USDC,Altcoins,5,0.1529,0.2188,AL-5: ema_avg_update_lag 1623s > 300s
+TRUMP-USDT,Altcoins,5,0.1446,0.2052,AL-5: ema_avg_update_lag 1733s > 300s
+TRUST-USDT,Altcoins,4,0.3495,0.5618,AL-5: ema_avg_update_lag 1175s > 300s
+TRUTH-USDT,Altcoins,4,0.3526,0.5895,AL-5: ema_avg_update_lag 1443s > 300s
+TRX-EUR,Altcoins,4,0.0757,0.1095,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1687s > 300s
+TRX-TRY,Altcoins,3,0.1037,0.1659,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1217s > 300s
+TRX-USD,Altcoins,5,0.1291,0.2174,AL-5: ema_avg_update_lag 1269s > 300s
+TRX-USDC,Altcoins,3,0.1348,0.1649,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1416s > 300s
+TRX-USDT,Altcoins,5,0.0809,0.1053,AL-5: ema_avg_update_lag 1319s > 300s
+TSLA-USDT,TradFi,6,0.0976,0.1327,TF-1: dxFeed available but not in components
+TSM-USDT,TradFi,4,0.1662,0.2051,TF-1: dxFeed available but not in components
+TURBO-EUR,Altcoins,2,0.1740,0.2134,AL-1: OKX available but not in components; AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1076s > 300s
+TURBO-TRY,Altcoins,3,0.1676,0.2149,AL-5: ema_avg_update_lag 1619s > 300s
+TURBO-USD,Altcoins,4,0.1478,0.2295,AL-5: ema_avg_update_lag 1120s > 300s
+TURBO-USDC,Altcoins,4,0.2622,0.3572,AL-5: ema_avg_update_lag 1774s > 300s
+TURBO-USDT,Altcoins,4,0.2347,0.3233,AL-5: ema_avg_update_lag 1725s > 300s
+UMA-EUR,Altcoins,1,0.2510,0.2510,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1882s > 300s
+UMA-USD,Altcoins,3,0.2453,0.3610,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1235s > 300s
+UMA-USDC,Altcoins,3,0.2676,0.3782,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1816s > 300s
+UMA-USDT,Altcoins,3,0.2608,0.4092,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1620s > 300s
+UNI-EUR,Altcoins,4,0.2680,0.4109,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 2350s > 300s
+UNI-TRY,Altcoins,5,0.1503,0.1791,AL-5: ema_avg_update_lag 1660s > 300s
+UNI-USD,Altcoins,4,0.1451,0.2038,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1185s > 300s
+UNI-USDC,Altcoins,4,0.1427,0.1693,AL-5: ema_avg_update_lag 1622s > 300s
+UNI-USDT,Altcoins,5,0.1919,0.2259,AL-5: ema_avg_update_lag 1660s > 300s
+USAT-USD,Altcoins,4,0.0233,0.0360,AL-5: ema_avg_update_lag 2442s > 300s
+USAT-USDT,Altcoins,4,0.0236,0.0392,AL-5: ema_avg_update_lag 2322s > 300s
+USD1-USDT,Altcoins,5,0.0083,0.0183,AL-5: ema_avg_update_lag 2575s > 300s
+USDG-EUR,Fiat,2,0.0242,0.0316,Fiat: only 2 components (need ≥3)
+USDT-AED,Fiat,1,0.0127,0.0127,Fiat: only 1 components (need ≥3)
+USELESS-USDT,Altcoins,4,0.3059,0.4684,AL-5: ema_avg_update_lag 1638s > 300s
+UXLINK-USD,Altcoins,2,0.5940,0.7280,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_deviation 0.59% > 0.5%; AL-5: ema_avg_update_lag 1879s > 300s
+UXLINK-USDT,Altcoins,2,0.5785,0.7044,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_deviation 0.58% > 0.5%; AL-5: ema_avg_update_lag 1736s > 300s
+VANA-USDT,Altcoins,4,0.2064,0.3151,AL-5: ema_avg_update_lag 1271s > 300s
+VELO-EUR,Altcoins,4,0.2802,0.3671,AL-5: ema_avg_update_lag 1686s > 300s
+VELO-USD,Altcoins,3,0.2598,0.3381,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1259s > 300s
+VELO-USDC,Altcoins,4,0.3288,0.4446,AL-5: ema_avg_update_lag 1675s > 300s
+VELO-USDT,Altcoins,4,0.3916,0.4948,AL-5: ema_avg_update_lag 1706s > 300s
+VELODROME-EUR,Altcoins,1,0.0837,0.0837,AL-4: only 1 distinct exchanges (need ≥3)
+VELODROME-USD,Altcoins,3,0.2652,0.4107,AL-5: ema_avg_update_lag 1714s > 300s
+VELODROME-USDT,Altcoins,4,0.2494,0.3919,AL-5: ema_avg_update_lag 1738s > 300s
+VINE-USD,Altcoins,3,0.3782,0.5003,AL-5: ema_avg_update_lag 1744s > 300s
+VINE-USDT,Altcoins,3,0.3291,0.4239,AL-5: ema_avg_update_lag 1654s > 300s
+VIRTUAL-EUR,Altcoins,2,0.2377,0.2566,AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1663s > 300s
+VIRTUAL-USD,Altcoins,5,0.1759,0.2272,AL-5: ema_avg_update_lag 1142s > 300s
+VIRTUAL-USDC,Altcoins,5,0.2419,0.2891,AL-5: ema_avg_update_lag 1634s > 300s
+VIRTUAL-USDT,Altcoins,5,0.3030,0.3563,AL-5: ema_avg_update_lag 1785s > 300s
+W-EUR,Altcoins,1,0.2097,0.2097,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1737s > 300s
+W-TRY,Altcoins,5,0.2224,0.3431,AL-5: ema_avg_update_lag 1838s > 300s
+W-USD,Altcoins,4,0.2194,0.3367,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1690s > 300s
+W-USDC,Altcoins,5,0.2259,0.3382,AL-5: ema_avg_update_lag 1871s > 300s
+W-USDT,Altcoins,5,0.2574,0.3949,AL-5: ema_avg_update_lag 1989s > 300s
+WAL-USDT,Altcoins,5,0.2016,0.3753,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1698s > 300s
+WAXP-EUR,Altcoins,4,0.2534,0.3662,AL-5: ema_avg_update_lag 1876s > 300s
+WAXP-USD,Altcoins,4,0.1912,0.3121,AL-5: ema_avg_update_lag 1311s > 300s
+WAXP-USDC,Altcoins,4,0.2514,0.3791,AL-5: ema_avg_update_lag 1230s > 300s
+WAXP-USDT,Altcoins,4,0.2379,0.3639,AL-5: ema_avg_update_lag 1777s > 300s
+WCT-EUR,Altcoins,5,0.2026,0.2981,AL-5: ema_avg_update_lag 1737s > 300s
+WCT-TRY,Altcoins,5,0.2010,0.2801,AL-5: ema_avg_update_lag 1674s > 300s
+WCT-USD,Altcoins,5,0.2297,0.3700,AL-5: ema_avg_update_lag 1721s > 300s
+WCT-USDC,Altcoins,5,0.1879,0.3148,AL-5: ema_avg_update_lag 1348s > 300s
+WCT-USDT,Altcoins,5,0.2375,0.3175,AL-5: ema_avg_update_lag 1608s > 300s
+WET-USD,Altcoins,3,0.1939,0.3029,AL-5: ema_avg_update_lag 1452s > 300s
+WET-USDT,Altcoins,3,0.2506,0.3710,AL-5: ema_avg_update_lag 1955s > 300s
+WIF-EUR,Altcoins,5,0.3734,0.5444,AL-5: ema_avg_update_lag 1924s > 300s
+WIF-TRY,Altcoins,3,0.4035,0.5284,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1364s > 300s
+WIF-USD,Altcoins,4,0.3178,0.4088,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1777s > 300s
+WIF-USDC,Altcoins,4,0.3214,0.4789,AL-5: ema_avg_update_lag 2079s > 300s
+WIF-USDT,Altcoins,5,0.3200,0.4129,AL-5: ema_avg_update_lag 1727s > 300s
+WIN-EUR,Altcoins,1,0.1409,0.1409,AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 2294s > 300s
+WIN-USD,Altcoins,4,0.2348,0.3563,AL-5: ema_avg_update_lag 1445s > 300s
+WIN-USDC,Altcoins,4,0.2791,0.5377,AL-5: ema_avg_update_lag 1834s > 300s
+WIN-USDT,Altcoins,4,0.2779,0.5360,AL-5: ema_avg_update_lag 1899s > 300s
+WLD-EUR,Altcoins,4,0.2190,0.2567,AL-5: ema_avg_update_lag 1626s > 300s
+WLD-TRY,Altcoins,4,0.2354,0.2786,AL-5: ema_avg_update_lag 1656s > 300s
+WLD-USD,Altcoins,4,0.2076,0.2379,AL-5: ema_avg_update_lag 1100s > 300s
+WLD-USDC,Altcoins,4,0.2491,0.2897,AL-5: ema_avg_update_lag 1313s > 300s
+WLD-USDT,Altcoins,4,0.2547,0.3052,AL-5: ema_avg_update_lag 948s > 300s
+WLFI-EUR,Altcoins,4,0.1571,0.2114,AL-5: ema_avg_update_lag 1659s > 300s
+WLFI-TRY,Altcoins,4,0.1394,0.1876,AL-5: ema_avg_update_lag 1248s > 300s
+WLFI-USD,Altcoins,4,0.1724,0.2274,AL-5: ema_avg_update_lag 1764s > 300s
+WLFI-USDC,Altcoins,4,0.1822,0.2297,AL-5: ema_avg_update_lag 1734s > 300s
+WLFI-USDT,Altcoins,4,0.1687,0.2324,AL-5: ema_avg_update_lag 1636s > 300s
+WOO-EUR,Altcoins,4,0.2726,0.3778,AL-5: ema_avg_update_lag 1937s > 300s
+WOO-USD,Altcoins,4,0.2412,0.3695,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1368s > 300s
+WOO-USDC,Altcoins,4,0.3476,0.4815,AL-5: ema_avg_update_lag 1674s > 300s
+WOO-USDT,Altcoins,4,0.2699,0.3848,AL-5: ema_avg_update_lag 1213s > 300s
+XAU-USD,TradFi,5,0.0935,0.1179,TF-3: Binance_LINEAR_PERPETUAL (score 4) available but not used; TF-3: OKX_PERPETUAL (score 4) available but not used
+XAU-USDT,TradFi,5,0.0930,0.1281,TF-3: Binance_LINEAR_PERPETUAL (score 4) available but not used; TF-3: OKX_PERPETUAL (score 4) available but not used
+XAUT-TRY,Altcoins,4,0.1126,0.1420,AL-5: ema_avg_update_lag 1186s > 300s
+XAUT-USDT,Altcoins,4,0.0976,0.1106,AL-5: ema_avg_update_lag 1409s > 300s
+XCH-EUR,Altcoins,3,0.4712,0.6457,AL-5: ema_avg_update_lag 1733s > 300s
+XCH-USD,Altcoins,3,0.4098,0.6038,AL-5: ema_avg_update_lag 1082s > 300s
+XCH-USDC,Altcoins,3,0.6908,1.0373,AL-5: ema_avg_deviation 0.69% > 0.5%; AL-5: ema_avg_update_lag 1756s > 300s
+XCH-USDT,Altcoins,3,0.8879,1.1444,AL-5: ema_avg_deviation 0.89% > 0.5%; AL-5: ema_avg_update_lag 1771s > 300s
+XCU-USDT,TradFi,3,0.0911,0.1214,TF-1: Binance_LINEAR_INDEX available but not in components; TF-3: Binance_LINEAR_PERPETUAL (score 4) available but not used
+XLM-EUR,Altcoins,5,0.1583,0.2593,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1831s > 300s
+XLM-USD,Altcoins,5,0.1546,0.1919,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1689s > 300s
+XLM-USDC,Altcoins,4,0.1477,0.1760,AL-5: ema_avg_update_lag 1157s > 300s
+XLM-USDT,Altcoins,4,0.1689,0.1932,AL-5: ema_avg_update_lag 1679s > 300s
+XPL-EUR,Altcoins,4,0.2508,0.2883,AL-5: ema_avg_update_lag 1572s > 300s
+XPL-TRY,Altcoins,4,0.2486,0.2922,AL-5: ema_avg_update_lag 1200s > 300s
+XPL-USD,Altcoins,4,0.2418,0.2690,AL-5: ema_avg_update_lag 1258s > 300s
+XPL-USDC,Altcoins,4,0.2661,0.3005,AL-5: ema_avg_update_lag 1712s > 300s
+XPL-USDT,Altcoins,4,0.2840,0.3078,AL-5: ema_avg_update_lag 1810s > 300s
+XPT-USDT,TradFi,3,0.1712,0.2203,TF-1: Binance_LINEAR_INDEX available but not in components
+XTZ-EUR,Altcoins,3,0.1883,0.2834,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 2307s > 300s
+XTZ-USD,Altcoins,4,0.1598,0.2223,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1655s > 300s
+XTZ-USDC,Altcoins,4,0.1724,0.2296,AL-5: ema_avg_update_lag 1760s > 300s
+XTZ-USDT,Altcoins,4,0.2079,0.3083,AL-5: ema_avg_update_lag 1736s > 300s
+YB-USD,Altcoins,4,0.4339,0.5663,AL-5: ema_avg_update_lag 990s > 300s
+YB-USDT,Altcoins,4,0.6320,0.7598,AL-5: ema_avg_deviation 0.63% > 0.5%; AL-5: ema_avg_update_lag 1390s > 300s
+YFI-EUR,Altcoins,4,0.1979,0.3196,AL-5: ema_avg_update_lag 1837s > 300s
+YFI-USD,Altcoins,4,0.1545,0.2262,AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1934s > 300s
+YFI-USDC,Altcoins,4,0.1899,0.3167,AL-5: ema_avg_update_lag 1855s > 300s
+YFI-USDT,Altcoins,4,0.2033,0.3399,AL-5: ema_avg_update_lag 1857s > 300s
+YGG-EUR,Altcoins,4,0.2397,0.3669,AL-5: ema_avg_update_lag 1736s > 300s
+YGG-USD,Altcoins,4,0.2215,0.3150,AL-5: ema_avg_update_lag 1238s > 300s
+YGG-USDC,Altcoins,4,0.4058,0.5522,AL-5: ema_avg_update_lag 1814s > 300s
+YGG-USDT,Altcoins,4,0.3189,0.4603,AL-5: ema_avg_update_lag 1558s > 300s
+ZAMA-TRY,Altcoins,4,0.1832,0.2590,AL-5: ema_avg_update_lag 1672s > 300s
+ZAMA-USD,Altcoins,4,0.2073,0.2520,AL-5: ema_avg_update_lag 1668s > 300s
+ZAMA-USDT,Altcoins,4,0.1919,0.2598,AL-5: ema_avg_update_lag 1335s > 300s
+ZBCN-EUR,Altcoins,3,0.3414,0.4372,AL-5: ema_avg_update_lag 1614s > 300s
+ZBCN-USD,Altcoins,3,0.3233,0.3893,AL-5: ema_avg_update_lag 1707s > 300s
+ZBCN-USDC,Altcoins,3,0.3673,0.4480,AL-5: ema_avg_update_lag 1689s > 300s
+ZBCN-USDT,Altcoins,3,0.3728,0.4496,AL-5: ema_avg_update_lag 1344s > 300s
+ZBT-USDT,Altcoins,5,0.1661,0.2745,AL-5: ema_avg_update_lag 1005s > 300s
+ZEC-EUR,Altcoins,4,0.2111,0.2447,AL-5: ema_avg_update_lag 1030s > 300s
+ZEC-USD,Altcoins,4,0.1908,0.2252,AL-5: ema_avg_update_lag 1202s > 300s
+ZEC-USDC,Altcoins,4,0.3106,0.3338,AL-5: ema_avg_update_lag 1658s > 300s
+ZEC-USDT,Altcoins,4,0.2391,0.2738,AL-5: ema_avg_update_lag 1605s > 300s
+ZEN-EUR,Altcoins,5,0.1322,0.2071,AL-5: ema_avg_update_lag 1742s > 300s
+ZEN-USD,Altcoins,5,0.1350,0.2182,AL-5: ema_avg_update_lag 981s > 300s
+ZEN-USDC,Altcoins,5,0.1503,0.2354,AL-5: ema_avg_update_lag 1740s > 300s
+ZEN-USDT,Altcoins,5,0.1661,0.2708,AL-5: ema_avg_update_lag 1717s > 300s
+ZENT-USD,Altcoins,4,0.3163,0.5339,AL-5: ema_avg_update_lag 1658s > 300s
+ZENT-USDT,Altcoins,4,0.3145,0.4844,AL-5: ema_avg_update_lag 1627s > 300s
+ZETA-EUR,Altcoins,4,0.2167,0.3190,AL-5: ema_avg_update_lag 1678s > 300s
+ZETA-USD,Altcoins,5,0.2296,0.3815,AL-5: ema_avg_update_lag 1748s > 300s
+ZETA-USDC,Altcoins,4,0.3461,0.4662,AL-5: ema_avg_update_lag 1750s > 300s
+ZETA-USDT,Altcoins,4,0.2564,0.3812,AL-5: ema_avg_update_lag 1551s > 300s
+ZEUS-USD,Altcoins,3,0.4217,0.6523,AL-5: ema_avg_update_lag 1387s > 300s
+ZEUS-USDT,Altcoins,3,0.7026,1.0177,AL-5: ema_avg_deviation 0.70% > 0.5%; AL-5: ema_avg_update_lag 1854s > 300s
+ZIL-EUR,Altcoins,1,0.1274,0.1274,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1764s > 300s
+ZIL-TRY,Altcoins,5,0.2397,0.3359,AL-5: ema_avg_update_lag 1692s > 300s
+ZIL-USD,Altcoins,3,0.1374,0.1732,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_update_lag 1153s > 300s
+ZIL-USDC,Altcoins,5,0.2075,0.2953,AL-5: ema_avg_update_lag 1254s > 300s
+ZIL-USDT,Altcoins,5,0.1853,0.2733,AL-5: ema_avg_update_lag 1704s > 300s
+ZK-EUR,Altcoins,4,0.1886,0.2675,AL-5: ema_avg_update_lag 1182s > 300s
+ZK-TRY,Altcoins,4,0.2064,0.2535,AL-5: ema_avg_update_lag 1636s > 300s
+ZK-USD,Altcoins,5,0.2691,0.4399,AL-5: ema_avg_update_lag 1748s > 300s
+ZK-USDC,Altcoins,4,0.3387,0.3907,AL-5: ema_avg_update_lag 1766s > 300s
+ZK-USDT,Altcoins,4,0.3203,0.3690,AL-5: ema_avg_update_lag 1651s > 300s
+ZKJ-USD,Altcoins,3,0.1767,0.2550,AL-5: ema_avg_update_lag 1749s > 300s
+ZKJ-USDT,Altcoins,3,0.1767,0.2455,AL-5: ema_avg_update_lag 1498s > 300s
+ZKP-USDT,Altcoins,5,0.2536,0.4641,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1513s > 300s
+ZORA-EUR,Altcoins,4,0.1481,0.2101,AL-5: ema_avg_update_lag 1776s > 300s
+ZORA-USD,Altcoins,5,0.1582,0.2311,AL-5: ema_avg_update_lag 1088s > 300s
+ZORA-USDC,Altcoins,5,0.1665,0.2509,AL-5: ema_avg_update_lag 1169s > 300s
+ZORA-USDT,Altcoins,5,0.1801,0.2431,AL-5: ema_avg_update_lag 1030s > 300s
+ZRO-EUR,Altcoins,1,0.3553,0.3553,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_update_lag 1353s > 300s
+ZRO-TRY,Altcoins,5,0.3472,0.4148,AL-5: ema_avg_update_lag 1233s > 300s
+ZRO-USD,Altcoins,4,0.3813,0.4478,AL-1: Binance available but not in components; AL-5: ema_avg_update_lag 1024s > 300s
+ZRO-USDC,Altcoins,5,0.3955,0.4603,AL-5: ema_avg_update_lag 1178s > 300s
+ZRO-USDT,Altcoins,5,0.4896,0.5593,AL-5: ema_avg_update_lag 1617s > 300s
+ZRX-EUR,Altcoins,4,0.2124,0.3105,AL-5: ema_avg_update_lag 1636s > 300s
+ZRX-USD,Altcoins,4,0.1561,0.2281,AL-5: ema_avg_update_lag 1311s > 300s
+ZRX-USDC,Altcoins,4,0.1874,0.2811,AL-5: ema_avg_update_lag 1694s > 300s
+ZRX-USDT,Altcoins,4,0.2096,0.3311,AL-5: ema_avg_update_lag 1880s > 300s
