@@ -43,6 +43,10 @@ INDEX_QUOTE_CCYS = ["USDT", "USD", "USDC", "BTC"]
 KNOWN_QUOTES = ["USDT", "USDC", "BUSD", "BTC", "ETH", "DAI", "TUSD", "USD", "EUR", "TRY", "BRL"]
 EMA_TAU = 86400.0  # 24 hours in seconds
 EMA_SAVE_INTERVAL = 300  # save EMA cache every 5 minutes
+CONFIG_FILE = CACHE_DIR / "config.json"
+ALERT_CACHE_FILE = CACHE_DIR / "alert_cache.json"
+ALERT_BUFFER_THRESHOLD = 0.02  # 2% — trigger when buffer < this
+ALERT_COOLDOWN = 3600  # 1 hour — don't re-alert same instrument within this window
 
 # ─────────────── State ───────────────
 
@@ -55,7 +59,10 @@ ema_state: dict[str, dict[str, float]] = {}
 ema_ts: dict[str, float] = {}  # instId -> last EMA update timestamp
 _last_ema_save: float = 0
 
-EMA_FIELDS = ["basis", "spread", "limitUp_buffer", "limitDn_buffer"]
+# Alert state: {instId: {reason: last_sent_timestamp}}
+_alert_cache: dict[str, dict[str, float]] = {}
+
+EMA_FIELDS = ["basis", "spread", "limitUp_buffer", "limitDn_buffer", "vol24h", "volCcy24h"]
 
 
 # ─────────────── EMA helpers ───────────────
@@ -123,6 +130,9 @@ def update_ema(inst_id: str, now: float, values: dict[str, float | None]):
     ema_ts[inst_id] = now
 
 
+_VOLUME_FIELDS = {"vol24h", "volCcy24h"}
+
+
 def get_ema_snapshot() -> dict[str, dict[str, Any]]:
     """Return current EMA values for all instruments."""
     result = {}
@@ -130,16 +140,173 @@ def get_ema_snapshot() -> dict[str, dict[str, Any]]:
         row = {"instId": inst_id}
         for field in EMA_FIELDS:
             v = ema.get(field)
-            if v is not None:
-                row[field] = round(v, 8)
-                row[f"{field}_pct"] = round(v * 100, 4)
+            if field in _VOLUME_FIELDS:
+                # Volume fields: no pct conversion
+                row[field] = round(v, 4) if v is not None else None
             else:
-                row[field] = None
-                row[f"{field}_pct"] = None
+                if v is not None:
+                    row[field] = round(v, 8)
+                    row[f"{field}_pct"] = round(v * 100, 4)
+                else:
+                    row[field] = None
+                    row[f"{field}_pct"] = None
         if inst_id in ema_ts:
             row["ema_updated"] = ema_ts[inst_id]
         result[inst_id] = row
     return result
+
+
+# ─────────────── Config helpers ───────────────
+
+
+def load_config() -> dict:
+    """Load config from disk."""
+    if CONFIG_FILE.exists():
+        try:
+            return json.loads(CONFIG_FILE.read_text())
+        except Exception:
+            pass
+    return {}
+
+
+def save_config(config: dict):
+    """Save config to disk."""
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    CONFIG_FILE.write_text(json.dumps(config, indent=2))
+
+
+# ─────────────── Lark alert helpers ───────────────
+
+
+def _load_alert_cache():
+    """Load sent-alert cache from disk."""
+    global _alert_cache
+    if ALERT_CACHE_FILE.exists():
+        try:
+            _alert_cache = json.loads(ALERT_CACHE_FILE.read_text())
+        except Exception:
+            _alert_cache = {}
+
+
+def _save_alert_cache():
+    """Persist sent-alert cache to disk."""
+    try:
+        CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        ALERT_CACHE_FILE.write_text(json.dumps(_alert_cache))
+    except Exception as e:
+        print(f"  [warn] failed to save alert cache: {e}", file=sys.stderr)
+
+
+def _should_alert(inst_id: str, reason: str, now: float, cooldown: float = ALERT_COOLDOWN) -> bool:
+    """Check if we should send an alert (not sent recently for this reason)."""
+    last_sent = _alert_cache.get(inst_id, {}).get(reason, 0)
+    return (now - last_sent) >= cooldown
+
+
+def _mark_alerted(inst_id: str, reason: str, now: float):
+    """Record that we sent an alert."""
+    _alert_cache.setdefault(inst_id, {})[reason] = now
+
+
+def _prune_alert_cache(now: float):
+    """Remove stale entries older than 2x cooldown."""
+    cutoff = now - ALERT_COOLDOWN * 2
+    for inst_id in list(_alert_cache):
+        reasons = _alert_cache[inst_id]
+        for reason in list(reasons):
+            if reasons[reason] < cutoff:
+                del reasons[reason]
+        if not reasons:
+            del _alert_cache[inst_id]
+
+
+async def _send_lark_alert(webhook_url: str, alerts: list[dict]):
+    """Send alert message to Lark bot webhook."""
+    if not alerts:
+        return
+
+    lines = []
+    for a in alerts:
+        buf_val = a["buffer_pct"]
+        lines.append(f"• **{a['instId']}** ({a['instType']}) — {a['reason']}: **{buf_val:.2f}%** (threshold: {ALERT_BUFFER_THRESHOLD * 100:.1f}%)")
+
+    ts_str = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+    content = (
+        f"**⚠️ Price Limit Buffer Alert**\n"
+        f"Time: {ts_str}\n"
+        f"Instruments: {len(alerts)}\n\n"
+        + "\n".join(lines)
+    )
+
+    payload = {
+        "msg_type": "interactive",
+        "card": {
+            "header": {
+                "title": {"tag": "plain_text", "content": "Price Limit Buffer Alert"},
+                "template": "red",
+            },
+            "elements": [
+                {"tag": "markdown", "content": content},
+            ],
+        },
+    }
+
+    try:
+        async with httpx.AsyncClient() as client:
+            resp = await client.post(webhook_url, json=payload, timeout=10)
+            if resp.status_code == 200:
+                print(f"  [alert] sent {len(alerts)} alerts to Lark", file=sys.stderr)
+            else:
+                print(f"  [alert] Lark webhook returned {resp.status_code}: {resp.text}", file=sys.stderr)
+    except Exception as e:
+        print(f"  [alert] failed to send Lark alert: {e}", file=sys.stderr)
+
+
+async def check_and_alert(snap: dict[str, dict]):
+    """Check snapshot for abnormal buffers and send Lark alerts."""
+    config = load_config()
+    webhook_url = config.get("lark_webhook_url")
+    if not webhook_url:
+        return
+
+    threshold = float(config.get("alert_threshold", ALERT_BUFFER_THRESHOLD))
+    cooldown = float(config.get("alert_cooldown", ALERT_COOLDOWN))
+
+    now = time.time()
+    pending_alerts = []
+
+    for inst_id, row in snap.items():
+        limit_up = row.get("limitUp_buffer")
+        limit_dn = row.get("limitDn_buffer")
+
+        if limit_up is not None and limit_up < threshold:
+            reason = "limitUp_buffer_low"
+            if _should_alert(inst_id, reason, now, cooldown):
+                pending_alerts.append({
+                    "instId": inst_id,
+                    "instType": row.get("instType", ""),
+                    "reason": "Upper limit buffer low",
+                    "buffer_pct": limit_up * 100,
+                })
+                _mark_alerted(inst_id, reason, now)
+
+        if limit_dn is not None and limit_dn < threshold:
+            reason = "limitDn_buffer_low"
+            if _should_alert(inst_id, reason, now, cooldown):
+                pending_alerts.append({
+                    "instId": inst_id,
+                    "instType": row.get("instType", ""),
+                    "reason": "Lower limit buffer low",
+                    "buffer_pct": limit_dn * 100,
+                })
+                _mark_alerted(inst_id, reason, now)
+
+    if pending_alerts:
+        await _send_lark_alert(webhook_url, pending_alerts)
+        _save_alert_cache()
+
+    # Prune stale entries periodically
+    _prune_alert_cache(now)
 
 
 # ─────────────── Fetch helpers ───────────────
@@ -168,6 +335,8 @@ async def fetch_all_tickers(
                     "bidPx": t.get("bidPx", ""),
                     "askPx": t.get("askPx", ""),
                     "last": t.get("last", ""),
+                    "vol24h": t.get("vol24h", ""),
+                    "volCcy24h": t.get("volCcy24h", ""),
                     "instType": t.get("instType", inst_type),
                 }
         except Exception as e:
@@ -431,12 +600,18 @@ def build_snapshot(
         if sell_lmt and bid and sell_lmt > 0:
             limit_dn_buf = (bid / sell_lmt) - 1
 
+        # Volume
+        vol24h = _safe_float(tk.get("vol24h", ""))
+        vol_ccy_24h = _safe_float(tk.get("volCcy24h", ""))
+
         # Update EMA
         update_ema(inst_id, now, {
             "basis": basis,
             "spread": spread,
             "limitUp_buffer": limit_up_buf,
             "limitDn_buffer": limit_dn_buf,
+            "vol24h": vol24h,
+            "volCcy24h": vol_ccy_24h,
         })
         ema = ema_state.get(inst_id, {})
 
@@ -481,6 +656,11 @@ def build_snapshot(
             "limitUp_buffer_ema_pct": round(ema["limitUp_buffer"] * 100, 4) if "limitUp_buffer" in ema else None,
             "limitDn_buffer_ema": round(ema["limitDn_buffer"], 6) if "limitDn_buffer" in ema else None,
             "limitDn_buffer_ema_pct": round(ema["limitDn_buffer"] * 100, 4) if "limitDn_buffer" in ema else None,
+            # 24h volume
+            "vol24h": vol24h,
+            "volCcy24h": vol_ccy_24h,
+            "vol24h_ema": round(ema["vol24h"], 4) if "vol24h" in ema else None,
+            "volCcy24h_ema": round(ema["volCcy24h"], 4) if "volCcy24h" in ema else None,
         }
     return rows
 
@@ -518,6 +698,9 @@ async def poll_loop(interval: float, inst_types: list[str]):
 
             # 4) Maybe save EMA cache
             _maybe_save_ema_cache()
+
+            # 4b) Check alerts and send to Lark if configured
+            await check_and_alert(snapshot)
 
             elapsed = time.monotonic() - t0
             print(
@@ -811,6 +994,7 @@ def main(port: int, interval: float, types: str):
 
     _write_pid(port)
     _load_ema_cache()
+    _load_alert_cache()
 
     async def run():
         ws_server = await ws_serve(ws_handler, "0.0.0.0", port)

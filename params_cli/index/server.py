@@ -34,6 +34,13 @@ COMPONENT_BATCH_CONCURRENCY = 5
 COMPONENT_BATCH_SIZE = 40  # fetch components for this many indices per cycle
 STALE_THRESHOLD_S = 60  # component considered stale after 60s without update
 PID_FILE = Path(__file__).parent / "cache" / ".index_server.pid"
+EMA_CACHE_FILE = Path(__file__).parent / "cache" / "ema_state.json"
+EMA_TAU = 86400  # 24-hour time constant
+EMA_SAVE_INTERVAL = 300  # save EMA to disk every 5 minutes
+EMA_INDEX_FIELDS = ["ema_avg_deviation", "ema_max_deviation", "ema_avg_update_lag", "ema_stale_ratio"]
+EMA_COMP_FIELDS = ["ema_deviation", "ema_update_lag"]
+MARKET_CACHE_MAX_AGE = 86400  # 24h — refresh market cache if older
+MARKET_CACHE_INTERVAL = 30  # seconds between refreshing one coin
 
 # ─────────────── State ───────────────
 
@@ -44,12 +51,131 @@ connected_clients: set = set()
 _prev_components: dict[str, dict[str, str]] = {}  # index -> {exchange: last_price}
 _component_update_times: dict[str, dict[str, float]] = {}  # index -> {exchange: last_change_ts}
 
+# ─────────────── EMA state ───────────────
+# Index-level: index_id -> {ema_field: value}
+_ema_index: dict[str, dict[str, float]] = {}
+# Component-level: "index_id|exchange:symbol" -> {ema_field: value}
+_ema_comp: dict[str, dict[str, float]] = {}
+# Timestamps: key -> last_update_ts
+_ema_ts: dict[str, float] = {}
+_ema_last_save: float = 0
+
+
+def _load_ema_state():
+    """Load persisted EMA state from disk."""
+    global _ema_index, _ema_comp, _ema_ts, _ema_last_save
+    if EMA_CACHE_FILE.exists():
+        try:
+            raw = json.loads(EMA_CACHE_FILE.read_text())
+            _ema_index = raw.get("ema_index", {})
+            _ema_comp = raw.get("ema_comp", {})
+            _ema_ts = raw.get("ema_ts", {})
+            _ema_last_save = raw.get("saved_at", 0)
+            n_comp = len(_ema_comp)
+            print(f"  Loaded EMA state: {len(_ema_index)} indices, {n_comp} components", file=sys.stderr)
+        except Exception as e:
+            print(f"  [warn] failed to load EMA state: {e}", file=sys.stderr)
+
+
+def _save_ema_state(now: float):
+    """Persist EMA state to disk."""
+    global _ema_last_save
+    EMA_CACHE_FILE.parent.mkdir(parents=True, exist_ok=True)
+    EMA_CACHE_FILE.write_text(json.dumps({
+        "ema_index": _ema_index,
+        "ema_comp": _ema_comp,
+        "ema_ts": _ema_ts,
+        "saved_at": now,
+    }))
+    _ema_last_save = now
+
+
+def _apply_ema(store: dict, key: str, now: float, fields: list[str], values: dict[str, float | None]):
+    """Generic EMA update for a keyed store (index or component)."""
+    from math import exp
+
+    if key not in store:
+        store[key] = {}
+        for f in fields:
+            v = values.get(f)
+            if v is not None:
+                store[key][f] = v
+        _ema_ts[key] = now
+        return
+
+    prev_ts = _ema_ts.get(key, now)
+    dt = now - prev_ts
+    if dt <= 0:
+        dt = 1.0
+    alpha = 1.0 - exp(-dt / EMA_TAU)
+
+    for f in fields:
+        v = values.get(f)
+        if v is None:
+            continue
+        prev = store[key].get(f)
+        if prev is not None:
+            store[key][f] = alpha * v + (1 - alpha) * prev
+        else:
+            store[key][f] = v
+
+    _ema_ts[key] = now
+
+
+def update_index_ema(index_id: str, now: float, values: dict[str, float | None]):
+    """Update index-level EMA."""
+    _apply_ema(_ema_index, index_id, now, EMA_INDEX_FIELDS, values)
+
+
+def update_comp_ema(index_id: str, exchange: str, symbol: str, now: float, values: dict[str, float | None]):
+    """Update component-level EMA."""
+    key = f"{index_id}|{exchange}:{symbol}"
+    _apply_ema(_ema_comp, key, now, EMA_COMP_FIELDS, values)
+
+
+def get_ema_snapshot() -> dict[str, dict]:
+    """Get formatted EMA data for all indices (index-level + component-level)."""
+    result = {}
+    for index_id, ema in _ema_index.items():
+        row = {"index": index_id}
+        for field in EMA_INDEX_FIELDS:
+            v = ema.get(field)
+            row[field] = round(v, 6) if v is not None else None
+        if index_id in _ema_ts:
+            row["ema_updated"] = _ema_ts[index_id]
+
+        # Attach component EMAs for this index
+        comp_emas = []
+        prefix = f"{index_id}|"
+        for comp_key, comp_ema in _ema_comp.items():
+            if not comp_key.startswith(prefix):
+                continue
+            exch_sym = comp_key[len(prefix):]  # "Binance:BTC/USDT"
+            parts = exch_sym.split(":", 1)
+            comp_row = {
+                "exchange": parts[0] if parts else "",
+                "symbol": parts[1] if len(parts) > 1 else "",
+            }
+            for field in EMA_COMP_FIELDS:
+                v = comp_ema.get(field)
+                comp_row[field] = round(v, 6) if v is not None else None
+            if comp_key in _ema_ts:
+                comp_row["ema_updated"] = _ema_ts[comp_key]
+            comp_emas.append(comp_row)
+
+        row["components"] = comp_emas
+        result[index_id] = row
+    return result
+
 
 # ─────────────── Fetch helpers ───────────────
 
 
+INDEX_QUOTE_CURRENCIES = ["USDT", "USDC", "USD", "EUR", "TRY", "BRL", "AUD", "AED", "BTC", "ETH", "SGD", "SOL"]
+
+
 async def fetch_index_tickers(client: httpx.AsyncClient) -> dict[str, dict]:
-    """Fetch all index tickers (USDT + USDC) → {index: {idxPx, ...}}."""
+    """Fetch all index tickers across all quote currencies → {index: {idxPx, ...}}."""
     tickers = {}
 
     async def _fetch_quote(quote_ccy: str):
@@ -77,7 +203,7 @@ async def fetch_index_tickers(client: httpx.AsyncClient) -> dict[str, dict]:
         except Exception as e:
             print(f"  [warn] index tickers {quote_ccy} failed: {e}", file=sys.stderr)
 
-    await asyncio.gather(_fetch_quote("USDT"), _fetch_quote("USDC"))
+    await asyncio.gather(*[_fetch_quote(q) for q in INDEX_QUOTE_CURRENCIES])
     return tickers
 
 
@@ -260,6 +386,9 @@ async def poll_loop(interval: float):
     real_indexes = set(get_indexes())
     print(f"  Loaded {len(real_indexes)} real indexes from OKX instruments", file=sys.stderr)
 
+    # Load persisted EMA state
+    _load_ema_state()
+
     async with httpx.AsyncClient(headers=HEADERS) as client:
         while True:
             t0 = time.monotonic()
@@ -290,6 +419,28 @@ async def poll_loop(interval: float):
             # 3) Build snapshot with quality metrics
             snapshot = build_snapshot(tickers, all_comp_data, now)
             snapshot_ts = now
+
+            # 3b) Update EMA for each index and its components
+            for index_id, row in snapshot.items():
+                if row.get("component_count", 0) > 0:
+                    comp_count = row["component_count"]
+                    # Index-level EMA
+                    update_index_ema(index_id, now, {
+                        "ema_avg_deviation": row.get("avg_deviation_pct"),
+                        "ema_max_deviation": row.get("max_deviation_pct"),
+                        "ema_avg_update_lag": row.get("avg_update_lag_s"),
+                        "ema_stale_ratio": (row.get("stale_components", 0) / comp_count * 100) if comp_count else None,
+                    })
+                    # Component-level EMA
+                    for comp in row.get("components", []):
+                        update_comp_ema(index_id, comp.get("exchange", ""), comp.get("symbol", ""), now, {
+                            "ema_deviation": abs(comp["deviation_pct"]) if comp.get("deviation_pct") is not None else None,
+                            "ema_update_lag": comp.get("update_lag_s"),
+                        })
+
+            # Save EMA state periodically
+            if now - _ema_last_save >= EMA_SAVE_INTERVAL:
+                _save_ema_state(now)
 
             elapsed = time.monotonic() - t0
             alert_count = sum(
@@ -440,6 +591,33 @@ async def http_handler(reader: asyncio.StreamReader, writer: asyncio.StreamWrite
         }, indent=2)
         status = "200 OK"
 
+    elif path == "/ema" or path == "/ema/":
+        ema_data = get_ema_snapshot()
+        # Support ?q= filter
+        q = ""
+        if "?" in path:
+            params = dict(
+                p.split("=", 1) for p in path.split("?")[1].split("&") if "=" in p
+            )
+            q = params.get("q", "").upper()
+        if q:
+            ema_data = {k: v for k, v in ema_data.items() if q in k.upper()}
+        body = json.dumps({
+            "count": len(ema_data),
+            "data": ema_data,
+        }, indent=2)
+        status = "200 OK"
+
+    elif path.startswith("/ema/"):
+        index_id = path.split("/ema/")[1].strip("/").split("?")[0]
+        ema_data = get_ema_snapshot()
+        if index_id in ema_data:
+            body = json.dumps(ema_data[index_id], indent=2)
+            status = "200 OK"
+        else:
+            body = json.dumps({"error": f"no EMA data for {index_id}"})
+            status = "404 Not Found"
+
     elif path.startswith("/alerts"):
         threshold = 2.0  # default 2%
         if "?" in path:
@@ -471,6 +649,9 @@ async def http_handler(reader: asyncio.StreamReader, writer: asyncio.StreamWrite
             "endpoints": [
                 "GET /snapshot - all indices (summary)",
                 "GET /snapshot/{index} - single index with component details",
+                "GET /ema - EMA of deviation metrics for all indices",
+                "GET /ema/{index} - EMA of deviation metrics for one index",
+                "GET /ema?q=BTC - filter EMA data by keyword",
                 "GET /search?q=BTC - filter indices",
                 "GET /alerts - indices with high deviation or stale components",
                 "GET /alerts?threshold=1 - custom deviation threshold (%)",
@@ -553,6 +734,66 @@ def read_server_status(port: int = 8785) -> dict | None:
     return None
 
 
+# ─────────────── Background market cache refresh ───────────────
+
+
+async def market_cache_loop():
+    """Gradually refresh expired {COIN}_markets.json cache files.
+
+    Runs alongside the main poll loop. Each cycle refreshes one coin
+    whose cache is older than MARKET_CACHE_MAX_AGE, then sleeps.
+    """
+    from fetcher import get_indexes, fetch_markets_for_coin, CACHE_DIR
+
+    # Wait for main loop to start first
+    await asyncio.sleep(10)
+
+    # Coins that don't need market data (stablecoins/fiat)
+    SKIP_COINS = {"USDT", "USDC", "USD", "EUR", "TRY", "BRL", "AUD", "AED", "SGD"}
+
+    while True:
+        try:
+            indexes = get_indexes()
+            coins = sorted(set(
+                idx.split("-", 1)[0].upper() for idx in indexes
+            ) - SKIP_COINS)
+
+            # Find the coin with the oldest (or missing) cache
+            oldest_coin = None
+            oldest_ts = float("inf")
+            for coin in coins:
+                cache_file = CACHE_DIR / f"{coin}_markets.json"
+                if not cache_file.exists():
+                    oldest_coin = coin
+                    break
+                try:
+                    data = json.loads(cache_file.read_text())
+                    ts = data.get("ts", 0)
+                except (json.JSONDecodeError, KeyError):
+                    ts = 0
+                if ts < oldest_ts:
+                    oldest_ts = ts
+                    oldest_coin = coin
+
+            # Refresh if cache is expired or missing
+            if oldest_coin and (time.time() - oldest_ts > MARKET_CACHE_MAX_AGE):
+                print(f"  [cache] Refreshing markets for {oldest_coin}...", file=sys.stderr)
+                try:
+                    await asyncio.to_thread(fetch_markets_for_coin, oldest_coin, True)
+                    print(f"  [cache] {oldest_coin} done", file=sys.stderr)
+                except Exception as e:
+                    print(f"  [cache] {oldest_coin} failed: {e}", file=sys.stderr)
+            else:
+                # All caches are fresh — check again in 5 minutes
+                await asyncio.sleep(300)
+                continue
+
+        except Exception as e:
+            print(f"  [cache] Error in market cache loop: {e}", file=sys.stderr)
+
+        await asyncio.sleep(MARKET_CACHE_INTERVAL)
+
+
 # ─────────────── Main ───────────────
 
 
@@ -581,11 +822,16 @@ def main(port: int, interval: float):
 
         print(f"  Servers started. Ctrl+C to stop.\n", file=sys.stderr)
 
+        # Start background market cache refresh
+        cache_task = asyncio.create_task(market_cache_loop())
+
         try:
             await poll_loop(interval)
         except asyncio.CancelledError:
             pass
         finally:
+            cache_task.cancel()
+            _save_ema_state(time.time())
             ws_server.close()
             http_server.close()
             _remove_pid()

@@ -8,13 +8,9 @@ OKX applies price limit parameters (Y caps and Z caps) to all trading instrument
 
 Review all OKX instruments' price limit parameters (Y/Z caps) to identify improper or risky configurations, and generate adjustment recommendations.
 
-## Objective
-
-Review all OKX instruments' price limit parameters (Y/Z caps) to identify improper or risky configurations, and generate adjustment recommendations.
-
 ## Input Data
 
-The data source file (file C) is a markdown table containing per-instrument:
+The data source file (file C) is a CSV containing per-instrument:
 
 - **instType**: SPOT, SWAP, or FUTURES
 - **instId**: instrument identifier (e.g. BTC-USDT-SWAP)
@@ -25,16 +21,47 @@ The data source file (file C) is a markdown table containing per-instrument:
 - **spread_ema**: 24h EMA of bid-ask spread ratio
 - **limitUp_buffer_ema**: 24h EMA of (buyLmt / bestAsk - 1), how far price is from upper limit
 - **limitDn_buffer_ema**: 24h EMA of (bidPx / sellLmt - 1), how far price is from lower limit
+- **volCcy24h_ema**: 24h EMA of 24-hour trading volume in quote currency (USD equivalent)
 
 ## Review Rules
 
-### Rule 1: Buffer Too Tight
+### Rule 1: Insufficient Buffer — Diagnostic Triage
 
-If `limitUp_buffer_ema < 0` or `limitDn_buffer_ema < 0`, the price is persistently close to a limit. Compare the B/A spread with Y cap spread (Y upper cap to lower cap). If Y cap is too tight or even smaller than B/A spread, widen the Y cap properly
+**Trigger**: `limitUp_buffer_ema < 0` or `limitDn_buffer_ema < 0` (price persistently near or beyond a limit).
+
+When triggered, diagnose the root cause using the following decision tree:
+
+**Step 1 — Check B/A spread:**
+If `spread_ema > 0.50%` (50 bps), the insufficient buffer is caused by poor liquidity / wide quotes, not by cap misconfiguration.
+- **Action**: Flag as "liquidity issue". Recommend enhancing liquidity (e.g. onboard MM, adjust incentives). **No parameter adjustment needed.**
+
+**Step 2 — Check 24h volume (only if spread ≤ 50 bps):**
+If `volCcy24h_ema < 5000` (i.e. < $5k daily volume), the market is quoted tightly but barely traded — the limit breach is likely caused by a stale or misquoted index/mark price.
+- **Action**: Flag as "mispricing". Recommend the MM to take misquote orders to correct the price. **No parameter adjustment needed.**
+
+**Step 3 — Severe buffer breach (spread ≤ 50 bps AND volume ≥ $5k):**
+The instrument is actively traded with healthy liquidity, yet the price is persistently hitting the limit. This is a genuine cap misconfiguration.
+- **Action**: Widen the Z cap on the affected side. Use the basis direction to determine which side:
+  - If `limitUp_buffer_ema < 0`: widen `upper_Z_cap`
+  - If `limitDn_buffer_ema < 0`: widen `lower_Z_cap`
+  - Set the new Z cap to at least `|basis_ema| + spread_ema + 2%` buffer, rounded up to a clean percentage, and no less than the asset-type default from Rule 3.
 
 ### Rule 2: Asymmetric Basis with Symmetric Caps
 
-Compare the basis with the Z cap, if basis is positive, then compare with upper Z cap, if negative, compare with lower Z cap. if basis is too large, widen the Z cap properly
+**Trigger**: The basis is persistently large relative to the Z cap on one side.
+
+Specifically, flag when:
+- `basis_ema > 0` and `basis_ema > upper_Z_cap * 0.5` (basis consuming >50% of the upper Z cap headroom)
+- `basis_ema < 0` and `|basis_ema| > lower_Z_cap * 0.5` (basis consuming >50% of the lower Z cap headroom)
+
+Apply the same diagnostic triage as Rule 1 before recommending a Z cap adjustment:
+
+1. If `spread_ema > 0.50%` → flag as "liquidity issue", recommend enhancing liquidity. No adjustment.
+2. If `spread_ema ≤ 0.50%` and `volCcy24h_ema < 5000` → flag as "mispricing", recommend MM to take misquote orders. No adjustment.
+3. If `spread_ema ≤ 0.50%` and `volCcy24h_ema ≥ 5000` → widen the Z cap on the affected side:
+   - If basis positive: set `upper_Z_cap` to at least `basis_ema + spread_ema + 2%` buffer
+   - If basis negative: set `lower_Z_cap` to at least `|basis_ema| + spread_ema + 2%` buffer
+   - Round up to a clean percentage, and no less than the asset-type default from Rule 3.
 
 ### Rule 3: Asset-Type or instType Consistency
 
@@ -58,5 +85,33 @@ If `upper_Z_cap <= upper_Y_cap` or `lower_Z_cap <= lower_Y_cap`, the outer band 
 
 ## Output Format
 
-1. **Review summary** (markdown): generate a review summary for each step, eg, what instruments' params are incorrect and why, and what's the proposed changes.
-2. **Adjustment file**: for instruments that need changes, call the `./cli.py generate-adjustment` to generate the adjustment file
+### 1. Review Summary
+
+Output a single structured markdown report. Group findings by rule, then by verdict. Use tables — not prose — for listing instruments.
+
+**Format per rule:**
+
+```
+### Rule N: <Rule Name>
+
+**<Verdict>** — <count> instrument(s)
+
+| instId | instType | spread_ema | volCcy24h_ema | basis_ema | current cap | proposed cap | reason |
+|--------|----------|------------|---------------|-----------|-------------|--------------|--------|
+| ...    | ...      | ...        | ...           | ...       | ...         | ...          | ...    |
+
+```
+
+Verdicts are one of:
+- **Adjust** — parameter change needed (include proposed values)
+- **Liquidity issue** — wide spread, recommend enhancing liquidity
+- **Mispricing** — tight spread but no volume, recommend MM take misquote orders
+- **Consistency fix** — caps deviate from asset-type defaults or same-coin peers
+
+Rules that find no issues: output `**No issues found.**` and move on. Do not list clean instruments.
+
+Keep commentary to one sentence per verdict group explaining the pattern. No per-instrument narratives.
+
+### 2. Adjustment File
+
+For all instruments with verdict **Adjust** or **Consistency fix**, call `./cli.py generate-adjustment` with the proposed values to generate the CSV file. Output the file path at the end.

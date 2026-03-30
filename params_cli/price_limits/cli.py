@@ -217,6 +217,61 @@ def generate_adjustment_cmd(adjustments_json: str | None):
     _out({"status": "ok", **result})
 
 
+@cli.command("config")
+@click.argument("key", required=False)
+@click.argument("value", required=False)
+def config_cmd(key: str | None, value: str | None):
+    """Get or set CLI configuration.
+
+    Without arguments: show all config.
+    With KEY: show that key's value.
+    With KEY VALUE: set the key.
+
+    Supported keys:
+        lark_webhook_url    — Lark bot webhook URL for price limit alerts
+        alert_threshold     — Buffer alert threshold (default: 0.02 = 2%)
+        alert_cooldown      — Seconds between re-alerting same instrument (default: 3600)
+    """
+    from realtime_server import load_config, save_config
+
+    config = load_config()
+
+    if key is None:
+        # Show all config
+        if not config:
+            _out({"status": "ok", "message": "No config set. Use: ./cli.py config <key> <value>", "data": {}})
+        else:
+            _out({"status": "ok", "data": config})
+        return
+
+    key = key.lower().strip()
+
+    if value is None:
+        # Get single key
+        v = config.get(key)
+        if v is None:
+            _out({"status": "ok", "key": key, "value": None, "message": f"'{key}' is not set."})
+        else:
+            _out({"status": "ok", "key": key, "value": v})
+        return
+
+    # Set key
+    VALID_KEYS = {"lark_webhook_url", "alert_threshold", "alert_cooldown"}
+    if key not in VALID_KEYS:
+        _error(f"Unknown config key '{key}'. Valid keys: {', '.join(sorted(VALID_KEYS))}")
+
+    # Type coercion for numeric keys
+    if key in ("alert_threshold", "alert_cooldown"):
+        try:
+            value = float(value)
+        except ValueError:
+            _error(f"'{key}' must be a number, got: {value}")
+
+    config[key] = value
+    save_config(config)
+    _out({"status": "ok", "message": f"Set '{key}'.", "key": key, "value": value})
+
+
 @cli.command("realtime")
 @click.option("--port", default=8765, help="WebSocket port (HTTP on port+1)")
 @click.option("--interval", default=5.0, help="Polling interval in seconds")
@@ -524,6 +579,7 @@ def review_cmd(inst_ids: tuple[str, ...]):
         "instType", "instId", "upper_Y_cap", "lower_Y_cap",
         "upper_Z_cap", "lower_Z_cap", "assetsType",
         "basis_ema", "spread_ema", "limitUp_buffer_ema", "limitDn_buffer_ema",
+        "volCcy24h_ema",
     ]
 
     buf = io.StringIO()
@@ -540,6 +596,9 @@ def review_cmd(inst_ids: tuple[str, ...]):
                 return ""
             return f"{v * 100:.4f}%"
 
+        vol_ccy = ema.get("volCcy24h")
+        vol_ccy_str = "" if vol_ccy is None else f"{vol_ccy:.2f}"
+
         row = {
             "instType": xyz.get("instType", ""),
             "instId": inst_id,
@@ -552,6 +611,7 @@ def review_cmd(inst_ids: tuple[str, ...]):
             "spread_ema": _fmt(ema.get("spread")),
             "limitUp_buffer_ema": _fmt(ema.get("limitUp_buffer")),
             "limitDn_buffer_ema": _fmt(ema.get("limitDn_buffer")),
+            "volCcy24h_ema": vol_ccy_str,
         }
         writer.writerow(row)
         rows.append(row)

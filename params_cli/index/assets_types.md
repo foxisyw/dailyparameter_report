@@ -1,4 +1,5 @@
 # TradFi
+BZ
 CL
 NG
 XAG
