@@ -1,9 +1,9 @@
 {
   "report": {
     "date": "2026-03-30",
-    "generated_at": "2026-03-30T04:10:46.148240+00:00",
+    "generated_at": "2026-03-30T06:27:05.642038+00:00",
     "status": "critical",
-    "total_issues": 29,
+    "total_issues": 458,
     "chapters": [
       {
         "slug": "risk-intel",
@@ -22,39 +22,39 @@
         "slug": "price-limit",
         "title": "Price Limit Review",
         "status": "critical",
-        "summary": "Scanned 1496 instruments. Found 16 issue(s) across 4 rules.",
+        "summary": "Scanned 1496 instruments. Found 13 issue(s) across 4 rules.",
         "metrics": {
           "instruments_scanned": 1496,
           "ema_coverage": 1496,
-          "issues_found": 16,
+          "issues_found": 13,
           "source": "OKX API (live)",
-          "generated_at": "2026-03-30T04:10:34.943212+00:00"
+          "generated_at": "2026-03-30T03:04:42.441202+00:00"
         }
       },
       {
         "slug": "mmr-futures",
         "title": "MMR Futures Review",
-        "status": "pending",
-        "summary": "Depth data not available — re-run cron to fetch via MCP (Step 5b).",
+        "status": "warning",
+        "summary": "14 adjustments found across 65 instruments. Leverage: ↑0 ↓0. Amount: ↑13 ↓1.",
         "metrics": {
-          "instruments_scanned": 0,
-          "ema_coverage": 0,
-          "issues_found": 0,
-          "source": "n/a",
-          "generated_at": "2026-03-30T04:10:46.036596+00:00"
+          "instruments_scanned": 74,
+          "ema_coverage": 65,
+          "issues_found": 14,
+          "source": "OKX Tiers + Depth SQL",
+          "generated_at": "2026-03-30T03:04:56.949657+00:00"
         }
       },
       {
         "slug": "index-review",
         "title": "Index Review",
-        "status": "pending",
-        "summary": "CLI review failed or server not running.",
+        "status": "critical",
+        "summary": "Scanned 1257 indexes (1193 with EMA). 418 flagged, 775 pass.",
         "metrics": {
-          "instruments_scanned": 0,
-          "ema_coverage": 0,
-          "issues_found": 0,
-          "source": "n/a",
-          "generated_at": "2026-03-30T04:10:46.148199+00:00"
+          "instruments_scanned": 1257,
+          "ema_coverage": 1193,
+          "issues_found": 418,
+          "source": "params_cli/index CLI",
+          "generated_at": "2026-03-30T03:04:58.619478+00:00"
         }
       }
     ]
@@ -4393,13 +4393,13 @@
       "title": "Price Limit Review",
       "render_variant": "rules",
       "status": "critical",
-      "summary": "Scanned 1496 instruments. Found 16 issue(s) across 4 rules.",
+      "summary": "Scanned 1496 instruments. Found 13 issue(s) across 4 rules.",
       "metrics": {
         "instruments_scanned": 1496,
         "ema_coverage": 1496,
-        "issues_found": 16,
+        "issues_found": 13,
         "source": "OKX API (live)",
-        "generated_at": "2026-03-30T04:10:34.943212+00:00"
+        "generated_at": "2026-03-30T03:04:42.441202+00:00"
       },
       "metric_cards": [
         {
@@ -4412,7 +4412,7 @@
         },
         {
           "label": "Issues",
-          "value": "16"
+          "value": "13"
         },
         {
           "label": "Source",
@@ -4434,27 +4434,9 @@
             ],
             "rows": [
               [
-                "SLP-USD",
-                "-0.75%",
-                "-0.91%",
-                "warning"
-              ],
-              [
-                "SLP-USD",
-                "-0.75%",
-                "-0.91%",
-                "warning"
-              ],
-              [
-                "UXLINK-USD",
-                "-1.31%",
-                "3.36%",
-                "warning"
-              ],
-              [
-                "UXLINK-USDT",
-                "-1.27%",
-                "5.02%",
+                "DGB-USD",
+                "-0.88%",
+                "0.17%",
                 "warning"
               ]
             ]
@@ -4476,13 +4458,13 @@
             "rows": [
               [
                 "UXLINK-USD",
-                "4.88%",
+                "2.63%",
                 "5.0%",
                 "warning"
               ],
               [
                 "UXLINK-USDT",
-                "5.69%",
+                "2.63%",
                 "5.0%",
                 "warning"
               ]
@@ -4656,19 +4638,19 @@
             "Z_upper(10.0%) out of range for Topcoins (typical ~2%)"
           ],
           [
-            "SLP-USD",
+            "DGB-USD",
             "Widen Y caps",
-            "limitUp_buffer=-0.75%, B/A spread(5.63%) vs Y spread(4.0%)"
+            "limitUp_buffer=-0.88%, B/A spread(4.71%) vs Y spread(4.0%)"
           ],
           [
             "UXLINK-USD",
-            "Widen Y caps",
-            "limitUp_buffer=-1.31%, B/A spread(2.91%) vs Y spread(4.0%)"
+            "Widen upper Z cap to accommodate basis",
+            "basis=2.63% vs upper_Z=5.0%"
           ],
           [
             "UXLINK-USDT",
-            "Widen Y caps",
-            "limitUp_buffer=-1.27%"
+            "Widen upper Z cap to accommodate basis",
+            "basis=2.63% vs upper_Z=5.0%"
           ]
         ]
       },
@@ -4679,7 +4661,7 @@
           "content": "Task Object,timeType,Effective Time,openUpperLimit,openLowerLimit,afterOpenUpperLimit,afterOpenLowerLimit,afterOpenIndexUpperLimit,afterOpenIndexLowerLimit,preQuoteMaxJ1UpperLimit,preQuoteMinJ2LowerLimit,preQuoteC1,preQuoteC2\r\nBTC-USD_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260403,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260410,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USD_UM_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USD_CM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USD_CM-260925,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nBTC-USDT_UM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\nETH-USDT_UM-260626,IMMEDIATE,,1.05,0.95,1.01,0.99,1.02,0.98,,,,\r\n"
         }
       ],
-      "markdown": "# Price Limit Review\n\n**Generated:** 2026-03-30T04:10:34.943212+00:00  \n**Status:** critical  \n**Instruments scanned:** 1496  \n**EMA coverage:** 1496  \n\n**Total issues found:** 16\n\n## Rule 1: Buffer Too Tight\n4 issue(s) found.\n\n| INSTRUMENT | LIMITUP_BUFFER | LIMITDN_BUFFER | STATUS |\n|---|---|---|---|\n| SLP-USD | -0.75% | -0.91% | warning |\n| SLP-USD | -0.75% | -0.91% | warning |\n| UXLINK-USD | -1.31% | 3.36% | warning |\n| UXLINK-USDT | -1.27% | 5.02% | warning |\n\n## Rule 2: Asymmetric Basis\n2 issue(s) found.\n\n| INSTRUMENT | BASIS_EMA | RELEVANT Z CAP | STATUS |\n|---|---|---|---|\n| UXLINK-USD | 4.88% | 5.0% | warning |\n| UXLINK-USDT | 5.69% | 5.0% | warning |\n\n## Rule 3: Asset-Type Consistency\n10 issue(s) found.\n\n| INSTRUMENT | CURRENT Y | CURRENT Z | EXPECTED Y | EXPECTED Z | STATUS |\n|---|---|---|---|---|---|\n| BTC-USD-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD-260925 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260403 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260410 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USDT-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USDT-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n\n## Rule 4: Z Cap <= Y Cap\nAll instruments passed.\n",
+      "markdown": "# Price Limit Review\n\n**Generated:** 2026-03-30T03:04:42.441202+00:00  \n**Status:** critical  \n**Instruments scanned:** 1496  \n**EMA coverage:** 1496  \n\n**Total issues found:** 13\n\n## Rule 1: Buffer Too Tight\n1 issue(s) found.\n\n| INSTRUMENT | LIMITUP_BUFFER | LIMITDN_BUFFER | STATUS |\n|---|---|---|---|\n| DGB-USD | -0.88% | 0.17% | warning |\n\n## Rule 2: Asymmetric Basis\n2 issue(s) found.\n\n| INSTRUMENT | BASIS_EMA | RELEVANT Z CAP | STATUS |\n|---|---|---|---|\n| UXLINK-USD | 2.63% | 5.0% | warning |\n| UXLINK-USDT | 2.63% | 5.0% | warning |\n\n## Rule 3: Asset-Type Consistency\n10 issue(s) found.\n\n| INSTRUMENT | CURRENT Y | CURRENT Z | EXPECTED Y | EXPECTED Z | STATUS |\n|---|---|---|---|---|---|\n| BTC-USD-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD-260925 | 1.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260403 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260410 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USD_UM-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USD-260925 | 2.0% | 10.0% | 1% | 2% | warning |\n| BTC-USDT-260626 | 2.0% | 10.0% | 1% | 2% | warning |\n| ETH-USDT-260626 | 1.0% | 10.0% | 1% | 2% | warning |\n\n## Rule 4: Z Cap <= Y Cap\nAll instruments passed.\n",
       "error": null,
       "source_document": null,
       "suspicious_users": [],
@@ -4689,37 +4671,292 @@
       "slug": "mmr-futures",
       "title": "MMR Futures Review",
       "render_variant": "mmr-futures",
-      "status": "pending",
-      "summary": "Depth data not available — re-run cron to fetch via MCP (Step 5b).",
+      "status": "warning",
+      "summary": "14 adjustments found across 65 instruments. Leverage: ↑0 ↓0. Amount: ↑13 ↓1.",
       "metrics": {
-        "instruments_scanned": 0,
-        "ema_coverage": 0,
-        "issues_found": 0,
-        "source": "n/a",
-        "generated_at": "2026-03-30T04:10:46.036596+00:00"
+        "instruments_scanned": 74,
+        "ema_coverage": 65,
+        "issues_found": 14,
+        "source": "OKX Tiers + Depth SQL",
+        "generated_at": "2026-03-30T03:04:56.949657+00:00"
       },
       "metric_cards": [
         {
           "label": "Instruments",
-          "value": "0"
+          "value": "74"
         },
         {
           "label": "In Scope",
-          "value": "0"
+          "value": "65"
         },
         {
           "label": "Adjustments",
-          "value": "0"
+          "value": "14"
         },
         {
           "label": "Source",
-          "value": "n/a"
+          "value": "Depth SQL + OKX API"
         }
       ],
-      "rule_blocks": [],
+      "rule_blocks": [
+        {
+          "ruleId": "all_changes",
+          "title": "All Changes",
+          "count": 14,
+          "description": "Contracts flagged by rule checks: leverage mismatch, ratio <10% or >50%, competitor cap. 14 of 40 total model adjustments.",
+          "status": "warning",
+          "table": {
+            "headers": [
+              "INSTRUMENT",
+              "CATEGORY",
+              "CHANGE",
+              "REASON",
+              "PRIORITY"
+            ],
+            "rows": [
+              [
+                "ARB-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 9.2% < 10%",
+                "HIGH"
+              ],
+              [
+                "BZ-USDT",
+                "Commodity",
+                "Inc ↑",
+                "ratio 7.5% < 10%",
+                "HIGH"
+              ],
+              [
+                "CL-USDT",
+                "Commodity",
+                "Inc ↑",
+                "ratio 2.6% < 10%",
+                "HIGH"
+              ],
+              [
+                "CORE-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 3.5% < 10%",
+                "HIGH"
+              ],
+              [
+                "DOGE-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 7.3% < 10%",
+                "HIGH"
+              ],
+              [
+                "DOT-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 8.9% < 10%",
+                "HIGH"
+              ],
+              [
+                "ETHFI-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 6.7% < 10%",
+                "HIGH"
+              ],
+              [
+                "IP-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 6.8% < 10%",
+                "HIGH"
+              ],
+              [
+                "OKB-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 8.3% < 10%",
+                "HIGH"
+              ],
+              [
+                "ONT-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 7.6% < 10%",
+                "HIGH"
+              ],
+              [
+                "OP-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 9.0% < 10%",
+                "HIGH"
+              ],
+              [
+                "TAO-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 6.6% < 10%",
+                "HIGH"
+              ],
+              [
+                "TRUMP-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 9.3% < 10%",
+                "HIGH"
+              ],
+              [
+                "USDC-USDT",
+                "Crypto",
+                "Inc ↓",
+                "ratio 46.6% > 50%",
+                "HIGH"
+              ]
+            ]
+          }
+        },
+        {
+          "ruleId": "leverage",
+          "title": "Leverage",
+          "count": 0,
+          "category_group": "CRYPTO PERPS",
+          "description": "Contracts where depth-based tier model suggests a leverage change.",
+          "status": "pass",
+          "table": null
+        },
+        {
+          "ruleId": "ratio",
+          "title": "Ratio",
+          "count": 14,
+          "category_group": "CRYPTO PERPS",
+          "description": "Contracts where inc_ratio is <10% (increment too tight) or >50% (too wide).",
+          "status": "warning",
+          "table": {
+            "headers": [
+              "INSTRUMENT",
+              "CHANGE",
+              "REASON",
+              "PRIORITY"
+            ],
+            "rows": [
+              [
+                "ARB-USDT",
+                "Inc ↑",
+                "ratio 9.2% < 10%",
+                "HIGH"
+              ],
+              [
+                "CORE-USDT",
+                "Inc ↑",
+                "ratio 3.5% < 10%",
+                "HIGH"
+              ],
+              [
+                "DOGE-USDT",
+                "Inc ↑",
+                "ratio 7.3% < 10%",
+                "HIGH"
+              ],
+              [
+                "DOT-USDT",
+                "Inc ↑",
+                "ratio 8.9% < 10%",
+                "HIGH"
+              ],
+              [
+                "ETHFI-USDT",
+                "Inc ↑",
+                "ratio 6.7% < 10%",
+                "HIGH"
+              ],
+              [
+                "IP-USDT",
+                "Inc ↑",
+                "ratio 6.8% < 10%",
+                "HIGH"
+              ],
+              [
+                "OKB-USDT",
+                "Inc ↑",
+                "ratio 8.3% < 10%",
+                "HIGH"
+              ],
+              [
+                "ONT-USDT",
+                "Inc ↑",
+                "ratio 7.6% < 10%",
+                "HIGH"
+              ],
+              [
+                "OP-USDT",
+                "Inc ↑",
+                "ratio 9.0% < 10%",
+                "HIGH"
+              ],
+              [
+                "TAO-USDT",
+                "Inc ↑",
+                "ratio 6.6% < 10%",
+                "HIGH"
+              ],
+              [
+                "TRUMP-USDT",
+                "Inc ↑",
+                "ratio 9.3% < 10%",
+                "HIGH"
+              ],
+              [
+                "USDC-USDT",
+                "Inc ↓",
+                "ratio 46.6% > 50%",
+                "HIGH"
+              ]
+            ]
+          }
+        },
+        {
+          "ruleId": "equity",
+          "title": "Equity",
+          "count": 0,
+          "category_group": "EQUITY PERPS",
+          "description": "Equity perp review uses index robustness model. Run equity review separately.",
+          "status": "pending",
+          "table": null
+        },
+        {
+          "ruleId": "commodity",
+          "title": "Commodity",
+          "count": 2,
+          "category_group": "COMMODITIES",
+          "description": "8 instruments, 2 adjustments.",
+          "status": "warning",
+          "table": {
+            "headers": [
+              "INSTRUMENT",
+              "CHANGE",
+              "REASON",
+              "PRIORITY"
+            ],
+            "rows": [
+              [
+                "BZ-USDT",
+                "Inc ↑",
+                "ratio 7.5% < 10%",
+                "HIGH"
+              ],
+              [
+                "CL-USDT",
+                "Inc ↑",
+                "ratio 2.6% < 10%",
+                "HIGH"
+              ]
+            ]
+          }
+        }
+      ],
       "recommended_changes": null,
       "downloads": [],
-      "markdown": "# MMR Futures Review\n\n**Pending:** Depth data not available — re-run cron to fetch via MCP (Step 5b).\n",
+      "markdown": "# MMR Futures Review\n\n**Status:** warning\n\n14 adjustments across 65 in-scope instruments.\n",
       "error": null,
       "source_document": null,
       "suspicious_users": [],
@@ -4729,37 +4966,672 @@
       "slug": "index-review",
       "title": "Index Review",
       "render_variant": "rules",
-      "status": "pending",
-      "summary": "CLI review failed or server not running.",
+      "status": "critical",
+      "summary": "Scanned 1257 indexes (1193 with EMA). 418 flagged, 775 pass.",
       "metrics": {
-        "instruments_scanned": 0,
-        "ema_coverage": 0,
-        "issues_found": 0,
-        "source": "n/a",
-        "generated_at": "2026-03-30T04:10:46.148199+00:00"
+        "instruments_scanned": 1257,
+        "ema_coverage": 1193,
+        "issues_found": 418,
+        "source": "params_cli/index CLI",
+        "generated_at": "2026-03-30T03:04:58.619478+00:00"
       },
       "metric_cards": [
         {
-          "label": "Instruments",
-          "value": "0"
+          "label": "Total Indexes",
+          "value": "1257"
         },
         {
           "label": "EMA Coverage",
-          "value": "0"
+          "value": "1193"
         },
         {
-          "label": "Issues",
-          "value": "0"
+          "label": "Flagged",
+          "value": "418"
         },
         {
-          "label": "Source",
-          "value": "n/a"
+          "label": "Pass",
+          "value": "775"
         }
       ],
-      "rule_blocks": [],
-      "recommended_changes": null,
-      "downloads": [],
-      "markdown": "# Index Review\n\n**Status:** pending\n\nCLI review failed or server not running.\n",
+      "rule_blocks": [
+        {
+          "ruleId": "tradfi",
+          "title": "TradFi Index Quality (29 flagged)",
+          "status": "critical",
+          "description": "29 TradFi indexes have issues.",
+          "table": {
+            "headers": [
+              "Index",
+              "Components",
+              "Avg Dev%",
+              "Max Dev%",
+              "Issues"
+            ],
+            "rows": [
+              [
+                "AAPL-USDT",
+                "5",
+                "0.09%",
+                "0.23%",
+                "TF-1: dxFeed available but not in components"
+              ],
+              [
+                "AMD-USDT",
+                "3",
+                "0.03%",
+                "0.04%",
+                "TF-1: Ondo_TICKER available but not in components; TF-1: dxFeed available but not in components"
+              ],
+              [
+                "AMZN-USDT",
+                "6",
+                "0.04%",
+                "0.07%",
+                "TF-1: dxFeed available but not in components"
+              ],
+              [
+                "BZ-USDT",
+                "3",
+                "0.21%",
+                "0.27%",
+                "TF-1: dxFeed available but not in components"
+              ],
+              [
+                "CL-USDT",
+                "3",
+                "0.07%",
+                "0.12%",
+                "TF-1: Pyth available but not in components; TF-1: dxFeed available but not in components"
+              ],
+              [
+                "COIN-USDT",
+                "6",
+                "0.10%",
+                "0.27%",
+                "TF-1: dxFeed available but not in components"
+              ],
+              [
+                "CRCL-USDT",
+                "6",
+                "0.12%",
+                "0.27%",
+                "TF-1: dxFeed available but not in components"
+              ],
+              [
+                "EWJ-USDT",
+                "3",
+                "0.20%",
+                "0.34%",
+                "TF-1: dxFeed available but not in components; TF-1: Binance_LINEAR_INDEX available but not in components; TF-3: Binance_LINEAR_PERPETUAL (score 4) available but not used"
+              ],
+              [
+                "EWY-USDT",
+                "3",
+                "0.12%",
+                "0.18%",
+                "TF-1: dxFeed available but not in components; TF-1: Binance_LINEAR_INDEX available but not in components; TF-3: Binance_LINEAR_PERPETUAL (score 4) available but not used"
+              ],
+              [
+                "GOOGL-USDT",
+                "5",
+                "0.16%",
+                "0.38%",
+                "TF-1: dxFeed available but not in components"
+              ],
+              [
+                "HOOD-USDT",
+                "6",
+                "0.04%",
+                "0.08%",
+                "TF-1: dxFeed available but not in components"
+              ],
+              [
+                "INTC-USDT",
+                "5",
+                "0.06%",
+                "0.09%",
+                "TF-1: dxFeed available but not in components"
+              ],
+              [
+                "META-USDT",
+                "5",
+                "0.14%",
+                "0.27%",
+                "TF-1: dxFeed available but not in components"
+              ],
+              [
+                "MSFT-USDT",
+                "4",
+                "0.22%",
+                "0.40%",
+                "TF-1: dxFeed available but not in components"
+              ],
+              [
+                "MSTR-USDT",
+                "6",
+                "0.14%",
+                "0.58%",
+                "TF-1: dxFeed available but not in components; TF-6: ema_max_deviation 0.58% > 0.5%"
+              ],
+              [
+                "MU-USDT",
+                "4",
+                "0.38%",
+                "0.77%",
+                "TF-1: dxFeed available but not in components; TF-6: ema_max_deviation 0.77% > 0.5%"
+              ],
+              [
+                "NFLX-USDT",
+                "3",
+                "0.03%",
+                "0.06%",
+                "TF-1: Ondo_TICKER available but not in components; TF-1: dxFeed available but not in components"
+              ],
+              [
+                "NVDA-USDT",
+                "5",
+                "0.06%",
+                "0.14%",
+                "TF-1: dxFeed available but not in components; TF-1: Binance_LINEAR_INDEX available but not in components; TF-3: Binance_LINEAR_PERPETUAL (score 4) available but not used"
+              ],
+              [
+                "ORCL-USDT",
+                "3",
+                "0.11%",
+                "0.18%",
+                "TF-1: dxFeed available but not in components"
+              ],
+              [
+                "PLTR-USDT",
+                "5",
+                "0.05%",
+                "0.10%",
+                "TF-1: dxFeed available but not in components"
+              ]
+            ]
+          },
+          "note": "9 more not shown"
+        },
+        {
+          "ruleId": "topcoins",
+          "title": "Topcoins Index Quality (19 flagged)",
+          "status": "critical",
+          "description": "19 Topcoins indexes have issues.",
+          "table": {
+            "headers": [
+              "Index",
+              "Components",
+              "Avg Dev%",
+              "Max Dev%",
+              "Issues"
+            ],
+            "rows": [
+              [
+                "ADA-EUR",
+                "5",
+                "0.18%",
+                "0.37%",
+                "TC: ema_avg_deviation 0.18% ≥ 0.15%; TC: ema_max_deviation 0.37% ≥ 0.3%"
+              ],
+              [
+                "ADA-TRY",
+                "2",
+                "0.15%",
+                "0.19%",
+                "TC: ema_avg_deviation 0.15% ≥ 0.15%; TC: only 2 components (need ≥5)"
+              ],
+              [
+                "BCH-EUR",
+                "1",
+                "0.02%",
+                "0.02%",
+                "TC: only 1 components (need ≥5)"
+              ],
+              [
+                "BCH-USDC",
+                "4",
+                "0.03%",
+                "0.04%",
+                "TC: only 4 components (need ≥5)"
+              ],
+              [
+                "BETH-ETH",
+                "4",
+                "0.02%",
+                "0.02%",
+                "TC: only 4 components (need ≥5)"
+              ],
+              [
+                "BTC-TRY",
+                "3",
+                "0.07%",
+                "0.12%",
+                "TC: only 3 components (need ≥5)"
+              ],
+              [
+                "BTC-USD",
+                "4",
+                "0.04%",
+                "0.06%",
+                "TC: only 4 components (need ≥5)"
+              ],
+              [
+                "DOGE-EUR",
+                "5",
+                "0.16%",
+                "0.34%",
+                "TC: ema_avg_deviation 0.16% ≥ 0.15%; TC: ema_max_deviation 0.34% ≥ 0.3%"
+              ],
+              [
+                "DOGE-TRY",
+                "3",
+                "0.06%",
+                "0.07%",
+                "TC: only 3 components (need ≥5)"
+              ],
+              [
+                "DOT-EUR",
+                "4",
+                "0.07%",
+                "0.10%",
+                "TC: only 4 components (need ≥5)"
+              ],
+              [
+                "DOT-TRY",
+                "2",
+                "0.10%",
+                "0.10%",
+                "TC: only 2 components (need ≥5)"
+              ],
+              [
+                "DOT-USDC",
+                "4",
+                "0.07%",
+                "0.15%",
+                "TC: only 4 components (need ≥5)"
+              ],
+              [
+                "ETH-TRY",
+                "3",
+                "0.07%",
+                "0.12%",
+                "TC: only 3 components (need ≥5)"
+              ],
+              [
+                "LINK-USDC",
+                "4",
+                "0.06%",
+                "0.08%",
+                "TC: only 4 components (need ≥5)"
+              ],
+              [
+                "LTC-USD",
+                "4",
+                "0.03%",
+                "0.05%",
+                "TC: only 4 components (need ≥5)"
+              ],
+              [
+                "LTC-USDC",
+                "4",
+                "0.16%",
+                "0.20%",
+                "TC: ema_avg_deviation 0.16% ≥ 0.15%; TC: only 4 components (need ≥5)"
+              ],
+              [
+                "OKSOL-SOL",
+                "3",
+                "0.01%",
+                "0.01%",
+                "TC: only 3 components (need ≥5)"
+              ],
+              [
+                "SOL-USDC",
+                "5",
+                "0.15%",
+                "0.17%",
+                "TC: ema_avg_deviation 0.15% ≥ 0.15%"
+              ],
+              [
+                "XRP-EUR",
+                "7",
+                "0.20%",
+                "0.24%",
+                "TC: ema_avg_deviation 0.20% ≥ 0.15%"
+              ]
+            ]
+          },
+          "note": null
+        },
+        {
+          "ruleId": "fiat",
+          "title": "Fiat Index Quality (5 flagged)",
+          "status": "critical",
+          "description": "5 Fiat indexes have issues.",
+          "table": {
+            "headers": [
+              "Index",
+              "Components",
+              "Avg Dev%",
+              "Max Dev%",
+              "Issues"
+            ],
+            "rows": [
+              [
+                "EURC-USD",
+                "2",
+                "0.01%",
+                "0.01%",
+                "Fiat: only 2 components (need ≥3)"
+              ],
+              [
+                "USDC-AUD",
+                "4",
+                "0.13%",
+                "0.15%",
+                "Fiat: ema_avg_deviation 0.13% ≥ 0.1%"
+              ],
+              [
+                "USDG-EUR",
+                "2",
+                "0.02%",
+                "0.02%",
+                "Fiat: only 2 components (need ≥3)"
+              ],
+              [
+                "USDT-AED",
+                "1",
+                "0.02%",
+                "0.02%",
+                "Fiat: only 1 components (need ≥3)"
+              ],
+              [
+                "USDT-AUD",
+                "3",
+                "0.13%",
+                "0.15%",
+                "Fiat: ema_avg_deviation 0.13% ≥ 0.1%"
+              ]
+            ]
+          },
+          "note": null
+        },
+        {
+          "ruleId": "altcoins",
+          "title": "Altcoins Index Quality (365 flagged)",
+          "status": "critical",
+          "description": "365 Altcoins indexes have issues.",
+          "table": {
+            "headers": [
+              "Index",
+              "Components",
+              "Avg Dev%",
+              "Max Dev%",
+              "Issues"
+            ],
+            "rows": [
+              [
+                "0G-USDT",
+                "4",
+                "0.09%",
+                "0.17%",
+                "AL-1: Bybit available but not in components"
+              ],
+              [
+                "1INCH-EUR",
+                "2",
+                "0.07%",
+                "0.08%",
+                "AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)"
+              ],
+              [
+                "1INCH-USD",
+                "4",
+                "0.08%",
+                "0.14%",
+                "AL-1: Bybit available but not in components"
+              ],
+              [
+                "AAVE-EUR",
+                "4",
+                "0.22%",
+                "0.40%",
+                "AL-1: Binance available but not in components; AL-1: Bybit available but not in components"
+              ],
+              [
+                "AAVE-TRY",
+                "3",
+                "0.03%",
+                "0.06%",
+                "AL-1: Bybit available but not in components"
+              ],
+              [
+                "AAVE-USD",
+                "4",
+                "0.03%",
+                "0.04%",
+                "AL-1: Bybit available but not in components"
+              ],
+              [
+                "ACH-EUR",
+                "1",
+                "0.01%",
+                "0.01%",
+                "AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)"
+              ],
+              [
+                "ACH-USD",
+                "4",
+                "0.08%",
+                "0.12%",
+                "AL-1: Bybit available but not in components"
+              ],
+              [
+                "ACT-TRY",
+                "1",
+                "0.02%",
+                "0.02%",
+                "AL-1: OKX available but not in components; AL-4: only 1 distinct exchanges (need ≥3)"
+              ],
+              [
+                "AERGO-EUR",
+                "2",
+                "0.23%",
+                "0.27%",
+                "AL-4: only 2 distinct exchanges (need ≥3)"
+              ],
+              [
+                "AERGO-USD",
+                "2",
+                "0.22%",
+                "0.25%",
+                "AL-4: only 2 distinct exchanges (need ≥3)"
+              ],
+              [
+                "AERGO-USDC",
+                "2",
+                "0.22%",
+                "0.23%",
+                "AL-4: only 2 distinct exchanges (need ≥3)"
+              ],
+              [
+                "AERGO-USDT",
+                "2",
+                "0.20%",
+                "0.21%",
+                "AL-4: only 2 distinct exchanges (need ≥3)"
+              ],
+              [
+                "AEVO-EUR",
+                "1",
+                "0.07%",
+                "0.07%",
+                "AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)"
+              ],
+              [
+                "AEVO-USD",
+                "4",
+                "0.24%",
+                "0.57%",
+                "AL-1: Bybit available but not in components"
+              ],
+              [
+                "AGLD-EUR",
+                "1",
+                "0.02%",
+                "0.02%",
+                "AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)"
+              ],
+              [
+                "AGLD-USD",
+                "5",
+                "0.11%",
+                "0.22%",
+                "AL-1: Bybit available but not in components"
+              ],
+              [
+                "AIXBT-EUR",
+                "1",
+                "0.29%",
+                "0.29%",
+                "AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3)"
+              ],
+              [
+                "ALGO-EUR",
+                "4",
+                "0.04%",
+                "0.06%",
+                "AL-1: Binance available but not in components; AL-1: Bybit available but not in components"
+              ],
+              [
+                "ALGO-USD",
+                "5",
+                "0.06%",
+                "0.12%",
+                "AL-1: Bybit available but not in components"
+              ]
+            ]
+          },
+          "note": "345 more not shown"
+        }
+      ],
+      "recommended_changes": {
+        "headers": [
+          "Index",
+          "Type",
+          "Issues"
+        ],
+        "rows": [
+          [
+            "0G-USDT",
+            "Altcoins",
+            "AL-1: Bybit available but not in components"
+          ],
+          [
+            "1INCH-EUR",
+            "Altcoins",
+            "AL-1: Binance available but not in components; AL-1: Bybit available but not in components"
+          ],
+          [
+            "1INCH-USD",
+            "Altcoins",
+            "AL-1: Bybit available but not in components"
+          ],
+          [
+            "AAPL-USDT",
+            "TradFi",
+            "TF-1: dxFeed available but not in components"
+          ],
+          [
+            "AAVE-EUR",
+            "Altcoins",
+            "AL-1: Binance available but not in components; AL-1: Bybit available but not in components"
+          ],
+          [
+            "AAVE-TRY",
+            "Altcoins",
+            "AL-1: Bybit available but not in components"
+          ],
+          [
+            "AAVE-USD",
+            "Altcoins",
+            "AL-1: Bybit available but not in components"
+          ],
+          [
+            "ACH-EUR",
+            "Altcoins",
+            "AL-1: OKX available but not in components; AL-1: Binance available but not in components"
+          ],
+          [
+            "ACH-USD",
+            "Altcoins",
+            "AL-1: Bybit available but not in components"
+          ],
+          [
+            "ACT-TRY",
+            "Altcoins",
+            "AL-1: OKX available but not in components; AL-4: only 1 distinct exchanges (need ≥3)"
+          ],
+          [
+            "ADA-EUR",
+            "Topcoins",
+            "TC: ema_avg_deviation 0.18% ≥ 0.15%; TC: ema_max_deviation 0.37% ≥ 0.3%"
+          ],
+          [
+            "ADA-TRY",
+            "Topcoins",
+            "TC: ema_avg_deviation 0.15% ≥ 0.15%; TC: only 2 components (need ≥5)"
+          ],
+          [
+            "AERGO-EUR",
+            "Altcoins",
+            "AL-4: only 2 distinct exchanges (need ≥3)"
+          ],
+          [
+            "AERGO-USD",
+            "Altcoins",
+            "AL-4: only 2 distinct exchanges (need ≥3)"
+          ],
+          [
+            "AERGO-USDC",
+            "Altcoins",
+            "AL-4: only 2 distinct exchanges (need ≥3)"
+          ],
+          [
+            "AERGO-USDT",
+            "Altcoins",
+            "AL-4: only 2 distinct exchanges (need ≥3)"
+          ],
+          [
+            "AEVO-EUR",
+            "Altcoins",
+            "AL-1: OKX available but not in components; AL-1: Binance available but not in components"
+          ],
+          [
+            "AEVO-USD",
+            "Altcoins",
+            "AL-1: Bybit available but not in components"
+          ],
+          [
+            "AGLD-EUR",
+            "Altcoins",
+            "AL-1: OKX available but not in components; AL-1: Binance available but not in components"
+          ],
+          [
+            "AGLD-USD",
+            "Altcoins",
+            "AL-1: Bybit available but not in components"
+          ]
+        ]
+      },
+      "downloads": [
+        {
+          "label": "Index Review CSV",
+          "filename": "index_review_20260330.csv",
+          "content": "index,assetsType,component_count,ema_avg_deviation,ema_max_deviation,issues\r\n0G-USDT,Altcoins,4,0.0878,0.1673,AL-1: Bybit available but not in components\r\n1INCH-EUR,Altcoins,2,0.0745,0.0772,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\n1INCH-USD,Altcoins,4,0.0831,0.1395,AL-1: Bybit available but not in components\r\nAAPL-USDT,TradFi,5,0.0864,0.2350,TF-1: dxFeed available but not in components\r\nAAVE-EUR,Altcoins,4,0.2188,0.3953,AL-1: Binance available but not in components; AL-1: Bybit available but not in components\r\nAAVE-TRY,Altcoins,3,0.0332,0.0649,AL-1: Bybit available but not in components\r\nAAVE-USD,Altcoins,4,0.0251,0.0425,AL-1: Bybit available but not in components\r\nACH-EUR,Altcoins,1,0.0088,0.0088,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nACH-USD,Altcoins,4,0.0785,0.1233,AL-1: Bybit available but not in components\r\nACT-TRY,Altcoins,1,0.0191,0.0210,AL-1: OKX available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nADA-EUR,Topcoins,5,0.1807,0.3710,TC: ema_avg_deviation 0.18% ≥ 0.15%; TC: ema_max_deviation 0.37% ≥ 0.3%\r\nADA-TRY,Topcoins,2,0.1517,0.1929,TC: ema_avg_deviation 0.15% ≥ 0.15%; TC: only 2 components (need ≥5)\r\nAERGO-EUR,Altcoins,2,0.2259,0.2673,AL-4: only 2 distinct exchanges (need ≥3)\r\nAERGO-USD,Altcoins,2,0.2163,0.2547,AL-4: only 2 distinct exchanges (need ≥3)\r\nAERGO-USDC,Altcoins,2,0.2151,0.2283,AL-4: only 2 distinct exchanges (need ≥3)\r\nAERGO-USDT,Altcoins,2,0.1964,0.2097,AL-4: only 2 distinct exchanges (need ≥3)\r\nAEVO-EUR,Altcoins,1,0.0653,0.0653,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nAEVO-USD,Altcoins,4,0.2425,0.5674,AL-1: Bybit available but not in components\r\nAGLD-EUR,Altcoins,1,0.0157,0.0157,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nAGLD-USD,Altcoins,5,0.1083,0.2223,AL-1: Bybit available but not in components\r\nAIXBT-EUR,Altcoins,1,0.2922,0.2922,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nALGO-EUR,Altcoins,4,0.0391,0.0645,AL-1: Binance available but not in components; AL-1: Bybit available but not in components\r\nALGO-USD,Altcoins,5,0.0556,0.1161,AL-1: Bybit available but not in components\r\nALLO-EUR,Altcoins,4,0.1854,0.2812,AL-1: Binance available but not in components\r\nALLO-TRY,Altcoins,4,0.1339,0.2401,AL-1: Binance available but not in components\r\nALLO-USD,Altcoins,4,0.1324,0.1882,AL-1: Binance available but not in components\r\nALLO-USDC,Altcoins,4,0.1398,0.1923,AL-1: Binance available but not in components\r\nALLO-USDT,Altcoins,4,0.1536,0.2192,AL-1: Binance available but not in components\r\nAMD-USDT,TradFi,3,0.0269,0.0408,TF-1: Ondo_TICKER available but not in components; TF-1: dxFeed available but not in components\r\nAMZN-USDT,TradFi,6,0.0385,0.0673,TF-1: dxFeed available but not in components\r\nANIME-EUR,Altcoins,3,0.1015,0.1738,AL-1: OKX available but not in components; AL-1: Bybit available but not in components\r\nAPE-EUR,Altcoins,1,0.0200,0.0271,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nAPE-USD,Altcoins,5,0.1856,0.3615,AL-1: Bybit available but not in components\r\nAPT-EUR,Altcoins,4,0.2153,0.2884,AL-1: Bybit available but not in components\r\nAPT-TRY,Altcoins,2,0.0447,0.0490,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nAR-EUR,Altcoins,1,0.0499,0.0499,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nAR-USD,Altcoins,4,0.1092,0.1623,AL-1: Bybit available but not in components\r\nARB-EUR,Altcoins,3,0.0586,0.1065,AL-1: Bybit available but not in components\r\nARB-TRY,Altcoins,3,0.1542,0.1614,AL-1: Bybit available but not in components\r\nARG-EUR,Altcoins,2,0.1291,0.2378,AL-4: only 2 distinct exchanges (need ≥3)\r\nARG-USD,Altcoins,2,0.0540,0.0598,AL-4: only 2 distinct exchanges (need ≥3)\r\nARG-USDC,Altcoins,2,0.1164,0.1286,AL-4: only 2 distinct exchanges (need ≥3)\r\nARG-USDT,Altcoins,2,0.0170,0.0209,AL-4: only 2 distinct exchanges (need ≥3)\r\nARKM-TRY,Altcoins,3,0.1608,0.1650,AL-1: Bybit available but not in components\r\nASP-USD,Altcoins,2,0.3192,0.4932,AL-4: only 2 distinct exchanges (need ≥3)\r\nASP-USDT,Altcoins,2,0.1867,0.2166,AL-4: only 2 distinct exchanges (need ≥3)\r\nASTER-TRY,Altcoins,1,0.0694,0.0697,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nAT-USDT,Altcoins,4,0.1466,0.4201,AL-1: Binance available but not in components\r\nATOM-EUR,Altcoins,5,0.0573,0.2248,AL-1: Bybit available but not in components\r\nAUCTION-EUR,Altcoins,1,0.0276,0.0276,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nAVAX-EUR,Altcoins,5,0.3890,1.1868,AL-1: Bybit available but not in components\r\nAVAX-TRY,Altcoins,3,0.0956,0.1396,AL-1: Bybit available but not in components\r\nAXS-EUR,Altcoins,2,0.1751,0.1793,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nAXS-USD,Altcoins,5,0.1827,0.4248,AL-1: Bybit available but not in components\r\nAZTEC-USDT,Altcoins,3,0.1004,0.1243,AL-1: Bybit available but not in components\r\nBABY-EUR,Altcoins,4,0.0765,0.1463,AL-1: Bybit available but not in components\r\nBABY-USD,Altcoins,4,0.1548,0.2030,AL-1: Binance available but not in components\r\nBABY-USDC,Altcoins,4,0.0788,0.1530,AL-1: Bybit available but not in components\r\nBABYDOGE-EUR,Altcoins,4,0.2157,0.3274,AL-1: Binance available but not in components\r\nBABYDOGE-USD,Altcoins,4,0.1655,0.1917,AL-1: Binance available but not in components\r\nBABYDOGE-USDC,Altcoins,4,0.1977,0.2282,AL-1: Binance available but not in components\r\nBABYDOGE-USDT,Altcoins,4,0.2408,0.3674,AL-1: Binance available but not in components\r\nBARD-USDT,Altcoins,4,0.8071,0.9033,AL-5: ema_avg_deviation 0.81% > 0.5%\r\nBAT-USD,Altcoins,4,0.1606,0.2293,AL-1: Bybit available but not in components\r\nBCH-EUR,Topcoins,1,0.0152,0.0152,TC: only 1 components (need ≥5)\r\nBCH-USDC,Topcoins,4,0.0281,0.0414,TC: only 4 components (need ≥5)\r\nBEAT-USDT,Altcoins,4,0.5073,0.7089,AL-5: ema_avg_deviation 0.51% > 0.5%\r\nBETH-ETH,Topcoins,4,0.0158,0.0237,TC: only 4 components (need ≥5)\r\nBIGTIME-EUR,Altcoins,1,0.1359,0.1359,AL-1: OKX available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nBIGTIME-USD,Altcoins,4,0.1108,0.2557,AL-1: Binance available but not in components\r\nBIO-USD,Altcoins,3,0.2842,0.3341,AL-1: OKX available but not in components\r\nBNB-EUR,Altcoins,4,0.0396,0.0812,AL-1: Bybit available but not in components\r\nBNT-EUR,Altcoins,2,0.0579,0.0714,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nBOME-EUR,Altcoins,0,0.1986,0.3057,AL-5: ema_avg_update_lag 1684s > 300s\r\nBONK-EUR,Altcoins,1,0.0317,0.0317,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nBONK-TRY,Altcoins,3,0.1188,0.2021,AL-1: Bybit available but not in components\r\nBONK-USD,Altcoins,4,0.0528,0.1001,AL-1: Bybit available but not in components\r\nBRL1-BRL,Altcoins,1,0.1272,0.1368,AL-4: only 1 distinct exchanges (need ≥3)\r\nBRL1-USDT,Altcoins,1,0.1031,0.1070,AL-4: only 1 distinct exchanges (need ≥3)\r\nBTC-TRY,Topcoins,3,0.0706,0.1237,TC: only 3 components (need ≥5)\r\nBTC-USD,Topcoins,4,0.0429,0.0581,TC: only 4 components (need ≥5)\r\nBZ-USDT,TradFi,3,0.2054,0.2659,TF-1: dxFeed available but not in components\r\nCAT-EUR,Altcoins,3,0.1089,0.2659,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-1: Bybit available but not in components\r\nCAT-USD,Altcoins,4,0.1184,0.2948,AL-1: Binance available but not in components; AL-1: Bybit available but not in components\r\nCAT-USDC,Altcoins,4,0.1894,0.2619,AL-1: Binance available but not in components; AL-1: Bybit available but not in components\r\nCAT-USDT,Altcoins,4,0.1354,0.3219,AL-1: Binance available but not in components; AL-1: Bybit available but not in components\r\nCC-TRY,Altcoins,3,0.0373,0.0495,AL-1: OKX available but not in components\r\nCELO-EUR,Altcoins,1,0.2886,0.2886,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nCELO-USD,Altcoins,3,0.1319,0.2662,AL-1: Bybit available but not in components\r\nCELR-EUR,Altcoins,0,0.5339,0.5339,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3); AL-5: ema_avg_deviation 0.53% > 0.5%; AL-5: ema_avg_update_lag 1573s > 300s\r\nCETUS-USD,Altcoins,3,0.2663,0.4324,AL-1: Binance available but not in components\r\nCFG-EUR,Altcoins,1,0.1737,0.1737,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nCFG-TRY,Altcoins,4,0.2374,0.2948,AL-1: Binance available but not in components; AL-1: Bybit available but not in components\r\nCFG-USD,Altcoins,4,0.2341,0.4889,AL-1: Binance available but not in components; AL-1: Bybit available but not in components\r\nCFG-USDC,Altcoins,4,0.2167,0.4501,AL-1: Binance available but not in components; AL-1: Bybit available but not in components\r\nCFG-USDT,Altcoins,4,0.2653,0.5643,AL-1: Binance available but not in components; AL-1: Bybit available but not in components\r\nCHZ-EUR,Altcoins,2,0.1844,0.2622,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nCHZ-TRY,Altcoins,3,0.1046,0.1415,AL-1: Bybit available but not in components\r\nCHZ-USD,Altcoins,4,0.2506,0.3556,AL-1: Bybit available but not in components\r\nCITY-USD,Altcoins,3,0.0344,0.0482,AL-1: Bybit available but not in components\r\nCL-USDT,TradFi,3,0.0693,0.1160,TF-1: Pyth available but not in components; TF-1: dxFeed available but not in components\r\nCOIN-USDT,TradFi,6,0.1017,0.2676,TF-1: dxFeed available but not in components\r\nCOMP-EUR,Altcoins,2,0.0434,0.0661,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nCOMP-USD,Altcoins,4,0.0525,0.0855,AL-1: Binance available but not in components\r\nCRCL-USDT,TradFi,6,0.1207,0.2693,TF-1: dxFeed available but not in components\r\nCRV-EUR,Altcoins,4,0.3230,0.4809,AL-1: Binance available but not in components; AL-1: Bybit available but not in components\r\nCSPR-EUR,Altcoins,1,0.0508,0.0508,AL-1: OKX available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nCSPR-USD,Altcoins,4,0.1335,0.2147,AL-1: Bybit available but not in components\r\nDAI-TRY,Altcoins,3,0.0533,0.1034,AL-1: Binance available but not in components\r\nDAI-USD,Altcoins,3,0.0114,0.0219,AL-1: Binance available but not in components\r\nDAI-USDT,Altcoins,3,0.0627,0.1025,AL-1: Binance available but not in components\r\nDOGE-EUR,Topcoins,5,0.1598,0.3378,TC: ema_avg_deviation 0.16% ≥ 0.15%; TC: ema_max_deviation 0.34% ≥ 0.3%\r\nDOGE-TRY,Topcoins,3,0.0631,0.0691,TC: only 3 components (need ≥5)\r\nDOOD-USDT,Altcoins,4,0.5482,0.6720,AL-5: ema_avg_deviation 0.55% > 0.5%\r\nDORA-USDT,Altcoins,2,0.2228,0.2369,AL-4: only 2 distinct exchanges (need ≥3)\r\nDOT-EUR,Topcoins,4,0.0693,0.0978,TC: only 4 components (need ≥5)\r\nDOT-TRY,Topcoins,2,0.0991,0.1003,TC: only 2 components (need ≥5)\r\nDOT-USDC,Topcoins,4,0.0734,0.1475,TC: only 4 components (need ≥5)\r\nDYDX-USDC,Altcoins,5,0.9680,1.3937,AL-5: ema_avg_deviation 0.97% > 0.5%\r\nEGLD-EUR,Altcoins,3,0.1372,0.2701,AL-1: OKX available but not in components; AL-1: Bybit available but not in components\r\nEGLD-USD,Altcoins,5,0.1542,0.3017,AL-1: Bybit available but not in components\r\nEIGEN-TRY,Altcoins,2,0.2580,0.2652,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nELF-EUR,Altcoins,2,0.0504,0.0573,AL-4: only 2 distinct exchanges (need ≥3)\r\nELF-USD,Altcoins,2,0.0283,0.0384,AL-4: only 2 distinct exchanges (need ≥3)\r\nELF-USDC,Altcoins,2,0.0527,0.0792,AL-4: only 2 distinct exchanges (need ≥3)\r\nELF-USDT,Altcoins,2,0.0558,0.0578,AL-4: only 2 distinct exchanges (need ≥3)\r\nENA-TRY,Altcoins,2,0.0583,0.0875,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nENJ-EUR,Altcoins,1,0.4306,0.4306,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nENJ-USD,Altcoins,4,0.1255,0.2713,AL-1: Bybit available but not in components\r\nENJ-USDC,Altcoins,5,0.6972,0.8449,AL-5: ema_avg_deviation 0.70% > 0.5%\r\nENSO-USDT,Altcoins,4,0.1175,0.1959,AL-1: Bybit available but not in components\r\nETH-TRY,Topcoins,3,0.0695,0.1164,TC: only 3 components (need ≥5)\r\nETHFI-TRY,Altcoins,3,0.0581,0.1162,AL-1: Bybit available but not in components\r\nETHW-EUR,Altcoins,1,0.0304,0.0304,AL-1: OKX available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nETHW-USD,Altcoins,4,0.1050,0.1283,AL-1: Bybit available but not in components\r\nEURC-USD,Fiat,2,0.0058,0.0084,Fiat: only 2 components (need ≥3)\r\nEWJ-USDT,TradFi,3,0.1974,0.3384,TF-1: dxFeed available but not in components; TF-1: Binance_LINEAR_INDEX available but not in components; TF-3: Binance_LINEAR_PERPETUAL (score 4) available but not used\r\nEWY-USDT,TradFi,3,0.1238,0.1792,TF-1: dxFeed available but not in components; TF-1: Binance_LINEAR_INDEX available but not in components; TF-3: Binance_LINEAR_PERPETUAL (score 4) available but not used\r\nFET-EUR,Altcoins,3,0.0851,0.1137,AL-1: Binance available but not in components; AL-1: Bybit available but not in components\r\nFET-TRY,Altcoins,2,0.5919,0.7762,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_deviation 0.59% > 0.5%\r\nFET-USD,Altcoins,4,0.0609,0.0877,AL-1: Bybit available but not in components\r\nFET-USDC,Altcoins,5,0.0840,0.2245,AL-1: Bybit available but not in components\r\nFIL-USDC,Altcoins,2,0.0723,0.1330,AL-1: OKX available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nFLOKI-EUR,Altcoins,1,0.0420,0.0420,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nFLOKI-TRY,Altcoins,2,0.0872,0.1656,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nFLOKI-USD,Altcoins,5,0.0336,0.0651,AL-1: Bybit available but not in components\r\nFLOW-EUR,Altcoins,4,0.1454,0.2013,AL-1: Bybit available but not in components\r\nFLOW-USD,Altcoins,5,0.1403,0.3370,AL-1: Bybit available but not in components\r\nFLUID-EUR,Altcoins,2,0.0826,0.1411,AL-4: only 2 distinct exchanges (need ≥3)\r\nFLUID-USD,Altcoins,2,0.0982,0.1047,AL-4: only 2 distinct exchanges (need ≥3)\r\nFLUID-USDC,Altcoins,2,0.0968,0.1285,AL-4: only 2 distinct exchanges (need ≥3)\r\nFLUID-USDT,Altcoins,2,0.1519,0.1838,AL-4: only 2 distinct exchanges (need ≥3)\r\nGALA-EUR,Altcoins,1,0.0408,0.0408,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nGALA-USD,Altcoins,4,0.1189,0.1409,AL-1: Bybit available but not in components\r\nGALFT-USDT,Altcoins,1,0.0044,0.0044,AL-4: only 1 distinct exchanges (need ≥3)\r\nGMT-USD,Altcoins,3,0.1304,0.2312,AL-1: Bybit available but not in components\r\nGOAT-EUR,Altcoins,1,0.0742,0.0742,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nGOAT-USD,Altcoins,3,0.2589,0.4364,AL-1: OKX available but not in components; AL-1: Bybit available but not in components\r\nGODS-USD,Altcoins,4,0.1387,0.2267,AL-1: Bybit available but not in components\r\nGOOGL-USDT,TradFi,5,0.1603,0.3798,TF-1: dxFeed available but not in components\r\nGRT-EUR,Altcoins,3,0.0893,0.1558,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-1: Bybit available but not in components\r\nGRT-USD,Altcoins,4,0.1480,0.2184,AL-1: Bybit available but not in components\r\nHBAR-EUR,Altcoins,2,0.1243,0.1280,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nHBAR-USD,Altcoins,5,0.0292,0.0520,AL-1: Bybit available but not in components\r\nHOOD-USDT,TradFi,6,0.0402,0.0759,TF-1: dxFeed available but not in components\r\nHYPE-TRY,Altcoins,5,0.0929,0.1626,AL-1: Bybit available but not in components\r\nHYPE-USD,Altcoins,5,0.0946,0.1153,AL-1: Bybit available but not in components\r\nHYPE-USDT,Altcoins,5,0.0563,0.0839,AL-1: Bybit available but not in components\r\nICP-EUR,Altcoins,4,0.1326,0.1675,AL-1: Bybit available but not in components\r\nICP-USD,Altcoins,5,0.0616,0.1048,AL-1: Bybit available but not in components\r\nICX-EUR,Altcoins,1,0.0336,0.0336,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nICX-USD,Altcoins,4,0.1006,0.2250,AL-1: Bybit available but not in components\r\nID-EUR,Altcoins,2,0.1362,0.1448,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nID-USD,Altcoins,4,0.1148,0.2286,AL-1: Bybit available but not in components\r\nIMX-EUR,Altcoins,1,0.0196,0.0264,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nINJ-EUR,Altcoins,3,0.1202,0.1316,AL-1: Binance available but not in components; AL-1: Bybit available but not in components\r\nINJ-USD,Altcoins,4,0.0958,0.2258,AL-1: Bybit available but not in components\r\nINJ-USDC,Altcoins,4,0.1233,0.2851,AL-1: Bybit available but not in components\r\nINTC-USDT,TradFi,5,0.0571,0.0945,TF-1: dxFeed available but not in components\r\nIOTA-EUR,Altcoins,1,0.0293,0.0293,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nJ-USDT,Altcoins,1,0.0122,0.0136,AL-4: only 1 distinct exchanges (need ≥3)\r\nJITOSOL-USDT,Altcoins,3,0.1443,0.2245,AL-4: only 2 distinct exchanges (need ≥3)\r\nJOE-EUR,Altcoins,1,0.0776,0.0776,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nJTO-EUR,Altcoins,1,0.0274,0.0322,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nJTO-USD,Altcoins,4,0.0608,0.0922,AL-1: Bybit available but not in components\r\nKNC-EUR,Altcoins,1,0.1714,0.1714,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nKSM-USD,Altcoins,4,0.1822,0.2558,AL-1: Binance available but not in components; AL-1: Bybit available but not in components\r\nLA-USDT,Altcoins,5,0.1993,0.3762,AL-1: Binance available but not in components\r\nLAYER-EUR,Altcoins,1,0.0223,0.0223,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nLDO-EUR,Altcoins,3,0.1474,0.2156,AL-1: Binance available but not in components; AL-1: Bybit available but not in components\r\nLEO-EUR,Altcoins,2,0.0144,0.0166,AL-4: only 2 distinct exchanges (need ≥3)\r\nLEO-USD,Altcoins,2,0.0085,0.0107,AL-4: only 2 distinct exchanges (need ≥3)\r\nLEO-USDC,Altcoins,2,0.0119,0.0150,AL-4: only 2 distinct exchanges (need ≥3)\r\nLINEA-TRY,Altcoins,2,0.2282,0.3052,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nLINK-USDC,Topcoins,4,0.0616,0.0824,TC: only 4 components (need ≥5)\r\nLPT-EUR,Altcoins,1,0.1963,0.1963,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nLRC-EUR,Altcoins,1,0.0514,0.0514,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nLRC-USD,Altcoins,4,0.6034,1.4099,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-5: ema_avg_deviation 0.60% > 0.5%\r\nLSK-EUR,Altcoins,1,0.0369,0.0369,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nLTC-USD,Topcoins,4,0.0330,0.0489,TC: only 4 components (need ≥5)\r\nLTC-USDC,Topcoins,4,0.1609,0.2016,TC: ema_avg_deviation 0.16% ≥ 0.15%; TC: only 4 components (need ≥5)\r\nLUNA-EUR,Altcoins,4,0.0600,0.0820,AL-1: Binance available but not in components\r\nLUNA-TRY,Altcoins,2,0.0833,0.0871,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nLUNA-USD,Altcoins,4,0.0820,0.1338,AL-1: Binance available but not in components\r\nLUNA-USDC,Altcoins,4,0.0790,0.1280,AL-1: Binance available but not in components\r\nLUNA-USDT,Altcoins,4,0.1379,0.2871,AL-1: Binance available but not in components\r\nMAGIC-EUR,Altcoins,1,0.0317,0.0317,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nMAGIC-TRY,Altcoins,4,0.0690,0.1198,AL-1: Bybit available but not in components\r\nMAGIC-USD,Altcoins,5,0.1638,0.3369,AL-1: Bybit available but not in components\r\nMANA-EUR,Altcoins,3,0.2249,0.3158,AL-1: Binance available but not in components; AL-1: Bybit available but not in components\r\nMANA-USD,Altcoins,5,0.0781,0.1592,AL-1: Bybit available but not in components\r\nMASK-EUR,Altcoins,1,0.1885,0.1885,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nMASK-USD,Altcoins,3,0.0815,0.1461,AL-1: Bybit available but not in components\r\nME-EUR,Altcoins,1,0.0285,0.0285,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nME-USD,Altcoins,4,0.0872,0.1221,AL-1: Binance available but not in components\r\nMENGO-USD,Altcoins,2,0.3187,0.3943,AL-4: only 2 distinct exchanges (need ≥3)\r\nMENGO-USDT,Altcoins,2,0.3166,0.3528,AL-4: only 2 distinct exchanges (need ≥3)\r\nMERL-EUR,Altcoins,2,0.2170,0.2990,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nMERL-TRY,Altcoins,3,0.1175,0.1650,AL-1: Bybit available but not in components\r\nMERL-USD,Altcoins,3,0.1709,0.2589,AL-1: Bybit available but not in components\r\nMERL-USDC,Altcoins,3,0.2543,0.4224,AL-1: Bybit available but not in components\r\nMERL-USDT,Altcoins,3,0.1912,0.3377,AL-1: Bybit available but not in components\r\nMET-USD,Altcoins,3,0.1639,0.2557,AL-1: Binance available but not in components\r\nMET-USDT,Altcoins,3,0.1841,0.2496,AL-1: Binance available but not in components\r\nMETA-USDT,TradFi,5,0.1449,0.2701,TF-1: dxFeed available but not in components\r\nMETIS-EUR,Altcoins,1,0.0213,0.0213,AL-1: OKX available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nMEW-EUR,Altcoins,1,0.0213,0.0213,AL-1: OKX available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nMEW-USD,Altcoins,4,0.1350,0.2860,AL-1: Bybit available but not in components\r\nMINA-USD,Altcoins,4,0.1620,0.2864,AL-1: Bybit available but not in components\r\nMON-EUR,Altcoins,3,0.7033,0.7518,AL-1: OKX available but not in components; AL-5: ema_avg_deviation 0.70% > 0.5%\r\nMON-TRY,Altcoins,3,0.0906,0.1158,AL-1: OKX available but not in components\r\nMON-USD,Altcoins,3,0.1017,0.1179,AL-1: OKX available but not in components\r\nMON-USDC,Altcoins,3,0.4589,0.4899,AL-1: OKX available but not in components\r\nMON-USDT,Altcoins,4,0.1529,0.1787,AL-1: OKX available but not in components\r\nMOODENG-EUR,Altcoins,3,0.3250,0.4582,AL-1: OKX available but not in components\r\nMORPHO-EUR,Altcoins,4,0.1033,0.1810,AL-1: Binance available but not in components\r\nMORPHO-USD,Altcoins,4,0.0836,0.1307,AL-1: Binance available but not in components\r\nMORPHO-USDC,Altcoins,4,0.0979,0.1422,AL-1: Binance available but not in components\r\nMORPHO-USDT,Altcoins,4,0.0763,0.1162,AL-1: Binance available but not in components\r\nMOVE-EUR,Altcoins,1,0.1433,0.1433,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nMSFT-USDT,TradFi,4,0.2219,0.3991,TF-1: dxFeed available but not in components\r\nMSTR-USDT,TradFi,6,0.1408,0.5844,TF-1: dxFeed available but not in components; TF-6: ema_max_deviation 0.58% > 0.5%\r\nMU-USDT,TradFi,4,0.3769,0.7662,TF-1: dxFeed available but not in components; TF-6: ema_max_deviation 0.77% > 0.5%\r\nNAVX-USD,Altcoins,4,0.2164,0.5856,AL-1: OKX available but not in components\r\nNAVX-USDT,Altcoins,4,0.2139,0.5576,AL-1: OKX available but not in components\r\nNEIRO-EUR,Altcoins,2,0.0643,0.0669,AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nNEIRO-TRY,Altcoins,1,0.0192,0.0203,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nNEIRO-USD,Altcoins,3,0.0708,0.1256,AL-1: Bybit available but not in components\r\nNEIRO-USDC,Altcoins,2,0.1932,0.2050,AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nNFLX-USDT,TradFi,3,0.0336,0.0592,TF-1: Ondo_TICKER available but not in components; TF-1: dxFeed available but not in components\r\nNFT-USD,Altcoins,3,0.1834,0.3351,AL-1: Bybit available but not in components\r\nNIGHT-EUR,Altcoins,3,0.0491,0.0703,AL-1: Binance available but not in components\r\nNIGHT-TRY,Altcoins,3,0.0382,0.0489,AL-1: Binance available but not in components\r\nNIGHT-USD,Altcoins,3,0.0672,0.1086,AL-1: Binance available but not in components\r\nNIGHT-USDC,Altcoins,3,0.0464,0.0557,AL-1: Binance available but not in components\r\nNIGHT-USDT,Altcoins,3,0.0371,0.0449,AL-1: Binance available but not in components\r\nNOT-EUR,Altcoins,1,0.1192,0.1192,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nNOT-USD,Altcoins,4,0.1135,0.2037,AL-1: Bybit available but not in components\r\nNVDA-USDT,TradFi,5,0.0573,0.1365,TF-1: dxFeed available but not in components; TF-1: Binance_LINEAR_INDEX available but not in components; TF-3: Binance_LINEAR_PERPETUAL (score 4) available but not used\r\nOKSOL-SOL,Topcoins,3,0.0086,0.0129,TC: only 3 components (need ≥5)\r\nOMI-EUR,Altcoins,2,0.2825,0.3480,AL-4: only 2 distinct exchanges (need ≥3)\r\nOMI-USD,Altcoins,2,0.3211,0.3364,AL-4: only 2 distinct exchanges (need ≥3)\r\nOMI-USDC,Altcoins,2,0.3197,0.3657,AL-4: only 2 distinct exchanges (need ≥3)\r\nOMI-USDT,Altcoins,2,0.3220,0.3424,AL-4: only 2 distinct exchanges (need ≥3)\r\nONDO-EUR,Altcoins,1,0.1489,0.1489,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nONDO-USD,Altcoins,4,0.1648,0.2243,AL-1: Binance available but not in components\r\nONE-EUR,Altcoins,1,0.0287,0.0287,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nONE-USD,Altcoins,4,0.1508,0.2473,AL-1: Bybit available but not in components\r\nONT-EUR,Altcoins,4,0.8214,2.6880,AL-5: ema_avg_deviation 0.82% > 0.5%; AL-5: ema_max_deviation 2.69% > 1.5%; AL-5: Kucoin ONT/USDT deviation 2.68% > 2%\r\nONT-USD,Altcoins,4,1.1528,3.1366,AL-5: ema_avg_deviation 1.15% > 0.5%; AL-5: ema_max_deviation 3.14% > 1.5%; AL-5: Kucoin ONT/USDT deviation 3.13% > 2%\r\nONT-USDC,Altcoins,4,0.9940,2.4929,AL-5: ema_avg_deviation 0.99% > 0.5%; AL-5: ema_max_deviation 2.49% > 1.5%; AL-5: Kucoin ONT/USDT deviation 2.48% > 2%\r\nOP-EUR,Altcoins,3,0.0396,0.0441,AL-1: Binance available but not in components; AL-1: Bybit available but not in components\r\nOP-USD,Altcoins,5,0.1392,0.3923,AL-1: Bybit available but not in components\r\nOPN-USDT,Altcoins,3,0.1913,0.3134,AL-1: Binance available but not in components\r\nORBS-EUR,Altcoins,1,0.2208,0.2208,AL-1: OKX available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nORCL-USDT,TradFi,3,0.1134,0.1773,TF-1: dxFeed available but not in components\r\nORDER-USDT,Altcoins,5,0.5084,0.6269,AL-5: ema_avg_deviation 0.51% > 0.5%\r\nPARTI-TRY,Altcoins,1,0.0525,0.0574,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nPAXG-TRY,Altcoins,2,0.0392,0.0406,AL-4: only 2 distinct exchanges (need ≥3)\r\nPENGU-TRY,Altcoins,2,0.0443,0.0778,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nPEOPLE-EUR,Altcoins,1,0.0185,0.0185,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nPEOPLE-USD,Altcoins,4,0.1470,0.2773,AL-1: Bybit available but not in components\r\nPEPE-TRY,Altcoins,3,0.0841,0.1457,AL-1: Bybit available but not in components\r\nPEPE-USD,Altcoins,5,0.0355,0.0722,AL-1: Binance available but not in components\r\nPI-USDC,Altcoins,2,0.1007,0.1367,AL-1: OKX available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nPLTR-USDT,TradFi,5,0.0462,0.0956,TF-1: dxFeed available but not in components\r\nPNUT-TRY,Altcoins,2,0.2861,0.5553,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nPOR-USD,Altcoins,2,0.0430,0.0534,AL-4: only 2 distinct exchanges (need ≥3)\r\nPOR-USDT,Altcoins,2,0.0453,0.0586,AL-4: only 2 distinct exchanges (need ≥3)\r\nPUMP-EUR,Altcoins,5,0.0695,0.1467,AL-1: Binance available but not in components\r\nPUMP-TRY,Altcoins,3,0.0469,0.0730,AL-1: Bybit available but not in components\r\nPUMP-USD,Altcoins,5,0.0922,0.2392,AL-1: Binance available but not in components\r\nPUMP-USDC,Altcoins,5,0.1450,0.2171,AL-1: Binance available but not in components\r\nPUMP-USDT,Altcoins,5,0.0870,0.2215,AL-1: Binance available but not in components\r\nPYTH-USD,Altcoins,4,0.0987,0.2499,AL-1: Binance available but not in components\r\nQQQ-USDT,TradFi,5,0.0937,0.1422,TF-1: dxFeed available but not in components\r\nQTUM-EUR,Altcoins,1,0.0674,0.0674,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nRESOLV-TRY,Altcoins,2,0.7570,0.7654,AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_deviation 0.76% > 0.5%\r\nRESOLV-USD,Altcoins,4,0.1287,0.2180,AL-1: Binance available but not in components\r\nRESOLV-USDT,Altcoins,5,1.1370,1.2235,AL-5: ema_avg_deviation 1.14% > 0.5%\r\nROBO-EUR,Altcoins,4,0.1164,0.1789,AL-1: OKX available but not in components; AL-1: Binance available but not in components\r\nROBO-TRY,Altcoins,6,0.1382,0.2222,AL-1: Binance available but not in components\r\nROBO-USD,Altcoins,5,0.1735,0.2584,AL-1: OKX available but not in components; AL-1: Binance available but not in components\r\nROBO-USDC,Altcoins,4,0.1831,0.2531,AL-1: OKX available but not in components; AL-1: Binance available but not in components\r\nROBO-USDT,Altcoins,4,0.1135,0.2265,AL-1: OKX available but not in components; AL-1: Binance available but not in components\r\nRON-EUR,Altcoins,3,0.0921,0.1666,AL-1: Binance available but not in components\r\nRON-USD,Altcoins,3,0.0813,0.1864,AL-1: Binance available but not in components\r\nRON-USDC,Altcoins,3,0.1209,0.1772,AL-1: Binance available but not in components\r\nRON-USDT,Altcoins,3,0.0786,0.1126,AL-1: Binance available but not in components\r\nRVN-EUR,Altcoins,2,0.0627,0.0798,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nSAHARA-TRY,Altcoins,3,0.0477,0.0555,AL-1: Bybit available but not in components\r\nSAHARA-USD,Altcoins,3,0.1200,0.1718,AL-1: Bybit available but not in components\r\nSAHARA-USDT,Altcoins,3,0.1143,0.1464,AL-1: Bybit available but not in components\r\nSAND-EUR,Altcoins,2,0.1032,0.1579,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nSAND-USD,Altcoins,5,0.1031,0.2354,AL-1: Bybit available but not in components\r\nSATS-EUR,Altcoins,1,0.0444,0.0444,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nSATS-USD,Altcoins,4,0.1001,0.2106,AL-1: Binance available but not in components; AL-1: Bybit available but not in components\r\nSATS-USDC,Altcoins,5,0.1379,0.2547,AL-1: Binance available but not in components\r\nSATS-USDT,Altcoins,5,0.2360,0.4042,AL-1: Binance available but not in components\r\nSCR-EUR,Altcoins,1,0.0070,0.0070,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nSCR-USD,Altcoins,4,0.1503,0.2454,AL-1: Bybit available but not in components\r\nSD-USD,Altcoins,2,0.2749,0.3141,AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nSD-USDT,Altcoins,2,0.1254,0.1708,AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nSENT-EUR,Altcoins,5,0.2258,0.3036,AL-1: OKX available but not in components\r\nSENT-TRY,Altcoins,4,0.0637,0.1070,AL-1: OKX available but not in components\r\nSENT-USD,Altcoins,4,0.0554,0.0867,AL-1: OKX available but not in components\r\nSENT-USDC,Altcoins,4,0.4672,0.5174,AL-1: OKX available but not in components\r\nSENT-USDT,Altcoins,5,0.2588,0.3794,AL-1: OKX available but not in components\r\nSHIB-EUR,Altcoins,4,0.1500,0.2527,AL-1: Bybit available but not in components\r\nSHIB-TRY,Altcoins,3,0.1599,0.2819,AL-1: Bybit available but not in components\r\nSHIB-USD,Altcoins,5,0.0945,0.1736,AL-1: Bybit available but not in components\r\nSKY-EUR,Altcoins,4,0.0614,0.1300,AL-1: Binance available but not in components\r\nSKY-USD,Altcoins,4,0.0475,0.0767,AL-1: Binance available but not in components\r\nSKY-USDC,Altcoins,4,0.0429,0.1285,AL-1: Binance available but not in components\r\nSKY-USDT,Altcoins,4,0.0773,0.0951,AL-1: Binance available but not in components\r\nSLP-USD,Altcoins,4,0.1912,0.5001,AL-1: Bybit available but not in components\r\nSLP-USDT,Altcoins,4,0.1621,0.5078,AL-1: Bybit available but not in components\r\nSNDK-USDT,TradFi,3,0.0620,0.0887,TF-1: dxFeed available but not in components\r\nSNT-EUR,Altcoins,2,0.0461,0.0686,AL-4: only 2 distinct exchanges (need ≥3)\r\nSNT-USD,Altcoins,2,0.0547,0.0718,AL-4: only 2 distinct exchanges (need ≥3)\r\nSNT-USDC,Altcoins,2,0.0520,0.0713,AL-4: only 2 distinct exchanges (need ≥3)\r\nSNT-USDT,Altcoins,2,0.0832,0.1248,AL-4: only 2 distinct exchanges (need ≥3)\r\nSNX-USD,Altcoins,4,0.1870,0.3170,AL-1: Bybit available but not in components\r\nSOL-USDC,Topcoins,5,0.1519,0.1736,TC: ema_avg_deviation 0.15% ≥ 0.15%\r\nSONIC-EUR,Altcoins,1,0.1296,0.1296,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nSOPH-USDT,Altcoins,3,0.1678,0.2605,AL-1: OKX available but not in components\r\nSPURS-USD,Altcoins,2,0.0430,0.0553,AL-4: only 2 distinct exchanges (need ≥3)\r\nSPURS-USDT,Altcoins,2,0.1320,0.1355,AL-4: only 2 distinct exchanges (need ≥3)\r\nSPY-USDT,TradFi,4,0.0460,0.0846,TF-1: dxFeed available but not in components\r\nSSV-EUR,Altcoins,1,0.4450,0.4450,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nSSV-USD,Altcoins,4,0.1224,0.1921,AL-1: Bybit available but not in components\r\nSTETH-ETH,Altcoins,2,0.0161,0.0287,AL-4: only 2 distinct exchanges (need ≥3)\r\nSTRK-TRY,Altcoins,2,0.3274,0.3334,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nSTRK-USD,Altcoins,6,0.9469,2.1695,AL-1: Binance available but not in components; AL-5: ema_avg_deviation 0.95% > 0.5%; AL-5: ema_max_deviation 2.17% > 1.5%; AL-5: Coinbase STRK/USD deviation 2.17% > 2%\r\nSTX-USD,Altcoins,5,0.0365,0.0545,AL-1: Bybit available but not in components\r\nSUI-EUR,Altcoins,5,0.0900,0.1412,AL-1: Bybit available but not in components\r\nSUI-TRY,Altcoins,3,0.1853,0.2166,AL-1: Bybit available but not in components\r\nSUSHI-EUR,Altcoins,2,0.2060,0.2346,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nSUSHI-USD,Altcoins,5,0.1588,0.3637,AL-1: Bybit available but not in components\r\nT-EUR,Altcoins,1,0.0232,0.0232,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nTIA-TRY,Altcoins,2,0.4699,0.5102,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nTNSR-EUR,Altcoins,2,0.0390,0.0548,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nTNSR-TRY,Altcoins,4,0.1040,0.1940,AL-1: Bybit available but not in components\r\nTNSR-USD,Altcoins,4,0.0963,0.1762,AL-1: Bybit available but not in components\r\nTON-EUR,Altcoins,4,0.0218,0.0580,AL-1: Binance available but not in components\r\nTON-USD,Altcoins,4,0.0702,0.0849,AL-1: Binance available but not in components\r\nTRA-USD,Altcoins,2,0.1784,0.2011,AL-4: only 2 distinct exchanges (need ≥3)\r\nTRA-USDT,Altcoins,2,0.6131,0.8011,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_deviation 0.61% > 0.5%\r\nTRX-EUR,Altcoins,4,0.0357,0.0517,AL-1: Bybit available but not in components\r\nTRX-TRY,Altcoins,3,0.0273,0.0442,AL-1: Bybit available but not in components\r\nTRX-USDC,Altcoins,2,0.0802,0.0825,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nTSLA-USDT,TradFi,6,0.0453,0.0690,TF-1: dxFeed available but not in components\r\nTSM-USDT,TradFi,4,0.0274,0.0404,TF-1: dxFeed available but not in components\r\nTURBO-EUR,Altcoins,2,0.2249,0.2354,AL-1: OKX available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nUMA-EUR,Altcoins,1,0.2905,0.2905,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nUMA-USD,Altcoins,3,0.0981,0.2466,AL-1: Bybit available but not in components\r\nUMA-USDC,Altcoins,3,0.1904,0.2074,AL-1: Bybit available but not in components\r\nUMA-USDT,Altcoins,3,0.1313,0.1504,AL-1: Bybit available but not in components\r\nUNI-EUR,Altcoins,3,0.1681,0.2858,AL-1: Binance available but not in components; AL-1: Bybit available but not in components\r\nUNI-USD,Altcoins,4,0.0944,0.1345,AL-1: OKX available but not in components; AL-1: Bybit available but not in components\r\nUSD1-USDT,Altcoins,4,0.0144,0.0200,AL-1: OKX available but not in components\r\nUSDC-AUD,Fiat,4,0.1277,0.1477,Fiat: ema_avg_deviation 0.13% ≥ 0.1%\r\nUSDG-EUR,Fiat,2,0.0159,0.0205,Fiat: only 2 components (need ≥3)\r\nUSDT-AED,Fiat,1,0.0175,0.0175,Fiat: only 1 components (need ≥3)\r\nUSDT-AUD,Fiat,3,0.1326,0.1516,Fiat: ema_avg_deviation 0.13% ≥ 0.1%\r\nUXLINK-USD,Altcoins,2,2.8670,3.0225,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_deviation 2.87% > 0.5%; AL-5: ema_max_deviation 3.02% > 1.5%; AL-5: OKX UXLINK/USDT deviation 3.01% > 2%; AL-5: Bybit UXLINK/USDT deviation 2.73% > 2%\r\nUXLINK-USDT,Altcoins,2,2.6633,2.8150,AL-4: only 2 distinct exchanges (need ≥3); AL-5: ema_avg_deviation 2.66% > 0.5%; AL-5: ema_max_deviation 2.82% > 1.5%; AL-5: OKX UXLINK/USDT deviation 2.80% > 2%; AL-5: Bybit UXLINK/USDT deviation 2.53% > 2%\r\nVELO-EUR,Altcoins,4,0.8630,0.8969,AL-5: ema_avg_deviation 0.86% > 0.5%\r\nVELO-USD,Altcoins,3,0.0500,0.0790,AL-1: Bybit available but not in components\r\nVELODROME-EUR,Altcoins,1,0.0851,0.0851,AL-4: only 1 distinct exchanges (need ≥3)\r\nVINE-USDT,Altcoins,3,0.7264,0.9348,AL-5: ema_avg_deviation 0.73% > 0.5%\r\nVIRTUAL-EUR,Altcoins,2,0.0612,0.0698,AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nW-EUR,Altcoins,1,0.0319,0.0319,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nW-USD,Altcoins,4,0.2235,0.4320,AL-1: Bybit available but not in components\r\nWAL-USDT,Altcoins,5,0.1026,0.2463,AL-1: Binance available but not in components\r\nWIF-EUR,Altcoins,2,0.2127,0.2266,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nWIF-TRY,Altcoins,2,0.1504,0.1592,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nWIF-USD,Altcoins,4,0.1204,0.1655,AL-1: Bybit available but not in components\r\nWIN-EUR,Altcoins,1,0.0168,0.0168,AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nWOO-USD,Altcoins,4,0.2191,0.4035,AL-1: Bybit available but not in components\r\nXAU-USD,TradFi,5,0.0582,0.0768,TF-3: Binance_LINEAR_PERPETUAL (score 4) available but not used; TF-3: OKX_PERPETUAL (score 4) available but not used\r\nXAU-USDT,TradFi,5,0.0496,0.1066,TF-3: Binance_LINEAR_PERPETUAL (score 4) available but not used; TF-3: OKX_PERPETUAL (score 4) available but not used\r\nXCU-USDT,TradFi,3,0.0607,0.1032,TF-1: Binance_LINEAR_INDEX available but not in components; TF-3: Binance_LINEAR_PERPETUAL (score 4) available but not used\r\nXLM-EUR,Altcoins,5,0.1172,0.2137,AL-1: Bybit available but not in components\r\nXLM-USD,Altcoins,5,0.0741,0.1019,AL-1: Bybit available but not in components\r\nXPT-USDT,TradFi,3,0.2345,0.2493,TF-1: Binance_LINEAR_INDEX available but not in components\r\nXRP-EUR,Topcoins,7,0.1985,0.2448,TC: ema_avg_deviation 0.20% ≥ 0.15%\r\nXTZ-EUR,Altcoins,2,0.0160,0.0233,AL-1: Binance available but not in components; AL-1: Bybit available but not in components; AL-4: only 2 distinct exchanges (need ≥3)\r\nXTZ-USD,Altcoins,4,0.0573,0.1285,AL-1: Bybit available but not in components\r\nYFI-USD,Altcoins,4,0.0531,0.1336,AL-1: Bybit available but not in components\r\nZETA-EUR,Altcoins,3,0.5572,1.3224,AL-5: ema_avg_deviation 0.56% > 0.5%\r\nZETA-USDC,Altcoins,3,0.5123,1.5054,AL-5: ema_avg_deviation 0.51% > 0.5%; AL-5: ema_max_deviation 1.51% > 1.5%\r\nZETA-USDT,Altcoins,3,0.5559,1.4235,AL-5: ema_avg_deviation 0.56% > 0.5%\r\nZIL-EUR,Altcoins,1,0.0310,0.0310,AL-1: OKX available but not in components; AL-1: Binance available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nZIL-USD,Altcoins,3,0.1618,0.2453,AL-1: Binance available but not in components; AL-1: Bybit available but not in components\r\nZKP-USDT,Altcoins,5,0.2313,0.4696,AL-1: Binance available but not in components\r\nZRO-EUR,Altcoins,1,0.2079,0.2079,AL-1: OKX available but not in components; AL-1: Bybit available but not in components; AL-4: only 1 distinct exchanges (need ≥3)\r\nZRO-USD,Altcoins,4,0.0375,0.0493,AL-1: Binance available but not in components\r\n"
+        }
+      ],
+      "markdown": "# Index Review\n\nScanned 1257 indexes (1193 with EMA). 418 flagged, 775 pass.\n",
       "error": null,
       "source_document": null,
       "suspicious_users": [],

@@ -4,8 +4,10 @@ Runs all adapters, builds report.json, and saves to public/data/.
 The local Claude Code workflow commits and pushes afterwards, and Vercel auto-deploys.
 
 Usage:
-    python -m runner.main              # run and save to public/data/
-    python -m runner.main --dry-run    # run and print JSON, skip saving
+    python -m runner.main                          # run all chapters
+    python -m runner.main --only risk-intel        # re-run only risk-intel, preserve others
+    python -m runner.main --only risk-intel mmr-futures  # re-run two chapters
+    python -m runner.main --dry-run                # print JSON, skip saving
 """
 
 import argparse
@@ -71,6 +73,35 @@ def _build_report(chapters: list[dict], date_str: str) -> dict:
     }
 
 
+SLUG_ORDER = ["risk-intel", "price-limit", "mmr-futures", "index-review"]
+
+
+def _load_existing_report(date_str: str) -> dict | None:
+    """Load existing report.json for the given date, or None if not found."""
+    path = DATA_DIR / "reports" / date_str / "report.json"
+    if not path.exists():
+        return None
+    try:
+        return json.loads(path.read_text())
+    except Exception as exc:
+        _log(f"Failed to load existing report: {exc}")
+        return None
+
+
+def _check_regression(existing_chapters: dict, new_chapters: dict):
+    """Warn if a previously successful chapter would regress to pending/error."""
+    for slug, old_ch in existing_chapters.items():
+        new_ch = new_chapters.get(slug)
+        if not new_ch:
+            continue
+        old_status = old_ch.get("status", "pending")
+        new_status = new_ch.get("status", "pending")
+        if old_status not in ("pending", "error") and new_status in ("pending", "error"):
+            old_issues = old_ch.get("metrics", {}).get("issues_found", 0)
+            _log(f"WARNING: {slug} regressing from '{old_status}' ({old_issues} issues) → '{new_status}'! Keeping old chapter.")
+            new_chapters[slug] = old_ch  # Preserve the working chapter
+
+
 def _save_report(chapters: list[dict], report: dict, date_str: str):
     """Save report data to public/data/ for Vercel static serving."""
     date_dir = DATA_DIR / "reports" / date_str
@@ -130,6 +161,8 @@ def main():
     parser = argparse.ArgumentParser(description="Daily Parameter Review runner")
     parser.add_argument("--dry-run", action="store_true", help="Print JSON, skip saving")
     parser.add_argument("--no-lark", action="store_true", help="Skip Lark notification")
+    parser.add_argument("--only", nargs="+", metavar="SLUG",
+                        help="Only regenerate these chapter(s), preserve others from existing report")
     args = parser.parse_args()
 
     # Use HKT (UTC+8) for the report date — both daily cron runs land on same HKT day
@@ -140,15 +173,31 @@ def main():
 
     ema_data = _load_ema_data()
 
-    adapters = [
-        RiskIntelAdapter(),       # Risk Intelligence is the main/default section
+    all_adapters = [
+        RiskIntelAdapter(),
         PriceLimitAdapter(),
         MMRFuturesAdapter(),
         IndexReviewAdapter(),
     ]
 
-    chapters = []
-    for adapter in adapters:
+    # Load existing chapters if --only is used (selective regeneration)
+    existing_chapters: dict[str, dict] = {}
+    if args.only:
+        only_slugs = set(args.only)
+        _log(f"Selective mode: only regenerating {only_slugs}")
+        existing = _load_existing_report(date_str)
+        if existing:
+            existing_chapters = {ch["slug"]: ch for ch in existing.get("chapters", [])}
+            _log(f"Loaded {len(existing_chapters)} existing chapters: {list(existing_chapters.keys())}")
+        adapters_to_run = [a for a in all_adapters if a.slug in only_slugs]
+        if not adapters_to_run:
+            _log(f"ERROR: no adapters match slugs {only_slugs}. Valid: {[a.slug for a in all_adapters]}")
+            return 1
+    else:
+        adapters_to_run = all_adapters
+
+    new_chapters: dict[str, dict] = {}
+    for adapter in adapters_to_run:
         _log(f"Running adapter: {adapter.title} ({adapter.slug})...")
         try:
             chapter = adapter.execute(ema_data)
@@ -169,8 +218,19 @@ def main():
                 "markdown": "", "error": str(exc), "source_document": None,
                 "suspicious_users": [], "user_profiles": [],
             }
-        chapters.append(chapter)
+        new_chapters[adapter.slug] = chapter
         _log(f"  -> {chapter['status']} | {chapter['metrics']['issues_found']} issues")
+
+    # Merge: existing chapters as base, new chapters override
+    merged = {}
+    merged.update(existing_chapters)
+    merged.update(new_chapters)
+
+    # Regression guard: prevent successful chapters from regressing to pending
+    _check_regression(existing_chapters, merged)
+
+    # Reassemble in canonical order
+    chapters = [merged[s] for s in SLUG_ORDER if s in merged]
 
     report = _build_report(chapters, date_str)
     _log(f"Report: status={report['status']}, total_issues={report['total_issues']}")
