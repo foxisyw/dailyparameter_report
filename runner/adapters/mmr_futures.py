@@ -13,7 +13,8 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 MMR_CLI_DIR = PROJECT_ROOT / "params_cli" / "mmr_future"
 REVIEW_PKL = MMR_CLI_DIR / "review.pkl"
 BATCH_PKL = MMR_CLI_DIR / "batch.pkl"
-DEPTH_FILE = Path("/tmp/depth_sql.json")
+_RUNNER_LOCAL = Path(__file__).resolve().parent.parent / "local"
+DEPTH_FILE = _RUNNER_LOCAL / "depth_sql.json"
 SCOPES_TARGET = (
     Path.home() / ".claude" / "skills" / "position-tier-review" / "references" / "scopes.json"
 )

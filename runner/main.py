@@ -13,6 +13,8 @@ Usage:
 import argparse
 import json
 import sys
+import time
+import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -100,6 +102,85 @@ def _check_regression(existing_chapters: dict, new_chapters: dict):
             old_issues = old_ch.get("metrics", {}).get("issues_found", 0)
             _log(f"WARNING: {slug} regressing from '{old_status}' ({old_issues} issues) → '{new_status}'! Keeping old chapter.")
             new_chapters[slug] = old_ch  # Preserve the working chapter
+
+
+RISK_INTEL_INPUT = PROJECT_ROOT / "runner" / "local" / "risk_intel_input.json"
+DEPTH_FILE = PROJECT_ROOT / "runner" / "local" / "depth_sql.json"
+MMR_COMPETITOR_CACHE = PROJECT_ROOT / "params_cli" / "mmr_future" / "competitor_leverage.json"
+
+_REQUIRED_EVENT_KEYS = {
+    "asset", "executive_summary", "quantitative_impact", "oi_attribution",
+    "risk_assessment", "causal_chain", "user_profiles", "involved_users_brief",
+}
+
+
+def _check_port(port: int) -> bool:
+    try:
+        urllib.request.urlopen(f"http://localhost:{port}/health", timeout=3)
+        return True
+    except Exception:
+        return False
+
+
+def _preflight_check(adapters_to_run: list, date_str: str) -> list[tuple[str, str]]:
+    """Verify all dependencies before running adapters. Returns list of (name, detail) failures."""
+    checks: list[tuple[str, bool, str]] = []
+
+    slugs = {a.slug for a in adapters_to_run}
+
+    if "risk-intel" in slugs:
+        ok = RISK_INTEL_INPUT.exists() and RISK_INTEL_INPUT.stat().st_size > 100
+        checks.append(("risk-intel input JSON", ok, str(RISK_INTEL_INPUT)))
+
+    if "mmr-futures" in slugs:
+        ok = DEPTH_FILE.exists() and DEPTH_FILE.stat().st_size > 10
+        checks.append(("depth_sql.json", ok, str(DEPTH_FILE)))
+
+    if "index-review" in slugs:
+        ok = _check_port(8786)
+        checks.append(("index server :8786", ok, "http://localhost:8786/health"))
+
+    ok = EMA_CACHE.exists()
+    checks.append(("EMA cache", ok, str(EMA_CACHE)))
+
+    _log("Pre-flight checks:")
+    failed = []
+    for name, ok, detail in checks:
+        status = "OK" if ok else "MISSING"
+        _log(f"  {'[OK]' if ok else '[!!]'} {name}: {detail}")
+        if not ok:
+            failed.append((name, detail))
+
+    return failed
+
+
+def _validate_report(chapters: list[dict]) -> list[str]:
+    """Validate merged chapters before saving. Returns list of warnings."""
+    warnings: list[str] = []
+    for ch in chapters:
+        slug = ch.get("slug", "?")
+        if ch["status"] == "pending":
+            warnings.append(f"{slug}: status is PENDING")
+        if ch["slug"] == "risk-intel":
+            for e in ch.get("event_analyses", []):
+                missing = _REQUIRED_EVENT_KEYS - set(e.keys())
+                if missing:
+                    warnings.append(f"risk-intel event {e.get('asset', '?')}: missing {missing}")
+    return warnings
+
+
+def _refresh_mmr_cache():
+    """Ensure MMR competitor cache has a fresh timestamp to prevent stale-refresh crash."""
+    if not MMR_COMPETITOR_CACHE.exists():
+        return
+    try:
+        data = json.loads(MMR_COMPETITOR_CACHE.read_text())
+    except Exception:
+        data = {}
+    if not isinstance(data, dict) or "_updated" not in data:
+        data["_updated"] = time.time()
+        MMR_COMPETITOR_CACHE.write_text(json.dumps(data))
+        _log("Refreshed MMR competitor cache timestamp")
 
 
 def _save_report(chapters: list[dict], report: dict, date_str: str):
@@ -196,6 +277,15 @@ def main():
     else:
         adapters_to_run = all_adapters
 
+    # Pre-flight: verify dependencies before running adapters
+    failed_checks = _preflight_check(adapters_to_run, date_str)
+    if failed_checks:
+        _log(f"WARNING: {len(failed_checks)} pre-flight check(s) failed — affected adapters may return pending")
+
+    # Auto-refresh MMR competitor cache to prevent stale-refresh crash
+    if any(a.slug == "mmr-futures" for a in adapters_to_run):
+        _refresh_mmr_cache()
+
     new_chapters: dict[str, dict] = {}
     for adapter in adapters_to_run:
         _log(f"Running adapter: {adapter.title} ({adapter.slug})...")
@@ -231,6 +321,13 @@ def main():
 
     # Reassemble in canonical order
     chapters = [merged[s] for s in SLUG_ORDER if s in merged]
+
+    # Post-generation validation
+    validation_warnings = _validate_report(chapters)
+    if validation_warnings:
+        _log("Post-generation warnings:")
+        for w in validation_warnings:
+            _log(f"  [!] {w}")
 
     report = _build_report(chapters, date_str)
     _log(f"Report: status={report['status']}, total_issues={report['total_issues']}")
