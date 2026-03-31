@@ -10,7 +10,7 @@ from pathlib import Path
 from .base import BaseAdapter
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
-MMR_CLI_DIR = PROJECT_ROOT / "params_cli" / "mmr_future"
+MMR_CLI_DIR = PROJECT_ROOT / "params_cli" / "position-tier-review"
 REVIEW_PKL = MMR_CLI_DIR / "review.pkl"
 BATCH_PKL = MMR_CLI_DIR / "batch.pkl"
 _RUNNER_LOCAL = Path(__file__).resolve().parent.parent / "local"

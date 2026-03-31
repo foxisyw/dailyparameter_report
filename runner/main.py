@@ -107,7 +107,7 @@ def _check_regression(existing_chapters: dict, new_chapters: dict):
 
 RISK_INTEL_INPUT = PROJECT_ROOT / "runner" / "local" / "risk_intel_input.json"
 DEPTH_FILE = PROJECT_ROOT / "runner" / "local" / "depth_sql.json"
-MMR_CLI_DIR = PROJECT_ROOT / "params_cli" / "mmr_future"
+MMR_CLI_DIR = PROJECT_ROOT / "params_cli" / "position-tier-review"
 MMR_TIERS_CACHE = MMR_CLI_DIR / "current_tiers.json"
 MMR_COMPETITOR_CACHE = MMR_CLI_DIR / "competitor_leverage.json"
 
