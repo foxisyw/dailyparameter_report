@@ -34,6 +34,11 @@ def _run_cli(*args: str, timeout: int = 120) -> dict | None:
 
 # ─── Review Rules (simplified from review_methodology.md) ─────────────────
 
+def _n(val, default=0):
+    """Coerce None to default. dict.get returns None when key exists with None value."""
+    return val if val is not None else default
+
+
 def _check_tradfi(idx: dict) -> list[str]:
     """TradFi rules: oracle coverage, weight cap, perpetuals, deviation."""
     issues = []
@@ -48,16 +53,16 @@ def _check_tradfi(idx: dict) -> list[str]:
     # TF-3: Perpetual components
     for perp in ("Binance_LINEAR_PERPETUAL", "OKX_PERPETUAL"):
         if perp in alts and perp not in comps:
-            alt_score = next((a.get("exchange_score", 0) for a in idx["alternatives"] if a["exchange"] == perp), 0)
+            alt_score = next((_n(a.get("exchange_score"), 0) for a in idx["alternatives"] if a["exchange"] == perp), 0)
             if alt_score >= 4:
                 issues.append(f"TF-3: {perp} (score {alt_score}) available but not used")
 
     # TF-5: Min 3 components
-    if idx.get("component_count", 0) < 3:
-        issues.append(f"TF-5: only {idx.get('component_count', 0)} components (need ≥3)")
+    if _n(idx.get("component_count"), 0) < 3:
+        issues.append(f"TF-5: only {_n(idx.get('component_count'), 0)} components (need ≥3)")
 
     # TF-6: Deviation check
-    ema_max = idx.get("ema_max_deviation", 0)
+    ema_max = _n(idx.get("ema_max_deviation"), 0)
     if ema_max > 0.5:
         issues.append(f"TF-6: ema_max_deviation {ema_max:.2f}% > 0.5%")
 
@@ -66,9 +71,9 @@ def _check_tradfi(idx: dict) -> list[str]:
 
 def _check_topcoins(idx: dict) -> list[str]:
     """Topcoins: skip if healthy."""
-    avg_dev = idx.get("ema_avg_deviation", 0)
-    max_dev = idx.get("ema_max_deviation", 0)
-    n = idx.get("component_count", 0)
+    avg_dev = _n(idx.get("ema_avg_deviation"), 0)
+    max_dev = _n(idx.get("ema_max_deviation"), 0)
+    n = _n(idx.get("component_count"), 0)
     if avg_dev < 0.15 and max_dev < 0.3 and n >= 5:
         return []
     issues = []
@@ -83,9 +88,9 @@ def _check_topcoins(idx: dict) -> list[str]:
 
 def _check_fiat(idx: dict) -> list[str]:
     """Fiat: skip if healthy."""
-    avg_dev = idx.get("ema_avg_deviation", 0)
-    max_dev = idx.get("ema_max_deviation", 0)
-    n = idx.get("component_count", 0)
+    avg_dev = _n(idx.get("ema_avg_deviation"), 0)
+    max_dev = _n(idx.get("ema_max_deviation"), 0)
+    n = _n(idx.get("component_count"), 0)
     if avg_dev < 0.1 and max_dev < 0.3 and n >= 3:
         return []
     issues = []
@@ -117,9 +122,9 @@ def _check_altcoins(idx: dict) -> list[str]:
         issues.append(f"AL-4: only {distinct} distinct exchanges (need ≥3)")
 
     # AL-5: Deviation & staleness
-    avg_dev = idx.get("ema_avg_deviation", 0)
-    max_dev = idx.get("ema_max_deviation", 0)
-    avg_lag = idx.get("ema_avg_update_lag", 0)
+    avg_dev = _n(idx.get("ema_avg_deviation"), 0)
+    max_dev = _n(idx.get("ema_max_deviation"), 0)
+    avg_lag = _n(idx.get("ema_avg_update_lag"), 0)
     if avg_dev > 0.5:
         issues.append(f"AL-5: ema_avg_deviation {avg_dev:.2f}% > 0.5%")
     if max_dev > 1.5:
@@ -129,7 +134,7 @@ def _check_altcoins(idx: dict) -> list[str]:
 
     # Individual component deviation
     for c in comps:
-        if c.get("ema_deviation", 0) > 2.0:
+        if _n(c.get("ema_deviation"), 0) > 2.0:
             issues.append(f"AL-5: {c['exchange']} {c['symbol']} deviation {c['ema_deviation']:.2f}% > 2%")
 
     return issues
@@ -199,9 +204,9 @@ class IndexReviewAdapter(BaseAdapter):
                     "index": idx["index"],
                     "assetsType": asset_type,
                     "issues": issues,
-                    "component_count": idx.get("component_count", 0),
-                    "ema_avg_deviation": idx.get("ema_avg_deviation", 0),
-                    "ema_max_deviation": idx.get("ema_max_deviation", 0),
+                    "component_count": _n(idx.get("component_count"), 0),
+                    "ema_avg_deviation": _n(idx.get("ema_avg_deviation"), 0),
+                    "ema_max_deviation": _n(idx.get("ema_max_deviation"), 0),
                     "components": idx.get("components", []),
                 }
                 by_type.setdefault(asset_type, []).append(entry)
