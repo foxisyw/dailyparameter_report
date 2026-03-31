@@ -1,19 +1,18 @@
 # Price Limit Review
 
-**Generated:** 2026-03-31T02:30:45.164932+00:00  
+**Generated:** 2026-03-31T05:43:39.134911+00:00  
 **Status:** critical  
 **Instruments scanned:** 1528  
 **EMA coverage:** 1528  
 
-**Total issues found:** 12
+**Total issues found:** 11
 
 ## Rule 1: Buffer Too Tight
-2 issue(s) found.
+1 issue(s) found.
 
 | INSTRUMENT | LIMITUP_BUFFER | LIMITDN_BUFFER | STATUS |
 |---|---|---|---|
-| DGB-USD | -0.43% | -0.04% | warning |
-| DGB-USD | -0.43% | -0.04% | warning |
+| DGB-USD | -0.33% | 0.01% | warning |
 
 ## Rule 2: Asymmetric Basis
 All instruments passed.
