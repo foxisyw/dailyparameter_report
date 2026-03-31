@@ -1,7 +1,7 @@
 {
   "report": {
     "date": "2026-03-30",
-    "generated_at": "2026-03-30T10:45:01.839057+00:00",
+    "generated_at": "2026-03-30T11:08:16.995422+00:00",
     "status": "critical",
     "total_issues": 610,
     "chapters": [
@@ -41,7 +41,7 @@
           "ema_coverage": 268,
           "issues_found": 43,
           "source": "OKX Tiers + Depth SQL",
-          "generated_at": "2026-03-30T10:45:00.032391+00:00"
+          "generated_at": "2026-03-30T11:08:15.341032+00:00"
         }
       },
       {
@@ -4696,7 +4696,7 @@
         "ema_coverage": 268,
         "issues_found": 43,
         "source": "OKX Tiers + Depth SQL",
-        "generated_at": "2026-03-30T10:45:00.032391+00:00"
+        "generated_at": "2026-03-30T11:08:15.341032+00:00"
       },
       "metric_cards": [
         {
@@ -4721,7 +4721,7 @@
           "ruleId": "all_changes",
           "title": "All Changes",
           "count": 43,
-          "description": "Contracts flagged by rule checks: leverage mismatch, ratio <10% or >50%, competitor cap. 43 of 134 total model adjustments.",
+          "description": "Contracts flagged by rule checks: leverage mismatch, ratio <10% or >50%, competitor cap. 43 of 132 total model adjustments.",
           "status": "warning",
           "table": {
             "headers": [
@@ -4743,14 +4743,14 @@
                 "APE-USDT",
                 "Crypto",
                 "Inc ↑",
-                "ratio 8.7% < 10%",
+                "ratio 8.8% < 10%",
                 "HIGH"
               ],
               [
                 "API3-USDT",
                 "Crypto",
                 "Inc ↓",
-                "ratio 40.8% > 50%",
+                "ratio 41.0% > 50%",
                 "HIGH"
               ],
               [
@@ -4771,28 +4771,28 @@
                 "BAT-USDT",
                 "Crypto",
                 "Inc ↑",
-                "ratio 9.3% < 10%",
+                "ratio 9.4% < 10%",
                 "HIGH"
               ],
               [
                 "BIO-USDT",
                 "Crypto",
                 "Inc ↑",
-                "ratio 9.8% < 10%",
+                "ratio 9.9% < 10%",
                 "HIGH"
               ],
               [
                 "BZ-USDT",
                 "Commodity",
                 "Inc ↑",
-                "ratio 7.5% < 10%",
+                "ratio 7.4% < 10%",
                 "HIGH"
               ],
               [
                 "CORE-USDT",
                 "Crypto",
                 "Inc ↑",
-                "ratio 3.0% < 10%",
+                "ratio 3.3% < 10%",
                 "HIGH"
               ],
               [
@@ -4806,7 +4806,7 @@
                 "ENJ-USDT",
                 "Crypto",
                 "10x → 20x + Inc ↑",
-                "Depth → level 3; ratio 7.3% < 10%",
+                "Depth → level 3; ratio 7.4% < 10%",
                 "HIGH"
               ],
               [
@@ -4834,56 +4834,56 @@
                 "FLOW-USDT",
                 "Crypto",
                 "Inc ↑",
-                "ratio 7.0% < 10%",
+                "ratio 7.1% < 10%",
                 "HIGH"
               ],
               [
                 "GPS-USDT",
                 "Crypto",
                 "Inc ↓",
-                "ratio 42.9% > 50%",
+                "ratio 43.0% > 50%",
                 "HIGH"
               ],
               [
                 "ICX-USDT",
                 "Crypto",
                 "Inc ↓",
-                "ratio 70.7% > 50%",
+                "ratio 70.9% > 50%",
                 "HIGH"
               ],
               [
                 "JTO-USDT",
                 "Crypto",
                 "Inc ↑",
-                "ratio 9.8% < 10%",
+                "ratio 9.7% < 10%",
                 "HIGH"
               ],
               [
                 "KAT-USDT",
                 "Crypto",
                 "Inc ↑",
-                "ratio 7.5% < 10%",
+                "ratio 7.4% < 10%",
                 "HIGH"
               ],
               [
                 "KGEN-USDT",
                 "Crypto",
                 "Inc ↓",
-                "ratio 95.3% > 50%",
+                "ratio 95.6% > 50%",
                 "HIGH"
               ],
               [
                 "LAB-USDT",
                 "Crypto",
                 "Inc ↓",
-                "ratio 75.2% > 50%",
+                "ratio 74.7% > 50%",
                 "HIGH"
               ],
               [
                 "LIGHT-USDT",
                 "Crypto",
                 "Inc ↑",
-                "ratio 7.4% < 10%",
+                "ratio 7.5% < 10%",
                 "HIGH"
               ],
               [
@@ -4911,28 +4911,28 @@
                 "NEO-USDT",
                 "Crypto",
                 "Inc ↑",
-                "ratio 9.8% < 10%",
+                "ratio 9.9% < 10%",
                 "HIGH"
               ],
               [
                 "OL-USDT",
                 "Crypto",
                 "Inc ↓",
-                "ratio 69.1% > 50%",
+                "ratio 69.5% > 50%",
                 "HIGH"
               ],
               [
                 "ONT-USDT",
                 "Crypto",
                 "Inc ↑",
-                "ratio 7.2% < 10%",
+                "ratio 7.1% < 10%",
                 "HIGH"
               ],
               [
                 "PARTI-USDT",
                 "Crypto",
                 "10x → 20x + Inc ↑",
-                "Depth → level 3; ratio 12.0% < 10%",
+                "Depth → level 3; ratio 11.9% < 10%",
                 "HIGH"
               ],
               [
@@ -4953,7 +4953,7 @@
                 "POPCAT-USDT",
                 "Crypto",
                 "Inc ↓",
-                "ratio 45.6% > 50%",
+                "ratio 46.0% > 50%",
                 "HIGH"
               ],
               [
@@ -4967,7 +4967,7 @@
                 "RLS-USDT",
                 "Crypto",
                 "Inc ↓",
-                "ratio 128.8% > 50%",
+                "ratio 130.1% > 50%",
                 "HIGH"
               ],
               [
@@ -5054,13 +5054,13 @@
               [
                 "ENJ-USDT",
                 "10x → 20x + Inc ↑",
-                "Depth → level 3; ratio 7.3% < 10%",
+                "Depth → level 3; ratio 7.4% < 10%",
                 "HIGH"
               ],
               [
                 "PARTI-USDT",
                 "10x → 20x + Inc ↑",
-                "Depth → level 3; ratio 12.0% < 10%",
+                "Depth → level 3; ratio 11.9% < 10%",
                 "HIGH"
               ],
               [
@@ -5102,13 +5102,13 @@
               [
                 "APE-USDT",
                 "Inc ↑",
-                "ratio 8.7% < 10%",
+                "ratio 8.8% < 10%",
                 "HIGH"
               ],
               [
                 "API3-USDT",
                 "Inc ↓",
-                "ratio 40.8% > 50%",
+                "ratio 41.0% > 50%",
                 "HIGH"
               ],
               [
@@ -5126,19 +5126,19 @@
               [
                 "BAT-USDT",
                 "Inc ↑",
-                "ratio 9.3% < 10%",
+                "ratio 9.4% < 10%",
                 "HIGH"
               ],
               [
                 "BIO-USDT",
                 "Inc ↑",
-                "ratio 9.8% < 10%",
+                "ratio 9.9% < 10%",
                 "HIGH"
               ],
               [
                 "CORE-USDT",
                 "Inc ↑",
-                "ratio 3.0% < 10%",
+                "ratio 3.3% < 10%",
                 "HIGH"
               ],
               [
@@ -5150,7 +5150,7 @@
               [
                 "ENJ-USDT",
                 "10x → 20x + Inc ↑",
-                "Depth → level 3; ratio 7.3% < 10%",
+                "Depth → level 3; ratio 7.4% < 10%",
                 "HIGH"
               ],
               [
@@ -5174,49 +5174,49 @@
               [
                 "FLOW-USDT",
                 "Inc ↑",
-                "ratio 7.0% < 10%",
+                "ratio 7.1% < 10%",
                 "HIGH"
               ],
               [
                 "GPS-USDT",
                 "Inc ↓",
-                "ratio 42.9% > 50%",
+                "ratio 43.0% > 50%",
                 "HIGH"
               ],
               [
                 "ICX-USDT",
                 "Inc ↓",
-                "ratio 70.7% > 50%",
+                "ratio 70.9% > 50%",
                 "HIGH"
               ],
               [
                 "JTO-USDT",
                 "Inc ↑",
-                "ratio 9.8% < 10%",
+                "ratio 9.7% < 10%",
                 "HIGH"
               ],
               [
                 "KAT-USDT",
                 "Inc ↑",
-                "ratio 7.5% < 10%",
+                "ratio 7.4% < 10%",
                 "HIGH"
               ],
               [
                 "KGEN-USDT",
                 "Inc ↓",
-                "ratio 95.3% > 50%",
+                "ratio 95.6% > 50%",
                 "HIGH"
               ],
               [
                 "LAB-USDT",
                 "Inc ↓",
-                "ratio 75.2% > 50%",
+                "ratio 74.7% > 50%",
                 "HIGH"
               ],
               [
                 "LIGHT-USDT",
                 "Inc ↑",
-                "ratio 7.4% < 10%",
+                "ratio 7.5% < 10%",
                 "HIGH"
               ],
               [
@@ -5240,25 +5240,25 @@
               [
                 "NEO-USDT",
                 "Inc ↑",
-                "ratio 9.8% < 10%",
+                "ratio 9.9% < 10%",
                 "HIGH"
               ],
               [
                 "OL-USDT",
                 "Inc ↓",
-                "ratio 69.1% > 50%",
+                "ratio 69.5% > 50%",
                 "HIGH"
               ],
               [
                 "ONT-USDT",
                 "Inc ↑",
-                "ratio 7.2% < 10%",
+                "ratio 7.1% < 10%",
                 "HIGH"
               ],
               [
                 "PARTI-USDT",
                 "10x → 20x + Inc ↑",
-                "Depth → level 3; ratio 12.0% < 10%",
+                "Depth → level 3; ratio 11.9% < 10%",
                 "HIGH"
               ],
               [
@@ -5276,7 +5276,7 @@
               [
                 "POPCAT-USDT",
                 "Inc ↓",
-                "ratio 45.6% > 50%",
+                "ratio 46.0% > 50%",
                 "HIGH"
               ],
               [
@@ -5288,7 +5288,7 @@
               [
                 "RLS-USDT",
                 "Inc ↓",
-                "ratio 128.8% > 50%",
+                "ratio 130.1% > 50%",
                 "HIGH"
               ],
               [
@@ -5357,7 +5357,7 @@
               [
                 "BZ-USDT",
                 "Inc ↑",
-                "ratio 7.5% < 10%",
+                "ratio 7.4% < 10%",
                 "HIGH"
               ],
               [

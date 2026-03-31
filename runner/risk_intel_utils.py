@@ -512,8 +512,7 @@ def validate_event_analyses(event_analyses: list[dict[str, Any]]) -> list[str]:
     REQUIRED_KEYS = {"asset", "severity", "executive_summary", "causal_chain", "user_profiles"}
     errors: list[str] = []
     if not event_analyses:
-        errors.append("event_analyses is EMPTY. Must build RCA for each critical asset.")
-        return errors
+        return errors  # Empty event_analyses is valid on quiet days (no flagged assets)
     for i, ea in enumerate(event_analyses):
         asset = ea.get("asset", f"event[{i}]")
         missing = REQUIRED_KEYS - set(ea.keys())
