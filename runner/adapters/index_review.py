@@ -276,20 +276,9 @@ class IndexReviewAdapter(BaseAdapter):
             "rows": rec_rows,
         } if rec_rows else None
 
-        # CSV download (summary)
-        csv_buf = io.StringIO()
-        writer = csv.writer(csv_buf)
-        writer.writerow(["index", "assetsType", "component_count", "ema_avg_deviation", "ema_max_deviation", "issues"])
-        for f in all_flagged:
-            writer.writerow([
-                f["index"], f["assetsType"], f["component_count"],
-                f"{f['ema_avg_deviation']:.4f}", f"{f['ema_max_deviation']:.4f}",
-                "; ".join(f["issues"]),
-            ])
-        csv_content = csv_buf.getvalue()
         date_str = datetime.now(timezone.utc).strftime("%Y%m%d")
 
-        # Component-level template CSV (20-column upload format)
+        # Generate 20-column uploadable CSV via fetcher.generate_adjustment()
         template_csv_content = ""
         try:
             sys.path.insert(0, str(CLI_DIR.parent))
@@ -332,17 +321,11 @@ class IndexReviewAdapter(BaseAdapter):
             ],
             "rule_blocks": rule_blocks,
             "recommended_changes": recommended_changes,
-            "downloads": ([
-                {
-                    "label": "Index Review Summary",
-                    "filename": f"index_review_{date_str}.csv",
-                    "content": csv_content,
-                },
-            ] + ([{
-                    "label": "Index Components Template",
-                    "filename": f"index_components_{date_str}.csv",
-                    "content": template_csv_content,
-            }] if template_csv_content else [])) if all_flagged else [],
+            "downloads": [{
+                "label": "Index Components",
+                "filename": f"index_components_{date_str}.csv",
+                "content": template_csv_content,
+            }] if template_csv_content else [],
             "markdown": f"# Index Review\n\n{summary}\n",
             "error": None,
             "source_document": None,
