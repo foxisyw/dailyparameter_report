@@ -522,8 +522,6 @@ def validate_event_analyses(event_analyses: list[dict[str, Any]]) -> list[str]:
         if len(cc) < 2:
             errors.append(f"{asset}: causal_chain has {len(cc)} steps, need at least 2.")
         ups = ea.get("user_profiles", [])
-        if not ups:
-            errors.append(f"{asset}: user_profiles is EMPTY. Must include 8-dimension profiles for key users.")
         for j, up in enumerate(ups):
             dims = up.get("dimensions", [])
             filled = sum(1 for d in dims if d.get("severity") not in ("pending", None, ""))

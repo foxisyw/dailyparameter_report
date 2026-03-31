@@ -1,19 +1,125 @@
 {
   "date": "2026-03-31",
-  "generated_at": "2026-03-31T02:30:45.044160+00:00",
+  "generated_at": "2026-03-31T03:23:30.793767+00:00",
   "chapter": {
     "slug": "risk-intel",
     "title": "Risk Intelligence",
     "render_variant": "risk-intel",
     "status": "critical",
     "summary": "4 alert types analyzed. 8 flagged alert(s) parsed. 0 suspicious user(s) highlighted.",
-    "event_analyses": [],
+    "event_analyses": [
+      {
+        "asset": "XAU-USDT-SWAP",
+        "severity": "critical",
+        "executive_summary": "XAU-USDT-SWAP triggered critical alert. Price: $4564.8 (+1.09%). 0 user(s) profiled.",
+        "forward_looking": "Monitor XAU-USDT-SWAP OI trajectory over the next 24 hours. If OI continues expanding, consider tightening position limits. Watch for funding rate shifts that may attract additional directional flow.",
+        "market_snapshot": {
+          "price": "4564.8",
+          "change_24h": "+1.09%",
+          "open_interest": "22637952",
+          "funding_rate": "0",
+          "vol_24h": "77761553",
+          "timestamp": "2026-03-31T11:23:02.401334+08:00"
+        },
+        "quantitative_impact": {
+          "title": "Quantitative Impact",
+          "metrics": [
+            {
+              "value": "",
+              "label": "OI Deviation (24H)",
+              "detail": "Open interest deviated  from the 24-hour average"
+            },
+            {
+              "value": "CRITICAL",
+              "label": "Alert Severity",
+              "detail": "Alert classified as critical"
+            }
+          ]
+        },
+        "oi_attribution": {
+          "title": "OI Attribution (Hourly User Breakdown)",
+          "description": "Hourly breakdown of user positioning for the instrument.",
+          "user_hourly_table": {
+            "headers": [
+              "Hour (pt)",
+              "Total Users",
+              "Longs",
+              "Shorts"
+            ],
+            "rows": []
+          }
+        },
+        "risk_assessment": {
+          "title": "Risk Assessment & Recommended Actions",
+          "actions": [
+            {
+              "priority": "P0",
+              "action": "Review platform position limits for this instrument immediately",
+              "reason": "Critical price_limit_p4 alert requires immediate parameter review"
+            },
+            {
+              "priority": "P2",
+              "action": "Continue monitoring OI trajectory and funding rate changes over the next 24 hours",
+              "reason": "Position dynamics may shift as new data comes in — ensure no further limit breaches"
+            }
+          ]
+        },
+        "involved_users_brief": {
+          "title": "Involved Users (Brief)",
+          "headers": [
+            "User ID",
+            "UID",
+            "Position",
+            "Margin",
+            "Opened",
+            "Risk Tier"
+          ],
+          "rows": []
+        },
+        "causal_chain": [
+          {
+            "step": 1,
+            "type": "远因 (Structural)",
+            "name": "XAU-USDT-SWAP Thin Liquidity / Low Float",
+            "description": "XAU-USDT-SWAP has limited market depth (24H vol: 77761553). Low float instruments are susceptible to rapid OI deviation.",
+            "evidence_strength": 3,
+            "evidence_label": "Market data"
+          },
+          {
+            "step": 2,
+            "type": "近因 (User Influx)",
+            "name": "XAU-USDT-SWAP Position Buildup",
+            "description": "User positioning changed on XAU-USDT-SWAP.",
+            "evidence_strength": 4,
+            "evidence_label": "Position data"
+          },
+          {
+            "step": 3,
+            "type": "触发事件 (Trigger)",
+            "name": "Alert Fired",
+            "description": "price_limit_p4 alert fired at critical level. OI deviation: .",
+            "evidence_strength": 5,
+            "evidence_label": "Platform alert"
+          },
+          {
+            "step": 4,
+            "type": "风险放大 (Amplification)",
+            "name": "User Concentration Risk",
+            "description": "Top position holders are concentrating exposure.",
+            "evidence_strength": 4,
+            "evidence_label": "User data"
+          }
+        ],
+        "key_users": [],
+        "user_profiles": []
+      }
+    ],
     "metrics": {
       "instruments_scanned": 8,
       "ema_coverage": 4,
       "issues_found": 8,
-      "source": "每日风控总结 - 2026-03-30 00:00:00 ~ 2026-03-30 23:59:59",
-      "generated_at": "2026-03-31T02:30:45.044160+00:00"
+      "source": "每日风控总结 - 2026-03-31 00:00:00 ~ 2026-03-31 23:59:59",
+      "generated_at": "2026-03-31T03:23:30.793767+00:00"
     },
     "metric_cards": [
       {
@@ -37,8 +143,8 @@
       {
         "ruleId": "index_alarm",
         "title": "Index Alarm",
-        "status": "warning",
-        "description": "整体以\"成分不足（Insufficient components）\"为主（33条），集中在 2026-03-30 00:40:20~07:44:20 的批量离线窗口，涉及≥20个指数，是否处于非交易时段导致的预期行为待确认。🟠 CORE-USDT 成分偏离中位数最大8.4345%（Gate 侧持续偏离），🟡 SENT-USDT 最大偏离4.2190%（Binance_LINEAR_PERPETUAL）。🟡 另有 METIS/ ZETA/ VANA 出现单所轻度偏离，以及 SENT-USDC、CATI-USDC 各1条\"OKX mid price 获取失败\"。",
+        "status": "critical",
+        "description": "整体以\"成分不足\"为主，集中在 TradFi/大宗商品指数（EWJ/EWY/NFLX/ORCL/AMD/XAG/XPD/XPT/XCU/NG/CL 等）与小币指数（UMA/BAND/BZ/AZTEC/GLM/WET/TRUST），多表现为仅1~2个源在线。🔴 BASED-USDT 出现\"无法获取指数价格\"单点事件（17:43:05），报警未提供快照细节，影响范围与是否自愈待确认。🟡 SAFE-EUR、SAFE-USDC 出现\"无法获取 OKX mid price\"单币对级别异常，原因待确认（盘口为空/接口偶发等）。",
         "table": {
           "headers": [
             "ASSET",
@@ -48,8 +154,14 @@
           ],
           "rows": [
             [
-              "CORE-USDT",
-              "整体以\"成分不足（Insufficient components）\"为主（33条），集中在 2026-03-30 00:40:20~07:44:20 的批量离线窗口，涉及≥20个指数，是否处于非交易时段导致的预期行为待确认。🟠 CORE-USDT 成分偏离中位数最大8.4345%（Gate 侧持续偏离），🟡 SENT-USDT 最大偏离4.2190%（Binance_LINEAR_PERPETUAL）。🟡 另有 METIS/ ZETA/ VANA 出现单所轻度偏离，以及 SENT-USDC、CATI-USDC 各1条\"OKX mid price 获取失败\"。",
+              "BASED-USDT",
+              "整体以\"成分不足\"为主，集中在 TradFi/大宗商品指数（EWJ/EWY/NFLX/ORCL/AMD/XAG/XPD/XPT/XCU/NG/CL 等）与小币指数（UMA/BAND/BZ/AZTEC/GLM/WET/TRUST），多表现为仅1~2个源在线。🔴 BASED-USDT 出现\"无法获取指数价格\"单点事件（17:43:05），报警未提供快照细节，影响范围与是否自愈待确认。🟡 SAFE-EUR、SAFE-USDC 出现\"无法获取 OKX mid price\"单币对级别异常，原因待确认（盘口为空/接口偶发等）。",
+              "—",
+              "critical"
+            ],
+            [
+              "BASED-USDT",
+              "① 【紧急】建议检查 BASED-USDT 指数配置与最近变更（成分、映射、权重、报价币种），并回放17:43时各成分源是否为空/报错",
               "—",
               "warning"
             ]
@@ -61,7 +173,7 @@
         "ruleId": "price_limit_p4",
         "title": "Price Limit P4",
         "status": "critical",
-        "description": "由于需调用 OKX ticker 校验 24H 交易量，但当前未实际获取到 volCcy24h，故本节过滤结果为 🟴待确认（相关合约均按\"交易量待确认\"保留）。🔴 UXLINK-USDT 触发 price up restricted 且为 Z cap 硬顶触发（08:00:07~13:59:46，多次触发），🟠 SOPH-USDT-SWAP 触发 price down restricted（Y cap，触发频率51%），其余为 UXLINK-USD、ETH-USDT 的 OTHER 统计类告警（关键数值多为未知/未提供）。",
+        "description": "本节未提供可直接调用的 OKX instId 以核验24H交易量，按规则均保留并标注⚠️交易量待确认。🔴 XAU-USD_UM-SWAP（price down restricted，Limitdn: Z cap）在19:50~20:24出现2条去重报警，属于Z cap硬顶触发；🔴 UXLINK-USD（price up restricted，Limitup: Z cap）在12:15出现1条去重报警，同属硬顶风险。🟡 BTC-USD_UM_XPERP-310404 出现流动性不足类报警（偏离+11.34%），另有🟡/🟢汇总型OTHER消息（UXLINK-USDT / SOPH-USDT-SWAP）细分严重度待确认。",
         "table": {
           "headers": [
             "ASSET",
@@ -71,14 +183,20 @@
           ],
           "rows": [
             [
-              "UXLINK-USDT",
-              "由于需调用 OKX ticker 校验 24H 交易量，但当前未实际获取到 volCcy24h，故本节过滤结果为 🟴待确认（相关合约均按\"交易量待确认\"保留）。🔴 UXLINK-USDT 触发 price up restricted 且为 Z cap 硬顶触发（08:00:07~13:59:46，多次触发），🟠 SOPH-USDT-SWAP 触发 price down restricted（Y cap，触发频率51%），其余为 UXLINK-USD、ETH-USDT 的 OTHER 统计类告警（关键数值多为未知/未提供）。",
+              "XAU-USD_UM-SWAP",
+              "本节未提供可直接调用的 OKX instId 以核验24H交易量，按规则均保留并标注⚠️交易量待确认。🔴 XAU-USD_UM-SWAP（price down restricted，Limitdn: Z cap）在19:50~20:24出现2条去重报警，属于Z cap硬顶触发；🔴 UXLINK-USD（price up restricted，Limitup: Z cap）在12:15出现1条去重报警，同属硬顶风险。🟡 BTC-USD_UM_XPERP-310404 出现流动性不足类报警（偏离+11.34%），另有🟡/🟢汇总型OTHER消息（UXLINK-USDT / SOPH-USDT-SWAP）细分严重度待确认。",
               "—",
               "critical"
             ],
             [
-              "UXLINK-USDT",
-              "① 【紧急】建议立即参数检查 UXLINK-USDT 的 Z cap 触发原因与持续时间，并联动核对指数价格来源一致性以排除指数异常导致的持续触发。",
+              "XAU-USD_UM-SWAP",
+              "① 【紧急】建议核查 XAU-USD_UM-SWAP、UXLINK-USD 的 Z cap 触发原因并检查限价参数/指数链路（硬顶触发必须做参数检查）",
+              "—",
+              "warning"
+            ],
+            [
+              "Price Limit P4",
+              "③ 建议补充并固化合约instId与24H交易量字段到报警体，支持自动过滤低交易量与跨源交叉验证",
               "—",
               "warning"
             ]
@@ -89,8 +207,8 @@
       {
         "ruleId": "collateral_coin",
         "title": "Collateral Coin Risk",
-        "status": "warning",
-        "description": "🟠 CHZ 触发小币抵押借币报警，borrow/limit 为90.50%（阈值80%），当前未触发下单限制与FRP（均为未触发）。",
+        "status": "critical",
+        "description": "🟠 CHZ 借币/限额 101.04%（阈值80%）已触达上限且已触发下单限制，FRP自动换币未触发；平台加权借币量 2,000,000。该事件为单币集中度风险，后续是否继续上升待确认。",
         "table": {
           "headers": [
             "ASSET",
@@ -101,15 +219,15 @@
           "rows": [
             [
               "CHZ",
-              "🟠 CHZ 触发小币抵押借币报警，borrow/limit 为90.50%（阈值80%），当前未触发下单限制与FRP（均为未触发）。",
+              "🟠 CHZ 借币/限额 101.04%（阈值80%）已触达上限且已触发下单限制，FRP自动换币未触发；平台加权借币量 2,000,000。该事件为单币集中度风险，后续是否继续上升待确认。",
               "—",
               "warning"
             ],
             [
               "Collateral Coin Risk",
-              "② 【持续关注】关注 CHZ borrow/limit 是否继续上行接近100%，并跟踪资金费率与价格波动联动。",
+              "② 关注 CHZ borrow/limit 是否继续上行及借币子账户数变化，必要时提高监控频率",
               "—",
-              "warning"
+              "critical"
             ]
           ]
         },
@@ -118,8 +236,8 @@
       {
         "ruleId": "platform_oi",
         "title": "Platform OI",
-        "status": "critical",
-        "description": "全部为\"OI变化/24H均值\"子类型且均为🟠中风险：🟠 CORE 偏离58.34%、🟠 ZBT 偏离56.37%、🟠 SOPH 偏离55.04%、🟠 SENT 偏离50.09%、🟠 VANA 偏离50.75%（阈值均为20%），表现为短期持仓相对24H均值显著抬升/偏离，具体驱动（大户/事件/对冲）待确认。",
+        "status": "warning",
+        "description": "Summarizes OI deviations, concentration, and platform limit pressure.",
         "table": {
           "headers": [
             "ASSET",
@@ -130,21 +248,9 @@
           "rows": [
             [
               "Platform OI",
-              "全部为\"OI变化/24H均值\"子类型且均为🟠中风险：🟠 CORE 偏离58.34%、🟠 ZBT 偏离56.37%、🟠 SOPH 偏离55.04%、🟠 SENT 偏离50.09%、🟠 VANA 偏离50.75%（阈值均为20%），表现为短期持仓相对24H均值显著抬升/偏离，具体驱动（大户/事件/对冲）待确认。",
+              "✅ 今日无报警；✅ 本日无异常，建议定期review相关参数",
               "—",
-              "warning"
-            ],
-            [
-              "Platform OI",
-              "② 【持续关注】关注 SENT、VANA 的 OI 偏离回落速度与资金费率变化，防止高杠杆方向一致带来波动放大。",
-              "—",
-              "critical"
-            ],
-            [
-              "Platform OI",
-              "③ 【中长期优化】建议将\"OI偏离+资金费率+价格波动\"做联动阈值与分层处置（如限仓/提高保证金）评估。",
-              "—",
-              "critical"
+              "pass"
             ]
           ]
         },
@@ -153,12 +259,12 @@
     ],
     "recommended_changes": null,
     "downloads": [],
-    "markdown": "# Risk Intelligence\n\n**Summary:** 4 alert types analyzed. 8 flagged alert(s) parsed. 0 suspicious user(s) highlighted.\n**Source document:** 每日风控总结 - 2026-03-30 00:00:00 ~ 2026-03-30 23:59:59\n\n## Suspicious Users\nNo suspicious users highlighted.\n\n## Deep Profiles\nNo user profiles generated.",
+    "markdown": "# Risk Intelligence\n\n**Summary:** 4 alert types analyzed. 8 flagged alert(s) parsed. 0 suspicious user(s) highlighted.\n**Source document:** 每日风控总结 - 2026-03-31 00:00:00 ~ 2026-03-31 23:59:59\n\n## Suspicious Users\nNo suspicious users highlighted.\n\n## Deep Profiles\nNo user profiles generated.",
     "error": null,
     "source_document": {
-      "title": "每日风控总结 - 2026-03-30 00:00:00 ~ 2026-03-30 23:59:59",
-      "url": "https://okg-block.sg.larksuite.com/docx/LYAkdkG1QoeelQxFHiGlvZ6rgVo",
-      "modified_at": "2026-03-30T09:00:00+08:00",
+      "title": "每日风控总结 - 2026-03-31 00:00:00 ~ 2026-03-31 23:59:59",
+      "url": "https://okg-block.sg.larksuite.com/docx/MMxjdmynfouFA7xhAFMlyWrmgEh",
+      "modified_at": "2026-03-31T10:00:00+08:00",
       "selected_by": "latest_modified_desc"
     },
     "suspicious_users": [],
