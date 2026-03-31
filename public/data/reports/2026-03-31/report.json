@@ -1,21 +1,21 @@
 {
   "report": {
     "date": "2026-03-31",
-    "generated_at": "2026-03-31T05:44:14.365757+00:00",
+    "generated_at": "2026-03-31T05:58:19.439529+00:00",
     "status": "critical",
-    "total_issues": 1204,
+    "total_issues": 1209,
     "chapters": [
       {
         "slug": "risk-intel",
         "title": "Risk Intelligence",
         "status": "critical",
-        "summary": "4 alert types analyzed. 8 flagged alert(s) parsed. 0 suspicious user(s) highlighted.",
+        "summary": "4 alert types analyzed. 8 flagged alert(s) parsed. 5 suspicious user(s) highlighted.",
         "metrics": {
           "instruments_scanned": 8,
           "ema_coverage": 4,
-          "issues_found": 8,
+          "issues_found": 13,
           "source": "每日风控总结 - 2026-03-31 00:00:00 ~ 2026-03-31 23:59:59",
-          "generated_at": "2026-03-31T05:43:30.451291+00:00"
+          "generated_at": "2026-03-31T05:58:19.333922+00:00"
         }
       },
       {
@@ -65,12 +65,12 @@
       "title": "Risk Intelligence",
       "render_variant": "risk-intel",
       "status": "critical",
-      "summary": "4 alert types analyzed. 8 flagged alert(s) parsed. 0 suspicious user(s) highlighted.",
+      "summary": "4 alert types analyzed. 8 flagged alert(s) parsed. 5 suspicious user(s) highlighted.",
       "event_analyses": [
         {
           "asset": "XAU-USDT-SWAP",
           "severity": "critical",
-          "executive_summary": "XAU-USDT-SWAP triggered critical alert. Price: $4564.8 (+1.09%). 0 user(s) profiled.",
+          "executive_summary": "XAU-USDT-SWAP triggered critical alert. Price: $4564.8 (+1.09%). 15 user(s) profiled.",
           "forward_looking": "Monitor XAU-USDT-SWAP OI trajectory over the next 24 hours. If OI continues expanding, consider tightening position limits. Watch for funding rate shifts that may attract additional directional flow.",
           "market_snapshot": {
             "price": "4564.8",
@@ -78,7 +78,7 @@
             "open_interest": "22637952",
             "funding_rate": "0",
             "vol_24h": "77761553",
-            "timestamp": "2026-03-31T13:43:23.440504+08:00"
+            "timestamp": "2026-03-31T13:58:19.276182+08:00"
           },
           "quantitative_impact": {
             "title": "Quantitative Impact",
@@ -92,6 +92,11 @@
                 "value": "CRITICAL",
                 "label": "Alert Severity",
                 "detail": "Alert classified as critical"
+              },
+              {
+                "value": "-1.6%",
+                "label": "User Growth (period)",
+                "detail": "Total users changed from 78034 to 76799 over the observation window"
               }
             ]
           },
@@ -105,7 +110,68 @@
                 "Longs",
                 "Shorts"
               ],
-              "rows": []
+              "rows": [
+                [
+                  "2026033000",
+                  "78034",
+                  "33096",
+                  "75537"
+                ],
+                [
+                  "2026033004",
+                  "78071",
+                  "33126",
+                  "75564"
+                ],
+                [
+                  "2026033008",
+                  "78248",
+                  "33217",
+                  "75753"
+                ],
+                [
+                  "2026033012",
+                  "78559",
+                  "33310",
+                  "76132"
+                ],
+                [
+                  "2026033016",
+                  "78727",
+                  "33374",
+                  "76296"
+                ],
+                [
+                  "2026033020",
+                  "78893",
+                  "33437",
+                  "76470"
+                ],
+                [
+                  "2026033100",
+                  "76374",
+                  "32373",
+                  "73893"
+                ],
+                [
+                  "2026033104",
+                  "76452",
+                  "32419",
+                  "73955"
+                ],
+                [
+                  "2026033108",
+                  "76610",
+                  "32468",
+                  "74114"
+                ],
+                [
+                  "2026033112",
+                  "76799",
+                  "32552",
+                  "74360"
+                ]
+              ]
             }
           },
           "risk_assessment": {
@@ -115,6 +181,11 @@
                 "priority": "P0",
                 "action": "Review platform position limits for this instrument immediately",
                 "reason": "Critical price_limit_p4 alert requires immediate parameter review"
+              },
+              {
+                "priority": "P1",
+                "action": "Deep-review top risk users: 2022640, 2038863, 2114416",
+                "reason": "12 user(s) flagged with elevated trade/equity ratios or suspicious patterns"
               },
               {
                 "priority": "P2",
@@ -133,7 +204,168 @@
               "Opened",
               "Risk Tier"
             ],
-            "rows": []
+            "rows": [
+              [
+                "2022640",
+                "574033309605888",
+                "SHORT",
+                "Isolated",
+                "2026-03-21T02:42:42",
+                "T1"
+              ],
+              [
+                "2022640",
+                "574033309605888",
+                "SHORT",
+                "Isolated",
+                "2026-03-25T08:00:06",
+                "T1"
+              ],
+              [
+                "2038863",
+                "569798882893824",
+                "SHORT",
+                "Cross",
+                "2026-03-05T02:38:16",
+                "T1"
+              ],
+              [
+                "2114416",
+                "919889330184192",
+                "SHORT",
+                "Cross",
+                "2026-03-20T00:33:01",
+                "T1"
+              ],
+              [
+                "2114416",
+                "919889330184192",
+                "SHORT",
+                "Isolated",
+                "2026-03-03T13:54:01",
+                "T1"
+              ],
+              [
+                "2157288",
+                "211297173499940864",
+                "SHORT",
+                "Cross",
+                "2026-03-03T00:00:22",
+                "T1"
+              ],
+              [
+                "2003926",
+                "211128969045610496",
+                "LONG",
+                "Isolated",
+                "2026-03-04T20:14:58",
+                "T2"
+              ],
+              [
+                "2143498",
+                "211282247041552384",
+                "SHORT",
+                "Cross",
+                "2026-03-01T09:57:22",
+                "T3"
+              ],
+              [
+                "2143498",
+                "211282247041552384",
+                "SHORT",
+                "Cross",
+                "2026-03-27T23:42:02",
+                "T3"
+              ],
+              [
+                "2084772",
+                "211218653545369600",
+                "LONG",
+                "Isolated",
+                "2026-03-22T06:57:12",
+                "T3"
+              ],
+              [
+                "2104564",
+                "1948807864659968",
+                "SHORT",
+                "Isolated",
+                "2026-03-23T08:04:00",
+                "T3"
+              ],
+              [
+                "2145069",
+                "93070894859169792",
+                "SHORT",
+                "Isolated",
+                "2026-03-04T22:48:44",
+                "T3"
+              ],
+              [
+                "2044677",
+                "618907035643904",
+                "SHORT",
+                "Isolated",
+                "2026-03-30T03:10:51",
+                "T3"
+              ],
+              [
+                "2099702",
+                "573579074875392",
+                "SHORT",
+                "Cross",
+                "2026-03-25T04:56:11",
+                "T3"
+              ],
+              [
+                "2096786",
+                "24329295635816448",
+                "SHORT",
+                "Cross",
+                "2026-03-02T17:13:49",
+                "T3"
+              ],
+              [
+                "2052003",
+                "211183039097737216",
+                "SHORT",
+                "Cross",
+                "2026-03-27T00:31:49",
+                "T4"
+              ],
+              [
+                "3305265",
+                "13562610788212736",
+                "SHORT",
+                "Isolated",
+                "2026-03-03T19:31:28",
+                "T4"
+              ],
+              [
+                "3305265",
+                "13562610788212736",
+                "SHORT",
+                "Cross",
+                "2026-01-28T09:47:29",
+                "T4"
+              ],
+              [
+                "2021971",
+                "37800100336119808",
+                "SHORT",
+                "Cross",
+                "2026-03-23T14:28:00",
+                "T4"
+              ],
+              [
+                "2021971",
+                "37800100336119808",
+                "SHORT",
+                "Cross",
+                "2026-03-19T15:01:34",
+                "T4"
+              ]
+            ]
           },
           "causal_chain": [
             {
@@ -148,9 +380,79 @@
               "step": 2,
               "type": "近因 (User Influx)",
               "name": "XAU-USDT-SWAP Position Buildup",
-              "description": "User positioning changed on XAU-USDT-SWAP.",
+              "description": "Users grew from 78034 to 76799 (longs 33096->32552, shorts 75537->74360) between 2026033000 and 2026033112.",
               "evidence_strength": 4,
-              "evidence_label": "Position data"
+              "evidence_label": "Position data",
+              "evidence_table": {
+                "headers": [
+                  "Hour",
+                  "Total Users",
+                  "Longs",
+                  "Shorts"
+                ],
+                "rows": [
+                  [
+                    "2026033000",
+                    "78034",
+                    "33096",
+                    "75537"
+                  ],
+                  [
+                    "2026033004",
+                    "78071",
+                    "33126",
+                    "75564"
+                  ],
+                  [
+                    "2026033008",
+                    "78248",
+                    "33217",
+                    "75753"
+                  ],
+                  [
+                    "2026033012",
+                    "78559",
+                    "33310",
+                    "76132"
+                  ],
+                  [
+                    "2026033016",
+                    "78727",
+                    "33374",
+                    "76296"
+                  ],
+                  [
+                    "2026033020",
+                    "78893",
+                    "33437",
+                    "76470"
+                  ],
+                  [
+                    "2026033100",
+                    "76374",
+                    "32373",
+                    "73893"
+                  ],
+                  [
+                    "2026033104",
+                    "76452",
+                    "32419",
+                    "73955"
+                  ],
+                  [
+                    "2026033108",
+                    "76610",
+                    "32468",
+                    "74114"
+                  ],
+                  [
+                    "2026033112",
+                    "76799",
+                    "32552",
+                    "74360"
+                  ]
+                ]
+              }
             },
             {
               "step": 3,
@@ -164,21 +466,1391 @@
               "step": 4,
               "type": "风险放大 (Amplification)",
               "name": "User Concentration Risk",
-              "description": "Top position holders are concentrating exposure.",
+              "description": "Top users concentrating: 2022640, 2038863, 2114416, 2157288, 2003926 (risk tiers: T1, T1, T1, T1, T2). Position overlap amplifies systemic exposure.",
               "evidence_strength": 4,
-              "evidence_label": "User data"
+              "evidence_label": "User data",
+              "evidence_table": {
+                "headers": [
+                  "User ID",
+                  "Risk Tier",
+                  "Summary"
+                ],
+                "rows": [
+                  [
+                    "2022640",
+                    "T1",
+                    "China account (okx_cn). registered 2014-11-23 (11.4yr). trade/equity ratio 380,9..."
+                  ],
+                  [
+                    "2038863",
+                    "T1",
+                    "China account (okx_cn). registered 2015-03-15 (11.1yr). trade/equity ratio 989,8..."
+                  ],
+                  [
+                    "2114416",
+                    "T1",
+                    "China account (okx_cn). registered 2016-09-21 (9.5yr). trade/equity ratio 206,03..."
+                  ],
+                  [
+                    "2157288",
+                    "T1",
+                    "China account (okx_cn). registered 2016-10-10 (9.5yr). trade/equity ratio 17,053..."
+                  ],
+                  [
+                    "2003926",
+                    "T2",
+                    "China account (okx_cn). registered 2013-09-09 (12.6yr). trade/equity ratio 16,64..."
+                  ]
+                ]
+              }
             }
           ],
-          "key_users": [],
-          "user_profiles": []
+          "key_users": [
+            "2022640",
+            "2038863",
+            "2114416",
+            "2157288",
+            "2143498"
+          ],
+          "user_profiles": [
+            {
+              "uid": "574033309605888",
+              "master_user_id": "2022640",
+              "overall_risk_tier": "T1",
+              "executive_summary": "China account (okx_cn). registered 2014-11-23 (11.4yr). trade/equity ratio 380,999x.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "warning",
+                  "signals": [
+                    "Registered 2014-11-23 (11.4yr)",
+                    "okx_CN, phone 86",
+                    "KYC3 China verified",
+                    "Client type: PC",
+                    "Registration-to-first-deposit gap: 2.5yr (anomalous)"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $31,908,629.90 vs equity $83.75 (ratio 380,999x)",
+                    "Fee tier: LV1",
+                    "XAU-USDT-SWAP SHORT (Isolated), opened 2026-03-21T02:42",
+                    "XAU-USDT-SWAP SHORT (Isolated), opened 2026-03-25T08:00"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered okx_CN",
+                    "Phone 86 matches China nationality",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC3 — China",
+                    "is_market_account: 普通用户",
+                    "is_internal_account: 普通账户",
+                    "Phone 86 consistent with China"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "warning",
+                  "signals": [
+                    "Trade volume $31,908,629.90, equity $83.75",
+                    "First deposit $490.10",
+                    "Last deposit 2026-03-24",
+                    "Equity retention: 17.1% of first deposit"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit 2026-03-24",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio 380,999x)",
+                    "Flagged in price_limit_p4 alert (critical)",
+                    "Active positions on: XAU-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio 380,999x indicates high leverage cycling",
+                "XAU-USDT-SWAP SHORT opened 2026-03-21T02:42",
+                "XAU-USDT-SWAP SHORT opened 2026-03-25T08:00",
+                "Active during critical price_limit_p4 alert"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "569798882893824",
+              "master_user_id": "2038863",
+              "overall_risk_tier": "T1",
+              "executive_summary": "China account (okx_cn). registered 2015-03-15 (11.1yr). trade/equity ratio 989,847,914x.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "warning",
+                  "signals": [
+                    "Registered 2015-03-15 (11.1yr)",
+                    "okx_CN, phone 86",
+                    "KYC3 China verified",
+                    "Client type: PC",
+                    "Registration-to-first-deposit gap: 2.3yr (anomalous)"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $69,289,354.00 vs equity $0.07 (ratio 989,847,914x)",
+                    "Fee tier: LV1",
+                    "XAU-USDT-SWAP SHORT (Cross), opened 2026-03-05T02:38"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered okx_CN",
+                    "Phone 86 matches China nationality",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC3 — China",
+                    "is_market_account: 普通用户",
+                    "is_internal_account: 普通账户",
+                    "Phone 86 consistent with China"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $69,289,354.00, equity $0.07",
+                    "First deposit $1,343.09",
+                    "Last deposit 2026-01-21",
+                    "Equity retention: 0.0% of first deposit"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit 2026-01-21",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio 989,847,914x)",
+                    "Flagged in price_limit_p4 alert (critical)",
+                    "Active positions on: XAU-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio 989,847,914x indicates high leverage cycling",
+                "XAU-USDT-SWAP SHORT opened 2026-03-05T02:38",
+                "Active during critical price_limit_p4 alert"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "919889330184192",
+              "master_user_id": "2114416",
+              "overall_risk_tier": "T1",
+              "executive_summary": "China account (okx_cn). registered 2016-09-21 (9.5yr). trade/equity ratio 206,035x.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "warning",
+                  "signals": [
+                    "Registered 2016-09-21 (9.5yr)",
+                    "okx_CN, phone 86",
+                    "KYC3 China verified",
+                    "Client type: PC",
+                    "Registration-to-first-deposit gap: 2.8yr (anomalous)"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $62,995,316.67 vs equity $305.75 (ratio 206,035x)",
+                    "Fee tier: LV1",
+                    "XAU-USDT-SWAP SHORT (Cross), opened 2026-03-20T00:33",
+                    "XAU-USDT-SWAP SHORT (Isolated), opened 2026-03-03T13:54"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered okx_CN",
+                    "Phone 86 matches China nationality",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC3 — China",
+                    "is_market_account: 普通用户",
+                    "is_internal_account: 普通账户",
+                    "Phone 86 consistent with China"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "warning",
+                  "signals": [
+                    "Trade volume $62,995,316.67, equity $305.75",
+                    "First deposit $1,715.70",
+                    "Last deposit 2026-02-15",
+                    "Equity retention: 17.8% of first deposit"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit 2026-02-15",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio 206,035x)",
+                    "Flagged in price_limit_p4 alert (critical)",
+                    "Active positions on: XAU-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio 206,035x indicates high leverage cycling",
+                "XAU-USDT-SWAP SHORT opened 2026-03-20T00:33",
+                "XAU-USDT-SWAP SHORT opened 2026-03-03T13:54",
+                "Active during critical price_limit_p4 alert"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "211297173499940864",
+              "master_user_id": "2157288",
+              "overall_risk_tier": "T1",
+              "executive_summary": "China account (okx_cn). registered 2016-10-10 (9.5yr). trade/equity ratio 17,053,195x.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "warning",
+                  "signals": [
+                    "Registered 2016-10-10 (9.5yr)",
+                    "okx_CN, phone 86",
+                    "KYC3 China verified",
+                    "Client type: PC",
+                    "Registration-to-first-deposit gap: 6.6yr (anomalous)"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $10,061,384.80 vs equity $0.59 (ratio 17,053,195x)",
+                    "Fee tier: LV1",
+                    "XAU-USDT-SWAP SHORT (Cross), opened 2026-03-03T00:00"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered okx_CN",
+                    "Phone 86 matches China nationality",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC3 — China",
+                    "is_market_account: 普通用户",
+                    "is_internal_account: 普通账户",
+                    "Phone 86 consistent with China"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $10,061,384.80, equity $0.59",
+                    "First deposit $71.22",
+                    "Last deposit 2026-02-28",
+                    "Equity retention: 0.8% of first deposit"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit 2026-02-28",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio 17,053,195x)",
+                    "Flagged in price_limit_p4 alert (critical)",
+                    "Active positions on: XAU-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio 17,053,195x indicates high leverage cycling",
+                "XAU-USDT-SWAP SHORT opened 2026-03-03T00:00",
+                "Active during critical price_limit_p4 alert"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "211128969045610496",
+              "master_user_id": "2003926",
+              "overall_risk_tier": "T2",
+              "executive_summary": "China account (okx_cn). registered 2013-09-09 (12.6yr). trade/equity ratio 16,640x.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "warning",
+                  "signals": [
+                    "Registered 2013-09-09 (12.6yr)",
+                    "okx_CN, phone 86",
+                    "KYC3 China verified",
+                    "Client type: PC",
+                    "Registration-to-first-deposit gap: 8.3yr (anomalous)"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $33,312,559.33 vs equity $2,001.91 (ratio 16,640x)",
+                    "Fee tier: LV1",
+                    "XAU-USDT-SWAP LONG (Isolated), opened 2026-03-04T20:14"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered okx_CN",
+                    "Phone 86 matches China nationality",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC3 — China",
+                    "is_market_account: 普通用户",
+                    "is_internal_account: 普通账户",
+                    "Phone 86 consistent with China"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "pass",
+                  "signals": [
+                    "Trade volume $33,312,559.33, equity $2,001.91",
+                    "First deposit $1,592.35",
+                    "Last deposit 2026-03-29",
+                    "Equity retention: 125.7% of first deposit"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit 2026-03-29",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "warning",
+                  "signals": [
+                    "Overall risk tier: T2 (trade/equity ratio 16,640x)",
+                    "Flagged in price_limit_p4 alert (critical)",
+                    "Active positions on: XAU-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio 16,640x indicates high leverage cycling",
+                "XAU-USDT-SWAP LONG opened 2026-03-04T20:14",
+                "Active during critical price_limit_p4 alert"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "211282247041552384",
+              "master_user_id": "2143498",
+              "overall_risk_tier": "T3",
+              "executive_summary": "China account (okx_cn). registered 2017-02-14 (9.1yr). trade/equity ratio 8,927x.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "warning",
+                  "signals": [
+                    "Registered 2017-02-14 (9.1yr)",
+                    "okx_CN, phone 86",
+                    "KYC3 China verified",
+                    "Client type: PC",
+                    "Registration-to-first-deposit gap: 4.7yr (anomalous)"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "warning",
+                  "signals": [
+                    "Trade volume $2,849,086.81 vs equity $319.16 (ratio 8,927x)",
+                    "Fee tier: LV1",
+                    "XAU-USDT-SWAP SHORT (Cross), opened 2026-03-01T09:57",
+                    "XAU-USDT-SWAP SHORT (Cross), opened 2026-03-27T23:42"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered okx_CN",
+                    "Phone 86 matches China nationality",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC3 — China",
+                    "is_market_account: 普通用户",
+                    "is_internal_account: 普通账户",
+                    "Phone 86 consistent with China"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "warning",
+                  "signals": [
+                    "Trade volume $2,849,086.81, equity $319.16",
+                    "First deposit $1,428.57",
+                    "Last deposit 2026-03-27",
+                    "Equity retention: 22.3% of first deposit"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit 2026-03-27",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "warning",
+                  "signals": [
+                    "Overall risk tier: T3 (trade/equity ratio 8,927x)",
+                    "Flagged in price_limit_p4 alert (critical)",
+                    "Active positions on: XAU-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio 8,927x indicates high leverage cycling",
+                "XAU-USDT-SWAP SHORT opened 2026-03-01T09:57",
+                "XAU-USDT-SWAP SHORT opened 2026-03-27T23:42",
+                "Active during critical price_limit_p4 alert"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "211218653545369600",
+              "master_user_id": "2084772",
+              "overall_risk_tier": "T3",
+              "executive_summary": "Vietnam account (okx_english). registered 2016-02-29 (10.1yr). trade/equity ratio 8,601x.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "warning",
+                  "signals": [
+                    "Registered 2016-02-29 (10.1yr)",
+                    "okx_English, phone 1",
+                    "KYC2 Vietnam verified",
+                    "Client type: PC",
+                    "Registration-to-first-deposit gap: 8.6yr (anomalous)"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "warning",
+                  "signals": [
+                    "Trade volume $28,557,959.83 vs equity $3,320.31 (ratio 8,601x)",
+                    "Fee tier: LV1",
+                    "XAU-USDT-SWAP LONG (Isolated), opened 2026-03-22T06:57"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered okx_English",
+                    "Phone 1 matches Vietnam nationality",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "warning",
+                  "signals": [
+                    "KYC2 — Vietnam",
+                    "is_market_account: 普通用户",
+                    "is_internal_account: 普通账户",
+                    "Phone 1 consistent with Vietnam",
+                    "KYC2 despite 10.1yr account age — upgrade anomaly"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "pass",
+                  "signals": [
+                    "Trade volume $28,557,959.83, equity $3,320.31",
+                    "First deposit $50.00",
+                    "Last deposit 2026-03-30",
+                    "Equity retention: 6640.6% of first deposit"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit 2026-03-30",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "warning",
+                  "signals": [
+                    "Overall risk tier: T3 (trade/equity ratio 8,601x)",
+                    "Flagged in price_limit_p4 alert (critical)",
+                    "Active positions on: XAU-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio 8,601x indicates high leverage cycling",
+                "XAU-USDT-SWAP LONG opened 2026-03-22T06:57",
+                "Active during critical price_limit_p4 alert"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "1948807864659968",
+              "master_user_id": "2104564",
+              "overall_risk_tier": "T3",
+              "executive_summary": "China account (okx_cn). registered 2016-05-16 (9.9yr). trade/equity ratio 6,460x.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "warning",
+                  "signals": [
+                    "Registered 2016-05-16 (9.9yr)",
+                    "okx_CN, phone 86",
+                    "KYC3 China verified",
+                    "Client type: APP",
+                    "Registration-to-first-deposit gap: 1.1yr (anomalous)"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "warning",
+                  "signals": [
+                    "Trade volume $1,740,122.49 vs equity $269.37 (ratio 6,460x)",
+                    "Fee tier: LV1",
+                    "XAU-USDT-SWAP SHORT (Isolated), opened 2026-03-23T08:04"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered okx_CN",
+                    "Phone 86 matches China nationality",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC3 — China",
+                    "is_market_account: 普通用户",
+                    "is_internal_account: 普通账户",
+                    "Phone 86 consistent with China"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "pass",
+                  "signals": [
+                    "Trade volume $1,740,122.49, equity $269.37",
+                    "First deposit $481.77",
+                    "Last deposit 2026-02-06",
+                    "Equity retention: 55.9% of first deposit"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit 2026-02-06",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "warning",
+                  "signals": [
+                    "Overall risk tier: T3 (trade/equity ratio 6,460x)",
+                    "Flagged in price_limit_p4 alert (critical)",
+                    "Active positions on: XAU-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio 6,460x indicates high leverage cycling",
+                "XAU-USDT-SWAP SHORT opened 2026-03-23T08:04",
+                "Active during critical price_limit_p4 alert"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "93070894859169792",
+              "master_user_id": "2145069",
+              "overall_risk_tier": "T3",
+              "executive_summary": "China account (okx_cis_mea_la). registered 2017-02-22 (9.1yr). trade/equity ratio 5,055x.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "warning",
+                  "signals": [
+                    "Registered 2017-02-22 (9.1yr)",
+                    "okx_CIS_MEA_LA, phone 86",
+                    "KYC3 China verified",
+                    "Client type: PC",
+                    "Registration-to-first-deposit gap: 3.6yr (anomalous)"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "warning",
+                  "signals": [
+                    "Trade volume $12,132,331.41 vs equity $2,400.28 (ratio 5,055x)",
+                    "Fee tier: LV1",
+                    "XAU-USDT-SWAP SHORT (Isolated), opened 2026-03-04T22:48"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered okx_CIS_MEA_LA",
+                    "Phone 86 matches China nationality",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC3 — China",
+                    "is_market_account: 普通用户",
+                    "is_internal_account: 普通账户",
+                    "Phone 86 consistent with China"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "pass",
+                  "signals": [
+                    "Trade volume $12,132,331.41, equity $2,400.28",
+                    "First deposit $44.31",
+                    "Last deposit 2026-03-30",
+                    "Equity retention: 5417.0% of first deposit"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit 2026-03-30",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "warning",
+                  "signals": [
+                    "Overall risk tier: T3 (trade/equity ratio 5,055x)",
+                    "Flagged in price_limit_p4 alert (critical)",
+                    "Active positions on: XAU-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio 5,055x indicates high leverage cycling",
+                "XAU-USDT-SWAP SHORT opened 2026-03-04T22:48",
+                "Active during critical price_limit_p4 alert"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "618907035643904",
+              "master_user_id": "2044677",
+              "overall_risk_tier": "T3",
+              "executive_summary": "China account (okx_cn). registered 2014-01-01 (12.3yr). trade/equity ratio 1,047x.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "warning",
+                  "signals": [
+                    "Registered 2014-01-01 (12.3yr)",
+                    "okx_CN, phone 86",
+                    "KYC3 China verified",
+                    "Client type: PC",
+                    "Registration-to-first-deposit gap: 5.1yr (anomalous)"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "warning",
+                  "signals": [
+                    "Trade volume $12,882,197.78 vs equity $12,307.50 (ratio 1,047x)",
+                    "Fee tier: LV1",
+                    "XAU-USDT-SWAP SHORT (Isolated), opened 2026-03-30T03:10"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered okx_CN",
+                    "Phone 86 matches China nationality",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC3 — China",
+                    "is_market_account: 普通用户",
+                    "is_internal_account: 普通账户",
+                    "Phone 86 consistent with China"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "pass",
+                  "signals": [
+                    "Trade volume $12,882,197.78, equity $12,307.50",
+                    "First deposit $736.38",
+                    "Last deposit 2026-03-30",
+                    "Equity retention: 1671.4% of first deposit"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit 2026-03-30",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "warning",
+                  "signals": [
+                    "Overall risk tier: T3 (trade/equity ratio 1,047x)",
+                    "Flagged in price_limit_p4 alert (critical)",
+                    "Active positions on: XAU-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio 1,047x indicates high leverage cycling",
+                "XAU-USDT-SWAP SHORT opened 2026-03-30T03:10",
+                "Active during critical price_limit_p4 alert"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "573579074875392",
+              "master_user_id": "2099702",
+              "overall_risk_tier": "T3",
+              "executive_summary": "China account (okx_cn). registered 2014-08-12 (11.6yr). trade/equity ratio 3,413x. VIP1.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "warning",
+                  "signals": [
+                    "Registered 2014-08-12 (11.6yr)",
+                    "okx_CN, phone 86",
+                    "KYC3 China verified",
+                    "Client type: PC",
+                    "Registration-to-first-deposit gap: 3.0yr (anomalous)"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "warning",
+                  "signals": [
+                    "Trade volume $714,630,932.92 vs equity $209,370.95 (ratio 3,413x)",
+                    "Fee tier: VIP1",
+                    "XAU-USDT-SWAP SHORT (Cross), opened 2026-03-25T04:56"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered okx_CN",
+                    "Phone 86 matches China nationality",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC3 — China",
+                    "is_market_account: 普通用户",
+                    "is_internal_account: 普通账户",
+                    "Phone 86 consistent with China"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "pass",
+                  "signals": [
+                    "Trade volume $714,630,932.92, equity $209,370.95",
+                    "First deposit $3,399.33",
+                    "Last deposit 2025-03-05",
+                    "Equity retention: 6159.2% of first deposit"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit 2025-03-05",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "warning",
+                  "signals": [
+                    "Overall risk tier: T3 (trade/equity ratio 3,413x)",
+                    "Flagged in price_limit_p4 alert (critical)",
+                    "Active positions on: XAU-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio 3,413x indicates high leverage cycling",
+                "XAU-USDT-SWAP SHORT opened 2026-03-25T04:56",
+                "Active during critical price_limit_p4 alert"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "24329295635816448",
+              "master_user_id": "2096786",
+              "overall_risk_tier": "T3",
+              "executive_summary": "China account (okx_cn). registered 2016-05-30 (9.8yr). trade/equity ratio 3,314x.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "warning",
+                  "signals": [
+                    "Registered 2016-05-30 (9.8yr)",
+                    "okx_CN, phone 86",
+                    "KYC3 China verified",
+                    "Client type: PC",
+                    "Registration-to-first-deposit gap: 1.3yr (anomalous)"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "warning",
+                  "signals": [
+                    "Trade volume $6,840,990.84 vs equity $2,064.41 (ratio 3,314x)",
+                    "Fee tier: LV1",
+                    "XAU-USDT-SWAP SHORT (Cross), opened 2026-03-02T17:13"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered okx_CN",
+                    "Phone 86 matches China nationality",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC3 — China",
+                    "is_market_account: 普通用户",
+                    "is_internal_account: 普通账户",
+                    "Phone 86 consistent with China"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "pass",
+                  "signals": [
+                    "Trade volume $6,840,990.84, equity $2,064.41",
+                    "First deposit $5.15",
+                    "Last deposit 2026-02-06",
+                    "Equity retention: 40085.6% of first deposit"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit 2026-02-06",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "warning",
+                  "signals": [
+                    "Overall risk tier: T3 (trade/equity ratio 3,314x)",
+                    "Flagged in price_limit_p4 alert (critical)",
+                    "Active positions on: XAU-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio 3,314x indicates high leverage cycling",
+                "XAU-USDT-SWAP SHORT opened 2026-03-02T17:13",
+                "Active during critical price_limit_p4 alert"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "211183039097737216",
+              "master_user_id": "2052003",
+              "overall_risk_tier": "T4",
+              "executive_summary": "China account (okx_cn). registered 2015-07-10 (10.7yr). trade/equity ratio 404x.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "warning",
+                  "signals": [
+                    "Registered 2015-07-10 (10.7yr)",
+                    "okx_CN, phone 86",
+                    "KYC3 China verified",
+                    "Client type: PC",
+                    "Registration-to-first-deposit gap: 8.4yr (anomalous)"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "pass",
+                  "signals": [
+                    "Trade volume $7,993,667.37 vs equity $19,806.94 (ratio 404x)",
+                    "Fee tier: LV1",
+                    "XAU-USDT-SWAP SHORT (Cross), opened 2026-03-27T00:31"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered okx_CN",
+                    "Phone 86 matches China nationality",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC3 — China",
+                    "is_market_account: 普通用户",
+                    "is_internal_account: 普通账户",
+                    "Phone 86 consistent with China"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "pass",
+                  "signals": [
+                    "Trade volume $7,993,667.37, equity $19,806.94",
+                    "First deposit $202.70",
+                    "Last deposit 2026-03-30",
+                    "Equity retention: 9771.6% of first deposit"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit 2026-03-30",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "pass",
+                  "signals": [
+                    "Overall risk tier: T4 (trade/equity ratio 404x)",
+                    "Flagged in price_limit_p4 alert (critical)",
+                    "Active positions on: XAU-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "XAU-USDT-SWAP SHORT opened 2026-03-27T00:31",
+                "Active during critical price_limit_p4 alert"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "13562610788212736",
+              "master_user_id": "3305265",
+              "overall_risk_tier": "T4",
+              "executive_summary": "China account (okx_cn). registered 2013-11-18 (12.4yr). trade/equity ratio 42x.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "warning",
+                  "signals": [
+                    "Registered 2013-11-18 (12.4yr)",
+                    "okx_CN, phone 86",
+                    "KYC2 China verified",
+                    "Client type: PC",
+                    "Registration-to-first-deposit gap: 3.7yr (anomalous)"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "pass",
+                  "signals": [
+                    "Trade volume $3,427,349.39 vs equity $81,789.06 (ratio 42x)",
+                    "Fee tier: LV1",
+                    "XAU-USDT-SWAP SHORT (Isolated), opened 2026-03-03T19:31",
+                    "XAU-USDT-SWAP SHORT (Cross), opened 2026-01-28T09:47"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered okx_CN",
+                    "Phone 86 matches China nationality",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "warning",
+                  "signals": [
+                    "KYC2 — China",
+                    "is_market_account: 普通用户",
+                    "is_internal_account: 普通账户",
+                    "Phone 86 consistent with China",
+                    "KYC2 despite 12.4yr account age — upgrade anomaly"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "pass",
+                  "signals": [
+                    "Trade volume $3,427,349.39, equity $81,789.06",
+                    "First deposit $5.15",
+                    "Last deposit 2025-10-24",
+                    "Equity retention: 1588137.1% of first deposit"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit 2025-10-24",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "pass",
+                  "signals": [
+                    "Overall risk tier: T4 (trade/equity ratio 42x)",
+                    "Flagged in price_limit_p4 alert (critical)",
+                    "Active positions on: XAU-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "XAU-USDT-SWAP SHORT opened 2026-03-03T19:31",
+                "XAU-USDT-SWAP SHORT opened 2026-01-28T09:47",
+                "Active during critical price_limit_p4 alert"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "37800100336119808",
+              "master_user_id": "2021971",
+              "overall_risk_tier": "T4",
+              "executive_summary": "China account (okx_cn). registered 2014-11-19 (11.4yr). trade/equity ratio 121x.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "warning",
+                  "signals": [
+                    "Registered 2014-11-19 (11.4yr)",
+                    "okx_CN, phone 86",
+                    "KYC3 China verified",
+                    "Client type: PC",
+                    "Registration-to-first-deposit gap: 2.6yr (anomalous)"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "pass",
+                  "signals": [
+                    "Trade volume $944,247.92 vs equity $7,821.93 (ratio 121x)",
+                    "Fee tier: LV1",
+                    "XAU-USDT-SWAP SHORT (Cross), opened 2026-03-23T14:28",
+                    "XAU-USDT-SWAP SHORT (Cross), opened 2026-03-19T15:01"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered okx_CN",
+                    "Phone 86 matches China nationality",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC3 — China",
+                    "is_market_account: 普通用户",
+                    "is_internal_account: 普通账户",
+                    "Phone 86 consistent with China"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "pass",
+                  "signals": [
+                    "Trade volume $944,247.92, equity $7,821.93",
+                    "First deposit $4,120.40",
+                    "Last deposit 2025-01-20",
+                    "Equity retention: 189.8% of first deposit"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit 2025-01-20",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "pass",
+                  "signals": [
+                    "Overall risk tier: T4 (trade/equity ratio 121x)",
+                    "Flagged in price_limit_p4 alert (critical)",
+                    "Active positions on: XAU-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "XAU-USDT-SWAP SHORT opened 2026-03-23T14:28",
+                "XAU-USDT-SWAP SHORT opened 2026-03-19T15:01",
+                "Active during critical price_limit_p4 alert"
+              ],
+              "local_artifact_ref": ""
+            }
+          ]
         }
       ],
       "metrics": {
         "instruments_scanned": 8,
         "ema_coverage": 4,
-        "issues_found": 8,
+        "issues_found": 13,
         "source": "每日风控总结 - 2026-03-31 00:00:00 ~ 2026-03-31 23:59:59",
-        "generated_at": "2026-03-31T05:43:30.451291+00:00"
+        "generated_at": "2026-03-31T05:58:19.333922+00:00"
       },
       "metric_cards": [
         {
@@ -191,11 +1863,11 @@
         },
         {
           "label": "Suspicious Users",
-          "value": "0"
+          "value": "5"
         },
         {
           "label": "Highest Risk",
-          "value": "T1"
+          "value": "T2"
         }
       ],
       "rule_blocks": [
@@ -318,7 +1990,7 @@
       ],
       "recommended_changes": null,
       "downloads": [],
-      "markdown": "# Risk Intelligence\n\n**Summary:** 4 alert types analyzed. 8 flagged alert(s) parsed. 0 suspicious user(s) highlighted.\n**Source document:** 每日风控总结 - 2026-03-31 00:00:00 ~ 2026-03-31 23:59:59\n\n## Suspicious Users\nNo suspicious users highlighted.\n\n## Deep Profiles\nNo user profiles generated.",
+      "markdown": "# Risk Intelligence\n\n**Summary:** 4 alert types analyzed. 8 flagged alert(s) parsed. 5 suspicious user(s) highlighted.\n**Source document:** 每日风控总结 - 2026-03-31 00:00:00 ~ 2026-03-31 23:59:59\n\n## Suspicious Users\n- 211128969045610496 — T2 — Trade/equity ratio 16,640x. Active on: XAU-USDT-SWAP.\n- 569798882893824 — T1 — Trade/equity ratio 989,847,914x. Active on: XAU-USDT-SWAP.\n- 211297173499940864 — T1 — Trade/equity ratio 17,053,195x. Active on: XAU-USDT-SWAP.\n- 574033309605888 — T1 — Trade/equity ratio 380,999x. Active on: XAU-USDT-SWAP, XAU-USDT-SWAP.\n- 919889330184192 — T1 — Trade/equity ratio 206,035x. Active on: XAU-USDT-SWAP, XAU-USDT-SWAP.\n\n## Deep Profiles\n- 211128969045610496 — T2 — China account (okx_cn). registered 2013-09-09 (12.6yr). trade/equity ratio 16,640x.\n- 569798882893824 — T1 — China account (okx_cn). registered 2015-03-15 (11.1yr). trade/equity ratio 989,847,914x.\n- 211297173499940864 — T1 — China account (okx_cn). registered 2016-10-10 (9.5yr). trade/equity ratio 17,053,195x.\n- 574033309605888 — T1 — China account (okx_cn). registered 2014-11-23 (11.4yr). trade/equity ratio 380,999x.\n- 919889330184192 — T1 — China account (okx_cn). registered 2016-09-21 (9.5yr). trade/equity ratio 206,035x.",
       "error": null,
       "source_document": {
         "title": "每日风控总结 - 2026-03-31 00:00:00 ~ 2026-03-31 23:59:59",
@@ -326,8 +1998,499 @@
         "modified_at": "2026-03-31T10:00:00+08:00",
         "selected_by": "latest_modified_desc"
       },
-      "suspicious_users": [],
-      "user_profiles": []
+      "suspicious_users": [
+        {
+          "uid": "211128969045610496",
+          "master_user_id": "2003926",
+          "risk_tier": "T2",
+          "source_alert": "build_risk_intel",
+          "reason": "Trade/equity ratio 16,640x. Active on: XAU-USDT-SWAP.",
+          "mentions": 1,
+          "first_seen": 4
+        },
+        {
+          "uid": "569798882893824",
+          "master_user_id": "2038863",
+          "risk_tier": "T1",
+          "source_alert": "build_risk_intel",
+          "reason": "Trade/equity ratio 989,847,914x. Active on: XAU-USDT-SWAP.",
+          "mentions": 1,
+          "first_seen": 0
+        },
+        {
+          "uid": "211297173499940864",
+          "master_user_id": "2157288",
+          "risk_tier": "T1",
+          "source_alert": "build_risk_intel",
+          "reason": "Trade/equity ratio 17,053,195x. Active on: XAU-USDT-SWAP.",
+          "mentions": 1,
+          "first_seen": 1
+        },
+        {
+          "uid": "574033309605888",
+          "master_user_id": "2022640",
+          "risk_tier": "T1",
+          "source_alert": "build_risk_intel",
+          "reason": "Trade/equity ratio 380,999x. Active on: XAU-USDT-SWAP, XAU-USDT-SWAP.",
+          "mentions": 1,
+          "first_seen": 2
+        },
+        {
+          "uid": "919889330184192",
+          "master_user_id": "2114416",
+          "risk_tier": "T1",
+          "source_alert": "build_risk_intel",
+          "reason": "Trade/equity ratio 206,035x. Active on: XAU-USDT-SWAP, XAU-USDT-SWAP.",
+          "mentions": 1,
+          "first_seen": 3
+        }
+      ],
+      "user_profiles": [
+        {
+          "uid": "211128969045610496",
+          "master_user_id": "2003926",
+          "overall_risk_tier": "T2",
+          "executive_summary": "China account (okx_cn). registered 2013-09-09 (12.6yr). trade/equity ratio 16,640x.",
+          "dimensions": [
+            {
+              "name": "Registration Profile",
+              "severity": "warning",
+              "signals": [
+                "Registered 2013-09-09 (12.6yr)",
+                "okx_CN, phone 86",
+                "KYC3 China verified",
+                "Client type: PC",
+                "Registration-to-first-deposit gap: 8.3yr (anomalous)"
+              ]
+            },
+            {
+              "name": "Trading Behavior",
+              "severity": "critical",
+              "signals": [
+                "Trade volume $33,312,559.33 vs equity $2,001.91 (ratio 16,640x)",
+                "Fee tier: LV1",
+                "XAU-USDT-SWAP LONG (Isolated), opened 2026-03-04T20:14"
+              ]
+            },
+            {
+              "name": "Associated Accounts",
+              "severity": "pending",
+              "signals": [
+                "Login table access denied (403) -- cannot verify device cluster",
+                "No sub-account evidence from position query"
+              ]
+            },
+            {
+              "name": "IP & Geolocation",
+              "severity": "pass",
+              "signals": [
+                "Registered okx_CN",
+                "Phone 86 matches China nationality",
+                "No region mismatch detected"
+              ]
+            },
+            {
+              "name": "Identity Signals",
+              "severity": "pass",
+              "signals": [
+                "KYC3 — China",
+                "is_market_account: 普通用户",
+                "is_internal_account: 普通账户",
+                "Phone 86 consistent with China"
+              ]
+            },
+            {
+              "name": "Profit & Loss",
+              "severity": "pass",
+              "signals": [
+                "Trade volume $33,312,559.33, equity $2,001.91",
+                "First deposit $1,592.35",
+                "Last deposit 2026-03-29",
+                "Equity retention: 125.7% of first deposit"
+              ]
+            },
+            {
+              "name": "Withdrawal Behavior",
+              "severity": "pending",
+              "signals": [
+                "Last deposit 2026-03-29",
+                "Withdrawal detail table inaccessible (data limited)"
+              ]
+            },
+            {
+              "name": "Comprehensive Judgment",
+              "severity": "warning",
+              "signals": [
+                "Overall risk tier: T2 (trade/equity ratio 16,640x)",
+                "Flagged in price_limit_p4 alert (critical)",
+                "Active positions on: XAU-USDT-SWAP"
+              ]
+            }
+          ],
+          "key_evidence": [
+            "Trade/equity ratio 16,640x indicates high leverage cycling",
+            "XAU-USDT-SWAP LONG opened 2026-03-04T20:14",
+            "Active during critical price_limit_p4 alert"
+          ],
+          "local_artifact_ref": ""
+        },
+        {
+          "uid": "569798882893824",
+          "master_user_id": "2038863",
+          "overall_risk_tier": "T1",
+          "executive_summary": "China account (okx_cn). registered 2015-03-15 (11.1yr). trade/equity ratio 989,847,914x.",
+          "dimensions": [
+            {
+              "name": "Registration Profile",
+              "severity": "warning",
+              "signals": [
+                "Registered 2015-03-15 (11.1yr)",
+                "okx_CN, phone 86",
+                "KYC3 China verified",
+                "Client type: PC",
+                "Registration-to-first-deposit gap: 2.3yr (anomalous)"
+              ]
+            },
+            {
+              "name": "Trading Behavior",
+              "severity": "critical",
+              "signals": [
+                "Trade volume $69,289,354.00 vs equity $0.07 (ratio 989,847,914x)",
+                "Fee tier: LV1",
+                "XAU-USDT-SWAP SHORT (Cross), opened 2026-03-05T02:38"
+              ]
+            },
+            {
+              "name": "Associated Accounts",
+              "severity": "pending",
+              "signals": [
+                "Login table access denied (403) -- cannot verify device cluster",
+                "No sub-account evidence from position query"
+              ]
+            },
+            {
+              "name": "IP & Geolocation",
+              "severity": "pass",
+              "signals": [
+                "Registered okx_CN",
+                "Phone 86 matches China nationality",
+                "No region mismatch detected"
+              ]
+            },
+            {
+              "name": "Identity Signals",
+              "severity": "pass",
+              "signals": [
+                "KYC3 — China",
+                "is_market_account: 普通用户",
+                "is_internal_account: 普通账户",
+                "Phone 86 consistent with China"
+              ]
+            },
+            {
+              "name": "Profit & Loss",
+              "severity": "critical",
+              "signals": [
+                "Trade volume $69,289,354.00, equity $0.07",
+                "First deposit $1,343.09",
+                "Last deposit 2026-01-21",
+                "Equity retention: 0.0% of first deposit"
+              ]
+            },
+            {
+              "name": "Withdrawal Behavior",
+              "severity": "pending",
+              "signals": [
+                "Last deposit 2026-01-21",
+                "Withdrawal detail table inaccessible (data limited)"
+              ]
+            },
+            {
+              "name": "Comprehensive Judgment",
+              "severity": "critical",
+              "signals": [
+                "Overall risk tier: T1 (trade/equity ratio 989,847,914x)",
+                "Flagged in price_limit_p4 alert (critical)",
+                "Active positions on: XAU-USDT-SWAP"
+              ]
+            }
+          ],
+          "key_evidence": [
+            "Trade/equity ratio 989,847,914x indicates high leverage cycling",
+            "XAU-USDT-SWAP SHORT opened 2026-03-05T02:38",
+            "Active during critical price_limit_p4 alert"
+          ],
+          "local_artifact_ref": ""
+        },
+        {
+          "uid": "211297173499940864",
+          "master_user_id": "2157288",
+          "overall_risk_tier": "T1",
+          "executive_summary": "China account (okx_cn). registered 2016-10-10 (9.5yr). trade/equity ratio 17,053,195x.",
+          "dimensions": [
+            {
+              "name": "Registration Profile",
+              "severity": "warning",
+              "signals": [
+                "Registered 2016-10-10 (9.5yr)",
+                "okx_CN, phone 86",
+                "KYC3 China verified",
+                "Client type: PC",
+                "Registration-to-first-deposit gap: 6.6yr (anomalous)"
+              ]
+            },
+            {
+              "name": "Trading Behavior",
+              "severity": "critical",
+              "signals": [
+                "Trade volume $10,061,384.80 vs equity $0.59 (ratio 17,053,195x)",
+                "Fee tier: LV1",
+                "XAU-USDT-SWAP SHORT (Cross), opened 2026-03-03T00:00"
+              ]
+            },
+            {
+              "name": "Associated Accounts",
+              "severity": "pending",
+              "signals": [
+                "Login table access denied (403) -- cannot verify device cluster",
+                "No sub-account evidence from position query"
+              ]
+            },
+            {
+              "name": "IP & Geolocation",
+              "severity": "pass",
+              "signals": [
+                "Registered okx_CN",
+                "Phone 86 matches China nationality",
+                "No region mismatch detected"
+              ]
+            },
+            {
+              "name": "Identity Signals",
+              "severity": "pass",
+              "signals": [
+                "KYC3 — China",
+                "is_market_account: 普通用户",
+                "is_internal_account: 普通账户",
+                "Phone 86 consistent with China"
+              ]
+            },
+            {
+              "name": "Profit & Loss",
+              "severity": "critical",
+              "signals": [
+                "Trade volume $10,061,384.80, equity $0.59",
+                "First deposit $71.22",
+                "Last deposit 2026-02-28",
+                "Equity retention: 0.8% of first deposit"
+              ]
+            },
+            {
+              "name": "Withdrawal Behavior",
+              "severity": "pending",
+              "signals": [
+                "Last deposit 2026-02-28",
+                "Withdrawal detail table inaccessible (data limited)"
+              ]
+            },
+            {
+              "name": "Comprehensive Judgment",
+              "severity": "critical",
+              "signals": [
+                "Overall risk tier: T1 (trade/equity ratio 17,053,195x)",
+                "Flagged in price_limit_p4 alert (critical)",
+                "Active positions on: XAU-USDT-SWAP"
+              ]
+            }
+          ],
+          "key_evidence": [
+            "Trade/equity ratio 17,053,195x indicates high leverage cycling",
+            "XAU-USDT-SWAP SHORT opened 2026-03-03T00:00",
+            "Active during critical price_limit_p4 alert"
+          ],
+          "local_artifact_ref": ""
+        },
+        {
+          "uid": "574033309605888",
+          "master_user_id": "2022640",
+          "overall_risk_tier": "T1",
+          "executive_summary": "China account (okx_cn). registered 2014-11-23 (11.4yr). trade/equity ratio 380,999x.",
+          "dimensions": [
+            {
+              "name": "Registration Profile",
+              "severity": "warning",
+              "signals": [
+                "Registered 2014-11-23 (11.4yr)",
+                "okx_CN, phone 86",
+                "KYC3 China verified",
+                "Client type: PC",
+                "Registration-to-first-deposit gap: 2.5yr (anomalous)"
+              ]
+            },
+            {
+              "name": "Trading Behavior",
+              "severity": "critical",
+              "signals": [
+                "Trade volume $31,908,629.90 vs equity $83.75 (ratio 380,999x)",
+                "Fee tier: LV1",
+                "XAU-USDT-SWAP SHORT (Isolated), opened 2026-03-21T02:42",
+                "XAU-USDT-SWAP SHORT (Isolated), opened 2026-03-25T08:00"
+              ]
+            },
+            {
+              "name": "Associated Accounts",
+              "severity": "pending",
+              "signals": [
+                "Login table access denied (403) -- cannot verify device cluster",
+                "No sub-account evidence from position query"
+              ]
+            },
+            {
+              "name": "IP & Geolocation",
+              "severity": "pass",
+              "signals": [
+                "Registered okx_CN",
+                "Phone 86 matches China nationality",
+                "No region mismatch detected"
+              ]
+            },
+            {
+              "name": "Identity Signals",
+              "severity": "pass",
+              "signals": [
+                "KYC3 — China",
+                "is_market_account: 普通用户",
+                "is_internal_account: 普通账户",
+                "Phone 86 consistent with China"
+              ]
+            },
+            {
+              "name": "Profit & Loss",
+              "severity": "warning",
+              "signals": [
+                "Trade volume $31,908,629.90, equity $83.75",
+                "First deposit $490.10",
+                "Last deposit 2026-03-24",
+                "Equity retention: 17.1% of first deposit"
+              ]
+            },
+            {
+              "name": "Withdrawal Behavior",
+              "severity": "pending",
+              "signals": [
+                "Last deposit 2026-03-24",
+                "Withdrawal detail table inaccessible (data limited)"
+              ]
+            },
+            {
+              "name": "Comprehensive Judgment",
+              "severity": "critical",
+              "signals": [
+                "Overall risk tier: T1 (trade/equity ratio 380,999x)",
+                "Flagged in price_limit_p4 alert (critical)",
+                "Active positions on: XAU-USDT-SWAP"
+              ]
+            }
+          ],
+          "key_evidence": [
+            "Trade/equity ratio 380,999x indicates high leverage cycling",
+            "XAU-USDT-SWAP SHORT opened 2026-03-21T02:42",
+            "XAU-USDT-SWAP SHORT opened 2026-03-25T08:00",
+            "Active during critical price_limit_p4 alert"
+          ],
+          "local_artifact_ref": ""
+        },
+        {
+          "uid": "919889330184192",
+          "master_user_id": "2114416",
+          "overall_risk_tier": "T1",
+          "executive_summary": "China account (okx_cn). registered 2016-09-21 (9.5yr). trade/equity ratio 206,035x.",
+          "dimensions": [
+            {
+              "name": "Registration Profile",
+              "severity": "warning",
+              "signals": [
+                "Registered 2016-09-21 (9.5yr)",
+                "okx_CN, phone 86",
+                "KYC3 China verified",
+                "Client type: PC",
+                "Registration-to-first-deposit gap: 2.8yr (anomalous)"
+              ]
+            },
+            {
+              "name": "Trading Behavior",
+              "severity": "critical",
+              "signals": [
+                "Trade volume $62,995,316.67 vs equity $305.75 (ratio 206,035x)",
+                "Fee tier: LV1",
+                "XAU-USDT-SWAP SHORT (Cross), opened 2026-03-20T00:33",
+                "XAU-USDT-SWAP SHORT (Isolated), opened 2026-03-03T13:54"
+              ]
+            },
+            {
+              "name": "Associated Accounts",
+              "severity": "pending",
+              "signals": [
+                "Login table access denied (403) -- cannot verify device cluster",
+                "No sub-account evidence from position query"
+              ]
+            },
+            {
+              "name": "IP & Geolocation",
+              "severity": "pass",
+              "signals": [
+                "Registered okx_CN",
+                "Phone 86 matches China nationality",
+                "No region mismatch detected"
+              ]
+            },
+            {
+              "name": "Identity Signals",
+              "severity": "pass",
+              "signals": [
+                "KYC3 — China",
+                "is_market_account: 普通用户",
+                "is_internal_account: 普通账户",
+                "Phone 86 consistent with China"
+              ]
+            },
+            {
+              "name": "Profit & Loss",
+              "severity": "warning",
+              "signals": [
+                "Trade volume $62,995,316.67, equity $305.75",
+                "First deposit $1,715.70",
+                "Last deposit 2026-02-15",
+                "Equity retention: 17.8% of first deposit"
+              ]
+            },
+            {
+              "name": "Withdrawal Behavior",
+              "severity": "pending",
+              "signals": [
+                "Last deposit 2026-02-15",
+                "Withdrawal detail table inaccessible (data limited)"
+              ]
+            },
+            {
+              "name": "Comprehensive Judgment",
+              "severity": "critical",
+              "signals": [
+                "Overall risk tier: T1 (trade/equity ratio 206,035x)",
+                "Flagged in price_limit_p4 alert (critical)",
+                "Active positions on: XAU-USDT-SWAP"
+              ]
+            }
+          ],
+          "key_evidence": [
+            "Trade/equity ratio 206,035x indicates high leverage cycling",
+            "XAU-USDT-SWAP SHORT opened 2026-03-20T00:33",
+            "XAU-USDT-SWAP SHORT opened 2026-03-03T13:54",
+            "Active during critical price_limit_p4 alert"
+          ],
+          "local_artifact_ref": ""
+        }
+      ]
     },
     {
       "slug": "price-limit",
