@@ -1,0 +1,4324 @@
+{
+  "date": "2026-04-01",
+  "generated_at": "2026-04-01T02:30:10.403324+00:00",
+  "chapter": {
+    "slug": "risk-intel",
+    "title": "Risk Intelligence",
+    "render_variant": "risk-intel",
+    "status": "critical",
+    "summary": "4 alert types analyzed. 6 flagged alert(s) parsed. 5 suspicious user(s) highlighted.",
+    "event_analyses": [
+      {
+        "asset": "ZBT-USDT-SWAP",
+        "severity": "critical",
+        "executive_summary": "ZBT-USDT-SWAP triggered critical alert. Price: $0.09642 (+23.11%). OI deviation: 50.33%. OI/limit: 90.89%. 36 user(s) profiled.",
+        "forward_looking": "Monitor ZBT-USDT-SWAP OI trajectory over the next 24 hours. If OI continues expanding, consider tightening position limits. Watch for funding rate shifts that may attract additional directional flow.",
+        "market_snapshot": {
+          "price": "0.09642",
+          "change_24h": "+23.11%",
+          "open_interest": "17716124",
+          "funding_rate": "-0.0007295477319126",
+          "vol_24h": "378285814",
+          "timestamp": "2026-04-01T10:30:10.347995+08:00"
+        },
+        "quantitative_impact": {
+          "title": "Quantitative Impact",
+          "metrics": [
+            {
+              "value": "50.33%",
+              "label": "OI Deviation (24H)",
+              "detail": "Open interest deviated 50.33% from the 24-hour average"
+            },
+            {
+              "value": "90.89%",
+              "label": "OI / Platform Limit",
+              "detail": "Open interest is at 90.89% of the platform position limit"
+            },
+            {
+              "value": "CRITICAL",
+              "label": "Alert Severity",
+              "detail": "Alert classified as critical"
+            },
+            {
+              "value": "+7.4%",
+              "label": "User Growth (period)",
+              "detail": "Total users changed from 3704 to 3977 over the observation window"
+            }
+          ]
+        },
+        "oi_attribution": {
+          "title": "OI Attribution (Hourly User Breakdown)",
+          "description": "Hourly breakdown of user positioning for the instrument.",
+          "user_hourly_table": {
+            "headers": [
+              "Hour (pt)",
+              "Total Users",
+              "Longs",
+              "Shorts"
+            ],
+            "rows": [
+              [
+                "2026033100",
+                "3704",
+                "1771",
+                "2287"
+              ],
+              [
+                "2026033104",
+                "3831",
+                "1822",
+                "2371"
+              ],
+              [
+                "2026033108",
+                "3870",
+                "1835",
+                "2409"
+              ],
+              [
+                "2026033112",
+                "3891",
+                "1845",
+                "2426"
+              ],
+              [
+                "2026033114",
+                "3977",
+                "1892",
+                "2475"
+              ]
+            ]
+          }
+        },
+        "risk_assessment": {
+          "title": "Risk Assessment & Recommended Actions",
+          "actions": [
+            {
+              "priority": "P0",
+              "action": "Verify whether new position opens are restricted (OI/limit at 90.89%)",
+              "reason": "Platform OI limit breached — platform_oi alert at critical level"
+            },
+            {
+              "priority": "P1",
+              "action": "Deep-review top risk users: 15502017, 18462797, 14304644",
+              "reason": "35 user(s) flagged with elevated trade/equity ratios or suspicious patterns"
+            },
+            {
+              "priority": "P2",
+              "action": "Continue monitoring OI trajectory and funding rate changes over the next 24 hours",
+              "reason": "Position dynamics may shift as new data comes in — ensure no further limit breaches"
+            }
+          ]
+        },
+        "involved_users_brief": {
+          "title": "Involved Users (Brief)",
+          "headers": [
+            "User ID",
+            "UID",
+            "Position",
+            "Margin",
+            "Opened",
+            "Risk Tier"
+          ],
+          "rows": [
+            [
+              "15502017",
+              "158905236868734976",
+              "SHORT",
+              "Cross",
+              "2026-03-30T00:08:53",
+              "T1"
+            ],
+            [
+              "18462797",
+              "193160760480899072",
+              "SHORT",
+              "Cross",
+              "2026-03-29T22:18:39",
+              "T1"
+            ],
+            [
+              "14304644",
+              "147349815574044672",
+              "SHORT",
+              "Cross",
+              "2026-02-27T23:39:49",
+              "T1"
+            ],
+            [
+              "17371111",
+              "177125650799403008",
+              "SHORT",
+              "Cross",
+              "2026-03-29T17:48:50",
+              "T1"
+            ],
+            [
+              "8800889",
+              "615369861640192",
+              "SHORT",
+              "Isolated",
+              "2026-03-06T19:21:14",
+              "T1"
+            ],
+            [
+              "8800889",
+              "615369861640192",
+              "SHORT",
+              "Isolated",
+              "2026-03-06T19:15:02",
+              "T1"
+            ],
+            [
+              "12793414",
+              "124856668386373632",
+              "SHORT",
+              "Cross",
+              "2026-03-30T00:33:18",
+              "T1"
+            ],
+            [
+              "17570896",
+              "177838908854411264",
+              "SHORT",
+              "Isolated",
+              "2026-03-10T17:22:50",
+              "T2"
+            ],
+            [
+              "2004714",
+              "671601515442176",
+              "SHORT",
+              "Cross",
+              "2026-01-17T17:02:43",
+              "T2"
+            ],
+            [
+              "10246291",
+              "23569411667533824",
+              "SHORT",
+              "Cross",
+              "2026-02-20T01:49:26",
+              "T2"
+            ],
+            [
+              "36049554",
+              "",
+              "SHORT",
+              "Isolated",
+              "2026-03-29T23:31:41",
+              "T3"
+            ],
+            [
+              "19600082",
+              "",
+              "LONG",
+              "Isolated",
+              "2026-03-29T23:50:58",
+              "T3"
+            ],
+            [
+              "37934744",
+              "",
+              "LONG",
+              "Isolated",
+              "2026-03-29T17:46:52",
+              "T3"
+            ],
+            [
+              "12576700",
+              "179522345956974592",
+              "SHORT",
+              "Cross",
+              "2026-03-22T14:28:35",
+              "T3"
+            ],
+            [
+              "17786285",
+              "",
+              "LONG",
+              "Isolated",
+              "2026-03-29T22:41:49",
+              "T3"
+            ],
+            [
+              "31673935",
+              "",
+              "LONG",
+              "Isolated",
+              "2026-03-29T17:16:00",
+              "T3"
+            ],
+            [
+              "26432018",
+              "",
+              "SHORT",
+              "Cross",
+              "2026-03-19T20:58:58",
+              "T3"
+            ],
+            [
+              "26432018",
+              "",
+              "SHORT",
+              "Cross",
+              "2026-03-18T20:24:20",
+              "T3"
+            ],
+            [
+              "21801582",
+              "",
+              "SHORT",
+              "Cross",
+              "2026-03-06T16:55:45",
+              "T3"
+            ],
+            [
+              "26700157",
+              "",
+              "LONG",
+              "Isolated",
+              "2026-03-03T16:58:35",
+              "T3"
+            ],
+            [
+              "27668138",
+              "",
+              "LONG",
+              "Isolated",
+              "2026-03-29T18:08:41",
+              "T3"
+            ],
+            [
+              "18106008",
+              "182151269585166336",
+              "LONG",
+              "Cross",
+              "2026-03-29T17:40:36",
+              "T3"
+            ],
+            [
+              "37886724",
+              "",
+              "SHORT",
+              "Isolated",
+              "2026-03-29T22:37:09",
+              "T3"
+            ],
+            [
+              "22572530",
+              "",
+              "LONG",
+              "Cross",
+              "2026-03-29T17:35:06",
+              "T3"
+            ],
+            [
+              "18547364",
+              "",
+              "LONG",
+              "Isolated",
+              "2026-03-31T00:45:44",
+              "T3"
+            ],
+            [
+              "29448232",
+              "",
+              "LONG",
+              "Cross",
+              "2026-03-29T23:00:43",
+              "T3"
+            ],
+            [
+              "19123312",
+              "",
+              "LONG",
+              "Isolated",
+              "2026-03-06T16:22:04",
+              "T3"
+            ],
+            [
+              "17261185",
+              "",
+              "LONG",
+              "Isolated",
+              "2025-10-25T11:07:37",
+              "T3"
+            ],
+            [
+              "32457078",
+              "",
+              "LONG",
+              "Isolated",
+              "2026-03-29T17:44:40",
+              "T3"
+            ],
+            [
+              "27465249",
+              "",
+              "LONG",
+              "Isolated",
+              "2026-03-31T00:44:30",
+              "T3"
+            ],
+            [
+              "32929922",
+              "",
+              "LONG",
+              "Isolated",
+              "2026-03-30T19:41:48",
+              "T3"
+            ],
+            [
+              "23534326",
+              "",
+              "LONG",
+              "Cross",
+              "2026-03-30T00:15:00",
+              "T3"
+            ],
+            [
+              "19977393",
+              "",
+              "LONG",
+              "Cross",
+              "2026-03-29T22:42:21",
+              "T3"
+            ],
+            [
+              "20067680",
+              "",
+              "SHORT",
+              "Isolated",
+              "2026-03-30T20:03:43",
+              "T3"
+            ],
+            [
+              "24990001",
+              "",
+              "LONG",
+              "Isolated",
+              "2026-03-02T13:26:38",
+              "T3"
+            ],
+            [
+              "27785656",
+              "",
+              "SHORT",
+              "Cross",
+              "2026-03-29T17:55:47",
+              "T3"
+            ],
+            [
+              "30710045",
+              "",
+              "SHORT",
+              "Cross",
+              "2026-03-13T11:48:21",
+              "T3"
+            ],
+            [
+              "16180847",
+              "164676500396875776",
+              "SHORT",
+              "Cross",
+              "2025-10-18T04:52:44",
+              "T4"
+            ],
+            [
+              "16180847",
+              "164676500396875776",
+              "SHORT",
+              "Cross",
+              "2025-12-29T13:48:39",
+              "T4"
+            ]
+          ]
+        },
+        "causal_chain": [
+          {
+            "step": 1,
+            "type": "远因 (Structural)",
+            "name": "ZBT-USDT-SWAP Thin Liquidity / Low Float",
+            "description": "ZBT-USDT-SWAP has limited market depth (24H vol: 378285814). Low float instruments are susceptible to rapid OI deviation.",
+            "evidence_strength": 3,
+            "evidence_label": "Market data"
+          },
+          {
+            "step": 2,
+            "type": "近因 (User Influx)",
+            "name": "ZBT-USDT-SWAP Position Buildup",
+            "description": "Users grew from 3704 to 3977 (longs 1771->1892, shorts 2287->2475) between 2026033100 and 2026033114.",
+            "evidence_strength": 4,
+            "evidence_label": "Position data",
+            "evidence_table": {
+              "headers": [
+                "Hour",
+                "Total Users",
+                "Longs",
+                "Shorts"
+              ],
+              "rows": [
+                [
+                  "2026033100",
+                  "3704",
+                  "1771",
+                  "2287"
+                ],
+                [
+                  "2026033104",
+                  "3831",
+                  "1822",
+                  "2371"
+                ],
+                [
+                  "2026033108",
+                  "3870",
+                  "1835",
+                  "2409"
+                ],
+                [
+                  "2026033112",
+                  "3891",
+                  "1845",
+                  "2426"
+                ],
+                [
+                  "2026033114",
+                  "3977",
+                  "1892",
+                  "2475"
+                ]
+              ]
+            }
+          },
+          {
+            "step": 3,
+            "type": "触发事件 (Trigger)",
+            "name": "Alert Fired",
+            "description": "platform_oi alert fired at critical level. OI deviation: 50.33%. OI/platform limit: 90.89%.",
+            "evidence_strength": 5,
+            "evidence_label": "Platform alert"
+          },
+          {
+            "step": 4,
+            "type": "风险放大 (Amplification)",
+            "name": "User Concentration Risk",
+            "description": "Top users concentrating: 15502017, 18462797, 14304644, 17371111, 8800889 (risk tiers: T1, T1, T1, T1, T1). Position overlap amplifies systemic exposure.",
+            "evidence_strength": 4,
+            "evidence_label": "User data",
+            "evidence_table": {
+              "headers": [
+                "User ID",
+                "Risk Tier",
+                "Summary"
+              ],
+              "rows": [
+                [
+                  "15502017",
+                  "T1",
+                  "China account (okx_cn). registered 2021-03-19 (5.0yr). trade/equity ratio 1,068,..."
+                ],
+                [
+                  "18462797",
+                  "T1",
+                  "China account (okx_cn). registered 2021-06-22 (4.8yr). trade/equity ratio 9,693,..."
+                ],
+                [
+                  "14304644",
+                  "T1",
+                  "China account (okx_cn). registered 2021-02-15 (5.1yr). trade/equity ratio 503,52..."
+                ],
+                [
+                  "17371111",
+                  "T1",
+                  "China account (okx_cn). registered 2021-05-09 (4.9yr). trade/equity ratio 2,188,..."
+                ],
+                [
+                  "8800889",
+                  "T1",
+                  "China account (okx_cn). registered 2018-10-21 (7.4yr). trade/equity ratio 305,46..."
+                ]
+              ]
+            }
+          }
+        ],
+        "key_users": [
+          "36049554",
+          "19600082",
+          "15502017",
+          "37934744",
+          "12576700"
+        ],
+        "user_profiles": [
+          {
+            "uid": "158905236868734976",
+            "master_user_id": "15502017",
+            "overall_risk_tier": "T1",
+            "executive_summary": "China account (okx_cn). registered 2021-03-19 (5.0yr). trade/equity ratio 1,068,470,260x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Registered 2021-03-19 (5.0yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: H5"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $19,232,464.68 vs equity $0.02 (ratio 1,068,470,260x)",
+                  "Fee tier: LV1",
+                  "ZBT-USDT-SWAP SHORT (Cross), opened 2026-03-30T00:08"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $19,232,464.68, equity $0.02",
+                  "First deposit $2.40",
+                  "Last deposit 2026-03-30",
+                  "Equity retention: 0.8% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2026-03-30",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio 1,068,470,260x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: ZBT-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 1,068,470,260x indicates high leverage cycling",
+              "ZBT-USDT-SWAP SHORT opened 2026-03-30T00:08",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "193160760480899072",
+            "master_user_id": "18462797",
+            "overall_risk_tier": "T1",
+            "executive_summary": "China account (okx_cn). registered 2021-06-22 (4.8yr). trade/equity ratio 9,693,821,605x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Registered 2021-06-22 (4.8yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: APP"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $164,794,967.28 vs equity $0.02 (ratio 9,693,821,605x)",
+                  "Fee tier: LV1",
+                  "ZBT-USDT-SWAP SHORT (Cross), opened 2026-03-29T22:18"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $164,794,967.28, equity $0.02",
+                  "First deposit $778.81",
+                  "Last deposit 2026-03-29",
+                  "Equity retention: 0.0% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2026-03-29",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio 9,693,821,605x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: ZBT-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 9,693,821,605x indicates high leverage cycling",
+              "ZBT-USDT-SWAP SHORT opened 2026-03-29T22:18",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "147349815574044672",
+            "master_user_id": "14304644",
+            "overall_risk_tier": "T1",
+            "executive_summary": "China account (okx_cn). registered 2021-02-15 (5.1yr). trade/equity ratio 503,528x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Registered 2021-02-15 (5.1yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: APP"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $19,214,612.22 vs equity $38.16 (ratio 503,528x)",
+                  "Fee tier: LV1",
+                  "ZBT-USDT-SWAP SHORT (Cross), opened 2026-02-27T23:39"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "pass",
+                "signals": [
+                  "Trade volume $19,214,612.22, equity $38.16",
+                  "First deposit $15.00",
+                  "Last deposit 2026-03-24",
+                  "Equity retention: 254.4% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2026-03-24",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio 503,528x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: ZBT-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 503,528x indicates high leverage cycling",
+              "ZBT-USDT-SWAP SHORT opened 2026-02-27T23:39",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "177125650799403008",
+            "master_user_id": "17371111",
+            "overall_risk_tier": "T1",
+            "executive_summary": "China account (okx_cn). registered 2021-05-09 (4.9yr). trade/equity ratio 2,188,294x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Registered 2021-05-09 (4.9yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: APP"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $10,547,577.18 vs equity $4.82 (ratio 2,188,294x)",
+                  "Fee tier: LV1",
+                  "ZBT-USDT-SWAP SHORT (Cross), opened 2026-03-29T17:48"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $10,547,577.18, equity $4.82",
+                  "First deposit $85.34",
+                  "Last deposit 2026-03-31",
+                  "Equity retention: 5.6% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2026-03-31",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio 2,188,294x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: ZBT-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 2,188,294x indicates high leverage cycling",
+              "ZBT-USDT-SWAP SHORT opened 2026-03-29T17:48",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "615369861640192",
+            "master_user_id": "8800889",
+            "overall_risk_tier": "T1",
+            "executive_summary": "China account (okx_cn). registered 2018-10-21 (7.4yr). trade/equity ratio 305,461x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Registered 2018-10-21 (7.4yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: PC"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $287,063,260.49 vs equity $939.77 (ratio 305,461x)",
+                  "Fee tier: LV1",
+                  "ZBT-USDT-SWAP SHORT (Isolated), opened 2026-03-06T19:21",
+                  "ZBT-USDT-SWAP SHORT (Isolated), opened 2026-03-06T19:15"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "pass",
+                "signals": [
+                  "Trade volume $287,063,260.49, equity $939.77",
+                  "First deposit $136.01",
+                  "Last deposit 2026-03-31",
+                  "Equity retention: 691.0% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2026-03-31",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio 305,461x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: ZBT-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 305,461x indicates high leverage cycling",
+              "ZBT-USDT-SWAP SHORT opened 2026-03-06T19:21",
+              "ZBT-USDT-SWAP SHORT opened 2026-03-06T19:15",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "124856668386373632",
+            "master_user_id": "12793414",
+            "overall_risk_tier": "T1",
+            "executive_summary": "China account (okx_cn). registered 2020-12-15 (5.3yr). trade/equity ratio 482,999,337x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Registered 2020-12-15 (5.3yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: PC"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $120,749,834.20 vs equity $0.25 (ratio 482,999,337x)",
+                  "Fee tier: LV1",
+                  "ZBT-USDT-SWAP SHORT (Cross), opened 2026-03-30T00:33"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $120,749,834.20, equity $0.25",
+                  "First deposit $15.50",
+                  "Last deposit 2026-03-30",
+                  "Equity retention: 1.6% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2026-03-30",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "critical",
+                "signals": [
+                  "Overall risk tier: T1 (trade/equity ratio 482,999,337x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: ZBT-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 482,999,337x indicates high leverage cycling",
+              "ZBT-USDT-SWAP SHORT opened 2026-03-30T00:33",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "177838908854411264",
+            "master_user_id": "17570896",
+            "overall_risk_tier": "T2",
+            "executive_summary": "China account (okx_cn). registered 2021-05-10 (4.9yr). trade/equity ratio 38,602x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Registered 2021-05-10 (4.9yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: APP"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $2,984,711.36 vs equity $77.32 (ratio 38,602x)",
+                  "Fee tier: LV1",
+                  "ZBT-USDT-SWAP SHORT (Isolated), opened 2026-03-10T17:22"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "pass",
+                "signals": [
+                  "Trade volume $2,984,711.36, equity $77.32",
+                  "First deposit $1.43",
+                  "Last deposit 2025-05-04",
+                  "Equity retention: 5407.0% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2025-05-04",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "Overall risk tier: T2 (trade/equity ratio 38,602x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: ZBT-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 38,602x indicates high leverage cycling",
+              "ZBT-USDT-SWAP SHORT opened 2026-03-10T17:22",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "671601515442176",
+            "master_user_id": "2004714",
+            "overall_risk_tier": "T2",
+            "executive_summary": "China account (okx_cn). registered 2014-01-05 (12.2yr). trade/equity ratio 52,388x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "warning",
+                "signals": [
+                  "Registered 2014-01-05 (12.2yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: PC",
+                  "Registration-to-first-deposit gap: 3.5yr (anomalous)"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $144,046,616.11 vs equity $2,749.59 (ratio 52,388x)",
+                  "Fee tier: LV1",
+                  "ZBT-USDT-SWAP SHORT (Cross), opened 2026-01-17T17:02"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "pass",
+                "signals": [
+                  "Trade volume $144,046,616.11, equity $2,749.59",
+                  "First deposit $916.49",
+                  "Last deposit 2026-03-19",
+                  "Equity retention: 300.0% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2026-03-19",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "Overall risk tier: T2 (trade/equity ratio 52,388x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: ZBT-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 52,388x indicates high leverage cycling",
+              "ZBT-USDT-SWAP SHORT opened 2026-01-17T17:02",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "23569411667533824",
+            "master_user_id": "10246291",
+            "overall_risk_tier": "T2",
+            "executive_summary": "China account (okx_cn). registered 2019-07-26 (6.7yr). trade/equity ratio 14,350x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Registered 2019-07-26 (6.7yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: H5"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $14,301,626.46 vs equity $996.63 (ratio 14,350x)",
+                  "Fee tier: LV1",
+                  "ZBT-USDT-SWAP SHORT (Cross), opened 2026-02-20T01:49"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "pass",
+                "signals": [
+                  "Trade volume $14,301,626.46, equity $996.63",
+                  "First deposit $86.20",
+                  "Last deposit 2026-03-31",
+                  "Equity retention: 1156.2% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2026-03-31",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "Overall risk tier: T2 (trade/equity ratio 14,350x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: ZBT-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 14,350x indicates high leverage cycling",
+              "ZBT-USDT-SWAP SHORT opened 2026-02-20T01:49",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "",
+            "master_user_id": "36049554",
+            "overall_risk_tier": "T3",
+            "executive_summary": "SHORT ZBT-USDT-SWAP, master info not available for deeper analysis.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Master info not queried — no signals available"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "SHORT ZBT-USDT-SWAP, 1 position(s)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region data requires master info query"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC data requires master info query"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity data requires master info query — position during OI anomaly flagged"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "SHORT during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "SHORT ZBT-USDT-SWAP",
+              "Position opened 2026-03-29T23:31:41"
+            ]
+          },
+          {
+            "uid": "",
+            "master_user_id": "19600082",
+            "overall_risk_tier": "T3",
+            "executive_summary": "LONG ZBT-USDT-SWAP, master info not available for deeper analysis.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Master info not queried — no signals available"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "LONG ZBT-USDT-SWAP, 1 position(s)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region data requires master info query"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC data requires master info query"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity data requires master info query — position during OI anomaly flagged"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "LONG during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "LONG ZBT-USDT-SWAP",
+              "Position opened 2026-03-29T23:50:58"
+            ]
+          },
+          {
+            "uid": "",
+            "master_user_id": "37934744",
+            "overall_risk_tier": "T3",
+            "executive_summary": "LONG ZBT-USDT-SWAP, master info not available for deeper analysis.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Master info not queried — no signals available"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "LONG ZBT-USDT-SWAP, 1 position(s)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region data requires master info query"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC data requires master info query"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity data requires master info query — position during OI anomaly flagged"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "LONG during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "LONG ZBT-USDT-SWAP",
+              "Position opened 2026-03-29T17:46:52"
+            ]
+          },
+          {
+            "uid": "179522345956974592",
+            "master_user_id": "12576700",
+            "overall_risk_tier": "T3",
+            "executive_summary": "China account (okx_cn). registered 2020-10-14 (5.5yr). trade/equity ratio 1,275x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Registered 2020-10-14 (5.5yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: H5"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "Trade volume $5,443,753.33 vs equity $4,268.63 (ratio 1,275x)",
+                  "Fee tier: LV1",
+                  "ZBT-USDT-SWAP SHORT (Cross), opened 2026-03-22T14:28"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "pass",
+                "signals": [
+                  "Trade volume $5,443,753.33, equity $4,268.63",
+                  "First deposit $387.40",
+                  "Last deposit 2026-03-22",
+                  "Equity retention: 1101.9% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2026-03-22",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "Overall risk tier: T3 (trade/equity ratio 1,275x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: ZBT-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 1,275x indicates high leverage cycling",
+              "ZBT-USDT-SWAP SHORT opened 2026-03-22T14:28",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "",
+            "master_user_id": "17786285",
+            "overall_risk_tier": "T3",
+            "executive_summary": "LONG ZBT-USDT-SWAP, master info not available for deeper analysis.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Master info not queried — no signals available"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "LONG ZBT-USDT-SWAP, 1 position(s)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region data requires master info query"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC data requires master info query"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity data requires master info query — position during OI anomaly flagged"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "LONG during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "LONG ZBT-USDT-SWAP",
+              "Position opened 2026-03-29T22:41:49"
+            ]
+          },
+          {
+            "uid": "",
+            "master_user_id": "31673935",
+            "overall_risk_tier": "T3",
+            "executive_summary": "LONG ZBT-USDT-SWAP, master info not available for deeper analysis.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Master info not queried — no signals available"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "LONG ZBT-USDT-SWAP, 1 position(s)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region data requires master info query"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC data requires master info query"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity data requires master info query — position during OI anomaly flagged"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "LONG during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "LONG ZBT-USDT-SWAP",
+              "Position opened 2026-03-29T17:16:00"
+            ]
+          },
+          {
+            "uid": "",
+            "master_user_id": "26432018",
+            "overall_risk_tier": "T3",
+            "executive_summary": "SHORT ZBT-USDT-SWAP, master info not available for deeper analysis.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Master info not queried — no signals available"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "SHORT ZBT-USDT-SWAP, 2 position(s)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region data requires master info query"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC data requires master info query"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity data requires master info query — position during OI anomaly flagged"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "SHORT during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "SHORT ZBT-USDT-SWAP",
+              "Position opened 2026-03-19T20:58:58"
+            ]
+          },
+          {
+            "uid": "",
+            "master_user_id": "21801582",
+            "overall_risk_tier": "T3",
+            "executive_summary": "SHORT ZBT-USDT-SWAP, master info not available for deeper analysis.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Master info not queried — no signals available"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "SHORT ZBT-USDT-SWAP, 1 position(s)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region data requires master info query"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC data requires master info query"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity data requires master info query — position during OI anomaly flagged"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "SHORT during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "SHORT ZBT-USDT-SWAP",
+              "Position opened 2026-03-06T16:55:45"
+            ]
+          },
+          {
+            "uid": "",
+            "master_user_id": "26700157",
+            "overall_risk_tier": "T3",
+            "executive_summary": "LONG ZBT-USDT-SWAP, master info not available for deeper analysis.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Master info not queried — no signals available"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "LONG ZBT-USDT-SWAP, 1 position(s)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region data requires master info query"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC data requires master info query"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity data requires master info query — position during OI anomaly flagged"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "LONG during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "LONG ZBT-USDT-SWAP",
+              "Position opened 2026-03-03T16:58:35"
+            ]
+          },
+          {
+            "uid": "",
+            "master_user_id": "27668138",
+            "overall_risk_tier": "T3",
+            "executive_summary": "LONG ZBT-USDT-SWAP, master info not available for deeper analysis.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Master info not queried — no signals available"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "LONG ZBT-USDT-SWAP, 1 position(s)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region data requires master info query"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC data requires master info query"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity data requires master info query — position during OI anomaly flagged"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "LONG during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "LONG ZBT-USDT-SWAP",
+              "Position opened 2026-03-29T18:08:41"
+            ]
+          },
+          {
+            "uid": "182151269585166336",
+            "master_user_id": "18106008",
+            "overall_risk_tier": "T3",
+            "executive_summary": "China account (okx_cn). registered 2021-05-22 (4.9yr). trade/equity ratio 2,049x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "warning",
+                "signals": [
+                  "Registered 2021-05-22 (4.9yr)",
+                  "okx_CN, phone 86",
+                  "KYC2 China verified",
+                  "Client type: APP",
+                  "Registration-to-first-deposit gap: 4.3yr (anomalous)"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "Trade volume $428,637.11 vs equity $209.22 (ratio 2,049x)",
+                  "Fee tier: LV1",
+                  "ZBT-USDT-SWAP LONG (Cross), opened 2026-03-29T17:40"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "warning",
+                "signals": [
+                  "KYC2 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China",
+                  "KYC2 despite 4.9yr account age — upgrade anomaly"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "pass",
+                "signals": [
+                  "Trade volume $428,637.11, equity $209.22",
+                  "First deposit $2.00",
+                  "Last deposit 2026-03-30",
+                  "Equity retention: 10461.0% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2026-03-30",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "Overall risk tier: T3 (trade/equity ratio 2,049x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: ZBT-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 2,049x indicates high leverage cycling",
+              "ZBT-USDT-SWAP LONG opened 2026-03-29T17:40",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "",
+            "master_user_id": "37886724",
+            "overall_risk_tier": "T3",
+            "executive_summary": "SHORT ZBT-USDT-SWAP, master info not available for deeper analysis.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Master info not queried — no signals available"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "SHORT ZBT-USDT-SWAP, 1 position(s)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region data requires master info query"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC data requires master info query"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity data requires master info query — position during OI anomaly flagged"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "SHORT during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "SHORT ZBT-USDT-SWAP",
+              "Position opened 2026-03-29T22:37:09"
+            ]
+          },
+          {
+            "uid": "",
+            "master_user_id": "22572530",
+            "overall_risk_tier": "T3",
+            "executive_summary": "LONG ZBT-USDT-SWAP, master info not available for deeper analysis.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Master info not queried — no signals available"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "LONG ZBT-USDT-SWAP, 1 position(s)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region data requires master info query"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC data requires master info query"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity data requires master info query — position during OI anomaly flagged"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "LONG during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "LONG ZBT-USDT-SWAP",
+              "Position opened 2026-03-29T17:35:06"
+            ]
+          },
+          {
+            "uid": "",
+            "master_user_id": "18547364",
+            "overall_risk_tier": "T3",
+            "executive_summary": "LONG ZBT-USDT-SWAP, master info not available for deeper analysis.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Master info not queried — no signals available"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "LONG ZBT-USDT-SWAP, 1 position(s)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region data requires master info query"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC data requires master info query"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity data requires master info query — position during OI anomaly flagged"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "LONG during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "LONG ZBT-USDT-SWAP",
+              "Position opened 2026-03-31T00:45:44"
+            ]
+          },
+          {
+            "uid": "",
+            "master_user_id": "29448232",
+            "overall_risk_tier": "T3",
+            "executive_summary": "LONG ZBT-USDT-SWAP, master info not available for deeper analysis.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Master info not queried — no signals available"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "LONG ZBT-USDT-SWAP, 1 position(s)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region data requires master info query"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC data requires master info query"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity data requires master info query — position during OI anomaly flagged"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "LONG during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "LONG ZBT-USDT-SWAP",
+              "Position opened 2026-03-29T23:00:43"
+            ]
+          },
+          {
+            "uid": "",
+            "master_user_id": "19123312",
+            "overall_risk_tier": "T3",
+            "executive_summary": "LONG ZBT-USDT-SWAP, master info not available for deeper analysis.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Master info not queried — no signals available"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "LONG ZBT-USDT-SWAP, 1 position(s)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region data requires master info query"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC data requires master info query"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity data requires master info query — position during OI anomaly flagged"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "LONG during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "LONG ZBT-USDT-SWAP",
+              "Position opened 2026-03-06T16:22:04"
+            ]
+          },
+          {
+            "uid": "",
+            "master_user_id": "17261185",
+            "overall_risk_tier": "T3",
+            "executive_summary": "LONG ZBT-USDT-SWAP, master info not available for deeper analysis.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Master info not queried — no signals available"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "LONG ZBT-USDT-SWAP, 1 position(s)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region data requires master info query"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC data requires master info query"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity data requires master info query — position during OI anomaly flagged"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "LONG during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "LONG ZBT-USDT-SWAP",
+              "Position opened 2025-10-25T11:07:37"
+            ]
+          },
+          {
+            "uid": "",
+            "master_user_id": "32457078",
+            "overall_risk_tier": "T3",
+            "executive_summary": "LONG ZBT-USDT-SWAP, master info not available for deeper analysis.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Master info not queried — no signals available"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "LONG ZBT-USDT-SWAP, 1 position(s)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region data requires master info query"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC data requires master info query"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity data requires master info query — position during OI anomaly flagged"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "LONG during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "LONG ZBT-USDT-SWAP",
+              "Position opened 2026-03-29T17:44:40"
+            ]
+          },
+          {
+            "uid": "",
+            "master_user_id": "27465249",
+            "overall_risk_tier": "T3",
+            "executive_summary": "LONG ZBT-USDT-SWAP, master info not available for deeper analysis.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Master info not queried — no signals available"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "LONG ZBT-USDT-SWAP, 1 position(s)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region data requires master info query"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC data requires master info query"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity data requires master info query — position during OI anomaly flagged"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "LONG during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "LONG ZBT-USDT-SWAP",
+              "Position opened 2026-03-31T00:44:30"
+            ]
+          },
+          {
+            "uid": "",
+            "master_user_id": "32929922",
+            "overall_risk_tier": "T3",
+            "executive_summary": "LONG ZBT-USDT-SWAP, master info not available for deeper analysis.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Master info not queried — no signals available"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "LONG ZBT-USDT-SWAP, 1 position(s)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region data requires master info query"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC data requires master info query"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity data requires master info query — position during OI anomaly flagged"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "LONG during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "LONG ZBT-USDT-SWAP",
+              "Position opened 2026-03-30T19:41:48"
+            ]
+          },
+          {
+            "uid": "",
+            "master_user_id": "23534326",
+            "overall_risk_tier": "T3",
+            "executive_summary": "LONG ZBT-USDT-SWAP, master info not available for deeper analysis.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Master info not queried — no signals available"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "LONG ZBT-USDT-SWAP, 1 position(s)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region data requires master info query"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC data requires master info query"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity data requires master info query — position during OI anomaly flagged"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "LONG during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "LONG ZBT-USDT-SWAP",
+              "Position opened 2026-03-30T00:15:00"
+            ]
+          },
+          {
+            "uid": "",
+            "master_user_id": "19977393",
+            "overall_risk_tier": "T3",
+            "executive_summary": "LONG ZBT-USDT-SWAP, master info not available for deeper analysis.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Master info not queried — no signals available"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "LONG ZBT-USDT-SWAP, 1 position(s)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region data requires master info query"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC data requires master info query"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity data requires master info query — position during OI anomaly flagged"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "LONG during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "LONG ZBT-USDT-SWAP",
+              "Position opened 2026-03-29T22:42:21"
+            ]
+          },
+          {
+            "uid": "",
+            "master_user_id": "20067680",
+            "overall_risk_tier": "T3",
+            "executive_summary": "SHORT ZBT-USDT-SWAP, master info not available for deeper analysis.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Master info not queried — no signals available"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "SHORT ZBT-USDT-SWAP, 1 position(s)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region data requires master info query"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC data requires master info query"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity data requires master info query — position during OI anomaly flagged"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "SHORT during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "SHORT ZBT-USDT-SWAP",
+              "Position opened 2026-03-30T20:03:43"
+            ]
+          },
+          {
+            "uid": "",
+            "master_user_id": "24990001",
+            "overall_risk_tier": "T3",
+            "executive_summary": "LONG ZBT-USDT-SWAP, master info not available for deeper analysis.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Master info not queried — no signals available"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "LONG ZBT-USDT-SWAP, 1 position(s)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region data requires master info query"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC data requires master info query"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity data requires master info query — position during OI anomaly flagged"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "LONG during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "LONG ZBT-USDT-SWAP",
+              "Position opened 2026-03-02T13:26:38"
+            ]
+          },
+          {
+            "uid": "",
+            "master_user_id": "27785656",
+            "overall_risk_tier": "T3",
+            "executive_summary": "SHORT ZBT-USDT-SWAP, master info not available for deeper analysis.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Master info not queried — no signals available"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "SHORT ZBT-USDT-SWAP, 1 position(s)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region data requires master info query"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC data requires master info query"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity data requires master info query — position during OI anomaly flagged"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "SHORT during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "SHORT ZBT-USDT-SWAP",
+              "Position opened 2026-03-29T17:55:47"
+            ]
+          },
+          {
+            "uid": "",
+            "master_user_id": "30710045",
+            "overall_risk_tier": "T3",
+            "executive_summary": "SHORT ZBT-USDT-SWAP, master info not available for deeper analysis.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Master info not queried — no signals available"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "SHORT ZBT-USDT-SWAP, 1 position(s)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region data requires master info query"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC data requires master info query"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity data requires master info query — position during OI anomaly flagged"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "SHORT during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "SHORT ZBT-USDT-SWAP",
+              "Position opened 2026-03-13T11:48:21"
+            ]
+          },
+          {
+            "uid": "164676500396875776",
+            "master_user_id": "16180847",
+            "overall_risk_tier": "T4",
+            "executive_summary": "China account (okx_cn). registered 2021-04-04 (5.0yr). trade/equity ratio 830x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "warning",
+                "signals": [
+                  "Registered 2021-04-04 (5.0yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: H5",
+                  "Registration-to-first-deposit gap: 1.6yr (anomalous)"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "pass",
+                "signals": [
+                  "Trade volume $3,297,885.74 vs equity $3,973.16 (ratio 830x)",
+                  "Fee tier: LV1",
+                  "ZBT-USDT-SWAP SHORT (Cross), opened 2025-10-18T04:52",
+                  "ZBT-USDT-SWAP SHORT (Cross), opened 2025-12-29T13:48"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "pass",
+                "signals": [
+                  "Trade volume $3,297,885.74, equity $3,973.16",
+                  "First deposit $910.36",
+                  "Last deposit 2026-02-06",
+                  "Equity retention: 436.4% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2026-02-06",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "pass",
+                "signals": [
+                  "Overall risk tier: T4 (trade/equity ratio 830x)",
+                  "Flagged in platform_oi alert (critical)",
+                  "Active positions on: ZBT-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "ZBT-USDT-SWAP SHORT opened 2025-10-18T04:52",
+              "ZBT-USDT-SWAP SHORT opened 2025-12-29T13:48",
+              "Active during critical platform_oi alert"
+            ],
+            "local_artifact_ref": ""
+          }
+        ]
+      },
+      {
+        "asset": "ORCL-USDT-SWAP",
+        "severity": "warning",
+        "executive_summary": "ORCL-USDT-SWAP triggered warning alert. Price: $147.54 (+4.65%). OI deviation: 84.49%. 3 user(s) profiled.",
+        "forward_looking": "Monitor ORCL-USDT-SWAP OI trajectory over the next 24 hours. If OI continues expanding, consider tightening position limits. Watch for funding rate shifts that may attract additional directional flow.",
+        "market_snapshot": {
+          "price": "147.54",
+          "change_24h": "+4.65%",
+          "open_interest": "0",
+          "funding_rate": "0",
+          "vol_24h": "2896",
+          "timestamp": "2026-04-01T10:30:10.348060+08:00"
+        },
+        "quantitative_impact": {
+          "title": "Quantitative Impact",
+          "metrics": [
+            {
+              "value": "84.49%",
+              "label": "OI Deviation (24H)",
+              "detail": "Open interest deviated 84.49% from the 24-hour average"
+            },
+            {
+              "value": "WARNING",
+              "label": "Alert Severity",
+              "detail": "Alert classified as warning"
+            },
+            {
+              "value": "+3.1%",
+              "label": "User Growth (period)",
+              "detail": "Total users changed from 385 to 397 over the observation window"
+            }
+          ]
+        },
+        "oi_attribution": {
+          "title": "OI Attribution (Hourly User Breakdown)",
+          "description": "Hourly breakdown of user positioning for the instrument.",
+          "user_hourly_table": {
+            "headers": [
+              "Hour (pt)",
+              "Total Users",
+              "Longs",
+              "Shorts"
+            ],
+            "rows": [
+              [
+                "2026033100",
+                "385",
+                "225",
+                "176"
+              ],
+              [
+                "2026033104",
+                "388",
+                "227",
+                "177"
+              ],
+              [
+                "2026033108",
+                "390",
+                "227",
+                "179"
+              ],
+              [
+                "2026033112",
+                "396",
+                "228",
+                "185"
+              ],
+              [
+                "2026033114",
+                "397",
+                "228",
+                "186"
+              ]
+            ]
+          }
+        },
+        "risk_assessment": {
+          "title": "Risk Assessment & Recommended Actions",
+          "actions": [
+            {
+              "priority": "P1",
+              "action": "Deep-review top risk users: 2004714, 33848016, 36954575",
+              "reason": "3 user(s) flagged with elevated trade/equity ratios or suspicious patterns"
+            },
+            {
+              "priority": "P2",
+              "action": "Continue monitoring OI trajectory and funding rate changes over the next 24 hours",
+              "reason": "Position dynamics may shift as new data comes in — ensure no further limit breaches"
+            }
+          ]
+        },
+        "involved_users_brief": {
+          "title": "Involved Users (Brief)",
+          "headers": [
+            "User ID",
+            "UID",
+            "Position",
+            "Margin",
+            "Opened",
+            "Risk Tier"
+          ],
+          "rows": [
+            [
+              "2004714",
+              "671601515442176",
+              "SHORT",
+              "Cross",
+              "2026-03-28T03:03:35",
+              "T2"
+            ],
+            [
+              "33848016",
+              "",
+              "LONG",
+              "Isolated",
+              "2026-03-12T18:09:00",
+              "T3"
+            ],
+            [
+              "36954575",
+              "",
+              "LONG",
+              "Isolated",
+              "2026-03-25T00:28:38",
+              "T3"
+            ]
+          ]
+        },
+        "causal_chain": [
+          {
+            "step": 1,
+            "type": "远因 (Structural)",
+            "name": "ORCL-USDT-SWAP Thin Liquidity / Low Float",
+            "description": "ORCL-USDT-SWAP has limited market depth (24H vol: 2896). Low float instruments are susceptible to rapid OI deviation.",
+            "evidence_strength": 3,
+            "evidence_label": "Market data"
+          },
+          {
+            "step": 2,
+            "type": "近因 (User Influx)",
+            "name": "ORCL-USDT-SWAP Position Buildup",
+            "description": "Users grew from 385 to 397 (longs 225->228, shorts 176->186) between 2026033100 and 2026033114.",
+            "evidence_strength": 4,
+            "evidence_label": "Position data",
+            "evidence_table": {
+              "headers": [
+                "Hour",
+                "Total Users",
+                "Longs",
+                "Shorts"
+              ],
+              "rows": [
+                [
+                  "2026033100",
+                  "385",
+                  "225",
+                  "176"
+                ],
+                [
+                  "2026033104",
+                  "388",
+                  "227",
+                  "177"
+                ],
+                [
+                  "2026033108",
+                  "390",
+                  "227",
+                  "179"
+                ],
+                [
+                  "2026033112",
+                  "396",
+                  "228",
+                  "185"
+                ],
+                [
+                  "2026033114",
+                  "397",
+                  "228",
+                  "186"
+                ]
+              ]
+            }
+          },
+          {
+            "step": 3,
+            "type": "触发事件 (Trigger)",
+            "name": "Alert Fired",
+            "description": "platform_oi alert fired at warning level. OI deviation: 84.49%.",
+            "evidence_strength": 5,
+            "evidence_label": "Platform alert"
+          },
+          {
+            "step": 4,
+            "type": "风险放大 (Amplification)",
+            "name": "User Concentration Risk",
+            "description": "Top users concentrating: 2004714, 33848016, 36954575 (risk tiers: T2, T3, T3). Position overlap amplifies systemic exposure.",
+            "evidence_strength": 4,
+            "evidence_label": "User data",
+            "evidence_table": {
+              "headers": [
+                "User ID",
+                "Risk Tier",
+                "Summary"
+              ],
+              "rows": [
+                [
+                  "2004714",
+                  "T2",
+                  "China account (okx_cn). registered 2014-01-05 (12.2yr). trade/equity ratio 52,38..."
+                ],
+                [
+                  "33848016",
+                  "T3",
+                  "LONG ORCL-USDT-SWAP, master info not available for deeper analysis."
+                ],
+                [
+                  "36954575",
+                  "T3",
+                  "LONG ORCL-USDT-SWAP, master info not available for deeper analysis."
+                ]
+              ]
+            }
+          }
+        ],
+        "key_users": [
+          "33848016",
+          "36954575",
+          "2004714"
+        ],
+        "user_profiles": [
+          {
+            "uid": "671601515442176",
+            "master_user_id": "2004714",
+            "overall_risk_tier": "T2",
+            "executive_summary": "China account (okx_cn). registered 2014-01-05 (12.2yr). trade/equity ratio 52,388x.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "warning",
+                "signals": [
+                  "Registered 2014-01-05 (12.2yr)",
+                  "okx_CN, phone 86",
+                  "KYC3 China verified",
+                  "Client type: PC",
+                  "Registration-to-first-deposit gap: 3.5yr (anomalous)"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "critical",
+                "signals": [
+                  "Trade volume $144,046,616.11 vs equity $2,749.59 (ratio 52,388x)",
+                  "Fee tier: LV1",
+                  "ORCL-USDT-SWAP SHORT (Cross), opened 2026-03-28T03:03"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table access denied (403) -- cannot verify device cluster",
+                  "No sub-account evidence from position query"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Registered okx_CN",
+                  "Phone 86 matches China nationality",
+                  "No region mismatch detected"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC3 — China",
+                  "is_market_account: 普通用户",
+                  "is_internal_account: 普通账户",
+                  "Phone 86 consistent with China"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "pass",
+                "signals": [
+                  "Trade volume $144,046,616.11, equity $2,749.59",
+                  "First deposit $916.49",
+                  "Last deposit 2026-03-19",
+                  "Equity retention: 300.0% of first deposit"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Last deposit 2026-03-19",
+                  "Withdrawal detail table inaccessible (data limited)"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "Overall risk tier: T2 (trade/equity ratio 52,388x)",
+                  "Flagged in platform_oi alert (warning)",
+                  "Active positions on: ORCL-USDT-SWAP"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "Trade/equity ratio 52,388x indicates high leverage cycling",
+              "ORCL-USDT-SWAP SHORT opened 2026-03-28T03:03"
+            ],
+            "local_artifact_ref": ""
+          },
+          {
+            "uid": "",
+            "master_user_id": "33848016",
+            "overall_risk_tier": "T3",
+            "executive_summary": "LONG ORCL-USDT-SWAP, master info not available for deeper analysis.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Master info not queried — no signals available"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "LONG ORCL-USDT-SWAP, 1 position(s)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region data requires master info query"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC data requires master info query"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity data requires master info query — position during OI anomaly flagged"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "LONG during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "LONG ORCL-USDT-SWAP",
+              "Position opened 2026-03-12T18:09:00"
+            ]
+          },
+          {
+            "uid": "",
+            "master_user_id": "36954575",
+            "overall_risk_tier": "T3",
+            "executive_summary": "LONG ORCL-USDT-SWAP, master info not available for deeper analysis.",
+            "dimensions": [
+              {
+                "name": "Registration Profile",
+                "severity": "pass",
+                "signals": [
+                  "Master info not queried — no signals available"
+                ]
+              },
+              {
+                "name": "Trading Behavior",
+                "severity": "warning",
+                "signals": [
+                  "LONG ORCL-USDT-SWAP, 1 position(s)"
+                ]
+              },
+              {
+                "name": "Associated Accounts",
+                "severity": "pending",
+                "signals": [
+                  "Login table 403"
+                ]
+              },
+              {
+                "name": "IP & Geolocation",
+                "severity": "pass",
+                "signals": [
+                  "Region data requires master info query"
+                ]
+              },
+              {
+                "name": "Identity Signals",
+                "severity": "pass",
+                "signals": [
+                  "KYC data requires master info query"
+                ]
+              },
+              {
+                "name": "Profit & Loss",
+                "severity": "warning",
+                "signals": [
+                  "Equity data requires master info query — position during OI anomaly flagged"
+                ]
+              },
+              {
+                "name": "Withdrawal Behavior",
+                "severity": "pending",
+                "signals": [
+                  "Data limited"
+                ]
+              },
+              {
+                "name": "Comprehensive Judgment",
+                "severity": "warning",
+                "signals": [
+                  "LONG during OI anomaly, monitoring required"
+                ]
+              }
+            ],
+            "key_evidence": [
+              "LONG ORCL-USDT-SWAP",
+              "Position opened 2026-03-25T00:28:38"
+            ]
+          }
+        ]
+      }
+    ],
+    "metrics": {
+      "instruments_scanned": 6,
+      "ema_coverage": 4,
+      "issues_found": 11,
+      "source": "每日风控总结 - 2026-03-31 00:00 - 23:59",
+      "generated_at": "2026-04-01T02:30:10.403324+00:00"
+    },
+    "metric_cards": [
+      {
+        "label": "Alert Types",
+        "value": "4"
+      },
+      {
+        "label": "Flagged Alerts",
+        "value": "6"
+      },
+      {
+        "label": "Suspicious Users",
+        "value": "5"
+      },
+      {
+        "label": "Highest Risk",
+        "value": "T1"
+      }
+    ],
+    "rule_blocks": [
+      {
+        "ruleId": "index_alarm",
+        "title": "Index Alarm",
+        "status": "warning",
+        "description": "🟠 USDC/EUR 报价币种出现批量\"cannot get OKX mid price\"共6条，集中在 18:10:10~18:23:40，表现为同一时间窗系统性 mid price 产出缺失；🟡 其余为成分不足类：WOO/GLM/WET/TRUST 等小币指数与 BZ/CL/NG/XCU/XAG/XPD/XPT/EWJ/ORCL/NFLX-USDT 等 TradFi/大宗商品/股票指数多例在线成分仅1~2个。",
+        "table": {
+          "headers": [
+            "ASSET",
+            "DETAILS",
+            "USERS",
+            "STATUS"
+          ],
+          "rows": [
+            [
+              "NFLX-USDT",
+              "🟠 USDC/EUR 报价币种出现批量\"cannot get OKX mid price\"共6条，集中在 18:10:10~18:23:40，表现为同一时间窗系统性 mid price 产出缺失；🟡 其余为成分不足类：WOO/GLM/WET/TRUST 等小币指数与 BZ/CL/NG/XCU/XAG/XPD/XPT/EWJ/ORCL/NFLX-USDT 等 TradFi/大宗商品/股票指数多例在线成分仅1~2个。",
+              "—",
+              "warning"
+            ]
+          ]
+        },
+        "note": null
+      },
+      {
+        "ruleId": "price_limit_p4",
+        "title": "Price Limit P4",
+        "status": "critical",
+        "description": "🔴 BTC-USD_UM_XPERP-310404 出现 Z cap 硬顶触发（同时报 both side insufficient liquidity），其余 🟠 BTC-USD_UM-260626/260403/260925/260410 与 LTC-USD_UM_XPERP-310404 为高频阈值命中。",
+        "table": {
+          "headers": [
+            "ASSET",
+            "DETAILS",
+            "USERS",
+            "STATUS"
+          ],
+          "rows": [
+            [
+              "BTC-USD_UM_XPERP-310404",
+              "🔴 BTC-USD_UM_XPERP-310404 出现 Z cap 硬顶触发（同时报 both side insufficient liquidity），其余 🟠 BTC-USD_UM-260626/260403/260925/260410 与 LTC-USD_UM_XPERP-310404 为高频阈值命中。",
+              "—",
+              "critical"
+            ],
+            [
+              "BTC-USD_UM_XPERP-310404",
+              "① 【紧急】建议立即核对 BTC-USD_UM_XPERP-310404 的限价参数与触发原因（Z cap）。",
+              "—",
+              "warning"
+            ]
+          ]
+        },
+        "note": null
+      },
+      {
+        "ruleId": "collateral_coin",
+        "title": "Collateral Coin Risk",
+        "status": "critical",
+        "description": "🟠 CHZ 触发小币抵押借币限额占比过高：borrow/limit 95.07%（阈值80%），当前未触发下单限制、未触发FRP。",
+        "table": {
+          "headers": [
+            "ASSET",
+            "DETAILS",
+            "USERS",
+            "STATUS"
+          ],
+          "rows": [
+            [
+              "CHZ",
+              "🟠 CHZ 触发小币抵押借币限额占比过高：borrow/limit 95.07%（阈值80%），当前未触发下单限制、未触发FRP。",
+              "—",
+              "critical"
+            ]
+          ]
+        },
+        "note": null
+      },
+      {
+        "ruleId": "platform_oi",
+        "title": "Platform OI",
+        "status": "warning",
+        "description": "🟠 ZBT 同时出现 OI/平台限额占比 90.89%（阈值80%）与 OI较24H均值偏离 50.33%（阈值20%）；🟠 ORCL 出现两次 OI较24H均值偏离 84.49%、53.55%；🟠 MU 偏离 60.02%、🟠 SNDK 偏离 76.24%。",
+        "table": {
+          "headers": [
+            "ASSET",
+            "DETAILS",
+            "USERS",
+            "STATUS"
+          ],
+          "rows": [
+            [
+              "ZBT",
+              "🟠 ZBT 同时出现 OI/平台限额占比 90.89%（阈值80%）与 OI较24H均值偏离 50.33%（阈值20%）；🟠 ORCL 出现两次 OI较24H均值偏离 84.49%、53.55%；🟠 MU 偏离 60.02%、🟠 SNDK 偏离 76.24%。",
+              "—",
+              "warning"
+            ],
+            [
+              "Platform OI",
+              "② 关注 ORCL、MU、SNDK 的 OI 偏离持续性。",
+              "—",
+              "warning"
+            ]
+          ]
+        },
+        "note": null
+      }
+    ],
+    "recommended_changes": null,
+    "downloads": [],
+    "markdown": "# Risk Intelligence\n\n**Summary:** 4 alert types analyzed. 6 flagged alert(s) parsed. 5 suspicious user(s) highlighted.\n**Source document:** 每日风控总结 - 2026-03-31 00:00 - 23:59\n\n## Suspicious Users\n- 193160760480899072 — T1 — Trade/equity ratio 9,693,821,605x. Active on: ZBT-USDT-SWAP.\n- 158905236868734976 — T1 — Trade/equity ratio 1,068,470,260x. Active on: ZBT-USDT-SWAP.\n- 124856668386373632 — T1 — Trade/equity ratio 482,999,337x. Active on: ZBT-USDT-SWAP.\n- 177125650799403008 — T1 — Trade/equity ratio 2,188,294x. Active on: ZBT-USDT-SWAP.\n- 147349815574044672 — T1 — Trade/equity ratio 503,528x. Active on: ZBT-USDT-SWAP.\n\n## Deep Profiles\n- 193160760480899072 — T1 — China account (okx_cn). registered 2021-06-22 (4.8yr). trade/equity ratio 9,693,821,605x.\n- 158905236868734976 — T1 — China account (okx_cn). registered 2021-03-19 (5.0yr). trade/equity ratio 1,068,470,260x.\n- 124856668386373632 — T1 — China account (okx_cn). registered 2020-12-15 (5.3yr). trade/equity ratio 482,999,337x.\n- 177125650799403008 — T1 — China account (okx_cn). registered 2021-05-09 (4.9yr). trade/equity ratio 2,188,294x.\n- 147349815574044672 — T1 — China account (okx_cn). registered 2021-02-15 (5.1yr). trade/equity ratio 503,528x.",
+    "error": null,
+    "source_document": {
+      "title": "每日风控总结 - 2026-03-31 00:00 - 23:59",
+      "url": "https://okg-block.sg.larksuite.com/docx/CXVAd5JweogpWyxtiAdlaEbOgeg",
+      "modified_at": "2026-04-01T10:00:00+08:00",
+      "selected_by": "latest_modified_desc"
+    },
+    "suspicious_users": [
+      {
+        "uid": "193160760480899072",
+        "master_user_id": "18462797",
+        "risk_tier": "T1",
+        "source_alert": "build_risk_intel",
+        "reason": "Trade/equity ratio 9,693,821,605x. Active on: ZBT-USDT-SWAP.",
+        "mentions": 1,
+        "first_seen": 0
+      },
+      {
+        "uid": "158905236868734976",
+        "master_user_id": "15502017",
+        "risk_tier": "T1",
+        "source_alert": "build_risk_intel",
+        "reason": "Trade/equity ratio 1,068,470,260x. Active on: ZBT-USDT-SWAP.",
+        "mentions": 1,
+        "first_seen": 1
+      },
+      {
+        "uid": "124856668386373632",
+        "master_user_id": "12793414",
+        "risk_tier": "T1",
+        "source_alert": "build_risk_intel",
+        "reason": "Trade/equity ratio 482,999,337x. Active on: ZBT-USDT-SWAP.",
+        "mentions": 1,
+        "first_seen": 2
+      },
+      {
+        "uid": "177125650799403008",
+        "master_user_id": "17371111",
+        "risk_tier": "T1",
+        "source_alert": "build_risk_intel",
+        "reason": "Trade/equity ratio 2,188,294x. Active on: ZBT-USDT-SWAP.",
+        "mentions": 1,
+        "first_seen": 3
+      },
+      {
+        "uid": "147349815574044672",
+        "master_user_id": "14304644",
+        "risk_tier": "T1",
+        "source_alert": "build_risk_intel",
+        "reason": "Trade/equity ratio 503,528x. Active on: ZBT-USDT-SWAP.",
+        "mentions": 1,
+        "first_seen": 4
+      }
+    ],
+    "user_profiles": [
+      {
+        "uid": "193160760480899072",
+        "master_user_id": "18462797",
+        "overall_risk_tier": "T1",
+        "executive_summary": "China account (okx_cn). registered 2021-06-22 (4.8yr). trade/equity ratio 9,693,821,605x.",
+        "dimensions": [
+          {
+            "name": "Registration Profile",
+            "severity": "pass",
+            "signals": [
+              "Registered 2021-06-22 (4.8yr)",
+              "okx_CN, phone 86",
+              "KYC3 China verified",
+              "Client type: APP"
+            ]
+          },
+          {
+            "name": "Trading Behavior",
+            "severity": "critical",
+            "signals": [
+              "Trade volume $164,794,967.28 vs equity $0.02 (ratio 9,693,821,605x)",
+              "Fee tier: LV1",
+              "ZBT-USDT-SWAP SHORT (Cross), opened 2026-03-29T22:18"
+            ]
+          },
+          {
+            "name": "Associated Accounts",
+            "severity": "pending",
+            "signals": [
+              "Login table access denied (403) -- cannot verify device cluster",
+              "No sub-account evidence from position query"
+            ]
+          },
+          {
+            "name": "IP & Geolocation",
+            "severity": "pass",
+            "signals": [
+              "Registered okx_CN",
+              "Phone 86 matches China nationality",
+              "No region mismatch detected"
+            ]
+          },
+          {
+            "name": "Identity Signals",
+            "severity": "pass",
+            "signals": [
+              "KYC3 — China",
+              "is_market_account: 普通用户",
+              "is_internal_account: 普通账户",
+              "Phone 86 consistent with China"
+            ]
+          },
+          {
+            "name": "Profit & Loss",
+            "severity": "critical",
+            "signals": [
+              "Trade volume $164,794,967.28, equity $0.02",
+              "First deposit $778.81",
+              "Last deposit 2026-03-29",
+              "Equity retention: 0.0% of first deposit"
+            ]
+          },
+          {
+            "name": "Withdrawal Behavior",
+            "severity": "pending",
+            "signals": [
+              "Last deposit 2026-03-29",
+              "Withdrawal detail table inaccessible (data limited)"
+            ]
+          },
+          {
+            "name": "Comprehensive Judgment",
+            "severity": "critical",
+            "signals": [
+              "Overall risk tier: T1 (trade/equity ratio 9,693,821,605x)",
+              "Flagged in platform_oi alert (critical)",
+              "Active positions on: ZBT-USDT-SWAP"
+            ]
+          }
+        ],
+        "key_evidence": [
+          "Trade/equity ratio 9,693,821,605x indicates high leverage cycling",
+          "ZBT-USDT-SWAP SHORT opened 2026-03-29T22:18",
+          "Active during critical platform_oi alert"
+        ],
+        "local_artifact_ref": ""
+      },
+      {
+        "uid": "158905236868734976",
+        "master_user_id": "15502017",
+        "overall_risk_tier": "T1",
+        "executive_summary": "China account (okx_cn). registered 2021-03-19 (5.0yr). trade/equity ratio 1,068,470,260x.",
+        "dimensions": [
+          {
+            "name": "Registration Profile",
+            "severity": "pass",
+            "signals": [
+              "Registered 2021-03-19 (5.0yr)",
+              "okx_CN, phone 86",
+              "KYC3 China verified",
+              "Client type: H5"
+            ]
+          },
+          {
+            "name": "Trading Behavior",
+            "severity": "critical",
+            "signals": [
+              "Trade volume $19,232,464.68 vs equity $0.02 (ratio 1,068,470,260x)",
+              "Fee tier: LV1",
+              "ZBT-USDT-SWAP SHORT (Cross), opened 2026-03-30T00:08"
+            ]
+          },
+          {
+            "name": "Associated Accounts",
+            "severity": "pending",
+            "signals": [
+              "Login table access denied (403) -- cannot verify device cluster",
+              "No sub-account evidence from position query"
+            ]
+          },
+          {
+            "name": "IP & Geolocation",
+            "severity": "pass",
+            "signals": [
+              "Registered okx_CN",
+              "Phone 86 matches China nationality",
+              "No region mismatch detected"
+            ]
+          },
+          {
+            "name": "Identity Signals",
+            "severity": "pass",
+            "signals": [
+              "KYC3 — China",
+              "is_market_account: 普通用户",
+              "is_internal_account: 普通账户",
+              "Phone 86 consistent with China"
+            ]
+          },
+          {
+            "name": "Profit & Loss",
+            "severity": "critical",
+            "signals": [
+              "Trade volume $19,232,464.68, equity $0.02",
+              "First deposit $2.40",
+              "Last deposit 2026-03-30",
+              "Equity retention: 0.8% of first deposit"
+            ]
+          },
+          {
+            "name": "Withdrawal Behavior",
+            "severity": "pending",
+            "signals": [
+              "Last deposit 2026-03-30",
+              "Withdrawal detail table inaccessible (data limited)"
+            ]
+          },
+          {
+            "name": "Comprehensive Judgment",
+            "severity": "critical",
+            "signals": [
+              "Overall risk tier: T1 (trade/equity ratio 1,068,470,260x)",
+              "Flagged in platform_oi alert (critical)",
+              "Active positions on: ZBT-USDT-SWAP"
+            ]
+          }
+        ],
+        "key_evidence": [
+          "Trade/equity ratio 1,068,470,260x indicates high leverage cycling",
+          "ZBT-USDT-SWAP SHORT opened 2026-03-30T00:08",
+          "Active during critical platform_oi alert"
+        ],
+        "local_artifact_ref": ""
+      },
+      {
+        "uid": "124856668386373632",
+        "master_user_id": "12793414",
+        "overall_risk_tier": "T1",
+        "executive_summary": "China account (okx_cn). registered 2020-12-15 (5.3yr). trade/equity ratio 482,999,337x.",
+        "dimensions": [
+          {
+            "name": "Registration Profile",
+            "severity": "pass",
+            "signals": [
+              "Registered 2020-12-15 (5.3yr)",
+              "okx_CN, phone 86",
+              "KYC3 China verified",
+              "Client type: PC"
+            ]
+          },
+          {
+            "name": "Trading Behavior",
+            "severity": "critical",
+            "signals": [
+              "Trade volume $120,749,834.20 vs equity $0.25 (ratio 482,999,337x)",
+              "Fee tier: LV1",
+              "ZBT-USDT-SWAP SHORT (Cross), opened 2026-03-30T00:33"
+            ]
+          },
+          {
+            "name": "Associated Accounts",
+            "severity": "pending",
+            "signals": [
+              "Login table access denied (403) -- cannot verify device cluster",
+              "No sub-account evidence from position query"
+            ]
+          },
+          {
+            "name": "IP & Geolocation",
+            "severity": "pass",
+            "signals": [
+              "Registered okx_CN",
+              "Phone 86 matches China nationality",
+              "No region mismatch detected"
+            ]
+          },
+          {
+            "name": "Identity Signals",
+            "severity": "pass",
+            "signals": [
+              "KYC3 — China",
+              "is_market_account: 普通用户",
+              "is_internal_account: 普通账户",
+              "Phone 86 consistent with China"
+            ]
+          },
+          {
+            "name": "Profit & Loss",
+            "severity": "critical",
+            "signals": [
+              "Trade volume $120,749,834.20, equity $0.25",
+              "First deposit $15.50",
+              "Last deposit 2026-03-30",
+              "Equity retention: 1.6% of first deposit"
+            ]
+          },
+          {
+            "name": "Withdrawal Behavior",
+            "severity": "pending",
+            "signals": [
+              "Last deposit 2026-03-30",
+              "Withdrawal detail table inaccessible (data limited)"
+            ]
+          },
+          {
+            "name": "Comprehensive Judgment",
+            "severity": "critical",
+            "signals": [
+              "Overall risk tier: T1 (trade/equity ratio 482,999,337x)",
+              "Flagged in platform_oi alert (critical)",
+              "Active positions on: ZBT-USDT-SWAP"
+            ]
+          }
+        ],
+        "key_evidence": [
+          "Trade/equity ratio 482,999,337x indicates high leverage cycling",
+          "ZBT-USDT-SWAP SHORT opened 2026-03-30T00:33",
+          "Active during critical platform_oi alert"
+        ],
+        "local_artifact_ref": ""
+      },
+      {
+        "uid": "177125650799403008",
+        "master_user_id": "17371111",
+        "overall_risk_tier": "T1",
+        "executive_summary": "China account (okx_cn). registered 2021-05-09 (4.9yr). trade/equity ratio 2,188,294x.",
+        "dimensions": [
+          {
+            "name": "Registration Profile",
+            "severity": "pass",
+            "signals": [
+              "Registered 2021-05-09 (4.9yr)",
+              "okx_CN, phone 86",
+              "KYC3 China verified",
+              "Client type: APP"
+            ]
+          },
+          {
+            "name": "Trading Behavior",
+            "severity": "critical",
+            "signals": [
+              "Trade volume $10,547,577.18 vs equity $4.82 (ratio 2,188,294x)",
+              "Fee tier: LV1",
+              "ZBT-USDT-SWAP SHORT (Cross), opened 2026-03-29T17:48"
+            ]
+          },
+          {
+            "name": "Associated Accounts",
+            "severity": "pending",
+            "signals": [
+              "Login table access denied (403) -- cannot verify device cluster",
+              "No sub-account evidence from position query"
+            ]
+          },
+          {
+            "name": "IP & Geolocation",
+            "severity": "pass",
+            "signals": [
+              "Registered okx_CN",
+              "Phone 86 matches China nationality",
+              "No region mismatch detected"
+            ]
+          },
+          {
+            "name": "Identity Signals",
+            "severity": "pass",
+            "signals": [
+              "KYC3 — China",
+              "is_market_account: 普通用户",
+              "is_internal_account: 普通账户",
+              "Phone 86 consistent with China"
+            ]
+          },
+          {
+            "name": "Profit & Loss",
+            "severity": "critical",
+            "signals": [
+              "Trade volume $10,547,577.18, equity $4.82",
+              "First deposit $85.34",
+              "Last deposit 2026-03-31",
+              "Equity retention: 5.6% of first deposit"
+            ]
+          },
+          {
+            "name": "Withdrawal Behavior",
+            "severity": "pending",
+            "signals": [
+              "Last deposit 2026-03-31",
+              "Withdrawal detail table inaccessible (data limited)"
+            ]
+          },
+          {
+            "name": "Comprehensive Judgment",
+            "severity": "critical",
+            "signals": [
+              "Overall risk tier: T1 (trade/equity ratio 2,188,294x)",
+              "Flagged in platform_oi alert (critical)",
+              "Active positions on: ZBT-USDT-SWAP"
+            ]
+          }
+        ],
+        "key_evidence": [
+          "Trade/equity ratio 2,188,294x indicates high leverage cycling",
+          "ZBT-USDT-SWAP SHORT opened 2026-03-29T17:48",
+          "Active during critical platform_oi alert"
+        ],
+        "local_artifact_ref": ""
+      },
+      {
+        "uid": "147349815574044672",
+        "master_user_id": "14304644",
+        "overall_risk_tier": "T1",
+        "executive_summary": "China account (okx_cn). registered 2021-02-15 (5.1yr). trade/equity ratio 503,528x.",
+        "dimensions": [
+          {
+            "name": "Registration Profile",
+            "severity": "pass",
+            "signals": [
+              "Registered 2021-02-15 (5.1yr)",
+              "okx_CN, phone 86",
+              "KYC3 China verified",
+              "Client type: APP"
+            ]
+          },
+          {
+            "name": "Trading Behavior",
+            "severity": "critical",
+            "signals": [
+              "Trade volume $19,214,612.22 vs equity $38.16 (ratio 503,528x)",
+              "Fee tier: LV1",
+              "ZBT-USDT-SWAP SHORT (Cross), opened 2026-02-27T23:39"
+            ]
+          },
+          {
+            "name": "Associated Accounts",
+            "severity": "pending",
+            "signals": [
+              "Login table access denied (403) -- cannot verify device cluster",
+              "No sub-account evidence from position query"
+            ]
+          },
+          {
+            "name": "IP & Geolocation",
+            "severity": "pass",
+            "signals": [
+              "Registered okx_CN",
+              "Phone 86 matches China nationality",
+              "No region mismatch detected"
+            ]
+          },
+          {
+            "name": "Identity Signals",
+            "severity": "pass",
+            "signals": [
+              "KYC3 — China",
+              "is_market_account: 普通用户",
+              "is_internal_account: 普通账户",
+              "Phone 86 consistent with China"
+            ]
+          },
+          {
+            "name": "Profit & Loss",
+            "severity": "pass",
+            "signals": [
+              "Trade volume $19,214,612.22, equity $38.16",
+              "First deposit $15.00",
+              "Last deposit 2026-03-24",
+              "Equity retention: 254.4% of first deposit"
+            ]
+          },
+          {
+            "name": "Withdrawal Behavior",
+            "severity": "pending",
+            "signals": [
+              "Last deposit 2026-03-24",
+              "Withdrawal detail table inaccessible (data limited)"
+            ]
+          },
+          {
+            "name": "Comprehensive Judgment",
+            "severity": "critical",
+            "signals": [
+              "Overall risk tier: T1 (trade/equity ratio 503,528x)",
+              "Flagged in platform_oi alert (critical)",
+              "Active positions on: ZBT-USDT-SWAP"
+            ]
+          }
+        ],
+        "key_evidence": [
+          "Trade/equity ratio 503,528x indicates high leverage cycling",
+          "ZBT-USDT-SWAP SHORT opened 2026-02-27T23:39",
+          "Active during critical platform_oi alert"
+        ],
+        "local_artifact_ref": ""
+      }
+    ]
+  }
+}
