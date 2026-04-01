@@ -137,8 +137,17 @@ def _preflight_check(adapters_to_run: list, date_str: str) -> list[tuple[str, st
 
     if "mmr-futures" in slugs:
         ok = DEPTH_FILE.exists() and DEPTH_FILE.stat().st_size > 10
+        # Check freshness: depth must be <6h old (Rule #1: no stale data)
+        if ok:
+            age_h = (time.time() - DEPTH_FILE.stat().st_mtime) / 3600
+            if age_h > 6:
+                checks.append(("depth freshness", False,
+                    f"STALE ({age_h:.1f}h old) — re-fetch via MCP: python3 -m runner.fetch_depth sql"))
+                ok = False
+            else:
+                checks.append(("depth freshness", True, f"{age_h:.1f}h old"))
         checks.append(("depth_sql.json", ok, str(DEPTH_FILE)))
-        # Validate depth covers ≥90% of tier instruments
+        # Validate depth covers ≥90% of tier instruments (check after tiers are refreshed)
         if ok and MMR_TIERS_CACHE.exists():
             try:
                 depth = json.loads(DEPTH_FILE.read_text())
@@ -156,6 +165,9 @@ def _preflight_check(adapters_to_run: list, date_str: str) -> list[tuple[str, st
         checks.append(("index server :8786", ok, "http://localhost:8786/health"))
 
     ok = EMA_CACHE.exists()
+    if ok:
+        ema_age_h = (time.time() - EMA_CACHE.stat().st_mtime) / 3600
+        checks.append(("EMA freshness", ema_age_h < 1, f"{ema_age_h:.1f}h old (server updating live)"))
     checks.append(("EMA cache", ok, str(EMA_CACHE)))
 
     _log("Pre-flight checks:")
@@ -185,19 +197,20 @@ def _validate_report(chapters: list[dict]) -> list[str]:
 
 
 def _ensure_mmr_tiers():
-    """Fetch fresh OKX tiers if stale (>24h) so MMR covers all instruments."""
-    if MMR_TIERS_CACHE.exists():
-        age_h = (time.time() - MMR_TIERS_CACHE.stat().st_mtime) / 3600
-        if age_h < 24:
-            return
-    _log("Fetching fresh OKX tiers for MMR review...")
+    """ALWAYS fetch fresh OKX tiers at report time. Rule #1: all data must be fresh."""
+    _log("Fetching fresh OKX tiers (always refresh at report time)...")
     result = subprocess.run(
         [sys.executable, "ptr_cli.py", "fetch", "tiers"],
         cwd=str(MMR_CLI_DIR),
         capture_output=True, text=True, timeout=120,
     )
     if result.returncode == 0:
-        _log("  Tiers refreshed successfully")
+        try:
+            data = json.loads(result.stdout)
+            count = data.get("count", "?")
+            _log(f"  Tiers refreshed: {count} contracts")
+        except Exception:
+            _log("  Tiers refreshed successfully")
     else:
         _log(f"  Tiers fetch failed: {result.stderr[:200]}")
 
@@ -317,14 +330,14 @@ def main():
         adapters_to_run = all_adapters
 
     # Pre-flight: verify dependencies before running adapters
-    failed_checks = _preflight_check(adapters_to_run, date_str)
-    if failed_checks:
-        _log(f"WARNING: {len(failed_checks)} pre-flight check(s) failed — affected adapters may return pending")
-
-    # Auto-refresh MMR tiers + competitor cache
+    # Refresh data BEFORE preflight so checks use fresh data
     if any(a.slug == "mmr-futures" for a in adapters_to_run):
         _ensure_mmr_tiers()
         _refresh_mmr_cache()
+
+    failed_checks = _preflight_check(adapters_to_run, date_str)
+    if failed_checks:
+        _log(f"WARNING: {len(failed_checks)} pre-flight check(s) failed — affected adapters may return pending")
 
     MAX_RETRIES = 3
 

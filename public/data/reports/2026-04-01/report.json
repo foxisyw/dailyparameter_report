@@ -1,9 +1,9 @@
 {
   "report": {
     "date": "2026-04-01",
-    "generated_at": "2026-04-01T02:58:29.461993+00:00",
+    "generated_at": "2026-04-01T03:35:57.246874+00:00",
     "status": "critical",
-    "total_issues": 1256,
+    "total_issues": 1255,
     "chapters": [
       {
         "slug": "risk-intel",
@@ -35,13 +35,13 @@
         "slug": "mmr-futures",
         "title": "MMR Futures Review",
         "status": "warning",
-        "summary": "48 adjustments found across 269 instruments. Leverage: ↑2 ↓3. Amount: ↑28 ↓17.",
+        "summary": "47 adjustments found across 269 instruments. Leverage: ↑2 ↓3. Amount: ↑27 ↓17.",
         "metrics": {
           "instruments_scanned": 302,
           "ema_coverage": 269,
-          "issues_found": 48,
+          "issues_found": 47,
           "source": "OKX Tiers + Depth SQL",
-          "generated_at": "2026-04-01T02:58:27.786735+00:00"
+          "generated_at": "2026-04-01T03:35:55.720419+00:00"
         }
       },
       {
@@ -4639,13 +4639,13 @@
       "title": "MMR Futures Review",
       "render_variant": "mmr-futures",
       "status": "warning",
-      "summary": "48 adjustments found across 269 instruments. Leverage: ↑2 ↓3. Amount: ↑28 ↓17.",
+      "summary": "47 adjustments found across 269 instruments. Leverage: ↑2 ↓3. Amount: ↑27 ↓17.",
       "metrics": {
         "instruments_scanned": 302,
         "ema_coverage": 269,
-        "issues_found": 48,
+        "issues_found": 47,
         "source": "OKX Tiers + Depth SQL",
-        "generated_at": "2026-04-01T02:58:27.786735+00:00"
+        "generated_at": "2026-04-01T03:35:55.720419+00:00"
       },
       "metric_cards": [
         {
@@ -4658,7 +4658,7 @@
         },
         {
           "label": "Adjustments",
-          "value": "48"
+          "value": "47"
         },
         {
           "label": "Source",
@@ -4669,8 +4669,8 @@
         {
           "ruleId": "all_changes",
           "title": "All Changes",
-          "count": 48,
-          "description": "Contracts flagged by rule checks: leverage mismatch, ratio <10% or >50%, competitor cap. 48 of 138 total model adjustments.",
+          "count": 47,
+          "description": "Contracts flagged by rule checks: leverage mismatch, ratio <10% or >50%, competitor cap. 47 of 138 total model adjustments.",
           "status": "warning",
           "table": {
             "headers": [
@@ -4692,28 +4692,28 @@
                 "APE-USDT",
                 "Crypto",
                 "Inc ↑",
-                "ratio 8.3% < 10%",
+                "ratio 8.4% < 10%",
                 "HIGH"
               ],
               [
                 "API3-USDT",
                 "Crypto",
                 "Inc ↓",
-                "ratio 43.3% > 50%",
+                "ratio 43.4% > 50%",
                 "HIGH"
               ],
               [
                 "ARB-USDT",
                 "Crypto",
                 "Inc ↑",
-                "ratio 9.5% < 10%",
+                "ratio 9.6% < 10%",
                 "HIGH"
               ],
               [
                 "ATH-USDT",
                 "Crypto",
                 "Inc ↑",
-                "ratio 9.8% < 10%",
+                "ratio 9.9% < 10%",
                 "HIGH"
               ],
               [
@@ -4727,7 +4727,7 @@
                 "BAT-USDT",
                 "Crypto",
                 "Inc ↑",
-                "ratio 9.1% < 10%",
+                "ratio 9.2% < 10%",
                 "HIGH"
               ],
               [
@@ -4769,7 +4769,7 @@
                 "ESP-USDT",
                 "Crypto",
                 "Inc ↓",
-                "ratio 53.0% > 50%",
+                "ratio 53.4% > 50%",
                 "HIGH"
               ],
               [
@@ -4790,28 +4790,28 @@
                 "FLOW-USDT",
                 "Crypto",
                 "Inc ↑",
-                "ratio 9.7% < 10%",
+                "ratio 9.6% < 10%",
                 "HIGH"
               ],
               [
                 "FOGO-USDT",
                 "Crypto",
                 "Inc ↓",
-                "ratio 41.5% > 50%",
+                "ratio 41.8% > 50%",
                 "HIGH"
               ],
               [
                 "GPS-USDT",
                 "Crypto",
                 "Inc ↓",
-                "ratio 43.9% > 50%",
+                "ratio 43.7% > 50%",
                 "HIGH"
               ],
               [
                 "ICX-USDT",
                 "Crypto",
                 "Inc ↓",
-                "ratio 72.4% > 50%",
+                "ratio 72.8% > 50%",
                 "HIGH"
               ],
               [
@@ -4832,21 +4832,21 @@
                 "KGEN-USDT",
                 "Crypto",
                 "Inc ↓",
-                "ratio 87.6% > 50%",
+                "ratio 87.9% > 50%",
                 "HIGH"
               ],
               [
                 "LAB-USDT",
                 "Crypto",
                 "Inc ↓",
-                "ratio 65.2% > 50%",
+                "ratio 65.8% > 50%",
                 "HIGH"
               ],
               [
                 "LIGHT-USDT",
                 "Crypto",
                 "Inc ↑",
-                "ratio 8.9% < 10%",
+                "ratio 9.1% < 10%",
                 "HIGH"
               ],
               [
@@ -4867,28 +4867,28 @@
                 "MON-USDT",
                 "Crypto",
                 "Inc ↑",
-                "ratio 8.8% < 10%",
+                "ratio 8.9% < 10%",
                 "HIGH"
               ],
               [
                 "OL-USDT",
                 "Crypto",
                 "Inc ↓",
-                "ratio 73.9% > 50%",
+                "ratio 73.6% > 50%",
                 "HIGH"
               ],
               [
                 "ONT-USDT",
                 "Crypto",
                 "Inc ↑",
-                "ratio 5.8% < 10%",
+                "ratio 6.1% < 10%",
                 "HIGH"
               ],
               [
                 "PARTI-USDT",
                 "Crypto",
                 "10x → 20x + Inc ↑",
-                "Depth → level 3; ratio 12.5% < 10%",
+                "Depth → level 3; ratio 12.6% < 10%",
                 "HIGH"
               ],
               [
@@ -4902,14 +4902,14 @@
                 "PIEVERSE-USDT",
                 "Crypto",
                 "Inc ↓",
-                "ratio 52.7% > 50%",
+                "ratio 52.8% > 50%",
                 "HIGH"
               ],
               [
                 "PIPPIN-USDT",
                 "Crypto",
                 "Inc ↑",
-                "ratio 6.8% < 10%",
+                "ratio 6.9% < 10%",
                 "HIGH"
               ],
               [
@@ -4927,17 +4927,10 @@
                 "HIGH"
               ],
               [
-                "PUMP-USDT",
-                "Crypto",
-                "Inc ↑",
-                "ratio 9.9% < 10%",
-                "HIGH"
-              ],
-              [
                 "RLS-USDT",
                 "Crypto",
                 "Inc ↓",
-                "ratio 128.4% > 50%",
+                "ratio 127.8% > 50%",
                 "HIGH"
               ],
               [
@@ -4951,21 +4944,21 @@
                 "SIGN-USDT",
                 "Crypto",
                 "Inc ↑",
-                "ratio 7.2% < 10%",
+                "ratio 7.1% < 10%",
                 "HIGH"
               ],
               [
                 "SPACE-USDT",
                 "Crypto",
                 "Inc ↑",
-                "ratio 9.1% < 10%",
+                "ratio 9.2% < 10%",
                 "HIGH"
               ],
               [
                 "STABLE-USDT",
                 "Crypto",
                 "Inc ↓",
-                "ratio 41.3% > 50%",
+                "ratio 41.4% > 50%",
                 "HIGH"
               ],
               [
@@ -4986,7 +4979,7 @@
                 "USELESS-USDT",
                 "Crypto",
                 "Inc ↑",
-                "ratio 9.6% < 10%",
+                "ratio 9.7% < 10%",
                 "HIGH"
               ],
               [
@@ -5007,7 +5000,7 @@
                 "ZIL-USDT",
                 "Crypto",
                 "Inc ↑",
-                "ratio 8.0% < 10%",
+                "ratio 8.1% < 10%",
                 "HIGH"
               ],
               [
@@ -5044,7 +5037,7 @@
               [
                 "PARTI-USDT",
                 "10x → 20x + Inc ↑",
-                "Depth → level 3; ratio 12.5% < 10%",
+                "Depth → level 3; ratio 12.6% < 10%",
                 "HIGH"
               ],
               [
@@ -5071,7 +5064,7 @@
         {
           "ruleId": "ratio",
           "title": "Ratio",
-          "count": 45,
+          "count": 44,
           "category_group": "CRYPTO PERPS",
           "description": "Contracts where inc_ratio is <10% (increment too tight) or >50% (too wide).",
           "status": "warning",
@@ -5092,25 +5085,25 @@
               [
                 "APE-USDT",
                 "Inc ↑",
-                "ratio 8.3% < 10%",
+                "ratio 8.4% < 10%",
                 "HIGH"
               ],
               [
                 "API3-USDT",
                 "Inc ↓",
-                "ratio 43.3% > 50%",
+                "ratio 43.4% > 50%",
                 "HIGH"
               ],
               [
                 "ARB-USDT",
                 "Inc ↑",
-                "ratio 9.5% < 10%",
+                "ratio 9.6% < 10%",
                 "HIGH"
               ],
               [
                 "ATH-USDT",
                 "Inc ↑",
-                "ratio 9.8% < 10%",
+                "ratio 9.9% < 10%",
                 "HIGH"
               ],
               [
@@ -5122,7 +5115,7 @@
               [
                 "BAT-USDT",
                 "Inc ↑",
-                "ratio 9.1% < 10%",
+                "ratio 9.2% < 10%",
                 "HIGH"
               ],
               [
@@ -5146,7 +5139,7 @@
               [
                 "ESP-USDT",
                 "Inc ↓",
-                "ratio 53.0% > 50%",
+                "ratio 53.4% > 50%",
                 "HIGH"
               ],
               [
@@ -5164,25 +5157,25 @@
               [
                 "FLOW-USDT",
                 "Inc ↑",
-                "ratio 9.7% < 10%",
+                "ratio 9.6% < 10%",
                 "HIGH"
               ],
               [
                 "FOGO-USDT",
                 "Inc ↓",
-                "ratio 41.5% > 50%",
+                "ratio 41.8% > 50%",
                 "HIGH"
               ],
               [
                 "GPS-USDT",
                 "Inc ↓",
-                "ratio 43.9% > 50%",
+                "ratio 43.7% > 50%",
                 "HIGH"
               ],
               [
                 "ICX-USDT",
                 "Inc ↓",
-                "ratio 72.4% > 50%",
+                "ratio 72.8% > 50%",
                 "HIGH"
               ],
               [
@@ -5200,19 +5193,19 @@
               [
                 "KGEN-USDT",
                 "Inc ↓",
-                "ratio 87.6% > 50%",
+                "ratio 87.9% > 50%",
                 "HIGH"
               ],
               [
                 "LAB-USDT",
                 "Inc ↓",
-                "ratio 65.2% > 50%",
+                "ratio 65.8% > 50%",
                 "HIGH"
               ],
               [
                 "LIGHT-USDT",
                 "Inc ↑",
-                "ratio 8.9% < 10%",
+                "ratio 9.1% < 10%",
                 "HIGH"
               ],
               [
@@ -5230,37 +5223,37 @@
               [
                 "MON-USDT",
                 "Inc ↑",
-                "ratio 8.8% < 10%",
+                "ratio 8.9% < 10%",
                 "HIGH"
               ],
               [
                 "OL-USDT",
                 "Inc ↓",
-                "ratio 73.9% > 50%",
+                "ratio 73.6% > 50%",
                 "HIGH"
               ],
               [
                 "ONT-USDT",
                 "Inc ↑",
-                "ratio 5.8% < 10%",
+                "ratio 6.1% < 10%",
                 "HIGH"
               ],
               [
                 "PARTI-USDT",
                 "10x → 20x + Inc ↑",
-                "Depth → level 3; ratio 12.5% < 10%",
+                "Depth → level 3; ratio 12.6% < 10%",
                 "HIGH"
               ],
               [
                 "PIEVERSE-USDT",
                 "Inc ↓",
-                "ratio 52.7% > 50%",
+                "ratio 52.8% > 50%",
                 "HIGH"
               ],
               [
                 "PIPPIN-USDT",
                 "Inc ↑",
-                "ratio 6.8% < 10%",
+                "ratio 6.9% < 10%",
                 "HIGH"
               ],
               [
@@ -5276,15 +5269,9 @@
                 "HIGH"
               ],
               [
-                "PUMP-USDT",
-                "Inc ↑",
-                "ratio 9.9% < 10%",
-                "HIGH"
-              ],
-              [
                 "RLS-USDT",
                 "Inc ↓",
-                "ratio 128.4% > 50%",
+                "ratio 127.8% > 50%",
                 "HIGH"
               ],
               [
@@ -5296,19 +5283,19 @@
               [
                 "SIGN-USDT",
                 "Inc ↑",
-                "ratio 7.2% < 10%",
+                "ratio 7.1% < 10%",
                 "HIGH"
               ],
               [
                 "SPACE-USDT",
                 "Inc ↑",
-                "ratio 9.1% < 10%",
+                "ratio 9.2% < 10%",
                 "HIGH"
               ],
               [
                 "STABLE-USDT",
                 "Inc ↓",
-                "ratio 41.3% > 50%",
+                "ratio 41.4% > 50%",
                 "HIGH"
               ],
               [
@@ -5326,13 +5313,13 @@
               [
                 "USELESS-USDT",
                 "Inc ↑",
-                "ratio 9.6% < 10%",
+                "ratio 9.7% < 10%",
                 "HIGH"
               ],
               [
                 "ZIL-USDT",
                 "Inc ↑",
-                "ratio 8.0% < 10%",
+                "ratio 8.1% < 10%",
                 "HIGH"
               ]
             ]
@@ -5386,7 +5373,7 @@
       ],
       "recommended_changes": null,
       "downloads": [],
-      "markdown": "# MMR Futures Review\n\n**Status:** warning\n\n48 adjustments across 269 in-scope instruments.\n",
+      "markdown": "# MMR Futures Review\n\n**Status:** warning\n\n47 adjustments across 269 in-scope instruments.\n",
       "error": null,
       "source_document": null,
       "suspicious_users": [],
