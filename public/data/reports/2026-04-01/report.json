@@ -1,9 +1,9 @@
 {
   "report": {
     "date": "2026-04-01",
-    "generated_at": "2026-04-01T02:30:47.273028+00:00",
+    "generated_at": "2026-04-01T02:58:29.461993+00:00",
     "status": "critical",
-    "total_issues": 1208,
+    "total_issues": 1256,
     "chapters": [
       {
         "slug": "risk-intel",
@@ -35,13 +35,13 @@
         "slug": "mmr-futures",
         "title": "MMR Futures Review",
         "status": "warning",
-        "summary": "MMR Futures review encountered an error: Failed to refresh competitors: No module named 'pybit'",
+        "summary": "48 adjustments found across 269 instruments. Leverage: ↑2 ↓3. Amount: ↑28 ↓17.",
         "metrics": {
-          "instruments_scanned": 0,
-          "ema_coverage": 0,
-          "issues_found": 0,
-          "source": "error",
-          "generated_at": "2026-04-01T02:30:24.126190+00:00"
+          "instruments_scanned": 302,
+          "ema_coverage": 269,
+          "issues_found": 48,
+          "source": "OKX Tiers + Depth SQL",
+          "generated_at": "2026-04-01T02:58:27.786735+00:00"
         }
       },
       {
@@ -4639,37 +4639,755 @@
       "title": "MMR Futures Review",
       "render_variant": "mmr-futures",
       "status": "warning",
-      "summary": "MMR Futures review encountered an error: Failed to refresh competitors: No module named 'pybit'",
+      "summary": "48 adjustments found across 269 instruments. Leverage: ↑2 ↓3. Amount: ↑28 ↓17.",
       "metrics": {
-        "instruments_scanned": 0,
-        "ema_coverage": 0,
-        "issues_found": 0,
-        "source": "error",
-        "generated_at": "2026-04-01T02:30:24.126190+00:00"
+        "instruments_scanned": 302,
+        "ema_coverage": 269,
+        "issues_found": 48,
+        "source": "OKX Tiers + Depth SQL",
+        "generated_at": "2026-04-01T02:58:27.786735+00:00"
       },
       "metric_cards": [
         {
           "label": "Instruments",
-          "value": "0"
+          "value": "302"
         },
         {
           "label": "In Scope",
-          "value": "0"
+          "value": "269"
         },
         {
           "label": "Adjustments",
-          "value": "0"
+          "value": "48"
         },
         {
           "label": "Source",
-          "value": "error"
+          "value": "Depth SQL + OKX API"
         }
       ],
-      "rule_blocks": [],
+      "rule_blocks": [
+        {
+          "ruleId": "all_changes",
+          "title": "All Changes",
+          "count": 48,
+          "description": "Contracts flagged by rule checks: leverage mismatch, ratio <10% or >50%, competitor cap. 48 of 138 total model adjustments.",
+          "status": "warning",
+          "table": {
+            "headers": [
+              "INSTRUMENT",
+              "CATEGORY",
+              "CHANGE",
+              "REASON",
+              "PRIORITY"
+            ],
+            "rows": [
+              [
+                "ANIME-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 6.1% < 10%",
+                "HIGH"
+              ],
+              [
+                "APE-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 8.3% < 10%",
+                "HIGH"
+              ],
+              [
+                "API3-USDT",
+                "Crypto",
+                "Inc ↓",
+                "ratio 43.3% > 50%",
+                "HIGH"
+              ],
+              [
+                "ARB-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 9.5% < 10%",
+                "HIGH"
+              ],
+              [
+                "ATH-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 9.8% < 10%",
+                "HIGH"
+              ],
+              [
+                "BARD-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 5.4% < 10%",
+                "HIGH"
+              ],
+              [
+                "BAT-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 9.1% < 10%",
+                "HIGH"
+              ],
+              [
+                "BZ-USDT",
+                "Commodity",
+                "Inc ↑",
+                "ratio 6.0% < 10%",
+                "HIGH"
+              ],
+              [
+                "CL-USDT",
+                "Commodity",
+                "Inc ↑",
+                "ratio 9.5% < 10%",
+                "HIGH"
+              ],
+              [
+                "CORE-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 2.6% < 10%",
+                "HIGH"
+              ],
+              [
+                "DOGE-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 7.2% < 10%",
+                "HIGH"
+              ],
+              [
+                "ENJ-USDT",
+                "Crypto",
+                "10x → 20x + Inc ↑",
+                "Depth → level 3; ratio 7.0% < 10%",
+                "HIGH"
+              ],
+              [
+                "ESP-USDT",
+                "Crypto",
+                "Inc ↓",
+                "ratio 53.0% > 50%",
+                "HIGH"
+              ],
+              [
+                "ETC-USD",
+                "Crypto",
+                "Inc ↓",
+                "ratio 55.3% > 50%",
+                "HIGH"
+              ],
+              [
+                "FIL-USD",
+                "Crypto",
+                "Inc ↓",
+                "ratio 53.1% > 50%",
+                "HIGH"
+              ],
+              [
+                "FLOW-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 9.7% < 10%",
+                "HIGH"
+              ],
+              [
+                "FOGO-USDT",
+                "Crypto",
+                "Inc ↓",
+                "ratio 41.5% > 50%",
+                "HIGH"
+              ],
+              [
+                "GPS-USDT",
+                "Crypto",
+                "Inc ↓",
+                "ratio 43.9% > 50%",
+                "HIGH"
+              ],
+              [
+                "ICX-USDT",
+                "Crypto",
+                "Inc ↓",
+                "ratio 72.4% > 50%",
+                "HIGH"
+              ],
+              [
+                "JTO-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 9.7% < 10%",
+                "HIGH"
+              ],
+              [
+                "KAT-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 6.1% < 10%",
+                "HIGH"
+              ],
+              [
+                "KGEN-USDT",
+                "Crypto",
+                "Inc ↓",
+                "ratio 87.6% > 50%",
+                "HIGH"
+              ],
+              [
+                "LAB-USDT",
+                "Crypto",
+                "Inc ↓",
+                "ratio 65.2% > 50%",
+                "HIGH"
+              ],
+              [
+                "LIGHT-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 8.9% < 10%",
+                "HIGH"
+              ],
+              [
+                "LINK-USD",
+                "Crypto",
+                "Inc ↓",
+                "ratio 61.7% > 50%",
+                "HIGH"
+              ],
+              [
+                "LIT-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 9.3% < 10%",
+                "HIGH"
+              ],
+              [
+                "MON-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 8.8% < 10%",
+                "HIGH"
+              ],
+              [
+                "OL-USDT",
+                "Crypto",
+                "Inc ↓",
+                "ratio 73.9% > 50%",
+                "HIGH"
+              ],
+              [
+                "ONT-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 5.8% < 10%",
+                "HIGH"
+              ],
+              [
+                "PARTI-USDT",
+                "Crypto",
+                "10x → 20x + Inc ↑",
+                "Depth → level 3; ratio 12.5% < 10%",
+                "HIGH"
+              ],
+              [
+                "PENDLE-USDT",
+                "Crypto",
+                "50x → 20x",
+                "Depth → level 3",
+                "HIGH"
+              ],
+              [
+                "PIEVERSE-USDT",
+                "Crypto",
+                "Inc ↓",
+                "ratio 52.7% > 50%",
+                "HIGH"
+              ],
+              [
+                "PIPPIN-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 6.8% < 10%",
+                "HIGH"
+              ],
+              [
+                "POPCAT-USDT",
+                "Crypto",
+                "Inc ↓",
+                "ratio 47.3% > 50%",
+                "HIGH"
+              ],
+              [
+                "PROVE-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 6.2% < 10%",
+                "HIGH"
+              ],
+              [
+                "PUMP-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 9.9% < 10%",
+                "HIGH"
+              ],
+              [
+                "RLS-USDT",
+                "Crypto",
+                "Inc ↓",
+                "ratio 128.4% > 50%",
+                "HIGH"
+              ],
+              [
+                "SEI-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 7.6% < 10%",
+                "HIGH"
+              ],
+              [
+                "SIGN-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 7.2% < 10%",
+                "HIGH"
+              ],
+              [
+                "SPACE-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 9.1% < 10%",
+                "HIGH"
+              ],
+              [
+                "STABLE-USDT",
+                "Crypto",
+                "Inc ↓",
+                "ratio 41.3% > 50%",
+                "HIGH"
+              ],
+              [
+                "UNI-USD",
+                "Crypto",
+                "Inc ↓",
+                "ratio 47.6% > 50%",
+                "HIGH"
+              ],
+              [
+                "USDC-USDT",
+                "Crypto",
+                "Inc ↓",
+                "ratio 50.4% > 50%",
+                "HIGH"
+              ],
+              [
+                "USELESS-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 9.6% < 10%",
+                "HIGH"
+              ],
+              [
+                "XPD-USDT",
+                "Commodity",
+                "Inc ↑",
+                "ratio 3.7% < 10%",
+                "HIGH"
+              ],
+              [
+                "XTZ-USDT",
+                "Crypto",
+                "50x → 20x",
+                "Depth → level 3",
+                "HIGH"
+              ],
+              [
+                "ZIL-USDT",
+                "Crypto",
+                "Inc ↑",
+                "ratio 8.0% < 10%",
+                "HIGH"
+              ],
+              [
+                "ZORA-USDT",
+                "Crypto",
+                "50x → 20x",
+                "Depth → level 3",
+                "HIGH"
+              ]
+            ]
+          }
+        },
+        {
+          "ruleId": "leverage",
+          "title": "Leverage",
+          "count": 5,
+          "category_group": "CRYPTO PERPS",
+          "description": "Contracts where depth-based tier model suggests a leverage change.",
+          "status": "warning",
+          "table": {
+            "headers": [
+              "INSTRUMENT",
+              "CHANGE",
+              "REASON",
+              "PRIORITY"
+            ],
+            "rows": [
+              [
+                "ENJ-USDT",
+                "10x → 20x + Inc ↑",
+                "Depth → level 3; ratio 7.0% < 10%",
+                "HIGH"
+              ],
+              [
+                "PARTI-USDT",
+                "10x → 20x + Inc ↑",
+                "Depth → level 3; ratio 12.5% < 10%",
+                "HIGH"
+              ],
+              [
+                "PENDLE-USDT",
+                "50x → 20x",
+                "Depth → level 3",
+                "HIGH"
+              ],
+              [
+                "XTZ-USDT",
+                "50x → 20x",
+                "Depth → level 3",
+                "HIGH"
+              ],
+              [
+                "ZORA-USDT",
+                "50x → 20x",
+                "Depth → level 3",
+                "HIGH"
+              ]
+            ]
+          }
+        },
+        {
+          "ruleId": "ratio",
+          "title": "Ratio",
+          "count": 45,
+          "category_group": "CRYPTO PERPS",
+          "description": "Contracts where inc_ratio is <10% (increment too tight) or >50% (too wide).",
+          "status": "warning",
+          "table": {
+            "headers": [
+              "INSTRUMENT",
+              "CHANGE",
+              "REASON",
+              "PRIORITY"
+            ],
+            "rows": [
+              [
+                "ANIME-USDT",
+                "Inc ↑",
+                "ratio 6.1% < 10%",
+                "HIGH"
+              ],
+              [
+                "APE-USDT",
+                "Inc ↑",
+                "ratio 8.3% < 10%",
+                "HIGH"
+              ],
+              [
+                "API3-USDT",
+                "Inc ↓",
+                "ratio 43.3% > 50%",
+                "HIGH"
+              ],
+              [
+                "ARB-USDT",
+                "Inc ↑",
+                "ratio 9.5% < 10%",
+                "HIGH"
+              ],
+              [
+                "ATH-USDT",
+                "Inc ↑",
+                "ratio 9.8% < 10%",
+                "HIGH"
+              ],
+              [
+                "BARD-USDT",
+                "Inc ↑",
+                "ratio 5.4% < 10%",
+                "HIGH"
+              ],
+              [
+                "BAT-USDT",
+                "Inc ↑",
+                "ratio 9.1% < 10%",
+                "HIGH"
+              ],
+              [
+                "CORE-USDT",
+                "Inc ↑",
+                "ratio 2.6% < 10%",
+                "HIGH"
+              ],
+              [
+                "DOGE-USDT",
+                "Inc ↑",
+                "ratio 7.2% < 10%",
+                "HIGH"
+              ],
+              [
+                "ENJ-USDT",
+                "10x → 20x + Inc ↑",
+                "Depth → level 3; ratio 7.0% < 10%",
+                "HIGH"
+              ],
+              [
+                "ESP-USDT",
+                "Inc ↓",
+                "ratio 53.0% > 50%",
+                "HIGH"
+              ],
+              [
+                "ETC-USD",
+                "Inc ↓",
+                "ratio 55.3% > 50%",
+                "HIGH"
+              ],
+              [
+                "FIL-USD",
+                "Inc ↓",
+                "ratio 53.1% > 50%",
+                "HIGH"
+              ],
+              [
+                "FLOW-USDT",
+                "Inc ↑",
+                "ratio 9.7% < 10%",
+                "HIGH"
+              ],
+              [
+                "FOGO-USDT",
+                "Inc ↓",
+                "ratio 41.5% > 50%",
+                "HIGH"
+              ],
+              [
+                "GPS-USDT",
+                "Inc ↓",
+                "ratio 43.9% > 50%",
+                "HIGH"
+              ],
+              [
+                "ICX-USDT",
+                "Inc ↓",
+                "ratio 72.4% > 50%",
+                "HIGH"
+              ],
+              [
+                "JTO-USDT",
+                "Inc ↑",
+                "ratio 9.7% < 10%",
+                "HIGH"
+              ],
+              [
+                "KAT-USDT",
+                "Inc ↑",
+                "ratio 6.1% < 10%",
+                "HIGH"
+              ],
+              [
+                "KGEN-USDT",
+                "Inc ↓",
+                "ratio 87.6% > 50%",
+                "HIGH"
+              ],
+              [
+                "LAB-USDT",
+                "Inc ↓",
+                "ratio 65.2% > 50%",
+                "HIGH"
+              ],
+              [
+                "LIGHT-USDT",
+                "Inc ↑",
+                "ratio 8.9% < 10%",
+                "HIGH"
+              ],
+              [
+                "LINK-USD",
+                "Inc ↓",
+                "ratio 61.7% > 50%",
+                "HIGH"
+              ],
+              [
+                "LIT-USDT",
+                "Inc ↑",
+                "ratio 9.3% < 10%",
+                "HIGH"
+              ],
+              [
+                "MON-USDT",
+                "Inc ↑",
+                "ratio 8.8% < 10%",
+                "HIGH"
+              ],
+              [
+                "OL-USDT",
+                "Inc ↓",
+                "ratio 73.9% > 50%",
+                "HIGH"
+              ],
+              [
+                "ONT-USDT",
+                "Inc ↑",
+                "ratio 5.8% < 10%",
+                "HIGH"
+              ],
+              [
+                "PARTI-USDT",
+                "10x → 20x + Inc ↑",
+                "Depth → level 3; ratio 12.5% < 10%",
+                "HIGH"
+              ],
+              [
+                "PIEVERSE-USDT",
+                "Inc ↓",
+                "ratio 52.7% > 50%",
+                "HIGH"
+              ],
+              [
+                "PIPPIN-USDT",
+                "Inc ↑",
+                "ratio 6.8% < 10%",
+                "HIGH"
+              ],
+              [
+                "POPCAT-USDT",
+                "Inc ↓",
+                "ratio 47.3% > 50%",
+                "HIGH"
+              ],
+              [
+                "PROVE-USDT",
+                "Inc ↑",
+                "ratio 6.2% < 10%",
+                "HIGH"
+              ],
+              [
+                "PUMP-USDT",
+                "Inc ↑",
+                "ratio 9.9% < 10%",
+                "HIGH"
+              ],
+              [
+                "RLS-USDT",
+                "Inc ↓",
+                "ratio 128.4% > 50%",
+                "HIGH"
+              ],
+              [
+                "SEI-USDT",
+                "Inc ↑",
+                "ratio 7.6% < 10%",
+                "HIGH"
+              ],
+              [
+                "SIGN-USDT",
+                "Inc ↑",
+                "ratio 7.2% < 10%",
+                "HIGH"
+              ],
+              [
+                "SPACE-USDT",
+                "Inc ↑",
+                "ratio 9.1% < 10%",
+                "HIGH"
+              ],
+              [
+                "STABLE-USDT",
+                "Inc ↓",
+                "ratio 41.3% > 50%",
+                "HIGH"
+              ],
+              [
+                "UNI-USD",
+                "Inc ↓",
+                "ratio 47.6% > 50%",
+                "HIGH"
+              ],
+              [
+                "USDC-USDT",
+                "Inc ↓",
+                "ratio 50.4% > 50%",
+                "HIGH"
+              ],
+              [
+                "USELESS-USDT",
+                "Inc ↑",
+                "ratio 9.6% < 10%",
+                "HIGH"
+              ],
+              [
+                "ZIL-USDT",
+                "Inc ↑",
+                "ratio 8.0% < 10%",
+                "HIGH"
+              ]
+            ]
+          }
+        },
+        {
+          "ruleId": "equity",
+          "title": "Equity",
+          "count": 0,
+          "category_group": "EQUITY PERPS",
+          "description": "Equity perp review uses index robustness model. Run equity review separately.",
+          "status": "pending",
+          "table": null
+        },
+        {
+          "ruleId": "commodity",
+          "title": "Commodity",
+          "count": 3,
+          "category_group": "COMMODITIES",
+          "description": "8 instruments, 3 adjustments.",
+          "status": "warning",
+          "table": {
+            "headers": [
+              "INSTRUMENT",
+              "CHANGE",
+              "REASON",
+              "PRIORITY"
+            ],
+            "rows": [
+              [
+                "BZ-USDT",
+                "Inc ↑",
+                "ratio 6.0% < 10%",
+                "HIGH"
+              ],
+              [
+                "CL-USDT",
+                "Inc ↑",
+                "ratio 9.5% < 10%",
+                "HIGH"
+              ],
+              [
+                "XPD-USDT",
+                "Inc ↑",
+                "ratio 3.7% < 10%",
+                "HIGH"
+              ]
+            ]
+          }
+        }
+      ],
       "recommended_changes": null,
       "downloads": [],
-      "markdown": "# MMR Futures Review\n\n**Error:** Failed to refresh competitors: No module named 'pybit'\n",
-      "error": "Failed to refresh competitors: No module named 'pybit'",
+      "markdown": "# MMR Futures Review\n\n**Status:** warning\n\n48 adjustments across 269 in-scope instruments.\n",
+      "error": null,
       "source_document": null,
       "suspicious_users": [],
       "user_profiles": []

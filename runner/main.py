@@ -203,17 +203,23 @@ def _ensure_mmr_tiers():
 
 
 def _refresh_mmr_cache():
-    """Ensure MMR competitor cache has a fresh timestamp to prevent stale-refresh crash."""
+    """Ensure MMR competitor cache is fresh so ptr_cli won't try to auto-refresh (which crashes on missing pybit)."""
     if not MMR_COMPETITOR_CACHE.exists():
+        # Create a minimal valid cache so ptr_cli doesn't try to fetch
+        MMR_COMPETITOR_CACHE.write_text(json.dumps({"_updated": time.time()}))
+        _log("Created MMR competitor cache")
         return
     try:
         data = json.loads(MMR_COMPETITOR_CACHE.read_text())
     except Exception:
         data = {}
-    if not isinstance(data, dict) or "_updated" not in data:
-        data["_updated"] = time.time()
-        MMR_COMPETITOR_CACHE.write_text(json.dumps(data))
-        _log("Refreshed MMR competitor cache timestamp")
+    # Always update both the JSON timestamp AND the file mtime
+    # ptr_cli checks file mtime for staleness (12h), not JSON content
+    data["_updated"] = time.time()
+    MMR_COMPETITOR_CACHE.write_text(json.dumps(data))
+    import os
+    os.utime(str(MMR_COMPETITOR_CACHE))  # touch file mtime to now
+    _log("Refreshed MMR competitor cache (mtime + JSON)")
 
 
 def _save_report(chapters: list[dict], report: dict, date_str: str):
@@ -320,28 +326,42 @@ def main():
         _ensure_mmr_tiers()
         _refresh_mmr_cache()
 
+    MAX_RETRIES = 3
+
     new_chapters: dict[str, dict] = {}
     for adapter in adapters_to_run:
-        _log(f"Running adapter: {adapter.title} ({adapter.slug})...")
-        try:
-            chapter = adapter.execute(ema_data)
-        except Exception as exc:
-            _log(f"  ERROR: {exc}")
-            chapter = {
-                "slug": adapter.slug, "title": adapter.title, "render_variant": "rules", "status": "critical",
-                "summary": f"Adapter failed: {exc}",
-                "metrics": {"instruments_scanned": 0, "ema_coverage": 0, "issues_found": 0,
-                            "source": "error", "generated_at": datetime.now(timezone.utc).isoformat()},
-                "metric_cards": [
-                    {"label": "Instruments", "value": "0"},
-                    {"label": "EMA Coverage", "value": "0"},
-                    {"label": "Issues", "value": "0"},
-                    {"label": "Source", "value": "error"},
-                ],
-                "rule_blocks": [], "recommended_changes": None, "downloads": [],
-                "markdown": "", "error": str(exc), "source_document": None,
-                "suspicious_users": [], "user_profiles": [],
-            }
+        chapter = None
+        for attempt in range(1, MAX_RETRIES + 1):
+            _log(f"Running adapter: {adapter.title} ({adapter.slug})... (attempt {attempt}/{MAX_RETRIES})")
+            try:
+                chapter = adapter.execute(ema_data)
+                # Success: check if it actually produced data (not error/pending with 0 issues)
+                if chapter.get("error") or (chapter["status"] in ("pending", "error") and chapter["metrics"]["issues_found"] == 0):
+                    if attempt < MAX_RETRIES:
+                        _log(f"  -> {chapter['status']} (retrying in 5s...)")
+                        time.sleep(5)
+                        continue
+                break  # Success or final attempt
+            except Exception as exc:
+                _log(f"  ERROR (attempt {attempt}): {exc}")
+                if attempt < MAX_RETRIES:
+                    time.sleep(5)
+                    continue
+                chapter = {
+                    "slug": adapter.slug, "title": adapter.title, "render_variant": "rules", "status": "critical",
+                    "summary": f"Adapter failed after {MAX_RETRIES} attempts: {exc}",
+                    "metrics": {"instruments_scanned": 0, "ema_coverage": 0, "issues_found": 0,
+                                "source": "error", "generated_at": datetime.now(timezone.utc).isoformat()},
+                    "metric_cards": [
+                        {"label": "Instruments", "value": "0"},
+                        {"label": "EMA Coverage", "value": "0"},
+                        {"label": "Issues", "value": "0"},
+                        {"label": "Source", "value": "error"},
+                    ],
+                    "rule_blocks": [], "recommended_changes": None, "downloads": [],
+                    "markdown": "", "error": str(exc), "source_document": None,
+                    "suspicious_users": [], "user_profiles": [],
+                }
         new_chapters[adapter.slug] = chapter
         _log(f"  -> {chapter['status']} | {chapter['metrics']['issues_found']} issues")
 

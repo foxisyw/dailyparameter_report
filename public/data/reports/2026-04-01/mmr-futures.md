@@ -1,3 +1,5 @@
 # MMR Futures Review
 
-**Error:** Failed to refresh competitors: No module named 'pybit'
+**Status:** warning
+
+48 adjustments across 269 in-scope instruments.
