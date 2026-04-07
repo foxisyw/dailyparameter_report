@@ -199,20 +199,25 @@ def _validate_report(chapters: list[dict]) -> list[str]:
 def _ensure_mmr_tiers():
     """ALWAYS fetch fresh OKX tiers at report time. Rule #1: all data must be fresh."""
     _log("Fetching fresh OKX tiers (always refresh at report time)...")
-    result = subprocess.run(
-        [sys.executable, "ptr_cli.py", "fetch", "tiers"],
-        cwd=str(MMR_CLI_DIR),
-        capture_output=True, text=True, timeout=120,
-    )
-    if result.returncode == 0:
-        try:
-            data = json.loads(result.stdout)
-            count = data.get("count", "?")
-            _log(f"  Tiers refreshed: {count} contracts")
-        except Exception:
-            _log("  Tiers refreshed successfully")
-    else:
-        _log(f"  Tiers fetch failed: {result.stderr[:200]}")
+    try:
+        result = subprocess.run(
+            [sys.executable, "ptr_cli.py", "fetch", "tiers"],
+            cwd=str(MMR_CLI_DIR),
+            capture_output=True, text=True, timeout=120,
+        )
+        if result.returncode == 0:
+            try:
+                data = json.loads(result.stdout)
+                count = data.get("count", "?")
+                _log(f"  Tiers refreshed: {count} contracts")
+            except Exception:
+                _log("  Tiers refreshed successfully")
+        else:
+            _log(f"  Tiers fetch failed (non-fatal, using cache): {result.stderr[:200]}")
+    except subprocess.TimeoutExpired:
+        _log("  Tiers fetch timed out (120s) — using cached tiers (non-fatal)")
+    except Exception as exc:
+        _log(f"  Tiers fetch error (non-fatal, using cache): {exc}")
 
 
 def _refresh_mmr_cache():
