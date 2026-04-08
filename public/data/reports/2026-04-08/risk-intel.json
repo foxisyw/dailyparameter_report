@@ -1,0 +1,478 @@
+{
+  "date": "2026-04-08",
+  "generated_at": "2026-04-08T02:32:17.761321+00:00",
+  "chapter": {
+    "slug": "risk-intel",
+    "title": "Risk Intelligence",
+    "render_variant": "risk-intel",
+    "status": "critical",
+    "summary": "4 alert types analyzed. 8 flagged alert(s) parsed. 0 suspicious user(s) highlighted.",
+    "event_analyses": [
+      {
+        "asset": "EWJ-USDT-SWAP",
+        "severity": "critical",
+        "executive_summary": "EWJ-USDT-SWAP triggered critical alert. Price: $84.28 (-0.64%). OI deviation: 129.29%. 0 user(s) profiled.",
+        "forward_looking": "Monitor EWJ-USDT-SWAP OI trajectory over the next 24 hours. If OI continues expanding, consider tightening position limits. Watch for funding rate shifts that may attract additional directional flow.",
+        "market_snapshot": {
+          "price": "84.28",
+          "change_24h": "-0.64%",
+          "open_interest": "1912.98",
+          "funding_rate": "0.0000000000000000",
+          "vol_24h": "3434.92",
+          "timestamp": "2026-04-08T10:32:17.704625+08:00"
+        },
+        "quantitative_impact": {
+          "title": "Quantitative Impact",
+          "metrics": [
+            {
+              "value": "129.29%",
+              "label": "OI Deviation (24H)",
+              "detail": "Open interest deviated 129.29% from the 24-hour average"
+            },
+            {
+              "value": "CRITICAL",
+              "label": "Alert Severity",
+              "detail": "Alert classified as critical"
+            }
+          ]
+        },
+        "oi_attribution": {
+          "title": "OI Attribution (Hourly User Breakdown)",
+          "description": "Hourly breakdown of user positioning for the instrument.",
+          "user_hourly_table": {
+            "headers": [
+              "Hour (pt)",
+              "Total Users",
+              "Longs",
+              "Shorts"
+            ],
+            "rows": []
+          }
+        },
+        "risk_assessment": {
+          "title": "Risk Assessment & Recommended Actions",
+          "actions": [
+            {
+              "priority": "P0",
+              "action": "Review platform position limits for this instrument immediately",
+              "reason": "Critical platform_oi alert requires immediate parameter review"
+            },
+            {
+              "priority": "P2",
+              "action": "Continue monitoring OI trajectory and funding rate changes over the next 24 hours",
+              "reason": "Position dynamics may shift as new data comes in — ensure no further limit breaches"
+            }
+          ]
+        },
+        "involved_users_brief": {
+          "title": "Involved Users (Brief)",
+          "headers": [
+            "User ID",
+            "UID",
+            "Position",
+            "Margin",
+            "Opened",
+            "Risk Tier"
+          ],
+          "rows": []
+        },
+        "causal_chain": [
+          {
+            "step": 1,
+            "type": "远因 (Structural)",
+            "name": "EWJ-USDT-SWAP Thin Liquidity / Low Float",
+            "description": "EWJ-USDT-SWAP has limited market depth (24H vol: 3434.92). Low float instruments are susceptible to rapid OI deviation.",
+            "evidence_strength": 3,
+            "evidence_label": "Market data"
+          },
+          {
+            "step": 2,
+            "type": "近因 (User Influx)",
+            "name": "EWJ-USDT-SWAP Position Buildup",
+            "description": "User positioning changed on EWJ-USDT-SWAP.",
+            "evidence_strength": 4,
+            "evidence_label": "Position data"
+          },
+          {
+            "step": 3,
+            "type": "触发事件 (Trigger)",
+            "name": "Alert Fired",
+            "description": "platform_oi alert fired at critical level. OI deviation: 129.29%.",
+            "evidence_strength": 5,
+            "evidence_label": "Platform alert"
+          },
+          {
+            "step": 4,
+            "type": "风险放大 (Amplification)",
+            "name": "User Concentration Risk",
+            "description": "Top position holders are concentrating exposure.",
+            "evidence_strength": 4,
+            "evidence_label": "User data"
+          }
+        ],
+        "key_users": [],
+        "user_profiles": []
+      },
+      {
+        "asset": "AMD-USDT-SWAP",
+        "severity": "warning",
+        "executive_summary": "AMD-USDT-SWAP triggered warning alert. Price: $205.53 (+0.73%). OI deviation: 91.11%. 0 user(s) profiled.",
+        "forward_looking": "Monitor AMD-USDT-SWAP OI trajectory over the next 24 hours. If OI continues expanding, consider tightening position limits. Watch for funding rate shifts that may attract additional directional flow.",
+        "market_snapshot": {
+          "price": "205.53",
+          "change_24h": "+0.73%",
+          "open_interest": "672.54",
+          "funding_rate": "0.0000000000000000",
+          "vol_24h": "1654.4",
+          "timestamp": "2026-04-08T10:32:17.704645+08:00"
+        },
+        "quantitative_impact": {
+          "title": "Quantitative Impact",
+          "metrics": [
+            {
+              "value": "91.11%",
+              "label": "OI Deviation (24H)",
+              "detail": "Open interest deviated 91.11% from the 24-hour average"
+            },
+            {
+              "value": "WARNING",
+              "label": "Alert Severity",
+              "detail": "Alert classified as warning"
+            }
+          ]
+        },
+        "oi_attribution": {
+          "title": "OI Attribution (Hourly User Breakdown)",
+          "description": "Hourly breakdown of user positioning for the instrument.",
+          "user_hourly_table": {
+            "headers": [
+              "Hour (pt)",
+              "Total Users",
+              "Longs",
+              "Shorts"
+            ],
+            "rows": []
+          }
+        },
+        "risk_assessment": {
+          "title": "Risk Assessment & Recommended Actions",
+          "actions": [
+            {
+              "priority": "P2",
+              "action": "Continue monitoring OI trajectory and funding rate changes over the next 24 hours",
+              "reason": "Position dynamics may shift as new data comes in — ensure no further limit breaches"
+            }
+          ]
+        },
+        "involved_users_brief": {
+          "title": "Involved Users (Brief)",
+          "headers": [
+            "User ID",
+            "UID",
+            "Position",
+            "Margin",
+            "Opened",
+            "Risk Tier"
+          ],
+          "rows": []
+        },
+        "causal_chain": [
+          {
+            "step": 1,
+            "type": "远因 (Structural)",
+            "name": "AMD-USDT-SWAP Thin Liquidity / Low Float",
+            "description": "AMD-USDT-SWAP has limited market depth (24H vol: 1654.4). Low float instruments are susceptible to rapid OI deviation.",
+            "evidence_strength": 3,
+            "evidence_label": "Market data"
+          },
+          {
+            "step": 2,
+            "type": "近因 (User Influx)",
+            "name": "AMD-USDT-SWAP Position Buildup",
+            "description": "User positioning changed on AMD-USDT-SWAP.",
+            "evidence_strength": 4,
+            "evidence_label": "Position data"
+          },
+          {
+            "step": 3,
+            "type": "触发事件 (Trigger)",
+            "name": "Alert Fired",
+            "description": "platform_oi alert fired at warning level. OI deviation: 91.11%.",
+            "evidence_strength": 5,
+            "evidence_label": "Platform alert"
+          },
+          {
+            "step": 4,
+            "type": "风险放大 (Amplification)",
+            "name": "User Concentration Risk",
+            "description": "Top position holders are concentrating exposure.",
+            "evidence_strength": 4,
+            "evidence_label": "User data"
+          }
+        ],
+        "key_users": [],
+        "user_profiles": []
+      },
+      {
+        "asset": "BLUR-USDT-SWAP",
+        "severity": "warning",
+        "executive_summary": "BLUR-USDT-SWAP triggered warning alert. Price: $0.02127 (+6.62%). OI/limit: 87.26%. 0 user(s) profiled.",
+        "forward_looking": "Monitor BLUR-USDT-SWAP OI trajectory over the next 24 hours. If OI continues expanding, consider tightening position limits. Watch for funding rate shifts that may attract additional directional flow.",
+        "market_snapshot": {
+          "price": "0.02127",
+          "change_24h": "+6.62%",
+          "open_interest": "16726390",
+          "funding_rate": "-0.0007001045429043",
+          "vol_24h": "6627940120",
+          "timestamp": "2026-04-08T10:32:17.704659+08:00"
+        },
+        "quantitative_impact": {
+          "title": "Quantitative Impact",
+          "metrics": [
+            {
+              "value": "n/a",
+              "label": "OI Deviation (24H)",
+              "detail": "Open interest deviated n/a from the 24-hour average"
+            },
+            {
+              "value": "87.26%",
+              "label": "OI / Platform Limit",
+              "detail": "Open interest is at 87.26% of the platform position limit"
+            },
+            {
+              "value": "WARNING",
+              "label": "Alert Severity",
+              "detail": "Alert classified as warning"
+            }
+          ]
+        },
+        "oi_attribution": {
+          "title": "OI Attribution (Hourly User Breakdown)",
+          "description": "Hourly breakdown of user positioning for the instrument.",
+          "user_hourly_table": {
+            "headers": [
+              "Hour (pt)",
+              "Total Users",
+              "Longs",
+              "Shorts"
+            ],
+            "rows": []
+          }
+        },
+        "risk_assessment": {
+          "title": "Risk Assessment & Recommended Actions",
+          "actions": [
+            {
+              "priority": "P2",
+              "action": "Continue monitoring OI trajectory and funding rate changes over the next 24 hours",
+              "reason": "Position dynamics may shift as new data comes in — ensure no further limit breaches"
+            }
+          ]
+        },
+        "involved_users_brief": {
+          "title": "Involved Users (Brief)",
+          "headers": [
+            "User ID",
+            "UID",
+            "Position",
+            "Margin",
+            "Opened",
+            "Risk Tier"
+          ],
+          "rows": []
+        },
+        "causal_chain": [
+          {
+            "step": 1,
+            "type": "远因 (Structural)",
+            "name": "BLUR-USDT-SWAP Thin Liquidity / Low Float",
+            "description": "BLUR-USDT-SWAP has limited market depth (24H vol: 6627940120). Low float instruments are susceptible to rapid OI deviation.",
+            "evidence_strength": 3,
+            "evidence_label": "Market data"
+          },
+          {
+            "step": 2,
+            "type": "近因 (User Influx)",
+            "name": "BLUR-USDT-SWAP Position Buildup",
+            "description": "User positioning changed on BLUR-USDT-SWAP.",
+            "evidence_strength": 4,
+            "evidence_label": "Position data"
+          },
+          {
+            "step": 3,
+            "type": "触发事件 (Trigger)",
+            "name": "Alert Fired",
+            "description": "platform_oi alert fired at warning level. OI deviation: n/a. OI/platform limit: 87.26%.",
+            "evidence_strength": 5,
+            "evidence_label": "Platform alert"
+          },
+          {
+            "step": 4,
+            "type": "风险放大 (Amplification)",
+            "name": "User Concentration Risk",
+            "description": "Top position holders are concentrating exposure.",
+            "evidence_strength": 4,
+            "evidence_label": "User data"
+          }
+        ],
+        "key_users": [],
+        "user_profiles": []
+      }
+    ],
+    "metrics": {
+      "instruments_scanned": 8,
+      "ema_coverage": 4,
+      "issues_found": 8,
+      "source": "每日风控总结 - 2026-04-02 00:00:00 ~ 2026-04-02 23:59:59",
+      "generated_at": "2026-04-08T02:32:17.761321+00:00"
+    },
+    "metric_cards": [
+      {
+        "label": "Alert Types",
+        "value": "4"
+      },
+      {
+        "label": "Flagged Alerts",
+        "value": "8"
+      },
+      {
+        "label": "Suspicious Users",
+        "value": "0"
+      },
+      {
+        "label": "Highest Risk",
+        "value": "T1"
+      }
+    ],
+    "rule_blocks": [
+      {
+        "ruleId": "index_alarm",
+        "title": "Index Alarm",
+        "status": "warning",
+        "description": "🟠 TradFi/大宗商品/美股指数出现\"成分不足\"聚合事件（XAG、XPD、XPT、CL、NG、XCU、EWJ、ORCL、NFLX、AMD 等，10条），表现为可用数据源下降但未直接指向价格异常。🟡 USDC 报价对 mid price 获取失败（DGB-USDC、CATI-USDC，2条）及 STABLE-USDT 单成分偏离中位数 2.8472%（Binance_LINEAR_PERPETUAL，1条），另有 🟢 BLUR-EUR mid price 获取失败（1条），整体偏数据可用性问题，是否自愈待确认。",
+        "table": {
+          "headers": [
+            "ASSET",
+            "DETAILS",
+            "USERS",
+            "STATUS"
+          ],
+          "rows": [
+            [
+              "DGB-USDC",
+              "🟠 TradFi/大宗商品/美股指数出现\"成分不足\"聚合事件（XAG、XPD、XPT、CL、NG、XCU、EWJ、ORCL、NFLX、AMD 等，10条），表现为可用数据源下降但未直接指向价格异常。🟡 USDC 报价对 mid price 获取失败（DGB-USDC、CATI-USDC，2条）及 STABLE-USDT 单成分偏离中位数 2.8472%（Binance_LINEAR_PERPETUAL，1条），另有 🟢 BLUR-EUR mid price 获取失败（1条），整体偏数据可用性问题，是否自愈待确认。",
+              "—",
+              "warning"
+            ]
+          ]
+        },
+        "note": null
+      },
+      {
+        "ruleId": "price_limit_p4",
+        "title": "Price Limit P4",
+        "status": "critical",
+        "description": "🔴 MINA-USD 触发 price down restricted 且 Limitdn 由 Z cap 触发（12:48~12:49），属硬顶/硬底机制触发风险；🟠 PEPE-USD_UM_XPERP-310404 触发双边流动性不足（12:42），其余 BTC 多个期限/永续及 LTC 永续为 🟢 流动性不足类提示。",
+        "table": {
+          "headers": [
+            "ASSET",
+            "DETAILS",
+            "USERS",
+            "STATUS"
+          ],
+          "rows": [
+            [
+              "MINA-USD",
+              "🔴 MINA-USD 触发 price down restricted 且 Limitdn 由 Z cap 触发（12:48~12:49），属硬顶/硬底机制触发风险；🟠 PEPE-USD_UM_XPERP-310404 触发双边流动性不足（12:42），其余 BTC 多个期限/永续及 LTC 永续为 🟢 流动性不足类提示。",
+              "—",
+              "critical"
+            ],
+            [
+              "MINA-USD",
+              "① 【紧急/建议】立即检查 MINA-USD 的 Z cap 限价参数与触发链路",
+              "—",
+              "warning"
+            ],
+            [
+              "PEPE-USD_UM_XPERP-310404",
+              "② 关注 PEPE-USD_UM_XPERP-310404、BTC 系列合约的盘口深度与做市覆盖",
+              "—",
+              "warning"
+            ]
+          ]
+        },
+        "note": null
+      },
+      {
+        "ruleId": "collateral_coin",
+        "title": "Collateral Coin Risk",
+        "status": "critical",
+        "description": "🔴 CHZ 小币抵押借币占用接近/突破限额：borrow/limit 99.58% 且一度到 100.47%（限额 $2,000,000），已触发下单限制，FRP 未触发",
+        "table": {
+          "headers": [
+            "ASSET",
+            "DETAILS",
+            "USERS",
+            "STATUS"
+          ],
+          "rows": [
+            [
+              "CHZ",
+              "🔴 CHZ 小币抵押借币占用接近/突破限额：borrow/limit 99.58% 且一度到 100.47%（限额 $2,000,000），已触发下单限制，FRP 未触发",
+              "—",
+              "critical"
+            ],
+            [
+              "Collateral Coin Risk",
+              "② 关注 CHZ borrow/limit 是否持续≥100%",
+              "—",
+              "warning"
+            ]
+          ]
+        },
+        "note": null
+      },
+      {
+        "ruleId": "platform_oi",
+        "title": "Platform OI",
+        "status": "critical",
+        "description": "🔴 EWJ OI较24H均值偏离129.29%（阈值20%）为高风险短期上升异动；🟠 AMD 偏离91.11%、MU 偏离50.14%同属 OI变化/24H均值类中风险。另有 🟠 BLUR OI/平台限额占比87.26%（阈值80%）偏高，以及 🟡 ONT OI/流通市值占比13.07%（阈值13%）轻度超阈值。",
+        "table": {
+          "headers": [
+            "ASSET",
+            "DETAILS",
+            "USERS",
+            "STATUS"
+          ],
+          "rows": [
+            [
+              "EWJ",
+              "🔴 EWJ OI较24H均值偏离129.29%（阈值20%）为高风险短期上升异动；🟠 AMD 偏离91.11%、MU 偏离50.14%同属 OI变化/24H均值类中风险。另有 🟠 BLUR OI/平台限额占比87.26%（阈值80%）偏高，以及 🟡 ONT OI/流通市值占比13.07%（阈值13%）轻度超阈值。",
+              "—",
+              "critical"
+            ],
+            [
+              "Platform OI",
+              "② 关注 AMD、MU 的 OI 延续性及与价格/资金费率联动",
+              "—",
+              "warning"
+            ]
+          ]
+        },
+        "note": null
+      }
+    ],
+    "recommended_changes": null,
+    "downloads": [],
+    "markdown": "# Risk Intelligence\n\n**Summary:** 4 alert types analyzed. 8 flagged alert(s) parsed. 0 suspicious user(s) highlighted.\n**Source document:** 每日风控总结 - 2026-04-02 00:00:00 ~ 2026-04-02 23:59:59\n\n## Suspicious Users\nNo suspicious users highlighted.\n\n## Deep Profiles\nNo user profiles generated.",
+    "error": null,
+    "source_document": {
+      "title": "每日风控总结 - 2026-04-02 00:00:00 ~ 2026-04-02 23:59:59",
+      "url": "https://okg-block.sg.larksuite.com/docx/A4ycdWQoVoh06Kxl4R4lk4yCgob",
+      "modified_at": "2026-04-02T11:05:00+08:00",
+      "selected_by": "latest_modified_desc"
+    },
+    "suspicious_users": [],
+    "user_profiles": []
+  }
+}
