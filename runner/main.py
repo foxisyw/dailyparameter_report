@@ -301,12 +301,17 @@ def main():
     parser.add_argument("--no-lark", action="store_true", help="Skip Lark notification")
     parser.add_argument("--only", nargs="+", metavar="SLUG",
                         help="Only regenerate these chapter(s), preserve others from existing report")
+    parser.add_argument("--date", metavar="YYYY-MM-DD",
+                        help="Override report date (default: today in HKT)")
     args = parser.parse_args()
 
     # Use HKT (UTC+8) for the report date — both daily cron runs land on same HKT day
     from zoneinfo import ZoneInfo
-    hkt_now = datetime.now(ZoneInfo("Asia/Hong_Kong"))
-    date_str = hkt_now.strftime("%Y-%m-%d")
+    if args.date:
+        date_str = args.date
+    else:
+        hkt_now = datetime.now(ZoneInfo("Asia/Hong_Kong"))
+        date_str = hkt_now.strftime("%Y-%m-%d")
     _log(f"=== Daily Parameter Review — {date_str} ===")
 
     ema_data = _load_ema_data()
@@ -352,7 +357,10 @@ def main():
         for attempt in range(1, MAX_RETRIES + 1):
             _log(f"Running adapter: {adapter.title} ({adapter.slug})... (attempt {attempt}/{MAX_RETRIES})")
             try:
-                chapter = adapter.execute(ema_data)
+                kwargs = {}
+                if adapter.slug == "risk-intel" and args.date:
+                    kwargs["date_override"] = args.date
+                chapter = adapter.execute(ema_data, **kwargs)
                 # Success: check if it actually produced data (not error/pending with 0 issues)
                 if chapter.get("error") or (chapter["status"] in ("pending", "error") and chapter["metrics"]["issues_found"] == 0):
                     if attempt < MAX_RETRIES:

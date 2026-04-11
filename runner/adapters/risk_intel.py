@@ -19,11 +19,11 @@ class RiskIntelAdapter(BaseAdapter):
     def title(self) -> str:
         return "Risk Intelligence"
 
-    def execute(self, ema_data: dict) -> dict:
+    def execute(self, ema_data: dict, *, date_override: str | None = None) -> dict:
         from zoneinfo import ZoneInfo
         from datetime import datetime
 
-        date_str = datetime.now(ZoneInfo("Asia/Hong_Kong")).strftime("%Y-%m-%d")
+        date_str = date_override or datetime.now(ZoneInfo("Asia/Hong_Kong")).strftime("%Y-%m-%d")
         payload_path = DATA_DIR / "reports" / date_str / "risk-intel.json"
         if not payload_path.exists():
             return pending_risk_intel_chapter(
