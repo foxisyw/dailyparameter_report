@@ -746,7 +746,7 @@ def build_event_analysis(asset: str, raw_data: dict[str, Any]) -> dict[str, Any]
         else:
             # Fallback: create basic profile from position data alone
             holder_rows = [h for h in holders if str(h.get("user_id")) == uid]
-            side = "SHORT" if any(h.get("position_type") == "2" for h in holder_rows) else "LONG"
+            side = "SHORT" if any(str(h.get("position_type")) == "2" for h in holder_rows) else "LONG"
             user_profiles.append({
                 "uid": "",
                 "master_user_id": uid,

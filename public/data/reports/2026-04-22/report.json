@@ -1,21 +1,21 @@
 {
   "report": {
     "date": "2026-04-22",
-    "generated_at": "2026-04-22T02:44:21.297246+00:00",
+    "generated_at": "2026-04-22T03:38:18.270566+00:00",
     "status": "critical",
-    "total_issues": 1320,
+    "total_issues": 1325,
     "chapters": [
       {
         "slug": "risk-intel",
         "title": "Risk Intelligence",
         "status": "critical",
-        "summary": "4 alert types analyzed. 11 flagged alert(s) parsed. 0 suspicious user(s) highlighted.",
+        "summary": "4 alert types analyzed. 11 flagged alert(s) parsed. 5 suspicious user(s) highlighted.",
         "metrics": {
           "instruments_scanned": 11,
           "ema_coverage": 4,
-          "issues_found": 11,
+          "issues_found": 16,
           "source": "每日风控总结 - 2026-04-21 00:00:00 ~ 2026-04-21 23:59:59",
-          "generated_at": "2026-04-22T02:41:36.322530+00:00"
+          "generated_at": "2026-04-22T03:37:25.158278+00:00"
         }
       },
       {
@@ -65,28 +65,38 @@
       "title": "Risk Intelligence",
       "render_variant": "risk-intel",
       "status": "critical",
-      "summary": "4 alert types analyzed. 11 flagged alert(s) parsed. 0 suspicious user(s) highlighted.",
+      "summary": "4 alert types analyzed. 11 flagged alert(s) parsed. 5 suspicious user(s) highlighted.",
       "event_analyses": [
         {
           "asset": "RAVE-USDT-SWAP",
-          "severity": "warning",
-          "executive_summary": "RAVE-USDT-SWAP triggered warning alert. Price: $n/a (n/a). 0 user(s) profiled.",
+          "severity": "critical",
+          "executive_summary": "RAVE-USDT-SWAP triggered critical alert. Price: $1.4914 (-2.12%). 10 user(s) profiled.",
           "forward_looking": "Monitor RAVE-USDT-SWAP OI trajectory over the next 24 hours. If OI continues expanding, consider tightening position limits. Watch for funding rate shifts that may attract additional directional flow.",
           "market_snapshot": {
-            "price": "n/a",
-            "change_24h": "n/a",
-            "open_interest": "n/a",
-            "funding_rate": "n/a",
-            "vol_24h": "n/a",
-            "timestamp": "2026-04-22T10:41:36.238369+08:00"
+            "price": "1.4914",
+            "change_24h": "-2.12%",
+            "open_interest": "1173214.28",
+            "funding_rate": "0.0000125000000000",
+            "vol_24h": "1110266033.3",
+            "timestamp": "2026-04-22T11:37:21.472553+08:00"
           },
           "quantitative_impact": {
             "title": "Quantitative Impact",
             "metrics": [
               {
                 "value": "n/a",
-                "label": "Impact",
-                "detail": "Insufficient data to compute quantitative impact"
+                "label": "OI Deviation (24H)",
+                "detail": "Open interest deviated n/a from the 24-hour average"
+              },
+              {
+                "value": "CRITICAL",
+                "label": "Alert Severity",
+                "detail": "Alert classified as critical"
+              },
+              {
+                "value": "+7.1%",
+                "label": "User Growth (period)",
+                "detail": "Total users changed from 172369 to 184662 over the observation window"
               }
             ]
           },
@@ -100,12 +110,167 @@
                 "Longs",
                 "Shorts"
               ],
-              "rows": []
+              "rows": [
+                [
+                  "2026042100",
+                  "172369",
+                  "86853",
+                  "103144"
+                ],
+                [
+                  "2026042101",
+                  "172798",
+                  "86951",
+                  "103494"
+                ],
+                [
+                  "2026042102",
+                  "172903",
+                  "87015",
+                  "103535"
+                ],
+                [
+                  "2026042103",
+                  "172990",
+                  "87080",
+                  "103570"
+                ],
+                [
+                  "2026042104",
+                  "173040",
+                  "87112",
+                  "103586"
+                ],
+                [
+                  "2026042105",
+                  "173118",
+                  "87171",
+                  "103626"
+                ],
+                [
+                  "2026042106",
+                  "173560",
+                  "87514",
+                  "103893"
+                ],
+                [
+                  "2026042107",
+                  "174217",
+                  "88059",
+                  "104236"
+                ],
+                [
+                  "2026042108",
+                  "174612",
+                  "88347",
+                  "104395"
+                ],
+                [
+                  "2026042109",
+                  "174955",
+                  "88527",
+                  "104557"
+                ],
+                [
+                  "2026042110",
+                  "175778",
+                  "89390",
+                  "104924"
+                ],
+                [
+                  "2026042111",
+                  "177163",
+                  "90614",
+                  "105455"
+                ],
+                [
+                  "2026042112",
+                  "178415",
+                  "91720",
+                  "106153"
+                ],
+                [
+                  "2026042113",
+                  "179024",
+                  "92125",
+                  "106370"
+                ],
+                [
+                  "2026042114",
+                  "179869",
+                  "92675",
+                  "106741"
+                ],
+                [
+                  "2026042115",
+                  "180643",
+                  "93160",
+                  "107112"
+                ],
+                [
+                  "2026042116",
+                  "181370",
+                  "93640",
+                  "107514"
+                ],
+                [
+                  "2026042117",
+                  "181909",
+                  "93975",
+                  "107782"
+                ],
+                [
+                  "2026042118",
+                  "182343",
+                  "94231",
+                  "108008"
+                ],
+                [
+                  "2026042119",
+                  "182744",
+                  "94441",
+                  "108195"
+                ],
+                [
+                  "2026042120",
+                  "183224",
+                  "94692",
+                  "108405"
+                ],
+                [
+                  "2026042121",
+                  "183640",
+                  "94919",
+                  "108588"
+                ],
+                [
+                  "2026042122",
+                  "184160",
+                  "95244",
+                  "108904"
+                ],
+                [
+                  "2026042123",
+                  "184662",
+                  "95547",
+                  "109222"
+                ]
+              ]
             }
           },
           "risk_assessment": {
             "title": "Risk Assessment & Recommended Actions",
             "actions": [
+              {
+                "priority": "P0",
+                "action": "Review platform position limits for this instrument immediately",
+                "reason": "Critical Index Alarm alert requires immediate parameter review"
+              },
+              {
+                "priority": "P1",
+                "action": "Deep-review top risk users: 69617490, 8770572, 8083620",
+                "reason": "10 user(s) flagged with elevated trade/equity ratios or suspicious patterns"
+              },
               {
                 "priority": "P2",
                 "action": "Continue monitoring OI trajectory and funding rate changes over the next 24 hours",
@@ -123,14 +288,95 @@
               "Opened",
               "Risk Tier"
             ],
-            "rows": []
+            "rows": [
+              [
+                "69617490",
+                "69617490",
+                "SHORT",
+                "Cross",
+                "2026-04-21T22:45:28.956+08:00[Asia/Shanghai]",
+                "T1"
+              ],
+              [
+                "8770572",
+                "8770572",
+                "n/a",
+                "n/a",
+                "n/a",
+                "T1"
+              ],
+              [
+                "8083620",
+                "8083620",
+                "SHORT",
+                "Isolated",
+                "2026-04-19T12:12:29.382+08:00[Asia/Shanghai]",
+                "T1"
+              ],
+              [
+                "13231780",
+                "13231780",
+                "LONG",
+                "Cross",
+                "2026-04-18T21:29:39.635+08:00[Asia/Shanghai]",
+                "T1"
+              ],
+              [
+                "15897080",
+                "15897080",
+                "SHORT",
+                "Cross",
+                "2026-04-20T21:21:39.005+08:00[Asia/Shanghai]",
+                "T1"
+              ],
+              [
+                "34214713",
+                "34214713",
+                "LONG",
+                "Cross",
+                "2026-04-19T00:24:57.051+08:00[Asia/Shanghai]",
+                "T1"
+              ],
+              [
+                "6540612",
+                "6540612",
+                "n/a",
+                "n/a",
+                "n/a",
+                "T1"
+              ],
+              [
+                "46255713",
+                "46255713",
+                "LONG",
+                "Cross",
+                "2026-04-21T10:44:40.430+08:00[Asia/Shanghai]",
+                "T1"
+              ],
+              [
+                "18249321",
+                "18249321",
+                "SHORT",
+                "Cross",
+                "2026-04-19T14:11:43.387+08:00[Asia/Shanghai]",
+                "T1"
+              ],
+              [
+                "34244216",
+                "34244216",
+                "SHORT",
+                "Cross",
+                "2026-04-21T08:39:08.054+08:00[Asia/Shanghai]",
+                "T1"
+              ]
+            ]
           },
           "causal_chain": [
             {
               "step": 1,
               "type": "远因 (Structural)",
               "name": "RAVE-USDT-SWAP Thin Liquidity / Low Float",
-              "description": "RAVE-USDT-SWAP has limited market depth (24H vol: n/a). Low float instruments are susceptible to rapid OI deviation.",
+              "description": "RAVE-USDT-SWAP has limited market depth (24H vol: 1110266033.3). Low float instruments are susceptible to rapid OI deviation.",
               "evidence_strength": 3,
               "evidence_label": "Market data"
             },
@@ -138,15 +384,169 @@
               "step": 2,
               "type": "近因 (User Influx)",
               "name": "RAVE-USDT-SWAP Position Buildup",
-              "description": "User positioning changed on RAVE-USDT-SWAP.",
+              "description": "Users grew from 172369 to 184662 (longs 86853->95547, shorts 103144->109222) between 2026042100 and 2026042123.",
               "evidence_strength": 4,
-              "evidence_label": "Position data"
+              "evidence_label": "Position data",
+              "evidence_table": {
+                "headers": [
+                  "Hour",
+                  "Total Users",
+                  "Longs",
+                  "Shorts"
+                ],
+                "rows": [
+                  [
+                    "2026042100",
+                    "172369",
+                    "86853",
+                    "103144"
+                  ],
+                  [
+                    "2026042101",
+                    "172798",
+                    "86951",
+                    "103494"
+                  ],
+                  [
+                    "2026042102",
+                    "172903",
+                    "87015",
+                    "103535"
+                  ],
+                  [
+                    "2026042103",
+                    "172990",
+                    "87080",
+                    "103570"
+                  ],
+                  [
+                    "2026042104",
+                    "173040",
+                    "87112",
+                    "103586"
+                  ],
+                  [
+                    "2026042105",
+                    "173118",
+                    "87171",
+                    "103626"
+                  ],
+                  [
+                    "2026042106",
+                    "173560",
+                    "87514",
+                    "103893"
+                  ],
+                  [
+                    "2026042107",
+                    "174217",
+                    "88059",
+                    "104236"
+                  ],
+                  [
+                    "2026042108",
+                    "174612",
+                    "88347",
+                    "104395"
+                  ],
+                  [
+                    "2026042109",
+                    "174955",
+                    "88527",
+                    "104557"
+                  ],
+                  [
+                    "2026042110",
+                    "175778",
+                    "89390",
+                    "104924"
+                  ],
+                  [
+                    "2026042111",
+                    "177163",
+                    "90614",
+                    "105455"
+                  ],
+                  [
+                    "2026042112",
+                    "178415",
+                    "91720",
+                    "106153"
+                  ],
+                  [
+                    "2026042113",
+                    "179024",
+                    "92125",
+                    "106370"
+                  ],
+                  [
+                    "2026042114",
+                    "179869",
+                    "92675",
+                    "106741"
+                  ],
+                  [
+                    "2026042115",
+                    "180643",
+                    "93160",
+                    "107112"
+                  ],
+                  [
+                    "2026042116",
+                    "181370",
+                    "93640",
+                    "107514"
+                  ],
+                  [
+                    "2026042117",
+                    "181909",
+                    "93975",
+                    "107782"
+                  ],
+                  [
+                    "2026042118",
+                    "182343",
+                    "94231",
+                    "108008"
+                  ],
+                  [
+                    "2026042119",
+                    "182744",
+                    "94441",
+                    "108195"
+                  ],
+                  [
+                    "2026042120",
+                    "183224",
+                    "94692",
+                    "108405"
+                  ],
+                  [
+                    "2026042121",
+                    "183640",
+                    "94919",
+                    "108588"
+                  ],
+                  [
+                    "2026042122",
+                    "184160",
+                    "95244",
+                    "108904"
+                  ],
+                  [
+                    "2026042123",
+                    "184662",
+                    "95547",
+                    "109222"
+                  ]
+                ]
+              }
             },
             {
               "step": 3,
               "type": "触发事件 (Trigger)",
               "name": "Alert Fired",
-              "description": "RAVE-USDT-SWAP flagged by risk monitoring system.",
+              "description": "Index Alarm alert fired at critical level. OI deviation: n/a.",
               "evidence_strength": 5,
               "evidence_label": "Platform alert"
             },
@@ -154,34 +554,929 @@
               "step": 4,
               "type": "风险放大 (Amplification)",
               "name": "User Concentration Risk",
-              "description": "Top position holders are concentrating exposure.",
+              "description": "Top users concentrating: 69617490, 8770572, 8083620, 13231780, 15897080 (risk tiers: T1, T1, T1, T1, T1). Position overlap amplifies systemic exposure.",
               "evidence_strength": 4,
-              "evidence_label": "User data"
+              "evidence_label": "User data",
+              "evidence_table": {
+                "headers": [
+                  "User ID",
+                  "Risk Tier",
+                  "Summary"
+                ],
+                "rows": [
+                  [
+                    "69617490",
+                    "T1",
+                    "Registered 2024-11-27 (56.3yr). trade/equity ratio inf. VIP4."
+                  ],
+                  [
+                    "8770572",
+                    "T1",
+                    "Registered 2018-09-26 (56.3yr). trade/equity ratio inf. VIP9."
+                  ],
+                  [
+                    "8083620",
+                    "T1",
+                    "Registered 2018-05-03 (56.3yr). trade/equity ratio inf. VIP5."
+                  ],
+                  [
+                    "13231780",
+                    "T1",
+                    "Registered 2021-01-15 (56.3yr). trade/equity ratio inf. VIP5."
+                  ],
+                  [
+                    "15897080",
+                    "T1",
+                    "Registered 2021-03-25 (56.3yr). trade/equity ratio inf. VIP8."
+                  ]
+                ]
+              }
             }
           ],
-          "key_users": [],
-          "user_profiles": []
+          "key_users": [
+            "69617490",
+            "20267418",
+            "8083620",
+            "13231780",
+            "15897080"
+          ],
+          "user_profiles": [
+            {
+              "uid": "69617490",
+              "master_user_id": "69617490",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2024-11-27 (56.3yr). trade/equity ratio inf. VIP4.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2024-11-27 (56.3yr)",
+                    "None",
+                    "KYC5 None verified",
+                    "Client type: 21"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP4",
+                    "RAVE-USDT-SWAP SHORT (Cross), opened 2026-04-21T22:45"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC5",
+                    "is_market_account: false",
+                    "is_internal_account: false"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Index Alarm alert (critical)",
+                    "Active positions on: RAVE-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling",
+                "RAVE-USDT-SWAP SHORT opened 2026-04-21T22:45",
+                "Active during critical Index Alarm alert"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "8770572",
+              "master_user_id": "8770572",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2018-09-26 (56.3yr). trade/equity ratio inf. VIP9.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2018-09-26 (56.3yr)",
+                    "None",
+                    "KYC10 None verified",
+                    "Client type: 21"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP9"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC10",
+                    "is_market_account: false",
+                    "is_internal_account: false"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Index Alarm alert (critical)"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling",
+                "Active during critical Index Alarm alert"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "8083620",
+              "master_user_id": "8083620",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2018-05-03 (56.3yr). trade/equity ratio inf. VIP5.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2018-05-03 (56.3yr)",
+                    "None",
+                    "KYC6 None verified",
+                    "Client type: 0"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP5",
+                    "RAVE-USDT-SWAP SHORT (Isolated), opened 2026-04-19T12:12"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC6",
+                    "is_market_account: false",
+                    "is_internal_account: false"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Index Alarm alert (critical)",
+                    "Active positions on: RAVE-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling",
+                "RAVE-USDT-SWAP SHORT opened 2026-04-19T12:12",
+                "Active during critical Index Alarm alert"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "13231780",
+              "master_user_id": "13231780",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2021-01-15 (56.3yr). trade/equity ratio inf. VIP5.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2021-01-15 (56.3yr)",
+                    "None",
+                    "KYC6 None verified",
+                    "Client type: 21"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP5",
+                    "RAVE-USDT-SWAP LONG (Cross), opened 2026-04-18T21:29"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC6",
+                    "is_market_account: false",
+                    "is_internal_account: false"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Index Alarm alert (critical)",
+                    "Active positions on: RAVE-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling",
+                "RAVE-USDT-SWAP LONG opened 2026-04-18T21:29",
+                "Active during critical Index Alarm alert"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "15897080",
+              "master_user_id": "15897080",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2021-03-25 (56.3yr). trade/equity ratio inf. VIP8.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2021-03-25 (56.3yr)",
+                    "None",
+                    "KYC9 None verified",
+                    "Client type: 21"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP8",
+                    "RAVE-USDT-SWAP SHORT (Cross), opened 2026-04-20T21:21"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC9",
+                    "is_market_account: false",
+                    "is_internal_account: false"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Index Alarm alert (critical)",
+                    "Active positions on: RAVE-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling",
+                "RAVE-USDT-SWAP SHORT opened 2026-04-20T21:21",
+                "Active during critical Index Alarm alert"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "34214713",
+              "master_user_id": "34214713",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2022-10-26 (56.3yr). trade/equity ratio inf. VIP4.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2022-10-26 (56.3yr)",
+                    "None",
+                    "KYC5 None verified",
+                    "Client type: 0"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP4",
+                    "RAVE-USDT-SWAP LONG (Cross), opened 2026-04-19T00:24"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC5",
+                    "is_market_account: false",
+                    "is_internal_account: false"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Index Alarm alert (critical)",
+                    "Active positions on: RAVE-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling",
+                "RAVE-USDT-SWAP LONG opened 2026-04-19T00:24",
+                "Active during critical Index Alarm alert"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "6540612",
+              "master_user_id": "6540612",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2017-11-21 (56.3yr). trade/equity ratio inf. VIP6.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2017-11-21 (56.3yr)",
+                    "None",
+                    "KYC7 None verified",
+                    "Client type: 0"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP6"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC7",
+                    "is_market_account: false",
+                    "is_internal_account: false"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Index Alarm alert (critical)"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling",
+                "Active during critical Index Alarm alert"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "46255713",
+              "master_user_id": "46255713",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2023-11-06 (56.3yr). trade/equity ratio inf. VIP3.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2023-11-06 (56.3yr)",
+                    "None",
+                    "KYC4 None verified",
+                    "Client type: 21"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP3",
+                    "RAVE-USDT-SWAP LONG (Cross), opened 2026-04-21T10:44"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC4",
+                    "is_market_account: false",
+                    "is_internal_account: false"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Index Alarm alert (critical)",
+                    "Active positions on: RAVE-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling",
+                "RAVE-USDT-SWAP LONG opened 2026-04-21T10:44",
+                "Active during critical Index Alarm alert"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "18249321",
+              "master_user_id": "18249321",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2021-05-31 (56.3yr). trade/equity ratio inf. VIP3.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2021-05-31 (56.3yr)",
+                    "None",
+                    "KYC4 None verified",
+                    "Client type: 21"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP3",
+                    "RAVE-USDT-SWAP SHORT (Cross), opened 2026-04-19T14:11"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC4",
+                    "is_market_account: false",
+                    "is_internal_account: false"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Index Alarm alert (critical)",
+                    "Active positions on: RAVE-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling",
+                "RAVE-USDT-SWAP SHORT opened 2026-04-19T14:11",
+                "Active during critical Index Alarm alert"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "34244216",
+              "master_user_id": "34244216",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2022-10-27 (56.3yr). trade/equity ratio inf. VIP2.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2022-10-27 (56.3yr)",
+                    "None",
+                    "KYC3 None verified",
+                    "Client type: 21"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP2",
+                    "RAVE-USDT-SWAP SHORT (Cross), opened 2026-04-21T08:39"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC3",
+                    "is_market_account: false",
+                    "is_internal_account: false"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Index Alarm alert (critical)",
+                    "Active positions on: RAVE-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling",
+                "RAVE-USDT-SWAP SHORT opened 2026-04-21T08:39",
+                "Active during critical Index Alarm alert"
+              ],
+              "local_artifact_ref": ""
+            }
+          ]
         },
         {
           "asset": "TEST01-USDT-SWAP",
-          "severity": "warning",
-          "executive_summary": "TEST01-USDT-SWAP triggered warning alert. Price: $n/a (n/a). 0 user(s) profiled.",
+          "severity": "critical",
+          "executive_summary": "TEST01-USDT-SWAP triggered critical alert. Price: $0.076666666667 (-23.33%). 4 user(s) profiled.",
           "forward_looking": "Monitor TEST01-USDT-SWAP OI trajectory over the next 24 hours. If OI continues expanding, consider tightening position limits. Watch for funding rate shifts that may attract additional directional flow.",
           "market_snapshot": {
-            "price": "n/a",
-            "change_24h": "n/a",
-            "open_interest": "n/a",
-            "funding_rate": "n/a",
-            "vol_24h": "n/a",
-            "timestamp": "2026-04-22T10:41:36.238430+08:00"
+            "price": "0.076666666667",
+            "change_24h": "-23.33%",
+            "open_interest": "180",
+            "funding_rate": "0.0000250000000000",
+            "vol_24h": "103",
+            "timestamp": "2026-04-22T11:37:21.472700+08:00"
           },
           "quantitative_impact": {
             "title": "Quantitative Impact",
             "metrics": [
               {
                 "value": "n/a",
-                "label": "Impact",
-                "detail": "Insufficient data to compute quantitative impact"
+                "label": "OI Deviation (24H)",
+                "detail": "Open interest deviated n/a from the 24-hour average"
+              },
+              {
+                "value": "CRITICAL",
+                "label": "Alert Severity",
+                "detail": "Alert classified as critical"
+              },
+              {
+                "value": "+100.0%",
+                "label": "User Growth (period)",
+                "detail": "Total users changed from 2 to 4 over the observation window"
               }
             ]
           },
@@ -195,12 +1490,71 @@
                 "Longs",
                 "Shorts"
               ],
-              "rows": []
+              "rows": [
+                [
+                  "2026042116",
+                  "2",
+                  "0",
+                  "1"
+                ],
+                [
+                  "2026042117",
+                  "3",
+                  "0",
+                  "2"
+                ],
+                [
+                  "2026042118",
+                  "3",
+                  "0",
+                  "2"
+                ],
+                [
+                  "2026042119",
+                  "3",
+                  "2",
+                  "3"
+                ],
+                [
+                  "2026042120",
+                  "4",
+                  "3",
+                  "3"
+                ],
+                [
+                  "2026042121",
+                  "4",
+                  "3",
+                  "3"
+                ],
+                [
+                  "2026042122",
+                  "4",
+                  "3",
+                  "3"
+                ],
+                [
+                  "2026042123",
+                  "4",
+                  "3",
+                  "3"
+                ]
+              ]
             }
           },
           "risk_assessment": {
             "title": "Risk Assessment & Recommended Actions",
             "actions": [
+              {
+                "priority": "P0",
+                "action": "Review platform position limits for this instrument immediately",
+                "reason": "Critical Index Alarm alert requires immediate parameter review"
+              },
+              {
+                "priority": "P1",
+                "action": "Deep-review top risk users: 62247621, 100513877, 11",
+                "reason": "4 user(s) flagged with elevated trade/equity ratios or suspicious patterns"
+              },
               {
                 "priority": "P2",
                 "action": "Continue monitoring OI trajectory and funding rate changes over the next 24 hours",
@@ -218,14 +1572,79 @@
               "Opened",
               "Risk Tier"
             ],
-            "rows": []
+            "rows": [
+              [
+                "62247621",
+                "62247621",
+                "LONG",
+                "Isolated",
+                "2026-04-21T19:25:52.826+08:00[Asia/Shanghai]",
+                "T1"
+              ],
+              [
+                "62247621",
+                "62247621",
+                "SHORT",
+                "Cross",
+                "2026-04-21T19:42:27.637+08:00[Asia/Shanghai]",
+                "T1"
+              ],
+              [
+                "62247621",
+                "62247621",
+                "LONG",
+                "Cross",
+                "2026-04-21T20:23:20.615+08:00[Asia/Shanghai]",
+                "T1"
+              ],
+              [
+                "62247621",
+                "62247621",
+                "SHORT",
+                "Isolated",
+                "2026-04-21T17:46:23.360+08:00[Asia/Shanghai]",
+                "T1"
+              ],
+              [
+                "100513877",
+                "100513877",
+                "LONG",
+                "Cross",
+                "2026-04-21T20:34:01.449+08:00[Asia/Shanghai]",
+                "T1"
+              ],
+              [
+                "11",
+                "11",
+                "n/a",
+                "n/a",
+                "n/a",
+                "T1"
+              ],
+              [
+                "52043946",
+                "52043946",
+                "LONG",
+                "Cross",
+                "2026-04-21T19:29:34.673+08:00[Asia/Shanghai]",
+                "T1"
+              ],
+              [
+                "52043946",
+                "52043946",
+                "LONG",
+                "Isolated",
+                "2026-04-21T16:57:21.058+08:00[Asia/Shanghai]",
+                "T1"
+              ]
+            ]
           },
           "causal_chain": [
             {
               "step": 1,
               "type": "远因 (Structural)",
               "name": "TEST01-USDT-SWAP Thin Liquidity / Low Float",
-              "description": "TEST01-USDT-SWAP has limited market depth (24H vol: n/a). Low float instruments are susceptible to rapid OI deviation.",
+              "description": "TEST01-USDT-SWAP has limited market depth (24H vol: 103). Low float instruments are susceptible to rapid OI deviation.",
               "evidence_strength": 3,
               "evidence_label": "Market data"
             },
@@ -233,15 +1652,73 @@
               "step": 2,
               "type": "近因 (User Influx)",
               "name": "TEST01-USDT-SWAP Position Buildup",
-              "description": "User positioning changed on TEST01-USDT-SWAP.",
+              "description": "Users grew from 2 to 4 (longs 0->3, shorts 1->3) between 2026042116 and 2026042123.",
               "evidence_strength": 4,
-              "evidence_label": "Position data"
+              "evidence_label": "Position data",
+              "evidence_table": {
+                "headers": [
+                  "Hour",
+                  "Total Users",
+                  "Longs",
+                  "Shorts"
+                ],
+                "rows": [
+                  [
+                    "2026042116",
+                    "2",
+                    "0",
+                    "1"
+                  ],
+                  [
+                    "2026042117",
+                    "3",
+                    "0",
+                    "2"
+                  ],
+                  [
+                    "2026042118",
+                    "3",
+                    "0",
+                    "2"
+                  ],
+                  [
+                    "2026042119",
+                    "3",
+                    "2",
+                    "3"
+                  ],
+                  [
+                    "2026042120",
+                    "4",
+                    "3",
+                    "3"
+                  ],
+                  [
+                    "2026042121",
+                    "4",
+                    "3",
+                    "3"
+                  ],
+                  [
+                    "2026042122",
+                    "4",
+                    "3",
+                    "3"
+                  ],
+                  [
+                    "2026042123",
+                    "4",
+                    "3",
+                    "3"
+                  ]
+                ]
+              }
             },
             {
               "step": 3,
               "type": "触发事件 (Trigger)",
               "name": "Alert Fired",
-              "description": "TEST01-USDT-SWAP flagged by risk monitoring system.",
+              "description": "Index Alarm alert fired at critical level. OI deviation: n/a.",
               "evidence_strength": 5,
               "evidence_label": "Platform alert"
             },
@@ -249,129 +1726,426 @@
               "step": 4,
               "type": "风险放大 (Amplification)",
               "name": "User Concentration Risk",
-              "description": "Top position holders are concentrating exposure.",
+              "description": "Top users concentrating: 62247621, 100513877, 11, 52043946 (risk tiers: T1, T1, T1, T1). Position overlap amplifies systemic exposure.",
               "evidence_strength": 4,
-              "evidence_label": "User data"
+              "evidence_label": "User data",
+              "evidence_table": {
+                "headers": [
+                  "User ID",
+                  "Risk Tier",
+                  "Summary"
+                ],
+                "rows": [
+                  [
+                    "62247621",
+                    "T1",
+                    "Registered 2024-08-21 (56.3yr). trade/equity ratio inf. VIP3."
+                  ],
+                  [
+                    "100513877",
+                    "T1",
+                    "Registered 2026-04-10 (56.3yr). trade/equity ratio inf."
+                  ],
+                  [
+                    "11",
+                    "T1",
+                    "Registered 2014-08-01 (56.3yr). trade/equity ratio inf. VIP8."
+                  ],
+                  [
+                    "52043946",
+                    "T1",
+                    "Registered 2024-02-29 (56.3yr). trade/equity ratio inf."
+                  ]
+                ]
+              }
             }
           ],
-          "key_users": [],
-          "user_profiles": []
-        },
-        {
-          "asset": "USDG-USDT-SWAP",
-          "severity": "warning",
-          "executive_summary": "USDG-USDT-SWAP triggered warning alert. Price: $n/a (n/a). 0 user(s) profiled.",
-          "forward_looking": "Monitor USDG-USDT-SWAP OI trajectory over the next 24 hours. If OI continues expanding, consider tightening position limits. Watch for funding rate shifts that may attract additional directional flow.",
-          "market_snapshot": {
-            "price": "n/a",
-            "change_24h": "n/a",
-            "open_interest": "n/a",
-            "funding_rate": "n/a",
-            "vol_24h": "n/a",
-            "timestamp": "2026-04-22T10:41:36.238507+08:00"
-          },
-          "quantitative_impact": {
-            "title": "Quantitative Impact",
-            "metrics": [
-              {
-                "value": "n/a",
-                "label": "Impact",
-                "detail": "Insufficient data to compute quantitative impact"
-              }
-            ]
-          },
-          "oi_attribution": {
-            "title": "OI Attribution (Hourly User Breakdown)",
-            "description": "Hourly breakdown of user positioning for the instrument.",
-            "user_hourly_table": {
-              "headers": [
-                "Hour (pt)",
-                "Total Users",
-                "Longs",
-                "Shorts"
+          "key_users": [
+            "62247621",
+            "100513877",
+            "46323424",
+            "52043946"
+          ],
+          "user_profiles": [
+            {
+              "uid": "62247621",
+              "master_user_id": "62247621",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2024-08-21 (56.3yr). trade/equity ratio inf. VIP3.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2024-08-21 (56.3yr)",
+                    "None",
+                    "KYC4 None verified",
+                    "Client type: 0"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP3",
+                    "TEST01-USDT-SWAP LONG (Isolated), opened 2026-04-21T19:25",
+                    "TEST01-USDT-SWAP SHORT (Cross), opened 2026-04-21T19:42",
+                    "TEST01-USDT-SWAP LONG (Cross), opened 2026-04-21T20:23",
+                    "TEST01-USDT-SWAP SHORT (Isolated), opened 2026-04-21T17:46"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC4",
+                    "is_market_account: false",
+                    "is_internal_account: false"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Index Alarm alert (critical)",
+                    "Active positions on: TEST01-USDT-SWAP"
+                  ]
+                }
               ],
-              "rows": []
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling",
+                "TEST01-USDT-SWAP LONG opened 2026-04-21T19:25",
+                "TEST01-USDT-SWAP SHORT opened 2026-04-21T19:42",
+                "TEST01-USDT-SWAP LONG opened 2026-04-21T20:23",
+                "TEST01-USDT-SWAP SHORT opened 2026-04-21T17:46",
+                "Active during critical Index Alarm alert"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "100513877",
+              "master_user_id": "100513877",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2026-04-10 (56.3yr). trade/equity ratio inf.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2026-04-10 (56.3yr)",
+                    "None",
+                    "KYC1 None verified",
+                    "Client type: 0"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: LV1",
+                    "TEST01-USDT-SWAP LONG (Cross), opened 2026-04-21T20:34"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "critical",
+                  "signals": [
+                    "KYC1",
+                    "is_market_account: false",
+                    "is_internal_account: true",
+                    "KYC1 despite 56.3yr account age — upgrade anomaly"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Index Alarm alert (critical)",
+                    "Active positions on: TEST01-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling",
+                "TEST01-USDT-SWAP LONG opened 2026-04-21T20:34",
+                "Active during critical Index Alarm alert"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "11",
+              "master_user_id": "11",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2014-08-01 (56.3yr). trade/equity ratio inf. VIP8.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2014-08-01 (56.3yr)",
+                    "None",
+                    "KYC9 None verified",
+                    "Client type: 1"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP8"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC9",
+                    "is_market_account: false",
+                    "is_internal_account: true"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Index Alarm alert (critical)"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling",
+                "Active during critical Index Alarm alert"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "52043946",
+              "master_user_id": "52043946",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2024-02-29 (56.3yr). trade/equity ratio inf.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2024-02-29 (56.3yr)",
+                    "None",
+                    "KYC1 None verified",
+                    "Client type: 26"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: LV1",
+                    "TEST01-USDT-SWAP LONG (Cross), opened 2026-04-21T19:29",
+                    "TEST01-USDT-SWAP LONG (Isolated), opened 2026-04-21T16:57"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "critical",
+                  "signals": [
+                    "KYC1",
+                    "is_market_account: false",
+                    "is_internal_account: false",
+                    "KYC1 despite 56.3yr account age — upgrade anomaly"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Index Alarm alert (critical)",
+                    "Active positions on: TEST01-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling",
+                "TEST01-USDT-SWAP LONG opened 2026-04-21T19:29",
+                "TEST01-USDT-SWAP LONG opened 2026-04-21T16:57",
+                "Active during critical Index Alarm alert"
+              ],
+              "local_artifact_ref": ""
             }
-          },
-          "risk_assessment": {
-            "title": "Risk Assessment & Recommended Actions",
-            "actions": [
-              {
-                "priority": "P2",
-                "action": "Continue monitoring OI trajectory and funding rate changes over the next 24 hours",
-                "reason": "Position dynamics may shift as new data comes in — ensure no further limit breaches"
-              }
-            ]
-          },
-          "involved_users_brief": {
-            "title": "Involved Users (Brief)",
-            "headers": [
-              "User ID",
-              "UID",
-              "Position",
-              "Margin",
-              "Opened",
-              "Risk Tier"
-            ],
-            "rows": []
-          },
-          "causal_chain": [
-            {
-              "step": 1,
-              "type": "远因 (Structural)",
-              "name": "USDG-USDT-SWAP Thin Liquidity / Low Float",
-              "description": "USDG-USDT-SWAP has limited market depth (24H vol: n/a). Low float instruments are susceptible to rapid OI deviation.",
-              "evidence_strength": 3,
-              "evidence_label": "Market data"
-            },
-            {
-              "step": 2,
-              "type": "近因 (User Influx)",
-              "name": "USDG-USDT-SWAP Position Buildup",
-              "description": "User positioning changed on USDG-USDT-SWAP.",
-              "evidence_strength": 4,
-              "evidence_label": "Position data"
-            },
-            {
-              "step": 3,
-              "type": "触发事件 (Trigger)",
-              "name": "Alert Fired",
-              "description": "USDG-USDT-SWAP flagged by risk monitoring system.",
-              "evidence_strength": 5,
-              "evidence_label": "Platform alert"
-            },
-            {
-              "step": 4,
-              "type": "风险放大 (Amplification)",
-              "name": "User Concentration Risk",
-              "description": "Top position holders are concentrating exposure.",
-              "evidence_strength": 4,
-              "evidence_label": "User data"
-            }
-          ],
-          "key_users": [],
-          "user_profiles": []
+          ]
         },
         {
           "asset": "GPS-USDT-SWAP",
           "severity": "warning",
-          "executive_summary": "GPS-USDT-SWAP triggered warning alert. Price: $n/a (n/a). 0 user(s) profiled.",
+          "executive_summary": "GPS-USDT-SWAP triggered warning alert. Price: $0.009237 (+0.93%). OI deviation: 57.49%. 10 user(s) profiled.",
           "forward_looking": "Monitor GPS-USDT-SWAP OI trajectory over the next 24 hours. If OI continues expanding, consider tightening position limits. Watch for funding rate shifts that may attract additional directional flow.",
           "market_snapshot": {
-            "price": "n/a",
-            "change_24h": "n/a",
-            "open_interest": "n/a",
-            "funding_rate": "n/a",
-            "vol_24h": "n/a",
-            "timestamp": "2026-04-22T10:41:36.238628+08:00"
+            "price": "0.009237",
+            "change_24h": "+0.93%",
+            "open_interest": "6541636",
+            "funding_rate": "0.0000500000000000",
+            "vol_24h": "1054797290",
+            "timestamp": "2026-04-22T11:37:21.472809+08:00"
           },
           "quantitative_impact": {
             "title": "Quantitative Impact",
             "metrics": [
               {
-                "value": "n/a",
-                "label": "Impact",
-                "detail": "Insufficient data to compute quantitative impact"
+                "value": "57.49%",
+                "label": "OI Deviation (24H)",
+                "detail": "Open interest deviated 57.49% from the 24-hour average"
+              },
+              {
+                "value": "WARNING",
+                "label": "Alert Severity",
+                "detail": "Alert classified as warning"
+              },
+              {
+                "value": "+26.0%",
+                "label": "User Growth (period)",
+                "detail": "Total users changed from 7139 to 8996 over the observation window"
               }
             ]
           },
@@ -385,12 +2159,162 @@
                 "Longs",
                 "Shorts"
               ],
-              "rows": []
+              "rows": [
+                [
+                  "2026042100",
+                  "7139",
+                  "2953",
+                  "2552"
+                ],
+                [
+                  "2026042101",
+                  "7287",
+                  "3010",
+                  "2585"
+                ],
+                [
+                  "2026042102",
+                  "7361",
+                  "3027",
+                  "2604"
+                ],
+                [
+                  "2026042103",
+                  "7372",
+                  "3033",
+                  "2605"
+                ],
+                [
+                  "2026042104",
+                  "7400",
+                  "3043",
+                  "2607"
+                ],
+                [
+                  "2026042105",
+                  "7424",
+                  "3050",
+                  "2613"
+                ],
+                [
+                  "2026042106",
+                  "7431",
+                  "3054",
+                  "2613"
+                ],
+                [
+                  "2026042107",
+                  "7450",
+                  "3061",
+                  "2616"
+                ],
+                [
+                  "2026042108",
+                  "7478",
+                  "3071",
+                  "2620"
+                ],
+                [
+                  "2026042109",
+                  "7484",
+                  "3076",
+                  "2622"
+                ],
+                [
+                  "2026042110",
+                  "7487",
+                  "3078",
+                  "2624"
+                ],
+                [
+                  "2026042111",
+                  "7495",
+                  "3081",
+                  "2626"
+                ],
+                [
+                  "2026042112",
+                  "7494",
+                  "3081",
+                  "2625"
+                ],
+                [
+                  "2026042113",
+                  "7499",
+                  "3082",
+                  "2627"
+                ],
+                [
+                  "2026042114",
+                  "7503",
+                  "3085",
+                  "2627"
+                ],
+                [
+                  "2026042115",
+                  "7516",
+                  "3089",
+                  "2631"
+                ],
+                [
+                  "2026042116",
+                  "7521",
+                  "3092",
+                  "2631"
+                ],
+                [
+                  "2026042117",
+                  "7580",
+                  "3106",
+                  "2651"
+                ],
+                [
+                  "2026042118",
+                  "7695",
+                  "3151",
+                  "2681"
+                ],
+                [
+                  "2026042119",
+                  "7855",
+                  "3198",
+                  "2731"
+                ],
+                [
+                  "2026042120",
+                  "8040",
+                  "3273",
+                  "2780"
+                ],
+                [
+                  "2026042121",
+                  "8170",
+                  "3325",
+                  "2820"
+                ],
+                [
+                  "2026042122",
+                  "8418",
+                  "3430",
+                  "2895"
+                ],
+                [
+                  "2026042123",
+                  "8996",
+                  "3656",
+                  "3053"
+                ]
+              ]
             }
           },
           "risk_assessment": {
             "title": "Risk Assessment & Recommended Actions",
             "actions": [
+              {
+                "priority": "P1",
+                "action": "Deep-review top risk users: 37144619, 31418307, 9231851",
+                "reason": "10 user(s) flagged with elevated trade/equity ratios or suspicious patterns"
+              },
               {
                 "priority": "P2",
                 "action": "Continue monitoring OI trajectory and funding rate changes over the next 24 hours",
@@ -408,14 +2332,95 @@
               "Opened",
               "Risk Tier"
             ],
-            "rows": []
+            "rows": [
+              [
+                "37144619",
+                "37144619",
+                "LONG",
+                "Isolated",
+                "2025-06-27T10:30:33.801+08:00[Asia/Shanghai]",
+                "T1"
+              ],
+              [
+                "31418307",
+                "31418307",
+                "n/a",
+                "n/a",
+                "n/a",
+                "T1"
+              ],
+              [
+                "9231851",
+                "9231851",
+                "LONG",
+                "Cross",
+                "2026-04-15T11:22:33.789+08:00[Asia/Shanghai]",
+                "T1"
+              ],
+              [
+                "31418307",
+                "31418307",
+                "n/a",
+                "n/a",
+                "n/a",
+                "T1"
+              ],
+              [
+                "6540612",
+                "6540612",
+                "n/a",
+                "n/a",
+                "n/a",
+                "T1"
+              ],
+              [
+                "9894357",
+                "9894357",
+                "LONG",
+                "Cross",
+                "2025-06-09T14:27:32.048+08:00[Asia/Shanghai]",
+                "T1"
+              ],
+              [
+                "17383913",
+                "17383913",
+                "LONG",
+                "Cross",
+                "2026-04-21T23:57:41.626+08:00[Asia/Shanghai]",
+                "T1"
+              ],
+              [
+                "23404538",
+                "23404538",
+                "n/a",
+                "n/a",
+                "n/a",
+                "T1"
+              ],
+              [
+                "42498274",
+                "42498274",
+                "n/a",
+                "n/a",
+                "n/a",
+                "T1"
+              ],
+              [
+                "23404538",
+                "23404538",
+                "n/a",
+                "n/a",
+                "n/a",
+                "T1"
+              ]
+            ]
           },
           "causal_chain": [
             {
               "step": 1,
               "type": "远因 (Structural)",
               "name": "GPS-USDT-SWAP Thin Liquidity / Low Float",
-              "description": "GPS-USDT-SWAP has limited market depth (24H vol: n/a). Low float instruments are susceptible to rapid OI deviation.",
+              "description": "GPS-USDT-SWAP has limited market depth (24H vol: 1054797290). Low float instruments are susceptible to rapid OI deviation.",
               "evidence_strength": 3,
               "evidence_label": "Market data"
             },
@@ -423,15 +2428,169 @@
               "step": 2,
               "type": "近因 (User Influx)",
               "name": "GPS-USDT-SWAP Position Buildup",
-              "description": "User positioning changed on GPS-USDT-SWAP.",
+              "description": "Users grew from 7139 to 8996 (longs 2953->3656, shorts 2552->3053) between 2026042100 and 2026042123.",
               "evidence_strength": 4,
-              "evidence_label": "Position data"
+              "evidence_label": "Position data",
+              "evidence_table": {
+                "headers": [
+                  "Hour",
+                  "Total Users",
+                  "Longs",
+                  "Shorts"
+                ],
+                "rows": [
+                  [
+                    "2026042100",
+                    "7139",
+                    "2953",
+                    "2552"
+                  ],
+                  [
+                    "2026042101",
+                    "7287",
+                    "3010",
+                    "2585"
+                  ],
+                  [
+                    "2026042102",
+                    "7361",
+                    "3027",
+                    "2604"
+                  ],
+                  [
+                    "2026042103",
+                    "7372",
+                    "3033",
+                    "2605"
+                  ],
+                  [
+                    "2026042104",
+                    "7400",
+                    "3043",
+                    "2607"
+                  ],
+                  [
+                    "2026042105",
+                    "7424",
+                    "3050",
+                    "2613"
+                  ],
+                  [
+                    "2026042106",
+                    "7431",
+                    "3054",
+                    "2613"
+                  ],
+                  [
+                    "2026042107",
+                    "7450",
+                    "3061",
+                    "2616"
+                  ],
+                  [
+                    "2026042108",
+                    "7478",
+                    "3071",
+                    "2620"
+                  ],
+                  [
+                    "2026042109",
+                    "7484",
+                    "3076",
+                    "2622"
+                  ],
+                  [
+                    "2026042110",
+                    "7487",
+                    "3078",
+                    "2624"
+                  ],
+                  [
+                    "2026042111",
+                    "7495",
+                    "3081",
+                    "2626"
+                  ],
+                  [
+                    "2026042112",
+                    "7494",
+                    "3081",
+                    "2625"
+                  ],
+                  [
+                    "2026042113",
+                    "7499",
+                    "3082",
+                    "2627"
+                  ],
+                  [
+                    "2026042114",
+                    "7503",
+                    "3085",
+                    "2627"
+                  ],
+                  [
+                    "2026042115",
+                    "7516",
+                    "3089",
+                    "2631"
+                  ],
+                  [
+                    "2026042116",
+                    "7521",
+                    "3092",
+                    "2631"
+                  ],
+                  [
+                    "2026042117",
+                    "7580",
+                    "3106",
+                    "2651"
+                  ],
+                  [
+                    "2026042118",
+                    "7695",
+                    "3151",
+                    "2681"
+                  ],
+                  [
+                    "2026042119",
+                    "7855",
+                    "3198",
+                    "2731"
+                  ],
+                  [
+                    "2026042120",
+                    "8040",
+                    "3273",
+                    "2780"
+                  ],
+                  [
+                    "2026042121",
+                    "8170",
+                    "3325",
+                    "2820"
+                  ],
+                  [
+                    "2026042122",
+                    "8418",
+                    "3430",
+                    "2895"
+                  ],
+                  [
+                    "2026042123",
+                    "8996",
+                    "3656",
+                    "3053"
+                  ]
+                ]
+              }
             },
             {
               "step": 3,
               "type": "触发事件 (Trigger)",
               "name": "Alert Fired",
-              "description": "GPS-USDT-SWAP flagged by risk monitoring system.",
+              "description": "Platform OI alert fired at warning level. OI deviation: 57.49%.",
               "evidence_strength": 5,
               "evidence_label": "Platform alert"
             },
@@ -439,34 +2598,909 @@
               "step": 4,
               "type": "风险放大 (Amplification)",
               "name": "User Concentration Risk",
-              "description": "Top position holders are concentrating exposure.",
+              "description": "Top users concentrating: 37144619, 31418307, 9231851, 31418307, 6540612 (risk tiers: T1, T1, T1, T1, T1). Position overlap amplifies systemic exposure.",
               "evidence_strength": 4,
-              "evidence_label": "User data"
+              "evidence_label": "User data",
+              "evidence_table": {
+                "headers": [
+                  "User ID",
+                  "Risk Tier",
+                  "Summary"
+                ],
+                "rows": [
+                  [
+                    "37144619",
+                    "T1",
+                    "Registered 2023-02-16 (56.3yr). trade/equity ratio inf."
+                  ],
+                  [
+                    "31418307",
+                    "T1",
+                    "Registered 2022-08-03 (56.3yr). trade/equity ratio inf. VIP8."
+                  ],
+                  [
+                    "9231851",
+                    "T1",
+                    "Registered 2019-03-11 (56.3yr). trade/equity ratio inf. VIP2."
+                  ],
+                  [
+                    "31418307",
+                    "T1",
+                    "Registered 2022-08-03 (56.3yr). trade/equity ratio inf. VIP8."
+                  ],
+                  [
+                    "6540612",
+                    "T1",
+                    "Registered 2017-11-21 (56.3yr). trade/equity ratio inf. VIP6."
+                  ]
+                ]
+              }
             }
           ],
-          "key_users": [],
-          "user_profiles": []
+          "key_users": [
+            "37144619",
+            "54828513",
+            "9231851",
+            "54828436",
+            "20334880"
+          ],
+          "user_profiles": [
+            {
+              "uid": "37144619",
+              "master_user_id": "37144619",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2023-02-16 (56.3yr). trade/equity ratio inf.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2023-02-16 (56.3yr)",
+                    "None",
+                    "KYC1 None verified",
+                    "Client type: 21"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: LV1",
+                    "GPS-USDT-SWAP LONG (Isolated), opened 2025-06-27T10:30"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "critical",
+                  "signals": [
+                    "KYC1",
+                    "is_market_account: false",
+                    "is_internal_account: false",
+                    "KYC1 despite 56.3yr account age — upgrade anomaly"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Platform OI alert (warning)",
+                    "Active positions on: GPS-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling",
+                "GPS-USDT-SWAP LONG opened 2025-06-27T10:30"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "31418307",
+              "master_user_id": "31418307",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2022-08-03 (56.3yr). trade/equity ratio inf. VIP8.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2022-08-03 (56.3yr)",
+                    "None",
+                    "KYC9 None verified",
+                    "Client type: 21"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP8"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC9",
+                    "is_market_account: false",
+                    "is_internal_account: false"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Platform OI alert (warning)"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "9231851",
+              "master_user_id": "9231851",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2019-03-11 (56.3yr). trade/equity ratio inf. VIP2.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2019-03-11 (56.3yr)",
+                    "None",
+                    "KYC3 None verified",
+                    "Client type: 5"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP2",
+                    "GPS-USDT-SWAP LONG (Cross), opened 2026-04-15T11:22"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC3",
+                    "is_market_account: false",
+                    "is_internal_account: false"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Platform OI alert (warning)",
+                    "Active positions on: GPS-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling",
+                "GPS-USDT-SWAP LONG opened 2026-04-15T11:22"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "31418307",
+              "master_user_id": "31418307",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2022-08-03 (56.3yr). trade/equity ratio inf. VIP8.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2022-08-03 (56.3yr)",
+                    "None",
+                    "KYC9 None verified",
+                    "Client type: 21"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP8"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC9",
+                    "is_market_account: false",
+                    "is_internal_account: false"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Platform OI alert (warning)"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "6540612",
+              "master_user_id": "6540612",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2017-11-21 (56.3yr). trade/equity ratio inf. VIP6.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2017-11-21 (56.3yr)",
+                    "None",
+                    "KYC7 None verified",
+                    "Client type: 0"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP6"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC7",
+                    "is_market_account: false",
+                    "is_internal_account: false"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Platform OI alert (warning)"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "9894357",
+              "master_user_id": "9894357",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2019-06-25 (56.3yr). trade/equity ratio inf. VIP2.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2019-06-25 (56.3yr)",
+                    "None",
+                    "KYC3 None verified",
+                    "Client type: 0"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP2",
+                    "GPS-USDT-SWAP LONG (Cross), opened 2025-06-09T14:27"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC3",
+                    "is_market_account: false",
+                    "is_internal_account: false"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Platform OI alert (warning)",
+                    "Active positions on: GPS-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling",
+                "GPS-USDT-SWAP LONG opened 2025-06-09T14:27"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "17383913",
+              "master_user_id": "17383913",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2021-05-09 (56.3yr). trade/equity ratio inf. VIP1.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2021-05-09 (56.3yr)",
+                    "None",
+                    "KYC2 None verified",
+                    "Client type: 0"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP1",
+                    "GPS-USDT-SWAP LONG (Cross), opened 2026-04-21T23:57"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "warning",
+                  "signals": [
+                    "KYC2",
+                    "is_market_account: false",
+                    "is_internal_account: false",
+                    "KYC2 despite 56.3yr account age — upgrade anomaly"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Platform OI alert (warning)",
+                    "Active positions on: GPS-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling",
+                "GPS-USDT-SWAP LONG opened 2026-04-21T23:57"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "23404538",
+              "master_user_id": "23404538",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2022-02-18 (56.3yr). trade/equity ratio inf. VIP8.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2022-02-18 (56.3yr)",
+                    "None",
+                    "KYC9 None verified",
+                    "Client type: 25"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP8"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC9",
+                    "is_market_account: false",
+                    "is_internal_account: false"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Platform OI alert (warning)"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "42498274",
+              "master_user_id": "42498274",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2023-07-05 (56.3yr). trade/equity ratio inf. VIP4.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2023-07-05 (56.3yr)",
+                    "None",
+                    "KYC5 None verified",
+                    "Client type: 21"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP4"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC5",
+                    "is_market_account: false",
+                    "is_internal_account: false"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Platform OI alert (warning)"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "23404538",
+              "master_user_id": "23404538",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2022-02-18 (56.3yr). trade/equity ratio inf. VIP8.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2022-02-18 (56.3yr)",
+                    "None",
+                    "KYC9 None verified",
+                    "Client type: 25"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP8"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC9",
+                    "is_market_account: false",
+                    "is_internal_account: false"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Platform OI alert (warning)"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling"
+              ],
+              "local_artifact_ref": ""
+            }
+          ]
         },
         {
           "asset": "CHIP-USDT-SWAP",
           "severity": "warning",
-          "executive_summary": "CHIP-USDT-SWAP triggered warning alert. Price: $n/a (n/a). 0 user(s) profiled.",
+          "executive_summary": "CHIP-USDT-SWAP triggered warning alert. Price: $0.06107 (+1.26%). OI deviation: 100.00%. 10 user(s) profiled.",
           "forward_looking": "Monitor CHIP-USDT-SWAP OI trajectory over the next 24 hours. If OI continues expanding, consider tightening position limits. Watch for funding rate shifts that may attract additional directional flow.",
           "market_snapshot": {
-            "price": "n/a",
-            "change_24h": "n/a",
-            "open_interest": "n/a",
-            "funding_rate": "n/a",
-            "vol_24h": "n/a",
-            "timestamp": "2026-04-22T10:41:36.238645+08:00"
+            "price": "0.06107",
+            "change_24h": "+1.26%",
+            "open_interest": "312577",
+            "funding_rate": "-0.0009273946407303",
+            "vol_24h": "1345771700",
+            "timestamp": "2026-04-22T11:37:21.472898+08:00"
           },
           "quantitative_impact": {
             "title": "Quantitative Impact",
             "metrics": [
               {
-                "value": "n/a",
-                "label": "Impact",
-                "detail": "Insufficient data to compute quantitative impact"
+                "value": "100.00%",
+                "label": "OI Deviation (24H)",
+                "detail": "Open interest deviated 100.00% from the 24-hour average"
+              },
+              {
+                "value": "WARNING",
+                "label": "Alert Severity",
+                "detail": "Alert classified as warning"
+              },
+              {
+                "value": "+19.8%",
+                "label": "User Growth (period)",
+                "detail": "Total users changed from 5929 to 7105 over the observation window"
               }
             ]
           },
@@ -480,12 +3514,30 @@
                 "Longs",
                 "Shorts"
               ],
-              "rows": []
+              "rows": [
+                [
+                  "2026042122",
+                  "5929",
+                  "2674",
+                  "1309"
+                ],
+                [
+                  "2026042123",
+                  "7105",
+                  "3152",
+                  "1652"
+                ]
+              ]
             }
           },
           "risk_assessment": {
             "title": "Risk Assessment & Recommended Actions",
             "actions": [
+              {
+                "priority": "P1",
+                "action": "Deep-review top risk users: 8228670, 41405797, 35484914",
+                "reason": "10 user(s) flagged with elevated trade/equity ratios or suspicious patterns"
+              },
               {
                 "priority": "P2",
                 "action": "Continue monitoring OI trajectory and funding rate changes over the next 24 hours",
@@ -503,14 +3555,95 @@
               "Opened",
               "Risk Tier"
             ],
-            "rows": []
+            "rows": [
+              [
+                "8228670",
+                "8228670",
+                "SHORT",
+                "Cross",
+                "2026-04-21T22:07:05.729+08:00[Asia/Shanghai]",
+                "T1"
+              ],
+              [
+                "41405797",
+                "41405797",
+                "n/a",
+                "n/a",
+                "n/a",
+                "T1"
+              ],
+              [
+                "35484914",
+                "35484914",
+                "SHORT",
+                "Cross",
+                "2026-04-21T22:16:02.226+08:00[Asia/Shanghai]",
+                "T1"
+              ],
+              [
+                "46140135",
+                "46140135",
+                "SHORT",
+                "Cross",
+                "2026-04-21T22:16:21.864+08:00[Asia/Shanghai]",
+                "T1"
+              ],
+              [
+                "53099780",
+                "53099780",
+                "n/a",
+                "n/a",
+                "n/a",
+                "T1"
+              ],
+              [
+                "18911114",
+                "18911114",
+                "SHORT",
+                "Cross",
+                "2026-04-21T22:31:34.740+08:00[Asia/Shanghai]",
+                "T1"
+              ],
+              [
+                "31079822",
+                "31079822",
+                "n/a",
+                "n/a",
+                "n/a",
+                "T1"
+              ],
+              [
+                "75395073",
+                "75395073",
+                "LONG",
+                "Cross",
+                "2026-04-21T23:26:12.346+08:00[Asia/Shanghai]",
+                "T1"
+              ],
+              [
+                "12442173",
+                "12442173",
+                "SHORT",
+                "Cross",
+                "2026-04-21T22:30:00.826+08:00[Asia/Shanghai]",
+                "T1"
+              ],
+              [
+                "6245233",
+                "6245233",
+                "SHORT",
+                "Isolated",
+                "2026-04-21T22:00:03.090+08:00[Asia/Shanghai]",
+                "T1"
+              ]
+            ]
           },
           "causal_chain": [
             {
               "step": 1,
               "type": "远因 (Structural)",
               "name": "CHIP-USDT-SWAP Thin Liquidity / Low Float",
-              "description": "CHIP-USDT-SWAP has limited market depth (24H vol: n/a). Low float instruments are susceptible to rapid OI deviation.",
+              "description": "CHIP-USDT-SWAP has limited market depth (24H vol: 1345771700). Low float instruments are susceptible to rapid OI deviation.",
               "evidence_strength": 3,
               "evidence_label": "Market data"
             },
@@ -518,15 +3651,37 @@
               "step": 2,
               "type": "近因 (User Influx)",
               "name": "CHIP-USDT-SWAP Position Buildup",
-              "description": "User positioning changed on CHIP-USDT-SWAP.",
+              "description": "Users grew from 5929 to 7105 (longs 2674->3152, shorts 1309->1652) between 2026042122 and 2026042123.",
               "evidence_strength": 4,
-              "evidence_label": "Position data"
+              "evidence_label": "Position data",
+              "evidence_table": {
+                "headers": [
+                  "Hour",
+                  "Total Users",
+                  "Longs",
+                  "Shorts"
+                ],
+                "rows": [
+                  [
+                    "2026042122",
+                    "5929",
+                    "2674",
+                    "1309"
+                  ],
+                  [
+                    "2026042123",
+                    "7105",
+                    "3152",
+                    "1652"
+                  ]
+                ]
+              }
             },
             {
               "step": 3,
               "type": "触发事件 (Trigger)",
               "name": "Alert Fired",
-              "description": "CHIP-USDT-SWAP flagged by risk monitoring system.",
+              "description": "Platform OI alert fired at warning level. OI deviation: 100.00%.",
               "evidence_strength": 5,
               "evidence_label": "Platform alert"
             },
@@ -534,306 +3689,895 @@
               "step": 4,
               "type": "风险放大 (Amplification)",
               "name": "User Concentration Risk",
-              "description": "Top position holders are concentrating exposure.",
+              "description": "Top users concentrating: 8228670, 41405797, 35484914, 46140135, 53099780 (risk tiers: T1, T1, T1, T1, T1). Position overlap amplifies systemic exposure.",
               "evidence_strength": 4,
-              "evidence_label": "User data"
+              "evidence_label": "User data",
+              "evidence_table": {
+                "headers": [
+                  "User ID",
+                  "Risk Tier",
+                  "Summary"
+                ],
+                "rows": [
+                  [
+                    "8228670",
+                    "T1",
+                    "Registered 2018-05-11 (56.3yr). trade/equity ratio inf. VIP1."
+                  ],
+                  [
+                    "41405797",
+                    "T1",
+                    "Registered 2023-06-06 (56.3yr). trade/equity ratio inf. VIP6."
+                  ],
+                  [
+                    "35484914",
+                    "T1",
+                    "Registered 2022-12-19 (56.3yr). trade/equity ratio inf. VIP6."
+                  ],
+                  [
+                    "46140135",
+                    "T1",
+                    "Registered 2023-11-02 (56.3yr). trade/equity ratio inf. VIP6."
+                  ],
+                  [
+                    "53099780",
+                    "T1",
+                    "Registered 2024-03-18 (56.3yr). trade/equity ratio inf. VIP8."
+                  ]
+                ]
+              }
             }
           ],
-          "key_users": [],
-          "user_profiles": []
-        },
-        {
-          "asset": "ORDI-USDT-SWAP",
-          "severity": "warning",
-          "executive_summary": "ORDI-USDT-SWAP triggered warning alert. Price: $n/a (n/a). 0 user(s) profiled.",
-          "forward_looking": "Monitor ORDI-USDT-SWAP OI trajectory over the next 24 hours. If OI continues expanding, consider tightening position limits. Watch for funding rate shifts that may attract additional directional flow.",
-          "market_snapshot": {
-            "price": "n/a",
-            "change_24h": "n/a",
-            "open_interest": "n/a",
-            "funding_rate": "n/a",
-            "vol_24h": "n/a",
-            "timestamp": "2026-04-22T10:41:36.238657+08:00"
-          },
-          "quantitative_impact": {
-            "title": "Quantitative Impact",
-            "metrics": [
-              {
-                "value": "n/a",
-                "label": "Impact",
-                "detail": "Insufficient data to compute quantitative impact"
-              }
-            ]
-          },
-          "oi_attribution": {
-            "title": "OI Attribution (Hourly User Breakdown)",
-            "description": "Hourly breakdown of user positioning for the instrument.",
-            "user_hourly_table": {
-              "headers": [
-                "Hour (pt)",
-                "Total Users",
-                "Longs",
-                "Shorts"
+          "key_users": [
+            "8228670",
+            "60475432",
+            "35484914",
+            "46140135",
+            "70281861"
+          ],
+          "user_profiles": [
+            {
+              "uid": "8228670",
+              "master_user_id": "8228670",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2018-05-11 (56.3yr). trade/equity ratio inf. VIP1.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2018-05-11 (56.3yr)",
+                    "None",
+                    "KYC2 None verified",
+                    "Client type: 26"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP1",
+                    "CHIP-USDT-SWAP SHORT (Cross), opened 2026-04-21T22:07"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "warning",
+                  "signals": [
+                    "KYC2",
+                    "is_market_account: false",
+                    "is_internal_account: false",
+                    "KYC2 despite 56.3yr account age — upgrade anomaly"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Platform OI alert (warning)",
+                    "Active positions on: CHIP-USDT-SWAP"
+                  ]
+                }
               ],
-              "rows": []
-            }
-          },
-          "risk_assessment": {
-            "title": "Risk Assessment & Recommended Actions",
-            "actions": [
-              {
-                "priority": "P2",
-                "action": "Continue monitoring OI trajectory and funding rate changes over the next 24 hours",
-                "reason": "Position dynamics may shift as new data comes in — ensure no further limit breaches"
-              }
-            ]
-          },
-          "involved_users_brief": {
-            "title": "Involved Users (Brief)",
-            "headers": [
-              "User ID",
-              "UID",
-              "Position",
-              "Margin",
-              "Opened",
-              "Risk Tier"
-            ],
-            "rows": []
-          },
-          "causal_chain": [
-            {
-              "step": 1,
-              "type": "远因 (Structural)",
-              "name": "ORDI-USDT-SWAP Thin Liquidity / Low Float",
-              "description": "ORDI-USDT-SWAP has limited market depth (24H vol: n/a). Low float instruments are susceptible to rapid OI deviation.",
-              "evidence_strength": 3,
-              "evidence_label": "Market data"
-            },
-            {
-              "step": 2,
-              "type": "近因 (User Influx)",
-              "name": "ORDI-USDT-SWAP Position Buildup",
-              "description": "User positioning changed on ORDI-USDT-SWAP.",
-              "evidence_strength": 4,
-              "evidence_label": "Position data"
-            },
-            {
-              "step": 3,
-              "type": "触发事件 (Trigger)",
-              "name": "Alert Fired",
-              "description": "ORDI-USDT-SWAP flagged by risk monitoring system.",
-              "evidence_strength": 5,
-              "evidence_label": "Platform alert"
-            },
-            {
-              "step": 4,
-              "type": "风险放大 (Amplification)",
-              "name": "User Concentration Risk",
-              "description": "Top position holders are concentrating exposure.",
-              "evidence_strength": 4,
-              "evidence_label": "User data"
-            }
-          ],
-          "key_users": [],
-          "user_profiles": []
-        },
-        {
-          "asset": "GMX-USDT-SWAP",
-          "severity": "warning",
-          "executive_summary": "GMX-USDT-SWAP triggered warning alert. Price: $n/a (n/a). 0 user(s) profiled.",
-          "forward_looking": "Monitor GMX-USDT-SWAP OI trajectory over the next 24 hours. If OI continues expanding, consider tightening position limits. Watch for funding rate shifts that may attract additional directional flow.",
-          "market_snapshot": {
-            "price": "n/a",
-            "change_24h": "n/a",
-            "open_interest": "n/a",
-            "funding_rate": "n/a",
-            "vol_24h": "n/a",
-            "timestamp": "2026-04-22T10:41:36.238703+08:00"
-          },
-          "quantitative_impact": {
-            "title": "Quantitative Impact",
-            "metrics": [
-              {
-                "value": "n/a",
-                "label": "Impact",
-                "detail": "Insufficient data to compute quantitative impact"
-              }
-            ]
-          },
-          "oi_attribution": {
-            "title": "OI Attribution (Hourly User Breakdown)",
-            "description": "Hourly breakdown of user positioning for the instrument.",
-            "user_hourly_table": {
-              "headers": [
-                "Hour (pt)",
-                "Total Users",
-                "Longs",
-                "Shorts"
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling",
+                "CHIP-USDT-SWAP SHORT opened 2026-04-21T22:07"
               ],
-              "rows": []
-            }
-          },
-          "risk_assessment": {
-            "title": "Risk Assessment & Recommended Actions",
-            "actions": [
-              {
-                "priority": "P2",
-                "action": "Continue monitoring OI trajectory and funding rate changes over the next 24 hours",
-                "reason": "Position dynamics may shift as new data comes in — ensure no further limit breaches"
-              }
-            ]
-          },
-          "involved_users_brief": {
-            "title": "Involved Users (Brief)",
-            "headers": [
-              "User ID",
-              "UID",
-              "Position",
-              "Margin",
-              "Opened",
-              "Risk Tier"
-            ],
-            "rows": []
-          },
-          "causal_chain": [
-            {
-              "step": 1,
-              "type": "远因 (Structural)",
-              "name": "GMX-USDT-SWAP Thin Liquidity / Low Float",
-              "description": "GMX-USDT-SWAP has limited market depth (24H vol: n/a). Low float instruments are susceptible to rapid OI deviation.",
-              "evidence_strength": 3,
-              "evidence_label": "Market data"
+              "local_artifact_ref": ""
             },
             {
-              "step": 2,
-              "type": "近因 (User Influx)",
-              "name": "GMX-USDT-SWAP Position Buildup",
-              "description": "User positioning changed on GMX-USDT-SWAP.",
-              "evidence_strength": 4,
-              "evidence_label": "Position data"
-            },
-            {
-              "step": 3,
-              "type": "触发事件 (Trigger)",
-              "name": "Alert Fired",
-              "description": "GMX-USDT-SWAP flagged by risk monitoring system.",
-              "evidence_strength": 5,
-              "evidence_label": "Platform alert"
-            },
-            {
-              "step": 4,
-              "type": "风险放大 (Amplification)",
-              "name": "User Concentration Risk",
-              "description": "Top position holders are concentrating exposure.",
-              "evidence_strength": 4,
-              "evidence_label": "User data"
-            }
-          ],
-          "key_users": [],
-          "user_profiles": []
-        },
-        {
-          "asset": "XAU-USD-SWAP",
-          "severity": "warning",
-          "executive_summary": "XAU-USD-SWAP triggered warning alert. Price: $n/a (n/a). 0 user(s) profiled.",
-          "forward_looking": "Monitor XAU-USD-SWAP OI trajectory over the next 24 hours. If OI continues expanding, consider tightening position limits. Watch for funding rate shifts that may attract additional directional flow.",
-          "market_snapshot": {
-            "price": "n/a",
-            "change_24h": "n/a",
-            "open_interest": "n/a",
-            "funding_rate": "n/a",
-            "vol_24h": "n/a",
-            "timestamp": "2026-04-22T10:41:36.238773+08:00"
-          },
-          "quantitative_impact": {
-            "title": "Quantitative Impact",
-            "metrics": [
-              {
-                "value": "n/a",
-                "label": "Impact",
-                "detail": "Insufficient data to compute quantitative impact"
-              }
-            ]
-          },
-          "oi_attribution": {
-            "title": "OI Attribution (Hourly User Breakdown)",
-            "description": "Hourly breakdown of user positioning for the instrument.",
-            "user_hourly_table": {
-              "headers": [
-                "Hour (pt)",
-                "Total Users",
-                "Longs",
-                "Shorts"
+              "uid": "41405797",
+              "master_user_id": "41405797",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2023-06-06 (56.3yr). trade/equity ratio inf. VIP6.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2023-06-06 (56.3yr)",
+                    "None",
+                    "KYC7 None verified",
+                    "Client type: 21"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP6"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC7",
+                    "is_market_account: false",
+                    "is_internal_account: true"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Platform OI alert (warning)"
+                  ]
+                }
               ],
-              "rows": []
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "35484914",
+              "master_user_id": "35484914",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2022-12-19 (56.3yr). trade/equity ratio inf. VIP6.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2022-12-19 (56.3yr)",
+                    "None",
+                    "KYC7 None verified",
+                    "Client type: 21"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP6",
+                    "CHIP-USDT-SWAP SHORT (Cross), opened 2026-04-21T22:16"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC7",
+                    "is_market_account: false",
+                    "is_internal_account: false"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Platform OI alert (warning)",
+                    "Active positions on: CHIP-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling",
+                "CHIP-USDT-SWAP SHORT opened 2026-04-21T22:16"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "46140135",
+              "master_user_id": "46140135",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2023-11-02 (56.3yr). trade/equity ratio inf. VIP6.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2023-11-02 (56.3yr)",
+                    "None",
+                    "KYC7 None verified",
+                    "Client type: 21"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP6",
+                    "CHIP-USDT-SWAP SHORT (Cross), opened 2026-04-21T22:16"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC7",
+                    "is_market_account: false",
+                    "is_internal_account: false"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Platform OI alert (warning)",
+                    "Active positions on: CHIP-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling",
+                "CHIP-USDT-SWAP SHORT opened 2026-04-21T22:16"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "53099780",
+              "master_user_id": "53099780",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2024-03-18 (56.3yr). trade/equity ratio inf. VIP8.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2024-03-18 (56.3yr)",
+                    "None",
+                    "KYC9 None verified",
+                    "Client type: 21"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP8"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC9",
+                    "is_market_account: false",
+                    "is_internal_account: false"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Platform OI alert (warning)"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "18911114",
+              "master_user_id": "18911114",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2021-08-02 (56.3yr). trade/equity ratio inf. VIP2.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2021-08-02 (56.3yr)",
+                    "None",
+                    "KYC3 None verified",
+                    "Client type: 21"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP2",
+                    "CHIP-USDT-SWAP SHORT (Cross), opened 2026-04-21T22:31"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC3",
+                    "is_market_account: false",
+                    "is_internal_account: false"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Platform OI alert (warning)",
+                    "Active positions on: CHIP-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling",
+                "CHIP-USDT-SWAP SHORT opened 2026-04-21T22:31"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "31079822",
+              "master_user_id": "31079822",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2022-07-25 (56.3yr). trade/equity ratio inf. VIP8.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2022-07-25 (56.3yr)",
+                    "None",
+                    "KYC9 None verified",
+                    "Client type: 21"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP8"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC9",
+                    "is_market_account: false",
+                    "is_internal_account: false"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Platform OI alert (warning)"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "75395073",
+              "master_user_id": "75395073",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2025-03-04 (56.3yr). trade/equity ratio inf. VIP3.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2025-03-04 (56.3yr)",
+                    "None",
+                    "KYC4 None verified",
+                    "Client type: 5"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP3",
+                    "CHIP-USDT-SWAP LONG (Cross), opened 2026-04-21T23:26"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC4",
+                    "is_market_account: false",
+                    "is_internal_account: false"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Platform OI alert (warning)",
+                    "Active positions on: CHIP-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling",
+                "CHIP-USDT-SWAP LONG opened 2026-04-21T23:26"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "12442173",
+              "master_user_id": "12442173",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2020-09-25 (56.3yr). trade/equity ratio inf. VIP2.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2020-09-25 (56.3yr)",
+                    "None",
+                    "KYC3 None verified",
+                    "Client type: 26"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: VIP2",
+                    "CHIP-USDT-SWAP SHORT (Cross), opened 2026-04-21T22:30"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "pass",
+                  "signals": [
+                    "KYC3",
+                    "is_market_account: false",
+                    "is_internal_account: false"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Platform OI alert (warning)",
+                    "Active positions on: CHIP-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling",
+                "CHIP-USDT-SWAP SHORT opened 2026-04-21T22:30"
+              ],
+              "local_artifact_ref": ""
+            },
+            {
+              "uid": "6245233",
+              "master_user_id": "6245233",
+              "overall_risk_tier": "T1",
+              "executive_summary": "Registered 2017-06-26 (56.3yr). trade/equity ratio inf.",
+              "dimensions": [
+                {
+                  "name": "Registration Profile",
+                  "severity": "pass",
+                  "signals": [
+                    "Registered 2017-06-26 (56.3yr)",
+                    "None",
+                    "KYC1 None verified",
+                    "Client type: 26"
+                  ]
+                },
+                {
+                  "name": "Trading Behavior",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                    "Fee tier: LV1",
+                    "CHIP-USDT-SWAP SHORT (Isolated), opened 2026-04-21T22:00"
+                  ]
+                },
+                {
+                  "name": "Associated Accounts",
+                  "severity": "pending",
+                  "signals": [
+                    "Login table access denied (403) -- cannot verify device cluster",
+                    "No sub-account evidence from position query"
+                  ]
+                },
+                {
+                  "name": "IP & Geolocation",
+                  "severity": "pass",
+                  "signals": [
+                    "Registration region unknown",
+                    "Phone unknown",
+                    "No region mismatch detected"
+                  ]
+                },
+                {
+                  "name": "Identity Signals",
+                  "severity": "critical",
+                  "signals": [
+                    "KYC1",
+                    "is_market_account: false",
+                    "is_internal_account: false",
+                    "KYC1 despite 56.3yr account age — upgrade anomaly"
+                  ]
+                },
+                {
+                  "name": "Profit & Loss",
+                  "severity": "critical",
+                  "signals": [
+                    "Trade volume $0.00, equity $0.00",
+                    "First deposit unknown",
+                    "Last deposit unknown"
+                  ]
+                },
+                {
+                  "name": "Withdrawal Behavior",
+                  "severity": "pending",
+                  "signals": [
+                    "Last deposit unknown",
+                    "Withdrawal detail table inaccessible (data limited)"
+                  ]
+                },
+                {
+                  "name": "Comprehensive Judgment",
+                  "severity": "critical",
+                  "signals": [
+                    "Overall risk tier: T1 (trade/equity ratio inf)",
+                    "Flagged in Platform OI alert (warning)",
+                    "Active positions on: CHIP-USDT-SWAP"
+                  ]
+                }
+              ],
+              "key_evidence": [
+                "Trade/equity ratio inf indicates high leverage cycling",
+                "CHIP-USDT-SWAP SHORT opened 2026-04-21T22:00"
+              ],
+              "local_artifact_ref": ""
             }
-          },
-          "risk_assessment": {
-            "title": "Risk Assessment & Recommended Actions",
-            "actions": [
-              {
-                "priority": "P2",
-                "action": "Continue monitoring OI trajectory and funding rate changes over the next 24 hours",
-                "reason": "Position dynamics may shift as new data comes in — ensure no further limit breaches"
-              }
-            ]
-          },
-          "involved_users_brief": {
-            "title": "Involved Users (Brief)",
-            "headers": [
-              "User ID",
-              "UID",
-              "Position",
-              "Margin",
-              "Opened",
-              "Risk Tier"
-            ],
-            "rows": []
-          },
-          "causal_chain": [
-            {
-              "step": 1,
-              "type": "远因 (Structural)",
-              "name": "XAU-USD-SWAP Thin Liquidity / Low Float",
-              "description": "XAU-USD-SWAP has limited market depth (24H vol: n/a). Low float instruments are susceptible to rapid OI deviation.",
-              "evidence_strength": 3,
-              "evidence_label": "Market data"
-            },
-            {
-              "step": 2,
-              "type": "近因 (User Influx)",
-              "name": "XAU-USD-SWAP Position Buildup",
-              "description": "User positioning changed on XAU-USD-SWAP.",
-              "evidence_strength": 4,
-              "evidence_label": "Position data"
-            },
-            {
-              "step": 3,
-              "type": "触发事件 (Trigger)",
-              "name": "Alert Fired",
-              "description": "XAU-USD-SWAP flagged by risk monitoring system.",
-              "evidence_strength": 5,
-              "evidence_label": "Platform alert"
-            },
-            {
-              "step": 4,
-              "type": "风险放大 (Amplification)",
-              "name": "User Concentration Risk",
-              "description": "Top position holders are concentrating exposure.",
-              "evidence_strength": 4,
-              "evidence_label": "User data"
-            }
-          ],
-          "key_users": [],
-          "user_profiles": []
+          ]
         }
       ],
       "metrics": {
         "instruments_scanned": 11,
         "ema_coverage": 4,
-        "issues_found": 11,
+        "issues_found": 16,
         "source": "每日风控总结 - 2026-04-21 00:00:00 ~ 2026-04-21 23:59:59",
-        "generated_at": "2026-04-22T02:41:36.322530+00:00"
+        "generated_at": "2026-04-22T03:37:25.158278+00:00"
       },
       "metric_cards": [
         {
@@ -846,7 +4590,7 @@
         },
         {
           "label": "Suspicious Users",
-          "value": "0"
+          "value": "5"
         },
         {
           "label": "Highest Risk",
@@ -991,7 +4735,7 @@
       ],
       "recommended_changes": null,
       "downloads": [],
-      "markdown": "# Risk Intelligence\n\n**Summary:** 4 alert types analyzed. 11 flagged alert(s) parsed. 0 suspicious user(s) highlighted.\n**Source document:** 每日风控总结 - 2026-04-21 00:00:00 ~ 2026-04-21 23:59:59\n\n## Suspicious Users\nNo suspicious users highlighted.\n\n## Deep Profiles\nNo user profiles generated.",
+      "markdown": "# Risk Intelligence\n\n**Summary:** 4 alert types analyzed. 11 flagged alert(s) parsed. 5 suspicious user(s) highlighted.\n**Source document:** 每日风控总结 - 2026-04-21 00:00:00 ~ 2026-04-21 23:59:59\n\n## Suspicious Users\n- 69617490 — T1 — Zero equity with active positions on RAVE-USDT-SWAP.\n- 37144619 — T1 — Zero equity with active positions on GPS-USDT-SWAP.\n- 41405797 — T1 — Zero equity with active positions on CHIP-USDT-SWAP.\n- 8770572 — T1 — Zero equity with active positions on RAVE-USDT-SWAP.\n- 100513877 — T1 — Zero equity with active positions on TEST01-USDT-SWAP.\n\n## Deep Profiles\n- 69617490 — T1 — Registered 2024-11-27 (56.3yr). trade/equity ratio inf. VIP4.\n- 37144619 — T1 — Registered 2023-02-16 (56.3yr). trade/equity ratio inf.\n- 41405797 — T1 — Registered 2023-06-06 (56.3yr). trade/equity ratio inf. VIP6.\n- 8770572 — T1 — Registered 2018-09-26 (56.3yr). trade/equity ratio inf. VIP9.\n- 100513877 — T1 — Registered 2026-04-10 (56.3yr). trade/equity ratio inf.",
       "error": null,
       "source_document": {
         "title": "每日风控总结 - 2026-04-21 00:00:00 ~ 2026-04-21 23:59:59",
@@ -999,8 +4743,474 @@
         "modified_at": "2026-04-21T23:59:59+08:00",
         "selected_by": "latest_modified_desc"
       },
-      "suspicious_users": [],
-      "user_profiles": []
+      "suspicious_users": [
+        {
+          "uid": "69617490",
+          "master_user_id": "69617490",
+          "risk_tier": "T1",
+          "source_alert": "build_risk_intel",
+          "reason": "Zero equity with active positions on RAVE-USDT-SWAP.",
+          "mentions": 1,
+          "first_seen": 0
+        },
+        {
+          "uid": "37144619",
+          "master_user_id": "37144619",
+          "risk_tier": "T1",
+          "source_alert": "build_risk_intel",
+          "reason": "Zero equity with active positions on GPS-USDT-SWAP.",
+          "mentions": 1,
+          "first_seen": 1
+        },
+        {
+          "uid": "41405797",
+          "master_user_id": "41405797",
+          "risk_tier": "T1",
+          "source_alert": "build_risk_intel",
+          "reason": "Zero equity with active positions on CHIP-USDT-SWAP.",
+          "mentions": 1,
+          "first_seen": 2
+        },
+        {
+          "uid": "8770572",
+          "master_user_id": "8770572",
+          "risk_tier": "T1",
+          "source_alert": "build_risk_intel",
+          "reason": "Zero equity with active positions on RAVE-USDT-SWAP.",
+          "mentions": 1,
+          "first_seen": 3
+        },
+        {
+          "uid": "100513877",
+          "master_user_id": "100513877",
+          "risk_tier": "T1",
+          "source_alert": "build_risk_intel",
+          "reason": "Zero equity with active positions on TEST01-USDT-SWAP.",
+          "mentions": 1,
+          "first_seen": 4
+        }
+      ],
+      "user_profiles": [
+        {
+          "uid": "69617490",
+          "master_user_id": "69617490",
+          "overall_risk_tier": "T1",
+          "executive_summary": "Registered 2024-11-27 (56.3yr). trade/equity ratio inf. VIP4.",
+          "dimensions": [
+            {
+              "name": "Registration Profile",
+              "severity": "pass",
+              "signals": [
+                "Registered 2024-11-27 (56.3yr)",
+                "None",
+                "KYC5 None verified",
+                "Client type: 21"
+              ]
+            },
+            {
+              "name": "Trading Behavior",
+              "severity": "critical",
+              "signals": [
+                "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                "Fee tier: VIP4",
+                "RAVE-USDT-SWAP SHORT (Cross), opened 2026-04-21T22:45"
+              ]
+            },
+            {
+              "name": "Associated Accounts",
+              "severity": "pending",
+              "signals": [
+                "Login table access denied (403) -- cannot verify device cluster",
+                "No sub-account evidence from position query"
+              ]
+            },
+            {
+              "name": "IP & Geolocation",
+              "severity": "pass",
+              "signals": [
+                "Registration region unknown",
+                "Phone unknown",
+                "No region mismatch detected"
+              ]
+            },
+            {
+              "name": "Identity Signals",
+              "severity": "pass",
+              "signals": [
+                "KYC5",
+                "is_market_account: false",
+                "is_internal_account: false"
+              ]
+            },
+            {
+              "name": "Profit & Loss",
+              "severity": "critical",
+              "signals": [
+                "Trade volume $0.00, equity $0.00",
+                "First deposit unknown",
+                "Last deposit unknown"
+              ]
+            },
+            {
+              "name": "Withdrawal Behavior",
+              "severity": "pending",
+              "signals": [
+                "Last deposit unknown",
+                "Withdrawal detail table inaccessible (data limited)"
+              ]
+            },
+            {
+              "name": "Comprehensive Judgment",
+              "severity": "critical",
+              "signals": [
+                "Overall risk tier: T1 (trade/equity ratio inf)",
+                "Flagged in Index Alarm alert (critical)",
+                "Active positions on: RAVE-USDT-SWAP"
+              ]
+            }
+          ],
+          "key_evidence": [
+            "Trade/equity ratio inf indicates high leverage cycling",
+            "RAVE-USDT-SWAP SHORT opened 2026-04-21T22:45",
+            "Active during critical Index Alarm alert"
+          ],
+          "local_artifact_ref": ""
+        },
+        {
+          "uid": "37144619",
+          "master_user_id": "37144619",
+          "overall_risk_tier": "T1",
+          "executive_summary": "Registered 2023-02-16 (56.3yr). trade/equity ratio inf.",
+          "dimensions": [
+            {
+              "name": "Registration Profile",
+              "severity": "pass",
+              "signals": [
+                "Registered 2023-02-16 (56.3yr)",
+                "None",
+                "KYC1 None verified",
+                "Client type: 21"
+              ]
+            },
+            {
+              "name": "Trading Behavior",
+              "severity": "critical",
+              "signals": [
+                "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                "Fee tier: LV1",
+                "GPS-USDT-SWAP LONG (Isolated), opened 2025-06-27T10:30"
+              ]
+            },
+            {
+              "name": "Associated Accounts",
+              "severity": "pending",
+              "signals": [
+                "Login table access denied (403) -- cannot verify device cluster",
+                "No sub-account evidence from position query"
+              ]
+            },
+            {
+              "name": "IP & Geolocation",
+              "severity": "pass",
+              "signals": [
+                "Registration region unknown",
+                "Phone unknown",
+                "No region mismatch detected"
+              ]
+            },
+            {
+              "name": "Identity Signals",
+              "severity": "critical",
+              "signals": [
+                "KYC1",
+                "is_market_account: false",
+                "is_internal_account: false",
+                "KYC1 despite 56.3yr account age — upgrade anomaly"
+              ]
+            },
+            {
+              "name": "Profit & Loss",
+              "severity": "critical",
+              "signals": [
+                "Trade volume $0.00, equity $0.00",
+                "First deposit unknown",
+                "Last deposit unknown"
+              ]
+            },
+            {
+              "name": "Withdrawal Behavior",
+              "severity": "pending",
+              "signals": [
+                "Last deposit unknown",
+                "Withdrawal detail table inaccessible (data limited)"
+              ]
+            },
+            {
+              "name": "Comprehensive Judgment",
+              "severity": "critical",
+              "signals": [
+                "Overall risk tier: T1 (trade/equity ratio inf)",
+                "Flagged in Platform OI alert (warning)",
+                "Active positions on: GPS-USDT-SWAP"
+              ]
+            }
+          ],
+          "key_evidence": [
+            "Trade/equity ratio inf indicates high leverage cycling",
+            "GPS-USDT-SWAP LONG opened 2025-06-27T10:30"
+          ],
+          "local_artifact_ref": ""
+        },
+        {
+          "uid": "41405797",
+          "master_user_id": "41405797",
+          "overall_risk_tier": "T1",
+          "executive_summary": "Registered 2023-06-06 (56.3yr). trade/equity ratio inf. VIP6.",
+          "dimensions": [
+            {
+              "name": "Registration Profile",
+              "severity": "pass",
+              "signals": [
+                "Registered 2023-06-06 (56.3yr)",
+                "None",
+                "KYC7 None verified",
+                "Client type: 21"
+              ]
+            },
+            {
+              "name": "Trading Behavior",
+              "severity": "critical",
+              "signals": [
+                "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                "Fee tier: VIP6"
+              ]
+            },
+            {
+              "name": "Associated Accounts",
+              "severity": "pending",
+              "signals": [
+                "Login table access denied (403) -- cannot verify device cluster",
+                "No sub-account evidence from position query"
+              ]
+            },
+            {
+              "name": "IP & Geolocation",
+              "severity": "pass",
+              "signals": [
+                "Registration region unknown",
+                "Phone unknown",
+                "No region mismatch detected"
+              ]
+            },
+            {
+              "name": "Identity Signals",
+              "severity": "pass",
+              "signals": [
+                "KYC7",
+                "is_market_account: false",
+                "is_internal_account: true"
+              ]
+            },
+            {
+              "name": "Profit & Loss",
+              "severity": "critical",
+              "signals": [
+                "Trade volume $0.00, equity $0.00",
+                "First deposit unknown",
+                "Last deposit unknown"
+              ]
+            },
+            {
+              "name": "Withdrawal Behavior",
+              "severity": "pending",
+              "signals": [
+                "Last deposit unknown",
+                "Withdrawal detail table inaccessible (data limited)"
+              ]
+            },
+            {
+              "name": "Comprehensive Judgment",
+              "severity": "critical",
+              "signals": [
+                "Overall risk tier: T1 (trade/equity ratio inf)",
+                "Flagged in Platform OI alert (warning)"
+              ]
+            }
+          ],
+          "key_evidence": [
+            "Trade/equity ratio inf indicates high leverage cycling"
+          ],
+          "local_artifact_ref": ""
+        },
+        {
+          "uid": "8770572",
+          "master_user_id": "8770572",
+          "overall_risk_tier": "T1",
+          "executive_summary": "Registered 2018-09-26 (56.3yr). trade/equity ratio inf. VIP9.",
+          "dimensions": [
+            {
+              "name": "Registration Profile",
+              "severity": "pass",
+              "signals": [
+                "Registered 2018-09-26 (56.3yr)",
+                "None",
+                "KYC10 None verified",
+                "Client type: 21"
+              ]
+            },
+            {
+              "name": "Trading Behavior",
+              "severity": "critical",
+              "signals": [
+                "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                "Fee tier: VIP9"
+              ]
+            },
+            {
+              "name": "Associated Accounts",
+              "severity": "pending",
+              "signals": [
+                "Login table access denied (403) -- cannot verify device cluster",
+                "No sub-account evidence from position query"
+              ]
+            },
+            {
+              "name": "IP & Geolocation",
+              "severity": "pass",
+              "signals": [
+                "Registration region unknown",
+                "Phone unknown",
+                "No region mismatch detected"
+              ]
+            },
+            {
+              "name": "Identity Signals",
+              "severity": "pass",
+              "signals": [
+                "KYC10",
+                "is_market_account: false",
+                "is_internal_account: false"
+              ]
+            },
+            {
+              "name": "Profit & Loss",
+              "severity": "critical",
+              "signals": [
+                "Trade volume $0.00, equity $0.00",
+                "First deposit unknown",
+                "Last deposit unknown"
+              ]
+            },
+            {
+              "name": "Withdrawal Behavior",
+              "severity": "pending",
+              "signals": [
+                "Last deposit unknown",
+                "Withdrawal detail table inaccessible (data limited)"
+              ]
+            },
+            {
+              "name": "Comprehensive Judgment",
+              "severity": "critical",
+              "signals": [
+                "Overall risk tier: T1 (trade/equity ratio inf)",
+                "Flagged in Index Alarm alert (critical)"
+              ]
+            }
+          ],
+          "key_evidence": [
+            "Trade/equity ratio inf indicates high leverage cycling",
+            "Active during critical Index Alarm alert"
+          ],
+          "local_artifact_ref": ""
+        },
+        {
+          "uid": "100513877",
+          "master_user_id": "100513877",
+          "overall_risk_tier": "T1",
+          "executive_summary": "Registered 2026-04-10 (56.3yr). trade/equity ratio inf.",
+          "dimensions": [
+            {
+              "name": "Registration Profile",
+              "severity": "pass",
+              "signals": [
+                "Registered 2026-04-10 (56.3yr)",
+                "None",
+                "KYC1 None verified",
+                "Client type: 0"
+              ]
+            },
+            {
+              "name": "Trading Behavior",
+              "severity": "critical",
+              "signals": [
+                "Trade volume $0.00 vs equity $0.00 (ratio inf)",
+                "Fee tier: LV1",
+                "TEST01-USDT-SWAP LONG (Cross), opened 2026-04-21T20:34"
+              ]
+            },
+            {
+              "name": "Associated Accounts",
+              "severity": "pending",
+              "signals": [
+                "Login table access denied (403) -- cannot verify device cluster",
+                "No sub-account evidence from position query"
+              ]
+            },
+            {
+              "name": "IP & Geolocation",
+              "severity": "pass",
+              "signals": [
+                "Registration region unknown",
+                "Phone unknown",
+                "No region mismatch detected"
+              ]
+            },
+            {
+              "name": "Identity Signals",
+              "severity": "critical",
+              "signals": [
+                "KYC1",
+                "is_market_account: false",
+                "is_internal_account: true",
+                "KYC1 despite 56.3yr account age — upgrade anomaly"
+              ]
+            },
+            {
+              "name": "Profit & Loss",
+              "severity": "critical",
+              "signals": [
+                "Trade volume $0.00, equity $0.00",
+                "First deposit unknown",
+                "Last deposit unknown"
+              ]
+            },
+            {
+              "name": "Withdrawal Behavior",
+              "severity": "pending",
+              "signals": [
+                "Last deposit unknown",
+                "Withdrawal detail table inaccessible (data limited)"
+              ]
+            },
+            {
+              "name": "Comprehensive Judgment",
+              "severity": "critical",
+              "signals": [
+                "Overall risk tier: T1 (trade/equity ratio inf)",
+                "Flagged in Index Alarm alert (critical)",
+                "Active positions on: TEST01-USDT-SWAP"
+              ]
+            }
+          ],
+          "key_evidence": [
+            "Trade/equity ratio inf indicates high leverage cycling",
+            "TEST01-USDT-SWAP LONG opened 2026-04-21T20:34",
+            "Active during critical Index Alarm alert"
+          ],
+          "local_artifact_ref": ""
+        }
+      ]
     },
     {
       "slug": "price-limit",

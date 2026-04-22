@@ -134,6 +134,24 @@ def _preflight_check(adapters_to_run: list, date_str: str) -> list[tuple[str, st
     if "risk-intel" in slugs:
         ok = RISK_INTEL_INPUT.exists() and RISK_INTEL_INPUT.stat().st_size > 100
         checks.append(("risk-intel input JSON", ok, str(RISK_INTEL_INPUT)))
+        if ok:
+            try:
+                _ri = json.loads(RISK_INTEL_INPUT.read_text())
+                _events = _ri.get("event_analyses") or []
+                _na_assets = [
+                    e.get("asset", "?")
+                    for e in _events
+                    if (e.get("market_snapshot") or {}).get("price") in ("n/a", "", None)
+                ]
+                price_ok = not _na_assets and bool(_events)
+                detail = (
+                    f"{len(_events)} events, all priced"
+                    if price_ok
+                    else f"n/a price on: {', '.join(_na_assets) or 'empty event list'}"
+                )
+                checks.append(("risk-intel event prices", price_ok, detail))
+            except Exception as e:
+                checks.append(("risk-intel event prices", False, f"parse error: {e}"))
 
     if "mmr-futures" in slugs:
         ok = DEPTH_FILE.exists() and DEPTH_FILE.stat().st_size > 10
